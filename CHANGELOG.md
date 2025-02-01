@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.1.1 — February 1, 2025
+- Change extension logo
+
 ## 1.1.0 — January 31, 2025
 - Add Enums to the dummy files
 
