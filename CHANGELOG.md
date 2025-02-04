@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.1.2 — February 3, 2025
+- Fix wrong text argument for MessageBox
+
 ## 1.1.1 — February 1, 2025
 - Change extension logo
 
