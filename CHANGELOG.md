@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.2.0 — February 6, 2025
+- Various spell check
+- Added a missing "@Optional" annotation
+- Added underscore on start of optional fields in autocomplete
+
 ## 1.1.2 — February 3, 2025
 - Fix wrong text argument for MessageBox
 

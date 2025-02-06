@@ -3,28 +3,28 @@
   "Handle:Acquire": {
     "prefix": "Acquire(class, undo)",
     "body": [
-      "Acquire(${1:class}, ${2:undo})"
+      "Acquire(${1:_class}, ${2:_undo})"
     ],
     "code": "Acquire(light_userdata:handle[, string:class[, light_userdata:undo]]): light_userdata:child_handle"   
   },
   "Handle:AddListChildren": {
     "prefix": "AddListChildren(parent, role)",
     "body": [
-      "AddListChildren(${1:parent}, ${2:role})"
+      "AddListChildren(${1:parent}, ${2:_role})"
     ],
     "code": "AddListChildren(light_userdata:handle, light_userdata:parent[, enum{Roles}:role]): nothing"   
   },
   "Handle:AddListChildrenNames": {
     "prefix": "AddListChildrenNames(parent, role)",
     "body": [
-      "AddListChildrenNames(${1:parent}, ${2:role})"
+      "AddListChildrenNames(${1:parent}, ${2:_role})"
     ],
     "code": "AddListChildrenNames(light_userdata:handle, light_userdata:parent[, enum{Roles}:role]): nothing"
   },
   "Handle:AddListLuaItem": {
     "prefix": "AddListLuaItem(name, value, callback, argument, appearance)",
     "body": [
-      "AddListLuaItem(${1:name}, ${2:value}, ${3:callback}, ${4:argument}, ${5:appearance})"
+      "AddListLuaItem(${1:name}, ${2:value}, ${3:callback}, ${4:_argument}, ${5:_appearance})"
     ],
     "code": "AddListLuaItem(light_userdata:handle, string:name, string:value/function name, lua_function:callback reference[, <any lua type>:argument to pass to callback[, {[left={...}][right={...}]}:appearance]]): nothing"
   },
@@ -38,7 +38,7 @@
   "Handle:AddListNumericItem": {
     "prefix": "AddListNumericItem(name, value, baseHandle, appearance)",
     "body": [
-      "AddListNumericItem(${1:name}, ${2:value}, ${3:baseHandle}, ${4:appearance})"
+      "AddListNumericItem(${1:name}, ${2:value}, ${3:_baseHandle}, ${4:_appearance})"
     ],
     "code": "AddListNumericItem(light_userdata:handle, string:name, number:value[,light_userdata:base handle[, {[left={...}][right={...}]}:appearance]]): nothing"
   },
@@ -52,14 +52,14 @@
   "Handle:AddListObjectItem": {
     "prefix": "AddListObjectItem(targetObject, explicitName, appearance)",
     "body": [
-      "AddListObjectItem(${1:targetObject}, ${2:explicitName}, ${3:appearance})"
+      "AddListObjectItem(${1:targetObject}, ${2:_explicitName}, ${3:_appearance})"
     ],
     "code": "AddListObjectItem(light_userdata:handle, light_userdata:target object[, (string: explicit name[, {[boolean:appearance],[left={...}][right={...}]}:appearance] | enum{Roles}: role [, :boolean: extended_name[, {[left={...}][right={...}]}:appearance]])]): nothing"
   },
   "Handle:AddListPropertyItem": {
     "prefix": "AddListPropertyItem(name, value, targetHandle, appearance)",
     "body": [
-      "AddListPropertyItem(${1:name}, ${2:value}, ${3:targetHandle}, ${4:appearance})"
+      "AddListPropertyItem(${1:name}, ${2:value}, ${3:targetHandle}, ${4:_appearance})"
     ],
     "code": "AddListPropertyItem(light_userdata:handle, string:name, string:value, light_userdata:target handle[,{[left={...}][right={...}]}:appearance]): nothing"
   },
@@ -73,14 +73,14 @@
   "Handle:AddListRecursiveNames": {
     "prefix": "AddListRecursiveNames(parent, role)",
     "body": [
-      "AddListRecursiveNames(${1:parent}, ${2:role})"
+      "AddListRecursiveNames(${1:parent}, ${2:_role})"
     ],
     "code": "AddListRecursiveNames(light_userdata:handle, light_userdata:parent[, enum{Roles}:role]): nothing"
   },
   "Handle:AddListStringItem": {
     "prefix": "AddListStringItem(name, value, appearance)",
     "body": [
-      "AddListStringItem(${1:name}, ${2:value}, ${3:appearance})"
+      "AddListStringItem(${1:name}, ${2:value}, ${3:_appearance})"
     ],
     "code": "AddListStringItem(light_userdata:handle, string:name, string:value[, {[left={...}][right={...}]}:appearance]): nothing"
   },
@@ -94,7 +94,7 @@
   "Handle:Append": {
     "prefix": "Append(class, undo, count)",
     "body": [
-      "Append(${1:class}, ${2:undo}, ${3:count})"
+      "Append(${1:_class}, ${2:_undo}, ${3:_count})"
     ],
     "code": "Append(light_userdata:handle[, string:class[, light_userdata:undo[, integer:count]]]): light_userdata:child_handle"
   },
@@ -143,7 +143,7 @@
   "Handle:CommandCall": {
     "prefix": "CommandCall(destHandle, focusSearchAllowed)",
     "body": [
-      "CommandCall(${1:destHandle}, ${2:focusSearchAllowed})"
+      "CommandCall(${1:destHandle}, ${2:_focusSearchAllowed})"
     ],
     "code": "CommandCall(light_userdata:handle, light_userdata:dest_handle, boolean:focus_search_allowed(default:true)): nothing"
   },
@@ -178,14 +178,14 @@
   "Handle:Copy": {
     "prefix": "Copy(srcHandle, undo)",
     "body": [
-      "Copy(${1:srcHandle}, ${2:undo})"
+      "Copy(${1:srcHandle}, ${2:_undo})"
     ],
     "code": "Copy(light_userdata:dst_handle, light_userdata:src_handle[, light_userdata:undo]): nothing"
   },
   "Handle:Create": {
     "prefix": "Create(childIndex, class, undo)",
     "body": [
-      "Create(${1:childIndex}, ${2:class}, ${3:undo})"
+      "Create(${1:childIndex}, ${2:_class}, ${3:_undo})"
     ],
     "code": "Create(light_userdata:handle, integer:child_index(1-based)[, string:class[, light_userdata:undo]]): light_userdata:child_handle"
   },
@@ -199,7 +199,7 @@
   "Handle:Delete": {
     "prefix": "Delete(childIndex, undo)",
     "body": [
-      "Delete(${1:childIndex}, ${2:undo})"
+      "Delete(${1:childIndex}, ${2:_undo})"
     ],
     "code": "Delete(light_userdata:handle, integer:child_index(1-based)[, light_userdata:undo]): nothing"
   },
@@ -213,7 +213,7 @@
   "Handle:Find": {
     "prefix": "Find(searchName, searchClassName)",
     "body": [
-      "Find(${1:searchName}, ${2:searchClassName})"
+      "Find(${1:searchName}, ${2:_searchClassName})"
     ],
     "code": "Find(light_userdata:search_start_handle, string:search_name[, string:search_class_name]): light_userdata:found_handle"
   },
@@ -241,7 +241,7 @@
   "Handle:FindRecursive": {
     "prefix": "FindRecursive(searchName, searchClassName)",
     "body": [
-      "FindRecursive(${1:searchName}, ${2:searchClassName})"
+      "FindRecursive(${1:searchName}, ${2:_searchClassName})"
     ],
     "code": "FindRecursive(light_userdata:search_start_handle, string:search_name[, string:search_class_name]): light_userdata:found_handle"
   },
@@ -276,7 +276,7 @@
   "Handle:GetExportFileName": {
     "prefix": "GetExportFileName(camelCaseToFileName)",
     "body": [
-      "GetExportFileName(${1:camelCaseToFileName})"
+      "GetExportFileName(${1:_camelCaseToFileName})"
     ],
     "code": "GetExportFileName(light_userdata:handle[, boolean:camel_case_to_file_name]): string:file_name"
   },
@@ -563,7 +563,7 @@
   "Handle:HookDelete": {
     "prefix": "HookDelete(callback, argument)",
     "body": [
-      "HookDelete(${1:callback}, ${2:argument})"
+      "HookDelete(${1:callback}, ${2:_argument})"
     ],
     "code": "HookDelete(light_userdata:handle to UIObject, function:callback to invoke on deletion[, any:argument to pass by]): boolean:true on success, nil on failure"
   },
@@ -633,7 +633,7 @@
   "Handle:Insert": {
     "prefix": "Insert(childIndex, class, undo, count)",
     "body": [
-      "Insert(${1:childIndex}, ${2:class}, ${3:undo}, ${4:count})"
+      "Insert(${1:childIndex}, ${2:_class}, ${3:_undo}, ${4:_count})"
     ],
     "code": "Insert(light_userdata:handle, integer:child_index(1-based)[, string:class[, light_userdata:undo[, integer:count]]]): light_userdata:child_handle"
   },
@@ -710,7 +710,7 @@
   "Handle:OverlaySetCloseCallback": {
     "prefix": "OverlaySetCloseCallback(callbackName, ctx)",
     "body": [
-      "OverlaySetCloseCallback(${1:callbackName}, ${2:ctx})"
+      "OverlaySetCloseCallback(${1:callbackName}, ${2:_ctx})"
     ],
     "code": "OverlaySetCloseCallback(light_userdata:handle to Overlay, callbackName:string[, ctx:anything]): nothing"
   },
@@ -759,7 +759,7 @@
   "Handle:Remove": {
     "prefix": "Remove(childIndex, undo)",
     "body": [
-      "Remove(${1:childIndex}, ${2:undo})"
+      "Remove(${1:childIndex}, ${2:_undo})"
     ],
     "code": "Remove(light_userdata:handle, integer:child_index(1-based)[, light_userdata:undo]): nothing"
   },
@@ -850,21 +850,21 @@
   "Handle:Set": {
     "prefix": "Set(propertyName, propertyValue, overrideChangeLevel)",
     "body": [
-      "Set(${1:propertyName}, ${2:propertyValue}, ${3:overrideChangeLevel})"
+      "Set(${1:propertyName}, ${2:propertyValue}, ${3:_overrideChangeLevel})"
     ],
     "code": "Set(light_userdata:handle, string:property_name, string:property_value[, integer:override_change_level(Enums.ChangeLevel)]): nothing"
   },
   "Handle:SetChildren": {
     "prefix": "SetChildren(propertyName, propertyValue, recursive)",
     "body": [
-      "SetChildren(${1:propertyName}, ${2:propertyValue}, ${3:recursive})"
+      "SetChildren(${1:propertyName}, ${2:propertyValue}, ${3:_recursive})"
     ],
     "code": "SetChildren(light_userdata:handle_of_parent, string:property_name, string:property_value[, boolean:recursive (default: false)]): nothing"
   },
   "Handle:SetChildrenRecursive": {
     "prefix": "SetChildrenRecursive(propertyName, propertyValue, recursive)",
     "body": [
-      "SetChildrenRecursive(${1:propertyName}, ${2:propertyValue}, ${3:recursive})"
+      "SetChildrenRecursive(${1:propertyName}, ${2:propertyValue}, ${3:_recursive})"
     ],
     "code": "SetChildrenRecursive(light_userdata:handle_of_parent, string:property_name, string:property_value[, boolean:recursive (default: false)]): nothing"
   },
@@ -878,14 +878,14 @@
   "Handle:SetEmptyListItem": {
     "prefix": "SetEmptyListItem(index, empty)",
     "body": [
-      "SetEmptyListItem(${1:index}, ${2:empty})"
+      "SetEmptyListItem(${1:index}, ${2:_empty})"
     ],
     "code": "SetEmptyListItem(light_userdata:handle, integer:index[, bool:empty(default:true)]): nothing"
   },
   "Handle:SetEnabledListItem": {
     "prefix": "SetEnabledListItem(index, enable)",
     "body": [
-      "SetEnabledListItem(${1:index}, ${2:enable})"
+      "SetEnabledListItem(${1:index}, ${2:_enable})"
     ],
     "code": "SetEnabledListItem(light_userdata:handle, integer:index[, bool:enable(default:true)]): nothing"
   },
@@ -976,14 +976,14 @@
   "Handle:WaitChildren": {
     "prefix": "WaitChildren(expectedChildren, secondsToWait)",
     "body": [
-      "WaitChildren(${1:expectedChildren}, ${2:secondsToWait})"
+      "WaitChildren(${1:expectedChildren}, ${2:_secondsToWait})"
     ],
     "code": "WaitChildren(light_userdata:handle to UIObject, integer:expected amount of children[, number:seconds to wait]): boolean:true on success, nil on timeout or if object doesn't exist"
   },
   "Handle:WaitInit": {
     "prefix": "WaitInit(secondsToWait, forceReInit)",
     "body": [
-      "WaitInit(${1:secondsToWait}, ${2:forceReInit})"
+      "WaitInit(${1:_secondsToWait}, ${2:_forceReInit})"
     ],
     "code": "WaitInit(light_userdata:handle to UIObject[, number:seconds to wait[, bool:force to re-init, default - false]]): boolean:true on success, nil on timeout or if object doesn't exist"
   }

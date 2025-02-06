@@ -233,7 +233,7 @@ function FixtureType()
 end
 
 ---@param objectString string
----@param addressHandle Handle
+---@param addressHandle? Handle @Optional
 ---@return Handle object
 function FromAddr(objectString, addressHandle)
     return Handle:new()
@@ -245,7 +245,7 @@ function GetApiDescriptor()
 end
 
 ---@param channelIndex integer
----@return Handle attributeHandle @Optional
+---@return Handle attributeHandle
 function GetAttributeByUIChannel(channelIndex)
     return Handle:new()
 end
@@ -390,10 +390,10 @@ function GetRTChannelCount()
     return 0
 end
 
----@param fixtureIndexOfHandle integer|Handle
+---@param fixtureIndexOrHandle integer|Handle
 ---@param returnHandles? boolean @Optional
 ---@return table rtChannels
-function GetRTChannels(fixtureIndexOfHandle, returnHandles)
+function GetRTChannels(fixtureIndexOrHandle, returnHandles)
     return {}
 end
 
@@ -749,9 +749,9 @@ end
 ---@param timedFunction function
 ---@param waitSeconds integer
 ---@param iterations integer
----@param TimerCleanup? function|nil @Optional
+---@param timerCleanup? function|nil @Optional
 ---@param passedObjectHandle? Handle @Optional
-function Timer(timedFunction, waitSeconds, iterations, TimerCleanup, passedObjectHandle)
+function Timer(timedFunction, waitSeconds, iterations, timerCleanup, passedObjectHandle)
 end
 
 ---@param objectHandle Handle

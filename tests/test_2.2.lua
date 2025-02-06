@@ -4,46 +4,41 @@ local function test()
     -- ========================================
 
     local handle = Handle:new()
-    local fixtureTable, name, startAddress, count, breakIndex, fixtureId, type, command
-    local undoHandle, fixtureTableHandle, multiPatchAmount, undoText, message
-    local fileName, exportData, path, filter, textureName, objectString, addressHandle
-    local Ma3ModuleHandle, channelIndex, attributeName, displayIndex, universeNumber
-    local isPercent, address, universe, executorNumber, folderName, createIfNotExist
-    local basePath, pathContentType, rtChannelIndex, presetHandle, returnPhaserData
-    local extract, sampleType, screenHandle, patchIndex, attributeIndex, positionTable 
-    local variableHandle, varName, functionName, objectHandle, pluginHandle
-    local passedObjectHandle, index, position, duration, title, text, screen, text
-    local handleTarget, fixtureIndex, returnHandles, shortKeyword,progressBarHandle, value
-    local handleInteger, derivedClassName, baseClassName, objectList, optionsTable
-    local moduleHandle, progress, rangeTart, rangeEnd, handleString, textGuide, xPosition
-    local yPosition, timedFunction, waitSeconds, iterations, TimerCleanup, returnType
-    local hookId, targetObjectHandle, contextObjectHandle, baseLocationHandle, useToAddrIndex
-    local returnPercent, pathTypeIndex, block, returnName, filePath, returnNamesInQuotes
-    local propertyName, roleInteger, childIndex, isCueObject, tokenAndIndex, settingsTable
-    local class, undo, parent, role, callback, argument, appearance, items, baseHandle, targetObject, explicitName
-    local targetHandle, changeLevelEnum, destHandle, focusSearchAllowed, otherHandle, srcHandle, cell
-    local searchName, searchClassName, camelCaseToFileName, lineNumber, rowId, x, y, columnId, size
-    local objectToCheck, parameterName, parameterValue, nameValue, length
-    local callbackName, ctx, propertyIndex, scrollType, scrollEntity, valueType, updateOpposite
-    local offset, itemIdx, empty, enable, topicName, propertyValue, overrideChangeLevel, recursive
-    local expectedChildren, secondsToWait, forceReInit
-    local queueName, sourcePath, destinationPath, patch, startingAddress, footprint, backwards, reason
-    local attribute, uiChannelIndex, phaserOnly, step, startingInternalLineNumber, charOrKeycode, shift, ctrl, alt, numlock
-    local executor, buttonOrAbsX, absY, pluginName, options, changeLevelThreshold, ip, samplingPoints
-    local context, objectToNotify, ipOrStation, channelName, data, colorModel, tripel1, tripel2, tripel3
-    local brightness, quality, constBrightness, expectations, touchId, absX
-
-
+    local fixtureTable, name, startAddress, fixtureId, type, command, fixtureTableHandle, multiPatchAmount
+    local undoText, message, fileName, exportData, path, textureName, objectString, addressHandle
+    local Ma3ModuleHandle, channelIndex, attributeName, displayIndex, universeNumber, folderName, createIfNotExist
+    local address, universe, executorNumber, screenHandle, patchIndex, attributeIndex, positionTable
+    local basePath, rtChannelIndex, presetHandle, attribute, uiChannelIndex, phaserOnly, step, footprint
+    local sampleType, _returnType, _backwards, _reason, _charOrKeycode, _shift, _ctrl, _alt, _numlock, _absY
+    local variableHandle, varName, functionName, objectHandle, pluginHandle, waitSeconds, iterations, _timerCleanup
+    local index, position, title, text, _title, _textGuide, _xPosition, _yPosition, timedFunction, startingAddress
+    local fixtureIndex, shortKeyword,progressBarHandle, value, expectedChildren, secondsToWait, patch, options
+    local handleInteger, derivedClassName, baseClassName, hookId, targetObjectHandle, contextObjectHandle
+    local moduleHandle, progress, rangeTart, rangeEnd, handleString, baseLocationHandle, _forceReInit
+    local pathTypeIndex, block, filePath, propertyName, childIndex, tokenAndIndex, settingsTable, targetObject
+    local parent, callback, appearance, items, targetHandle, changeLevelEnum, destHandle, otherHandle, srcHandle
+    local searchName, searchClassName, lineNumber, rowId, x, y, columnId, size, cell, valueType, updateOpposite
+    local objectToCheck, parameterName, parameterValue, nameValue, length, callbackName, propertyIndex, scrollType
+    local offset, itemIdx, topicName, propertyValue, scrollEntity, _optionsTable, _passedObjectHandle
+    local executor, buttonOrAbsX, absY, pluginName, changeLevelThreshold, ip, objectListCommand, _returnHandles
+    local context, objectToNotify, colorModel, tripel1, tripel2, tripel3, _extract, fixtureIndexOrHandle
+    local brightness, quality, constBrightness, expectations, touchId, absX, _returnPhaserData, _duration
+    local _baseLocationHandle, _useToAddrIndex, _returnNamesInQuotes, _roleInteger, _filter, channelName
+    local _class, _undo, _baseHandle, _appearance, _role, _argument, _explicitName, _count, _text, _screen
+    local _overrideChangeLevel, _recursive, _empty, _enable, _secondsToWait, _type, _undoHandle, _handleTarget
+    local _focusSearchAllowed, _startingInternalLineNumber, _camelCaseToFileName, _ctx, dmxModeHandle, _breakIndex
+    local _isPercent, _universe, _returnPercent, _pathContentType, queueName, _samplingPoints, ipOrStation, data
+    local returnName, _isCueObject, sourcePath, destinationPath
     
     -- Object definition
     -- ========================================
 
     handle:Addr()
     handle:Addr(baseLocationHandle)
-    handle:Addr(baseLocationHandle, useToAddrIndex)
+    handle:Addr(_baseLocationHandle, _useToAddrIndex, _isCueObject)
     handle:AddrNative()
     handle:AddrNative(baseLocationHandle)
-    handle:AddrNative(baseLocationHandle, returnNamesInQuotes)
+    handle:AddrNative(_baseLocationHandle, _returnNamesInQuotes)
 
     handle:Children()
     handle:Count()
@@ -53,7 +48,7 @@ local function test()
     handle:Export(filePath, fileName)
 
     handle:Get(propertyName)
-    handle:Get(propertyName, roleInteger)
+    handle:Get(propertyName, _roleInteger)
     handle:GetChildClass()
     handle:GetClass()
     handle:GetDependencies()
@@ -77,35 +72,35 @@ local function test()
     -- ========================================
 
     handle:Acquire()
-    handle:Acquire(class)
-    handle:Acquire(class, undo)
+    handle:Acquire(_class)
+    handle:Acquire(_class, _undo)
     handle:AddListChildren(parent)
-    handle:AddListChildren(parent, role)
+    handle:AddListChildren(parent, _role)
     handle:AddListChildrenNames(parent)
-    handle:AddListChildrenNames(parent, role)
+    handle:AddListChildrenNames(parent, _role)
     handle:AddListLuaItem(name, value, callback)
-    handle:AddListLuaItem(name, value, callback, argument)
-    handle:AddListLuaItem(name, value, callback, argument, appearance)
+    handle:AddListLuaItem(name, value, callback, _argument)
+    handle:AddListLuaItem(name, value, callback, _argument, _appearance)
     handle:AddListLuaItems(items)
     handle:AddListNumericItem(name, value)
-    handle:AddListNumericItem(name, value, baseHandle)
-    handle:AddListNumericItem(name, value, baseHandle, appearance)
+    handle:AddListNumericItem(name, value, _baseHandle)
+    handle:AddListNumericItem(name, value, _baseHandle, _appearance)
     handle:AddListNumericItems(items)
     handle:AddListObjectItem(targetObject)
-    handle:AddListObjectItem(targetObject, explicitName)
-    handle:AddListObjectItem(targetObject, explicitName, appearance)
+    handle:AddListObjectItem(targetObject, _explicitName)
+    handle:AddListObjectItem(targetObject, _explicitName, _appearance)
     handle:AddListPropertyItem(name, value, targetHandle)
-    handle:AddListPropertyItem(name, value, targetHandle, appearance)
+    handle:AddListPropertyItem(name, value, targetHandle, _appearance)
     handle:AddListPropertyItems(items)
     handle:AddListRecursiveNames(parent)
-    handle:AddListRecursiveNames(parent, role)
+    handle:AddListRecursiveNames(parent, _role)
     handle:AddListStringItem(name, value)
     handle:AddListStringItem(name, value, appearance)
     handle:AddListStringItems(items)
     handle:Append()
-    handle:Append(class)
-    handle:Append(class, undo)
-    handle:Append(class, undo, count)
+    handle:Append(_class)
+    handle:Append(_class, _undo)
+    handle:Append(_class, _undo, _count)
 
     handle:Changed(changeLevelEnum)
     handle:ClearList()
@@ -114,20 +109,20 @@ local function test()
     handle:CmdlinePtr(index)
     handle:CommandAt()
     handle:CommandCall(destHandle)
-    handle:CommandCall(destHandle, focusSearchAllowed)
+    handle:CommandCall(destHandle, _focusSearchAllowed)
     handle:CommandCreateDefaults()
     handle:CommandDelete()
     handle:CommandStore()
     handle:Compare(otherHandle)
     handle:Copy(srcHandle)
-    handle:Copy(srcHandle, undo)
+    handle:Copy(srcHandle, _undo)
     handle:Create(childIndex)
-    handle:Create(childIndex, class)
-    handle:Create(childIndex, class, undo)
+    handle:Create(childIndex, _class)
+    handle:Create(childIndex, _class, _undo)
     handle:CurrentChild()
 
     handle:Delete(childIndex)
-    handle:Delete(childIndex, undo)
+    handle:Delete(childIndex, _undo)
 
     handle:FSExtendedModeHasDots(cell)
     handle:Find(searchName)
@@ -143,7 +138,7 @@ local function test()
     handle:GetDisplay()
     handle:GetDisplayIndex()
     handle:GetExportFileName()
-    handle:GetExportFileName(camelCaseToFileName)
+    handle:GetExportFileName(_camelCaseToFileName)
     handle:GetLineAt(lineNumber)
     handle:GetLineCount()
     handle:GetListItemAppearance(index)
@@ -186,7 +181,7 @@ local function test()
     handle:HasParent(objectToCheck)
     handle:HasReferences()
     handle:HookDelete(callback)
-    handle:HookDelete(callback, argument)
+    handle:HookDelete(callback, _argument)
 
     handle:Index()
     handle:InputCallFunction(functionName)
@@ -198,9 +193,9 @@ local function test()
     handle:InputSetTitle(nameValue)
     handle:InputSetValue(value)
     handle:Insert(childIndex)
-    handle:Insert(childIndex, class)
-    handle:Insert(childIndex, class, undo)
-    handle:Insert(childIndex, class, undo, count)
+    handle:Insert(childIndex, _class)
+    handle:Insert(childIndex, _class, _undo)
+    handle:Insert(childIndex, _class, _undo, _count)
     handle:IsClass()
     handle:IsEmpty()
     handle:IsEnabled()
@@ -215,7 +210,7 @@ local function test()
     handle:MaxCount()
     
     handle:OverlaySetCloseCallback(callbackName)
-    handle:OverlaySetCloseCallback(callbackName, ctx)
+    handle:OverlaySetCloseCallback(callbackName, _ctx)
 
     handle:Parent()
     handle:PrepareAccess()
@@ -225,7 +220,7 @@ local function test()
     handle:PropertyType(propertyIndex)
 
     handle:Remove(childIndex)
-    handle:Remove(childIndex, undo)
+    handle:Remove(childIndex, _undo)
     handle:RemoveListItem(name)
     handle:Resize(size)
 
@@ -240,16 +235,16 @@ local function test()
     handle:SelectListItemByName(nameValue)
     handle:SelectListItemByValue(value)
     handle:Set(propertyName, propertyValue)
-    handle:Set(propertyName, propertyValue, overrideChangeLevel)
+    handle:Set(propertyName, propertyValue, _overrideChangeLevel)
     handle:SetChildren(propertyName, propertyValue)
-    handle:SetChildren(propertyName, propertyValue, recursive)
+    handle:SetChildren(propertyName, propertyValue, _recursive)
     handle:SetChildrenRecursive(propertyName, propertyValue)
-    handle:SetChildrenRecursive(propertyName, propertyValue, recursive)
+    handle:SetChildrenRecursive(propertyName, propertyValue, _recursive)
     handle:SetContextSensHelpLink(topicName)
     handle:SetEmptyListItem(index)
-    handle:SetEmptyListItem(index, empty)
+    handle:SetEmptyListItem(index, _empty)
     handle:SetEnabledListItem(index)
-    handle:SetEnabledListItem(index, enable)
+    handle:SetEnabledListItem(index, _enable)
     handle:SetListItemAppearance(index, appearance)
     handle:SetListItemName(index, name)
     handle:SetListItemValueStr(index, value)
@@ -268,7 +263,7 @@ local function test()
     handle:WaitChildren(expectedChildren, secondsToWait)
     handle:WaitInit()
     handle:WaitInit(secondsToWait)
-    handle:WaitInit(secondsToWait, forceReInit)
+    handle:WaitInit(_secondsToWait, _forceReInit)
 
     -- Object free definition
     -- ========================================
@@ -278,29 +273,29 @@ local function test()
 
     BuildDetails()
 
-    CheckDMXCollision(handle, startAddress)
-    CheckDMXCollision(handle, startAddress, count)
-    CheckDMXCollision(handle, startAddress, count, breakIndex)
+    CheckDMXCollision(dmxModeHandle, startAddress)
+    CheckDMXCollision(dmxModeHandle, startAddress, _count)
+    CheckDMXCollision(dmxModeHandle, startAddress, _count, _breakIndex)
     CheckFIDCollision(fixtureId)
-    CheckFIDCollision(fixtureId, count)
-    CheckFIDCollision(fixtureId, count, type)
+    CheckFIDCollision(fixtureId, _count)
+    CheckFIDCollision(fixtureId, _count, _type)
     ClassExists(name)
     CloseAllOverlays()
     CloseUndo(handle)
     Cmd(command)
-    Cmd(command, undoHandle)
+    Cmd(command, _undoHandle)
     CmdIndirect(command)
-    CmdIndirect(command, undoHandle)
-    CmdIndirect(command, undoHandle, handleTarget)
+    CmdIndirect(command, _undoHandle)
+    CmdIndirect(command, _undoHandle, _handleTarget)
     CmdIndirectWait(command)
-    CmdIndirectWait(command, undoHandle)
-    CmdIndirectWait(command, undoHandle, handleTarget)
+    CmdIndirectWait(command, _undoHandle)
+    CmdIndirectWait(command, _undoHandle, _handleTarget)
     CmdObj()
     ConfigTable()
     Confirm(title)
     Confirm(title, text)
-    Confirm(title, text, screen)
-    Confirm(title, text, screen, text)
+    Confirm(title, _text, _screen)
+    Confirm(title, _text, _screen, _text)
     CreateMultiPatch(fixtureTableHandle, multiPatchAmount)
     CreateUndo(undoText)
     CurrentEnvironment()
@@ -315,9 +310,9 @@ local function test()
     DeskLocked()
     DeviceConfiguration()
     DirList(path)
-    DirList(path, filter)
+    DirList(path, _filter)
     DrawPointer(displayIndex, position)
-    DrawPointer(displayIndex, position, duration)
+    DrawPointer(displayIndex, position, _duration)
     DumpAllHooks()
 
     Echo(message)
@@ -346,10 +341,10 @@ local function test()
     GetDisplayByIndex(displayIndex)
     GetDisplayCollect()
     GetDMXUniverse(universeNumber)
-    GetDMXUniverse(universeNumber, isPercent)
+    GetDMXUniverse(universe, _isPercent)
     GetDMXValue(address)
     GetDMXValue(address, universe)
-    GetDMXValue(address, universe, returnPercent)
+    GetDMXValue(address, _universe, _returnPercent)
     GetExecutor(executorNumber)
     GetFocus()
     GetFocusDisplay()
@@ -360,14 +355,14 @@ local function test()
     GetPathOverrideFor(folderName, basePath, createIfNotExist)
     GetPathSeparator()
     GetPathType(objectHandle)
-    GetPathType(objectHandle, pathContentType)
+    GetPathType(objectHandle, _pathContentType)
     GetPresetData(presetHandle)
-    GetPresetData(presetHandle, returnPhaserData)
-    GetPresetData(presetHandle, returnPhaserData, extract)
+    GetPresetData(presetHandle, _returnPhaserData)
+    GetPresetData(presetHandle, _returnPhaserData, _extract)
     GetRTChannel(rtChannelIndex)
     GetRTChannelCount()
     GetRTChannels(fixtureIndex)
-    GetRTChannels(fixtureIndex, returnHandles)
+    GetRTChannels(fixtureIndexOrHandle, _returnHandles)
     GetSample(sampleType)
     GetScreenContent(screenHandle)
     GetSelectedAttribute()
@@ -381,7 +376,7 @@ local function test()
     GetUIChannelCount()
     GetUIChannelIndex(patchIndex, attributeIndex)
     GetUIChannels(fixtureIndex)
-    GetUIChannels(fixtureIndex, returnHandles)
+    GetUIChannels(fixtureIndexOrHandle, _returnHandles)
     GetUIObjectAtPosition(displayIndex, positionTable)
     GetVar(variableHandle, varName)
     GlobalVars()
@@ -389,7 +384,7 @@ local function test()
     HandleToInt(objectHandle)
     HandleToStr(objectHandle)
     HookObjectChange(functionName, objectHandle, pluginHandle)
-    HookObjectChange(functionName, objectHandle, pluginHandle, passedObjectHandle)
+    HookObjectChange(functionName, objectHandle, pluginHandle, _passedObjectHandle)
     HostOS()
     HostSubType()
     HostType()
@@ -408,8 +403,8 @@ local function test()
     
     NeedShowSave()
 
-    ObjectList(objectList)
-    ObjectList(objectList, optionsTable)
+    ObjectList(objectListCommand)
+    ObjectList(objectListCommand, _optionsTable)
 
     Patch()
     Printf(message)
@@ -443,16 +438,16 @@ local function test()
     StrToHandle(handleString)
 
     TextInput()
-    TextInput(title)
-    TextInput(title, textGuide)
-    TextInput(title, textGuide, xPosition)
-    TextInput(title, textGuide, xPosition, yPosition)
+    TextInput(_title)
+    TextInput(_title, _textGuide)
+    TextInput(_title, _textGuide, _xPosition)
+    TextInput(_title, _textGuide, _xPosition, _yPosition)
     Time()
     Timer(timedFunction, waitSeconds, iterations)
-    Timer(timedFunction, waitSeconds, iterations, TimerCleanup)
-    Timer(timedFunction, waitSeconds, iterations, TimerCleanup, passedObjectHandle)
+    Timer(timedFunction, waitSeconds, iterations, _timerCleanup)
+    Timer(timedFunction, waitSeconds, iterations, _timerCleanup, _passedObjectHandle)
     ToAddr(objectHandle)
-    ToAddr(objectHandle, returnType)
+    ToAddr(objectHandle, _returnType)
     TouchObj()
 
     Unhook(hookId)
@@ -463,7 +458,7 @@ local function test()
 
     -- Not documented Object free definition
     -- ========================================
-
+    
     CloseMessageQueue(queueName)
     ColMeasureDeviceDarkCalibrate()
     ColMeasureDeviceDoMeasurement()
@@ -477,8 +472,8 @@ local function test()
     FindBestFocus()
     FindBestFocus(handle)
     FindNextFocus()
-    FindNextFocus(backwards)
-    FindNextFocus(backwards, reason)
+    FindNextFocus(_backwards)
+    FindNextFocus(_backwards, _reason)
 
     GetAttributeColumnId(handle, attribute)
     GetObject(address)
@@ -488,15 +483,15 @@ local function test()
     GetRemoteVideoInfo()
     GetTextScreenLine()
     GetTextScreenLineCount()
-    GetTextScreenLineCount(startingInternalLineNumber)
+    GetTextScreenLineCount(_startingInternalLineNumber)
     GetUIChannel(uiChannelIndex, attributeIndex)
 
     Keyboard(displayIndex, type)
-    Keyboard(displayIndex, type, charOrKeycode)
-    Keyboard(displayIndex, type, charOrKeycode, shift)
-    Keyboard(displayIndex, type, charOrKeycode, shift, ctrl)
-    Keyboard(displayIndex, type, charOrKeycode, shift, ctrl, alt)
-    Keyboard(displayIndex, type, charOrKeycode, shift, ctrl, alt, numlock)
+    Keyboard(displayIndex, type, _charOrKeycode)
+    Keyboard(displayIndex, type, _charOrKeycode, _shift)
+    Keyboard(displayIndex, type, _charOrKeycode, _shift, _ctrl)
+    Keyboard(displayIndex, type, _charOrKeycode, _shift, _ctrl, _alt)
+    Keyboard(displayIndex, type, _charOrKeycode, _shift, _ctrl, _alt, _numlock)
 
     LoadExecConfig(executor)
 
@@ -513,7 +508,7 @@ local function test()
     RefreshLibrary(handle)
     RemoteCommand(ip, command)
 
-    SampleOutput(samplingPoints)
+    SampleOutput(_samplingPoints)
     SaveExecConfig(executor)
     SelectedDrive()
     SelectionComponentX()
@@ -535,7 +530,7 @@ local function test()
     WaitModal()
     WaitModal(secondsToWait)
     WaitObjectDelete(handle)
-    WaitObjectDelete(handle, secondsToWait)
+    WaitObjectDelete(handle, _secondsToWait)
 end
 
 return test()

@@ -59,7 +59,7 @@
         "description": "This example prints the content of the BuildDetails table:"
         
         ,
-        "code": "return function()\n    --Store the build detials table\n    local myBuild = BuildDetails()\n    --Print the content of the table\n    Printf(\"GitDate: \" .. myBuild.GitDate)\n    Printf(\"GitHead: \" .. myBuild.GitHead)\n    Printf(\"GitHash: \" .. myBuild.GitHash)\n    Printf(\"CompileDate: \" .. myBuild.CompileDate)\n    Printf(\"CompileTime: \" .. myBuild.CompileTime)\n    Printf(\"BigVersion: \" .. myBuild.BigVersion)\n    Printf(\"SmallVersion: \" .. myBuild.SmallVersion)\n    Printf(\"HostType: \" .. myBuild.HostType)\n    Printf(\"HostSubType: \" .. myBuild.HostSubType)\n    Printf(\"CodeType: \" .. myBuild.CodeType)\n    Printf(\"IsRelease: \" .. tostring(myBuild.IsRelease))\nend"
+        "code": "return function()\n    --Store the build details table\n    local myBuild = BuildDetails()\n    --Print the content of the table\n    Printf(\"GitDate: \" .. myBuild.GitDate)\n    Printf(\"GitHead: \" .. myBuild.GitHead)\n    Printf(\"GitHash: \" .. myBuild.GitHash)\n    Printf(\"CompileDate: \" .. myBuild.CompileDate)\n    Printf(\"CompileTime: \" .. myBuild.CompileTime)\n    Printf(\"BigVersion: \" .. myBuild.BigVersion)\n    Printf(\"SmallVersion: \" .. myBuild.SmallVersion)\n    Printf(\"HostType: \" .. myBuild.HostType)\n    Printf(\"HostSubType: \" .. myBuild.HostSubType)\n    Printf(\"CodeType: \" .. myBuild.CodeType)\n    Printf(\"IsRelease: \" .. tostring(myBuild.IsRelease))\nend"
 
         ,
         "suffix": ""
@@ -72,7 +72,7 @@
   "CheckDMXCollision": {
     "prefix": "CheckDMXCollision(handle, startAddress, count, breakIndex)",
     "body": [
-      "CheckDMXCollision(${1:dmxModeHandle}, ${2:startAddress}, ${3:count}, ${4:breakIndex})"
+      "CheckDMXCollision(${1:dmxModeHandle}, ${2:startAddress}, ${3:_count}, ${4:_breakIndex})"
     ],
     "description": "Description\n-----------\n\nThe **CheckDMXCollision** Lua function checks if a specific DMX address range is available or already used.\n\nIt uses the number of DMX channels in a specific \"DMX mode\" of a fixture type to calculate the number of DMX channels that should be available from a specified DMX start address.\n\nAll fixture types have at least one defined DMX mode. But fixtures often have more than one mode. This Lua function uses a specific DMX mode of a fixture type.\n\nArguments\n---------\n\n-   **Handle**:\\\n    The handle must be for a \"DMX mode\". This is used to calculate how many DMX channels should be available in the range.\n-   **String**:\\\n    This must be a DMX address expressed as a string. This defines the start of the range to be checked.\n\n-   **Integer** (optional)|**nil**:\\\n    This optional integer is a count of subsequent \"DMX Modes\" that should also be checked. The default value is **1**.\\\n    For instance, if the provided \"DMX Mode\" uses 10 DMX channels and the count is set to 5, then there must be 50 unpatched DMX channels from the start address for a positive result.\n-   **Integer** (optional):\\\n    This optional integer indicates the break_index. The default value is **0**, which is the first \"DMX break\" defined for the \"DMX mode\". All fixture types have at least one defined \"DMX break\".\n\nReturn\n------\n\n-   **Boolean**:\\\n    The function returns a boolean.\n    -   **True**:\\\n        The DMX address is available as a start address.\n    -   **False**:\\\n        The DMX address is unavailable as a start address for the calculated number of DMX channels."
 
@@ -95,7 +95,7 @@
   "CheckFIDCollision": {
     "prefix": "CheckFIDCollision(fixtureId, count, type)",
     "body": [
-      "CheckFIDCollision(${1:fixtureId}, ${2:count}, ${3:type})"
+      "CheckFIDCollision(${1:fixtureId}, ${2:_count}, ${3:_type})"
     ],
     "description": "Description\n-----------\n\nThe **CheckFIDCollision** Lua function checks if a specific (range of) ID is available or already used. It can be used to check FID and any type of CID by adding a type integer.\n\nArguments\n---------\n\n-   **Integer**:\\\n    The first integer is the ID that should be checked.\n-   **Integer** (optional):\\\n    This optional integer is a count of subsequent IDs that should also be checked. The default value is **1**. For instance, if FID 21 to 25 should be checked, then the count integer should be **5**.\n-   **Integer** (optional):\\\n    This optional integer indicates the IDType. The default value is **0**, which is the \"Fixture\" ID Type. See the example below for other valid integers.\n\nReturn\n------\n\n-   **Boolean**:\\\n    The function returns a boolean.\n    -   **True**:\\\n        The ID is available.\n    -   **False**:\\\n        The ID is already used."
 
@@ -162,7 +162,7 @@
     
   },
   "CloseUndo": {
-    "prefix": "undoHandle(handle)",
+    "prefix": "CloseUndo(handle)",
     "body": [
       "CloseUndo(${1:handle})"
     ],
@@ -187,7 +187,7 @@
   "Cmd": {
     "prefix": "Cmd(command, undoHandle)",
     "body": [
-      "Cmd(${1:command}, ${2:undoHandle})"
+      "Cmd(${1:command}, ${2:_undoHandle})"
     ],
     "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_cmd.html#h2_873740972 \"Link to this heading\")\n------------------------------------------------------------------------------------------------------------------------\n\nThe **Cmd** Lua function executes a command in the grandMA3 command line. It is executed in a Lua task - not the Main task (standard typed commands are run in the Main task). It is executed synchronously, and it blocks the Lua task while executing. This means that a bad command has the potential to block the system.\n\nAlternative functions are [CmdIndirect()](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_cmdindirect.html) and [CmdIndirectWait()](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_cmdindirectwait.html).\n\nArgument[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_cmd.html#h2_1267959487 \"Link to this heading\")\n----------------------------------------------------------------------------------------------------------------------\n\n-   **String**:\\\n    A string with the command to be executed in the command line. Do not add a please or enter to execute the command.\n-   **Handle** (optional):\\\n    A handle to an undo (oops) list. Learn more in the [CreateUndo topic](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_createundo.html).\n-   **...** (optional):\\\n    Additional arguments relevant for the command. \n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_cmd.html#h2__607298120 \"Link to this heading\")\n--------------------------------------------------------------------------------------------------------------------\n\n-   **String**:\\\n    A string is returned with the execution feedback known from the command line feedback\n    -   **OK**:\\\n        Command executed.\n    -   **Syntax Error**:\\\n        The command was not executed because of a syntax error.\n    -   **Illegal Command**:\\\n        Command not executed because of some illegal command or action.\n\nThe returned string does not need to be used."
     
@@ -210,7 +210,7 @@
   "CmdIndirect": {
     "prefix": "CmdIndirect(command, undoHandle, handleTarget)",
     "body": [
-      "CmdIndirect(${1:command}, ${2:undoHandle}, ${3:handleTarget})"
+      "CmdIndirect(${1:command}, ${2:_undoHandle}, ${3:_handleTarget})"
     ],
     "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_cmdindirect.html#h2_873740972 \"Link to this heading\")\n--------------------------------------------------------------------------------------------------------------------------------\n\nThe **CmdIndirect** Lua function executes a command within the grandMA3 command line. It is executed asynchronously in the Main task. It does not block the Lua execution since it is not executed in the Lua Task.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_cmdindirect.html#h2__615384334 \"Link to this heading\")\n-------------------------------------------------------------------------------------------------------------------------------\n\n-   **String**:\\\n    A string with the command to be executed in the command line. Do not add a please or enter to execute the command.\n-   **Handle** (optional):\\\n    A handle to an undo (oops) list. Learn more in the [CreateUndo topic](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_createundo.html).\n-   **Handle** (optional):\\\n    This is a handle for the target for the command. The target can be a specific screen. See the example below.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_cmdindirect.html#h2__607298120 \"Link to this heading\")\n----------------------------------------------------------------------------------------------------------------------------\n\nThis function does not return anything."
     
@@ -233,7 +233,7 @@
   "CmdIndirectWait": {
     "prefix": "CmdIndirectWait(command, undoHandle, handleTarget)",
     "body": [
-      "CmdIndirectWait(${1:command}, ${2:undoHandle}, ${3:handleTarget})"
+      "CmdIndirectWait(${1:command}, ${2:_undoHandle}, ${3:_handleTarget})"
     ],
     "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_cmdindirectwait.html#h2_873740972 \"Link to this heading\")\n------------------------------------------------------------------------------------------------------------------------------------\n\nThe **CmdIndirectWait** Lua function executes a command within the grandMA3 command line. It does not block the Lua execution and is executed synchronously in the main task. Synchronous commands wait for the command to be executed before executing any following command.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_cmdindirectwait.html#h2__615384334 \"Link to this heading\")\n-----------------------------------------------------------------------------------------------------------------------------------\n\n-   **String**:\\\n    A string with the command to be executed in the command line. Do not add a please or enter to execute the command.\n-   **Handle** (optional):\\\n    A handle to an undo (oops) list. Learn more in the [CreateUndo](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_createundo.html) topic.\n-   **Handle** (optional):\\\n    This is a handle for the target for the command. The target can be a specific screen. See the example below.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_cmdindirectwait.html#h2__607298120 \"Link to this heading\")\n--------------------------------------------------------------------------------------------------------------------------------\n\nThis function does not return anything."
     
@@ -302,7 +302,7 @@
   "Confirm": {
     "prefix": "Confirm(title, text, screen, text)",
     "body": [
-      "Confirm(${1:title}, ${2:text}, ${3:screen}, ${2:showCancel})"
+      "Confirm(${1:title}, ${2:_text}, ${3:_screen}, ${2:_showCancel})"
     ],
     "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_confirm.html#h2_873740972 \"Link to this heading\")\n----------------------------------------------------------------------------------------------------------------------------\n\nThe **Confirm** Lua function provides a simple confirmation pop-up for a true/false query. It is part of the user interface functions.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_confirm.html#h2__615384334 \"Link to this heading\")\n---------------------------------------------------------------------------------------------------------------------------\n\n-   **String**:\\\n    This string is the title for the pop-up.\n-   **String** (optional):\\\n    This string is the text in the pop-up.\n-   **Integer** (optional):\\\n    This integer is not used since the pop-up appears on all screens. The value can be *nil*.\n-   **Boolean** (optional):\\\n    This boolean defines if there is a Cancel button in the pop-up or not.\n    -   true: There is a Cancel button in the pop-up. This is the default option used if it is not defined.\n    -   false: There is only an OK button in the pop-up.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_confirm.html#h2__607298120 \"Link to this heading\")\n------------------------------------------------------------------------------------------------------------------------\n\n-   **Boolean**:\n    -   True / 1: The pop-up was confirmed with the OK.\n    -   False / 0: The pop-up was not confirmed with Cancel. This is only a possible option if the Cancel button is visible."
     
@@ -325,7 +325,7 @@
   "CreateMultiPatch": {
     "prefix": "CreateMultiPatch(fixtureTableHandle, count, undoText)",
     "body": [
-      "CreateMultiPatch(${1:fixtureTableHandle}, ${2:multiPatchAmount}, ${3:undoText})"
+      "CreateMultiPatch(${1:fixtureTableHandle}, ${2:multiPatchAmount}, ${3:_undoText})"
     ],
     "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_createmultipatch.html#h2_873740972 \"Link to this heading\")\n-------------------------------------------------------------------------------------------------------------------------------------\n\nThe **CreateMultiPatch** Lua function creates a series of multi patch fixtures to a table of fixtures.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_createmultipatch.html#h2__615384334 \"Link to this heading\")\n------------------------------------------------------------------------------------------------------------------------------------\n\n-   **Table**:\\\n    The table must contain **handles **to the fixtures who should have the multi patch fixtures.\n-   **Integer**:\\\n    The number of multi patch fixtures to create.\n\n-   **String** (optional):\\\n    The string is an optional undo text. It needs to be in quotation marks.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_createmultipatch.html#h2__607298120 \"Link to this heading\")\n---------------------------------------------------------------------------------------------------------------------------------\n\n-   **Integer** | **nil**:\\\n    The returned integer indicates the amount of multi patch fixtures created."
     
@@ -335,7 +335,7 @@
         "description": "This example creates two multi patch fixtures to the first fixture (excluding the \"Universal\" fixture) in the patch."
         
         ,
-        "code": "return function()\n    -- Enter Patch.\n    Cmd(\"ChangeDestination Root\");\n    -- Enter the SetupPatch.\n    Cmd(\"ChangeDestination 'ShowData'.'Patch'\");\n\n    -- Get the handle for the first fixture in the patch.\n    local myFixture = Patch().Stages[1].Fixtures[2]\n    -- Add the handle a list element in an table.\n    local myFixtureTable = {myFixture}\n    -- Add a variable with the amount of multipatch fixtures needed.\n    local multiPatchAmount = 2\n\n    -- Count the number of elements in the fixture table and store in a variable.\n    local count = 0\n    for _ in pairs(myFixtureTable) do\n         count = count + 1\n    end\n    -- Create an unto text string.\n    local undoText = string.format(\"Create %d multipatch fixtures for up to %d fixtures\", multiPatchAmount, count)\n\n    -- Create the multipatch fixtures to the each fixture handle in the table and store the returned value.\n    local multiPatchAmount = CreateMultiPatch(myFixtureTable, multiPatchAmount, undoText)\n    if multiPatchAmount ~= nil then\n        Printf(multiPatchAmount .. \" multi patch objects was created\")\n    else\n        Printf(\"An error occured\")\n    end\n\n    -- Return the command line destination to the root.\n    Cmd(\"ChangeDestination Root\")\nend"
+        "code": "return function()\n    -- Enter Patch.\n    Cmd(\"ChangeDestination Root\");\n    -- Enter the SetupPatch.\n    Cmd(\"ChangeDestination 'ShowData'.'Patch'\");\n\n    -- Get the handle for the first fixture in the patch.\n    local myFixture = Patch().Stages[1].Fixtures[2]\n    -- Add the handle a list element in an table.\n    local myFixtureTable = {myFixture}\n    -- Add a variable with the amount of multipatch fixtures needed.\n    local multiPatchAmount = 2\n\n    -- Count the number of elements in the fixture table and store in a variable.\n    local count = 0\n    for _ in pairs(myFixtureTable) do\n         count = count + 1\n    end\n    -- Create an unto text string.\n    local undoText = string.format(\"Create %d multipatch fixtures for up to %d fixtures\", multiPatchAmount, count)\n\n    -- Create the multipatch fixtures to the each fixture handle in the table and store the returned value.\n    local multiPatchAmount = CreateMultiPatch(myFixtureTable, multiPatchAmount, undoText)\n    if multiPatchAmount ~= nil then\n        Printf(multiPatchAmount .. \" multi patch objects was created\")\n    else\n        Printf(\"An error occurred\")\n    end\n\n    -- Return the command line destination to the root.\n    Cmd(\"ChangeDestination Root\")\nend"
 
         ,
         "suffix": ""
@@ -604,7 +604,7 @@
   "DirList": {
     "prefix": "DirList(path, filter)",
     "body": [
-      "DirList(${1:path}, ${2:filter})"
+      "DirList(${1:path}, ${2:_filter})"
     ],
     "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_dirlist.html#h2_873740972 \"Link to this heading\")\n----------------------------------------------------------------------------------------------------------------------------\n\nThe **DirList** Lua function returns a table of files at a specified path. The returned list can be filtered using an optional filter argument.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_dirlist.html#h2__615384334 \"Link to this heading\")\n---------------------------------------------------------------------------------------------------------------------------\n\n-   **String**:\\\n    The desired path in a string format.\n-   **String** (optional):\\\n    The optional filter string. The * can be used as a wildcard in the string. See the example below.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_dirlist.html#h2__607298120 \"Link to this heading\")\n------------------------------------------------------------------------------------------------------------------------\n\n-   **Table**:\\\n    The returned table has elements of other tables. Each of these table elements has the following keys:\n\n    -   name: The name of the file. The value of name is returned as a string.\n    -   size: The size of the file in bytes. The value of size is returned as a number.\n    -   time: The timestamp for the file. The value of time is returned as a number."
     
@@ -627,7 +627,7 @@
   "DrawPointer": {
     "prefix": "DrawPointer(displayIndex, position, duration)",
     "body": [
-      "DrawPointer(${1:displayIndex}, ${2:position}, ${3:duration})"
+      "DrawPointer(${1:displayIndex}, ${2:position}, ${3:_duration})"
     ],
     "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_drawpointer.html#h2_873740972 \"Link to this heading\")\n--------------------------------------------------------------------------------------------------------------------------------\n\nThe **DrawPointer** function draws a red pointer on the display. There can only be one pointer at a time on each station.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_drawpointer.html#h2__615384334 \"Link to this heading\")\n-------------------------------------------------------------------------------------------------------------------------------\n\n-   **Integer**:\\\n    This integer is the display index where the pointer should be drawn.\n-   **Table**:\\\n    This key-value table must have 'x' and 'y' keys with values indicating a position on the display. See the example below.\n-   **Integer** (optional):\\\n    This optional integer defines a duration for the pointer in milliseconds. It fades out. If a duration is not set, then it stays visible.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_drawpointer.html#h2__607298120 \"Link to this heading\")\n----------------------------------------------------------------------------------------------------------------------------\n\nThis function does not return anything."
     
@@ -683,7 +683,7 @@
         "description": "This example prints \"Hello World!\" on the System Monitor:"
         
         ,
-        "code": "return function()\n    -- Prints 'Hellow World!' in the system monitor in yellow text.\n    Echo(\"Hello World!\")\nend"
+        "code": "return function()\n    -- Prints 'Hello World!' in the system monitor in yellow text.\n    Echo(\"Hello World!\")\nend"
         
         ,
         "suffix": ""
@@ -836,7 +836,7 @@
     "body": [
       "FindTexture(${1:textureName})"
     ],
-    "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_findtexture.html#h2_873740972 \"Link to this heading\")\n--------------------------------------------------------------------------------------------------------------------------------\n\nThe **FindTixture** Lua function returns a handle to the texture matching the input text string - if the texture exists.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_findtexture.html#h2__615384334 \"Link to this heading\")\n-------------------------------------------------------------------------------------------------------------------------------\n\n-   **String**:\\\n    The text string must be the name of the texture without the file type. See the example below.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_findtexture.html#h2__607298120 \"Link to this heading\")\n----------------------------------------------------------------------------------------------------------------------------\n\n-   **Handle** | **nil**:\\\n    The function returns the texture handle or nil if it does not exist."
+    "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_findtexture.html#h2_873740972 \"Link to this heading\")\n--------------------------------------------------------------------------------------------------------------------------------\n\nThe **FindTexture** Lua function returns a handle to the texture matching the input text string - if the texture exists.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_findtexture.html#h2__615384334 \"Link to this heading\")\n-------------------------------------------------------------------------------------------------------------------------------\n\n-   **String**:\\\n    The text string must be the name of the texture without the file type. See the example below.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_findtexture.html#h2__607298120 \"Link to this heading\")\n----------------------------------------------------------------------------------------------------------------------------\n\n-   **Handle** | **nil**:\\\n    The function returns the texture handle or nil if it does not exist."
 
     ,
     "examples": {
@@ -903,7 +903,7 @@
   "FromAddr": {
     "prefix": "FromAddr(objectString, addressHandle)",
     "body": [
-      "FromAddr(${1:objectString}, ${2:addressHandle})"
+      "FromAddr(${1:objectString}, ${2:_addressHandle})"
     ],
     "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_fromaddr.html#h2_873740972 \"Link to this heading\")\n-----------------------------------------------------------------------------------------------------------------------------\n\nThe **FromAddr** Lua function converts a numbered string address into a handle that can be used in commands.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_fromaddr.html#h2__615384334 \"Link to this heading\")\n----------------------------------------------------------------------------------------------------------------------------\n\n-   **String**:\\\n    A text string identifying an object. It can be a numbered or named address.\n-   **Handle** (optional):\\\n    The default is to write the address from the root location. This optional handle can specify a different base location. It still needs to be a base location in the address path from the root to the object.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_fromaddr.html#h2__607298120 \"Link to this heading\")\n-------------------------------------------------------------------------------------------------------------------------\n\n-   **Handle**:\\\n    The handle for the addressed object."
     
@@ -913,7 +913,7 @@
         "description": "This example prints the address of the first sequence:"
 
         ,
-        "code": "return function()\n    -- Converts the string to a handle and store in a variabel.\n    local mySequenceHandle = FromAddr(\"13.13.1.5.1\")\n    -- Converts the handle back to a numbered string and prints it.\n    Printf(\"The address is: \" ..mySequenceHandle:Addr())\n    -- Converts the handle to a named string and prints it.\n    Printf(\"The address is: \" ..mySequenceHandle:AddrNative())\n    \n    -- Store the handle of the selected datapool.\n    local myDataPool = DataPool()\n    -- Prints the address of the selected datapool.\n    Printf(\"The datapool address is: \" ..myDataPool:Addr())\n    \n    --- The follwoing example uses the name of a sequence in the sequence pool. \n    --- Please adjust the \"Default\" name in the next line to match an existing named sequence.\n    -- Finds the address based on the base location and a text string with names.\n    local alsoMySequenceHandle = FromAddr(\"Sequences.Default\", myDataPool)\n    -- Converts the handle back to a numbered string and prints it.\n    Printf(\"The address is: \" ..alsoMySequenceHandle:Addr())\n    -- Converts the handle to a named string and prints it.\n    Printf(\"The address is: \" ..alsoMySequenceHandle:AddrNative())\nend"
+        "code": "return function()\n    -- Converts the string to a handle and store in a variable.\n    local mySequenceHandle = FromAddr(\"13.13.1.5.1\")\n    -- Converts the handle back to a numbered string and prints it.\n    Printf(\"The address is: \" ..mySequenceHandle:Addr())\n    -- Converts the handle to a named string and prints it.\n    Printf(\"The address is: \" ..mySequenceHandle:AddrNative())\n    \n    -- Store the handle of the selected datapool.\n    local myDataPool = DataPool()\n    -- Prints the address of the selected datapool.\n    Printf(\"The datapool address is: \" ..myDataPool:Addr())\n    \n    --- The following example uses the name of a sequence in the sequence pool. \n    --- Please adjust the \"Default\" name in the next line to match an existing named sequence.\n    -- Finds the address based on the base location and a text string with names.\n    local alsoMySequenceHandle = FromAddr(\"Sequences.Default\", myDataPool)\n    -- Converts the handle back to a numbered string and prints it.\n    Printf(\"The address is: \" ..alsoMySequenceHandle:Addr())\n    -- Converts the handle to a named string and prints it.\n    Printf(\"The address is: \" ..alsoMySequenceHandle:AddrNative())\nend"
         
         ,
         "suffix": ""
@@ -1028,7 +1028,7 @@
         "description": "This example requests the buttons states on the master module on a grandMA3 full-size console:\n\n"
 
         ,
-        "code": "return function()\n    --- grandMA3 full-size modules are:\n    --- Master Module (MM): \"UsbDeviceMA3 2\"\n    --- Fader Module Encoder (MFE): \"UsbDeviceMA3 3\"\n    --- Fader Module Crossfader (MFX): \"UsbDeviceMA3 4\"\n\n    -- Get a handle to the Master Module on a grandMA3 full-size.\n    local usbDeviceHandle = Root().UsbNotifier.MA3Modules[\"UsbDeviceMA3 2\"]\n    -- Create a table with the button status.\n    local buttonTable = GetButton(usbDeviceHandle)\n    -- Check if the table is nil and then print an error.\n    if buttonTable == nil then\n        ErrPrintf(\"nil\")\n        return\n    end\n    -- If the table is not nil, then print a usefull feedback about pressed buttons. \n    for key,value in pairs(buttonTable) do\n        if tostring(value) == \"true\" then\n            Printf(\"The button with the index \" .. key .. \" is pressed.\")\n        end\n    end\nend"
+        "code": "return function()\n    --- grandMA3 full-size modules are:\n    --- Master Module (MM): \"UsbDeviceMA3 2\"\n    --- Fader Module Encoder (MFE): \"UsbDeviceMA3 3\"\n    --- Fader Module Crossfader (MFX): \"UsbDeviceMA3 4\"\n\n    -- Get a handle to the Master Module on a grandMA3 full-size.\n    local usbDeviceHandle = Root().UsbNotifier.MA3Modules[\"UsbDeviceMA3 2\"]\n    -- Create a table with the button status.\n    local buttonTable = GetButton(usbDeviceHandle)\n    -- Check if the table is nil and then print an error.\n    if buttonTable == nil then\n        ErrPrintf(\"nil\")\n        return\n    end\n    -- If the table is not nil, then print a useful feedback about pressed buttons. \n    for key,value in pairs(buttonTable) do\n        if tostring(value) == \"true\" then\n            Printf(\"The button with the index \" .. key .. \" is pressed.\")\n        end\n    end\nend"
 
         ,
         "suffix": ""
@@ -1202,7 +1202,7 @@
   "GetDMXUniverse": {
     "prefix": "GetDMXUniverse(universe, isPercent)",
     "body": [
-      "GetDMXUniverse(${1:universe}, ${2:isPercent})"
+      "GetDMXUniverse(${1:universe}, ${2:_isPercent})"
     ],
     "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getdmxuniverse.html#h2_873740972 \"Link to this heading\")\n-----------------------------------------------------------------------------------------------------------------------------------\n\nThe **GetDMXUniverse** Lua function returns a table with the DMX channels and their current value.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getdmxuniverse.html#h2__615384334 \"Link to this heading\")\n----------------------------------------------------------------------------------------------------------------------------------\n\n-   **Integer**:\\\n    The integer is the universe number. The valid range is 1 to 1024.\n-   **Boolean** (optional):\\\n    The boolean indicates if the returned value is in percent or DMX value.\n    -   True:\\\n        The returned value is in percent. The range is 0 to 100.\n    -   False:\\\n        The returned value is in DMX value. The range is 0 to 255.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getdmxuniverse.html#h2__607298120 \"Link to this heading\")\n-------------------------------------------------------------------------------------------------------------------------------\n\n-   **Table**:\\\n    The returned table lists all the DMX addresses and the corresponding values.\n\n-- OR --\n\n-   **Nil**:\\\n    Nil is returned if the universe is not granted or the input value is out of range."
 
@@ -1212,7 +1212,7 @@
         "description": "This example prints the table in a list for DMX universe 1 (if it is granted):"
         
         ,
-        "code": "return function()\n    -- This gets a table for universe 1 with the returned value in percent.\n    local tableDMXUniverse = GetDMXUniverse(1,true)\n    -- Check the returned table and print information if nil.\n    if tableDMXUniverse == nil then\n        Printf(\"No value is returned. The univer is not granted or input is out of range\")\n        return\n    end\n    -- Prints the table if not nil.\n    for addr, value in ipairs(tableDMXUniverse) do\n        Printf(\"DMX Addr: %i - DMX value : %i\", addr, value)\n    end\nend"
+        "code": "return function()\n    -- This gets a table for universe 1 with the returned value in percent.\n    local tableDMXUniverse = GetDMXUniverse(1,true)\n    -- Check the returned table and print information if nil.\n    if tableDMXUniverse == nil then\n        Printf(\"No value is returned. The universe is not granted or input is out of range\")\n        return\n    end\n    -- Prints the table if not nil.\n    for addr, value in ipairs(tableDMXUniverse) do\n        Printf(\"DMX Addr: %i - DMX value : %i\", addr, value)\n    end\nend"
 
         ,
         "suffix": ""
@@ -1225,7 +1225,7 @@
   "GetDMXValue": {
     "prefix": "GetDMXValue(address, universe, returnPercent)",
     "body": [
-      "GetDMXValue(${1:address}, ${2:universe}, ${3:returnPercent})"
+      "GetDMXValue(${1:address}, ${2:_universe}, ${3:_returnPercent})"
     ],
     "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getdmxvalue.html#h2_873740972 \"Link to this heading\")\n--------------------------------------------------------------------------------------------------------------------------------\n\nThe **GetDMXValue** Lua function returns a number indicating the DMX value of a specified DMX address.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getdmxvalue.html#h2__615384334 \"Link to this heading\")\n-------------------------------------------------------------------------------------------------------------------------------\n\n-   **Integer**:\\\n    The integer is the DMX address. This value should be from 1 to 512 if a universe integer is provided. If a universe is not provided, this should be the absolute DMX address ranging from 1 to 524 288.\n-   **Integer** (optional):\\\n    The integer is the universe number.\n-   **Boolean** (optional):\\\n    The boolean indicates if the returned value is in percent or DMX value.\n    -   True:\\\n        The returned value is in percent. The range is 0 to 100.\n    -   False:\\\n        The returned value is in DMX value. The range is 0 to 255.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getdmxvalue.html#h2__607298120 \"Link to this heading\")\n----------------------------------------------------------------------------------------------------------------------------\n\n-   **Integer** or **nil**:\\\n    The returned integer value corresponds with the value of the selected DMX address or nil if the DMX address is not granted."
     
@@ -1362,7 +1362,7 @@
   "GetPathOverrideFor": {
     "prefix": "GetPathOverrideFor(folderNameOrIndex, basePath, createIfNotExist)",
     "body": [
-      "GetPathOverrideFor(${1:folderNameOrIndex}, ${2:basePath}, ${3:createIfNotExist})"
+      "GetPathOverrideFor(${1:folderNameOrIndex}, ${2:basePath}, ${3:_createIfNotExist})"
     ],
     "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getpathoverridefor.html#h2_873740972 \"Link to this heading\")\n---------------------------------------------------------------------------------------------------------------------------------------\n\nThe **GetPathOverrideFor** Lua function delivers a string with the path of a grandMA3 folder. The function is relevant when the path should be on a removable drive connected to a console.\n\nArgument[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getpathoverridefor.html#h2_1267959487 \"Link to this heading\")\n-------------------------------------------------------------------------------------------------------------------------------------\n\n-   **String**:\\\n    A text string with the folder name.\n-   **String**:\\\n    The base path in a string format.\n\n-   **Boolean** (optional with string):\\\n    If this boolean is true, then the folder at the path is created if it does not exist.\n\n\\- OR -\n\n-   **Integer**:\\\n    An integer identifying an index in the \"Enum.PathType\" table.\n-   **String**:\\\n    The base path in a string format.\n\n-   **Boolean**:\\\n    If this boolean is true, then the folder at the path is created if it does not exist.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getpathoverridefor.html#h2__607298120 \"Link to this heading\")\n-----------------------------------------------------------------------------------------------------------------------------------\n\n-   **String**:\\\n    The returned string is the *first found* full path related to the provided argument."
 
@@ -1372,7 +1372,7 @@
         "description": "This example prints the override path of the macro folder on the system monitor. It should be run on a console with a removable drive connected.\n"
 
         ,
-        "code": "return function ()\n    -- Set a path for the first removable media.\n    -- Set the initial value to nil.\n    local myBasePath = nil\n    -- Itereate the drives and find the first 'Removeable' drive and store the path.\n    for _, value in ipairs(Root().Temp.DriveCollect) do\n        local driveType = value.drivetype\n        if driveType == \"Removeable\" then\n            myBasePath = value.path\n            break\n        end\n    end\n    -- If no removeable drive was found, then provide feedback and exit the function.\n    if myBasePath == nil then\n        ErrPrintf(\"No removeable drive could be found. Please insert one and try again\")\n        return\n    end\n\n    -- Get the integer for the UserMacros path type.\n    local myPathType = Enums.PathType.UserMacros\n\n    -- Gey the string for the path override.\n    local myOverridePath = GetPathOverrideFor(myPathType, myBasePath)\n    -- Print the returned string.\n    Printf(\"The path is: \" .. myOverridePath)\nend"
+        "code": "return function ()\n    -- Set a path for the first removable media.\n    -- Set the initial value to nil.\n    local myBasePath = nil\n    -- Iterate the drives and find the first 'Removeable' drive and store the path.\n    for _, value in ipairs(Root().Temp.DriveCollect) do\n        local driveType = value.drivetype\n        if driveType == \"Removeable\" then\n            myBasePath = value.path\n            break\n        end\n    end\n    -- If no removeable drive was found, then provide feedback and exit the function.\n    if myBasePath == nil then\n        ErrPrintf(\"No removeable drive could be found. Please insert one and try again\")\n        return\n    end\n\n    -- Get the integer for the UserMacros path type.\n    local myPathType = Enums.PathType.UserMacros\n\n    -- Gey the string for the path override.\n    local myOverridePath = GetPathOverrideFor(myPathType, myBasePath)\n    -- Print the returned string.\n    Printf(\"The path is: \" .. myOverridePath)\nend"
 
         ,
         "suffix": ""
@@ -1395,7 +1395,7 @@
         "description": "This example prints the path separator:"
 
         ,
-        "code": "return function()\n    --- This prints the path seperator. It is different between a Linux and macOS (/) and a Windows (\\) operating system.\n    Printf(\"The path seperator is \" .. GetPathSeparator())\nend"
+        "code": "return function()\n    --- This prints the path separator. It is different between a Linux and macOS (/) and a Windows (\\) operating system.\n    Printf(\"The path separator is \" .. GetPathSeparator())\nend"
 
         ,
         "suffix": ""
@@ -1408,7 +1408,7 @@
   "GetPathType": {
     "prefix": "GetPathType(objectHandle, pathContentType)",
     "body": [
-      "GetPathType(${1:objectHandle}, ${2:pathContentType})"
+      "GetPathType(${1:objectHandle}, ${2:_pathContentType})"
     ],
     "description": "Description\n-----------\n\nThe **GetPathType** Lua function returns a string with a name for the path type. This function can be useful when importing objects.\n\nArgument\n--------\n\n-   **Handle**:\\\n    The handle should match the object type for which the path type is needed.\n-   **Integer** (optional):\\\n    The optional integer can be used to specify if the returned string should match the user path type or the system path type. See the example below.\\\n    The Enums.PathContentType can be used, or just use **0** for the system path and **1** for the user path.\n\nReturn\n------\n\n-   **String**:\\\n    The returned string is the name of the path type."
 
@@ -1420,6 +1420,29 @@
         ,
         "code": "return function ()\n    -- Get a handle to the first Macro.\n    local myMacro = DataPool().Macros[1]\n    if myMacro == nil then\n        ErrPrintf(\"An error occurred, possibly because the first macro does not exist.\")\n        ErrPrintf(\"Please create one and try again.\")\n        return\n    end\n    -- Get the user name of the path type.\n    local myPathTypeNameUser = GetPathType(myMacro, Enums.PathContentType.User)\n    if myPathTypeNameUser ~= nil then\n        Printf(\"The user name of the path type is: \" .. myPathTypeNameUser)\n    else\n        ErrPrintf(\"There was an error getting the path type.\")\n    end\n\n    -- Get the system name of the path type.\n    local myPathTypeNameSystem = GetPathType(myMacro, Enums.PathContentType.System)\n    if myPathTypeNameSystem ~= nil then\n        Printf(\"The system name of the path type is: \" .. myPathTypeNameSystem)\n    else\n        ErrPrintf(\"There was an error getting the path type.\")\n    end\nend"
         
+        ,
+        "suffix": ""
+        
+      }
+    },
+    "suffix": ""
+    
+  },
+  "GetPresetData": {
+    "prefix": "GetPresetData(presetHandle, returnPhaserData, extract)",
+    "body": [
+      "GetPresetData(${1:presetHandle}, ${2:_returnPhaserData}, ${3:_extract})"
+    ],
+    "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getpresetdata.html#h2_873740972 \"Link to this heading\")\n----------------------------------------------------------------------------------------------------------------------------------\n\nThe **GetPresetData** Lua function returns a table with the preset data based on the preset handle.\n\nThe returned table is quite complex and has tables inside the table.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getpresetdata.html#h2__615384334 \"Link to this heading\")\n---------------------------------------------------------------------------------------------------------------------------------\n\n-   **Handle**:\\\n    The handle of the preset from which the data will be collected.\n-   **Boolean** | **nil** (optional):\\\n    This boolean determines whether the returned table should only contain phaser data. The default value is \"false\".\n\n-   **Boolean** (optional):\\\n    This boolean defines if there should be an extra object in the returned table. The default value is \"true\". The extra table object has the key \"by_fixtures\", and it contains the same table content as the returned table, but the keys are the fixture ID number instead of the UI Channel Index.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getpresetdata.html#h2__607298120 \"Link to this heading\")\n------------------------------------------------------------------------------------------------------------------------------\n\n-   **Table** | **nil**:\\\n    The returned table contains the preset data. It has multiple levels of tables."
+
+    ,
+    "examples": {
+      "1": {
+        "description": "This example prints information about the first level table in the preset data and the first level of the first fixture in the preset. It uses dimmer preset 1, which must exist."
+
+        ,
+        "code": "return function()\n    -- Get the handle for the first Dimmer preset.\n    local myPreset = DataPool().PresetPools[1][1]\n    -- Get the Preset Data of the handle.\n    local myPresetData = GetPresetData(myPreset, false, false)\n    -- Check if the GetPresetData returns something. \n    if myPresetData == nil then\n        ErrPrintf(\"Dimmer preset 1 does not exist. Please create one and try again.\")\n        return\n    end\n\n    -- Print the myPresetData table.\n    for Key, value in pairs(myPresetData) do\n      if type(value) == \"table\" then\n        Printf(\"Key: \" .. Key .. \" ; Value type is: \" .. type(value))\n      else\n        Printf(\"Key: \" .. Key .. \" ; Value type is: \" .. type(value) .. \" ; Value: \" .. value)\n      end\n    end\n\n    -- Create a table object to hold all the integer keys in the myPresetData table.\n    local myIntegerTableKeys = {}\n    -- Fill the table.\n    for key,_ in pairs(myPresetData) do\n        if type(key) == \"number\" then\n            table.insert(myIntegerTableKeys, key)\n        end\n    end\n    -- Sort the table\n    table.sort(myIntegerTableKeys)\n\n    -- Print the elements of the fixture with the lowest ui_channel_index in the preset.\n    local tableIndex = myIntegerTableKeys[1]\n    if tableIndex ~= nil then\n        Printf(\"=============== TABLE CONTENT START - Table Key: \" .. tableIndex ..\" ===============\")\n        for Key, value in pairs(myPresetData[tableIndex]) do\n          if type(value) == \"table\" then\n            Printf(\"Key: \" .. Key .. \" ; Value type is: \" .. type(value))\n          else\n            Printf(\"Key: \" .. Key .. \" ; Value type is: \" .. type(value) .. \" ; Value: \" .. tostring(value))\n          end\n        end\n        Printf(\"================ TABLE CONTENT END - Table Key: \" .. tableIndex ..\" ================\")\n    end\nend"
+
         ,
         "suffix": ""
         
@@ -1441,31 +1464,8 @@
         "description": "This example prints all information related to the first RT Channel for the first fixture in the selection:"
 
         ,
-        "code": "return function()\n    -- Get the index number for the first RT Channel for the first fixture in the current selection \n    local channelRTIndex = GetRTChannels(SelectionFirst())[1]\n    -- Print an error message if returnd index is nil\n    if channelRTIndex == nil then\n        ErrPrintf(\"Please select a fixture and try again\")\n        return\n    end\n    -- Print all information about the RT Channel if it does not return nil\n    local rtChannel = GetRTChannel(channelRTIndex)\n    if rtChannel == nil then\n        Printf(\"An RTChannel could not be found. Please try to selct a different fixture and try again.\")\n        return\n    end\n    Printf(\"================= RT CHANNEL =================\")\n    Printf(\"ui_index_first = \" .. rtChannel[\"ui_index_first\"])\n    Printf(\"dmx_lowlight = \" .. rtChannel[\"dmx_lowlight\"])\n    Printf(\"dmx_highlight = \" .. rtChannel[\"dmx_highlight\"])\n    Printf(\"dmx_default = \" .. rtChannel[\"dmx_default\"])\n    Printf(\"freq = \" .. rtChannel[\"freq\"])\n    Printf(\"rt_index = \" .. rtChannel[\"rt_index\"])\n    Printf(\"========== RELATED DMX CHANNEL DUMP ==========\")\n    rtChannel[\"dmx_channel\"]:Dump() -- Handle for relevant DMX channel\n    Printf(\"============ RELATED FIXTURE DUMP ============\")\n    rtChannel[\"fixture\"]:Dump() -- Handle for relevant fixture\n    Printf(\"========== RELATED SUBFIXTURE DUMP ===========\")\n    rtChannel[\"subfixture\"]:Dump() -- Handle for relevant subfixture\n    Printf(\"=================== INFO =====================\")\n    Printf(\"normed_phaser_time = \" .. rtChannel[\"info\"][\"normed_phaser_time\"])\n    Printf(\"================ INFO FLAGS ==================\")\n    Printf(\"group_master = \" .. rtChannel[\"info\"][\"flags\"][\"group_master\"])\n    Printf(\"additive_master = \" .. rtChannel[\"info\"][\"flags\"][\"additive_master\"])\n    Printf(\"solo = \" .. rtChannel[\"info\"][\"flags\"][\"solo\"])\n    Printf(\"highlight = \" .. rtChannel[\"info\"][\"flags\"][\"highlight\"])\n    Printf(\"lowlight = \" .. rtChannel[\"info\"][\"flags\"][\"lowlight\"])\n    Printf(\"=================== PATCH ====================\")\n    Printf(\"break = \" .. rtChannel[\"patch\"][\"break\"])\n    Printf(\"coarse = \" .. rtChannel[\"patch\"][\"coarse\"])\n    Printf(\"fine = \" .. rtChannel[\"patch\"][\"fine\"])\n    Printf(\"ultra = \" .. rtChannel[\"patch\"][\"ultra\"])\nend"
+        "code": "return function()\n    -- Get the index number for the first RT Channel for the first fixture in the current selection \n    local channelRTIndex = GetRTChannels(SelectionFirst())[1]\n    -- Print an error message if returned index is nil\n    if channelRTIndex == nil then\n        ErrPrintf(\"Please select a fixture and try again\")\n        return\n    end\n    -- Print all information about the RT Channel if it does not return nil\n    local rtChannel = GetRTChannel(channelRTIndex)\n    if rtChannel == nil then\n        Printf(\"An RTChannel could not be found. Please try to select a different fixture and try again.\")\n        return\n    end\n    Printf(\"================= RT CHANNEL =================\")\n    Printf(\"ui_index_first = \" .. rtChannel[\"ui_index_first\"])\n    Printf(\"dmx_lowlight = \" .. rtChannel[\"dmx_lowlight\"])\n    Printf(\"dmx_highlight = \" .. rtChannel[\"dmx_highlight\"])\n    Printf(\"dmx_default = \" .. rtChannel[\"dmx_default\"])\n    Printf(\"freq = \" .. rtChannel[\"freq\"])\n    Printf(\"rt_index = \" .. rtChannel[\"rt_index\"])\n    Printf(\"========== RELATED DMX CHANNEL DUMP ==========\")\n    rtChannel[\"dmx_channel\"]:Dump() -- Handle for relevant DMX channel\n    Printf(\"============ RELATED FIXTURE DUMP ============\")\n    rtChannel[\"fixture\"]:Dump() -- Handle for relevant fixture\n    Printf(\"========== RELATED SUBFIXTURE DUMP ===========\")\n    rtChannel[\"subfixture\"]:Dump() -- Handle for relevant subfixture\n    Printf(\"=================== INFO =====================\")\n    Printf(\"normed_phaser_time = \" .. rtChannel[\"info\"][\"normed_phaser_time\"])\n    Printf(\"================ INFO FLAGS ==================\")\n    Printf(\"group_master = \" .. rtChannel[\"info\"][\"flags\"][\"group_master\"])\n    Printf(\"additive_master = \" .. rtChannel[\"info\"][\"flags\"][\"additive_master\"])\n    Printf(\"solo = \" .. rtChannel[\"info\"][\"flags\"][\"solo\"])\n    Printf(\"highlight = \" .. rtChannel[\"info\"][\"flags\"][\"highlight\"])\n    Printf(\"lowlight = \" .. rtChannel[\"info\"][\"flags\"][\"lowlight\"])\n    Printf(\"=================== PATCH ====================\")\n    Printf(\"break = \" .. rtChannel[\"patch\"][\"break\"])\n    Printf(\"coarse = \" .. rtChannel[\"patch\"][\"coarse\"])\n    Printf(\"fine = \" .. rtChannel[\"patch\"][\"fine\"])\n    Printf(\"ultra = \" .. rtChannel[\"patch\"][\"ultra\"])\nend"
         
-        ,
-        "suffix": ""
-        
-      }
-    },
-    "suffix": ""
-    
-  },
-  "GetPresetData": {
-    "prefix": "GetPresetData(presetHandle, returnPhaserData, extract)",
-    "body": [
-      "GetPresetData(${1:presetHandle}, ${2:returnPhaserData}, ${3:extract})"
-    ],
-    "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getpresetdata.html#h2_873740972 \"Link to this heading\")\n----------------------------------------------------------------------------------------------------------------------------------\n\nThe **GetPresetData** Lua function returns a table with the preset data based on the preset handle.\n\nThe returned table is quite complex and has tables inside the table.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getpresetdata.html#h2__615384334 \"Link to this heading\")\n---------------------------------------------------------------------------------------------------------------------------------\n\n-   **Handle**:\\\n    The handleof the preset from which the data willbe collected.\n-   **Boolean** | **nil** (optional):\\\n    This boolean determines whether the returned table should only contain phaser data. The default value is \"false\".\n\n-   **Boolean** (optional):\\\n    This boolean defines if there should be an extra object in the returned table. The default value is \"true\". The extra table object has the key \"by_fixtures\", and it contains the same table content as the returned table, but the keys are the fixture ID number instead of the UI Channel Index.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getpresetdata.html#h2__607298120 \"Link to this heading\")\n------------------------------------------------------------------------------------------------------------------------------\n\n-   **Table** | **nil**:\\\n    The returned table contains the preset data. It has multiple levels of tables."
-
-    ,
-    "examples": {
-      "1": {
-        "description": "This example prints information about the first level table in the preset data and the first level of the first fixture in the preset. It uses dimmer preset 1, which must exist."
-
-        ,
-        "code": "return function()\n    -- Get the handle for the first Dimmer preset.\n    local myPreset = DataPool().PresetPools[1][1]\n    -- Get the Preset Data of the handle.\n    local myPresetData = GetPresetData(myPreset, false, false)\n    -- Check if the GetPresetData returns something. \n    if myPresetData == nil then\n        ErrPrintf(\"Dimmer preset 1 does not exist. Please create one and try again.\")\n        return\n    end\n\n    -- Print the myPresetData table.\n    for Key, value in pairs(myPresetData) do\n      if type(value) == \"table\" then\n        Printf(\"Key: \" .. Key .. \" ; Value type is: \" .. type(value))\n      else\n        Printf(\"Key: \" .. Key .. \" ; Value type is: \" .. type(value) .. \" ; Value: \" .. value)\n      end\n    end\n\n    -- Create a table object to hold all the integer keys in the myPresetData table.\n    local myIntegerTableKeys = {}\n    -- Fill the table.\n    for key,_ in pairs(myPresetData) do\n        if type(key) == \"number\" then\n            table.insert(myIntegerTableKeys, key)\n        end\n    end\n    -- Sort the table\n    table.sort(myIntegerTableKeys)\n\n    -- Print the elements of the fixture with the lowest ui_channel_index in the preset.\n    local tableIndex = myIntegerTableKeys[1]\n    if tableIndex ~= nil then\n        Printf(\"=============== TABLE CONTENT START - Table Key: \" .. tableIndex ..\" ===============\")\n        for Key, value in pairs(myPresetData[tableIndex]) do\n          if type(value) == \"table\" then\n            Printf(\"Key: \" .. Key .. \" ; Value type is: \" .. type(value))\n          else\n            Printf(\"Key: \" .. Key .. \" ; Value type is: \" .. type(value) .. \" ; Value: \" .. tostring(value))\n          end\n        end\n        Printf(\"================ TABLE CONTENT END - Table Key: \" .. tableIndex ..\" ================\")\n    end\nend"
-
         ,
         "suffix": ""
         
@@ -1498,11 +1498,11 @@
     
   },
   "GetRTChannels": {
-    "prefix": "GetRTChannels(fixtureIndexOfHandle, returnHandles)",
+    "prefix": "GetRTChannels(fixtureIndexOrHandle, returnHandles)",
     "body": [
-      "GetRTChannels(${1:fixtureIndexOfHandle}, ${2:returnHandles})"
+      "GetRTChannels(${1:fixtureIndexOrHandle}, ${2:_returnHandles})"
     ],
-    "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getpresetdata.html#h2_873740972 \"Link to this heading\")\n----------------------------------------------------------------------------------------------------------------------------------\n\nThe **GetPresetData** Lua function returns a table with the preset data based on the preset handle.\n\nThe returned table is quite complex and has tables inside the table.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getpresetdata.html#h2__615384334 \"Link to this heading\")\n---------------------------------------------------------------------------------------------------------------------------------\n\n-   **Handle**:\\\n    The handleof the preset from which the data willbe collected.\n-   **Boolean** | **nil** (optional):\\\n    This boolean determines whether the returned table should only contain phaser data. The default value is \"false\".\n\n-   **Boolean** (optional):\\\n    This boolean defines if there should be an extra object in the returned table. The default value is \"true\". The extra table object has the key \"by_fixtures\", and it contains the same table content as the returned table, but the keys are the fixture ID number instead of the UI Channel Index.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getpresetdata.html#h2__607298120 \"Link to this heading\")\n------------------------------------------------------------------------------------------------------------------------------\n\n-   **Table** | **nil**:\\\n    The returned table contains the preset data. It has multiple levels of tables."
+    "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getpresetdata.html#h2_873740972 \"Link to this heading\")\n----------------------------------------------------------------------------------------------------------------------------------\n\nThe **GetPresetData** Lua function returns a table with the preset data based on the preset handle.\n\nThe returned table is quite complex and has tables inside the table.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getpresetdata.html#h2__615384334 \"Link to this heading\")\n---------------------------------------------------------------------------------------------------------------------------------\n\n-   **Handle**:\\\n    The handle of the preset from which the data will be collected.\n-   **Boolean** | **nil** (optional):\\\n    This boolean determines whether the returned table should only contain phaser data. The default value is \"false\".\n\n-   **Boolean** (optional):\\\n    This boolean defines if there should be an extra object in the returned table. The default value is \"true\". The extra table object has the key \"by_fixtures\", and it contains the same table content as the returned table, but the keys are the fixture ID number instead of the UI Channel Index.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getpresetdata.html#h2__607298120 \"Link to this heading\")\n------------------------------------------------------------------------------------------------------------------------------\n\n-   **Table** | **nil**:\\\n    The returned table contains the preset data. It has multiple levels of tables."
 
     ,
     "examples": {
@@ -1510,7 +1510,7 @@
         "description": "This example prints a list of RT Channel indexes for the first fixture in the selection. It uses an index number as input:\n\n"
 
         ,
-        "code": "return function()\n    -- Get the index number for the first fixture in the current selection \n    local fixtureIndex = SelectionFirst()\n    -- Get the indexes of the RT channels\n    local rtChannels = GetRTChannels(fixtureIndex, false)\n    -- Print an error message if returnd table is nil\n    if rtChannels == nil then\n        ErrPrintf(\"Please select a fixture and try again\")\n        return\n    end\n    -- Print the table content\n    for key,value in ipairs(rtChannels) do\n        Printf(\"List index number \".. key ..\" : RTChannel index number = \".. value)\n    end\nend"
+        "code": "return function()\n    -- Get the index number for the first fixture in the current selection \n    local fixtureIndex = SelectionFirst()\n    -- Get the indexes of the RT channels\n    local rtChannels = GetRTChannels(fixtureIndex, false)\n    -- Print an error message if returned table is nil\n    if rtChannels == nil then\n        ErrPrintf(\"Please select a fixture and try again\")\n        return\n    end\n    -- Print the table content\n    for key,value in ipairs(rtChannels) do\n        Printf(\"List index number \".. key ..\" : RTChannel index number = \".. value)\n    end\nend"
         
         ,
         "suffix": ""
@@ -1809,7 +1809,7 @@
   "GetUIChannels": {
     "prefix": "GetUIChannels(fixtureIndexOrHandle, returnHandles)",
     "body": [
-      "GetUIChannels(${1:fixtureIndexOrHandle}, ${2:returnHandles})"
+      "GetUIChannels(${1:fixtureIndexOrHandle}, ${2:_returnHandles})"
     ],
     "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getuichannels.html#h2_873740972 \"Link to this heading\")\n----------------------------------------------------------------------------------------------------------------------------------\n\nThe **GetUIChannels** Lua function returns a table with UI Channel indexes or a table with handles to the UI Channel objects. There are two different types of arguments for this function.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getuichannels.html#h2__615384334 \"Link to this heading\")\n---------------------------------------------------------------------------------------------------------------------------------\n\n-   **Integer**:\\\n    The integer should be the index number for a (sub)fixture.\n-   **Boolean** (Optional):\n    -   **True**:\\\n        The returned table contains handles for UI Channel objects.\n    -   **False** (default):\\\n        The returned table contains integer index values to the UI Channel objects.\n\n\\- OR -\n\n-   **Handle**:\\\n    The handle should relate to a (sub)fixture object.\n-   **Boolean** (Optional):\n    -   **True**:\\\n        The returned table contains handles for UI Channel objects.\n    -   **False** (default):\\\n        The returned table contains integer index values to the UI Channel objects.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_getuichannels.html#h2__607298120 \"Link to this heading\")\n------------------------------------------------------------------------------------------------------------------------------\n\n-   **Table**:\\\n    The returned table can be a list of UI Channel indexes or handles to the same UI Channel indexes."
 
@@ -1852,7 +1852,7 @@
         "description": "This example prints the Dump of the UIObject at a specific position on display 1. It also uses the DrawPointer function to draw a red pointer at the position.\n\n"
 
         ,
-        "code": "return function()\n    -- Get the index number for \"Display 1\"\n    local displayIndex = GetDisplayCollect()[\"Display 1\"].INDEX\n    -- Create a table with X and Y position\n    local positionTable = {}\n    positionTable.x = 1000\n    positionTable.y = 500\n    -- Get the UI object handle\n    local uiObjectAtPositionHandle = GetUIObjectAtPosition(displayIndex,positionTable)\n    -- Dump all information about the display with the index number if not nil\n    if uiObjectAtPositionHandle == nil then\n        Printf(\"The returned value was not a valid handle.\")\n        return\n    end\n    -- Draw a pointer at the posiiton for 5 seconds\n    DrawPointer(displayIndex,positionTable,5000)\n    --Dump of the UIObject\n    Printf(\"=============== START OF DUMP ===============\")\n    uiObjectAtPositionHandle:Dump()\n    Printf(\"================ END OF DUMP ================\")\nend"
+        "code": "return function()\n    -- Get the index number for \"Display 1\"\n    local displayIndex = GetDisplayCollect()[\"Display 1\"].INDEX\n    -- Create a table with X and Y position\n    local positionTable = {}\n    positionTable.x = 1000\n    positionTable.y = 500\n    -- Get the UI object handle\n    local uiObjectAtPositionHandle = GetUIObjectAtPosition(displayIndex,positionTable)\n    -- Dump all information about the display with the index number if not nil\n    if uiObjectAtPositionHandle == nil then\n        Printf(\"The returned value was not a valid handle.\")\n        return\n    end\n    -- Draw a pointer at the position for 5 seconds\n    DrawPointer(displayIndex,positionTable,5000)\n    --Dump of the UIObject\n    Printf(\"=============== START OF DUMP ===============\")\n    uiObjectAtPositionHandle:Dump()\n    Printf(\"================ END OF DUMP ================\")\nend"
 
         ,
         "suffix": ""
@@ -1957,7 +1957,7 @@
   "HookObjectChange": {
     "prefix": "HookObjectChange(functionName, objectHandle, pluginHandle, passedObjectHandle)",
     "body": [
-      "HookObjectChange(${1:functionName}, ${2:objectHandle}, ${3:pluginHandle}, ${4:passedObjectHandle})"
+      "HookObjectChange(${1:functionName}, ${2:objectHandle}, ${3:pluginHandle}, ${4:_passedObjectHandle})"
     ],
     "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_hookobjectchange.html#h2_873740972 \"Link to this heading\")\n-------------------------------------------------------------------------------------------------------------------------------------\n\nThe **HookObjectChange** Lua function automatically calls a function when a grandMA3 object changes.\n\nArguments\n---------\n\n-   **Function**:\\\n    This must be the name of a function. This function is triggered every time the provided grandMA3 object changes.\n\n-   **Handle**:\\\n    This is the handle for the grandMA3 objects that should be monitored for changes. The triggered function passes this handle on as the first argument.\n-   **Handle**:\\\n    The handle must be for the plugin creating this HookObjectChange - it is the handle for \"this\" plugin.\n-   **Handle** (optional):\\\n    This optional handle is for an object that will be passed on to the triggered function (as the third argument).\n\nReturn\n------\n\n-   **Integer**:\\\n    The function returns an integer identifying the hook. This can be saved to unhook the object later.\n\n![](https://help.malighting.com/grandMA3/2.1/Storage/grandma3-user-manual-publication/Client/Content/images/icons/tip_gray.png) **Hint:**\nSee also these related functions: [DumpAllHooks](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_dumpallhooks.html), [Unhook](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_unhook.html), [UnhookMultiple](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_unhookmultiple.html)."
 
@@ -2114,7 +2114,7 @@
         "description": "This example prints the handle integer number for the selected sequence. It also converts the integer back to a handle and uses this to print the name of the sequence:\n\n"
 
         ,
-        "code": "return function()\n    -- Convert the handle of the currently selected sequence to an integer\n    local handleInt = HandleToInt(SelectedSequence())\n    -- Print the handle integer\n    Printf(\"The handle integer number of the selected sequence: %i\", HandleToInt(SelectedSequence()))\n    -- Convter the integer back to a hanndle and use it to get the sequence name\n    Printf(\"The name of the selected sequence is: %s\", IntToHandle(handleInt).name)\nend"
+        "code": "return function()\n    -- Convert the handle of the currently selected sequence to an integer\n    local handleInt = HandleToInt(SelectedSequence())\n    -- Print the handle integer\n    Printf(\"The handle integer number of the selected sequence: %i\", HandleToInt(SelectedSequence()))\n    -- Convert the integer back to a handle and use it to get the sequence name\n    Printf(\"The name of the selected sequence is: %s\", IntToHandle(handleInt).name)\nend"
         
         ,
         "suffix": ""
@@ -2182,7 +2182,7 @@
         "description": "This example prints the information of the keyboard object. It uses the Dump() function:"
 
         ,
-        "code": "return function()\n    -- Print all informatin about the KeyboardObj object\n    Printf(\"=============== START OF DUMP ===============\")\n    KeyboardObj():Dump()\n    Printf(\"================ END OF DUMP ================\")\nend"
+        "code": "return function()\n    -- Print all information about the KeyboardObj object\n    Printf(\"=============== START OF DUMP ===============\")\n    KeyboardObj():Dump()\n    Printf(\"================ END OF DUMP ================\")\nend"
 
         ,
         "suffix": ""
@@ -2205,7 +2205,7 @@
         "description": "This example prints the information of the MasterPool object. It uses the Dump() function:\n\n"
 
         ,
-        "code": "return function()\n    -- Print all informatin about the MasterPool object\n    Printf(\"=============== START OF DUMP ===============\")\n    MasterPool():Dump()\n    Printf(\"================ END OF DUMP ================\")\nend"
+        "code": "return function()\n    -- Print all information about the MasterPool object\n    Printf(\"=============== START OF DUMP ===============\")\n    MasterPool():Dump()\n    Printf(\"================ END OF DUMP ================\")\nend"
         
         ,
         "suffix": ""
@@ -2268,7 +2268,7 @@
         "description": "This example shows the input fields."
 
         ,
-        "code": "return function ()\n    -- A table with two default buttons for the pop-up\n    local defaultCommandButtons = {\n        {value = 2, name = \"OK\"},\n        {value = 1, name = \"Cancel\"}\n    }\n    -- A table with three input fields\n    -- The fields will be displayed alphabetically in the pop-up based on name\n    local inputFields = {\n        {name = \"Numbers Only\", value = \"1234\", whiteFilter = \"0123456789\", vkPlugin = \"NumericInput\"},\n        {name = \"Text Only\", value = \"abcdef\", blackFilter = \"0123456789\"},\n        {name = \"Maximum 10 characters\", value = \"\", maxTextLength = 10}\n    }\n    -- Possible vkPlugin values:\n    -- - \"TextInput\" : same as default - standrd on-screne keyboard\n    -- - \"TextInputNumOnly\" : text input but only with number buttons\n    -- - \"TextInputNumOnlyRange\" : text input but only with number and related range buttons \n    -- - \"TextInputTimeOnly\" : text input styled for time input - includes buttons for time values\n    -- - \"NumericInput\" : general number input\n    -- - \"CueNumberInput\" : number input styled for cue number\n    -- - \"RelCueNumberInput\" : number input with the relative \"delta\" button\n    -- - \"IP4Prefix\" : designed for inputting an IPv4 address allowing CIDR notation\n\n    -- A table with the elements needed for the pop-up\n    local messageTable = {\n        icon = \"object_smart\",\n        backColor = \"Window.Plugins\",\n        title = \"This is input fields\",\n        message = 'Change the values in the input fields and click \"Ok\"',\n        commands = defaultCommandButtons,\n        inputs = inputFields,\n        autoCloseOnInput = false\n    }\n\n    -- The creation on the actual pop-up with the result stored in a variable\n    local returnTable = MessageBox(messageTable)\n\n    -- Print the content of the returned table\n    Printf(\"Success = \"..tostring(returnTable.success))\n    Printf(\"Result = \"..returnTable.result)\n    -- Print a list with the values of the input fields\n    for name,value in pairs(returnTable.inputs) do\n        Printf(\"Input '%s' = '%s'\",name,tostring(value))\n    end\nend"
+        "code": "return function ()\n    -- A table with two default buttons for the pop-up\n    local defaultCommandButtons = {\n        {value = 2, name = \"OK\"},\n        {value = 1, name = \"Cancel\"}\n    }\n    -- A table with three input fields\n    -- The fields will be displayed alphabetically in the pop-up based on name\n    local inputFields = {\n        {name = \"Numbers Only\", value = \"1234\", whiteFilter = \"0123456789\", vkPlugin = \"NumericInput\"},\n        {name = \"Text Only\", value = \"abcdef\", blackFilter = \"0123456789\"},\n        {name = \"Maximum 10 characters\", value = \"\", maxTextLength = 10}\n    }\n    -- Possible vkPlugin values:\n    -- - \"TextInput\" : same as default - standard on-screen keyboard\n    -- - \"TextInputNumOnly\" : text input but only with number buttons\n    -- - \"TextInputNumOnlyRange\" : text input but only with number and related range buttons \n    -- - \"TextInputTimeOnly\" : text input styled for time input - includes buttons for time values\n    -- - \"NumericInput\" : general number input\n    -- - \"CueNumberInput\" : number input styled for cue number\n    -- - \"RelCueNumberInput\" : number input with the relative \"delta\" button\n    -- - \"IP4Prefix\" : designed for inputting an IPv4 address allowing CIDR notation\n\n    -- A table with the elements needed for the pop-up\n    local messageTable = {\n        icon = \"object_smart\",\n        backColor = \"Window.Plugins\",\n        title = \"This is input fields\",\n        message = 'Change the values in the input fields and click \"Ok\"',\n        commands = defaultCommandButtons,\n        inputs = inputFields,\n        autoCloseOnInput = false\n    }\n\n    -- The creation on the actual pop-up with the result stored in a variable\n    local returnTable = MessageBox(messageTable)\n\n    -- Print the content of the returned table\n    Printf(\"Success = \"..tostring(returnTable.success))\n    Printf(\"Result = \"..returnTable.result)\n    -- Print a list with the values of the input fields\n    for name,value in pairs(returnTable.inputs) do\n        Printf(\"Input '%s' = '%s'\",name,tostring(value))\n    end\nend"
 
         ,
         "suffix": ""
@@ -2301,7 +2301,7 @@
         "description": "This example prints the information of the mouse object. Is uses the Dump() function:"
 
         ,
-        "code": "return function()\n    -- Print all informatin about the MouseObj object\n    Printf(\"=============== START OF DUMP ===============\")\n    MouseObj():Dump()\n    Printf(\"================ END OF DUMP ================\")\nend"
+        "code": "return function()\n    -- Print all information about the MouseObj object\n    Printf(\"=============== START OF DUMP ===============\")\n    MouseObj():Dump()\n    Printf(\"================ END OF DUMP ================\")\nend"
 
         ,
         "suffix": ""
@@ -2337,7 +2337,7 @@
   "ObjectList": {
     "prefix": "ObjectList(objectListCommand, optionsTable)",
     "body": [
-      "ObjectList(${1:objectListCommand}, ${2:optionsTable})"
+      "ObjectList(${1:objectListCommand}, ${2:_optionsTable})"
     ],
     "description": "Description\n-----------\n\nThe **ObjectList** Lua function returns a table with handles. The table is created based on a string input that should create a selection.\n\nArgument\n--------\n\n-   **String**:\\\n    The string must be a command that would create a range of objects in the command line.\n-   **Table** (optional):\\\n    The table can contain two possible named elements. Each element can have a boolean true or false value. See the examples below for how to use them.\n\n    -   **'reverse_order'**:\\\n        This must have a boolean value. If this is true then the returned list is in reverse order.\n\n    -   **'selected_as_default'**:\\\n        This must have a boolean value. If this is true then the object list will only contain the object that is selected in the pool. For instance, it only returns the currently selected filter from the filter pool.\n\nReturn\n------\n\n-   **Table**:\\\n    The function returns a table with handles to the objects based on the string argument."
 
@@ -2347,7 +2347,7 @@
         "description": "This example returns the names and patch addresses of fixtures 1 through 10. It assumes these fixtures exist - if they do not, then it returns an error text."
 
         ,
-        "code": "return function()\n    -- Create a list of handles based on the \"Fixture 1 Thru 10\" selection and store it in a table. \n    local myObjects = ObjectList(\"Fixture 1 Thru 10\", {reverse_order=true})\n    -- If the selection returned a table, then go through all elements and print information of the object.\n    if myObjects~= nil then\n        for i in pairs(myObjects) do\n            Printf(\"Fixture: \" .. myObjects[i].name .. \" - Patch: \" ..myObjects[i].patch)\n        end\n    else\n        ErrPrintf(\"An error occured. Does Fixture 1 Thru 10 exist?\")\n    end\nend"
+        "code": "return function()\n    -- Create a list of handles based on the \"Fixture 1 Thru 10\" selection and store it in a table. \n    local myObjects = ObjectList(\"Fixture 1 Thru 10\", {reverse_order=true})\n    -- If the selection returned a table, then go through all elements and print information of the object.\n    if myObjects~= nil then\n        for i in pairs(myObjects) do\n            Printf(\"Fixture: \" .. myObjects[i].name .. \" - Patch: \" ..myObjects[i].patch)\n        end\n    else\n        ErrPrintf(\"An error occurred. Does Fixture 1 Thru 10 exist?\")\n    end\nend"
         
         ,
         "suffix": ""
@@ -2357,7 +2357,7 @@
         "description": "This example creates an object list with the selected sequence. It then dumps all information about the sequence using the Dump function."
 
         ,
-        "code": "return function()\n    -- Create a list of one handle to the selected sequence and store it to a table. \n    local myObjects = ObjectList(\"Sequence\", {selected_as_default=true})\n    -- If the selection returned a table, then dump the first (and only) element.\n    if myObjects~= nil then\n        myObjects[1]:Dump()\n    else\n        ErrPrintf(\"An error occured.\")\n    end\nend"
+        "code": "return function()\n    -- Create a list of one handle to the selected sequence and store it to a table. \n    local myObjects = ObjectList(\"Sequence\", {selected_as_default=true})\n    -- If the selection returned a table, then dump the first (and only) element.\n    if myObjects~= nil then\n        myObjects[1]:Dump()\n    else\n        ErrPrintf(\"An error occurred.\")\n    end\nend"
 
         ,
         "suffix": ""
@@ -2724,7 +2724,7 @@
         "description": "This example prints the patch index number and grid positions of all the fixtures in the current selection:"
 
         ,
-        "code": "return function()\n    -- Store the return in a local variable\n    local fixtureIndex, gridX, gridY, gridZ = SelectionFirst()\n\n    -- Cancel the plugin if no fixture is selected\n    assert(fixtureIndex,\"Please select a (range of) fixture(s) and try again.\")\n    \n    -- Loop that prints the index and gridpositions of all the fixtures in the selection \n    while fixtureIndex do\n        Printf('The fixture has index number: %i and gridposition %i / %i / %i',\n          fixtureIndex, gridX, gridY, gridZ);\n        \n        -- Here is SelectionNext actually used to find the next fixture in the selection\n        fixtureIndex, gridX, gridY, gridZ = SelectionNext(fixtureIndex)\n    end\nend"
+        "code": "return function()\n    -- Store the return in a local variable\n    local fixtureIndex, gridX, gridY, gridZ = SelectionFirst()\n\n    -- Cancel the plugin if no fixture is selected\n    assert(fixtureIndex,\"Please select a (range of) fixture(s) and try again.\")\n    \n    -- Loop that prints the index and grid positions of all the fixtures in the selection \n    while fixtureIndex do\n        Printf('The fixture has index number: %i and grid position %i / %i / %i',\n          fixtureIndex, gridX, gridY, gridZ);\n        \n        -- Here is SelectionNext actually used to find the next fixture in the selection\n        fixtureIndex, gridX, gridY, gridZ = SelectionNext(fixtureIndex)\n    end\nend"
 
         ,
         "suffix": ""
@@ -2885,7 +2885,7 @@
         "description": "This example sets a value to the variable called \"myUserVar\" in the set of user variables if it exists."
 
         ,
-        "code": "return function()\n    -- Sets the value of user variable \"myUserVar\" to \"Hello World\" and store the returned boolean in a Lua variable\n    local success = SetVar(UserVars(), \"myUserVar\", \"Hello World\")\n    -- Prints the ressult\n    if success then\n        Printf(\"Variable is stored.\")\n    else\n        Printf(\"Variable is NOT stored!\")\n    end\nend"
+        "code": "return function()\n    -- Sets the value of user variable \"myUserVar\" to \"Hello World\" and store the returned boolean in a Lua variable\n    local success = SetVar(UserVars(), \"myUserVar\", \"Hello World\")\n    -- Prints the result\n    if success then\n        Printf(\"Variable is stored.\")\n    else\n        Printf(\"Variable is NOT stored!\")\n    end\nend"
         
         ,
         "suffix": ""
@@ -2954,7 +2954,7 @@
         "description": "This creates and displays a progress bar on all screens. The progress bar does not disappear using this example - see the example in the StopProgress (link above) function to remove:"
 
         ,
-        "code": "return function()\n    -- Create and display a progress bar with a title\n    -- IMPORTANT: The Lua variable 'progressHandle' is needed to remove the progressbar again - StopProgress()\n    progressHandle = StartProgress(\"ProgressBar Title\")\nend"
+        "code": "return function()\n    -- Create and display a progress bar with a title\n    -- IMPORTANT: The Lua variable 'progressHandle' is needed to remove the progress bar again - StopProgress()\n    progressHandle = StartProgress(\"ProgressBar Title\")\nend"
 
         ,
         "suffix": "![](https://help.malighting.com/grandMA3/2.1/Storage/grandma3-user-manual-publication/Client/Content/images/icons/important_gray.png) **Important:**\nRunning this example multiple times creates new progress bars that cannot be removed. So only run this once, and then remove it again using the StopProgress function (link above)."
@@ -3011,7 +3011,7 @@
   "TextInput": {
     "prefix": "TextInput(title, textGuide, xPosition, yPosition)",
     "body": [
-      "TextInput(${1:title}, ${2:textGuide}, ${3:xPosition}, ${4:yPosition})"
+      "TextInput(${1:_title}, ${2:_textGuide}, ${3:_xPosition}, ${4:_yPosition})"
     ],
     "description": "Description[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_textinput.html#h2_873740972 \"Link to this heading\")\n------------------------------------------------------------------------------------------------------------------------------\n\nThe **TextInput** Lua function opens a text input pop-up and returns the typed input as a string. It is part of the user interface functions.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_textinput.html#h2__615384334 \"Link to this heading\")\n-----------------------------------------------------------------------------------------------------------------------------\n\n-   **String** (optional):\\\n    This string is the title for the pop-up. The title bar has a default \"Edit\" text at the beginning of the title that cannot be removed.\n-   **String** (optional):\\\n    This string is the text already in the input field - can be used to provide user guidance.\n-   **Integer** (optional):\\\n    This integer defines a position on the x-axis where the pop-up should appear (on all screens). \"0\" is on the left side of the screen. Nil or undefined is centered.\n-   **Integer** (optional):\\\n    This integer defines a position on the y-axis where the pop-up should appear (on all screens). \"0\" is at the top of the screen. Nil or undefined is centered.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_textinput.html#h2__607298120 \"Link to this heading\")\n--------------------------------------------------------------------------------------------------------------------------\n\n-   **String**:\\\n    The returned user input."
 
@@ -3053,9 +3053,9 @@
     
   },
   "Timer": {
-    "prefix": "Timer(timedFunction, waitSeconds, iterations, TimerCleanup, passedObjectHandle)",
+    "prefix": "Timer(timedFunction, waitSeconds, iterations, timerCleanup, passedObjectHandle)",
     "body": [
-      "Timer(${1:timedFunction}, ${2:waitSeconds}, ${3:iterations}, ${4:TimerCleanup}, ${5:passedObjectHandle})"
+      "Timer(${1:timedFunction}, ${2:waitSeconds}, ${3:iterations}, ${4:_timerCleanup}, ${5:_passedObjectHandle})"
     ],
     "description": "Description\n-----------\n\nThe **Timer** Lua function call a different function using a timer. The other function can be called multiple times using the timer interval. \n\nArguments\n---------\n\n-   **Function**:\\\n    This is the name of the function that is called multiple times using the timer.\n\n-   **Integer**:\\\n    This is the wait time between the calls. The value is in seconds.\n\n-   **Integer**:\\\n    This is the number of times the function is called.\n\n-   **Function** | **nil** (optional):\\\n    This is an optional argument that is the name of a function that is called when the Timer function is finished.\n\n-   **Handle** (optional):\\\n    This is an optional argument for a handle to an object that is passed to the called function.\n\nReturn\n------\n\nThis function does not return anything."
 
@@ -3077,7 +3077,7 @@
   "ToAddr": {
     "prefix": "ToAddr(objectHandle, returnType)",
     "body": [
-      "ToAddr(${1:objectHandle}, ${2:returnType})"
+      "ToAddr(${1:objectHandle}, ${2:_returnType})"
     ],
     "description": "Description\n-----------\n\nThe **ToAddr** Lua object-free function converts a handle to an address string that can be used in commands.\n\nSee the Handle topic for more info regarding handles, addresses, and links to other related functions.\n\nArguments\n---------\n\n-   **Handle**:\\\n    The function takes a handle of an object as an argument.\n-   **Boolean** (optional):\\\n    This returns the address using the names instead of numbers. The default is False, which returns the number version of the address.\n\nReturn\n------\n\n-   **String**:\\\n    String with the address value."
     
@@ -3109,7 +3109,7 @@
         "description": "This example prints information about the touch object using the Dump() function:"
         
         ,
-        "code": "return function()\n    -- Print all informatin about the TouchObj object\n    Printf(\"=============== START OF DUMP ===============\")\n    TouchObj():Dump()\n    Printf(\"================ END OF DUMP ================\")\nend"
+        "code": "return function()\n    -- Print all information about the TouchObj object\n    Printf(\"=============== START OF DUMP ===============\")\n    TouchObj():Dump()\n    Printf(\"================ END OF DUMP ================\")\nend"
         
         ,
         "suffix": ""
