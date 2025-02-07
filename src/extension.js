@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 const API_VERSION_CONFIG_KEY = 'apiVersion';
+const EXTENSION_ENABLED_CONFIG_KEY  = 'extensionEnabled';
 
 const extensionState = {
     hoverProviders: [],
@@ -11,26 +12,49 @@ const extensionState = {
 
 
 function activate(context) {
+    const configuration = vscode.workspace.getConfiguration('grandMa3');
+    const isExtensionEnabled = configuration.get(EXTENSION_ENABLED_CONFIG_KEY, true);
+
+
+    if (!extensionState.statusBarItem) {
+        extensionState.statusBarItem = createApiVersionStatusBarItem();
+        createMenu(context);
+    }
+    extensionState.statusBarItem.show();
     
-    const apiVersionStatusBarItem = createApiVersionStatusBarItem(context);
-    createMenu(context, apiVersionStatusBarItem);
+    if (!isExtensionEnabled) {
+        extensionState.statusBarItem.text = `GrandMa 3 API: Off`;
+        return;
+    }
 
     const currentApiVersion = getCurrentApiVersion(context);
-    apiVersionStatusBarItem.text = `GrandMa 3 API: ${currentApiVersion}`;
+    extensionState.statusBarItem.text = `GrandMa 3 API: ${currentApiVersion}`;
 
     configureWorkspace(context, currentApiVersion);
     loadApiFiles(context, currentApiVersion);
 }
 
-function createMenu(context, apiVersionStatusBarItem){
-
-    context.subscriptions.push(apiVersionStatusBarItem);
+function createMenu(context){
+    context.subscriptions.push(extensionState.statusBarItem);
 
     const changeApiVersionCommand = vscode.commands.registerCommand('grandMa3.menu', async () => {
-        const selection = await vscode.window.showQuickPick(
+        const configuration = vscode.workspace.getConfiguration('grandMa3');
+        const isExtensionEnabled = configuration.get(EXTENSION_ENABLED_CONFIG_KEY, true);
+
+        const selection = isExtensionEnabled ? await vscode.window.showQuickPick(
             [
-                { label: 'Restart GrandM 3 extension'},
-                { label: 'Select GrandMa 3 API version'}
+                { label: 'Select GrandMa 3 API version' },
+                { label: 'Disable extension for this project' },
+                { label: 'Restart extension' }
+            ],
+            { 
+                title: 'GrandMa 3 API Menu',
+                placeHolder: 'Choose an action'
+            }
+        ) 
+        : await vscode.window.showQuickPick(
+            [
+                { label: 'Enable extension for this project' },
             ],
             { 
                 title: 'GrandMa 3 API Menu',
@@ -40,17 +64,51 @@ function createMenu(context, apiVersionStatusBarItem){
     
         if (!selection) return;
     
-        if (selection.label === 'Restart GrandM 3 extension') {
-            const currentApiVersion = getCurrentApiVersion(context);
-            configureWorkspace(context, currentApiVersion);
-            loadApiFiles(context, currentApiVersion);
-            restartLuaServer();
-            vscode.window.showInformationMessage(`GrandMa 3 extension restarted`);
-        } else if (selection.label === 'Select GrandMa 3 API version') {
-            await showApiVersionQuickPick(context, apiVersionStatusBarItem);
+        switch(selection.label) {
+            case 'Restart extension':
+                const currentApiVersion = getCurrentApiVersion(context);
+                configureWorkspace(context, currentApiVersion);
+                loadApiFiles(context, currentApiVersion);
+                restartLuaServer();
+                vscode.window.showInformationMessage(`GrandMa 3 extension restarted`);
+                break;
+
+            case 'Select GrandMa 3 API version':
+                await showApiVersionQuickPick(context);
+                break;
+
+            case 'Disable extension for this project':
+                await toggleExtension(context, false);
+                break;
+
+            case 'Enable extension for this project':
+                await toggleExtension(context, true);
+                break;
         }
     });
     context.subscriptions.push(changeApiVersionCommand);
+}
+
+async function toggleExtension(context, enable) {
+    const configuration = vscode.workspace.getConfiguration('grandMa3');
+    await configuration.update(EXTENSION_ENABLED_CONFIG_KEY, enable, vscode.ConfigurationTarget.Workspace);
+
+    const luaConfig = vscode.workspace.getConfiguration('Lua');
+
+    if (enable) {
+        const currentApiVersion = getCurrentApiVersion(context);
+        extensionState.statusBarItem.text = `GrandMa 3 API: ${currentApiVersion}`;
+        configureWorkspace(context, currentApiVersion);
+        loadApiFiles(context, currentApiVersion);
+        vscode.window.showInformationMessage('GrandMa 3 extension enabled for this workspace');
+    } else {
+        deactivate()
+        extensionState.statusBarItem.text = `GrandMa 3 API: Off`;
+        await luaConfig.update('workspace.library', [], vscode.ConfigurationTarget.Workspace);
+        vscode.window.showInformationMessage('GrandMa 3 extension disabled for this workspace');
+    }
+
+    restartLuaServer();
 }
 
 function createApiVersionStatusBarItem() {
@@ -78,7 +136,7 @@ function getAvailableApiVersions(context) {
         .sort((a, b) => b.localeCompare(a));
 }
 
-async function showApiVersionQuickPick(context, statusBarItem) {
+async function showApiVersionQuickPick(context) {
     const availableVersions = getAvailableApiVersions(context);
     const currentVersion = getCurrentApiVersion(context);
 
@@ -97,7 +155,7 @@ async function showApiVersionQuickPick(context, statusBarItem) {
         const configuration = vscode.workspace.getConfiguration('grandMa3');
         await configuration.update(API_VERSION_CONFIG_KEY, selection.label, vscode.ConfigurationTarget.Workspace);
 
-        statusBarItem.text = `GrandMa 3 API: ${selection.label}`;
+        extensionState.statusBarItem.text = `GrandMa 3 API: ${selection.label}`;
 
         configureWorkspace(context, selection.label);
         loadApiFiles(context, selection.label);

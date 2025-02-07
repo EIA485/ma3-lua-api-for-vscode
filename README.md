@@ -29,7 +29,12 @@ The extension also references functions that are not documented in the official 
 The VS Code bottom toolbar display the actual Ma3 API version.
 ![toolbar-info](images/toolbar-info.png)
 
-You can change it by click on id and select the version you need:
+Clicking on this toolbar button will open a quick pick menu that allow you to:
+  - Select the Ma3 version
+  - Disable the extension for the actual project
+  - Restart the extension
+
+![quick-pick-menu](images\quick-pick-menu.png)
 ![version-selection](images/version-selection.png)
 
 
@@ -66,9 +71,9 @@ All the extension data is in the resources folder, that folder contain a folder 
 This image explain how to fill the json files according to the [Ma help pages](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree.html) that corresponding to the version.
 ![json filling](images/json_filling.png)
 
-- For the body part, fill the parentheses with the function parameters like:
+- For the body part, fill the parentheses with the function parameters, optional parameters starting with an underscore:
 
-    function(${1:fixtureId}, ${2:count}, ${3:type})
+    function(${1:fixtureId}, ${2:count}, ${3:_type})
 
 - All the text part need to be converted to Markdown format, this can be done using this online tool: [Clipboard 2 Markdown](https://euangoddard.github.io/clipboard2markdown/).
 
