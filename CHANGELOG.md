@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.3.1 — February 7, 2025
+- Added a missing "@Optional" annotation
+
 ## 1.3.0 — February 7, 2025
 - Add menu to disable extension in non-Ma3 Lua projects
 

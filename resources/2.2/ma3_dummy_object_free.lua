@@ -345,7 +345,7 @@ function GetObjApiDescriptor()
 end
 
 ---@param folderNameOrIndex string|integer
----@param createIfNotExist boolean|nil
+---@param createIfNotExist? boolean|nil @Optional
 ---@return string path
 function GetPath(folderNameOrIndex, createIfNotExist)
     return ""

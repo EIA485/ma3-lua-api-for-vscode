@@ -15,7 +15,7 @@ local function test()
     local fixtureIndex, shortKeyword,progressBarHandle, value, expectedChildren, secondsToWait, patch, options
     local handleInteger, derivedClassName, baseClassName, hookId, targetObjectHandle, contextObjectHandle
     local moduleHandle, progress, rangeTart, rangeEnd, handleString, baseLocationHandle, _forceReInit
-    local pathTypeIndex, block, filePath, propertyName, childIndex, tokenAndIndex, settingsTable, targetObject
+    local folderNameOrIndex, _createIfNotExist, block, filePath, propertyName, childIndex, tokenAndIndex, settingsTable
     local parent, callback, appearance, items, targetHandle, changeLevelEnum, destHandle, otherHandle, srcHandle
     local searchName, searchClassName, lineNumber, rowId, x, y, columnId, size, cell, valueType, updateOpposite
     local objectToCheck, parameterName, parameterValue, nameValue, length, callbackName, propertyIndex, scrollType
@@ -28,7 +28,7 @@ local function test()
     local _overrideChangeLevel, _recursive, _empty, _enable, _secondsToWait, _type, _undoHandle, _handleTarget
     local _focusSearchAllowed, _startingInternalLineNumber, _camelCaseToFileName, _ctx, dmxModeHandle, _breakIndex
     local _isPercent, _universe, _returnPercent, _pathContentType, queueName, _samplingPoints, ipOrStation, data
-    local returnName, _isCueObject, sourcePath, destinationPath
+    local returnName, _isCueObject, sourcePath, destinationPath, targetObject
     
     -- Object definition
     -- ========================================
@@ -349,8 +349,8 @@ local function test()
     GetFocus()
     GetFocusDisplay()
     GetObjApiDescriptor()
-    GetPath(folderName, createIfNotExist)
-    GetPath(pathTypeIndex)
+    GetPath(folderNameOrIndex)
+    GetPath(folderNameOrIndex, _createIfNotExist)
     GetPathOverrideFor(folderName, basePath)
     GetPathOverrideFor(folderName, basePath, createIfNotExist)
     GetPathSeparator()
