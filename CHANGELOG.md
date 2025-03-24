@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.3.2 — Mach 11, 2025
+- Move cSpell words from workspace settings to user settings
+
 ## 1.3.1 — February 7, 2025
 - Added a missing "@Optional" annotation
 

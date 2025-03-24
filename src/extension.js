@@ -251,9 +251,9 @@ async function addFunctionNamesToCSpell(context, version) {
     const objectFreeApiData = JSON.parse(fs.readFileSync(objectFreeApiPath, 'utf8'));
     const functionNames = Object.keys(objectFreeApiData);
 
-    const cspellConfig = vscode.workspace.getConfiguration('cSpell');
+    const cspellUserConfig = vscode.workspace.getConfiguration('cSpell', undefined);
 
-    let words = cspellConfig.get('words') || [];
+    let words = cspellUserConfig.get('userWords') || [];
     if (!Array.isArray(words)) {
         words = [];
     }
@@ -261,7 +261,7 @@ async function addFunctionNamesToCSpell(context, version) {
     const newWords = functionNames.filter(word => !words.includes(word));
     if (newWords.length > 0) {
         words = [...words, ...newWords];
-        await cspellConfig.update('words', words, vscode.ConfigurationTarget.Workspace);
+        await cspellUserConfig.update('userWords', words, vscode.ConfigurationTarget.Global);
     }
 }
 
