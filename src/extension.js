@@ -510,7 +510,7 @@ function addObjectFunctionsCompletion(context, data){
             }
 
             var suggestions = Object.entries(objectJson)
-                .filter(([funcName]) => funcName.startsWith('Handle:') && !funcName.includes('_'))
+                .filter(([funcName]) => funcName.startsWith('Handle:') || funcName.startsWith('Obj') && !funcName.includes('_'))
                 .map(([funcName, data]) => {
                     const displayName = funcName.replace('Handle:', '');
                     const item = new vscode.CompletionItem(displayName, vscode.CompletionItemKind.Method);

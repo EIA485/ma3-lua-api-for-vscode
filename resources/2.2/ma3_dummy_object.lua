@@ -5,10 +5,34 @@
 -- ========================================
 
 ---@class Handle
+--- @field dmxInvertPan boolean | string
+--- @field dmxInvertTilt boolean | string
+--- @field encInvertPan boolean | string
+--- @field encInvertTilt boolean | string
+--- @field castShadow boolean | string
+--- @field followTarget boolean | string
+--- @field gridInvX boolean | string
+--- @field gridInvY boolean | string
+--- @field gridInvZ boolean | string
 Handle = {}
 
 ---@return Handle
 function Handle:new()
+    local instance = setmetatable({}, { __index = Handle })
+    instance.dmxInvertPan = nil
+    instance.dmxInvertTilt = nil
+    instance.encInvertPan = nil
+    instance.encInvertTilt = nil
+    instance.castShadow = nil
+    instance.gridInvX = nil
+    instance.gridInvY = nil
+    instance.gridInvZ = nil
+    return instance
+end
+
+---@return Handle handle
+function Obj()
+    return Handle:new()
 end
 
 ---@param baseLocationHandle? Handle @Optional

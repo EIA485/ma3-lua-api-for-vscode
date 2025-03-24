@@ -33,6 +33,11 @@ local function test()
     -- Object definition
     -- ========================================
 
+    local displayIndex = Obj.Index()
+
+    handle.dmxInvertPan = true
+    handle.dmxInvertTilt = true
+
     handle:Addr()
     handle:Addr(baseLocationHandle)
     handle:Addr(_baseLocationHandle, _useToAddrIndex, _isCueObject)
