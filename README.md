@@ -34,7 +34,7 @@ Clicking on this toolbar button will open a quick pick menu that allow you to:
   - Disable the extension for the actual project
   - Restart the extension
 
-![quick-pick-menu](images\quick-pick-menu.png)
+![quick-pick-menu](images/quick-pick-menu.png)
 ![version-selection](images/version-selection.png)
 
 
@@ -45,7 +45,7 @@ This is an open source project, feel free to contribute by making pull requests.
 
  - [VS Code IDE](https://code.visualstudio.com/download)
  - [Node JS](https://nodejs.org/en/download)
- - Clone this repository 
+ - Clone this repository
 
 ### File organization
 All the extension data is in the resources folder, that folder contain a folder for each Ma3 version, each folder contain:

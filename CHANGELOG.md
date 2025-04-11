@@ -1,6 +1,14 @@
 # Change Log
 
-## 1.3.2 — Mach 11, 2025
+## 1.3.4 — April 7, 2025
+- Updtate some text format in MessageBox documentation
+- Fix readme image link
+- Add missing changelog for 1.3.3
+
+## 1.3.3 — March 24, 2025
+- Add new fields to Handle class and Obj function
+
+## 1.3.2 — March 11, 2025
 - Move cSpell words from workspace settings to user settings
 
 ## 1.3.1 — February 7, 2025
