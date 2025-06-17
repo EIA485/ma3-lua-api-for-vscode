@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.3.5 — June 16, 2025
+- Fix GetTopOverlay description
+- format README.md
+
 ## 1.3.4 — April 7, 2025
 - Updtate some text format in MessageBox documentation
 - Fix readme image link

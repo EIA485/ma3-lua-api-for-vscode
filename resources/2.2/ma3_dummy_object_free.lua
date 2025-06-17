@@ -447,8 +447,9 @@ function GetTopModal()
     return Handle:new()
 end
 
+---@param displayIndex integer
 ---@return Handle|nil overlayHandle
-function GetTopOverlay()
+function GetTopOverlay(displayIndex)
     return Handle:new()
 end
 
