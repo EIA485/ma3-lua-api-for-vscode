@@ -2873,9 +2873,9 @@
     
   },
   "SetVar": {
-    "prefix": "SetVar(variableSetHandle, varName)",
+    "prefix": "SetVar(variableSetHandle, varName, value)",
     "body": [
-      "SetVar(${1:variableSetHandle}, ${2:varName})"
+      "SetVar(${1:variableSetHandle}, ${2:varName}, ${3:value})"
     ],
     "description": "Description\\\n[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_setvar.html#h2_873740972 \"Link to this heading\")\n-----------------------------------------------------------------------------------------------------------------------------\n\nThe **SetVar** Lua function sets a value to a specific variable in a set of variables. To learn more about the variables in plugins, look at the [Variable Functions](https://help.malighting.com/grandMA3/2.1/HTML/lua_variables.html) topic.\n\nIf the variable exists, then the value is overwritten. If it does not exist, then it is created with value.\n\nArguments[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_setvar.html#h2__615384334 \"Link to this heading\")\n--------------------------------------------------------------------------------------------------------------------------\n\n-   **Handle**:\\\n    The handle of variable set.\n-   **String**:\\\n    The name of the variable. It needs to be in quotation marks.\n-   **Value**:\\\n    The value can be a string, integer, or double.\n\nReturn[](https://help.malighting.com/grandMA3/2.1/HTML/lua_objectfree_setvar.html#h2__607298120 \"Link to this heading\")\n-----------------------------------------------------------------------------------------------------------------------\n\n-   **Boolean**:\n    -   True / 1: The variable was set.\n    -   False / 0: The variable was not set."
 
