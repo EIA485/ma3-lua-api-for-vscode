@@ -1,4 +1,8 @@
-# Change Log
+# Changelog
+
+## 1.4.1 — July 30, 2025
+
+- Update CHANGELOG.md
 
 ## 1.4.0 — July 30, 2025
 
@@ -17,9 +21,9 @@
       - SetListItemAdditionalInfo
   - Updated:
     - Object-Free API:
-      - SetBlockInput function: added _showInfo optional parameter
+      - SetBlockInput function: added "_showInfo" optional parameter
     - Object API:
-      - AddListObjectItem function: added _postNameText optional parameter
+      - AddListObjectItem function: added "_postNameText" optional parameter
   - Removed:
     - Object-Free API
       - TestPlaybackOutput function
