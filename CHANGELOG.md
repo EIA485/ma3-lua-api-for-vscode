@@ -1,5 +1,39 @@
 # Change Log
 
+## 1.4.0 — July 30, 2025
+
+- Added support of GrandMa 3 2.3 API version:
+  - Added:
+    - Object-Free API:
+      - CallRealtimeLockedProtected
+      - HostRevision
+      - SelectionTable
+      - ChannelTable
+      - RemoteCallRunning
+      - GetVarVersion
+      - GetBlockInput
+    - Object API:
+      - GetListItemAdditionalInfo
+      - SetListItemAdditionalInfo
+  - Updated:
+    - Object-Free API:
+      - SetBlockInput function: added _showInfo optional parameter
+    - Object API:
+      - AddListObjectItem function: added _postNameText optional parameter
+  - Removed:
+    - Object-Free API
+      - TestPlaybackOutput function
+      - TestPlaybackOutputSteps function
+      - SampleOutput function
+  - Generated list of enums
+- renamed folder util/GenerateEnumsFile to generate_enums_file
+- added file [publish_extension.txt](utils/vs_code/publish_extension.txt) to remember to publish extension command
+- Added [ma_docs](ma_docs/2.1) folder with set of resources for each API version, such as:
+  - enums_list.txt generated with the Lua script located in the  [generate_enums_file folder](utils/generate_enums_file)
+  - grandMA3_lua_functions.txt generated with the HelpLua command
+  - Lua Html from the official documentation located in the C:\ProgramData\MALightingTechnology\gma3_x.x.x\shared\language\HTML folder
+- Updated devDependencies
+
 ## 1.3.6 — July 10, 2025
 
 - Fix SetVar value missing in autocomplete
