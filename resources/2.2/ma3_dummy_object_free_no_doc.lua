@@ -71,9 +71,7 @@ end
 
 ---@param address string
 ---@return Handle handle
-function GetObject(address)
-    return Handle:new()
-end
+function GetObject(address) end
 
 ---@param uiChannelIndex integer
 ---@param phaserOnly boolean
@@ -112,9 +110,9 @@ function GetTextScreenLineCount(startingInternalLineNumber)
     return 0
 end
 
----@param uiChannelIndex integer|Handle
+---@param uiChannelIndex integer|Fixture
 ---@param attributeIndex integer|string
----@return table uiChannelDescriptor
+---@return {special_index:number, special:number, flags:{is_dimmer:number, master_reaction:number, snap:number, encoder_invert:number, universal:number, dmx_invert:number, use_special_conversion:number}, ui_index: number, logical_channel:LogicalChannel, sf_index:number, rt_index:number, attr_index:number} uiChannelDescriptor
 function GetUIChannel(uiChannelIndex, attributeIndex)
     return {}
 end
@@ -129,7 +127,7 @@ end
 function Keyboard(displayIndex, type, charOrKeycode, shift, ctrl, alt, numlock)
 end
 
----@param executor Handle
+---@param executor Exec
 function LoadExecConfig(executor)
 end
 
@@ -147,15 +145,11 @@ function OpenMessageQueue(queueName)
 end
 
 ---@return Handle handle
-function OverallDeviceCertificate()
-    return Handle:new()
-end
+function OverallDeviceCertificate() end
 
 ---@param pluginName? string @Optional
----@return Handle pluginPreferences
-function PluginVars(pluginName)
-    return Handle:new()
-end
+---@return Variables? pluginPreferences
+function PluginVars(pluginName) end
 
 ---@param options table
 ---@return integer selectedIndex, string selectedValue
@@ -187,14 +181,12 @@ function SampleOutput(samplingPoints)
     return {}, ""
 end
 
----@param executor Handle
+---@param executor Exec
 function SaveExecConfig(executor)
 end
 
----@return Handle handle
-function SelectedDrive()
-    return Handle:new()
-end
+---@return Drive handle
+function SelectedDrive() end
 
 ---@return integer min, integer max, integer index, integer block, integer group
 function SelectionComponentX()
@@ -278,14 +270,18 @@ function Touch(displayIndex, type, touchId, absX, absY)
 end
 
 ---@param secondsToWait? number @Optional
----@return Handle|nil modalHandle
+---@return Overlay? modalHandle
 function WaitModal(secondsToWait)
     return nil
 end
 
----@param handle Handle @handle to UIObject
+---@param handle UIObject @handle to UIObject
 ---@param secondsToWait? number @Optional
----@return boolean|nil @true on success, nil on timeout
+---@return true? @true on success, nil on timeout
 function WaitObjectDelete(handle, secondsToWait)
     return true
 end
+
+---@param fixture Fixture
+---@return Fixture
+function NextDmxModeFixture(fixture) end

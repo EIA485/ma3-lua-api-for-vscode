@@ -4,12 +4,6 @@
 -- Not documented Object definition
 -- ========================================
 
----@param class? string @Optional
----@param undo? Handle @Optional
----@return Handle childHandle
-function Handle:Acquire(class, undo)
-    return Handle:new()
-end
 
 ---@param parent Handle
 ---@param role? string @Optional
@@ -76,13 +70,6 @@ end
 function Handle:AddListStringItems(items)
 end
 
----@param class? string @Optional
----@param undo? Handle @Optional
----@param count? integer @Optional
----@return Handle childHandle
-function Handle:Append(class, undo, count)
-    return Handle:new()
-end
 
 ---@param changeLevelEnum string
 function Handle:Changed(changeLevelEnum)
@@ -91,8 +78,6 @@ end
 function Handle:ClearList()
 end
 
-function Handle:ClearUIChildren()
-end
 
 ---@return table childHandles
 function Handle:CmdlineChildren()
@@ -134,35 +119,10 @@ end
 function Handle:Copy(srcHandle, undo)
 end
 
----@param childIndex integer
----@param class? string @Optional
----@param undo? Handle @Optional
----@return Handle childHandle
-function Handle:Create(childIndex, class, undo)
-    return Handle:new()
-end
-
----@return Handle|nil currentChild
-function Handle:CurrentChild()
-    return Handle:new()
-end
 
 ---@param childIndex integer
 ---@param undo? Handle @Optional
 function Handle:Delete(childIndex, undo)
-end
-
----@param cell table
----@return boolean
-function Handle:FSExtendedModeHasDots(cell)
-    return false
-end
-
----@param searchName string
----@param searchClassName? string @Optional
----@return Handle foundHandle
-function Handle:Find(searchName, searchClassName)
-    return Handle:new()
 end
 
 ---@param value string
@@ -177,19 +137,6 @@ function Handle:FindListItemByValueStr(value)
     return 1
 end
 
----@param searchClassName string
----@return Handle foundHandle
-function Handle:FindParent(searchClassName)
-    return Handle:new()
-end
-
----@param searchName string
----@param searchClassName? string @Optional
----@return Handle foundHandle
-function Handle:FindRecursive(searchName, searchClassName)
-    return Handle:new()
-end
-
 ---@param searchName string
 ---@return Handle foundHandle
 function Handle:FindWild(searchName)
@@ -199,16 +146,6 @@ end
 ---@return Handle assignedHandle
 function Handle:GetAssignedObj()
     return Handle:new()
-end
-
----@return Handle displayHandle
-function Handle:GetDisplay()
-    return Handle:new()
-end
-
----@return integer displayIndex
-function Handle:GetDisplayIndex()
-    return 1
 end
 
 ---@param camelCaseToFileName? boolean @Optional
@@ -268,144 +205,6 @@ function Handle:GetListSelectedItemIndex()
     return 1
 end
 
----@return Handle overlayHandle
-function Handle:GetOverlay()
-    return Handle:new()
-end
-
----@return Handle screenHandle
-function Handle:GetScreen()
-    return Handle:new()
-end
-
----@param index integer
----@return Handle uiObjectHandle
-function Handle:GetUIChild(index)
-    return Handle:new()
-end
-
----@return integer count
-function Handle:GetUIChildrenCount()
-    return 0
-end
-
----@param cell table
----@return boolean exists
-function Handle:GridCellExists(cell)
-    return false
-end
-
----@return Handle gridBaseHandle
-function Handle:GridGetBase()
-    return Handle:new()
-end
-
----@param cell table
----@return table cellData
-function Handle:GridGetCellData(cell)
-    return {}
-end
-
----@param cell table
----@return table dimensions
-function Handle:GridGetCellDimensions(cell)
-    return {}
-end
-
----@return Handle gridDataHandle
-function Handle:GridGetData()
-    return Handle:new()
-end
-
----@return table dimensions
-function Handle:GridGetDimensions()
-    return {}
-end
-
----@param rowId integer
----@return integer|nil parentRowId
-function Handle:GridGetParentRowId(rowId)
-    return 0
-end
-
----@return table cell
-function Handle:GridGetScrollCell()
-    return {}
-end
-
----@return table offset
-function Handle:GridGetScrollOffset()
-    return {}
-end
-
----@return table selectedCells
-function Handle:GridGetSelectedCells()
-    return {}
-end
-
----@return Handle gridSelectionHandle
-function Handle:GridGetSelection()
-    return Handle:new()
-end
-
----@return Handle gridSettingsHandle
-function Handle:GridGetSettings()
-    return Handle:new()
-end
-
----@param cell table
----@return boolean isReadOnly
-function Handle:GridIsCellReadOnly(cell)
-    return false
-end
-
----@param cell table
----@return boolean isVisible
-function Handle:GridIsCellVisible(cell)
-    return false
-end
-
----@param x integer
----@param y integer
-function Handle:GridMoveSelection(x, y)
-end
-
----@param cell table
-function Handle:GridScrollCellIntoView(cell)
-end
-
----@param columnId integer
----@param size integer
-function Handle:GridSetColumnSize(columnId, size)
-end
-
----@param columnId integer
----@return integer|nil columnIndex
-function Handle:GridsGetColumnById(columnId)
-    return 0
-end
-
----@return table|nil cell
-function Handle:GridsGetExpandHeaderCell()
-    return {}
-end
-
----@return boolean|nil state
-function Handle:GridsGetExpandHeaderCellState()
-    return false
-end
-
----@param cell table
----@return integer|nil width
-function Handle:GridsGetLevelButtonWidth(cell)
-    return 0
-end
-
----@param rowId integer
----@return integer|nil rowIndex
-function Handle:GridsGetRowById(rowId)
-    return 0
-end
 
 ---@return boolean hasDependencies
 function Handle:HasDependencies()
@@ -429,13 +228,6 @@ end
 ---@return boolean hasReferences
 function Handle:HasReferences()
     return false
-end
-
----@param callback function
----@param argument? any @Optional
----@return boolean|nil success
-function Handle:HookDelete(callback, argument)
-    return true
 end
 
 ---@return integer index
@@ -479,14 +271,6 @@ end
 function Handle:InputSetValue(value)
 end
 
----@param childIndex integer
----@param class? string @Optional
----@param undo? Handle @Optional
----@param count? integer @Optional
----@return Handle childHandle
-function Handle:Insert(childIndex, class, undo, count)
-    return Handle:new()
-end
 
 ---@return boolean isClass
 function Handle:IsClass()
@@ -498,10 +282,6 @@ function Handle:IsEmpty()
     return false
 end
 
----@return boolean isEnabled
-function Handle:IsEnabled()
-    return false
-end
 
 ---@param index integer
 function Handle:IsListItemEmpty(index)
@@ -521,11 +301,6 @@ function Handle:IsValid()
     return false
 end
 
----@return boolean isVisible
-function Handle:IsVisible()
-    return false
-end
-
 ---@param filePath string
 ---@param fileName string
 ---@return boolean success
@@ -536,16 +311,6 @@ end
 ---@return integer maxCount
 function Handle:MaxCount()
     return 0
-end
-
----@param callbackName string
----@param ctx? any @Optional
-function Handle:OverlaySetCloseCallback(callbackName, ctx)
-end
-
----@return Handle parentHandle
-function Handle:Parent()
-    return Handle:new()
 end
 
 function Handle:PrepareAccess()
@@ -667,10 +432,6 @@ end
 function Handle:SetChildrenRecursive(propertyName, propertyValue, recursive)
 end
 
----@param topicName string
-function Handle:SetContextSensHelpLink(topicName)
-end
-
 ---@param index integer
 ---@param empty? boolean @Optional
 function Handle:SetEmptyListItem(index, empty)
@@ -703,59 +464,4 @@ end
 
 ---@param callback function
 function Handle:ShowModal(callback)
-end
-
----@return table childHandles
-function Handle:UIChildren()
-    return {}
-end
-
----@param index integer
----@return integer x
-function Handle:UILGGetColumnAbsXLeft(index)
-    return 0
-end
-
----@param index integer
----@return integer x
-function Handle:UILGGetColumnAbsXRight(index)
-    return 0
-end
-
----@param index integer
----@return integer size
-function Handle:UILGGetColumnWidth(index)
-    return 0
-end
-
----@param index integer
----@return integer y
-function Handle:UILGGetRowAbsYBottom(index)
-    return 0
-end
-
----@param index integer
----@return integer y
-function Handle:UILGGetRowAbsYTop(index)
-    return 0
-end
-
----@param index integer
----@return integer size
-function Handle:UILGGetRowHeight(index)
-    return 0
-end
-
----@param expectedChildren integer
----@param secondsToWait? number @Optional
----@return boolean success
-function Handle:WaitChildren(expectedChildren, secondsToWait)
-    return false
-end
-
----@param secondsToWait? number @Optional
----@param forceReInit? boolean @Optional
----@return boolean success
-function Handle:WaitInit(secondsToWait, forceReInit)
-    return false
 end

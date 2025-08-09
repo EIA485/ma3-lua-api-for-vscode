@@ -4,35 +4,13 @@
 -- Object definition
 -- ========================================
 
----@class Handle
---- @field dmxInvertPan boolean | string
---- @field dmxInvertTilt boolean | string
---- @field encInvertPan boolean | string
---- @field encInvertTilt boolean | string
---- @field castShadow boolean | string
---- @field followTarget boolean | string
---- @field gridInvX boolean | string
---- @field gridInvY boolean | string
---- @field gridInvZ boolean | string
+---@class Handle : Object
 Handle = {}
-
----@return Handle
-function Handle:new()
-    local instance = setmetatable({}, { __index = Handle })
-    instance.dmxInvertPan = nil
-    instance.dmxInvertTilt = nil
-    instance.encInvertPan = nil
-    instance.encInvertTilt = nil
-    instance.castShadow = nil
-    instance.gridInvX = nil
-    instance.gridInvY = nil
-    instance.gridInvZ = nil
-    return instance
-end
 
 ---@return Handle handle
 function Obj()
-    return Handle:new()
+    local instance = setmetatable({}, { __index = Handle })
+    return instance
 end
 
 ---@param baseLocationHandle? Handle @Optional
@@ -50,10 +28,6 @@ function Handle:AddrNative(baseLocationHandle, returnNamesInQuotes)
     return ""
 end
 
----@return table children
-function Handle:Children()
-    return {}
-end
 
 ---@return integer count
 function Handle:Count()
@@ -68,23 +42,6 @@ end
 ---@return boolean success
 function Handle:Export(filePath, fileName)
     return true
-end
-
----@param propertyName string
----@param roleInteger? integer @Optional
----@return string property
-function Handle:Get(propertyName, roleInteger)
-    return ""
-end
-
----@return string className
-function Handle:GetChildClass()
-    return ""
-end
-
----@return string className
-function Handle:GetClass()
-    return ""
 end
 
 ---@return table dependencies
@@ -135,11 +92,6 @@ end
 function Handle:SetFader(settingsTable)
 end
 
----@param childIndex integer
----@return Handle|nil child
-function Handle:Ptr(childIndex)
-    return Handle:new()
-end
 
 ---@param returnName boolean
 ---@return string address
