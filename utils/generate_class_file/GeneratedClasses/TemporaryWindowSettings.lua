@@ -1,0 +1,594 @@
+---@meta
+
+---@class TemporaryWindowSettings: Object
+local TemporaryWindowSettings = {}
+---@return "TemporaryWindowSettings"
+function TemporaryWindowSettings:GetClass() end
+---@return "WindowSettings"
+function TemporaryWindowSettings:GetChildClass() end
+---@return UserProfile
+function TemporaryWindowSettings:Parent() end
+---@param index integer
+---@return WindowSettings
+function TemporaryWindowSettings:Ptr(index) end
+---@return WindowSettings[]
+function TemporaryWindowSettings:Children() end
+---@return WindowSettings?
+function TemporaryWindowSettings:CurrentChild() end
+---@overload fun(name: integer, role: nil): WindowSettings
+function TemporaryWindowSettings:Get(name, role) end
+---@overload fun(index: integer, class: "WindowSettings", undo: Undo?): WindowSettings
+---@overload fun(index: integer, class: "PoolSettings", undo: Undo?): PoolSettings
+---@overload fun(index: integer, class: "ShowCreatorSettings", undo: Undo?): ShowCreatorSettings
+---@overload fun(index: integer, class: "SmartViewSettings", undo: Undo?): SmartViewSettings
+---@overload fun(index: integer, class: "RunningPlaybacksSettings", undo: Undo?): RunningPlaybacksSettings
+---@overload fun(index: integer, class: "SoundPoolSettings", undo: Undo?): SoundPoolSettings
+---@overload fun(index: integer, class: "VideoPoolSettings", undo: Undo?): VideoPoolSettings
+---@overload fun(index: integer, class: "TimecodeSlotPoolSettings", undo: Undo?): TimecodeSlotPoolSettings
+---@overload fun(index: integer, class: "PresetPoolSettings", undo: Undo?): PresetPoolSettings
+---@overload fun(index: integer, class: "PresetVideoPoolSettings", undo: Undo?): PresetVideoPoolSettings
+---@overload fun(index: integer, class: "PresetShapersPoolSettings", undo: Undo?): PresetShapersPoolSettings
+---@overload fun(index: integer, class: "PresetControlPoolSettings", undo: Undo?): PresetControlPoolSettings
+---@overload fun(index: integer, class: "PresetFocusPoolSettings", undo: Undo?): PresetFocusPoolSettings
+---@overload fun(index: integer, class: "PresetBeamPoolSettings", undo: Undo?): PresetBeamPoolSettings
+---@overload fun(index: integer, class: "PresetColorPoolSettings", undo: Undo?): PresetColorPoolSettings
+---@overload fun(index: integer, class: "PresetGoboPoolSettings", undo: Undo?): PresetGoboPoolSettings
+---@overload fun(index: integer, class: "PresetPositionPoolSettings", undo: Undo?): PresetPositionPoolSettings
+---@overload fun(index: integer, class: "PresetDimmerPoolSettings", undo: Undo?): PresetDimmerPoolSettings
+---@overload fun(index: integer, class: "PresetAllPoolSettings", undo: Undo?): PresetAllPoolSettings
+---@overload fun(index: integer, class: "PresetDynamicPoolSettings", undo: Undo?): PresetDynamicPoolSettings
+---@overload fun(index: integer, class: "WorldPoolSettings", undo: Undo?): WorldPoolSettings
+---@overload fun(index: integer, class: "TimerPoolSettings", undo: Undo?): TimerPoolSettings
+---@overload fun(index: integer, class: "TimecodePoolSettings", undo: Undo?): TimecodePoolSettings
+---@overload fun(index: integer, class: "SequencePoolSettings", undo: Undo?): SequencePoolSettings
+---@overload fun(index: integer, class: "QuickeyPoolSettings", undo: Undo?): QuickeyPoolSettings
+---@overload fun(index: integer, class: "PluginPoolSettings", undo: Undo?): PluginPoolSettings
+---@overload fun(index: integer, class: "PagePoolSettings", undo: Undo?): PagePoolSettings
+---@overload fun(index: integer, class: "MatricksPoolSettings", undo: Undo?): MatricksPoolSettings
+---@overload fun(index: integer, class: "MacroPoolSettings", undo: Undo?): MacroPoolSettings
+---@overload fun(index: integer, class: "LayoutPoolSettings", undo: Undo?): LayoutPoolSettings
+---@overload fun(index: integer, class: "GroupPoolSettings", undo: Undo?): GroupPoolSettings
+---@overload fun(index: integer, class: "GeneratorPoolSettings", undo: Undo?): GeneratorPoolSettings
+---@overload fun(index: integer, class: "GelPoolSettings", undo: Undo?): GelPoolSettings
+---@overload fun(index: integer, class: "FilterPoolSettings", undo: Undo?): FilterPoolSettings
+---@overload fun(index: integer, class: "ExecConfigPoolSettings", undo: Undo?): ExecConfigPoolSettings
+---@overload fun(index: integer, class: "BitmapPoolSettings", undo: Undo?): BitmapPoolSettings
+---@overload fun(index: integer, class: "LayoutViewSettings", undo: Undo?): LayoutViewSettings
+---@overload fun(index: integer, class: "CloningWindowSettings", undo: Undo?): CloningWindowSettings
+---@overload fun(index: integer, class: "ExecEditorSettings", undo: Undo?): ExecEditorSettings
+---@overload fun(index: integer, class: "MatricksWindowSettings", undo: Undo?): MatricksWindowSettings
+---@overload fun(index: integer, class: "CommandWingBarSettings", undo: Undo?): CommandWingBarSettings
+---@overload fun(index: integer, class: "EncoderBarWindowSettings", undo: Undo?): EncoderBarWindowSettings
+---@overload fun(index: integer, class: "CustomMasterSectionWindowSettings", undo: Undo?): CustomMasterSectionWindowSettings
+---@overload fun(index: integer, class: "WindowTrackpadSettings", undo: Undo?): WindowTrackpadSettings
+---@overload fun(index: integer, class: "SelectionViewSettings", undo: Undo?): SelectionViewSettings
+---@overload fun(index: integer, class: "HelpViewerWindowSettings", undo: Undo?): HelpViewerWindowSettings
+---@overload fun(index: integer, class: "XkeysWindowSettings", undo: Undo?): XkeysWindowSettings
+---@overload fun(index: integer, class: "ModularPlaybackWindowSettings", undo: Undo?): ModularPlaybackWindowSettings
+---@overload fun(index: integer, class: "PlaybackWindowSettings", undo: Undo?): PlaybackWindowSettings
+---@overload fun(index: integer, class: "SysteminfoWindowSettings", undo: Undo?): SysteminfoWindowSettings
+---@overload fun(index: integer, class: "SysmonWindowSettings", undo: Undo?): SysmonWindowSettings
+---@overload fun(index: integer, class: "CommandlineWindowSettings", undo: Undo?): CommandlineWindowSettings
+---@overload fun(index: integer, class: "View3DSettings", undo: Undo?): View3DSettings
+---@overload fun(index: integer, class: "SpecialWindowSettings", undo: Undo?): SpecialWindowSettings
+---@overload fun(index: integer, class: "ColorPickerSettings", undo: Undo?): ColorPickerSettings
+---@overload fun(index: integer, class: "ShaperWindowSettings", undo: Undo?): ShaperWindowSettings
+---@overload fun(index: integer, class: "ClockWindowSettings", undo: Undo?): ClockWindowSettings
+---@overload fun(index: integer, class: "AtFilterSettings", undo: Undo?): AtFilterSettings
+---@overload fun(index: integer, class: "WindowInfoSettings", undo: Undo?): WindowInfoSettings
+---@overload fun(index: integer, class: "GridSettings", undo: Undo?): GridSettings
+---@overload fun(index: integer, class: "PSRPatchSheetSettings", undo: Undo?): PSRPatchSheetSettings
+---@overload fun(index: integer, class: "ShowCreatorSheetSettings", undo: Undo?): ShowCreatorSheetSettings
+---@overload fun(index: integer, class: "RunningPlaybacksSheetSettings", undo: Undo?): RunningPlaybacksSheetSettings
+---@overload fun(index: integer, class: "TimecodeWindowSettings", undo: Undo?): TimecodeWindowSettings
+---@overload fun(index: integer, class: "RecipeSheetSettings", undo: Undo?): RecipeSheetSettings
+---@overload fun(index: integer, class: "PresetEditorSettings", undo: Undo?): PresetEditorSettings
+---@overload fun(index: integer, class: "SequenceSheetSettings", undo: Undo?): SequenceSheetSettings
+---@overload fun(index: integer, class: "ContentSheetSettings", undo: Undo?): ContentSheetSettings
+---@overload fun(index: integer, class: "FixtureEditorSettings", undo: Undo?): FixtureEditorSettings
+---@overload fun(index: integer, class: "FixtureSheetSettings", undo: Undo?): FixtureSheetSettings
+---@overload fun(index: integer, class: "MessageGridSettings", undo: Undo?): MessageGridSettings
+---@overload fun(index: integer, class: "RdmWindowSettings", undo: Undo?): RdmWindowSettings
+---@overload fun(index: integer, class: "WindowAgendaSettings", undo: Undo?): WindowAgendaSettings
+---@overload fun(index: integer, class: "WindowPhaserEditorSettings", undo: Undo?): WindowPhaserEditorSettings
+---@overload fun(index: integer, class: "DMXSheetSettings", undo: Undo?): DMXSheetSettings
+---@overload fun(index: integer, class: "GelGridSettings", undo: Undo?): GelGridSettings
+---@overload fun(index: integer, class: "PatchSettings", undo: Undo?): PatchSettings
+---@overload fun(index: integer, class: "PatchLiveSettings", undo: Undo?): PatchLiveSettings
+---@overload fun(index: integer, class: "PatchEditorSettings", undo: Undo?): PatchEditorSettings
+---@overload fun(index: integer, class: "WindowSoundSettings", undo: Undo?): WindowSoundSettings
+---@overload fun(index: integer, class: nil, undo: Undo?): WindowSettings
+function TemporaryWindowSettings:Create(index, class, undo) end
+---@overload fun(class: "WindowSettings", undo: Undo?, count: integer?): WindowSettings
+---@overload fun(class: "PoolSettings", undo: Undo?, count: integer?): PoolSettings
+---@overload fun(class: "ShowCreatorSettings", undo: Undo?, count: integer?): ShowCreatorSettings
+---@overload fun(class: "SmartViewSettings", undo: Undo?, count: integer?): SmartViewSettings
+---@overload fun(class: "RunningPlaybacksSettings", undo: Undo?, count: integer?): RunningPlaybacksSettings
+---@overload fun(class: "SoundPoolSettings", undo: Undo?, count: integer?): SoundPoolSettings
+---@overload fun(class: "VideoPoolSettings", undo: Undo?, count: integer?): VideoPoolSettings
+---@overload fun(class: "TimecodeSlotPoolSettings", undo: Undo?, count: integer?): TimecodeSlotPoolSettings
+---@overload fun(class: "PresetPoolSettings", undo: Undo?, count: integer?): PresetPoolSettings
+---@overload fun(class: "PresetVideoPoolSettings", undo: Undo?, count: integer?): PresetVideoPoolSettings
+---@overload fun(class: "PresetShapersPoolSettings", undo: Undo?, count: integer?): PresetShapersPoolSettings
+---@overload fun(class: "PresetControlPoolSettings", undo: Undo?, count: integer?): PresetControlPoolSettings
+---@overload fun(class: "PresetFocusPoolSettings", undo: Undo?, count: integer?): PresetFocusPoolSettings
+---@overload fun(class: "PresetBeamPoolSettings", undo: Undo?, count: integer?): PresetBeamPoolSettings
+---@overload fun(class: "PresetColorPoolSettings", undo: Undo?, count: integer?): PresetColorPoolSettings
+---@overload fun(class: "PresetGoboPoolSettings", undo: Undo?, count: integer?): PresetGoboPoolSettings
+---@overload fun(class: "PresetPositionPoolSettings", undo: Undo?, count: integer?): PresetPositionPoolSettings
+---@overload fun(class: "PresetDimmerPoolSettings", undo: Undo?, count: integer?): PresetDimmerPoolSettings
+---@overload fun(class: "PresetAllPoolSettings", undo: Undo?, count: integer?): PresetAllPoolSettings
+---@overload fun(class: "PresetDynamicPoolSettings", undo: Undo?, count: integer?): PresetDynamicPoolSettings
+---@overload fun(class: "WorldPoolSettings", undo: Undo?, count: integer?): WorldPoolSettings
+---@overload fun(class: "TimerPoolSettings", undo: Undo?, count: integer?): TimerPoolSettings
+---@overload fun(class: "TimecodePoolSettings", undo: Undo?, count: integer?): TimecodePoolSettings
+---@overload fun(class: "SequencePoolSettings", undo: Undo?, count: integer?): SequencePoolSettings
+---@overload fun(class: "QuickeyPoolSettings", undo: Undo?, count: integer?): QuickeyPoolSettings
+---@overload fun(class: "PluginPoolSettings", undo: Undo?, count: integer?): PluginPoolSettings
+---@overload fun(class: "PagePoolSettings", undo: Undo?, count: integer?): PagePoolSettings
+---@overload fun(class: "MatricksPoolSettings", undo: Undo?, count: integer?): MatricksPoolSettings
+---@overload fun(class: "MacroPoolSettings", undo: Undo?, count: integer?): MacroPoolSettings
+---@overload fun(class: "LayoutPoolSettings", undo: Undo?, count: integer?): LayoutPoolSettings
+---@overload fun(class: "GroupPoolSettings", undo: Undo?, count: integer?): GroupPoolSettings
+---@overload fun(class: "GeneratorPoolSettings", undo: Undo?, count: integer?): GeneratorPoolSettings
+---@overload fun(class: "GelPoolSettings", undo: Undo?, count: integer?): GelPoolSettings
+---@overload fun(class: "FilterPoolSettings", undo: Undo?, count: integer?): FilterPoolSettings
+---@overload fun(class: "ExecConfigPoolSettings", undo: Undo?, count: integer?): ExecConfigPoolSettings
+---@overload fun(class: "BitmapPoolSettings", undo: Undo?, count: integer?): BitmapPoolSettings
+---@overload fun(class: "LayoutViewSettings", undo: Undo?, count: integer?): LayoutViewSettings
+---@overload fun(class: "CloningWindowSettings", undo: Undo?, count: integer?): CloningWindowSettings
+---@overload fun(class: "ExecEditorSettings", undo: Undo?, count: integer?): ExecEditorSettings
+---@overload fun(class: "MatricksWindowSettings", undo: Undo?, count: integer?): MatricksWindowSettings
+---@overload fun(class: "CommandWingBarSettings", undo: Undo?, count: integer?): CommandWingBarSettings
+---@overload fun(class: "EncoderBarWindowSettings", undo: Undo?, count: integer?): EncoderBarWindowSettings
+---@overload fun(class: "CustomMasterSectionWindowSettings", undo: Undo?, count: integer?): CustomMasterSectionWindowSettings
+---@overload fun(class: "WindowTrackpadSettings", undo: Undo?, count: integer?): WindowTrackpadSettings
+---@overload fun(class: "SelectionViewSettings", undo: Undo?, count: integer?): SelectionViewSettings
+---@overload fun(class: "HelpViewerWindowSettings", undo: Undo?, count: integer?): HelpViewerWindowSettings
+---@overload fun(class: "XkeysWindowSettings", undo: Undo?, count: integer?): XkeysWindowSettings
+---@overload fun(class: "ModularPlaybackWindowSettings", undo: Undo?, count: integer?): ModularPlaybackWindowSettings
+---@overload fun(class: "PlaybackWindowSettings", undo: Undo?, count: integer?): PlaybackWindowSettings
+---@overload fun(class: "SysteminfoWindowSettings", undo: Undo?, count: integer?): SysteminfoWindowSettings
+---@overload fun(class: "SysmonWindowSettings", undo: Undo?, count: integer?): SysmonWindowSettings
+---@overload fun(class: "CommandlineWindowSettings", undo: Undo?, count: integer?): CommandlineWindowSettings
+---@overload fun(class: "View3DSettings", undo: Undo?, count: integer?): View3DSettings
+---@overload fun(class: "SpecialWindowSettings", undo: Undo?, count: integer?): SpecialWindowSettings
+---@overload fun(class: "ColorPickerSettings", undo: Undo?, count: integer?): ColorPickerSettings
+---@overload fun(class: "ShaperWindowSettings", undo: Undo?, count: integer?): ShaperWindowSettings
+---@overload fun(class: "ClockWindowSettings", undo: Undo?, count: integer?): ClockWindowSettings
+---@overload fun(class: "AtFilterSettings", undo: Undo?, count: integer?): AtFilterSettings
+---@overload fun(class: "WindowInfoSettings", undo: Undo?, count: integer?): WindowInfoSettings
+---@overload fun(class: "GridSettings", undo: Undo?, count: integer?): GridSettings
+---@overload fun(class: "PSRPatchSheetSettings", undo: Undo?, count: integer?): PSRPatchSheetSettings
+---@overload fun(class: "ShowCreatorSheetSettings", undo: Undo?, count: integer?): ShowCreatorSheetSettings
+---@overload fun(class: "RunningPlaybacksSheetSettings", undo: Undo?, count: integer?): RunningPlaybacksSheetSettings
+---@overload fun(class: "TimecodeWindowSettings", undo: Undo?, count: integer?): TimecodeWindowSettings
+---@overload fun(class: "RecipeSheetSettings", undo: Undo?, count: integer?): RecipeSheetSettings
+---@overload fun(class: "PresetEditorSettings", undo: Undo?, count: integer?): PresetEditorSettings
+---@overload fun(class: "SequenceSheetSettings", undo: Undo?, count: integer?): SequenceSheetSettings
+---@overload fun(class: "ContentSheetSettings", undo: Undo?, count: integer?): ContentSheetSettings
+---@overload fun(class: "FixtureEditorSettings", undo: Undo?, count: integer?): FixtureEditorSettings
+---@overload fun(class: "FixtureSheetSettings", undo: Undo?, count: integer?): FixtureSheetSettings
+---@overload fun(class: "MessageGridSettings", undo: Undo?, count: integer?): MessageGridSettings
+---@overload fun(class: "RdmWindowSettings", undo: Undo?, count: integer?): RdmWindowSettings
+---@overload fun(class: "WindowAgendaSettings", undo: Undo?, count: integer?): WindowAgendaSettings
+---@overload fun(class: "WindowPhaserEditorSettings", undo: Undo?, count: integer?): WindowPhaserEditorSettings
+---@overload fun(class: "DMXSheetSettings", undo: Undo?, count: integer?): DMXSheetSettings
+---@overload fun(class: "GelGridSettings", undo: Undo?, count: integer?): GelGridSettings
+---@overload fun(class: "PatchSettings", undo: Undo?, count: integer?): PatchSettings
+---@overload fun(class: "PatchLiveSettings", undo: Undo?, count: integer?): PatchLiveSettings
+---@overload fun(class: "PatchEditorSettings", undo: Undo?, count: integer?): PatchEditorSettings
+---@overload fun(class: "WindowSoundSettings", undo: Undo?, count: integer?): WindowSoundSettings
+---@overload fun(class: nil, undo: Undo?, count: integer?): WindowSettings
+function TemporaryWindowSettings:Append(class, undo, count) end
+---@overload fun(class: "WindowSettings", undo: Undo?): WindowSettings
+---@overload fun(class: "PoolSettings", undo: Undo?): PoolSettings
+---@overload fun(class: "ShowCreatorSettings", undo: Undo?): ShowCreatorSettings
+---@overload fun(class: "SmartViewSettings", undo: Undo?): SmartViewSettings
+---@overload fun(class: "RunningPlaybacksSettings", undo: Undo?): RunningPlaybacksSettings
+---@overload fun(class: "SoundPoolSettings", undo: Undo?): SoundPoolSettings
+---@overload fun(class: "VideoPoolSettings", undo: Undo?): VideoPoolSettings
+---@overload fun(class: "TimecodeSlotPoolSettings", undo: Undo?): TimecodeSlotPoolSettings
+---@overload fun(class: "PresetPoolSettings", undo: Undo?): PresetPoolSettings
+---@overload fun(class: "PresetVideoPoolSettings", undo: Undo?): PresetVideoPoolSettings
+---@overload fun(class: "PresetShapersPoolSettings", undo: Undo?): PresetShapersPoolSettings
+---@overload fun(class: "PresetControlPoolSettings", undo: Undo?): PresetControlPoolSettings
+---@overload fun(class: "PresetFocusPoolSettings", undo: Undo?): PresetFocusPoolSettings
+---@overload fun(class: "PresetBeamPoolSettings", undo: Undo?): PresetBeamPoolSettings
+---@overload fun(class: "PresetColorPoolSettings", undo: Undo?): PresetColorPoolSettings
+---@overload fun(class: "PresetGoboPoolSettings", undo: Undo?): PresetGoboPoolSettings
+---@overload fun(class: "PresetPositionPoolSettings", undo: Undo?): PresetPositionPoolSettings
+---@overload fun(class: "PresetDimmerPoolSettings", undo: Undo?): PresetDimmerPoolSettings
+---@overload fun(class: "PresetAllPoolSettings", undo: Undo?): PresetAllPoolSettings
+---@overload fun(class: "PresetDynamicPoolSettings", undo: Undo?): PresetDynamicPoolSettings
+---@overload fun(class: "WorldPoolSettings", undo: Undo?): WorldPoolSettings
+---@overload fun(class: "TimerPoolSettings", undo: Undo?): TimerPoolSettings
+---@overload fun(class: "TimecodePoolSettings", undo: Undo?): TimecodePoolSettings
+---@overload fun(class: "SequencePoolSettings", undo: Undo?): SequencePoolSettings
+---@overload fun(class: "QuickeyPoolSettings", undo: Undo?): QuickeyPoolSettings
+---@overload fun(class: "PluginPoolSettings", undo: Undo?): PluginPoolSettings
+---@overload fun(class: "PagePoolSettings", undo: Undo?): PagePoolSettings
+---@overload fun(class: "MatricksPoolSettings", undo: Undo?): MatricksPoolSettings
+---@overload fun(class: "MacroPoolSettings", undo: Undo?): MacroPoolSettings
+---@overload fun(class: "LayoutPoolSettings", undo: Undo?): LayoutPoolSettings
+---@overload fun(class: "GroupPoolSettings", undo: Undo?): GroupPoolSettings
+---@overload fun(class: "GeneratorPoolSettings", undo: Undo?): GeneratorPoolSettings
+---@overload fun(class: "GelPoolSettings", undo: Undo?): GelPoolSettings
+---@overload fun(class: "FilterPoolSettings", undo: Undo?): FilterPoolSettings
+---@overload fun(class: "ExecConfigPoolSettings", undo: Undo?): ExecConfigPoolSettings
+---@overload fun(class: "BitmapPoolSettings", undo: Undo?): BitmapPoolSettings
+---@overload fun(class: "LayoutViewSettings", undo: Undo?): LayoutViewSettings
+---@overload fun(class: "CloningWindowSettings", undo: Undo?): CloningWindowSettings
+---@overload fun(class: "ExecEditorSettings", undo: Undo?): ExecEditorSettings
+---@overload fun(class: "MatricksWindowSettings", undo: Undo?): MatricksWindowSettings
+---@overload fun(class: "CommandWingBarSettings", undo: Undo?): CommandWingBarSettings
+---@overload fun(class: "EncoderBarWindowSettings", undo: Undo?): EncoderBarWindowSettings
+---@overload fun(class: "CustomMasterSectionWindowSettings", undo: Undo?): CustomMasterSectionWindowSettings
+---@overload fun(class: "WindowTrackpadSettings", undo: Undo?): WindowTrackpadSettings
+---@overload fun(class: "SelectionViewSettings", undo: Undo?): SelectionViewSettings
+---@overload fun(class: "HelpViewerWindowSettings", undo: Undo?): HelpViewerWindowSettings
+---@overload fun(class: "XkeysWindowSettings", undo: Undo?): XkeysWindowSettings
+---@overload fun(class: "ModularPlaybackWindowSettings", undo: Undo?): ModularPlaybackWindowSettings
+---@overload fun(class: "PlaybackWindowSettings", undo: Undo?): PlaybackWindowSettings
+---@overload fun(class: "SysteminfoWindowSettings", undo: Undo?): SysteminfoWindowSettings
+---@overload fun(class: "SysmonWindowSettings", undo: Undo?): SysmonWindowSettings
+---@overload fun(class: "CommandlineWindowSettings", undo: Undo?): CommandlineWindowSettings
+---@overload fun(class: "View3DSettings", undo: Undo?): View3DSettings
+---@overload fun(class: "SpecialWindowSettings", undo: Undo?): SpecialWindowSettings
+---@overload fun(class: "ColorPickerSettings", undo: Undo?): ColorPickerSettings
+---@overload fun(class: "ShaperWindowSettings", undo: Undo?): ShaperWindowSettings
+---@overload fun(class: "ClockWindowSettings", undo: Undo?): ClockWindowSettings
+---@overload fun(class: "AtFilterSettings", undo: Undo?): AtFilterSettings
+---@overload fun(class: "WindowInfoSettings", undo: Undo?): WindowInfoSettings
+---@overload fun(class: "GridSettings", undo: Undo?): GridSettings
+---@overload fun(class: "PSRPatchSheetSettings", undo: Undo?): PSRPatchSheetSettings
+---@overload fun(class: "ShowCreatorSheetSettings", undo: Undo?): ShowCreatorSheetSettings
+---@overload fun(class: "RunningPlaybacksSheetSettings", undo: Undo?): RunningPlaybacksSheetSettings
+---@overload fun(class: "TimecodeWindowSettings", undo: Undo?): TimecodeWindowSettings
+---@overload fun(class: "RecipeSheetSettings", undo: Undo?): RecipeSheetSettings
+---@overload fun(class: "PresetEditorSettings", undo: Undo?): PresetEditorSettings
+---@overload fun(class: "SequenceSheetSettings", undo: Undo?): SequenceSheetSettings
+---@overload fun(class: "ContentSheetSettings", undo: Undo?): ContentSheetSettings
+---@overload fun(class: "FixtureEditorSettings", undo: Undo?): FixtureEditorSettings
+---@overload fun(class: "FixtureSheetSettings", undo: Undo?): FixtureSheetSettings
+---@overload fun(class: "MessageGridSettings", undo: Undo?): MessageGridSettings
+---@overload fun(class: "RdmWindowSettings", undo: Undo?): RdmWindowSettings
+---@overload fun(class: "WindowAgendaSettings", undo: Undo?): WindowAgendaSettings
+---@overload fun(class: "WindowPhaserEditorSettings", undo: Undo?): WindowPhaserEditorSettings
+---@overload fun(class: "DMXSheetSettings", undo: Undo?): DMXSheetSettings
+---@overload fun(class: "GelGridSettings", undo: Undo?): GelGridSettings
+---@overload fun(class: "PatchSettings", undo: Undo?): PatchSettings
+---@overload fun(class: "PatchLiveSettings", undo: Undo?): PatchLiveSettings
+---@overload fun(class: "PatchEditorSettings", undo: Undo?): PatchEditorSettings
+---@overload fun(class: "WindowSoundSettings", undo: Undo?): WindowSoundSettings
+---@overload fun(class: nil, undo: Undo?): WindowSettings
+function TemporaryWindowSettings:Acquire(class, undo) end
+---@overload fun(class: "WindowSettings", undo: Undo?): WindowSettings
+---@overload fun(class: "PoolSettings", undo: Undo?): PoolSettings
+---@overload fun(class: "ShowCreatorSettings", undo: Undo?): ShowCreatorSettings
+---@overload fun(class: "SmartViewSettings", undo: Undo?): SmartViewSettings
+---@overload fun(class: "RunningPlaybacksSettings", undo: Undo?): RunningPlaybacksSettings
+---@overload fun(class: "SoundPoolSettings", undo: Undo?): SoundPoolSettings
+---@overload fun(class: "VideoPoolSettings", undo: Undo?): VideoPoolSettings
+---@overload fun(class: "TimecodeSlotPoolSettings", undo: Undo?): TimecodeSlotPoolSettings
+---@overload fun(class: "PresetPoolSettings", undo: Undo?): PresetPoolSettings
+---@overload fun(class: "PresetVideoPoolSettings", undo: Undo?): PresetVideoPoolSettings
+---@overload fun(class: "PresetShapersPoolSettings", undo: Undo?): PresetShapersPoolSettings
+---@overload fun(class: "PresetControlPoolSettings", undo: Undo?): PresetControlPoolSettings
+---@overload fun(class: "PresetFocusPoolSettings", undo: Undo?): PresetFocusPoolSettings
+---@overload fun(class: "PresetBeamPoolSettings", undo: Undo?): PresetBeamPoolSettings
+---@overload fun(class: "PresetColorPoolSettings", undo: Undo?): PresetColorPoolSettings
+---@overload fun(class: "PresetGoboPoolSettings", undo: Undo?): PresetGoboPoolSettings
+---@overload fun(class: "PresetPositionPoolSettings", undo: Undo?): PresetPositionPoolSettings
+---@overload fun(class: "PresetDimmerPoolSettings", undo: Undo?): PresetDimmerPoolSettings
+---@overload fun(class: "PresetAllPoolSettings", undo: Undo?): PresetAllPoolSettings
+---@overload fun(class: "PresetDynamicPoolSettings", undo: Undo?): PresetDynamicPoolSettings
+---@overload fun(class: "WorldPoolSettings", undo: Undo?): WorldPoolSettings
+---@overload fun(class: "TimerPoolSettings", undo: Undo?): TimerPoolSettings
+---@overload fun(class: "TimecodePoolSettings", undo: Undo?): TimecodePoolSettings
+---@overload fun(class: "SequencePoolSettings", undo: Undo?): SequencePoolSettings
+---@overload fun(class: "QuickeyPoolSettings", undo: Undo?): QuickeyPoolSettings
+---@overload fun(class: "PluginPoolSettings", undo: Undo?): PluginPoolSettings
+---@overload fun(class: "PagePoolSettings", undo: Undo?): PagePoolSettings
+---@overload fun(class: "MatricksPoolSettings", undo: Undo?): MatricksPoolSettings
+---@overload fun(class: "MacroPoolSettings", undo: Undo?): MacroPoolSettings
+---@overload fun(class: "LayoutPoolSettings", undo: Undo?): LayoutPoolSettings
+---@overload fun(class: "GroupPoolSettings", undo: Undo?): GroupPoolSettings
+---@overload fun(class: "GeneratorPoolSettings", undo: Undo?): GeneratorPoolSettings
+---@overload fun(class: "GelPoolSettings", undo: Undo?): GelPoolSettings
+---@overload fun(class: "FilterPoolSettings", undo: Undo?): FilterPoolSettings
+---@overload fun(class: "ExecConfigPoolSettings", undo: Undo?): ExecConfigPoolSettings
+---@overload fun(class: "BitmapPoolSettings", undo: Undo?): BitmapPoolSettings
+---@overload fun(class: "LayoutViewSettings", undo: Undo?): LayoutViewSettings
+---@overload fun(class: "CloningWindowSettings", undo: Undo?): CloningWindowSettings
+---@overload fun(class: "ExecEditorSettings", undo: Undo?): ExecEditorSettings
+---@overload fun(class: "MatricksWindowSettings", undo: Undo?): MatricksWindowSettings
+---@overload fun(class: "CommandWingBarSettings", undo: Undo?): CommandWingBarSettings
+---@overload fun(class: "EncoderBarWindowSettings", undo: Undo?): EncoderBarWindowSettings
+---@overload fun(class: "CustomMasterSectionWindowSettings", undo: Undo?): CustomMasterSectionWindowSettings
+---@overload fun(class: "WindowTrackpadSettings", undo: Undo?): WindowTrackpadSettings
+---@overload fun(class: "SelectionViewSettings", undo: Undo?): SelectionViewSettings
+---@overload fun(class: "HelpViewerWindowSettings", undo: Undo?): HelpViewerWindowSettings
+---@overload fun(class: "XkeysWindowSettings", undo: Undo?): XkeysWindowSettings
+---@overload fun(class: "ModularPlaybackWindowSettings", undo: Undo?): ModularPlaybackWindowSettings
+---@overload fun(class: "PlaybackWindowSettings", undo: Undo?): PlaybackWindowSettings
+---@overload fun(class: "SysteminfoWindowSettings", undo: Undo?): SysteminfoWindowSettings
+---@overload fun(class: "SysmonWindowSettings", undo: Undo?): SysmonWindowSettings
+---@overload fun(class: "CommandlineWindowSettings", undo: Undo?): CommandlineWindowSettings
+---@overload fun(class: "View3DSettings", undo: Undo?): View3DSettings
+---@overload fun(class: "SpecialWindowSettings", undo: Undo?): SpecialWindowSettings
+---@overload fun(class: "ColorPickerSettings", undo: Undo?): ColorPickerSettings
+---@overload fun(class: "ShaperWindowSettings", undo: Undo?): ShaperWindowSettings
+---@overload fun(class: "ClockWindowSettings", undo: Undo?): ClockWindowSettings
+---@overload fun(class: "AtFilterSettings", undo: Undo?): AtFilterSettings
+---@overload fun(class: "WindowInfoSettings", undo: Undo?): WindowInfoSettings
+---@overload fun(class: "GridSettings", undo: Undo?): GridSettings
+---@overload fun(class: "PSRPatchSheetSettings", undo: Undo?): PSRPatchSheetSettings
+---@overload fun(class: "ShowCreatorSheetSettings", undo: Undo?): ShowCreatorSheetSettings
+---@overload fun(class: "RunningPlaybacksSheetSettings", undo: Undo?): RunningPlaybacksSheetSettings
+---@overload fun(class: "TimecodeWindowSettings", undo: Undo?): TimecodeWindowSettings
+---@overload fun(class: "RecipeSheetSettings", undo: Undo?): RecipeSheetSettings
+---@overload fun(class: "PresetEditorSettings", undo: Undo?): PresetEditorSettings
+---@overload fun(class: "SequenceSheetSettings", undo: Undo?): SequenceSheetSettings
+---@overload fun(class: "ContentSheetSettings", undo: Undo?): ContentSheetSettings
+---@overload fun(class: "FixtureEditorSettings", undo: Undo?): FixtureEditorSettings
+---@overload fun(class: "FixtureSheetSettings", undo: Undo?): FixtureSheetSettings
+---@overload fun(class: "MessageGridSettings", undo: Undo?): MessageGridSettings
+---@overload fun(class: "RdmWindowSettings", undo: Undo?): RdmWindowSettings
+---@overload fun(class: "WindowAgendaSettings", undo: Undo?): WindowAgendaSettings
+---@overload fun(class: "WindowPhaserEditorSettings", undo: Undo?): WindowPhaserEditorSettings
+---@overload fun(class: "DMXSheetSettings", undo: Undo?): DMXSheetSettings
+---@overload fun(class: "GelGridSettings", undo: Undo?): GelGridSettings
+---@overload fun(class: "PatchSettings", undo: Undo?): PatchSettings
+---@overload fun(class: "PatchLiveSettings", undo: Undo?): PatchLiveSettings
+---@overload fun(class: "PatchEditorSettings", undo: Undo?): PatchEditorSettings
+---@overload fun(class: "WindowSoundSettings", undo: Undo?): WindowSoundSettings
+---@overload fun(class: nil, undo: Undo?): WindowSettings
+---@deprecated use "Acquire" instead
+function TemporaryWindowSettings:Aquire(class, undo) end
+---@overload fun(index: integer, class: "WindowSettings", undo: Undo?, count: integer?): WindowSettings
+---@overload fun(index: integer, class: "PoolSettings", undo: Undo?, count: integer?): PoolSettings
+---@overload fun(index: integer, class: "ShowCreatorSettings", undo: Undo?, count: integer?): ShowCreatorSettings
+---@overload fun(index: integer, class: "SmartViewSettings", undo: Undo?, count: integer?): SmartViewSettings
+---@overload fun(index: integer, class: "RunningPlaybacksSettings", undo: Undo?, count: integer?): RunningPlaybacksSettings
+---@overload fun(index: integer, class: "SoundPoolSettings", undo: Undo?, count: integer?): SoundPoolSettings
+---@overload fun(index: integer, class: "VideoPoolSettings", undo: Undo?, count: integer?): VideoPoolSettings
+---@overload fun(index: integer, class: "TimecodeSlotPoolSettings", undo: Undo?, count: integer?): TimecodeSlotPoolSettings
+---@overload fun(index: integer, class: "PresetPoolSettings", undo: Undo?, count: integer?): PresetPoolSettings
+---@overload fun(index: integer, class: "PresetVideoPoolSettings", undo: Undo?, count: integer?): PresetVideoPoolSettings
+---@overload fun(index: integer, class: "PresetShapersPoolSettings", undo: Undo?, count: integer?): PresetShapersPoolSettings
+---@overload fun(index: integer, class: "PresetControlPoolSettings", undo: Undo?, count: integer?): PresetControlPoolSettings
+---@overload fun(index: integer, class: "PresetFocusPoolSettings", undo: Undo?, count: integer?): PresetFocusPoolSettings
+---@overload fun(index: integer, class: "PresetBeamPoolSettings", undo: Undo?, count: integer?): PresetBeamPoolSettings
+---@overload fun(index: integer, class: "PresetColorPoolSettings", undo: Undo?, count: integer?): PresetColorPoolSettings
+---@overload fun(index: integer, class: "PresetGoboPoolSettings", undo: Undo?, count: integer?): PresetGoboPoolSettings
+---@overload fun(index: integer, class: "PresetPositionPoolSettings", undo: Undo?, count: integer?): PresetPositionPoolSettings
+---@overload fun(index: integer, class: "PresetDimmerPoolSettings", undo: Undo?, count: integer?): PresetDimmerPoolSettings
+---@overload fun(index: integer, class: "PresetAllPoolSettings", undo: Undo?, count: integer?): PresetAllPoolSettings
+---@overload fun(index: integer, class: "PresetDynamicPoolSettings", undo: Undo?, count: integer?): PresetDynamicPoolSettings
+---@overload fun(index: integer, class: "WorldPoolSettings", undo: Undo?, count: integer?): WorldPoolSettings
+---@overload fun(index: integer, class: "TimerPoolSettings", undo: Undo?, count: integer?): TimerPoolSettings
+---@overload fun(index: integer, class: "TimecodePoolSettings", undo: Undo?, count: integer?): TimecodePoolSettings
+---@overload fun(index: integer, class: "SequencePoolSettings", undo: Undo?, count: integer?): SequencePoolSettings
+---@overload fun(index: integer, class: "QuickeyPoolSettings", undo: Undo?, count: integer?): QuickeyPoolSettings
+---@overload fun(index: integer, class: "PluginPoolSettings", undo: Undo?, count: integer?): PluginPoolSettings
+---@overload fun(index: integer, class: "PagePoolSettings", undo: Undo?, count: integer?): PagePoolSettings
+---@overload fun(index: integer, class: "MatricksPoolSettings", undo: Undo?, count: integer?): MatricksPoolSettings
+---@overload fun(index: integer, class: "MacroPoolSettings", undo: Undo?, count: integer?): MacroPoolSettings
+---@overload fun(index: integer, class: "LayoutPoolSettings", undo: Undo?, count: integer?): LayoutPoolSettings
+---@overload fun(index: integer, class: "GroupPoolSettings", undo: Undo?, count: integer?): GroupPoolSettings
+---@overload fun(index: integer, class: "GeneratorPoolSettings", undo: Undo?, count: integer?): GeneratorPoolSettings
+---@overload fun(index: integer, class: "GelPoolSettings", undo: Undo?, count: integer?): GelPoolSettings
+---@overload fun(index: integer, class: "FilterPoolSettings", undo: Undo?, count: integer?): FilterPoolSettings
+---@overload fun(index: integer, class: "ExecConfigPoolSettings", undo: Undo?, count: integer?): ExecConfigPoolSettings
+---@overload fun(index: integer, class: "BitmapPoolSettings", undo: Undo?, count: integer?): BitmapPoolSettings
+---@overload fun(index: integer, class: "LayoutViewSettings", undo: Undo?, count: integer?): LayoutViewSettings
+---@overload fun(index: integer, class: "CloningWindowSettings", undo: Undo?, count: integer?): CloningWindowSettings
+---@overload fun(index: integer, class: "ExecEditorSettings", undo: Undo?, count: integer?): ExecEditorSettings
+---@overload fun(index: integer, class: "MatricksWindowSettings", undo: Undo?, count: integer?): MatricksWindowSettings
+---@overload fun(index: integer, class: "CommandWingBarSettings", undo: Undo?, count: integer?): CommandWingBarSettings
+---@overload fun(index: integer, class: "EncoderBarWindowSettings", undo: Undo?, count: integer?): EncoderBarWindowSettings
+---@overload fun(index: integer, class: "CustomMasterSectionWindowSettings", undo: Undo?, count: integer?): CustomMasterSectionWindowSettings
+---@overload fun(index: integer, class: "WindowTrackpadSettings", undo: Undo?, count: integer?): WindowTrackpadSettings
+---@overload fun(index: integer, class: "SelectionViewSettings", undo: Undo?, count: integer?): SelectionViewSettings
+---@overload fun(index: integer, class: "HelpViewerWindowSettings", undo: Undo?, count: integer?): HelpViewerWindowSettings
+---@overload fun(index: integer, class: "XkeysWindowSettings", undo: Undo?, count: integer?): XkeysWindowSettings
+---@overload fun(index: integer, class: "ModularPlaybackWindowSettings", undo: Undo?, count: integer?): ModularPlaybackWindowSettings
+---@overload fun(index: integer, class: "PlaybackWindowSettings", undo: Undo?, count: integer?): PlaybackWindowSettings
+---@overload fun(index: integer, class: "SysteminfoWindowSettings", undo: Undo?, count: integer?): SysteminfoWindowSettings
+---@overload fun(index: integer, class: "SysmonWindowSettings", undo: Undo?, count: integer?): SysmonWindowSettings
+---@overload fun(index: integer, class: "CommandlineWindowSettings", undo: Undo?, count: integer?): CommandlineWindowSettings
+---@overload fun(index: integer, class: "View3DSettings", undo: Undo?, count: integer?): View3DSettings
+---@overload fun(index: integer, class: "SpecialWindowSettings", undo: Undo?, count: integer?): SpecialWindowSettings
+---@overload fun(index: integer, class: "ColorPickerSettings", undo: Undo?, count: integer?): ColorPickerSettings
+---@overload fun(index: integer, class: "ShaperWindowSettings", undo: Undo?, count: integer?): ShaperWindowSettings
+---@overload fun(index: integer, class: "ClockWindowSettings", undo: Undo?, count: integer?): ClockWindowSettings
+---@overload fun(index: integer, class: "AtFilterSettings", undo: Undo?, count: integer?): AtFilterSettings
+---@overload fun(index: integer, class: "WindowInfoSettings", undo: Undo?, count: integer?): WindowInfoSettings
+---@overload fun(index: integer, class: "GridSettings", undo: Undo?, count: integer?): GridSettings
+---@overload fun(index: integer, class: "PSRPatchSheetSettings", undo: Undo?, count: integer?): PSRPatchSheetSettings
+---@overload fun(index: integer, class: "ShowCreatorSheetSettings", undo: Undo?, count: integer?): ShowCreatorSheetSettings
+---@overload fun(index: integer, class: "RunningPlaybacksSheetSettings", undo: Undo?, count: integer?): RunningPlaybacksSheetSettings
+---@overload fun(index: integer, class: "TimecodeWindowSettings", undo: Undo?, count: integer?): TimecodeWindowSettings
+---@overload fun(index: integer, class: "RecipeSheetSettings", undo: Undo?, count: integer?): RecipeSheetSettings
+---@overload fun(index: integer, class: "PresetEditorSettings", undo: Undo?, count: integer?): PresetEditorSettings
+---@overload fun(index: integer, class: "SequenceSheetSettings", undo: Undo?, count: integer?): SequenceSheetSettings
+---@overload fun(index: integer, class: "ContentSheetSettings", undo: Undo?, count: integer?): ContentSheetSettings
+---@overload fun(index: integer, class: "FixtureEditorSettings", undo: Undo?, count: integer?): FixtureEditorSettings
+---@overload fun(index: integer, class: "FixtureSheetSettings", undo: Undo?, count: integer?): FixtureSheetSettings
+---@overload fun(index: integer, class: "MessageGridSettings", undo: Undo?, count: integer?): MessageGridSettings
+---@overload fun(index: integer, class: "RdmWindowSettings", undo: Undo?, count: integer?): RdmWindowSettings
+---@overload fun(index: integer, class: "WindowAgendaSettings", undo: Undo?, count: integer?): WindowAgendaSettings
+---@overload fun(index: integer, class: "WindowPhaserEditorSettings", undo: Undo?, count: integer?): WindowPhaserEditorSettings
+---@overload fun(index: integer, class: "DMXSheetSettings", undo: Undo?, count: integer?): DMXSheetSettings
+---@overload fun(index: integer, class: "GelGridSettings", undo: Undo?, count: integer?): GelGridSettings
+---@overload fun(index: integer, class: "PatchSettings", undo: Undo?, count: integer?): PatchSettings
+---@overload fun(index: integer, class: "PatchLiveSettings", undo: Undo?, count: integer?): PatchLiveSettings
+---@overload fun(index: integer, class: "PatchEditorSettings", undo: Undo?, count: integer?): PatchEditorSettings
+---@overload fun(index: integer, class: "WindowSoundSettings", undo: Undo?, count: integer?): WindowSoundSettings
+---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): WindowSettings
+function TemporaryWindowSettings:Insert(index, class, undo, count) end
+---@overload fun(name: string, class: "WindowSettings"): WindowSettings
+---@overload fun(name: string, class: "PoolSettings"): PoolSettings
+---@overload fun(name: string, class: "ShowCreatorSettings"): ShowCreatorSettings
+---@overload fun(name: string, class: "SmartViewSettings"): SmartViewSettings
+---@overload fun(name: string, class: "RunningPlaybacksSettings"): RunningPlaybacksSettings
+---@overload fun(name: string, class: "SoundPoolSettings"): SoundPoolSettings
+---@overload fun(name: string, class: "VideoPoolSettings"): VideoPoolSettings
+---@overload fun(name: string, class: "TimecodeSlotPoolSettings"): TimecodeSlotPoolSettings
+---@overload fun(name: string, class: "PresetPoolSettings"): PresetPoolSettings
+---@overload fun(name: string, class: "PresetVideoPoolSettings"): PresetVideoPoolSettings
+---@overload fun(name: string, class: "PresetShapersPoolSettings"): PresetShapersPoolSettings
+---@overload fun(name: string, class: "PresetControlPoolSettings"): PresetControlPoolSettings
+---@overload fun(name: string, class: "PresetFocusPoolSettings"): PresetFocusPoolSettings
+---@overload fun(name: string, class: "PresetBeamPoolSettings"): PresetBeamPoolSettings
+---@overload fun(name: string, class: "PresetColorPoolSettings"): PresetColorPoolSettings
+---@overload fun(name: string, class: "PresetGoboPoolSettings"): PresetGoboPoolSettings
+---@overload fun(name: string, class: "PresetPositionPoolSettings"): PresetPositionPoolSettings
+---@overload fun(name: string, class: "PresetDimmerPoolSettings"): PresetDimmerPoolSettings
+---@overload fun(name: string, class: "PresetAllPoolSettings"): PresetAllPoolSettings
+---@overload fun(name: string, class: "PresetDynamicPoolSettings"): PresetDynamicPoolSettings
+---@overload fun(name: string, class: "WorldPoolSettings"): WorldPoolSettings
+---@overload fun(name: string, class: "TimerPoolSettings"): TimerPoolSettings
+---@overload fun(name: string, class: "TimecodePoolSettings"): TimecodePoolSettings
+---@overload fun(name: string, class: "SequencePoolSettings"): SequencePoolSettings
+---@overload fun(name: string, class: "QuickeyPoolSettings"): QuickeyPoolSettings
+---@overload fun(name: string, class: "PluginPoolSettings"): PluginPoolSettings
+---@overload fun(name: string, class: "PagePoolSettings"): PagePoolSettings
+---@overload fun(name: string, class: "MatricksPoolSettings"): MatricksPoolSettings
+---@overload fun(name: string, class: "MacroPoolSettings"): MacroPoolSettings
+---@overload fun(name: string, class: "LayoutPoolSettings"): LayoutPoolSettings
+---@overload fun(name: string, class: "GroupPoolSettings"): GroupPoolSettings
+---@overload fun(name: string, class: "GeneratorPoolSettings"): GeneratorPoolSettings
+---@overload fun(name: string, class: "GelPoolSettings"): GelPoolSettings
+---@overload fun(name: string, class: "FilterPoolSettings"): FilterPoolSettings
+---@overload fun(name: string, class: "ExecConfigPoolSettings"): ExecConfigPoolSettings
+---@overload fun(name: string, class: "BitmapPoolSettings"): BitmapPoolSettings
+---@overload fun(name: string, class: "LayoutViewSettings"): LayoutViewSettings
+---@overload fun(name: string, class: "CloningWindowSettings"): CloningWindowSettings
+---@overload fun(name: string, class: "ExecEditorSettings"): ExecEditorSettings
+---@overload fun(name: string, class: "MatricksWindowSettings"): MatricksWindowSettings
+---@overload fun(name: string, class: "CommandWingBarSettings"): CommandWingBarSettings
+---@overload fun(name: string, class: "EncoderBarWindowSettings"): EncoderBarWindowSettings
+---@overload fun(name: string, class: "CustomMasterSectionWindowSettings"): CustomMasterSectionWindowSettings
+---@overload fun(name: string, class: "WindowTrackpadSettings"): WindowTrackpadSettings
+---@overload fun(name: string, class: "SelectionViewSettings"): SelectionViewSettings
+---@overload fun(name: string, class: "HelpViewerWindowSettings"): HelpViewerWindowSettings
+---@overload fun(name: string, class: "XkeysWindowSettings"): XkeysWindowSettings
+---@overload fun(name: string, class: "ModularPlaybackWindowSettings"): ModularPlaybackWindowSettings
+---@overload fun(name: string, class: "PlaybackWindowSettings"): PlaybackWindowSettings
+---@overload fun(name: string, class: "SysteminfoWindowSettings"): SysteminfoWindowSettings
+---@overload fun(name: string, class: "SysmonWindowSettings"): SysmonWindowSettings
+---@overload fun(name: string, class: "CommandlineWindowSettings"): CommandlineWindowSettings
+---@overload fun(name: string, class: "View3DSettings"): View3DSettings
+---@overload fun(name: string, class: "SpecialWindowSettings"): SpecialWindowSettings
+---@overload fun(name: string, class: "ColorPickerSettings"): ColorPickerSettings
+---@overload fun(name: string, class: "ShaperWindowSettings"): ShaperWindowSettings
+---@overload fun(name: string, class: "ClockWindowSettings"): ClockWindowSettings
+---@overload fun(name: string, class: "AtFilterSettings"): AtFilterSettings
+---@overload fun(name: string, class: "WindowInfoSettings"): WindowInfoSettings
+---@overload fun(name: string, class: "GridSettings"): GridSettings
+---@overload fun(name: string, class: "PSRPatchSheetSettings"): PSRPatchSheetSettings
+---@overload fun(name: string, class: "ShowCreatorSheetSettings"): ShowCreatorSheetSettings
+---@overload fun(name: string, class: "RunningPlaybacksSheetSettings"): RunningPlaybacksSheetSettings
+---@overload fun(name: string, class: "TimecodeWindowSettings"): TimecodeWindowSettings
+---@overload fun(name: string, class: "RecipeSheetSettings"): RecipeSheetSettings
+---@overload fun(name: string, class: "PresetEditorSettings"): PresetEditorSettings
+---@overload fun(name: string, class: "SequenceSheetSettings"): SequenceSheetSettings
+---@overload fun(name: string, class: "ContentSheetSettings"): ContentSheetSettings
+---@overload fun(name: string, class: "FixtureEditorSettings"): FixtureEditorSettings
+---@overload fun(name: string, class: "FixtureSheetSettings"): FixtureSheetSettings
+---@overload fun(name: string, class: "MessageGridSettings"): MessageGridSettings
+---@overload fun(name: string, class: "RdmWindowSettings"): RdmWindowSettings
+---@overload fun(name: string, class: "WindowAgendaSettings"): WindowAgendaSettings
+---@overload fun(name: string, class: "WindowPhaserEditorSettings"): WindowPhaserEditorSettings
+---@overload fun(name: string, class: "DMXSheetSettings"): DMXSheetSettings
+---@overload fun(name: string, class: "GelGridSettings"): GelGridSettings
+---@overload fun(name: string, class: "PatchSettings"): PatchSettings
+---@overload fun(name: string, class: "PatchLiveSettings"): PatchLiveSettings
+---@overload fun(name: string, class: "PatchEditorSettings"): PatchEditorSettings
+---@overload fun(name: string, class: "WindowSoundSettings"): WindowSoundSettings
+---@overload fun(name: string, class: nil): WindowSettings
+function TemporaryWindowSettings:Find(name, class) end
+---@overload fun(name: string, class: "WindowSettings"): WindowSettings
+---@overload fun(name: string, class: "PoolSettings"): PoolSettings
+---@overload fun(name: string, class: "ShowCreatorSettings"): ShowCreatorSettings
+---@overload fun(name: string, class: "SmartViewSettings"): SmartViewSettings
+---@overload fun(name: string, class: "RunningPlaybacksSettings"): RunningPlaybacksSettings
+---@overload fun(name: string, class: "SoundPoolSettings"): SoundPoolSettings
+---@overload fun(name: string, class: "VideoPoolSettings"): VideoPoolSettings
+---@overload fun(name: string, class: "TimecodeSlotPoolSettings"): TimecodeSlotPoolSettings
+---@overload fun(name: string, class: "PresetPoolSettings"): PresetPoolSettings
+---@overload fun(name: string, class: "PresetVideoPoolSettings"): PresetVideoPoolSettings
+---@overload fun(name: string, class: "PresetShapersPoolSettings"): PresetShapersPoolSettings
+---@overload fun(name: string, class: "PresetControlPoolSettings"): PresetControlPoolSettings
+---@overload fun(name: string, class: "PresetFocusPoolSettings"): PresetFocusPoolSettings
+---@overload fun(name: string, class: "PresetBeamPoolSettings"): PresetBeamPoolSettings
+---@overload fun(name: string, class: "PresetColorPoolSettings"): PresetColorPoolSettings
+---@overload fun(name: string, class: "PresetGoboPoolSettings"): PresetGoboPoolSettings
+---@overload fun(name: string, class: "PresetPositionPoolSettings"): PresetPositionPoolSettings
+---@overload fun(name: string, class: "PresetDimmerPoolSettings"): PresetDimmerPoolSettings
+---@overload fun(name: string, class: "PresetAllPoolSettings"): PresetAllPoolSettings
+---@overload fun(name: string, class: "PresetDynamicPoolSettings"): PresetDynamicPoolSettings
+---@overload fun(name: string, class: "WorldPoolSettings"): WorldPoolSettings
+---@overload fun(name: string, class: "TimerPoolSettings"): TimerPoolSettings
+---@overload fun(name: string, class: "TimecodePoolSettings"): TimecodePoolSettings
+---@overload fun(name: string, class: "SequencePoolSettings"): SequencePoolSettings
+---@overload fun(name: string, class: "QuickeyPoolSettings"): QuickeyPoolSettings
+---@overload fun(name: string, class: "PluginPoolSettings"): PluginPoolSettings
+---@overload fun(name: string, class: "PagePoolSettings"): PagePoolSettings
+---@overload fun(name: string, class: "MatricksPoolSettings"): MatricksPoolSettings
+---@overload fun(name: string, class: "MacroPoolSettings"): MacroPoolSettings
+---@overload fun(name: string, class: "LayoutPoolSettings"): LayoutPoolSettings
+---@overload fun(name: string, class: "GroupPoolSettings"): GroupPoolSettings
+---@overload fun(name: string, class: "GeneratorPoolSettings"): GeneratorPoolSettings
+---@overload fun(name: string, class: "GelPoolSettings"): GelPoolSettings
+---@overload fun(name: string, class: "FilterPoolSettings"): FilterPoolSettings
+---@overload fun(name: string, class: "ExecConfigPoolSettings"): ExecConfigPoolSettings
+---@overload fun(name: string, class: "BitmapPoolSettings"): BitmapPoolSettings
+---@overload fun(name: string, class: "LayoutViewSettings"): LayoutViewSettings
+---@overload fun(name: string, class: "CloningWindowSettings"): CloningWindowSettings
+---@overload fun(name: string, class: "ExecEditorSettings"): ExecEditorSettings
+---@overload fun(name: string, class: "MatricksWindowSettings"): MatricksWindowSettings
+---@overload fun(name: string, class: "CommandWingBarSettings"): CommandWingBarSettings
+---@overload fun(name: string, class: "EncoderBarWindowSettings"): EncoderBarWindowSettings
+---@overload fun(name: string, class: "CustomMasterSectionWindowSettings"): CustomMasterSectionWindowSettings
+---@overload fun(name: string, class: "WindowTrackpadSettings"): WindowTrackpadSettings
+---@overload fun(name: string, class: "SelectionViewSettings"): SelectionViewSettings
+---@overload fun(name: string, class: "HelpViewerWindowSettings"): HelpViewerWindowSettings
+---@overload fun(name: string, class: "XkeysWindowSettings"): XkeysWindowSettings
+---@overload fun(name: string, class: "ModularPlaybackWindowSettings"): ModularPlaybackWindowSettings
+---@overload fun(name: string, class: "PlaybackWindowSettings"): PlaybackWindowSettings
+---@overload fun(name: string, class: "SysteminfoWindowSettings"): SysteminfoWindowSettings
+---@overload fun(name: string, class: "SysmonWindowSettings"): SysmonWindowSettings
+---@overload fun(name: string, class: "CommandlineWindowSettings"): CommandlineWindowSettings
+---@overload fun(name: string, class: "View3DSettings"): View3DSettings
+---@overload fun(name: string, class: "SpecialWindowSettings"): SpecialWindowSettings
+---@overload fun(name: string, class: "ColorPickerSettings"): ColorPickerSettings
+---@overload fun(name: string, class: "ShaperWindowSettings"): ShaperWindowSettings
+---@overload fun(name: string, class: "ClockWindowSettings"): ClockWindowSettings
+---@overload fun(name: string, class: "AtFilterSettings"): AtFilterSettings
+---@overload fun(name: string, class: "WindowInfoSettings"): WindowInfoSettings
+---@overload fun(name: string, class: "GridSettings"): GridSettings
+---@overload fun(name: string, class: "PSRPatchSheetSettings"): PSRPatchSheetSettings
+---@overload fun(name: string, class: "ShowCreatorSheetSettings"): ShowCreatorSheetSettings
+---@overload fun(name: string, class: "RunningPlaybacksSheetSettings"): RunningPlaybacksSheetSettings
+---@overload fun(name: string, class: "TimecodeWindowSettings"): TimecodeWindowSettings
+---@overload fun(name: string, class: "RecipeSheetSettings"): RecipeSheetSettings
+---@overload fun(name: string, class: "PresetEditorSettings"): PresetEditorSettings
+---@overload fun(name: string, class: "SequenceSheetSettings"): SequenceSheetSettings
+---@overload fun(name: string, class: "ContentSheetSettings"): ContentSheetSettings
+---@overload fun(name: string, class: "FixtureEditorSettings"): FixtureEditorSettings
+---@overload fun(name: string, class: "FixtureSheetSettings"): FixtureSheetSettings
+---@overload fun(name: string, class: "MessageGridSettings"): MessageGridSettings
+---@overload fun(name: string, class: "RdmWindowSettings"): RdmWindowSettings
+---@overload fun(name: string, class: "WindowAgendaSettings"): WindowAgendaSettings
+---@overload fun(name: string, class: "WindowPhaserEditorSettings"): WindowPhaserEditorSettings
+---@overload fun(name: string, class: "DMXSheetSettings"): DMXSheetSettings
+---@overload fun(name: string, class: "GelGridSettings"): GelGridSettings
+---@overload fun(name: string, class: "PatchSettings"): PatchSettings
+---@overload fun(name: string, class: "PatchLiveSettings"): PatchLiveSettings
+---@overload fun(name: string, class: "PatchEditorSettings"): PatchEditorSettings
+---@overload fun(name: string, class: "WindowSoundSettings"): WindowSoundSettings
+---@overload fun(name: string, class: nil): Object
+function TemporaryWindowSettings:FindRecursive(name, class) end

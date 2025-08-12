@@ -1,0 +1,277 @@
+---@meta
+
+---@class PoolSettingsCollect: Object
+local PoolSettingsCollect = {}
+---@return "PoolSettingsCollect"
+function PoolSettingsCollect:GetClass() end
+---@return "PoolSettings"
+function PoolSettingsCollect:GetChildClass() end
+---@param index integer
+---@return PoolSettings
+function PoolSettingsCollect:Ptr(index) end
+---@return PoolSettings[]
+function PoolSettingsCollect:Children() end
+---@return PoolSettings?
+function PoolSettingsCollect:CurrentChild() end
+---@overload fun(name: integer, role: nil): PoolSettings
+function PoolSettingsCollect:Get(name, role) end
+---@overload fun(index: integer, class: "PoolSettings", undo: Undo?): PoolSettings
+---@overload fun(index: integer, class: "ShowCreatorSettings", undo: Undo?): ShowCreatorSettings
+---@overload fun(index: integer, class: "SmartViewSettings", undo: Undo?): SmartViewSettings
+---@overload fun(index: integer, class: "RunningPlaybacksSettings", undo: Undo?): RunningPlaybacksSettings
+---@overload fun(index: integer, class: "SoundPoolSettings", undo: Undo?): SoundPoolSettings
+---@overload fun(index: integer, class: "VideoPoolSettings", undo: Undo?): VideoPoolSettings
+---@overload fun(index: integer, class: "TimecodeSlotPoolSettings", undo: Undo?): TimecodeSlotPoolSettings
+---@overload fun(index: integer, class: "PresetPoolSettings", undo: Undo?): PresetPoolSettings
+---@overload fun(index: integer, class: "PresetVideoPoolSettings", undo: Undo?): PresetVideoPoolSettings
+---@overload fun(index: integer, class: "PresetShapersPoolSettings", undo: Undo?): PresetShapersPoolSettings
+---@overload fun(index: integer, class: "PresetControlPoolSettings", undo: Undo?): PresetControlPoolSettings
+---@overload fun(index: integer, class: "PresetFocusPoolSettings", undo: Undo?): PresetFocusPoolSettings
+---@overload fun(index: integer, class: "PresetBeamPoolSettings", undo: Undo?): PresetBeamPoolSettings
+---@overload fun(index: integer, class: "PresetColorPoolSettings", undo: Undo?): PresetColorPoolSettings
+---@overload fun(index: integer, class: "PresetGoboPoolSettings", undo: Undo?): PresetGoboPoolSettings
+---@overload fun(index: integer, class: "PresetPositionPoolSettings", undo: Undo?): PresetPositionPoolSettings
+---@overload fun(index: integer, class: "PresetDimmerPoolSettings", undo: Undo?): PresetDimmerPoolSettings
+---@overload fun(index: integer, class: "PresetAllPoolSettings", undo: Undo?): PresetAllPoolSettings
+---@overload fun(index: integer, class: "PresetDynamicPoolSettings", undo: Undo?): PresetDynamicPoolSettings
+---@overload fun(index: integer, class: "WorldPoolSettings", undo: Undo?): WorldPoolSettings
+---@overload fun(index: integer, class: "TimerPoolSettings", undo: Undo?): TimerPoolSettings
+---@overload fun(index: integer, class: "TimecodePoolSettings", undo: Undo?): TimecodePoolSettings
+---@overload fun(index: integer, class: "SequencePoolSettings", undo: Undo?): SequencePoolSettings
+---@overload fun(index: integer, class: "QuickeyPoolSettings", undo: Undo?): QuickeyPoolSettings
+---@overload fun(index: integer, class: "PluginPoolSettings", undo: Undo?): PluginPoolSettings
+---@overload fun(index: integer, class: "PagePoolSettings", undo: Undo?): PagePoolSettings
+---@overload fun(index: integer, class: "MatricksPoolSettings", undo: Undo?): MatricksPoolSettings
+---@overload fun(index: integer, class: "MacroPoolSettings", undo: Undo?): MacroPoolSettings
+---@overload fun(index: integer, class: "LayoutPoolSettings", undo: Undo?): LayoutPoolSettings
+---@overload fun(index: integer, class: "GroupPoolSettings", undo: Undo?): GroupPoolSettings
+---@overload fun(index: integer, class: "GeneratorPoolSettings", undo: Undo?): GeneratorPoolSettings
+---@overload fun(index: integer, class: "GelPoolSettings", undo: Undo?): GelPoolSettings
+---@overload fun(index: integer, class: "FilterPoolSettings", undo: Undo?): FilterPoolSettings
+---@overload fun(index: integer, class: "ExecConfigPoolSettings", undo: Undo?): ExecConfigPoolSettings
+---@overload fun(index: integer, class: "BitmapPoolSettings", undo: Undo?): BitmapPoolSettings
+---@overload fun(index: integer, class: nil, undo: Undo?): PoolSettings
+function PoolSettingsCollect:Create(index, class, undo) end
+---@overload fun(class: "PoolSettings", undo: Undo?, count: integer?): PoolSettings
+---@overload fun(class: "ShowCreatorSettings", undo: Undo?, count: integer?): ShowCreatorSettings
+---@overload fun(class: "SmartViewSettings", undo: Undo?, count: integer?): SmartViewSettings
+---@overload fun(class: "RunningPlaybacksSettings", undo: Undo?, count: integer?): RunningPlaybacksSettings
+---@overload fun(class: "SoundPoolSettings", undo: Undo?, count: integer?): SoundPoolSettings
+---@overload fun(class: "VideoPoolSettings", undo: Undo?, count: integer?): VideoPoolSettings
+---@overload fun(class: "TimecodeSlotPoolSettings", undo: Undo?, count: integer?): TimecodeSlotPoolSettings
+---@overload fun(class: "PresetPoolSettings", undo: Undo?, count: integer?): PresetPoolSettings
+---@overload fun(class: "PresetVideoPoolSettings", undo: Undo?, count: integer?): PresetVideoPoolSettings
+---@overload fun(class: "PresetShapersPoolSettings", undo: Undo?, count: integer?): PresetShapersPoolSettings
+---@overload fun(class: "PresetControlPoolSettings", undo: Undo?, count: integer?): PresetControlPoolSettings
+---@overload fun(class: "PresetFocusPoolSettings", undo: Undo?, count: integer?): PresetFocusPoolSettings
+---@overload fun(class: "PresetBeamPoolSettings", undo: Undo?, count: integer?): PresetBeamPoolSettings
+---@overload fun(class: "PresetColorPoolSettings", undo: Undo?, count: integer?): PresetColorPoolSettings
+---@overload fun(class: "PresetGoboPoolSettings", undo: Undo?, count: integer?): PresetGoboPoolSettings
+---@overload fun(class: "PresetPositionPoolSettings", undo: Undo?, count: integer?): PresetPositionPoolSettings
+---@overload fun(class: "PresetDimmerPoolSettings", undo: Undo?, count: integer?): PresetDimmerPoolSettings
+---@overload fun(class: "PresetAllPoolSettings", undo: Undo?, count: integer?): PresetAllPoolSettings
+---@overload fun(class: "PresetDynamicPoolSettings", undo: Undo?, count: integer?): PresetDynamicPoolSettings
+---@overload fun(class: "WorldPoolSettings", undo: Undo?, count: integer?): WorldPoolSettings
+---@overload fun(class: "TimerPoolSettings", undo: Undo?, count: integer?): TimerPoolSettings
+---@overload fun(class: "TimecodePoolSettings", undo: Undo?, count: integer?): TimecodePoolSettings
+---@overload fun(class: "SequencePoolSettings", undo: Undo?, count: integer?): SequencePoolSettings
+---@overload fun(class: "QuickeyPoolSettings", undo: Undo?, count: integer?): QuickeyPoolSettings
+---@overload fun(class: "PluginPoolSettings", undo: Undo?, count: integer?): PluginPoolSettings
+---@overload fun(class: "PagePoolSettings", undo: Undo?, count: integer?): PagePoolSettings
+---@overload fun(class: "MatricksPoolSettings", undo: Undo?, count: integer?): MatricksPoolSettings
+---@overload fun(class: "MacroPoolSettings", undo: Undo?, count: integer?): MacroPoolSettings
+---@overload fun(class: "LayoutPoolSettings", undo: Undo?, count: integer?): LayoutPoolSettings
+---@overload fun(class: "GroupPoolSettings", undo: Undo?, count: integer?): GroupPoolSettings
+---@overload fun(class: "GeneratorPoolSettings", undo: Undo?, count: integer?): GeneratorPoolSettings
+---@overload fun(class: "GelPoolSettings", undo: Undo?, count: integer?): GelPoolSettings
+---@overload fun(class: "FilterPoolSettings", undo: Undo?, count: integer?): FilterPoolSettings
+---@overload fun(class: "ExecConfigPoolSettings", undo: Undo?, count: integer?): ExecConfigPoolSettings
+---@overload fun(class: "BitmapPoolSettings", undo: Undo?, count: integer?): BitmapPoolSettings
+---@overload fun(class: nil, undo: Undo?, count: integer?): PoolSettings
+function PoolSettingsCollect:Append(class, undo, count) end
+---@overload fun(class: "PoolSettings", undo: Undo?): PoolSettings
+---@overload fun(class: "ShowCreatorSettings", undo: Undo?): ShowCreatorSettings
+---@overload fun(class: "SmartViewSettings", undo: Undo?): SmartViewSettings
+---@overload fun(class: "RunningPlaybacksSettings", undo: Undo?): RunningPlaybacksSettings
+---@overload fun(class: "SoundPoolSettings", undo: Undo?): SoundPoolSettings
+---@overload fun(class: "VideoPoolSettings", undo: Undo?): VideoPoolSettings
+---@overload fun(class: "TimecodeSlotPoolSettings", undo: Undo?): TimecodeSlotPoolSettings
+---@overload fun(class: "PresetPoolSettings", undo: Undo?): PresetPoolSettings
+---@overload fun(class: "PresetVideoPoolSettings", undo: Undo?): PresetVideoPoolSettings
+---@overload fun(class: "PresetShapersPoolSettings", undo: Undo?): PresetShapersPoolSettings
+---@overload fun(class: "PresetControlPoolSettings", undo: Undo?): PresetControlPoolSettings
+---@overload fun(class: "PresetFocusPoolSettings", undo: Undo?): PresetFocusPoolSettings
+---@overload fun(class: "PresetBeamPoolSettings", undo: Undo?): PresetBeamPoolSettings
+---@overload fun(class: "PresetColorPoolSettings", undo: Undo?): PresetColorPoolSettings
+---@overload fun(class: "PresetGoboPoolSettings", undo: Undo?): PresetGoboPoolSettings
+---@overload fun(class: "PresetPositionPoolSettings", undo: Undo?): PresetPositionPoolSettings
+---@overload fun(class: "PresetDimmerPoolSettings", undo: Undo?): PresetDimmerPoolSettings
+---@overload fun(class: "PresetAllPoolSettings", undo: Undo?): PresetAllPoolSettings
+---@overload fun(class: "PresetDynamicPoolSettings", undo: Undo?): PresetDynamicPoolSettings
+---@overload fun(class: "WorldPoolSettings", undo: Undo?): WorldPoolSettings
+---@overload fun(class: "TimerPoolSettings", undo: Undo?): TimerPoolSettings
+---@overload fun(class: "TimecodePoolSettings", undo: Undo?): TimecodePoolSettings
+---@overload fun(class: "SequencePoolSettings", undo: Undo?): SequencePoolSettings
+---@overload fun(class: "QuickeyPoolSettings", undo: Undo?): QuickeyPoolSettings
+---@overload fun(class: "PluginPoolSettings", undo: Undo?): PluginPoolSettings
+---@overload fun(class: "PagePoolSettings", undo: Undo?): PagePoolSettings
+---@overload fun(class: "MatricksPoolSettings", undo: Undo?): MatricksPoolSettings
+---@overload fun(class: "MacroPoolSettings", undo: Undo?): MacroPoolSettings
+---@overload fun(class: "LayoutPoolSettings", undo: Undo?): LayoutPoolSettings
+---@overload fun(class: "GroupPoolSettings", undo: Undo?): GroupPoolSettings
+---@overload fun(class: "GeneratorPoolSettings", undo: Undo?): GeneratorPoolSettings
+---@overload fun(class: "GelPoolSettings", undo: Undo?): GelPoolSettings
+---@overload fun(class: "FilterPoolSettings", undo: Undo?): FilterPoolSettings
+---@overload fun(class: "ExecConfigPoolSettings", undo: Undo?): ExecConfigPoolSettings
+---@overload fun(class: "BitmapPoolSettings", undo: Undo?): BitmapPoolSettings
+---@overload fun(class: nil, undo: Undo?): PoolSettings
+function PoolSettingsCollect:Acquire(class, undo) end
+---@overload fun(class: "PoolSettings", undo: Undo?): PoolSettings
+---@overload fun(class: "ShowCreatorSettings", undo: Undo?): ShowCreatorSettings
+---@overload fun(class: "SmartViewSettings", undo: Undo?): SmartViewSettings
+---@overload fun(class: "RunningPlaybacksSettings", undo: Undo?): RunningPlaybacksSettings
+---@overload fun(class: "SoundPoolSettings", undo: Undo?): SoundPoolSettings
+---@overload fun(class: "VideoPoolSettings", undo: Undo?): VideoPoolSettings
+---@overload fun(class: "TimecodeSlotPoolSettings", undo: Undo?): TimecodeSlotPoolSettings
+---@overload fun(class: "PresetPoolSettings", undo: Undo?): PresetPoolSettings
+---@overload fun(class: "PresetVideoPoolSettings", undo: Undo?): PresetVideoPoolSettings
+---@overload fun(class: "PresetShapersPoolSettings", undo: Undo?): PresetShapersPoolSettings
+---@overload fun(class: "PresetControlPoolSettings", undo: Undo?): PresetControlPoolSettings
+---@overload fun(class: "PresetFocusPoolSettings", undo: Undo?): PresetFocusPoolSettings
+---@overload fun(class: "PresetBeamPoolSettings", undo: Undo?): PresetBeamPoolSettings
+---@overload fun(class: "PresetColorPoolSettings", undo: Undo?): PresetColorPoolSettings
+---@overload fun(class: "PresetGoboPoolSettings", undo: Undo?): PresetGoboPoolSettings
+---@overload fun(class: "PresetPositionPoolSettings", undo: Undo?): PresetPositionPoolSettings
+---@overload fun(class: "PresetDimmerPoolSettings", undo: Undo?): PresetDimmerPoolSettings
+---@overload fun(class: "PresetAllPoolSettings", undo: Undo?): PresetAllPoolSettings
+---@overload fun(class: "PresetDynamicPoolSettings", undo: Undo?): PresetDynamicPoolSettings
+---@overload fun(class: "WorldPoolSettings", undo: Undo?): WorldPoolSettings
+---@overload fun(class: "TimerPoolSettings", undo: Undo?): TimerPoolSettings
+---@overload fun(class: "TimecodePoolSettings", undo: Undo?): TimecodePoolSettings
+---@overload fun(class: "SequencePoolSettings", undo: Undo?): SequencePoolSettings
+---@overload fun(class: "QuickeyPoolSettings", undo: Undo?): QuickeyPoolSettings
+---@overload fun(class: "PluginPoolSettings", undo: Undo?): PluginPoolSettings
+---@overload fun(class: "PagePoolSettings", undo: Undo?): PagePoolSettings
+---@overload fun(class: "MatricksPoolSettings", undo: Undo?): MatricksPoolSettings
+---@overload fun(class: "MacroPoolSettings", undo: Undo?): MacroPoolSettings
+---@overload fun(class: "LayoutPoolSettings", undo: Undo?): LayoutPoolSettings
+---@overload fun(class: "GroupPoolSettings", undo: Undo?): GroupPoolSettings
+---@overload fun(class: "GeneratorPoolSettings", undo: Undo?): GeneratorPoolSettings
+---@overload fun(class: "GelPoolSettings", undo: Undo?): GelPoolSettings
+---@overload fun(class: "FilterPoolSettings", undo: Undo?): FilterPoolSettings
+---@overload fun(class: "ExecConfigPoolSettings", undo: Undo?): ExecConfigPoolSettings
+---@overload fun(class: "BitmapPoolSettings", undo: Undo?): BitmapPoolSettings
+---@overload fun(class: nil, undo: Undo?): PoolSettings
+---@deprecated use "Acquire" instead
+function PoolSettingsCollect:Aquire(class, undo) end
+---@overload fun(index: integer, class: "PoolSettings", undo: Undo?, count: integer?): PoolSettings
+---@overload fun(index: integer, class: "ShowCreatorSettings", undo: Undo?, count: integer?): ShowCreatorSettings
+---@overload fun(index: integer, class: "SmartViewSettings", undo: Undo?, count: integer?): SmartViewSettings
+---@overload fun(index: integer, class: "RunningPlaybacksSettings", undo: Undo?, count: integer?): RunningPlaybacksSettings
+---@overload fun(index: integer, class: "SoundPoolSettings", undo: Undo?, count: integer?): SoundPoolSettings
+---@overload fun(index: integer, class: "VideoPoolSettings", undo: Undo?, count: integer?): VideoPoolSettings
+---@overload fun(index: integer, class: "TimecodeSlotPoolSettings", undo: Undo?, count: integer?): TimecodeSlotPoolSettings
+---@overload fun(index: integer, class: "PresetPoolSettings", undo: Undo?, count: integer?): PresetPoolSettings
+---@overload fun(index: integer, class: "PresetVideoPoolSettings", undo: Undo?, count: integer?): PresetVideoPoolSettings
+---@overload fun(index: integer, class: "PresetShapersPoolSettings", undo: Undo?, count: integer?): PresetShapersPoolSettings
+---@overload fun(index: integer, class: "PresetControlPoolSettings", undo: Undo?, count: integer?): PresetControlPoolSettings
+---@overload fun(index: integer, class: "PresetFocusPoolSettings", undo: Undo?, count: integer?): PresetFocusPoolSettings
+---@overload fun(index: integer, class: "PresetBeamPoolSettings", undo: Undo?, count: integer?): PresetBeamPoolSettings
+---@overload fun(index: integer, class: "PresetColorPoolSettings", undo: Undo?, count: integer?): PresetColorPoolSettings
+---@overload fun(index: integer, class: "PresetGoboPoolSettings", undo: Undo?, count: integer?): PresetGoboPoolSettings
+---@overload fun(index: integer, class: "PresetPositionPoolSettings", undo: Undo?, count: integer?): PresetPositionPoolSettings
+---@overload fun(index: integer, class: "PresetDimmerPoolSettings", undo: Undo?, count: integer?): PresetDimmerPoolSettings
+---@overload fun(index: integer, class: "PresetAllPoolSettings", undo: Undo?, count: integer?): PresetAllPoolSettings
+---@overload fun(index: integer, class: "PresetDynamicPoolSettings", undo: Undo?, count: integer?): PresetDynamicPoolSettings
+---@overload fun(index: integer, class: "WorldPoolSettings", undo: Undo?, count: integer?): WorldPoolSettings
+---@overload fun(index: integer, class: "TimerPoolSettings", undo: Undo?, count: integer?): TimerPoolSettings
+---@overload fun(index: integer, class: "TimecodePoolSettings", undo: Undo?, count: integer?): TimecodePoolSettings
+---@overload fun(index: integer, class: "SequencePoolSettings", undo: Undo?, count: integer?): SequencePoolSettings
+---@overload fun(index: integer, class: "QuickeyPoolSettings", undo: Undo?, count: integer?): QuickeyPoolSettings
+---@overload fun(index: integer, class: "PluginPoolSettings", undo: Undo?, count: integer?): PluginPoolSettings
+---@overload fun(index: integer, class: "PagePoolSettings", undo: Undo?, count: integer?): PagePoolSettings
+---@overload fun(index: integer, class: "MatricksPoolSettings", undo: Undo?, count: integer?): MatricksPoolSettings
+---@overload fun(index: integer, class: "MacroPoolSettings", undo: Undo?, count: integer?): MacroPoolSettings
+---@overload fun(index: integer, class: "LayoutPoolSettings", undo: Undo?, count: integer?): LayoutPoolSettings
+---@overload fun(index: integer, class: "GroupPoolSettings", undo: Undo?, count: integer?): GroupPoolSettings
+---@overload fun(index: integer, class: "GeneratorPoolSettings", undo: Undo?, count: integer?): GeneratorPoolSettings
+---@overload fun(index: integer, class: "GelPoolSettings", undo: Undo?, count: integer?): GelPoolSettings
+---@overload fun(index: integer, class: "FilterPoolSettings", undo: Undo?, count: integer?): FilterPoolSettings
+---@overload fun(index: integer, class: "ExecConfigPoolSettings", undo: Undo?, count: integer?): ExecConfigPoolSettings
+---@overload fun(index: integer, class: "BitmapPoolSettings", undo: Undo?, count: integer?): BitmapPoolSettings
+---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): PoolSettings
+function PoolSettingsCollect:Insert(index, class, undo, count) end
+---@overload fun(name: string, class: "PoolSettings"): PoolSettings
+---@overload fun(name: string, class: "ShowCreatorSettings"): ShowCreatorSettings
+---@overload fun(name: string, class: "SmartViewSettings"): SmartViewSettings
+---@overload fun(name: string, class: "RunningPlaybacksSettings"): RunningPlaybacksSettings
+---@overload fun(name: string, class: "SoundPoolSettings"): SoundPoolSettings
+---@overload fun(name: string, class: "VideoPoolSettings"): VideoPoolSettings
+---@overload fun(name: string, class: "TimecodeSlotPoolSettings"): TimecodeSlotPoolSettings
+---@overload fun(name: string, class: "PresetPoolSettings"): PresetPoolSettings
+---@overload fun(name: string, class: "PresetVideoPoolSettings"): PresetVideoPoolSettings
+---@overload fun(name: string, class: "PresetShapersPoolSettings"): PresetShapersPoolSettings
+---@overload fun(name: string, class: "PresetControlPoolSettings"): PresetControlPoolSettings
+---@overload fun(name: string, class: "PresetFocusPoolSettings"): PresetFocusPoolSettings
+---@overload fun(name: string, class: "PresetBeamPoolSettings"): PresetBeamPoolSettings
+---@overload fun(name: string, class: "PresetColorPoolSettings"): PresetColorPoolSettings
+---@overload fun(name: string, class: "PresetGoboPoolSettings"): PresetGoboPoolSettings
+---@overload fun(name: string, class: "PresetPositionPoolSettings"): PresetPositionPoolSettings
+---@overload fun(name: string, class: "PresetDimmerPoolSettings"): PresetDimmerPoolSettings
+---@overload fun(name: string, class: "PresetAllPoolSettings"): PresetAllPoolSettings
+---@overload fun(name: string, class: "PresetDynamicPoolSettings"): PresetDynamicPoolSettings
+---@overload fun(name: string, class: "WorldPoolSettings"): WorldPoolSettings
+---@overload fun(name: string, class: "TimerPoolSettings"): TimerPoolSettings
+---@overload fun(name: string, class: "TimecodePoolSettings"): TimecodePoolSettings
+---@overload fun(name: string, class: "SequencePoolSettings"): SequencePoolSettings
+---@overload fun(name: string, class: "QuickeyPoolSettings"): QuickeyPoolSettings
+---@overload fun(name: string, class: "PluginPoolSettings"): PluginPoolSettings
+---@overload fun(name: string, class: "PagePoolSettings"): PagePoolSettings
+---@overload fun(name: string, class: "MatricksPoolSettings"): MatricksPoolSettings
+---@overload fun(name: string, class: "MacroPoolSettings"): MacroPoolSettings
+---@overload fun(name: string, class: "LayoutPoolSettings"): LayoutPoolSettings
+---@overload fun(name: string, class: "GroupPoolSettings"): GroupPoolSettings
+---@overload fun(name: string, class: "GeneratorPoolSettings"): GeneratorPoolSettings
+---@overload fun(name: string, class: "GelPoolSettings"): GelPoolSettings
+---@overload fun(name: string, class: "FilterPoolSettings"): FilterPoolSettings
+---@overload fun(name: string, class: "ExecConfigPoolSettings"): ExecConfigPoolSettings
+---@overload fun(name: string, class: "BitmapPoolSettings"): BitmapPoolSettings
+---@overload fun(name: string, class: nil): PoolSettings
+function PoolSettingsCollect:Find(name, class) end
+---@overload fun(name: string, class: "PoolSettings"): PoolSettings
+---@overload fun(name: string, class: "ShowCreatorSettings"): ShowCreatorSettings
+---@overload fun(name: string, class: "SmartViewSettings"): SmartViewSettings
+---@overload fun(name: string, class: "RunningPlaybacksSettings"): RunningPlaybacksSettings
+---@overload fun(name: string, class: "SoundPoolSettings"): SoundPoolSettings
+---@overload fun(name: string, class: "VideoPoolSettings"): VideoPoolSettings
+---@overload fun(name: string, class: "TimecodeSlotPoolSettings"): TimecodeSlotPoolSettings
+---@overload fun(name: string, class: "PresetPoolSettings"): PresetPoolSettings
+---@overload fun(name: string, class: "PresetVideoPoolSettings"): PresetVideoPoolSettings
+---@overload fun(name: string, class: "PresetShapersPoolSettings"): PresetShapersPoolSettings
+---@overload fun(name: string, class: "PresetControlPoolSettings"): PresetControlPoolSettings
+---@overload fun(name: string, class: "PresetFocusPoolSettings"): PresetFocusPoolSettings
+---@overload fun(name: string, class: "PresetBeamPoolSettings"): PresetBeamPoolSettings
+---@overload fun(name: string, class: "PresetColorPoolSettings"): PresetColorPoolSettings
+---@overload fun(name: string, class: "PresetGoboPoolSettings"): PresetGoboPoolSettings
+---@overload fun(name: string, class: "PresetPositionPoolSettings"): PresetPositionPoolSettings
+---@overload fun(name: string, class: "PresetDimmerPoolSettings"): PresetDimmerPoolSettings
+---@overload fun(name: string, class: "PresetAllPoolSettings"): PresetAllPoolSettings
+---@overload fun(name: string, class: "PresetDynamicPoolSettings"): PresetDynamicPoolSettings
+---@overload fun(name: string, class: "WorldPoolSettings"): WorldPoolSettings
+---@overload fun(name: string, class: "TimerPoolSettings"): TimerPoolSettings
+---@overload fun(name: string, class: "TimecodePoolSettings"): TimecodePoolSettings
+---@overload fun(name: string, class: "SequencePoolSettings"): SequencePoolSettings
+---@overload fun(name: string, class: "QuickeyPoolSettings"): QuickeyPoolSettings
+---@overload fun(name: string, class: "PluginPoolSettings"): PluginPoolSettings
+---@overload fun(name: string, class: "PagePoolSettings"): PagePoolSettings
+---@overload fun(name: string, class: "MatricksPoolSettings"): MatricksPoolSettings
+---@overload fun(name: string, class: "MacroPoolSettings"): MacroPoolSettings
+---@overload fun(name: string, class: "LayoutPoolSettings"): LayoutPoolSettings
+---@overload fun(name: string, class: "GroupPoolSettings"): GroupPoolSettings
+---@overload fun(name: string, class: "GeneratorPoolSettings"): GeneratorPoolSettings
+---@overload fun(name: string, class: "GelPoolSettings"): GelPoolSettings
+---@overload fun(name: string, class: "FilterPoolSettings"): FilterPoolSettings
+---@overload fun(name: string, class: "ExecConfigPoolSettings"): ExecConfigPoolSettings
+---@overload fun(name: string, class: "BitmapPoolSettings"): BitmapPoolSettings
+---@overload fun(name: string, class: nil): Object
+function PoolSettingsCollect:FindRecursive(name, class) end

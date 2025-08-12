@@ -410,9 +410,8 @@ function GetUIChannelIndex(patchIndex, attributeIndex)
     return 0
 end
 
----@param fixtureIndexOrHandle integer|Handle
----@param returnHandles? boolean @Optional
----@return table channels
+---@overload fun(fixture: integer|Fixture, returnHandles: false?) : integer[]
+---@overload fun(fixture: integer|Fixture, returnHandles: true) : UIChannel[]
 function GetUIChannels(fixtureIndexOrHandle, returnHandles)
     return {}
 end

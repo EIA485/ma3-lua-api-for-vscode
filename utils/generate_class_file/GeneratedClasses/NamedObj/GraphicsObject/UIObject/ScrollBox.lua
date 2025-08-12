@@ -1,0 +1,3748 @@
+---@meta
+
+---@class ScrollBox: UIObject
+---@field PanScrollArea boolean
+---@field PanScroll boolean
+---@field ResetChildrenSize boolean
+---@field ExternScrollPos Object
+local ScrollBox = {
+    PanScrollArea="No",
+    PanScroll="Yes",
+    ResetChildrenSize="No"
+}
+---@return "ScrollBox"
+function ScrollBox:GetClass() end
+---@return "UIObject"
+function ScrollBox:GetChildClass() end
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
+---@overload fun(name: "Name"|"Note", role: nil): string
+---@overload fun(name: "UserExpanded", role: nil): integer
+---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "Hidden", role: nil): integer
+---@overload fun(name: "DependencyExport", role: nil): string
+---@overload fun(name: "MemoryFootprint", role: nil): integer
+---@overload fun(name: "X"|"Y"|"W"|"H", role: nil): Graphics.SizeDescriptor
+---@overload fun(name: "AbsRect"|"AbsClientRect", role: nil): {left: number, right: number, top: number, bottom: number}
+---@overload fun(name: "Texture", role: nil): Texture
+---@overload fun(name: "Font"|"LowDpiFont", role: nil): Font
+---@overload fun(name: "Text"|"ToolTip"|"HelpTopic", role: nil): string
+---@overload fun(name: "BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor", role: nil): Color
+---@overload fun(name: "TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth", role: nil): integer
+---@overload fun(name: "Padding", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
+---@overload fun(name: "Focus", role: nil): FocusPriority
+---@overload fun(name: "UserRights", role: nil): UserRights
+---@overload fun(name: "Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect", role: nil): integer
+---@overload fun(name: "CloseAction", role: nil): GestureResult
+---@overload fun(name: "AutoCloseValue"|"UiGroupId", role: nil): integer
+---@overload fun(name: "LabelLinkHandle", role: nil): UIObject
+---@overload fun(name: "IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow", role: nil): integer
+---@overload fun(name: "MinSize"|"MaxSize", role: nil): Graphics.SizeDimension
+---@overload fun(name: "Anchors", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
+---@overload fun(name: "SignalValue"|"SignalValueHold", role: nil): string
+---@overload fun(name: "AlignmentH", role: nil): AlignmentH
+---@overload fun(name: "AlignmentV", role: nil): AlignmentV
+---@overload fun(name: "TextAlignmentH", role: nil): AlignmentH
+---@overload fun(name: "TextAlignmentV", role: nil): AlignmentV
+---@overload fun(name: "Margin", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
+---@overload fun(name: "PluginComponent", role: nil): Component
+---@overload fun(name: "HasFocus"|"HideFocusFrame", role: nil): boolean
+---@overload fun(name: "AppearanceSourceClassName", role: nil): string
+---@overload fun(name: "VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease", role: nil): integer
+---@overload fun(name: "Clicked", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
+---@overload fun(name: "ClickedLeft"|"ClickedRight", role: nil): fun(str: string, X: integer, Y: integer)
+---@overload fun(name: "DoubleClicked", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
+---@overload fun(name: "MouseEnter"|"MouseLeave"|"MouseOverHold", role: nil): fun(str: string, X: integer, Y: integer)
+---@overload fun(name: "MouseUp", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
+---@overload fun(name: "MouseUpLeft"|"MouseUpRight", role: nil): fun(str: string, X: integer, Y: integer)
+---@overload fun(name: "MouseDown", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
+---@overload fun(name: "MouseDownLeft"|"MouseDownRight", role: nil): fun(str: string, X: integer, Y: integer)
+---@overload fun(name: "MouseDownHold", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
+---@overload fun(name: "KeyDown"|"KeyUp", role: nil): fun(str: string, keyCode: VirtualKeyCode, bool1: boolean, bool2: boolean, bool3: boolean)
+---@overload fun(name: "CharInput", role: nil): fun(str: string, utf32Char: integer)
+---@overload fun(name: "TouchStart"|"TouchUpdate"|"TouchEnd", role: nil): fun(str: string, pointID: integer, X: integer, Y: integer)
+---@overload fun(name: "OnLoad", role: nil): fun(str: string, obj: Object)
+---@overload fun(name: "OnVisible", role: nil): fun(str: string, bool: boolean)
+---@overload fun(name: "DescriptionChanged", role: nil): fun(str: string)
+---@overload fun(name: "FocusGet"|"FocusLost", role: nil): fun(str: string, obj1: Object, obj2: Object)
+---@overload fun(name: "ForceIntensity", role: nil): integer
+---@overload fun(name: "PanScrollArea"|"PanScroll"|"ResetChildrenSize", role: nil): boolean
+---@overload fun(name: "ExternScrollPos", role: nil): Object
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"X"|"Y"|"W"|"H"|"AbsRect"|"AbsClientRect"|"Texture"|"Font"|"LowDpiFont"|"Text"|"ToolTip"|"HelpTopic"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Padding"|"Focus"|"UserRights"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"CloseAction"|"AutoCloseValue"|"UiGroupId"|"LabelLinkHandle"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"MinSize"|"MaxSize"|"Anchors"|"SignalValue"|"SignalValueHold"|"AlignmentH"|"AlignmentV"|"TextAlignmentH"|"TextAlignmentV"|"Margin"|"PluginComponent"|"HasFocus"|"HideFocusFrame"|"AppearanceSourceClassName"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"Clicked"|"ClickedLeft"|"ClickedRight"|"DoubleClicked"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUp"|"MouseUpLeft"|"MouseUpRight"|"MouseDown"|"MouseDownLeft"|"MouseDownRight"|"MouseDownHold"|"KeyDown"|"KeyUp"|"CharInput"|"TouchStart"|"TouchUpdate"|"TouchEnd"|"OnLoad"|"OnVisible"|"DescriptionChanged"|"FocusGet"|"FocusLost"|"ForceIntensity"|"PanScrollArea"|"PanScroll"|"ResetChildrenSize"|"ExternScrollPos", role: Enums.Roles): string
+---@overload fun(name: integer, role: nil): UIObject
+function ScrollBox:Get(name, role) end
+---@overload fun(index: integer, class: "UIObject", undo: Undo?): UIObject
+---@overload fun(index: integer, class: "SampleTableView", undo: Undo?): SampleTableView
+---@overload fun(index: integer, class: "FanRpmView", undo: Undo?): FanRpmView
+---@overload fun(index: integer, class: "SysTempView", undo: Undo?): SysTempView
+---@overload fun(index: integer, class: "GpuTempView", undo: Undo?): GpuTempView
+---@overload fun(index: integer, class: "CpuTempView", undo: Undo?): CpuTempView
+---@overload fun(index: integer, class: "ShowDataMemTestView", undo: Undo?): ShowDataMemTestView
+---@overload fun(index: integer, class: "MemTestView", undo: Undo?): MemTestView
+---@overload fun(index: integer, class: "CPUTestView", undo: Undo?): CPUTestView
+---@overload fun(index: integer, class: "SyncTestView", undo: Undo?): SyncTestView
+---@overload fun(index: integer, class: "NetworkTestView", undo: Undo?): NetworkTestView
+---@overload fun(index: integer, class: "ChannelTestView", undo: Undo?): ChannelTestView
+---@overload fun(index: integer, class: "FaderTestView", undo: Undo?): FaderTestView
+---@overload fun(index: integer, class: "SensorView", undo: Undo?): SensorView
+---@overload fun(index: integer, class: "Toolbar", undo: Undo?): Toolbar
+---@overload fun(index: integer, class: "StatusBar", undo: Undo?): StatusBar
+---@overload fun(index: integer, class: "ScrollableItemList", undo: Undo?): ScrollableItemList
+---@overload fun(index: integer, class: "PopupList", undo: Undo?): PopupList
+---@overload fun(index: integer, class: "UITab", undo: Undo?): UITab
+---@overload fun(index: integer, class: "DBObjectTab", undo: Undo?): DBObjectTab
+---@overload fun(index: integer, class: "RadioButtonList", undo: Undo?): RadioButtonList
+---@overload fun(index: integer, class: "PropertyRadioButtonList", undo: Undo?): PropertyRadioButtonList
+---@overload fun(index: integer, class: "ChildRadioButtonList", undo: Undo?): ChildRadioButtonList
+---@overload fun(index: integer, class: "ShowCreatorSubpoolSelectorList", undo: Undo?): ShowCreatorSubpoolSelectorList
+---@overload fun(index: integer, class: "EncoderBankSelector", undo: Undo?): EncoderBankSelector
+---@overload fun(index: integer, class: "AttributeRadioButtonList", undo: Undo?): AttributeRadioButtonList
+---@overload fun(index: integer, class: "FeatureRadioButtonList", undo: Undo?): FeatureRadioButtonList
+---@overload fun(index: integer, class: "FixturetypeItemList", undo: Undo?): FixturetypeItemList
+---@overload fun(index: integer, class: "MultiScroller", undo: Undo?): MultiScroller
+---@overload fun(index: integer, class: "MultiSyncGridScroller", undo: Undo?): MultiSyncGridScroller
+---@overload fun(index: integer, class: "ContentSheetGridScroller", undo: Undo?): ContentSheetGridScroller
+---@overload fun(index: integer, class: "UIGridCellBase", undo: Undo?): UIGridCellBase
+---@overload fun(index: integer, class: "TimelineCell", undo: Undo?): TimelineCell
+---@overload fun(index: integer, class: "TimelineHeaderCell", undo: Undo?): TimelineHeaderCell
+---@overload fun(index: integer, class: "TimelineDataCell", undo: Undo?): TimelineDataCell
+---@overload fun(index: integer, class: "TrackGroupTimelineCell", undo: Undo?): TrackGroupTimelineCell
+---@overload fun(index: integer, class: "TrackTimelineCell", undo: Undo?): TrackTimelineCell
+---@overload fun(index: integer, class: "TimeMarkerTimelineCell", undo: Undo?): TimeMarkerTimelineCell
+---@overload fun(index: integer, class: "BandFader", undo: Undo?): BandFader
+---@overload fun(index: integer, class: "DCRemoteInfo", undo: Undo?): DCRemoteInfo
+---@overload fun(index: integer, class: "TimecodeSlotInfo", undo: Undo?): TimecodeSlotInfo
+---@overload fun(index: integer, class: "ColorView", undo: Undo?): ColorView
+---@overload fun(index: integer, class: "ScribbleEditView", undo: Undo?): ScribbleEditView
+---@overload fun(index: integer, class: "ScrollBox", undo: Undo?): ScrollBox
+---@overload fun(index: integer, class: "MainDialogSubMenuScrollBox", undo: Undo?): MainDialogSubMenuScrollBox
+---@overload fun(index: integer, class: "DialogContainer", undo: Undo?): DialogContainer
+---@overload fun(index: integer, class: "TextView", undo: Undo?): TextView
+---@overload fun(index: integer, class: "CommandlineHistoryTextView", undo: Undo?): CommandlineHistoryTextView
+---@overload fun(index: integer, class: "LineEdit", undo: Undo?): LineEdit
+---@overload fun(index: integer, class: "LineEditExt", undo: Undo?): LineEditExt
+---@overload fun(index: integer, class: "MacrolineEdit", undo: Undo?): MacrolineEdit
+---@overload fun(index: integer, class: "NumInputEdit", undo: Undo?): NumInputEdit
+---@overload fun(index: integer, class: "KeybSCEdit", undo: Undo?): KeybSCEdit
+---@overload fun(index: integer, class: "CmdlineEdit", undo: Undo?): CmdlineEdit
+---@overload fun(index: integer, class: "UiFader", undo: Undo?): UiFader
+---@overload fun(index: integer, class: "DeskLightsFader", undo: Undo?): DeskLightsFader
+---@overload fun(index: integer, class: "GrandMasterFader", undo: Undo?): GrandMasterFader
+---@overload fun(index: integer, class: "ShaperPovFader", undo: Undo?): ShaperPovFader
+---@overload fun(index: integer, class: "ColorInterfaceFader", undo: Undo?): ColorInterfaceFader
+---@overload fun(index: integer, class: "ColorPickerFader", undo: Undo?): ColorPickerFader
+---@overload fun(index: integer, class: "HardwareFader", undo: Undo?): HardwareFader
+---@overload fun(index: integer, class: "PlaybackHardwareFader", undo: Undo?): PlaybackHardwareFader
+---@overload fun(index: integer, class: "PropertyLabel", undo: Undo?): PropertyLabel
+---@overload fun(index: integer, class: "ProgressBar", undo: Undo?): ProgressBar
+---@overload fun(index: integer, class: "ScrollBar", undo: Undo?): ScrollBar
+---@overload fun(index: integer, class: "ScrollBarH", undo: Undo?): ScrollBarH
+---@overload fun(index: integer, class: "ScrollBarV", undo: Undo?): ScrollBarV
+---@overload fun(index: integer, class: "Button", undo: Undo?): Button
+---@overload fun(index: integer, class: "UIGridConfigButton", undo: Undo?): UIGridConfigButton
+---@overload fun(index: integer, class: "UIGridEditModeButton", undo: Undo?): UIGridEditModeButton
+---@overload fun(index: integer, class: "DimmerWheelButton", undo: Undo?): DimmerWheelButton
+---@overload fun(index: integer, class: "EjectButton", undo: Undo?): EjectButton
+---@overload fun(index: integer, class: "TitleButton", undo: Undo?): TitleButton
+---@overload fun(index: integer, class: "DeleteWindowButton", undo: Undo?): DeleteWindowButton
+---@overload fun(index: integer, class: "WarningInfoButton", undo: Undo?): WarningInfoButton
+---@overload fun(index: integer, class: "LogoButton", undo: Undo?): LogoButton
+---@overload fun(index: integer, class: "ContextButton", undo: Undo?): ContextButton
+---@overload fun(index: integer, class: "IndicatorButton", undo: Undo?): IndicatorButton
+---@overload fun(index: integer, class: "VirtualKeyboardButton", undo: Undo?): VirtualKeyboardButton
+---@overload fun(index: integer, class: "ExpandableButton", undo: Undo?): ExpandableButton
+---@overload fun(index: integer, class: "KBShortcutButton", undo: Undo?): KBShortcutButton
+---@overload fun(index: integer, class: "HardkeyButton", undo: Undo?): HardkeyButton
+---@overload fun(index: integer, class: "HardwareButton", undo: Undo?): HardwareButton
+---@overload fun(index: integer, class: "XKeysHardwareButton", undo: Undo?): XKeysHardwareButton
+---@overload fun(index: integer, class: "PlaybackHardwareButton", undo: Undo?): PlaybackHardwareButton
+---@overload fun(index: integer, class: "DisplayButton", undo: Undo?): DisplayButton
+---@overload fun(index: integer, class: "BlinkingFadeButton", undo: Undo?): BlinkingFadeButton
+---@overload fun(index: integer, class: "TimerButton", undo: Undo?): TimerButton
+---@overload fun(index: integer, class: "TimerPauseButton", undo: Undo?): TimerPauseButton
+---@overload fun(index: integer, class: "TimerStopButton", undo: Undo?): TimerStopButton
+---@overload fun(index: integer, class: "TimerPlayButton", undo: Undo?): TimerPlayButton
+---@overload fun(index: integer, class: "TimecodeSlotButton", undo: Undo?): TimecodeSlotButton
+---@overload fun(index: integer, class: "TimecodeSlotPauseButton", undo: Undo?): TimecodeSlotPauseButton
+---@overload fun(index: integer, class: "TimecodeSlotStopButton", undo: Undo?): TimecodeSlotStopButton
+---@overload fun(index: integer, class: "TimecodeSlotPlayButton", undo: Undo?): TimecodeSlotPlayButton
+---@overload fun(index: integer, class: "MainDlgLoginButton", undo: Undo?): MainDlgLoginButton
+---@overload fun(index: integer, class: "MainDlgUndoButton", undo: Undo?): MainDlgUndoButton
+---@overload fun(index: integer, class: "MainDlgButtonBase", undo: Undo?): MainDlgButtonBase
+---@overload fun(index: integer, class: "MainDlgLeaveSessionButton", undo: Undo?): MainDlgLeaveSessionButton
+---@overload fun(index: integer, class: "MainDlgJoinSessionButton", undo: Undo?): MainDlgJoinSessionButton
+---@overload fun(index: integer, class: "MainDlgDismissStationButton", undo: Undo?): MainDlgDismissStationButton
+---@overload fun(index: integer, class: "MainDlgInviteStationButton", undo: Undo?): MainDlgInviteStationButton
+---@overload fun(index: integer, class: "MainDlgGridSelectDown", undo: Undo?): MainDlgGridSelectDown
+---@overload fun(index: integer, class: "MainDlgGridSelectUp", undo: Undo?): MainDlgGridSelectUp
+---@overload fun(index: integer, class: "MainDlgExportButton", undo: Undo?): MainDlgExportButton
+---@overload fun(index: integer, class: "MainDlgExportEditorButton", undo: Undo?): MainDlgExportEditorButton
+---@overload fun(index: integer, class: "MainDlgImportButton", undo: Undo?): MainDlgImportButton
+---@overload fun(index: integer, class: "MainDlgImportEditorButton", undo: Undo?): MainDlgImportEditorButton
+---@overload fun(index: integer, class: "MainDlgSelectButton", undo: Undo?): MainDlgSelectButton
+---@overload fun(index: integer, class: "MainDlgEditButton", undo: Undo?): MainDlgEditButton
+---@overload fun(index: integer, class: "MainDlgPasteButton", undo: Undo?): MainDlgPasteButton
+---@overload fun(index: integer, class: "MainDlgCopyButton", undo: Undo?): MainDlgCopyButton
+---@overload fun(index: integer, class: "MainDlgCutButton", undo: Undo?): MainDlgCutButton
+---@overload fun(index: integer, class: "MainDlgDelButton", undo: Undo?): MainDlgDelButton
+---@overload fun(index: integer, class: "MainDlgBlindButton", undo: Undo?): MainDlgBlindButton
+---@overload fun(index: integer, class: "MainDlgInsertButton", undo: Undo?): MainDlgInsertButton
+---@overload fun(index: integer, class: "PropertyControl", undo: Undo?): PropertyControl
+---@overload fun(index: integer, class: "BatteryControl", undo: Undo?): BatteryControl
+---@overload fun(index: integer, class: "RotationButton", undo: Undo?): RotationButton
+---@overload fun(index: integer, class: "KeyboardShortcutControl", undo: Undo?): KeyboardShortcutControl
+---@overload fun(index: integer, class: "XlrModeButton", undo: Undo?): XlrModeButton
+---@overload fun(index: integer, class: "UIToggleButton", undo: Undo?): UIToggleButton
+---@overload fun(index: integer, class: "IndicatorControl", undo: Undo?): IndicatorControl
+---@overload fun(index: integer, class: "CalculatorChannelSetControl", undo: Undo?): CalculatorChannelSetControl
+---@overload fun(index: integer, class: "BaseStateButton", undo: Undo?): BaseStateButton
+---@overload fun(index: integer, class: "ToggleButtonList", undo: Undo?): ToggleButtonList
+---@overload fun(index: integer, class: "SwipeButtonList", undo: Undo?): SwipeButtonList
+---@overload fun(index: integer, class: "ToggleButton", undo: Undo?): ToggleButton
+---@overload fun(index: integer, class: "SwipeButton", undo: Undo?): SwipeButton
+---@overload fun(index: integer, class: "ObjectSelector", undo: Undo?): ObjectSelector
+---@overload fun(index: integer, class: "DriveSelector", undo: Undo?): DriveSelector
+---@overload fun(index: integer, class: "UserEncoderPageSelector", undo: Undo?): UserEncoderPageSelector
+---@overload fun(index: integer, class: "EnableMasterFaderButton", undo: Undo?): EnableMasterFaderButton
+---@overload fun(index: integer, class: "ExecConfigSwipe", undo: Undo?): ExecConfigSwipe
+---@overload fun(index: integer, class: "EncoderLinkButton", undo: Undo?): EncoderLinkButton
+---@overload fun(index: integer, class: "StateButton", undo: Undo?): StateButton
+---@overload fun(index: integer, class: "CheckBox", undo: Undo?): CheckBox
+---@overload fun(index: integer, class: "ContentCheckBox", undo: Undo?): ContentCheckBox
+---@overload fun(index: integer, class: "PropertyInput", undo: Undo?): PropertyInput
+---@overload fun(index: integer, class: "TCTimeButton", undo: Undo?): TCTimeButton
+---@overload fun(index: integer, class: "TitlebuttonControl", undo: Undo?): TitlebuttonControl
+---@overload fun(index: integer, class: "SpecialExecConfigInput", undo: Undo?): SpecialExecConfigInput
+---@overload fun(index: integer, class: "ExecConfigInput", undo: Undo?): ExecConfigInput
+---@overload fun(index: integer, class: "OSCActivityButton", undo: Undo?): OSCActivityButton
+---@overload fun(index: integer, class: "ScribbleInput", undo: Undo?): ScribbleInput
+---@overload fun(index: integer, class: "AppearanceInput", undo: Undo?): AppearanceInput
+---@overload fun(index: integer, class: "ColorPropertyInput", undo: Undo?): ColorPropertyInput
+---@overload fun(index: integer, class: "GelColorPropertyInput", undo: Undo?): GelColorPropertyInput
+---@overload fun(index: integer, class: "DialogButton", undo: Undo?): DialogButton
+---@overload fun(index: integer, class: "ScreenSelectorButton", undo: Undo?): ScreenSelectorButton
+---@overload fun(index: integer, class: "CloneFilterButton", undo: Undo?): CloneFilterButton
+---@overload fun(index: integer, class: "EncoderControl", undo: Undo?): EncoderControl
+---@overload fun(index: integer, class: "ScreenEncoderControl", undo: Undo?): ScreenEncoderControl
+---@overload fun(index: integer, class: "ShaperEncoderControl", undo: Undo?): ShaperEncoderControl
+---@overload fun(index: integer, class: "Gma3EncoderControl", undo: Undo?): Gma3EncoderControl
+---@overload fun(index: integer, class: "PresetEncoderControl", undo: Undo?): PresetEncoderControl
+---@overload fun(index: integer, class: "PhaserEncoderControl", undo: Undo?): PhaserEncoderControl
+---@overload fun(index: integer, class: "TrackpadPanTiltControl", undo: Undo?): TrackpadPanTiltControl
+---@overload fun(index: integer, class: "ValueControl", undo: Undo?): ValueControl
+---@overload fun(index: integer, class: "AuxValueControl", undo: Undo?): AuxValueControl
+---@overload fun(index: integer, class: "ShowCreatorTypeControl", undo: Undo?): ShowCreatorTypeControl
+---@overload fun(index: integer, class: "ValueRadioControl", undo: Undo?): ValueRadioControl
+---@overload fun(index: integer, class: "SpecialExecutorKey", undo: Undo?): SpecialExecutorKey
+---@overload fun(index: integer, class: "EditTitlebarButton", undo: Undo?): EditTitlebarButton
+---@overload fun(index: integer, class: "SelectionIndicatorButton", undo: Undo?): SelectionIndicatorButton
+---@overload fun(index: integer, class: "ValueFadeControl", undo: Undo?): ValueFadeControl
+---@overload fun(index: integer, class: "MatricksIndicatorButton", undo: Undo?): MatricksIndicatorButton
+---@overload fun(index: integer, class: "MatricksToggleButton", undo: Undo?): MatricksToggleButton
+---@overload fun(index: integer, class: "ExecConfigColButton", undo: Undo?): ExecConfigColButton
+---@overload fun(index: integer, class: "ExecConfigRowButton", undo: Undo?): ExecConfigRowButton
+---@overload fun(index: integer, class: "MainDlgGridToggleButton", undo: Undo?): MainDlgGridToggleButton
+---@overload fun(index: integer, class: "MainDlgMergeToggleButton", undo: Undo?): MainDlgMergeToggleButton
+---@overload fun(index: integer, class: "MainDlgNewLineToggleButton", undo: Undo?): MainDlgNewLineToggleButton
+---@overload fun(index: integer, class: "AtFilterControl", undo: Undo?): AtFilterControl
+---@overload fun(index: integer, class: "AttributeToggleButton", undo: Undo?): AttributeToggleButton
+---@overload fun(index: integer, class: "AtFilterPreview", undo: Undo?): AtFilterPreview
+---@overload fun(index: integer, class: "ScrollBarButton", undo: Undo?): ScrollBarButton
+---@overload fun(index: integer, class: "ScrollBarButtonH", undo: Undo?): ScrollBarButtonH
+---@overload fun(index: integer, class: "ScrollBarButtonV", undo: Undo?): ScrollBarButtonV
+---@overload fun(index: integer, class: "MovableButton", undo: Undo?): MovableButton
+---@overload fun(index: integer, class: "MouseButton", undo: Undo?): MouseButton
+---@overload fun(index: integer, class: "ProgressButton", undo: Undo?): ProgressButton
+---@overload fun(index: integer, class: "MessageCenterInfoButton", undo: Undo?): MessageCenterInfoButton
+---@overload fun(index: integer, class: "TagButton", undo: Undo?): TagButton
+---@overload fun(index: integer, class: "RevertButton", undo: Undo?): RevertButton
+---@overload fun(index: integer, class: "DriveStatusButton", undo: Undo?): DriveStatusButton
+---@overload fun(index: integer, class: "MiniEncoder", undo: Undo?): MiniEncoder
+---@overload fun(index: integer, class: "HardwareMiniEncoder", undo: Undo?): HardwareMiniEncoder
+---@overload fun(index: integer, class: "XKeysHardwareMiniEncoder", undo: Undo?): XKeysHardwareMiniEncoder
+---@overload fun(index: integer, class: "PlaybackHardwareMiniEncoder", undo: Undo?): PlaybackHardwareMiniEncoder
+---@overload fun(index: integer, class: "Splitter", undo: Undo?): Splitter
+---@overload fun(index: integer, class: "SplitterV", undo: Undo?): SplitterV
+---@overload fun(index: integer, class: "SplitterH", undo: Undo?): SplitterH
+---@overload fun(index: integer, class: "EncoderBarSlot", undo: Undo?): EncoderBarSlot
+---@overload fun(index: integer, class: "UILayoutGrid", undo: Undo?): UILayoutGrid
+---@overload fun(index: integer, class: "NotificationsGridScroller", undo: Undo?): NotificationsGridScroller
+---@overload fun(index: integer, class: "Navigator", undo: Undo?): Navigator
+---@overload fun(index: integer, class: "PropertyBox", undo: Undo?): PropertyBox
+---@overload fun(index: integer, class: "SettingsBox", undo: Undo?): SettingsBox
+---@overload fun(index: integer, class: "VirtualKeyboard", undo: Undo?): VirtualKeyboard
+---@overload fun(index: integer, class: "ScrollContainerPageBase", undo: Undo?): ScrollContainerPageBase
+---@overload fun(index: integer, class: "ScrollContainerPageScrollItemList", undo: Undo?): ScrollContainerPageScrollItemList
+---@overload fun(index: integer, class: "ScrollContainerPage", undo: Undo?): ScrollContainerPage
+---@overload fun(index: integer, class: "ScrollContainer", undo: Undo?): ScrollContainer
+---@overload fun(index: integer, class: "MainDialogSubMenu", undo: Undo?): MainDialogSubMenu
+---@overload fun(index: integer, class: "AutoLayout", undo: Undo?): AutoLayout
+---@overload fun(index: integer, class: "UIGridConfigLayout", undo: Undo?): UIGridConfigLayout
+---@overload fun(index: integer, class: "TitleAutoLayout", undo: Undo?): TitleAutoLayout
+---@overload fun(index: integer, class: "StepControl", undo: Undo?): StepControl
+---@overload fun(index: integer, class: "ObjectProperties", undo: Undo?): ObjectProperties
+---@overload fun(index: integer, class: "Dialog", undo: Undo?): Dialog
+---@overload fun(index: integer, class: "UIGrid", undo: Undo?): UIGrid
+---@overload fun(index: integer, class: "DBObjectGridBase", undo: Undo?): DBObjectGridBase
+---@overload fun(index: integer, class: "StationGrid", undo: Undo?): StationGrid
+---@overload fun(index: integer, class: "UiStationGrid", undo: Undo?): UiStationGrid
+---@overload fun(index: integer, class: "DBObjectGrid", undo: Undo?): DBObjectGrid
+---@overload fun(index: integer, class: "TimecodeTextGrid", undo: Undo?): TimecodeTextGrid
+---@overload fun(index: integer, class: "TimecodeGrid", undo: Undo?): TimecodeGrid
+---@overload fun(index: integer, class: "PSRResultShowGrid", undo: Undo?): PSRResultShowGrid
+---@overload fun(index: integer, class: "PSRImportGrid", undo: Undo?): PSRImportGrid
+---@overload fun(index: integer, class: "PSRPatchGrid", undo: Undo?): PSRPatchGrid
+---@overload fun(index: integer, class: "CloneFilterGrid", undo: Undo?): CloneFilterGrid
+---@overload fun(index: integer, class: "PosCalibrationView", undo: Undo?): PosCalibrationView
+---@overload fun(index: integer, class: "OSMidiGrid", undo: Undo?): OSMidiGrid
+---@overload fun(index: integer, class: "TimezoneGrid", undo: Undo?): TimezoneGrid
+---@overload fun(index: integer, class: "WindowTypeGrid", undo: Undo?): WindowTypeGrid
+---@overload fun(index: integer, class: "SelectedGrid", undo: Undo?): SelectedGrid
+---@overload fun(index: integer, class: "OopsGrid", undo: Undo?): OopsGrid
+---@overload fun(index: integer, class: "FixtureTypeGrid", undo: Undo?): FixtureTypeGrid
+---@overload fun(index: integer, class: "CueInputGrid", undo: Undo?): CueInputGrid
+---@overload fun(index: integer, class: "LayoutEditorGrid", undo: Undo?): LayoutEditorGrid
+---@overload fun(index: integer, class: "AgendaGrid", undo: Undo?): AgendaGrid
+---@overload fun(index: integer, class: "ProgrammerGrid", undo: Undo?): ProgrammerGrid
+---@overload fun(index: integer, class: "ProgUpdateGrid", undo: Undo?): ProgUpdateGrid
+---@overload fun(index: integer, class: "MeshMaterialGrid", undo: Undo?): MeshMaterialGrid
+---@overload fun(index: integer, class: "GelGrid", undo: Undo?): GelGrid
+---@overload fun(index: integer, class: "SequenceGrid", undo: Undo?): SequenceGrid
+---@overload fun(index: integer, class: "OutputConfigGrid", undo: Undo?): OutputConfigGrid
+---@overload fun(index: integer, class: "PatchFixtureGrid", undo: Undo?): PatchFixtureGrid
+---@overload fun(index: integer, class: "ShowHistoryGrid", undo: Undo?): ShowHistoryGrid
+---@overload fun(index: integer, class: "FilebrowserView", undo: Undo?): FilebrowserView
+---@overload fun(index: integer, class: "ReferencesGrid", undo: Undo?): ReferencesGrid
+---@overload fun(index: integer, class: "CloneGrid", undo: Undo?): CloneGrid
+---@overload fun(index: integer, class: "GenericSheet", undo: Undo?): GenericSheet
+---@overload fun(index: integer, class: "PhaserStepSheet", undo: Undo?): PhaserStepSheet
+---@overload fun(index: integer, class: "FixtureSheet", undo: Undo?): FixtureSheet
+---@overload fun(index: integer, class: "ContentSheet", undo: Undo?): ContentSheet
+---@overload fun(index: integer, class: "DMXSheet", undo: Undo?): DMXSheet
+---@overload fun(index: integer, class: "NetworkSpeedTestGrid", undo: Undo?): NetworkSpeedTestGrid
+---@overload fun(index: integer, class: "TextEdit", undo: Undo?): TextEdit
+---@overload fun(index: integer, class: "MeshLineEdit", undo: Undo?): MeshLineEdit
+---@overload fun(index: integer, class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(index: integer, class: "Bar", undo: Undo?): Bar
+---@overload fun(index: integer, class: "GraphicsEncoderBar", undo: Undo?): GraphicsEncoderBar
+---@overload fun(index: integer, class: "ScreenEncoderBar", undo: Undo?): ScreenEncoderBar
+---@overload fun(index: integer, class: "TimecodeBar", undo: Undo?): TimecodeBar
+---@overload fun(index: integer, class: "PhaserEditorBar", undo: Undo?): PhaserEditorBar
+---@overload fun(index: integer, class: "SequenceEditBar", undo: Undo?): SequenceEditBar
+---@overload fun(index: integer, class: "StageViewBar", undo: Undo?): StageViewBar
+---@overload fun(index: integer, class: "LayoutBar", undo: Undo?): LayoutBar
+---@overload fun(index: integer, class: "ShaperEditBar", undo: Undo?): ShaperEditBar
+---@overload fun(index: integer, class: "ColorEditBar", undo: Undo?): ColorEditBar
+---@overload fun(index: integer, class: "Gma3EncoderBar", undo: Undo?): Gma3EncoderBar
+---@overload fun(index: integer, class: "DmxTesterBar", undo: Undo?): DmxTesterBar
+---@overload fun(index: integer, class: "PresetBar", undo: Undo?): PresetBar
+---@overload fun(index: integer, class: "PhaserBar", undo: Undo?): PhaserBar
+---@overload fun(index: integer, class: "ExecutorBar", undo: Undo?): ExecutorBar
+---@overload fun(index: integer, class: "ExecutorBarXKeys", undo: Undo?): ExecutorBarXKeys
+---@overload fun(index: integer, class: "XKeysViewExecutorBar", undo: Undo?): XKeysViewExecutorBar
+---@overload fun(index: integer, class: "Overlay", undo: Undo?): Overlay
+---@overload fun(index: integer, class: "SwipeMenuOverlay", undo: Undo?): SwipeMenuOverlay
+---@overload fun(index: integer, class: "ContentOverlay", undo: Undo?): ContentOverlay
+---@overload fun(index: integer, class: "ShadedOverlay", undo: Undo?): ShadedOverlay
+---@overload fun(index: integer, class: "NotificationArea", undo: Undo?): NotificationArea
+---@overload fun(index: integer, class: "MessageBox", undo: Undo?): MessageBox
+---@overload fun(index: integer, class: "BaseInput", undo: Undo?): BaseInput
+---@overload fun(index: integer, class: "ImageInput", undo: Undo?): ImageInput
+---@overload fun(index: integer, class: "ViewInput", undo: Undo?): ViewInput
+---@overload fun(index: integer, class: "ColorInput", undo: Undo?): ColorInput
+---@overload fun(index: integer, class: "NumericInput", undo: Undo?): NumericInput
+---@overload fun(index: integer, class: "Popup", undo: Undo?): Popup
+---@overload fun(index: integer, class: "ZoomFactorPopup", undo: Undo?): ZoomFactorPopup
+---@overload fun(index: integer, class: "ImagePopup", undo: Undo?): ImagePopup
+---@overload fun(index: integer, class: "TextInput", undo: Undo?): TextInput
+---@overload fun(index: integer, class: "MultiLineTextInput", undo: Undo?): MultiLineTextInput
+---@overload fun(index: integer, class: "KeybSCInput", undo: Undo?): KeybSCInput
+---@overload fun(index: integer, class: "MacrolineTextInput", undo: Undo?): MacrolineTextInput
+---@overload fun(index: integer, class: "CueNumberInput", undo: Undo?): CueNumberInput
+---@overload fun(index: integer, class: "CopyStoreCueMessageBoxBase", undo: Undo?): CopyStoreCueMessageBoxBase
+---@overload fun(index: integer, class: "DeleteCueMessageBox", undo: Undo?): DeleteCueMessageBox
+---@overload fun(index: integer, class: "StoreCueMessageBox", undo: Undo?): StoreCueMessageBox
+---@overload fun(index: integer, class: "CopyCueMessageBox", undo: Undo?): CopyCueMessageBox
+---@overload fun(index: integer, class: "CloneAtFilterSelector", undo: Undo?): CloneAtFilterSelector
+---@overload fun(index: integer, class: "DatumInput", undo: Undo?): DatumInput
+---@overload fun(index: integer, class: "OSMidiSelect", undo: Undo?): OSMidiSelect
+---@overload fun(index: integer, class: "TimezoneInput", undo: Undo?): TimezoneInput
+---@overload fun(index: integer, class: "InsertFixturesWizard", undo: Undo?): InsertFixturesWizard
+---@overload fun(index: integer, class: "XlrPortInput", undo: Undo?): XlrPortInput
+---@overload fun(index: integer, class: "UIDMXPatch", undo: Undo?): UIDMXPatch
+---@overload fun(index: integer, class: "GenericImport", undo: Undo?): GenericImport
+---@overload fun(index: integer, class: "GenericAssignmentInput", undo: Undo?): GenericAssignmentInput
+---@overload fun(index: integer, class: "FixtureTypeImport", undo: Undo?): FixtureTypeImport
+---@overload fun(index: integer, class: "RecurringOverlay", undo: Undo?): RecurringOverlay
+---@overload fun(index: integer, class: "RemoteInputLock", undo: Undo?): RemoteInputLock
+---@overload fun(index: integer, class: "DeskLock", undo: Undo?): DeskLock
+---@overload fun(index: integer, class: "HelpPopup", undo: Undo?): HelpPopup
+---@overload fun(index: integer, class: "PatchToOverlay", undo: Undo?): PatchToOverlay
+---@overload fun(index: integer, class: "ColorMeasurementOverlay", undo: Undo?): ColorMeasurementOverlay
+---@overload fun(index: integer, class: "GenericContext", undo: Undo?): GenericContext
+---@overload fun(index: integer, class: "SpecialWindowContext", undo: Undo?): SpecialWindowContext
+---@overload fun(index: integer, class: "Settings3dContext", undo: Undo?): Settings3dContext
+---@overload fun(index: integer, class: "GenericEditorOverlay", undo: Undo?): GenericEditorOverlay
+---@overload fun(index: integer, class: "TimerEditor", undo: Undo?): TimerEditor
+---@overload fun(index: integer, class: "LayoutElementEditorOverlay", undo: Undo?): LayoutElementEditorOverlay
+---@overload fun(index: integer, class: "RenderQualityEditor", undo: Undo?): RenderQualityEditor
+---@overload fun(index: integer, class: "AppearanceEditor", undo: Undo?): AppearanceEditor
+---@overload fun(index: integer, class: "ScribbleEditor", undo: Undo?): ScribbleEditor
+---@overload fun(index: integer, class: "CameraEditor", undo: Undo?): CameraEditor
+---@overload fun(index: integer, class: "MeshSettings", undo: Undo?): MeshSettings
+---@overload fun(index: integer, class: "NetworkSpeedTestOverlay", undo: Undo?): NetworkSpeedTestOverlay
+---@overload fun(index: integer, class: "EncoderOverlay", undo: Undo?): EncoderOverlay
+---@overload fun(index: integer, class: "OffMenuOverlay", undo: Undo?): OffMenuOverlay
+---@overload fun(index: integer, class: "PoolOverlay", undo: Undo?): PoolOverlay
+---@overload fun(index: integer, class: "MainDialog", undo: Undo?): MainDialog
+---@overload fun(index: integer, class: "PSRPatchMainDialog", undo: Undo?): PSRPatchMainDialog
+---@overload fun(index: integer, class: "ShowCreatorMainDialogBase", undo: Undo?): ShowCreatorMainDialogBase
+---@overload fun(index: integer, class: "PSRImportMainDialog", undo: Undo?): PSRImportMainDialog
+---@overload fun(index: integer, class: "ShowCreatorFTPresetsMainDialog", undo: Undo?): ShowCreatorFTPresetsMainDialog
+---@overload fun(index: integer, class: "MainDlgCommandControl", undo: Undo?): MainDlgCommandControl
+---@overload fun(index: integer, class: "MainDlgDErrorReport", undo: Undo?): MainDlgDErrorReport
+---@overload fun(index: integer, class: "MainDlgFixtureSetup", undo: Undo?): MainDlgFixtureSetup
+---@overload fun(index: integer, class: "MainDlgFixtureSetup", undo: Undo?): MainDlgFixtureSetup
+---@overload fun(index: integer, class: "PositionCalibration", undo: Undo?): PositionCalibration
+---@overload fun(index: integer, class: "GenericEditor", undo: Undo?): GenericEditor
+---@overload fun(index: integer, class: "TimecodeEditor", undo: Undo?): TimecodeEditor
+---@overload fun(index: integer, class: "LayoutEditor", undo: Undo?): LayoutEditor
+---@overload fun(index: integer, class: "KeyboardShortcutEditor", undo: Undo?): KeyboardShortcutEditor
+---@overload fun(index: integer, class: "FixtureEditor", undo: Undo?): FixtureEditor
+---@overload fun(index: integer, class: "StageEditor", undo: Undo?): StageEditor
+---@overload fun(index: integer, class: "GenericSettingsEditor", undo: Undo?): GenericSettingsEditor
+---@overload fun(index: integer, class: "GeneratorBitmapEditor", undo: Undo?): GeneratorBitmapEditor
+---@overload fun(index: integer, class: "AllExecEditor", undo: Undo?): AllExecEditor
+---@overload fun(index: integer, class: "MainDlgDmxModeEditor", undo: Undo?): MainDlgDmxModeEditor
+---@overload fun(index: integer, class: "MainDlgFixtureTypeEditor", undo: Undo?): MainDlgFixtureTypeEditor
+---@overload fun(index: integer, class: "PlaybackControls", undo: Undo?): PlaybackControls
+---@overload fun(index: integer, class: "CloneOverlay", undo: Undo?): CloneOverlay
+---@overload fun(index: integer, class: "ThemeMergeDialog", undo: Undo?): ThemeMergeDialog
+---@overload fun(index: integer, class: "BackupMenu", undo: Undo?): BackupMenu
+---@overload fun(index: integer, class: "MainDlgUpdateMenu", undo: Undo?): MainDlgUpdateMenu
+---@overload fun(index: integer, class: "MainDialogDest", undo: Undo?): MainDialogDest
+---@overload fun(index: integer, class: "CommandLineHistory", undo: Undo?): CommandLineHistory
+---@overload fun(index: integer, class: "Drawable", undo: Undo?): Drawable
+---@overload fun(index: integer, class: "FrameBufferObject", undo: Undo?): FrameBufferObject
+---@overload fun(index: integer, class: "WebView", undo: Undo?): WebView
+---@overload fun(index: integer, class: "WebView", undo: Undo?): WebView
+---@overload fun(index: integer, class: "DialogHelp", undo: Undo?): DialogHelp
+---@overload fun(index: integer, class: "DialogPrivacyPolicy", undo: Undo?): DialogPrivacyPolicy
+---@overload fun(index: integer, class: "DialogTrademarks", undo: Undo?): DialogTrademarks
+---@overload fun(index: integer, class: "DialogReleaseNotes", undo: Undo?): DialogReleaseNotes
+---@overload fun(index: integer, class: "UI2DView", undo: Undo?): UI2DView
+---@overload fun(index: integer, class: "UI2DView", undo: Undo?): UI2DView
+---@overload fun(index: integer, class: "TexPageDebugView", undo: Undo?): TexPageDebugView
+---@overload fun(index: integer, class: "MeshPreview", undo: Undo?): MeshPreview
+---@overload fun(index: integer, class: "WindowFixturetypeVisualizer", undo: Undo?): WindowFixturetypeVisualizer
+---@overload fun(index: integer, class: "ColorEngineDebugView", undo: Undo?): ColorEngineDebugView
+---@overload fun(index: integer, class: "WindowTextureStatistics", undo: Undo?): WindowTextureStatistics
+---@overload fun(index: integer, class: "SelectionView", undo: Undo?): SelectionView
+---@overload fun(index: integer, class: "View3D", undo: Undo?): View3D
+---@overload fun(index: integer, class: "PatchView3D", undo: Undo?): PatchView3D
+---@overload fun(index: integer, class: "LivePatchView3D", undo: Undo?): LivePatchView3D
+---@overload fun(index: integer, class: "WindowMeshStatistics", undo: Undo?): WindowMeshStatistics
+---@overload fun(index: integer, class: "FrameBufferObject", undo: Undo?): FrameBufferObject
+---@overload fun(index: integer, class: "LayoutCanvas", undo: Undo?): LayoutCanvas
+---@overload fun(index: integer, class: "LayoutCanvas", undo: Undo?): LayoutCanvas
+---@overload fun(index: integer, class: "GlWindowBase", undo: Undo?): GlWindowBase
+---@overload fun(index: integer, class: "Window", undo: Undo?): Window
+---@overload fun(index: integer, class: "CommandWingBarWindow", undo: Undo?): CommandWingBarWindow
+---@overload fun(index: integer, class: "WindowEncoderBar", undo: Undo?): WindowEncoderBar
+---@overload fun(index: integer, class: "TimecodeWindow", undo: Undo?): TimecodeWindow
+---@overload fun(index: integer, class: "LayoutView", undo: Undo?): LayoutView
+---@overload fun(index: integer, class: "RecipeWindow", undo: Undo?): RecipeWindow
+---@overload fun(index: integer, class: "SpecialWindow", undo: Undo?): SpecialWindow
+---@overload fun(index: integer, class: "WindowAgenda", undo: Undo?): WindowAgenda
+---@overload fun(index: integer, class: "WindowTrackpad", undo: Undo?): WindowTrackpad
+---@overload fun(index: integer, class: "WindowInfo", undo: Undo?): WindowInfo
+---@overload fun(index: integer, class: "XKeysViewWindow", undo: Undo?): XKeysViewWindow
+---@overload fun(index: integer, class: "PlaybackViewWindow", undo: Undo?): PlaybackViewWindow
+---@overload fun(index: integer, class: "WindowHelpViewer", undo: Undo?): WindowHelpViewer
+---@overload fun(index: integer, class: "ClockWindow", undo: Undo?): ClockWindow
+---@overload fun(index: integer, class: "SystemMonitorWindow", undo: Undo?): SystemMonitorWindow
+---@overload fun(index: integer, class: "PhaserViewWindow", undo: Undo?): PhaserViewWindow
+---@overload fun(index: integer, class: "SelectionViewWindow", undo: Undo?): SelectionViewWindow
+---@overload fun(index: integer, class: "StatusWindow", undo: Undo?): StatusWindow
+---@overload fun(index: integer, class: "ContentWindow", undo: Undo?): ContentWindow
+---@overload fun(index: integer, class: "SequenceWindow", undo: Undo?): SequenceWindow
+---@overload fun(index: integer, class: "CommandLineWindow", undo: Undo?): CommandLineWindow
+---@overload fun(index: integer, class: "CommandWingBarContainer", undo: Undo?): CommandWingBarContainer
+---@overload fun(index: integer, class: "PhaserLayoutGrid", undo: Undo?): PhaserLayoutGrid
+---@overload fun(index: integer, class: "UIPhaserTimeLineGrid", undo: Undo?): UIPhaserTimeLineGrid
+---@overload fun(index: integer, class: "PhaserUICenter", undo: Undo?): PhaserUICenter
+---@overload fun(index: integer, class: "DialogTrackpad", undo: Undo?): DialogTrackpad
+---@overload fun(index: integer, class: "ReferencesContainer", undo: Undo?): ReferencesContainer
+---@overload fun(index: integer, class: "TouchMonitor", undo: Undo?): TouchMonitor
+---@overload fun(index: integer, class: "CloningDialog", undo: Undo?): CloningDialog
+---@overload fun(index: integer, class: "AgendaMonthsGrid", undo: Undo?): AgendaMonthsGrid
+---@overload fun(index: integer, class: "AgendaDaysGrid", undo: Undo?): AgendaDaysGrid
+---@overload fun(index: integer, class: "CustomMasterLayoutGrid", undo: Undo?): CustomMasterLayoutGrid
+---@overload fun(index: integer, class: "SpecialWindowContent", undo: Undo?): SpecialWindowContent
+---@overload fun(index: integer, class: "ShaperWindowContent", undo: Undo?): ShaperWindowContent
+---@overload fun(index: integer, class: "ColorPickerContent", undo: Undo?): ColorPickerContent
+---@overload fun(index: integer, class: "BladeView", undo: Undo?): BladeView
+---@overload fun(index: integer, class: "BaseClock", undo: Undo?): BaseClock
+---@overload fun(index: integer, class: "AnalogClock", undo: Undo?): AnalogClock
+---@overload fun(index: integer, class: "DigitalClock", undo: Undo?): DigitalClock
+---@overload fun(index: integer, class: "DateClock", undo: Undo?): DateClock
+---@overload fun(index: integer, class: "TimecodeSlotClock", undo: Undo?): TimecodeSlotClock
+---@overload fun(index: integer, class: "TimerClock", undo: Undo?): TimerClock
+---@overload fun(index: integer, class: "TreeViewFrame", undo: Undo?): TreeViewFrame
+---@overload fun(index: integer, class: "ObjTreeViewFrame", undo: Undo?): ObjTreeViewFrame
+---@overload fun(index: integer, class: "PSRTreeViewFrame", undo: Undo?): PSRTreeViewFrame
+---@overload fun(index: integer, class: "NormedGrid", undo: Undo?): NormedGrid
+---@overload fun(index: integer, class: "GridContentFilterEditor", undo: Undo?): GridContentFilterEditor
+---@overload fun(index: integer, class: "GridPatchContentFilterEditor", undo: Undo?): GridPatchContentFilterEditor
+---@overload fun(index: integer, class: "UiMessageCenter", undo: Undo?): UiMessageCenter
+---@overload fun(index: integer, class: "ShaperEditorFaderGrid", undo: Undo?): ShaperEditorFaderGrid
+---@overload fun(index: integer, class: "AllPoolLayoutGrid", undo: Undo?): AllPoolLayoutGrid
+---@overload fun(index: integer, class: "PoolLayoutGrid", undo: Undo?): PoolLayoutGrid
+---@overload fun(index: integer, class: "RunningPlaybacksPoolLayoutGrid", undo: Undo?): RunningPlaybacksPoolLayoutGrid
+---@overload fun(index: integer, class: "ViewBar", undo: Undo?): ViewBar
+---@overload fun(index: integer, class: "TimePoolLayoutGrid", undo: Undo?): TimePoolLayoutGrid
+---@overload fun(index: integer, class: "TimecodeSlotLayoutGrid", undo: Undo?): TimecodeSlotLayoutGrid
+---@overload fun(index: integer, class: "SmartViewPoolLayoutGrid", undo: Undo?): SmartViewPoolLayoutGrid
+---@overload fun(index: integer, class: "SoundPoolLayoutGrid", undo: Undo?): SoundPoolLayoutGrid
+---@overload fun(index: integer, class: "EncoderBarPoolLayoutGrid", undo: Undo?): EncoderBarPoolLayoutGrid
+---@overload fun(index: integer, class: "UserPoolLayoutGrid", undo: Undo?): UserPoolLayoutGrid
+---@overload fun(index: integer, class: "UniversePoolLayoutGrid", undo: Undo?): UniversePoolLayoutGrid
+---@overload fun(index: integer, class: "GeneratorBitmapPoolLayoutGrid", undo: Undo?): GeneratorBitmapPoolLayoutGrid
+---@overload fun(index: integer, class: "GeneratorRandomPoolLayoutGrid", undo: Undo?): GeneratorRandomPoolLayoutGrid
+---@overload fun(index: integer, class: "LayoutPoolLayoutGrid", undo: Undo?): LayoutPoolLayoutGrid
+---@overload fun(index: integer, class: "TimecodePoolLayoutGrid", undo: Undo?): TimecodePoolLayoutGrid
+---@overload fun(index: integer, class: "MeshPoolLayoutGrid", undo: Undo?): MeshPoolLayoutGrid
+---@overload fun(index: integer, class: "MatricksPoolLayoutGrid", undo: Undo?): MatricksPoolLayoutGrid
+---@overload fun(index: integer, class: "MaterialPoolLayoutGrid", undo: Undo?): MaterialPoolLayoutGrid
+---@overload fun(index: integer, class: "RenderQualityPoolLayoutGrid", undo: Undo?): RenderQualityPoolLayoutGrid
+---@overload fun(index: integer, class: "CameraPoolLayoutGrid", undo: Undo?): CameraPoolLayoutGrid
+---@overload fun(index: integer, class: "GelPoolLayoutGrid", undo: Undo?): GelPoolLayoutGrid
+---@overload fun(index: integer, class: "ScribblePoolLayoutGrid", undo: Undo?): ScribblePoolLayoutGrid
+---@overload fun(index: integer, class: "AppearancePoolLayoutGrid", undo: Undo?): AppearancePoolLayoutGrid
+---@overload fun(index: integer, class: "TagPoolLayoutGrid", undo: Undo?): TagPoolLayoutGrid
+---@overload fun(index: integer, class: "SymbolPoolLayoutGrid", undo: Undo?): SymbolPoolLayoutGrid
+---@overload fun(index: integer, class: "GoboPoolLayoutGrid", undo: Undo?): GoboPoolLayoutGrid
+---@overload fun(index: integer, class: "VideoPoolLayoutGrid", undo: Undo?): VideoPoolLayoutGrid
+---@overload fun(index: integer, class: "ImagePoolLayoutGrid", undo: Undo?): ImagePoolLayoutGrid
+---@overload fun(index: integer, class: "ConfigurationPoolLayoutGrid", undo: Undo?): ConfigurationPoolLayoutGrid
+---@overload fun(index: integer, class: "DataPoolLayoutGrid", undo: Undo?): DataPoolLayoutGrid
+---@overload fun(index: integer, class: "MenuPoolLayoutGrid", undo: Undo?): MenuPoolLayoutGrid
+---@overload fun(index: integer, class: "PluginPoolLayoutGrid", undo: Undo?): PluginPoolLayoutGrid
+---@overload fun(index: integer, class: "FilterPoolLayoutGrid", undo: Undo?): FilterPoolLayoutGrid
+---@overload fun(index: integer, class: "WorldPoolLayoutGrid", undo: Undo?): WorldPoolLayoutGrid
+---@overload fun(index: integer, class: "ViewPoolLayoutGrid", undo: Undo?): ViewPoolLayoutGrid
+---@overload fun(index: integer, class: "SequencePoolLayoutGrid", undo: Undo?): SequencePoolLayoutGrid
+---@overload fun(index: integer, class: "PresetPoolLayoutGrid", undo: Undo?): PresetPoolLayoutGrid
+---@overload fun(index: integer, class: "PagePoolLayoutGrid", undo: Undo?): PagePoolLayoutGrid
+---@overload fun(index: integer, class: "QuickeyPoolLayoutGrid", undo: Undo?): QuickeyPoolLayoutGrid
+---@overload fun(index: integer, class: "MacroPoolLayoutGrid", undo: Undo?): MacroPoolLayoutGrid
+---@overload fun(index: integer, class: "GroupPoolLayoutGrid", undo: Undo?): GroupPoolLayoutGrid
+---@overload fun(index: integer, class: "TagsEditContent", undo: Undo?): TagsEditContent
+---@overload fun(index: integer, class: "AppearanceEditContent", undo: Undo?): AppearanceEditContent
+---@overload fun(index: integer, class: "ScribbleEditContent", undo: Undo?): ScribbleEditContent
+---@overload fun(index: integer, class: "GenericAssignmentSelector", undo: Undo?): GenericAssignmentSelector
+---@overload fun(index: integer, class: "TagButtonList", undo: Undo?): TagButtonList
+---@overload fun(index: integer, class: "MatricksContainer", undo: Undo?): MatricksContainer
+---@overload fun(index: integer, class: "AtFilterDialog", undo: Undo?): AtFilterDialog
+---@overload fun(index: integer, class: "PlaybackControlModularContent", undo: Undo?): PlaybackControlModularContent
+---@overload fun(index: integer, class: "PlaybackControlContent", undo: Undo?): PlaybackControlContent
+---@overload fun(index: integer, class: "CommandWingBarPlaybackContent", undo: Undo?): CommandWingBarPlaybackContent
+---@overload fun(index: integer, class: "ThemeMergeToolBar", undo: Undo?): ThemeMergeToolBar
+---@overload fun(index: integer, class: "EditorPropertyButtons", undo: Undo?): EditorPropertyButtons
+---@overload fun(index: integer, class: "CmdDlgFunctionButtonsBase", undo: Undo?): CmdDlgFunctionButtonsBase
+---@overload fun(index: integer, class: "CmdDlgFunctionButtonsLeft", undo: Undo?): CmdDlgFunctionButtonsLeft
+---@overload fun(index: integer, class: "CmdDlgFunctionButtonsRight", undo: Undo?): CmdDlgFunctionButtonsRight
+---@overload fun(index: integer, class: "MainDialogFunctionButtons", undo: Undo?): MainDialogFunctionButtons
+---@overload fun(index: integer, class: "MainDialogSubMenuContent", undo: Undo?): MainDialogSubMenuContent
+---@overload fun(index: integer, class: "UiScreen", undo: Undo?): UiScreen
+---@overload fun(index: integer, class: "SpecialExecSection", undo: Undo?): SpecialExecSection
+---@overload fun(index: integer, class: "PlaceHolderBase", undo: Undo?): PlaceHolderBase
+---@overload fun(index: integer, class: "PlaceHolder", undo: Undo?): PlaceHolder
+---@overload fun(index: integer, class: "EncoderOverlayPlaceholder", undo: Undo?): EncoderOverlayPlaceholder
+---@overload fun(index: integer, class: "PopupPlaceholder", undo: Undo?): PopupPlaceholder
+---@overload fun(index: integer, class: "EncoderBarPlaceHolder", undo: Undo?): EncoderBarPlaceHolder
+---@overload fun(index: integer, class: "ModalPlaceholder", undo: Undo?): ModalPlaceholder
+---@overload fun(index: integer, class: "UIObjectFake", undo: Undo?): UIObjectFake
+---@overload fun(index: integer, class: "BaseItemButtons", undo: Undo?): BaseItemButtons
+---@overload fun(index: integer, class: "UIGridInternals", undo: Undo?): UIGridInternals
+---@overload fun(index: integer, class: "AudioPreview", undo: Undo?): AudioPreview
+---@overload fun(index: integer, class: "OutputTest", undo: Undo?): OutputTest
+---@overload fun(index: integer, class: "EditorBase", undo: Undo?): EditorBase
+---@overload fun(index: integer, class: "PhaserPathEditor", undo: Undo?): PhaserPathEditor
+---@overload fun(index: integer, class: "PhaserSpeedEditor", undo: Undo?): PhaserSpeedEditor
+---@overload fun(index: integer, class: "PhaserPhaseEditor", undo: Undo?): PhaserPhaseEditor
+---@overload fun(index: integer, class: "PhaserWidthEditor", undo: Undo?): PhaserWidthEditor
+---@overload fun(index: integer, class: "TrackpadMouseControl", undo: Undo?): TrackpadMouseControl
+---@overload fun(index: integer, class: "InfoNotesGridScroller", undo: Undo?): InfoNotesGridScroller
+---@overload fun(index: integer, class: "TouchTarget", undo: Undo?): TouchTarget
+---@overload fun(index: integer, class: "TouchConfigurator", undo: Undo?): TouchConfigurator
+---@overload fun(index: integer, class: "ShaperTestView", undo: Undo?): ShaperTestView
+---@overload fun(index: integer, class: "ColorTestView", undo: Undo?): ColorTestView
+---@overload fun(index: integer, class: "SoundLevelView", undo: Undo?): SoundLevelView
+---@overload fun(index: integer, class: "SoundBandView", undo: Undo?): SoundBandView
+---@overload fun(index: integer, class: "PerformanceView", undo: Undo?): PerformanceView
+---@overload fun(index: integer, class: "SignalView", undo: Undo?): SignalView
+---@overload fun(index: integer, class: "GraphEditor", undo: Undo?): GraphEditor
+---@overload fun(index: integer, class: "UIDmxCurveEditor", undo: Undo?): UIDmxCurveEditor
+---@overload fun(index: integer, class: "UIPhaserTimeLine", undo: Undo?): UIPhaserTimeLine
+---@overload fun(index: integer, class: "SoundBeatView", undo: Undo?): SoundBeatView
+---@overload fun(index: integer, class: "SoundWaveView", undo: Undo?): SoundWaveView
+---@overload fun(index: integer, class: "ColorPickBase", undo: Undo?): ColorPickBase
+---@overload fun(index: integer, class: "ColorPickHSRect", undo: Undo?): ColorPickHSRect
+---@overload fun(index: integer, class: "ColorPickXYZ", undo: Undo?): ColorPickXYZ
+---@overload fun(index: integer, class: "ColorPickHSCircle", undo: Undo?): ColorPickHSCircle
+---@overload fun(index: integer, class: "MacrolinePreview", undo: Undo?): MacrolinePreview
+---@overload fun(index: integer, class: "AppearancePreview", undo: Undo?): AppearancePreview
+---@overload fun(index: integer, class: "CommandLineOutput", undo: Undo?): CommandLineOutput
+---@overload fun(index: integer, class: nil, undo: Undo?): UIObject
+function ScrollBox:Create(index, class, undo) end
+---@overload fun(class: "UIObject", undo: Undo?, count: integer?): UIObject
+---@overload fun(class: "SampleTableView", undo: Undo?, count: integer?): SampleTableView
+---@overload fun(class: "FanRpmView", undo: Undo?, count: integer?): FanRpmView
+---@overload fun(class: "SysTempView", undo: Undo?, count: integer?): SysTempView
+---@overload fun(class: "GpuTempView", undo: Undo?, count: integer?): GpuTempView
+---@overload fun(class: "CpuTempView", undo: Undo?, count: integer?): CpuTempView
+---@overload fun(class: "ShowDataMemTestView", undo: Undo?, count: integer?): ShowDataMemTestView
+---@overload fun(class: "MemTestView", undo: Undo?, count: integer?): MemTestView
+---@overload fun(class: "CPUTestView", undo: Undo?, count: integer?): CPUTestView
+---@overload fun(class: "SyncTestView", undo: Undo?, count: integer?): SyncTestView
+---@overload fun(class: "NetworkTestView", undo: Undo?, count: integer?): NetworkTestView
+---@overload fun(class: "ChannelTestView", undo: Undo?, count: integer?): ChannelTestView
+---@overload fun(class: "FaderTestView", undo: Undo?, count: integer?): FaderTestView
+---@overload fun(class: "SensorView", undo: Undo?, count: integer?): SensorView
+---@overload fun(class: "Toolbar", undo: Undo?, count: integer?): Toolbar
+---@overload fun(class: "StatusBar", undo: Undo?, count: integer?): StatusBar
+---@overload fun(class: "ScrollableItemList", undo: Undo?, count: integer?): ScrollableItemList
+---@overload fun(class: "PopupList", undo: Undo?, count: integer?): PopupList
+---@overload fun(class: "UITab", undo: Undo?, count: integer?): UITab
+---@overload fun(class: "DBObjectTab", undo: Undo?, count: integer?): DBObjectTab
+---@overload fun(class: "RadioButtonList", undo: Undo?, count: integer?): RadioButtonList
+---@overload fun(class: "PropertyRadioButtonList", undo: Undo?, count: integer?): PropertyRadioButtonList
+---@overload fun(class: "ChildRadioButtonList", undo: Undo?, count: integer?): ChildRadioButtonList
+---@overload fun(class: "ShowCreatorSubpoolSelectorList", undo: Undo?, count: integer?): ShowCreatorSubpoolSelectorList
+---@overload fun(class: "EncoderBankSelector", undo: Undo?, count: integer?): EncoderBankSelector
+---@overload fun(class: "AttributeRadioButtonList", undo: Undo?, count: integer?): AttributeRadioButtonList
+---@overload fun(class: "FeatureRadioButtonList", undo: Undo?, count: integer?): FeatureRadioButtonList
+---@overload fun(class: "FixturetypeItemList", undo: Undo?, count: integer?): FixturetypeItemList
+---@overload fun(class: "MultiScroller", undo: Undo?, count: integer?): MultiScroller
+---@overload fun(class: "MultiSyncGridScroller", undo: Undo?, count: integer?): MultiSyncGridScroller
+---@overload fun(class: "ContentSheetGridScroller", undo: Undo?, count: integer?): ContentSheetGridScroller
+---@overload fun(class: "UIGridCellBase", undo: Undo?, count: integer?): UIGridCellBase
+---@overload fun(class: "TimelineCell", undo: Undo?, count: integer?): TimelineCell
+---@overload fun(class: "TimelineHeaderCell", undo: Undo?, count: integer?): TimelineHeaderCell
+---@overload fun(class: "TimelineDataCell", undo: Undo?, count: integer?): TimelineDataCell
+---@overload fun(class: "TrackGroupTimelineCell", undo: Undo?, count: integer?): TrackGroupTimelineCell
+---@overload fun(class: "TrackTimelineCell", undo: Undo?, count: integer?): TrackTimelineCell
+---@overload fun(class: "TimeMarkerTimelineCell", undo: Undo?, count: integer?): TimeMarkerTimelineCell
+---@overload fun(class: "BandFader", undo: Undo?, count: integer?): BandFader
+---@overload fun(class: "DCRemoteInfo", undo: Undo?, count: integer?): DCRemoteInfo
+---@overload fun(class: "TimecodeSlotInfo", undo: Undo?, count: integer?): TimecodeSlotInfo
+---@overload fun(class: "ColorView", undo: Undo?, count: integer?): ColorView
+---@overload fun(class: "ScribbleEditView", undo: Undo?, count: integer?): ScribbleEditView
+---@overload fun(class: "ScrollBox", undo: Undo?, count: integer?): ScrollBox
+---@overload fun(class: "MainDialogSubMenuScrollBox", undo: Undo?, count: integer?): MainDialogSubMenuScrollBox
+---@overload fun(class: "DialogContainer", undo: Undo?, count: integer?): DialogContainer
+---@overload fun(class: "TextView", undo: Undo?, count: integer?): TextView
+---@overload fun(class: "CommandlineHistoryTextView", undo: Undo?, count: integer?): CommandlineHistoryTextView
+---@overload fun(class: "LineEdit", undo: Undo?, count: integer?): LineEdit
+---@overload fun(class: "LineEditExt", undo: Undo?, count: integer?): LineEditExt
+---@overload fun(class: "MacrolineEdit", undo: Undo?, count: integer?): MacrolineEdit
+---@overload fun(class: "NumInputEdit", undo: Undo?, count: integer?): NumInputEdit
+---@overload fun(class: "KeybSCEdit", undo: Undo?, count: integer?): KeybSCEdit
+---@overload fun(class: "CmdlineEdit", undo: Undo?, count: integer?): CmdlineEdit
+---@overload fun(class: "UiFader", undo: Undo?, count: integer?): UiFader
+---@overload fun(class: "DeskLightsFader", undo: Undo?, count: integer?): DeskLightsFader
+---@overload fun(class: "GrandMasterFader", undo: Undo?, count: integer?): GrandMasterFader
+---@overload fun(class: "ShaperPovFader", undo: Undo?, count: integer?): ShaperPovFader
+---@overload fun(class: "ColorInterfaceFader", undo: Undo?, count: integer?): ColorInterfaceFader
+---@overload fun(class: "ColorPickerFader", undo: Undo?, count: integer?): ColorPickerFader
+---@overload fun(class: "HardwareFader", undo: Undo?, count: integer?): HardwareFader
+---@overload fun(class: "PlaybackHardwareFader", undo: Undo?, count: integer?): PlaybackHardwareFader
+---@overload fun(class: "PropertyLabel", undo: Undo?, count: integer?): PropertyLabel
+---@overload fun(class: "ProgressBar", undo: Undo?, count: integer?): ProgressBar
+---@overload fun(class: "ScrollBar", undo: Undo?, count: integer?): ScrollBar
+---@overload fun(class: "ScrollBarH", undo: Undo?, count: integer?): ScrollBarH
+---@overload fun(class: "ScrollBarV", undo: Undo?, count: integer?): ScrollBarV
+---@overload fun(class: "Button", undo: Undo?, count: integer?): Button
+---@overload fun(class: "UIGridConfigButton", undo: Undo?, count: integer?): UIGridConfigButton
+---@overload fun(class: "UIGridEditModeButton", undo: Undo?, count: integer?): UIGridEditModeButton
+---@overload fun(class: "DimmerWheelButton", undo: Undo?, count: integer?): DimmerWheelButton
+---@overload fun(class: "EjectButton", undo: Undo?, count: integer?): EjectButton
+---@overload fun(class: "TitleButton", undo: Undo?, count: integer?): TitleButton
+---@overload fun(class: "DeleteWindowButton", undo: Undo?, count: integer?): DeleteWindowButton
+---@overload fun(class: "WarningInfoButton", undo: Undo?, count: integer?): WarningInfoButton
+---@overload fun(class: "LogoButton", undo: Undo?, count: integer?): LogoButton
+---@overload fun(class: "ContextButton", undo: Undo?, count: integer?): ContextButton
+---@overload fun(class: "IndicatorButton", undo: Undo?, count: integer?): IndicatorButton
+---@overload fun(class: "VirtualKeyboardButton", undo: Undo?, count: integer?): VirtualKeyboardButton
+---@overload fun(class: "ExpandableButton", undo: Undo?, count: integer?): ExpandableButton
+---@overload fun(class: "KBShortcutButton", undo: Undo?, count: integer?): KBShortcutButton
+---@overload fun(class: "HardkeyButton", undo: Undo?, count: integer?): HardkeyButton
+---@overload fun(class: "HardwareButton", undo: Undo?, count: integer?): HardwareButton
+---@overload fun(class: "XKeysHardwareButton", undo: Undo?, count: integer?): XKeysHardwareButton
+---@overload fun(class: "PlaybackHardwareButton", undo: Undo?, count: integer?): PlaybackHardwareButton
+---@overload fun(class: "DisplayButton", undo: Undo?, count: integer?): DisplayButton
+---@overload fun(class: "BlinkingFadeButton", undo: Undo?, count: integer?): BlinkingFadeButton
+---@overload fun(class: "TimerButton", undo: Undo?, count: integer?): TimerButton
+---@overload fun(class: "TimerPauseButton", undo: Undo?, count: integer?): TimerPauseButton
+---@overload fun(class: "TimerStopButton", undo: Undo?, count: integer?): TimerStopButton
+---@overload fun(class: "TimerPlayButton", undo: Undo?, count: integer?): TimerPlayButton
+---@overload fun(class: "TimecodeSlotButton", undo: Undo?, count: integer?): TimecodeSlotButton
+---@overload fun(class: "TimecodeSlotPauseButton", undo: Undo?, count: integer?): TimecodeSlotPauseButton
+---@overload fun(class: "TimecodeSlotStopButton", undo: Undo?, count: integer?): TimecodeSlotStopButton
+---@overload fun(class: "TimecodeSlotPlayButton", undo: Undo?, count: integer?): TimecodeSlotPlayButton
+---@overload fun(class: "MainDlgLoginButton", undo: Undo?, count: integer?): MainDlgLoginButton
+---@overload fun(class: "MainDlgUndoButton", undo: Undo?, count: integer?): MainDlgUndoButton
+---@overload fun(class: "MainDlgButtonBase", undo: Undo?, count: integer?): MainDlgButtonBase
+---@overload fun(class: "MainDlgLeaveSessionButton", undo: Undo?, count: integer?): MainDlgLeaveSessionButton
+---@overload fun(class: "MainDlgJoinSessionButton", undo: Undo?, count: integer?): MainDlgJoinSessionButton
+---@overload fun(class: "MainDlgDismissStationButton", undo: Undo?, count: integer?): MainDlgDismissStationButton
+---@overload fun(class: "MainDlgInviteStationButton", undo: Undo?, count: integer?): MainDlgInviteStationButton
+---@overload fun(class: "MainDlgGridSelectDown", undo: Undo?, count: integer?): MainDlgGridSelectDown
+---@overload fun(class: "MainDlgGridSelectUp", undo: Undo?, count: integer?): MainDlgGridSelectUp
+---@overload fun(class: "MainDlgExportButton", undo: Undo?, count: integer?): MainDlgExportButton
+---@overload fun(class: "MainDlgExportEditorButton", undo: Undo?, count: integer?): MainDlgExportEditorButton
+---@overload fun(class: "MainDlgImportButton", undo: Undo?, count: integer?): MainDlgImportButton
+---@overload fun(class: "MainDlgImportEditorButton", undo: Undo?, count: integer?): MainDlgImportEditorButton
+---@overload fun(class: "MainDlgSelectButton", undo: Undo?, count: integer?): MainDlgSelectButton
+---@overload fun(class: "MainDlgEditButton", undo: Undo?, count: integer?): MainDlgEditButton
+---@overload fun(class: "MainDlgPasteButton", undo: Undo?, count: integer?): MainDlgPasteButton
+---@overload fun(class: "MainDlgCopyButton", undo: Undo?, count: integer?): MainDlgCopyButton
+---@overload fun(class: "MainDlgCutButton", undo: Undo?, count: integer?): MainDlgCutButton
+---@overload fun(class: "MainDlgDelButton", undo: Undo?, count: integer?): MainDlgDelButton
+---@overload fun(class: "MainDlgBlindButton", undo: Undo?, count: integer?): MainDlgBlindButton
+---@overload fun(class: "MainDlgInsertButton", undo: Undo?, count: integer?): MainDlgInsertButton
+---@overload fun(class: "PropertyControl", undo: Undo?, count: integer?): PropertyControl
+---@overload fun(class: "BatteryControl", undo: Undo?, count: integer?): BatteryControl
+---@overload fun(class: "RotationButton", undo: Undo?, count: integer?): RotationButton
+---@overload fun(class: "KeyboardShortcutControl", undo: Undo?, count: integer?): KeyboardShortcutControl
+---@overload fun(class: "XlrModeButton", undo: Undo?, count: integer?): XlrModeButton
+---@overload fun(class: "UIToggleButton", undo: Undo?, count: integer?): UIToggleButton
+---@overload fun(class: "IndicatorControl", undo: Undo?, count: integer?): IndicatorControl
+---@overload fun(class: "CalculatorChannelSetControl", undo: Undo?, count: integer?): CalculatorChannelSetControl
+---@overload fun(class: "BaseStateButton", undo: Undo?, count: integer?): BaseStateButton
+---@overload fun(class: "ToggleButtonList", undo: Undo?, count: integer?): ToggleButtonList
+---@overload fun(class: "SwipeButtonList", undo: Undo?, count: integer?): SwipeButtonList
+---@overload fun(class: "ToggleButton", undo: Undo?, count: integer?): ToggleButton
+---@overload fun(class: "SwipeButton", undo: Undo?, count: integer?): SwipeButton
+---@overload fun(class: "ObjectSelector", undo: Undo?, count: integer?): ObjectSelector
+---@overload fun(class: "DriveSelector", undo: Undo?, count: integer?): DriveSelector
+---@overload fun(class: "UserEncoderPageSelector", undo: Undo?, count: integer?): UserEncoderPageSelector
+---@overload fun(class: "EnableMasterFaderButton", undo: Undo?, count: integer?): EnableMasterFaderButton
+---@overload fun(class: "ExecConfigSwipe", undo: Undo?, count: integer?): ExecConfigSwipe
+---@overload fun(class: "EncoderLinkButton", undo: Undo?, count: integer?): EncoderLinkButton
+---@overload fun(class: "StateButton", undo: Undo?, count: integer?): StateButton
+---@overload fun(class: "CheckBox", undo: Undo?, count: integer?): CheckBox
+---@overload fun(class: "ContentCheckBox", undo: Undo?, count: integer?): ContentCheckBox
+---@overload fun(class: "PropertyInput", undo: Undo?, count: integer?): PropertyInput
+---@overload fun(class: "TCTimeButton", undo: Undo?, count: integer?): TCTimeButton
+---@overload fun(class: "TitlebuttonControl", undo: Undo?, count: integer?): TitlebuttonControl
+---@overload fun(class: "SpecialExecConfigInput", undo: Undo?, count: integer?): SpecialExecConfigInput
+---@overload fun(class: "ExecConfigInput", undo: Undo?, count: integer?): ExecConfigInput
+---@overload fun(class: "OSCActivityButton", undo: Undo?, count: integer?): OSCActivityButton
+---@overload fun(class: "ScribbleInput", undo: Undo?, count: integer?): ScribbleInput
+---@overload fun(class: "AppearanceInput", undo: Undo?, count: integer?): AppearanceInput
+---@overload fun(class: "ColorPropertyInput", undo: Undo?, count: integer?): ColorPropertyInput
+---@overload fun(class: "GelColorPropertyInput", undo: Undo?, count: integer?): GelColorPropertyInput
+---@overload fun(class: "DialogButton", undo: Undo?, count: integer?): DialogButton
+---@overload fun(class: "ScreenSelectorButton", undo: Undo?, count: integer?): ScreenSelectorButton
+---@overload fun(class: "CloneFilterButton", undo: Undo?, count: integer?): CloneFilterButton
+---@overload fun(class: "EncoderControl", undo: Undo?, count: integer?): EncoderControl
+---@overload fun(class: "ScreenEncoderControl", undo: Undo?, count: integer?): ScreenEncoderControl
+---@overload fun(class: "ShaperEncoderControl", undo: Undo?, count: integer?): ShaperEncoderControl
+---@overload fun(class: "Gma3EncoderControl", undo: Undo?, count: integer?): Gma3EncoderControl
+---@overload fun(class: "PresetEncoderControl", undo: Undo?, count: integer?): PresetEncoderControl
+---@overload fun(class: "PhaserEncoderControl", undo: Undo?, count: integer?): PhaserEncoderControl
+---@overload fun(class: "TrackpadPanTiltControl", undo: Undo?, count: integer?): TrackpadPanTiltControl
+---@overload fun(class: "ValueControl", undo: Undo?, count: integer?): ValueControl
+---@overload fun(class: "AuxValueControl", undo: Undo?, count: integer?): AuxValueControl
+---@overload fun(class: "ShowCreatorTypeControl", undo: Undo?, count: integer?): ShowCreatorTypeControl
+---@overload fun(class: "ValueRadioControl", undo: Undo?, count: integer?): ValueRadioControl
+---@overload fun(class: "SpecialExecutorKey", undo: Undo?, count: integer?): SpecialExecutorKey
+---@overload fun(class: "EditTitlebarButton", undo: Undo?, count: integer?): EditTitlebarButton
+---@overload fun(class: "SelectionIndicatorButton", undo: Undo?, count: integer?): SelectionIndicatorButton
+---@overload fun(class: "ValueFadeControl", undo: Undo?, count: integer?): ValueFadeControl
+---@overload fun(class: "MatricksIndicatorButton", undo: Undo?, count: integer?): MatricksIndicatorButton
+---@overload fun(class: "MatricksToggleButton", undo: Undo?, count: integer?): MatricksToggleButton
+---@overload fun(class: "ExecConfigColButton", undo: Undo?, count: integer?): ExecConfigColButton
+---@overload fun(class: "ExecConfigRowButton", undo: Undo?, count: integer?): ExecConfigRowButton
+---@overload fun(class: "MainDlgGridToggleButton", undo: Undo?, count: integer?): MainDlgGridToggleButton
+---@overload fun(class: "MainDlgMergeToggleButton", undo: Undo?, count: integer?): MainDlgMergeToggleButton
+---@overload fun(class: "MainDlgNewLineToggleButton", undo: Undo?, count: integer?): MainDlgNewLineToggleButton
+---@overload fun(class: "AtFilterControl", undo: Undo?, count: integer?): AtFilterControl
+---@overload fun(class: "AttributeToggleButton", undo: Undo?, count: integer?): AttributeToggleButton
+---@overload fun(class: "AtFilterPreview", undo: Undo?, count: integer?): AtFilterPreview
+---@overload fun(class: "ScrollBarButton", undo: Undo?, count: integer?): ScrollBarButton
+---@overload fun(class: "ScrollBarButtonH", undo: Undo?, count: integer?): ScrollBarButtonH
+---@overload fun(class: "ScrollBarButtonV", undo: Undo?, count: integer?): ScrollBarButtonV
+---@overload fun(class: "MovableButton", undo: Undo?, count: integer?): MovableButton
+---@overload fun(class: "MouseButton", undo: Undo?, count: integer?): MouseButton
+---@overload fun(class: "ProgressButton", undo: Undo?, count: integer?): ProgressButton
+---@overload fun(class: "MessageCenterInfoButton", undo: Undo?, count: integer?): MessageCenterInfoButton
+---@overload fun(class: "TagButton", undo: Undo?, count: integer?): TagButton
+---@overload fun(class: "RevertButton", undo: Undo?, count: integer?): RevertButton
+---@overload fun(class: "DriveStatusButton", undo: Undo?, count: integer?): DriveStatusButton
+---@overload fun(class: "MiniEncoder", undo: Undo?, count: integer?): MiniEncoder
+---@overload fun(class: "HardwareMiniEncoder", undo: Undo?, count: integer?): HardwareMiniEncoder
+---@overload fun(class: "XKeysHardwareMiniEncoder", undo: Undo?, count: integer?): XKeysHardwareMiniEncoder
+---@overload fun(class: "PlaybackHardwareMiniEncoder", undo: Undo?, count: integer?): PlaybackHardwareMiniEncoder
+---@overload fun(class: "Splitter", undo: Undo?, count: integer?): Splitter
+---@overload fun(class: "SplitterV", undo: Undo?, count: integer?): SplitterV
+---@overload fun(class: "SplitterH", undo: Undo?, count: integer?): SplitterH
+---@overload fun(class: "EncoderBarSlot", undo: Undo?, count: integer?): EncoderBarSlot
+---@overload fun(class: "UILayoutGrid", undo: Undo?, count: integer?): UILayoutGrid
+---@overload fun(class: "NotificationsGridScroller", undo: Undo?, count: integer?): NotificationsGridScroller
+---@overload fun(class: "Navigator", undo: Undo?, count: integer?): Navigator
+---@overload fun(class: "PropertyBox", undo: Undo?, count: integer?): PropertyBox
+---@overload fun(class: "SettingsBox", undo: Undo?, count: integer?): SettingsBox
+---@overload fun(class: "VirtualKeyboard", undo: Undo?, count: integer?): VirtualKeyboard
+---@overload fun(class: "ScrollContainerPageBase", undo: Undo?, count: integer?): ScrollContainerPageBase
+---@overload fun(class: "ScrollContainerPageScrollItemList", undo: Undo?, count: integer?): ScrollContainerPageScrollItemList
+---@overload fun(class: "ScrollContainerPage", undo: Undo?, count: integer?): ScrollContainerPage
+---@overload fun(class: "ScrollContainer", undo: Undo?, count: integer?): ScrollContainer
+---@overload fun(class: "MainDialogSubMenu", undo: Undo?, count: integer?): MainDialogSubMenu
+---@overload fun(class: "AutoLayout", undo: Undo?, count: integer?): AutoLayout
+---@overload fun(class: "UIGridConfigLayout", undo: Undo?, count: integer?): UIGridConfigLayout
+---@overload fun(class: "TitleAutoLayout", undo: Undo?, count: integer?): TitleAutoLayout
+---@overload fun(class: "StepControl", undo: Undo?, count: integer?): StepControl
+---@overload fun(class: "ObjectProperties", undo: Undo?, count: integer?): ObjectProperties
+---@overload fun(class: "Dialog", undo: Undo?, count: integer?): Dialog
+---@overload fun(class: "UIGrid", undo: Undo?, count: integer?): UIGrid
+---@overload fun(class: "DBObjectGridBase", undo: Undo?, count: integer?): DBObjectGridBase
+---@overload fun(class: "StationGrid", undo: Undo?, count: integer?): StationGrid
+---@overload fun(class: "UiStationGrid", undo: Undo?, count: integer?): UiStationGrid
+---@overload fun(class: "DBObjectGrid", undo: Undo?, count: integer?): DBObjectGrid
+---@overload fun(class: "TimecodeTextGrid", undo: Undo?, count: integer?): TimecodeTextGrid
+---@overload fun(class: "TimecodeGrid", undo: Undo?, count: integer?): TimecodeGrid
+---@overload fun(class: "PSRResultShowGrid", undo: Undo?, count: integer?): PSRResultShowGrid
+---@overload fun(class: "PSRImportGrid", undo: Undo?, count: integer?): PSRImportGrid
+---@overload fun(class: "PSRPatchGrid", undo: Undo?, count: integer?): PSRPatchGrid
+---@overload fun(class: "CloneFilterGrid", undo: Undo?, count: integer?): CloneFilterGrid
+---@overload fun(class: "PosCalibrationView", undo: Undo?, count: integer?): PosCalibrationView
+---@overload fun(class: "OSMidiGrid", undo: Undo?, count: integer?): OSMidiGrid
+---@overload fun(class: "TimezoneGrid", undo: Undo?, count: integer?): TimezoneGrid
+---@overload fun(class: "WindowTypeGrid", undo: Undo?, count: integer?): WindowTypeGrid
+---@overload fun(class: "SelectedGrid", undo: Undo?, count: integer?): SelectedGrid
+---@overload fun(class: "OopsGrid", undo: Undo?, count: integer?): OopsGrid
+---@overload fun(class: "FixtureTypeGrid", undo: Undo?, count: integer?): FixtureTypeGrid
+---@overload fun(class: "CueInputGrid", undo: Undo?, count: integer?): CueInputGrid
+---@overload fun(class: "LayoutEditorGrid", undo: Undo?, count: integer?): LayoutEditorGrid
+---@overload fun(class: "AgendaGrid", undo: Undo?, count: integer?): AgendaGrid
+---@overload fun(class: "ProgrammerGrid", undo: Undo?, count: integer?): ProgrammerGrid
+---@overload fun(class: "ProgUpdateGrid", undo: Undo?, count: integer?): ProgUpdateGrid
+---@overload fun(class: "MeshMaterialGrid", undo: Undo?, count: integer?): MeshMaterialGrid
+---@overload fun(class: "GelGrid", undo: Undo?, count: integer?): GelGrid
+---@overload fun(class: "SequenceGrid", undo: Undo?, count: integer?): SequenceGrid
+---@overload fun(class: "OutputConfigGrid", undo: Undo?, count: integer?): OutputConfigGrid
+---@overload fun(class: "PatchFixtureGrid", undo: Undo?, count: integer?): PatchFixtureGrid
+---@overload fun(class: "ShowHistoryGrid", undo: Undo?, count: integer?): ShowHistoryGrid
+---@overload fun(class: "FilebrowserView", undo: Undo?, count: integer?): FilebrowserView
+---@overload fun(class: "ReferencesGrid", undo: Undo?, count: integer?): ReferencesGrid
+---@overload fun(class: "CloneGrid", undo: Undo?, count: integer?): CloneGrid
+---@overload fun(class: "GenericSheet", undo: Undo?, count: integer?): GenericSheet
+---@overload fun(class: "PhaserStepSheet", undo: Undo?, count: integer?): PhaserStepSheet
+---@overload fun(class: "FixtureSheet", undo: Undo?, count: integer?): FixtureSheet
+---@overload fun(class: "ContentSheet", undo: Undo?, count: integer?): ContentSheet
+---@overload fun(class: "DMXSheet", undo: Undo?, count: integer?): DMXSheet
+---@overload fun(class: "NetworkSpeedTestGrid", undo: Undo?, count: integer?): NetworkSpeedTestGrid
+---@overload fun(class: "TextEdit", undo: Undo?, count: integer?): TextEdit
+---@overload fun(class: "MeshLineEdit", undo: Undo?, count: integer?): MeshLineEdit
+---@overload fun(class: "NoteTextEdit", undo: Undo?, count: integer?): NoteTextEdit
+---@overload fun(class: "Bar", undo: Undo?, count: integer?): Bar
+---@overload fun(class: "GraphicsEncoderBar", undo: Undo?, count: integer?): GraphicsEncoderBar
+---@overload fun(class: "ScreenEncoderBar", undo: Undo?, count: integer?): ScreenEncoderBar
+---@overload fun(class: "TimecodeBar", undo: Undo?, count: integer?): TimecodeBar
+---@overload fun(class: "PhaserEditorBar", undo: Undo?, count: integer?): PhaserEditorBar
+---@overload fun(class: "SequenceEditBar", undo: Undo?, count: integer?): SequenceEditBar
+---@overload fun(class: "StageViewBar", undo: Undo?, count: integer?): StageViewBar
+---@overload fun(class: "LayoutBar", undo: Undo?, count: integer?): LayoutBar
+---@overload fun(class: "ShaperEditBar", undo: Undo?, count: integer?): ShaperEditBar
+---@overload fun(class: "ColorEditBar", undo: Undo?, count: integer?): ColorEditBar
+---@overload fun(class: "Gma3EncoderBar", undo: Undo?, count: integer?): Gma3EncoderBar
+---@overload fun(class: "DmxTesterBar", undo: Undo?, count: integer?): DmxTesterBar
+---@overload fun(class: "PresetBar", undo: Undo?, count: integer?): PresetBar
+---@overload fun(class: "PhaserBar", undo: Undo?, count: integer?): PhaserBar
+---@overload fun(class: "ExecutorBar", undo: Undo?, count: integer?): ExecutorBar
+---@overload fun(class: "ExecutorBarXKeys", undo: Undo?, count: integer?): ExecutorBarXKeys
+---@overload fun(class: "XKeysViewExecutorBar", undo: Undo?, count: integer?): XKeysViewExecutorBar
+---@overload fun(class: "Overlay", undo: Undo?, count: integer?): Overlay
+---@overload fun(class: "SwipeMenuOverlay", undo: Undo?, count: integer?): SwipeMenuOverlay
+---@overload fun(class: "ContentOverlay", undo: Undo?, count: integer?): ContentOverlay
+---@overload fun(class: "ShadedOverlay", undo: Undo?, count: integer?): ShadedOverlay
+---@overload fun(class: "NotificationArea", undo: Undo?, count: integer?): NotificationArea
+---@overload fun(class: "MessageBox", undo: Undo?, count: integer?): MessageBox
+---@overload fun(class: "BaseInput", undo: Undo?, count: integer?): BaseInput
+---@overload fun(class: "ImageInput", undo: Undo?, count: integer?): ImageInput
+---@overload fun(class: "ViewInput", undo: Undo?, count: integer?): ViewInput
+---@overload fun(class: "ColorInput", undo: Undo?, count: integer?): ColorInput
+---@overload fun(class: "NumericInput", undo: Undo?, count: integer?): NumericInput
+---@overload fun(class: "Popup", undo: Undo?, count: integer?): Popup
+---@overload fun(class: "ZoomFactorPopup", undo: Undo?, count: integer?): ZoomFactorPopup
+---@overload fun(class: "ImagePopup", undo: Undo?, count: integer?): ImagePopup
+---@overload fun(class: "TextInput", undo: Undo?, count: integer?): TextInput
+---@overload fun(class: "MultiLineTextInput", undo: Undo?, count: integer?): MultiLineTextInput
+---@overload fun(class: "KeybSCInput", undo: Undo?, count: integer?): KeybSCInput
+---@overload fun(class: "MacrolineTextInput", undo: Undo?, count: integer?): MacrolineTextInput
+---@overload fun(class: "CueNumberInput", undo: Undo?, count: integer?): CueNumberInput
+---@overload fun(class: "CopyStoreCueMessageBoxBase", undo: Undo?, count: integer?): CopyStoreCueMessageBoxBase
+---@overload fun(class: "DeleteCueMessageBox", undo: Undo?, count: integer?): DeleteCueMessageBox
+---@overload fun(class: "StoreCueMessageBox", undo: Undo?, count: integer?): StoreCueMessageBox
+---@overload fun(class: "CopyCueMessageBox", undo: Undo?, count: integer?): CopyCueMessageBox
+---@overload fun(class: "CloneAtFilterSelector", undo: Undo?, count: integer?): CloneAtFilterSelector
+---@overload fun(class: "DatumInput", undo: Undo?, count: integer?): DatumInput
+---@overload fun(class: "OSMidiSelect", undo: Undo?, count: integer?): OSMidiSelect
+---@overload fun(class: "TimezoneInput", undo: Undo?, count: integer?): TimezoneInput
+---@overload fun(class: "InsertFixturesWizard", undo: Undo?, count: integer?): InsertFixturesWizard
+---@overload fun(class: "XlrPortInput", undo: Undo?, count: integer?): XlrPortInput
+---@overload fun(class: "UIDMXPatch", undo: Undo?, count: integer?): UIDMXPatch
+---@overload fun(class: "GenericImport", undo: Undo?, count: integer?): GenericImport
+---@overload fun(class: "GenericAssignmentInput", undo: Undo?, count: integer?): GenericAssignmentInput
+---@overload fun(class: "FixtureTypeImport", undo: Undo?, count: integer?): FixtureTypeImport
+---@overload fun(class: "RecurringOverlay", undo: Undo?, count: integer?): RecurringOverlay
+---@overload fun(class: "RemoteInputLock", undo: Undo?, count: integer?): RemoteInputLock
+---@overload fun(class: "DeskLock", undo: Undo?, count: integer?): DeskLock
+---@overload fun(class: "HelpPopup", undo: Undo?, count: integer?): HelpPopup
+---@overload fun(class: "PatchToOverlay", undo: Undo?, count: integer?): PatchToOverlay
+---@overload fun(class: "ColorMeasurementOverlay", undo: Undo?, count: integer?): ColorMeasurementOverlay
+---@overload fun(class: "GenericContext", undo: Undo?, count: integer?): GenericContext
+---@overload fun(class: "SpecialWindowContext", undo: Undo?, count: integer?): SpecialWindowContext
+---@overload fun(class: "Settings3dContext", undo: Undo?, count: integer?): Settings3dContext
+---@overload fun(class: "GenericEditorOverlay", undo: Undo?, count: integer?): GenericEditorOverlay
+---@overload fun(class: "TimerEditor", undo: Undo?, count: integer?): TimerEditor
+---@overload fun(class: "LayoutElementEditorOverlay", undo: Undo?, count: integer?): LayoutElementEditorOverlay
+---@overload fun(class: "RenderQualityEditor", undo: Undo?, count: integer?): RenderQualityEditor
+---@overload fun(class: "AppearanceEditor", undo: Undo?, count: integer?): AppearanceEditor
+---@overload fun(class: "ScribbleEditor", undo: Undo?, count: integer?): ScribbleEditor
+---@overload fun(class: "CameraEditor", undo: Undo?, count: integer?): CameraEditor
+---@overload fun(class: "MeshSettings", undo: Undo?, count: integer?): MeshSettings
+---@overload fun(class: "NetworkSpeedTestOverlay", undo: Undo?, count: integer?): NetworkSpeedTestOverlay
+---@overload fun(class: "EncoderOverlay", undo: Undo?, count: integer?): EncoderOverlay
+---@overload fun(class: "OffMenuOverlay", undo: Undo?, count: integer?): OffMenuOverlay
+---@overload fun(class: "PoolOverlay", undo: Undo?, count: integer?): PoolOverlay
+---@overload fun(class: "MainDialog", undo: Undo?, count: integer?): MainDialog
+---@overload fun(class: "PSRPatchMainDialog", undo: Undo?, count: integer?): PSRPatchMainDialog
+---@overload fun(class: "ShowCreatorMainDialogBase", undo: Undo?, count: integer?): ShowCreatorMainDialogBase
+---@overload fun(class: "PSRImportMainDialog", undo: Undo?, count: integer?): PSRImportMainDialog
+---@overload fun(class: "ShowCreatorFTPresetsMainDialog", undo: Undo?, count: integer?): ShowCreatorFTPresetsMainDialog
+---@overload fun(class: "MainDlgCommandControl", undo: Undo?, count: integer?): MainDlgCommandControl
+---@overload fun(class: "MainDlgDErrorReport", undo: Undo?, count: integer?): MainDlgDErrorReport
+---@overload fun(class: "MainDlgFixtureSetup", undo: Undo?, count: integer?): MainDlgFixtureSetup
+---@overload fun(class: "MainDlgFixtureSetup", undo: Undo?, count: integer?): MainDlgFixtureSetup
+---@overload fun(class: "PositionCalibration", undo: Undo?, count: integer?): PositionCalibration
+---@overload fun(class: "GenericEditor", undo: Undo?, count: integer?): GenericEditor
+---@overload fun(class: "TimecodeEditor", undo: Undo?, count: integer?): TimecodeEditor
+---@overload fun(class: "LayoutEditor", undo: Undo?, count: integer?): LayoutEditor
+---@overload fun(class: "KeyboardShortcutEditor", undo: Undo?, count: integer?): KeyboardShortcutEditor
+---@overload fun(class: "FixtureEditor", undo: Undo?, count: integer?): FixtureEditor
+---@overload fun(class: "StageEditor", undo: Undo?, count: integer?): StageEditor
+---@overload fun(class: "GenericSettingsEditor", undo: Undo?, count: integer?): GenericSettingsEditor
+---@overload fun(class: "GeneratorBitmapEditor", undo: Undo?, count: integer?): GeneratorBitmapEditor
+---@overload fun(class: "AllExecEditor", undo: Undo?, count: integer?): AllExecEditor
+---@overload fun(class: "MainDlgDmxModeEditor", undo: Undo?, count: integer?): MainDlgDmxModeEditor
+---@overload fun(class: "MainDlgFixtureTypeEditor", undo: Undo?, count: integer?): MainDlgFixtureTypeEditor
+---@overload fun(class: "PlaybackControls", undo: Undo?, count: integer?): PlaybackControls
+---@overload fun(class: "CloneOverlay", undo: Undo?, count: integer?): CloneOverlay
+---@overload fun(class: "ThemeMergeDialog", undo: Undo?, count: integer?): ThemeMergeDialog
+---@overload fun(class: "BackupMenu", undo: Undo?, count: integer?): BackupMenu
+---@overload fun(class: "MainDlgUpdateMenu", undo: Undo?, count: integer?): MainDlgUpdateMenu
+---@overload fun(class: "MainDialogDest", undo: Undo?, count: integer?): MainDialogDest
+---@overload fun(class: "CommandLineHistory", undo: Undo?, count: integer?): CommandLineHistory
+---@overload fun(class: "Drawable", undo: Undo?, count: integer?): Drawable
+---@overload fun(class: "FrameBufferObject", undo: Undo?, count: integer?): FrameBufferObject
+---@overload fun(class: "WebView", undo: Undo?, count: integer?): WebView
+---@overload fun(class: "WebView", undo: Undo?, count: integer?): WebView
+---@overload fun(class: "DialogHelp", undo: Undo?, count: integer?): DialogHelp
+---@overload fun(class: "DialogPrivacyPolicy", undo: Undo?, count: integer?): DialogPrivacyPolicy
+---@overload fun(class: "DialogTrademarks", undo: Undo?, count: integer?): DialogTrademarks
+---@overload fun(class: "DialogReleaseNotes", undo: Undo?, count: integer?): DialogReleaseNotes
+---@overload fun(class: "UI2DView", undo: Undo?, count: integer?): UI2DView
+---@overload fun(class: "UI2DView", undo: Undo?, count: integer?): UI2DView
+---@overload fun(class: "TexPageDebugView", undo: Undo?, count: integer?): TexPageDebugView
+---@overload fun(class: "MeshPreview", undo: Undo?, count: integer?): MeshPreview
+---@overload fun(class: "WindowFixturetypeVisualizer", undo: Undo?, count: integer?): WindowFixturetypeVisualizer
+---@overload fun(class: "ColorEngineDebugView", undo: Undo?, count: integer?): ColorEngineDebugView
+---@overload fun(class: "WindowTextureStatistics", undo: Undo?, count: integer?): WindowTextureStatistics
+---@overload fun(class: "SelectionView", undo: Undo?, count: integer?): SelectionView
+---@overload fun(class: "View3D", undo: Undo?, count: integer?): View3D
+---@overload fun(class: "PatchView3D", undo: Undo?, count: integer?): PatchView3D
+---@overload fun(class: "LivePatchView3D", undo: Undo?, count: integer?): LivePatchView3D
+---@overload fun(class: "WindowMeshStatistics", undo: Undo?, count: integer?): WindowMeshStatistics
+---@overload fun(class: "FrameBufferObject", undo: Undo?, count: integer?): FrameBufferObject
+---@overload fun(class: "LayoutCanvas", undo: Undo?, count: integer?): LayoutCanvas
+---@overload fun(class: "LayoutCanvas", undo: Undo?, count: integer?): LayoutCanvas
+---@overload fun(class: "GlWindowBase", undo: Undo?, count: integer?): GlWindowBase
+---@overload fun(class: "Window", undo: Undo?, count: integer?): Window
+---@overload fun(class: "CommandWingBarWindow", undo: Undo?, count: integer?): CommandWingBarWindow
+---@overload fun(class: "WindowEncoderBar", undo: Undo?, count: integer?): WindowEncoderBar
+---@overload fun(class: "TimecodeWindow", undo: Undo?, count: integer?): TimecodeWindow
+---@overload fun(class: "LayoutView", undo: Undo?, count: integer?): LayoutView
+---@overload fun(class: "RecipeWindow", undo: Undo?, count: integer?): RecipeWindow
+---@overload fun(class: "SpecialWindow", undo: Undo?, count: integer?): SpecialWindow
+---@overload fun(class: "WindowAgenda", undo: Undo?, count: integer?): WindowAgenda
+---@overload fun(class: "WindowTrackpad", undo: Undo?, count: integer?): WindowTrackpad
+---@overload fun(class: "WindowInfo", undo: Undo?, count: integer?): WindowInfo
+---@overload fun(class: "XKeysViewWindow", undo: Undo?, count: integer?): XKeysViewWindow
+---@overload fun(class: "PlaybackViewWindow", undo: Undo?, count: integer?): PlaybackViewWindow
+---@overload fun(class: "WindowHelpViewer", undo: Undo?, count: integer?): WindowHelpViewer
+---@overload fun(class: "ClockWindow", undo: Undo?, count: integer?): ClockWindow
+---@overload fun(class: "SystemMonitorWindow", undo: Undo?, count: integer?): SystemMonitorWindow
+---@overload fun(class: "PhaserViewWindow", undo: Undo?, count: integer?): PhaserViewWindow
+---@overload fun(class: "SelectionViewWindow", undo: Undo?, count: integer?): SelectionViewWindow
+---@overload fun(class: "StatusWindow", undo: Undo?, count: integer?): StatusWindow
+---@overload fun(class: "ContentWindow", undo: Undo?, count: integer?): ContentWindow
+---@overload fun(class: "SequenceWindow", undo: Undo?, count: integer?): SequenceWindow
+---@overload fun(class: "CommandLineWindow", undo: Undo?, count: integer?): CommandLineWindow
+---@overload fun(class: "CommandWingBarContainer", undo: Undo?, count: integer?): CommandWingBarContainer
+---@overload fun(class: "PhaserLayoutGrid", undo: Undo?, count: integer?): PhaserLayoutGrid
+---@overload fun(class: "UIPhaserTimeLineGrid", undo: Undo?, count: integer?): UIPhaserTimeLineGrid
+---@overload fun(class: "PhaserUICenter", undo: Undo?, count: integer?): PhaserUICenter
+---@overload fun(class: "DialogTrackpad", undo: Undo?, count: integer?): DialogTrackpad
+---@overload fun(class: "ReferencesContainer", undo: Undo?, count: integer?): ReferencesContainer
+---@overload fun(class: "TouchMonitor", undo: Undo?, count: integer?): TouchMonitor
+---@overload fun(class: "CloningDialog", undo: Undo?, count: integer?): CloningDialog
+---@overload fun(class: "AgendaMonthsGrid", undo: Undo?, count: integer?): AgendaMonthsGrid
+---@overload fun(class: "AgendaDaysGrid", undo: Undo?, count: integer?): AgendaDaysGrid
+---@overload fun(class: "CustomMasterLayoutGrid", undo: Undo?, count: integer?): CustomMasterLayoutGrid
+---@overload fun(class: "SpecialWindowContent", undo: Undo?, count: integer?): SpecialWindowContent
+---@overload fun(class: "ShaperWindowContent", undo: Undo?, count: integer?): ShaperWindowContent
+---@overload fun(class: "ColorPickerContent", undo: Undo?, count: integer?): ColorPickerContent
+---@overload fun(class: "BladeView", undo: Undo?, count: integer?): BladeView
+---@overload fun(class: "BaseClock", undo: Undo?, count: integer?): BaseClock
+---@overload fun(class: "AnalogClock", undo: Undo?, count: integer?): AnalogClock
+---@overload fun(class: "DigitalClock", undo: Undo?, count: integer?): DigitalClock
+---@overload fun(class: "DateClock", undo: Undo?, count: integer?): DateClock
+---@overload fun(class: "TimecodeSlotClock", undo: Undo?, count: integer?): TimecodeSlotClock
+---@overload fun(class: "TimerClock", undo: Undo?, count: integer?): TimerClock
+---@overload fun(class: "TreeViewFrame", undo: Undo?, count: integer?): TreeViewFrame
+---@overload fun(class: "ObjTreeViewFrame", undo: Undo?, count: integer?): ObjTreeViewFrame
+---@overload fun(class: "PSRTreeViewFrame", undo: Undo?, count: integer?): PSRTreeViewFrame
+---@overload fun(class: "NormedGrid", undo: Undo?, count: integer?): NormedGrid
+---@overload fun(class: "GridContentFilterEditor", undo: Undo?, count: integer?): GridContentFilterEditor
+---@overload fun(class: "GridPatchContentFilterEditor", undo: Undo?, count: integer?): GridPatchContentFilterEditor
+---@overload fun(class: "UiMessageCenter", undo: Undo?, count: integer?): UiMessageCenter
+---@overload fun(class: "ShaperEditorFaderGrid", undo: Undo?, count: integer?): ShaperEditorFaderGrid
+---@overload fun(class: "AllPoolLayoutGrid", undo: Undo?, count: integer?): AllPoolLayoutGrid
+---@overload fun(class: "PoolLayoutGrid", undo: Undo?, count: integer?): PoolLayoutGrid
+---@overload fun(class: "RunningPlaybacksPoolLayoutGrid", undo: Undo?, count: integer?): RunningPlaybacksPoolLayoutGrid
+---@overload fun(class: "ViewBar", undo: Undo?, count: integer?): ViewBar
+---@overload fun(class: "TimePoolLayoutGrid", undo: Undo?, count: integer?): TimePoolLayoutGrid
+---@overload fun(class: "TimecodeSlotLayoutGrid", undo: Undo?, count: integer?): TimecodeSlotLayoutGrid
+---@overload fun(class: "SmartViewPoolLayoutGrid", undo: Undo?, count: integer?): SmartViewPoolLayoutGrid
+---@overload fun(class: "SoundPoolLayoutGrid", undo: Undo?, count: integer?): SoundPoolLayoutGrid
+---@overload fun(class: "EncoderBarPoolLayoutGrid", undo: Undo?, count: integer?): EncoderBarPoolLayoutGrid
+---@overload fun(class: "UserPoolLayoutGrid", undo: Undo?, count: integer?): UserPoolLayoutGrid
+---@overload fun(class: "UniversePoolLayoutGrid", undo: Undo?, count: integer?): UniversePoolLayoutGrid
+---@overload fun(class: "GeneratorBitmapPoolLayoutGrid", undo: Undo?, count: integer?): GeneratorBitmapPoolLayoutGrid
+---@overload fun(class: "GeneratorRandomPoolLayoutGrid", undo: Undo?, count: integer?): GeneratorRandomPoolLayoutGrid
+---@overload fun(class: "LayoutPoolLayoutGrid", undo: Undo?, count: integer?): LayoutPoolLayoutGrid
+---@overload fun(class: "TimecodePoolLayoutGrid", undo: Undo?, count: integer?): TimecodePoolLayoutGrid
+---@overload fun(class: "MeshPoolLayoutGrid", undo: Undo?, count: integer?): MeshPoolLayoutGrid
+---@overload fun(class: "MatricksPoolLayoutGrid", undo: Undo?, count: integer?): MatricksPoolLayoutGrid
+---@overload fun(class: "MaterialPoolLayoutGrid", undo: Undo?, count: integer?): MaterialPoolLayoutGrid
+---@overload fun(class: "RenderQualityPoolLayoutGrid", undo: Undo?, count: integer?): RenderQualityPoolLayoutGrid
+---@overload fun(class: "CameraPoolLayoutGrid", undo: Undo?, count: integer?): CameraPoolLayoutGrid
+---@overload fun(class: "GelPoolLayoutGrid", undo: Undo?, count: integer?): GelPoolLayoutGrid
+---@overload fun(class: "ScribblePoolLayoutGrid", undo: Undo?, count: integer?): ScribblePoolLayoutGrid
+---@overload fun(class: "AppearancePoolLayoutGrid", undo: Undo?, count: integer?): AppearancePoolLayoutGrid
+---@overload fun(class: "TagPoolLayoutGrid", undo: Undo?, count: integer?): TagPoolLayoutGrid
+---@overload fun(class: "SymbolPoolLayoutGrid", undo: Undo?, count: integer?): SymbolPoolLayoutGrid
+---@overload fun(class: "GoboPoolLayoutGrid", undo: Undo?, count: integer?): GoboPoolLayoutGrid
+---@overload fun(class: "VideoPoolLayoutGrid", undo: Undo?, count: integer?): VideoPoolLayoutGrid
+---@overload fun(class: "ImagePoolLayoutGrid", undo: Undo?, count: integer?): ImagePoolLayoutGrid
+---@overload fun(class: "ConfigurationPoolLayoutGrid", undo: Undo?, count: integer?): ConfigurationPoolLayoutGrid
+---@overload fun(class: "DataPoolLayoutGrid", undo: Undo?, count: integer?): DataPoolLayoutGrid
+---@overload fun(class: "MenuPoolLayoutGrid", undo: Undo?, count: integer?): MenuPoolLayoutGrid
+---@overload fun(class: "PluginPoolLayoutGrid", undo: Undo?, count: integer?): PluginPoolLayoutGrid
+---@overload fun(class: "FilterPoolLayoutGrid", undo: Undo?, count: integer?): FilterPoolLayoutGrid
+---@overload fun(class: "WorldPoolLayoutGrid", undo: Undo?, count: integer?): WorldPoolLayoutGrid
+---@overload fun(class: "ViewPoolLayoutGrid", undo: Undo?, count: integer?): ViewPoolLayoutGrid
+---@overload fun(class: "SequencePoolLayoutGrid", undo: Undo?, count: integer?): SequencePoolLayoutGrid
+---@overload fun(class: "PresetPoolLayoutGrid", undo: Undo?, count: integer?): PresetPoolLayoutGrid
+---@overload fun(class: "PagePoolLayoutGrid", undo: Undo?, count: integer?): PagePoolLayoutGrid
+---@overload fun(class: "QuickeyPoolLayoutGrid", undo: Undo?, count: integer?): QuickeyPoolLayoutGrid
+---@overload fun(class: "MacroPoolLayoutGrid", undo: Undo?, count: integer?): MacroPoolLayoutGrid
+---@overload fun(class: "GroupPoolLayoutGrid", undo: Undo?, count: integer?): GroupPoolLayoutGrid
+---@overload fun(class: "TagsEditContent", undo: Undo?, count: integer?): TagsEditContent
+---@overload fun(class: "AppearanceEditContent", undo: Undo?, count: integer?): AppearanceEditContent
+---@overload fun(class: "ScribbleEditContent", undo: Undo?, count: integer?): ScribbleEditContent
+---@overload fun(class: "GenericAssignmentSelector", undo: Undo?, count: integer?): GenericAssignmentSelector
+---@overload fun(class: "TagButtonList", undo: Undo?, count: integer?): TagButtonList
+---@overload fun(class: "MatricksContainer", undo: Undo?, count: integer?): MatricksContainer
+---@overload fun(class: "AtFilterDialog", undo: Undo?, count: integer?): AtFilterDialog
+---@overload fun(class: "PlaybackControlModularContent", undo: Undo?, count: integer?): PlaybackControlModularContent
+---@overload fun(class: "PlaybackControlContent", undo: Undo?, count: integer?): PlaybackControlContent
+---@overload fun(class: "CommandWingBarPlaybackContent", undo: Undo?, count: integer?): CommandWingBarPlaybackContent
+---@overload fun(class: "ThemeMergeToolBar", undo: Undo?, count: integer?): ThemeMergeToolBar
+---@overload fun(class: "EditorPropertyButtons", undo: Undo?, count: integer?): EditorPropertyButtons
+---@overload fun(class: "CmdDlgFunctionButtonsBase", undo: Undo?, count: integer?): CmdDlgFunctionButtonsBase
+---@overload fun(class: "CmdDlgFunctionButtonsLeft", undo: Undo?, count: integer?): CmdDlgFunctionButtonsLeft
+---@overload fun(class: "CmdDlgFunctionButtonsRight", undo: Undo?, count: integer?): CmdDlgFunctionButtonsRight
+---@overload fun(class: "MainDialogFunctionButtons", undo: Undo?, count: integer?): MainDialogFunctionButtons
+---@overload fun(class: "MainDialogSubMenuContent", undo: Undo?, count: integer?): MainDialogSubMenuContent
+---@overload fun(class: "UiScreen", undo: Undo?, count: integer?): UiScreen
+---@overload fun(class: "SpecialExecSection", undo: Undo?, count: integer?): SpecialExecSection
+---@overload fun(class: "PlaceHolderBase", undo: Undo?, count: integer?): PlaceHolderBase
+---@overload fun(class: "PlaceHolder", undo: Undo?, count: integer?): PlaceHolder
+---@overload fun(class: "EncoderOverlayPlaceholder", undo: Undo?, count: integer?): EncoderOverlayPlaceholder
+---@overload fun(class: "PopupPlaceholder", undo: Undo?, count: integer?): PopupPlaceholder
+---@overload fun(class: "EncoderBarPlaceHolder", undo: Undo?, count: integer?): EncoderBarPlaceHolder
+---@overload fun(class: "ModalPlaceholder", undo: Undo?, count: integer?): ModalPlaceholder
+---@overload fun(class: "UIObjectFake", undo: Undo?, count: integer?): UIObjectFake
+---@overload fun(class: "BaseItemButtons", undo: Undo?, count: integer?): BaseItemButtons
+---@overload fun(class: "UIGridInternals", undo: Undo?, count: integer?): UIGridInternals
+---@overload fun(class: "AudioPreview", undo: Undo?, count: integer?): AudioPreview
+---@overload fun(class: "OutputTest", undo: Undo?, count: integer?): OutputTest
+---@overload fun(class: "EditorBase", undo: Undo?, count: integer?): EditorBase
+---@overload fun(class: "PhaserPathEditor", undo: Undo?, count: integer?): PhaserPathEditor
+---@overload fun(class: "PhaserSpeedEditor", undo: Undo?, count: integer?): PhaserSpeedEditor
+---@overload fun(class: "PhaserPhaseEditor", undo: Undo?, count: integer?): PhaserPhaseEditor
+---@overload fun(class: "PhaserWidthEditor", undo: Undo?, count: integer?): PhaserWidthEditor
+---@overload fun(class: "TrackpadMouseControl", undo: Undo?, count: integer?): TrackpadMouseControl
+---@overload fun(class: "InfoNotesGridScroller", undo: Undo?, count: integer?): InfoNotesGridScroller
+---@overload fun(class: "TouchTarget", undo: Undo?, count: integer?): TouchTarget
+---@overload fun(class: "TouchConfigurator", undo: Undo?, count: integer?): TouchConfigurator
+---@overload fun(class: "ShaperTestView", undo: Undo?, count: integer?): ShaperTestView
+---@overload fun(class: "ColorTestView", undo: Undo?, count: integer?): ColorTestView
+---@overload fun(class: "SoundLevelView", undo: Undo?, count: integer?): SoundLevelView
+---@overload fun(class: "SoundBandView", undo: Undo?, count: integer?): SoundBandView
+---@overload fun(class: "PerformanceView", undo: Undo?, count: integer?): PerformanceView
+---@overload fun(class: "SignalView", undo: Undo?, count: integer?): SignalView
+---@overload fun(class: "GraphEditor", undo: Undo?, count: integer?): GraphEditor
+---@overload fun(class: "UIDmxCurveEditor", undo: Undo?, count: integer?): UIDmxCurveEditor
+---@overload fun(class: "UIPhaserTimeLine", undo: Undo?, count: integer?): UIPhaserTimeLine
+---@overload fun(class: "SoundBeatView", undo: Undo?, count: integer?): SoundBeatView
+---@overload fun(class: "SoundWaveView", undo: Undo?, count: integer?): SoundWaveView
+---@overload fun(class: "ColorPickBase", undo: Undo?, count: integer?): ColorPickBase
+---@overload fun(class: "ColorPickHSRect", undo: Undo?, count: integer?): ColorPickHSRect
+---@overload fun(class: "ColorPickXYZ", undo: Undo?, count: integer?): ColorPickXYZ
+---@overload fun(class: "ColorPickHSCircle", undo: Undo?, count: integer?): ColorPickHSCircle
+---@overload fun(class: "MacrolinePreview", undo: Undo?, count: integer?): MacrolinePreview
+---@overload fun(class: "AppearancePreview", undo: Undo?, count: integer?): AppearancePreview
+---@overload fun(class: "CommandLineOutput", undo: Undo?, count: integer?): CommandLineOutput
+---@overload fun(class: nil, undo: Undo?, count: integer?): UIObject
+function ScrollBox:Append(class, undo, count) end
+---@overload fun(class: "UIObject", undo: Undo?): UIObject
+---@overload fun(class: "SampleTableView", undo: Undo?): SampleTableView
+---@overload fun(class: "FanRpmView", undo: Undo?): FanRpmView
+---@overload fun(class: "SysTempView", undo: Undo?): SysTempView
+---@overload fun(class: "GpuTempView", undo: Undo?): GpuTempView
+---@overload fun(class: "CpuTempView", undo: Undo?): CpuTempView
+---@overload fun(class: "ShowDataMemTestView", undo: Undo?): ShowDataMemTestView
+---@overload fun(class: "MemTestView", undo: Undo?): MemTestView
+---@overload fun(class: "CPUTestView", undo: Undo?): CPUTestView
+---@overload fun(class: "SyncTestView", undo: Undo?): SyncTestView
+---@overload fun(class: "NetworkTestView", undo: Undo?): NetworkTestView
+---@overload fun(class: "ChannelTestView", undo: Undo?): ChannelTestView
+---@overload fun(class: "FaderTestView", undo: Undo?): FaderTestView
+---@overload fun(class: "SensorView", undo: Undo?): SensorView
+---@overload fun(class: "Toolbar", undo: Undo?): Toolbar
+---@overload fun(class: "StatusBar", undo: Undo?): StatusBar
+---@overload fun(class: "ScrollableItemList", undo: Undo?): ScrollableItemList
+---@overload fun(class: "PopupList", undo: Undo?): PopupList
+---@overload fun(class: "UITab", undo: Undo?): UITab
+---@overload fun(class: "DBObjectTab", undo: Undo?): DBObjectTab
+---@overload fun(class: "RadioButtonList", undo: Undo?): RadioButtonList
+---@overload fun(class: "PropertyRadioButtonList", undo: Undo?): PropertyRadioButtonList
+---@overload fun(class: "ChildRadioButtonList", undo: Undo?): ChildRadioButtonList
+---@overload fun(class: "ShowCreatorSubpoolSelectorList", undo: Undo?): ShowCreatorSubpoolSelectorList
+---@overload fun(class: "EncoderBankSelector", undo: Undo?): EncoderBankSelector
+---@overload fun(class: "AttributeRadioButtonList", undo: Undo?): AttributeRadioButtonList
+---@overload fun(class: "FeatureRadioButtonList", undo: Undo?): FeatureRadioButtonList
+---@overload fun(class: "FixturetypeItemList", undo: Undo?): FixturetypeItemList
+---@overload fun(class: "MultiScroller", undo: Undo?): MultiScroller
+---@overload fun(class: "MultiSyncGridScroller", undo: Undo?): MultiSyncGridScroller
+---@overload fun(class: "ContentSheetGridScroller", undo: Undo?): ContentSheetGridScroller
+---@overload fun(class: "UIGridCellBase", undo: Undo?): UIGridCellBase
+---@overload fun(class: "TimelineCell", undo: Undo?): TimelineCell
+---@overload fun(class: "TimelineHeaderCell", undo: Undo?): TimelineHeaderCell
+---@overload fun(class: "TimelineDataCell", undo: Undo?): TimelineDataCell
+---@overload fun(class: "TrackGroupTimelineCell", undo: Undo?): TrackGroupTimelineCell
+---@overload fun(class: "TrackTimelineCell", undo: Undo?): TrackTimelineCell
+---@overload fun(class: "TimeMarkerTimelineCell", undo: Undo?): TimeMarkerTimelineCell
+---@overload fun(class: "BandFader", undo: Undo?): BandFader
+---@overload fun(class: "DCRemoteInfo", undo: Undo?): DCRemoteInfo
+---@overload fun(class: "TimecodeSlotInfo", undo: Undo?): TimecodeSlotInfo
+---@overload fun(class: "ColorView", undo: Undo?): ColorView
+---@overload fun(class: "ScribbleEditView", undo: Undo?): ScribbleEditView
+---@overload fun(class: "ScrollBox", undo: Undo?): ScrollBox
+---@overload fun(class: "MainDialogSubMenuScrollBox", undo: Undo?): MainDialogSubMenuScrollBox
+---@overload fun(class: "DialogContainer", undo: Undo?): DialogContainer
+---@overload fun(class: "TextView", undo: Undo?): TextView
+---@overload fun(class: "CommandlineHistoryTextView", undo: Undo?): CommandlineHistoryTextView
+---@overload fun(class: "LineEdit", undo: Undo?): LineEdit
+---@overload fun(class: "LineEditExt", undo: Undo?): LineEditExt
+---@overload fun(class: "MacrolineEdit", undo: Undo?): MacrolineEdit
+---@overload fun(class: "NumInputEdit", undo: Undo?): NumInputEdit
+---@overload fun(class: "KeybSCEdit", undo: Undo?): KeybSCEdit
+---@overload fun(class: "CmdlineEdit", undo: Undo?): CmdlineEdit
+---@overload fun(class: "UiFader", undo: Undo?): UiFader
+---@overload fun(class: "DeskLightsFader", undo: Undo?): DeskLightsFader
+---@overload fun(class: "GrandMasterFader", undo: Undo?): GrandMasterFader
+---@overload fun(class: "ShaperPovFader", undo: Undo?): ShaperPovFader
+---@overload fun(class: "ColorInterfaceFader", undo: Undo?): ColorInterfaceFader
+---@overload fun(class: "ColorPickerFader", undo: Undo?): ColorPickerFader
+---@overload fun(class: "HardwareFader", undo: Undo?): HardwareFader
+---@overload fun(class: "PlaybackHardwareFader", undo: Undo?): PlaybackHardwareFader
+---@overload fun(class: "PropertyLabel", undo: Undo?): PropertyLabel
+---@overload fun(class: "ProgressBar", undo: Undo?): ProgressBar
+---@overload fun(class: "ScrollBar", undo: Undo?): ScrollBar
+---@overload fun(class: "ScrollBarH", undo: Undo?): ScrollBarH
+---@overload fun(class: "ScrollBarV", undo: Undo?): ScrollBarV
+---@overload fun(class: "Button", undo: Undo?): Button
+---@overload fun(class: "UIGridConfigButton", undo: Undo?): UIGridConfigButton
+---@overload fun(class: "UIGridEditModeButton", undo: Undo?): UIGridEditModeButton
+---@overload fun(class: "DimmerWheelButton", undo: Undo?): DimmerWheelButton
+---@overload fun(class: "EjectButton", undo: Undo?): EjectButton
+---@overload fun(class: "TitleButton", undo: Undo?): TitleButton
+---@overload fun(class: "DeleteWindowButton", undo: Undo?): DeleteWindowButton
+---@overload fun(class: "WarningInfoButton", undo: Undo?): WarningInfoButton
+---@overload fun(class: "LogoButton", undo: Undo?): LogoButton
+---@overload fun(class: "ContextButton", undo: Undo?): ContextButton
+---@overload fun(class: "IndicatorButton", undo: Undo?): IndicatorButton
+---@overload fun(class: "VirtualKeyboardButton", undo: Undo?): VirtualKeyboardButton
+---@overload fun(class: "ExpandableButton", undo: Undo?): ExpandableButton
+---@overload fun(class: "KBShortcutButton", undo: Undo?): KBShortcutButton
+---@overload fun(class: "HardkeyButton", undo: Undo?): HardkeyButton
+---@overload fun(class: "HardwareButton", undo: Undo?): HardwareButton
+---@overload fun(class: "XKeysHardwareButton", undo: Undo?): XKeysHardwareButton
+---@overload fun(class: "PlaybackHardwareButton", undo: Undo?): PlaybackHardwareButton
+---@overload fun(class: "DisplayButton", undo: Undo?): DisplayButton
+---@overload fun(class: "BlinkingFadeButton", undo: Undo?): BlinkingFadeButton
+---@overload fun(class: "TimerButton", undo: Undo?): TimerButton
+---@overload fun(class: "TimerPauseButton", undo: Undo?): TimerPauseButton
+---@overload fun(class: "TimerStopButton", undo: Undo?): TimerStopButton
+---@overload fun(class: "TimerPlayButton", undo: Undo?): TimerPlayButton
+---@overload fun(class: "TimecodeSlotButton", undo: Undo?): TimecodeSlotButton
+---@overload fun(class: "TimecodeSlotPauseButton", undo: Undo?): TimecodeSlotPauseButton
+---@overload fun(class: "TimecodeSlotStopButton", undo: Undo?): TimecodeSlotStopButton
+---@overload fun(class: "TimecodeSlotPlayButton", undo: Undo?): TimecodeSlotPlayButton
+---@overload fun(class: "MainDlgLoginButton", undo: Undo?): MainDlgLoginButton
+---@overload fun(class: "MainDlgUndoButton", undo: Undo?): MainDlgUndoButton
+---@overload fun(class: "MainDlgButtonBase", undo: Undo?): MainDlgButtonBase
+---@overload fun(class: "MainDlgLeaveSessionButton", undo: Undo?): MainDlgLeaveSessionButton
+---@overload fun(class: "MainDlgJoinSessionButton", undo: Undo?): MainDlgJoinSessionButton
+---@overload fun(class: "MainDlgDismissStationButton", undo: Undo?): MainDlgDismissStationButton
+---@overload fun(class: "MainDlgInviteStationButton", undo: Undo?): MainDlgInviteStationButton
+---@overload fun(class: "MainDlgGridSelectDown", undo: Undo?): MainDlgGridSelectDown
+---@overload fun(class: "MainDlgGridSelectUp", undo: Undo?): MainDlgGridSelectUp
+---@overload fun(class: "MainDlgExportButton", undo: Undo?): MainDlgExportButton
+---@overload fun(class: "MainDlgExportEditorButton", undo: Undo?): MainDlgExportEditorButton
+---@overload fun(class: "MainDlgImportButton", undo: Undo?): MainDlgImportButton
+---@overload fun(class: "MainDlgImportEditorButton", undo: Undo?): MainDlgImportEditorButton
+---@overload fun(class: "MainDlgSelectButton", undo: Undo?): MainDlgSelectButton
+---@overload fun(class: "MainDlgEditButton", undo: Undo?): MainDlgEditButton
+---@overload fun(class: "MainDlgPasteButton", undo: Undo?): MainDlgPasteButton
+---@overload fun(class: "MainDlgCopyButton", undo: Undo?): MainDlgCopyButton
+---@overload fun(class: "MainDlgCutButton", undo: Undo?): MainDlgCutButton
+---@overload fun(class: "MainDlgDelButton", undo: Undo?): MainDlgDelButton
+---@overload fun(class: "MainDlgBlindButton", undo: Undo?): MainDlgBlindButton
+---@overload fun(class: "MainDlgInsertButton", undo: Undo?): MainDlgInsertButton
+---@overload fun(class: "PropertyControl", undo: Undo?): PropertyControl
+---@overload fun(class: "BatteryControl", undo: Undo?): BatteryControl
+---@overload fun(class: "RotationButton", undo: Undo?): RotationButton
+---@overload fun(class: "KeyboardShortcutControl", undo: Undo?): KeyboardShortcutControl
+---@overload fun(class: "XlrModeButton", undo: Undo?): XlrModeButton
+---@overload fun(class: "UIToggleButton", undo: Undo?): UIToggleButton
+---@overload fun(class: "IndicatorControl", undo: Undo?): IndicatorControl
+---@overload fun(class: "CalculatorChannelSetControl", undo: Undo?): CalculatorChannelSetControl
+---@overload fun(class: "BaseStateButton", undo: Undo?): BaseStateButton
+---@overload fun(class: "ToggleButtonList", undo: Undo?): ToggleButtonList
+---@overload fun(class: "SwipeButtonList", undo: Undo?): SwipeButtonList
+---@overload fun(class: "ToggleButton", undo: Undo?): ToggleButton
+---@overload fun(class: "SwipeButton", undo: Undo?): SwipeButton
+---@overload fun(class: "ObjectSelector", undo: Undo?): ObjectSelector
+---@overload fun(class: "DriveSelector", undo: Undo?): DriveSelector
+---@overload fun(class: "UserEncoderPageSelector", undo: Undo?): UserEncoderPageSelector
+---@overload fun(class: "EnableMasterFaderButton", undo: Undo?): EnableMasterFaderButton
+---@overload fun(class: "ExecConfigSwipe", undo: Undo?): ExecConfigSwipe
+---@overload fun(class: "EncoderLinkButton", undo: Undo?): EncoderLinkButton
+---@overload fun(class: "StateButton", undo: Undo?): StateButton
+---@overload fun(class: "CheckBox", undo: Undo?): CheckBox
+---@overload fun(class: "ContentCheckBox", undo: Undo?): ContentCheckBox
+---@overload fun(class: "PropertyInput", undo: Undo?): PropertyInput
+---@overload fun(class: "TCTimeButton", undo: Undo?): TCTimeButton
+---@overload fun(class: "TitlebuttonControl", undo: Undo?): TitlebuttonControl
+---@overload fun(class: "SpecialExecConfigInput", undo: Undo?): SpecialExecConfigInput
+---@overload fun(class: "ExecConfigInput", undo: Undo?): ExecConfigInput
+---@overload fun(class: "OSCActivityButton", undo: Undo?): OSCActivityButton
+---@overload fun(class: "ScribbleInput", undo: Undo?): ScribbleInput
+---@overload fun(class: "AppearanceInput", undo: Undo?): AppearanceInput
+---@overload fun(class: "ColorPropertyInput", undo: Undo?): ColorPropertyInput
+---@overload fun(class: "GelColorPropertyInput", undo: Undo?): GelColorPropertyInput
+---@overload fun(class: "DialogButton", undo: Undo?): DialogButton
+---@overload fun(class: "ScreenSelectorButton", undo: Undo?): ScreenSelectorButton
+---@overload fun(class: "CloneFilterButton", undo: Undo?): CloneFilterButton
+---@overload fun(class: "EncoderControl", undo: Undo?): EncoderControl
+---@overload fun(class: "ScreenEncoderControl", undo: Undo?): ScreenEncoderControl
+---@overload fun(class: "ShaperEncoderControl", undo: Undo?): ShaperEncoderControl
+---@overload fun(class: "Gma3EncoderControl", undo: Undo?): Gma3EncoderControl
+---@overload fun(class: "PresetEncoderControl", undo: Undo?): PresetEncoderControl
+---@overload fun(class: "PhaserEncoderControl", undo: Undo?): PhaserEncoderControl
+---@overload fun(class: "TrackpadPanTiltControl", undo: Undo?): TrackpadPanTiltControl
+---@overload fun(class: "ValueControl", undo: Undo?): ValueControl
+---@overload fun(class: "AuxValueControl", undo: Undo?): AuxValueControl
+---@overload fun(class: "ShowCreatorTypeControl", undo: Undo?): ShowCreatorTypeControl
+---@overload fun(class: "ValueRadioControl", undo: Undo?): ValueRadioControl
+---@overload fun(class: "SpecialExecutorKey", undo: Undo?): SpecialExecutorKey
+---@overload fun(class: "EditTitlebarButton", undo: Undo?): EditTitlebarButton
+---@overload fun(class: "SelectionIndicatorButton", undo: Undo?): SelectionIndicatorButton
+---@overload fun(class: "ValueFadeControl", undo: Undo?): ValueFadeControl
+---@overload fun(class: "MatricksIndicatorButton", undo: Undo?): MatricksIndicatorButton
+---@overload fun(class: "MatricksToggleButton", undo: Undo?): MatricksToggleButton
+---@overload fun(class: "ExecConfigColButton", undo: Undo?): ExecConfigColButton
+---@overload fun(class: "ExecConfigRowButton", undo: Undo?): ExecConfigRowButton
+---@overload fun(class: "MainDlgGridToggleButton", undo: Undo?): MainDlgGridToggleButton
+---@overload fun(class: "MainDlgMergeToggleButton", undo: Undo?): MainDlgMergeToggleButton
+---@overload fun(class: "MainDlgNewLineToggleButton", undo: Undo?): MainDlgNewLineToggleButton
+---@overload fun(class: "AtFilterControl", undo: Undo?): AtFilterControl
+---@overload fun(class: "AttributeToggleButton", undo: Undo?): AttributeToggleButton
+---@overload fun(class: "AtFilterPreview", undo: Undo?): AtFilterPreview
+---@overload fun(class: "ScrollBarButton", undo: Undo?): ScrollBarButton
+---@overload fun(class: "ScrollBarButtonH", undo: Undo?): ScrollBarButtonH
+---@overload fun(class: "ScrollBarButtonV", undo: Undo?): ScrollBarButtonV
+---@overload fun(class: "MovableButton", undo: Undo?): MovableButton
+---@overload fun(class: "MouseButton", undo: Undo?): MouseButton
+---@overload fun(class: "ProgressButton", undo: Undo?): ProgressButton
+---@overload fun(class: "MessageCenterInfoButton", undo: Undo?): MessageCenterInfoButton
+---@overload fun(class: "TagButton", undo: Undo?): TagButton
+---@overload fun(class: "RevertButton", undo: Undo?): RevertButton
+---@overload fun(class: "DriveStatusButton", undo: Undo?): DriveStatusButton
+---@overload fun(class: "MiniEncoder", undo: Undo?): MiniEncoder
+---@overload fun(class: "HardwareMiniEncoder", undo: Undo?): HardwareMiniEncoder
+---@overload fun(class: "XKeysHardwareMiniEncoder", undo: Undo?): XKeysHardwareMiniEncoder
+---@overload fun(class: "PlaybackHardwareMiniEncoder", undo: Undo?): PlaybackHardwareMiniEncoder
+---@overload fun(class: "Splitter", undo: Undo?): Splitter
+---@overload fun(class: "SplitterV", undo: Undo?): SplitterV
+---@overload fun(class: "SplitterH", undo: Undo?): SplitterH
+---@overload fun(class: "EncoderBarSlot", undo: Undo?): EncoderBarSlot
+---@overload fun(class: "UILayoutGrid", undo: Undo?): UILayoutGrid
+---@overload fun(class: "NotificationsGridScroller", undo: Undo?): NotificationsGridScroller
+---@overload fun(class: "Navigator", undo: Undo?): Navigator
+---@overload fun(class: "PropertyBox", undo: Undo?): PropertyBox
+---@overload fun(class: "SettingsBox", undo: Undo?): SettingsBox
+---@overload fun(class: "VirtualKeyboard", undo: Undo?): VirtualKeyboard
+---@overload fun(class: "ScrollContainerPageBase", undo: Undo?): ScrollContainerPageBase
+---@overload fun(class: "ScrollContainerPageScrollItemList", undo: Undo?): ScrollContainerPageScrollItemList
+---@overload fun(class: "ScrollContainerPage", undo: Undo?): ScrollContainerPage
+---@overload fun(class: "ScrollContainer", undo: Undo?): ScrollContainer
+---@overload fun(class: "MainDialogSubMenu", undo: Undo?): MainDialogSubMenu
+---@overload fun(class: "AutoLayout", undo: Undo?): AutoLayout
+---@overload fun(class: "UIGridConfigLayout", undo: Undo?): UIGridConfigLayout
+---@overload fun(class: "TitleAutoLayout", undo: Undo?): TitleAutoLayout
+---@overload fun(class: "StepControl", undo: Undo?): StepControl
+---@overload fun(class: "ObjectProperties", undo: Undo?): ObjectProperties
+---@overload fun(class: "Dialog", undo: Undo?): Dialog
+---@overload fun(class: "UIGrid", undo: Undo?): UIGrid
+---@overload fun(class: "DBObjectGridBase", undo: Undo?): DBObjectGridBase
+---@overload fun(class: "StationGrid", undo: Undo?): StationGrid
+---@overload fun(class: "UiStationGrid", undo: Undo?): UiStationGrid
+---@overload fun(class: "DBObjectGrid", undo: Undo?): DBObjectGrid
+---@overload fun(class: "TimecodeTextGrid", undo: Undo?): TimecodeTextGrid
+---@overload fun(class: "TimecodeGrid", undo: Undo?): TimecodeGrid
+---@overload fun(class: "PSRResultShowGrid", undo: Undo?): PSRResultShowGrid
+---@overload fun(class: "PSRImportGrid", undo: Undo?): PSRImportGrid
+---@overload fun(class: "PSRPatchGrid", undo: Undo?): PSRPatchGrid
+---@overload fun(class: "CloneFilterGrid", undo: Undo?): CloneFilterGrid
+---@overload fun(class: "PosCalibrationView", undo: Undo?): PosCalibrationView
+---@overload fun(class: "OSMidiGrid", undo: Undo?): OSMidiGrid
+---@overload fun(class: "TimezoneGrid", undo: Undo?): TimezoneGrid
+---@overload fun(class: "WindowTypeGrid", undo: Undo?): WindowTypeGrid
+---@overload fun(class: "SelectedGrid", undo: Undo?): SelectedGrid
+---@overload fun(class: "OopsGrid", undo: Undo?): OopsGrid
+---@overload fun(class: "FixtureTypeGrid", undo: Undo?): FixtureTypeGrid
+---@overload fun(class: "CueInputGrid", undo: Undo?): CueInputGrid
+---@overload fun(class: "LayoutEditorGrid", undo: Undo?): LayoutEditorGrid
+---@overload fun(class: "AgendaGrid", undo: Undo?): AgendaGrid
+---@overload fun(class: "ProgrammerGrid", undo: Undo?): ProgrammerGrid
+---@overload fun(class: "ProgUpdateGrid", undo: Undo?): ProgUpdateGrid
+---@overload fun(class: "MeshMaterialGrid", undo: Undo?): MeshMaterialGrid
+---@overload fun(class: "GelGrid", undo: Undo?): GelGrid
+---@overload fun(class: "SequenceGrid", undo: Undo?): SequenceGrid
+---@overload fun(class: "OutputConfigGrid", undo: Undo?): OutputConfigGrid
+---@overload fun(class: "PatchFixtureGrid", undo: Undo?): PatchFixtureGrid
+---@overload fun(class: "ShowHistoryGrid", undo: Undo?): ShowHistoryGrid
+---@overload fun(class: "FilebrowserView", undo: Undo?): FilebrowserView
+---@overload fun(class: "ReferencesGrid", undo: Undo?): ReferencesGrid
+---@overload fun(class: "CloneGrid", undo: Undo?): CloneGrid
+---@overload fun(class: "GenericSheet", undo: Undo?): GenericSheet
+---@overload fun(class: "PhaserStepSheet", undo: Undo?): PhaserStepSheet
+---@overload fun(class: "FixtureSheet", undo: Undo?): FixtureSheet
+---@overload fun(class: "ContentSheet", undo: Undo?): ContentSheet
+---@overload fun(class: "DMXSheet", undo: Undo?): DMXSheet
+---@overload fun(class: "NetworkSpeedTestGrid", undo: Undo?): NetworkSpeedTestGrid
+---@overload fun(class: "TextEdit", undo: Undo?): TextEdit
+---@overload fun(class: "MeshLineEdit", undo: Undo?): MeshLineEdit
+---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(class: "Bar", undo: Undo?): Bar
+---@overload fun(class: "GraphicsEncoderBar", undo: Undo?): GraphicsEncoderBar
+---@overload fun(class: "ScreenEncoderBar", undo: Undo?): ScreenEncoderBar
+---@overload fun(class: "TimecodeBar", undo: Undo?): TimecodeBar
+---@overload fun(class: "PhaserEditorBar", undo: Undo?): PhaserEditorBar
+---@overload fun(class: "SequenceEditBar", undo: Undo?): SequenceEditBar
+---@overload fun(class: "StageViewBar", undo: Undo?): StageViewBar
+---@overload fun(class: "LayoutBar", undo: Undo?): LayoutBar
+---@overload fun(class: "ShaperEditBar", undo: Undo?): ShaperEditBar
+---@overload fun(class: "ColorEditBar", undo: Undo?): ColorEditBar
+---@overload fun(class: "Gma3EncoderBar", undo: Undo?): Gma3EncoderBar
+---@overload fun(class: "DmxTesterBar", undo: Undo?): DmxTesterBar
+---@overload fun(class: "PresetBar", undo: Undo?): PresetBar
+---@overload fun(class: "PhaserBar", undo: Undo?): PhaserBar
+---@overload fun(class: "ExecutorBar", undo: Undo?): ExecutorBar
+---@overload fun(class: "ExecutorBarXKeys", undo: Undo?): ExecutorBarXKeys
+---@overload fun(class: "XKeysViewExecutorBar", undo: Undo?): XKeysViewExecutorBar
+---@overload fun(class: "Overlay", undo: Undo?): Overlay
+---@overload fun(class: "SwipeMenuOverlay", undo: Undo?): SwipeMenuOverlay
+---@overload fun(class: "ContentOverlay", undo: Undo?): ContentOverlay
+---@overload fun(class: "ShadedOverlay", undo: Undo?): ShadedOverlay
+---@overload fun(class: "NotificationArea", undo: Undo?): NotificationArea
+---@overload fun(class: "MessageBox", undo: Undo?): MessageBox
+---@overload fun(class: "BaseInput", undo: Undo?): BaseInput
+---@overload fun(class: "ImageInput", undo: Undo?): ImageInput
+---@overload fun(class: "ViewInput", undo: Undo?): ViewInput
+---@overload fun(class: "ColorInput", undo: Undo?): ColorInput
+---@overload fun(class: "NumericInput", undo: Undo?): NumericInput
+---@overload fun(class: "Popup", undo: Undo?): Popup
+---@overload fun(class: "ZoomFactorPopup", undo: Undo?): ZoomFactorPopup
+---@overload fun(class: "ImagePopup", undo: Undo?): ImagePopup
+---@overload fun(class: "TextInput", undo: Undo?): TextInput
+---@overload fun(class: "MultiLineTextInput", undo: Undo?): MultiLineTextInput
+---@overload fun(class: "KeybSCInput", undo: Undo?): KeybSCInput
+---@overload fun(class: "MacrolineTextInput", undo: Undo?): MacrolineTextInput
+---@overload fun(class: "CueNumberInput", undo: Undo?): CueNumberInput
+---@overload fun(class: "CopyStoreCueMessageBoxBase", undo: Undo?): CopyStoreCueMessageBoxBase
+---@overload fun(class: "DeleteCueMessageBox", undo: Undo?): DeleteCueMessageBox
+---@overload fun(class: "StoreCueMessageBox", undo: Undo?): StoreCueMessageBox
+---@overload fun(class: "CopyCueMessageBox", undo: Undo?): CopyCueMessageBox
+---@overload fun(class: "CloneAtFilterSelector", undo: Undo?): CloneAtFilterSelector
+---@overload fun(class: "DatumInput", undo: Undo?): DatumInput
+---@overload fun(class: "OSMidiSelect", undo: Undo?): OSMidiSelect
+---@overload fun(class: "TimezoneInput", undo: Undo?): TimezoneInput
+---@overload fun(class: "InsertFixturesWizard", undo: Undo?): InsertFixturesWizard
+---@overload fun(class: "XlrPortInput", undo: Undo?): XlrPortInput
+---@overload fun(class: "UIDMXPatch", undo: Undo?): UIDMXPatch
+---@overload fun(class: "GenericImport", undo: Undo?): GenericImport
+---@overload fun(class: "GenericAssignmentInput", undo: Undo?): GenericAssignmentInput
+---@overload fun(class: "FixtureTypeImport", undo: Undo?): FixtureTypeImport
+---@overload fun(class: "RecurringOverlay", undo: Undo?): RecurringOverlay
+---@overload fun(class: "RemoteInputLock", undo: Undo?): RemoteInputLock
+---@overload fun(class: "DeskLock", undo: Undo?): DeskLock
+---@overload fun(class: "HelpPopup", undo: Undo?): HelpPopup
+---@overload fun(class: "PatchToOverlay", undo: Undo?): PatchToOverlay
+---@overload fun(class: "ColorMeasurementOverlay", undo: Undo?): ColorMeasurementOverlay
+---@overload fun(class: "GenericContext", undo: Undo?): GenericContext
+---@overload fun(class: "SpecialWindowContext", undo: Undo?): SpecialWindowContext
+---@overload fun(class: "Settings3dContext", undo: Undo?): Settings3dContext
+---@overload fun(class: "GenericEditorOverlay", undo: Undo?): GenericEditorOverlay
+---@overload fun(class: "TimerEditor", undo: Undo?): TimerEditor
+---@overload fun(class: "LayoutElementEditorOverlay", undo: Undo?): LayoutElementEditorOverlay
+---@overload fun(class: "RenderQualityEditor", undo: Undo?): RenderQualityEditor
+---@overload fun(class: "AppearanceEditor", undo: Undo?): AppearanceEditor
+---@overload fun(class: "ScribbleEditor", undo: Undo?): ScribbleEditor
+---@overload fun(class: "CameraEditor", undo: Undo?): CameraEditor
+---@overload fun(class: "MeshSettings", undo: Undo?): MeshSettings
+---@overload fun(class: "NetworkSpeedTestOverlay", undo: Undo?): NetworkSpeedTestOverlay
+---@overload fun(class: "EncoderOverlay", undo: Undo?): EncoderOverlay
+---@overload fun(class: "OffMenuOverlay", undo: Undo?): OffMenuOverlay
+---@overload fun(class: "PoolOverlay", undo: Undo?): PoolOverlay
+---@overload fun(class: "MainDialog", undo: Undo?): MainDialog
+---@overload fun(class: "PSRPatchMainDialog", undo: Undo?): PSRPatchMainDialog
+---@overload fun(class: "ShowCreatorMainDialogBase", undo: Undo?): ShowCreatorMainDialogBase
+---@overload fun(class: "PSRImportMainDialog", undo: Undo?): PSRImportMainDialog
+---@overload fun(class: "ShowCreatorFTPresetsMainDialog", undo: Undo?): ShowCreatorFTPresetsMainDialog
+---@overload fun(class: "MainDlgCommandControl", undo: Undo?): MainDlgCommandControl
+---@overload fun(class: "MainDlgDErrorReport", undo: Undo?): MainDlgDErrorReport
+---@overload fun(class: "MainDlgFixtureSetup", undo: Undo?): MainDlgFixtureSetup
+---@overload fun(class: "MainDlgFixtureSetup", undo: Undo?): MainDlgFixtureSetup
+---@overload fun(class: "PositionCalibration", undo: Undo?): PositionCalibration
+---@overload fun(class: "GenericEditor", undo: Undo?): GenericEditor
+---@overload fun(class: "TimecodeEditor", undo: Undo?): TimecodeEditor
+---@overload fun(class: "LayoutEditor", undo: Undo?): LayoutEditor
+---@overload fun(class: "KeyboardShortcutEditor", undo: Undo?): KeyboardShortcutEditor
+---@overload fun(class: "FixtureEditor", undo: Undo?): FixtureEditor
+---@overload fun(class: "StageEditor", undo: Undo?): StageEditor
+---@overload fun(class: "GenericSettingsEditor", undo: Undo?): GenericSettingsEditor
+---@overload fun(class: "GeneratorBitmapEditor", undo: Undo?): GeneratorBitmapEditor
+---@overload fun(class: "AllExecEditor", undo: Undo?): AllExecEditor
+---@overload fun(class: "MainDlgDmxModeEditor", undo: Undo?): MainDlgDmxModeEditor
+---@overload fun(class: "MainDlgFixtureTypeEditor", undo: Undo?): MainDlgFixtureTypeEditor
+---@overload fun(class: "PlaybackControls", undo: Undo?): PlaybackControls
+---@overload fun(class: "CloneOverlay", undo: Undo?): CloneOverlay
+---@overload fun(class: "ThemeMergeDialog", undo: Undo?): ThemeMergeDialog
+---@overload fun(class: "BackupMenu", undo: Undo?): BackupMenu
+---@overload fun(class: "MainDlgUpdateMenu", undo: Undo?): MainDlgUpdateMenu
+---@overload fun(class: "MainDialogDest", undo: Undo?): MainDialogDest
+---@overload fun(class: "CommandLineHistory", undo: Undo?): CommandLineHistory
+---@overload fun(class: "Drawable", undo: Undo?): Drawable
+---@overload fun(class: "FrameBufferObject", undo: Undo?): FrameBufferObject
+---@overload fun(class: "WebView", undo: Undo?): WebView
+---@overload fun(class: "WebView", undo: Undo?): WebView
+---@overload fun(class: "DialogHelp", undo: Undo?): DialogHelp
+---@overload fun(class: "DialogPrivacyPolicy", undo: Undo?): DialogPrivacyPolicy
+---@overload fun(class: "DialogTrademarks", undo: Undo?): DialogTrademarks
+---@overload fun(class: "DialogReleaseNotes", undo: Undo?): DialogReleaseNotes
+---@overload fun(class: "UI2DView", undo: Undo?): UI2DView
+---@overload fun(class: "UI2DView", undo: Undo?): UI2DView
+---@overload fun(class: "TexPageDebugView", undo: Undo?): TexPageDebugView
+---@overload fun(class: "MeshPreview", undo: Undo?): MeshPreview
+---@overload fun(class: "WindowFixturetypeVisualizer", undo: Undo?): WindowFixturetypeVisualizer
+---@overload fun(class: "ColorEngineDebugView", undo: Undo?): ColorEngineDebugView
+---@overload fun(class: "WindowTextureStatistics", undo: Undo?): WindowTextureStatistics
+---@overload fun(class: "SelectionView", undo: Undo?): SelectionView
+---@overload fun(class: "View3D", undo: Undo?): View3D
+---@overload fun(class: "PatchView3D", undo: Undo?): PatchView3D
+---@overload fun(class: "LivePatchView3D", undo: Undo?): LivePatchView3D
+---@overload fun(class: "WindowMeshStatistics", undo: Undo?): WindowMeshStatistics
+---@overload fun(class: "FrameBufferObject", undo: Undo?): FrameBufferObject
+---@overload fun(class: "LayoutCanvas", undo: Undo?): LayoutCanvas
+---@overload fun(class: "LayoutCanvas", undo: Undo?): LayoutCanvas
+---@overload fun(class: "GlWindowBase", undo: Undo?): GlWindowBase
+---@overload fun(class: "Window", undo: Undo?): Window
+---@overload fun(class: "CommandWingBarWindow", undo: Undo?): CommandWingBarWindow
+---@overload fun(class: "WindowEncoderBar", undo: Undo?): WindowEncoderBar
+---@overload fun(class: "TimecodeWindow", undo: Undo?): TimecodeWindow
+---@overload fun(class: "LayoutView", undo: Undo?): LayoutView
+---@overload fun(class: "RecipeWindow", undo: Undo?): RecipeWindow
+---@overload fun(class: "SpecialWindow", undo: Undo?): SpecialWindow
+---@overload fun(class: "WindowAgenda", undo: Undo?): WindowAgenda
+---@overload fun(class: "WindowTrackpad", undo: Undo?): WindowTrackpad
+---@overload fun(class: "WindowInfo", undo: Undo?): WindowInfo
+---@overload fun(class: "XKeysViewWindow", undo: Undo?): XKeysViewWindow
+---@overload fun(class: "PlaybackViewWindow", undo: Undo?): PlaybackViewWindow
+---@overload fun(class: "WindowHelpViewer", undo: Undo?): WindowHelpViewer
+---@overload fun(class: "ClockWindow", undo: Undo?): ClockWindow
+---@overload fun(class: "SystemMonitorWindow", undo: Undo?): SystemMonitorWindow
+---@overload fun(class: "PhaserViewWindow", undo: Undo?): PhaserViewWindow
+---@overload fun(class: "SelectionViewWindow", undo: Undo?): SelectionViewWindow
+---@overload fun(class: "StatusWindow", undo: Undo?): StatusWindow
+---@overload fun(class: "ContentWindow", undo: Undo?): ContentWindow
+---@overload fun(class: "SequenceWindow", undo: Undo?): SequenceWindow
+---@overload fun(class: "CommandLineWindow", undo: Undo?): CommandLineWindow
+---@overload fun(class: "CommandWingBarContainer", undo: Undo?): CommandWingBarContainer
+---@overload fun(class: "PhaserLayoutGrid", undo: Undo?): PhaserLayoutGrid
+---@overload fun(class: "UIPhaserTimeLineGrid", undo: Undo?): UIPhaserTimeLineGrid
+---@overload fun(class: "PhaserUICenter", undo: Undo?): PhaserUICenter
+---@overload fun(class: "DialogTrackpad", undo: Undo?): DialogTrackpad
+---@overload fun(class: "ReferencesContainer", undo: Undo?): ReferencesContainer
+---@overload fun(class: "TouchMonitor", undo: Undo?): TouchMonitor
+---@overload fun(class: "CloningDialog", undo: Undo?): CloningDialog
+---@overload fun(class: "AgendaMonthsGrid", undo: Undo?): AgendaMonthsGrid
+---@overload fun(class: "AgendaDaysGrid", undo: Undo?): AgendaDaysGrid
+---@overload fun(class: "CustomMasterLayoutGrid", undo: Undo?): CustomMasterLayoutGrid
+---@overload fun(class: "SpecialWindowContent", undo: Undo?): SpecialWindowContent
+---@overload fun(class: "ShaperWindowContent", undo: Undo?): ShaperWindowContent
+---@overload fun(class: "ColorPickerContent", undo: Undo?): ColorPickerContent
+---@overload fun(class: "BladeView", undo: Undo?): BladeView
+---@overload fun(class: "BaseClock", undo: Undo?): BaseClock
+---@overload fun(class: "AnalogClock", undo: Undo?): AnalogClock
+---@overload fun(class: "DigitalClock", undo: Undo?): DigitalClock
+---@overload fun(class: "DateClock", undo: Undo?): DateClock
+---@overload fun(class: "TimecodeSlotClock", undo: Undo?): TimecodeSlotClock
+---@overload fun(class: "TimerClock", undo: Undo?): TimerClock
+---@overload fun(class: "TreeViewFrame", undo: Undo?): TreeViewFrame
+---@overload fun(class: "ObjTreeViewFrame", undo: Undo?): ObjTreeViewFrame
+---@overload fun(class: "PSRTreeViewFrame", undo: Undo?): PSRTreeViewFrame
+---@overload fun(class: "NormedGrid", undo: Undo?): NormedGrid
+---@overload fun(class: "GridContentFilterEditor", undo: Undo?): GridContentFilterEditor
+---@overload fun(class: "GridPatchContentFilterEditor", undo: Undo?): GridPatchContentFilterEditor
+---@overload fun(class: "UiMessageCenter", undo: Undo?): UiMessageCenter
+---@overload fun(class: "ShaperEditorFaderGrid", undo: Undo?): ShaperEditorFaderGrid
+---@overload fun(class: "AllPoolLayoutGrid", undo: Undo?): AllPoolLayoutGrid
+---@overload fun(class: "PoolLayoutGrid", undo: Undo?): PoolLayoutGrid
+---@overload fun(class: "RunningPlaybacksPoolLayoutGrid", undo: Undo?): RunningPlaybacksPoolLayoutGrid
+---@overload fun(class: "ViewBar", undo: Undo?): ViewBar
+---@overload fun(class: "TimePoolLayoutGrid", undo: Undo?): TimePoolLayoutGrid
+---@overload fun(class: "TimecodeSlotLayoutGrid", undo: Undo?): TimecodeSlotLayoutGrid
+---@overload fun(class: "SmartViewPoolLayoutGrid", undo: Undo?): SmartViewPoolLayoutGrid
+---@overload fun(class: "SoundPoolLayoutGrid", undo: Undo?): SoundPoolLayoutGrid
+---@overload fun(class: "EncoderBarPoolLayoutGrid", undo: Undo?): EncoderBarPoolLayoutGrid
+---@overload fun(class: "UserPoolLayoutGrid", undo: Undo?): UserPoolLayoutGrid
+---@overload fun(class: "UniversePoolLayoutGrid", undo: Undo?): UniversePoolLayoutGrid
+---@overload fun(class: "GeneratorBitmapPoolLayoutGrid", undo: Undo?): GeneratorBitmapPoolLayoutGrid
+---@overload fun(class: "GeneratorRandomPoolLayoutGrid", undo: Undo?): GeneratorRandomPoolLayoutGrid
+---@overload fun(class: "LayoutPoolLayoutGrid", undo: Undo?): LayoutPoolLayoutGrid
+---@overload fun(class: "TimecodePoolLayoutGrid", undo: Undo?): TimecodePoolLayoutGrid
+---@overload fun(class: "MeshPoolLayoutGrid", undo: Undo?): MeshPoolLayoutGrid
+---@overload fun(class: "MatricksPoolLayoutGrid", undo: Undo?): MatricksPoolLayoutGrid
+---@overload fun(class: "MaterialPoolLayoutGrid", undo: Undo?): MaterialPoolLayoutGrid
+---@overload fun(class: "RenderQualityPoolLayoutGrid", undo: Undo?): RenderQualityPoolLayoutGrid
+---@overload fun(class: "CameraPoolLayoutGrid", undo: Undo?): CameraPoolLayoutGrid
+---@overload fun(class: "GelPoolLayoutGrid", undo: Undo?): GelPoolLayoutGrid
+---@overload fun(class: "ScribblePoolLayoutGrid", undo: Undo?): ScribblePoolLayoutGrid
+---@overload fun(class: "AppearancePoolLayoutGrid", undo: Undo?): AppearancePoolLayoutGrid
+---@overload fun(class: "TagPoolLayoutGrid", undo: Undo?): TagPoolLayoutGrid
+---@overload fun(class: "SymbolPoolLayoutGrid", undo: Undo?): SymbolPoolLayoutGrid
+---@overload fun(class: "GoboPoolLayoutGrid", undo: Undo?): GoboPoolLayoutGrid
+---@overload fun(class: "VideoPoolLayoutGrid", undo: Undo?): VideoPoolLayoutGrid
+---@overload fun(class: "ImagePoolLayoutGrid", undo: Undo?): ImagePoolLayoutGrid
+---@overload fun(class: "ConfigurationPoolLayoutGrid", undo: Undo?): ConfigurationPoolLayoutGrid
+---@overload fun(class: "DataPoolLayoutGrid", undo: Undo?): DataPoolLayoutGrid
+---@overload fun(class: "MenuPoolLayoutGrid", undo: Undo?): MenuPoolLayoutGrid
+---@overload fun(class: "PluginPoolLayoutGrid", undo: Undo?): PluginPoolLayoutGrid
+---@overload fun(class: "FilterPoolLayoutGrid", undo: Undo?): FilterPoolLayoutGrid
+---@overload fun(class: "WorldPoolLayoutGrid", undo: Undo?): WorldPoolLayoutGrid
+---@overload fun(class: "ViewPoolLayoutGrid", undo: Undo?): ViewPoolLayoutGrid
+---@overload fun(class: "SequencePoolLayoutGrid", undo: Undo?): SequencePoolLayoutGrid
+---@overload fun(class: "PresetPoolLayoutGrid", undo: Undo?): PresetPoolLayoutGrid
+---@overload fun(class: "PagePoolLayoutGrid", undo: Undo?): PagePoolLayoutGrid
+---@overload fun(class: "QuickeyPoolLayoutGrid", undo: Undo?): QuickeyPoolLayoutGrid
+---@overload fun(class: "MacroPoolLayoutGrid", undo: Undo?): MacroPoolLayoutGrid
+---@overload fun(class: "GroupPoolLayoutGrid", undo: Undo?): GroupPoolLayoutGrid
+---@overload fun(class: "TagsEditContent", undo: Undo?): TagsEditContent
+---@overload fun(class: "AppearanceEditContent", undo: Undo?): AppearanceEditContent
+---@overload fun(class: "ScribbleEditContent", undo: Undo?): ScribbleEditContent
+---@overload fun(class: "GenericAssignmentSelector", undo: Undo?): GenericAssignmentSelector
+---@overload fun(class: "TagButtonList", undo: Undo?): TagButtonList
+---@overload fun(class: "MatricksContainer", undo: Undo?): MatricksContainer
+---@overload fun(class: "AtFilterDialog", undo: Undo?): AtFilterDialog
+---@overload fun(class: "PlaybackControlModularContent", undo: Undo?): PlaybackControlModularContent
+---@overload fun(class: "PlaybackControlContent", undo: Undo?): PlaybackControlContent
+---@overload fun(class: "CommandWingBarPlaybackContent", undo: Undo?): CommandWingBarPlaybackContent
+---@overload fun(class: "ThemeMergeToolBar", undo: Undo?): ThemeMergeToolBar
+---@overload fun(class: "EditorPropertyButtons", undo: Undo?): EditorPropertyButtons
+---@overload fun(class: "CmdDlgFunctionButtonsBase", undo: Undo?): CmdDlgFunctionButtonsBase
+---@overload fun(class: "CmdDlgFunctionButtonsLeft", undo: Undo?): CmdDlgFunctionButtonsLeft
+---@overload fun(class: "CmdDlgFunctionButtonsRight", undo: Undo?): CmdDlgFunctionButtonsRight
+---@overload fun(class: "MainDialogFunctionButtons", undo: Undo?): MainDialogFunctionButtons
+---@overload fun(class: "MainDialogSubMenuContent", undo: Undo?): MainDialogSubMenuContent
+---@overload fun(class: "UiScreen", undo: Undo?): UiScreen
+---@overload fun(class: "SpecialExecSection", undo: Undo?): SpecialExecSection
+---@overload fun(class: "PlaceHolderBase", undo: Undo?): PlaceHolderBase
+---@overload fun(class: "PlaceHolder", undo: Undo?): PlaceHolder
+---@overload fun(class: "EncoderOverlayPlaceholder", undo: Undo?): EncoderOverlayPlaceholder
+---@overload fun(class: "PopupPlaceholder", undo: Undo?): PopupPlaceholder
+---@overload fun(class: "EncoderBarPlaceHolder", undo: Undo?): EncoderBarPlaceHolder
+---@overload fun(class: "ModalPlaceholder", undo: Undo?): ModalPlaceholder
+---@overload fun(class: "UIObjectFake", undo: Undo?): UIObjectFake
+---@overload fun(class: "BaseItemButtons", undo: Undo?): BaseItemButtons
+---@overload fun(class: "UIGridInternals", undo: Undo?): UIGridInternals
+---@overload fun(class: "AudioPreview", undo: Undo?): AudioPreview
+---@overload fun(class: "OutputTest", undo: Undo?): OutputTest
+---@overload fun(class: "EditorBase", undo: Undo?): EditorBase
+---@overload fun(class: "PhaserPathEditor", undo: Undo?): PhaserPathEditor
+---@overload fun(class: "PhaserSpeedEditor", undo: Undo?): PhaserSpeedEditor
+---@overload fun(class: "PhaserPhaseEditor", undo: Undo?): PhaserPhaseEditor
+---@overload fun(class: "PhaserWidthEditor", undo: Undo?): PhaserWidthEditor
+---@overload fun(class: "TrackpadMouseControl", undo: Undo?): TrackpadMouseControl
+---@overload fun(class: "InfoNotesGridScroller", undo: Undo?): InfoNotesGridScroller
+---@overload fun(class: "TouchTarget", undo: Undo?): TouchTarget
+---@overload fun(class: "TouchConfigurator", undo: Undo?): TouchConfigurator
+---@overload fun(class: "ShaperTestView", undo: Undo?): ShaperTestView
+---@overload fun(class: "ColorTestView", undo: Undo?): ColorTestView
+---@overload fun(class: "SoundLevelView", undo: Undo?): SoundLevelView
+---@overload fun(class: "SoundBandView", undo: Undo?): SoundBandView
+---@overload fun(class: "PerformanceView", undo: Undo?): PerformanceView
+---@overload fun(class: "SignalView", undo: Undo?): SignalView
+---@overload fun(class: "GraphEditor", undo: Undo?): GraphEditor
+---@overload fun(class: "UIDmxCurveEditor", undo: Undo?): UIDmxCurveEditor
+---@overload fun(class: "UIPhaserTimeLine", undo: Undo?): UIPhaserTimeLine
+---@overload fun(class: "SoundBeatView", undo: Undo?): SoundBeatView
+---@overload fun(class: "SoundWaveView", undo: Undo?): SoundWaveView
+---@overload fun(class: "ColorPickBase", undo: Undo?): ColorPickBase
+---@overload fun(class: "ColorPickHSRect", undo: Undo?): ColorPickHSRect
+---@overload fun(class: "ColorPickXYZ", undo: Undo?): ColorPickXYZ
+---@overload fun(class: "ColorPickHSCircle", undo: Undo?): ColorPickHSCircle
+---@overload fun(class: "MacrolinePreview", undo: Undo?): MacrolinePreview
+---@overload fun(class: "AppearancePreview", undo: Undo?): AppearancePreview
+---@overload fun(class: "CommandLineOutput", undo: Undo?): CommandLineOutput
+---@overload fun(class: nil, undo: Undo?): UIObject
+function ScrollBox:Acquire(class, undo) end
+---@overload fun(class: "UIObject", undo: Undo?): UIObject
+---@overload fun(class: "SampleTableView", undo: Undo?): SampleTableView
+---@overload fun(class: "FanRpmView", undo: Undo?): FanRpmView
+---@overload fun(class: "SysTempView", undo: Undo?): SysTempView
+---@overload fun(class: "GpuTempView", undo: Undo?): GpuTempView
+---@overload fun(class: "CpuTempView", undo: Undo?): CpuTempView
+---@overload fun(class: "ShowDataMemTestView", undo: Undo?): ShowDataMemTestView
+---@overload fun(class: "MemTestView", undo: Undo?): MemTestView
+---@overload fun(class: "CPUTestView", undo: Undo?): CPUTestView
+---@overload fun(class: "SyncTestView", undo: Undo?): SyncTestView
+---@overload fun(class: "NetworkTestView", undo: Undo?): NetworkTestView
+---@overload fun(class: "ChannelTestView", undo: Undo?): ChannelTestView
+---@overload fun(class: "FaderTestView", undo: Undo?): FaderTestView
+---@overload fun(class: "SensorView", undo: Undo?): SensorView
+---@overload fun(class: "Toolbar", undo: Undo?): Toolbar
+---@overload fun(class: "StatusBar", undo: Undo?): StatusBar
+---@overload fun(class: "ScrollableItemList", undo: Undo?): ScrollableItemList
+---@overload fun(class: "PopupList", undo: Undo?): PopupList
+---@overload fun(class: "UITab", undo: Undo?): UITab
+---@overload fun(class: "DBObjectTab", undo: Undo?): DBObjectTab
+---@overload fun(class: "RadioButtonList", undo: Undo?): RadioButtonList
+---@overload fun(class: "PropertyRadioButtonList", undo: Undo?): PropertyRadioButtonList
+---@overload fun(class: "ChildRadioButtonList", undo: Undo?): ChildRadioButtonList
+---@overload fun(class: "ShowCreatorSubpoolSelectorList", undo: Undo?): ShowCreatorSubpoolSelectorList
+---@overload fun(class: "EncoderBankSelector", undo: Undo?): EncoderBankSelector
+---@overload fun(class: "AttributeRadioButtonList", undo: Undo?): AttributeRadioButtonList
+---@overload fun(class: "FeatureRadioButtonList", undo: Undo?): FeatureRadioButtonList
+---@overload fun(class: "FixturetypeItemList", undo: Undo?): FixturetypeItemList
+---@overload fun(class: "MultiScroller", undo: Undo?): MultiScroller
+---@overload fun(class: "MultiSyncGridScroller", undo: Undo?): MultiSyncGridScroller
+---@overload fun(class: "ContentSheetGridScroller", undo: Undo?): ContentSheetGridScroller
+---@overload fun(class: "UIGridCellBase", undo: Undo?): UIGridCellBase
+---@overload fun(class: "TimelineCell", undo: Undo?): TimelineCell
+---@overload fun(class: "TimelineHeaderCell", undo: Undo?): TimelineHeaderCell
+---@overload fun(class: "TimelineDataCell", undo: Undo?): TimelineDataCell
+---@overload fun(class: "TrackGroupTimelineCell", undo: Undo?): TrackGroupTimelineCell
+---@overload fun(class: "TrackTimelineCell", undo: Undo?): TrackTimelineCell
+---@overload fun(class: "TimeMarkerTimelineCell", undo: Undo?): TimeMarkerTimelineCell
+---@overload fun(class: "BandFader", undo: Undo?): BandFader
+---@overload fun(class: "DCRemoteInfo", undo: Undo?): DCRemoteInfo
+---@overload fun(class: "TimecodeSlotInfo", undo: Undo?): TimecodeSlotInfo
+---@overload fun(class: "ColorView", undo: Undo?): ColorView
+---@overload fun(class: "ScribbleEditView", undo: Undo?): ScribbleEditView
+---@overload fun(class: "ScrollBox", undo: Undo?): ScrollBox
+---@overload fun(class: "MainDialogSubMenuScrollBox", undo: Undo?): MainDialogSubMenuScrollBox
+---@overload fun(class: "DialogContainer", undo: Undo?): DialogContainer
+---@overload fun(class: "TextView", undo: Undo?): TextView
+---@overload fun(class: "CommandlineHistoryTextView", undo: Undo?): CommandlineHistoryTextView
+---@overload fun(class: "LineEdit", undo: Undo?): LineEdit
+---@overload fun(class: "LineEditExt", undo: Undo?): LineEditExt
+---@overload fun(class: "MacrolineEdit", undo: Undo?): MacrolineEdit
+---@overload fun(class: "NumInputEdit", undo: Undo?): NumInputEdit
+---@overload fun(class: "KeybSCEdit", undo: Undo?): KeybSCEdit
+---@overload fun(class: "CmdlineEdit", undo: Undo?): CmdlineEdit
+---@overload fun(class: "UiFader", undo: Undo?): UiFader
+---@overload fun(class: "DeskLightsFader", undo: Undo?): DeskLightsFader
+---@overload fun(class: "GrandMasterFader", undo: Undo?): GrandMasterFader
+---@overload fun(class: "ShaperPovFader", undo: Undo?): ShaperPovFader
+---@overload fun(class: "ColorInterfaceFader", undo: Undo?): ColorInterfaceFader
+---@overload fun(class: "ColorPickerFader", undo: Undo?): ColorPickerFader
+---@overload fun(class: "HardwareFader", undo: Undo?): HardwareFader
+---@overload fun(class: "PlaybackHardwareFader", undo: Undo?): PlaybackHardwareFader
+---@overload fun(class: "PropertyLabel", undo: Undo?): PropertyLabel
+---@overload fun(class: "ProgressBar", undo: Undo?): ProgressBar
+---@overload fun(class: "ScrollBar", undo: Undo?): ScrollBar
+---@overload fun(class: "ScrollBarH", undo: Undo?): ScrollBarH
+---@overload fun(class: "ScrollBarV", undo: Undo?): ScrollBarV
+---@overload fun(class: "Button", undo: Undo?): Button
+---@overload fun(class: "UIGridConfigButton", undo: Undo?): UIGridConfigButton
+---@overload fun(class: "UIGridEditModeButton", undo: Undo?): UIGridEditModeButton
+---@overload fun(class: "DimmerWheelButton", undo: Undo?): DimmerWheelButton
+---@overload fun(class: "EjectButton", undo: Undo?): EjectButton
+---@overload fun(class: "TitleButton", undo: Undo?): TitleButton
+---@overload fun(class: "DeleteWindowButton", undo: Undo?): DeleteWindowButton
+---@overload fun(class: "WarningInfoButton", undo: Undo?): WarningInfoButton
+---@overload fun(class: "LogoButton", undo: Undo?): LogoButton
+---@overload fun(class: "ContextButton", undo: Undo?): ContextButton
+---@overload fun(class: "IndicatorButton", undo: Undo?): IndicatorButton
+---@overload fun(class: "VirtualKeyboardButton", undo: Undo?): VirtualKeyboardButton
+---@overload fun(class: "ExpandableButton", undo: Undo?): ExpandableButton
+---@overload fun(class: "KBShortcutButton", undo: Undo?): KBShortcutButton
+---@overload fun(class: "HardkeyButton", undo: Undo?): HardkeyButton
+---@overload fun(class: "HardwareButton", undo: Undo?): HardwareButton
+---@overload fun(class: "XKeysHardwareButton", undo: Undo?): XKeysHardwareButton
+---@overload fun(class: "PlaybackHardwareButton", undo: Undo?): PlaybackHardwareButton
+---@overload fun(class: "DisplayButton", undo: Undo?): DisplayButton
+---@overload fun(class: "BlinkingFadeButton", undo: Undo?): BlinkingFadeButton
+---@overload fun(class: "TimerButton", undo: Undo?): TimerButton
+---@overload fun(class: "TimerPauseButton", undo: Undo?): TimerPauseButton
+---@overload fun(class: "TimerStopButton", undo: Undo?): TimerStopButton
+---@overload fun(class: "TimerPlayButton", undo: Undo?): TimerPlayButton
+---@overload fun(class: "TimecodeSlotButton", undo: Undo?): TimecodeSlotButton
+---@overload fun(class: "TimecodeSlotPauseButton", undo: Undo?): TimecodeSlotPauseButton
+---@overload fun(class: "TimecodeSlotStopButton", undo: Undo?): TimecodeSlotStopButton
+---@overload fun(class: "TimecodeSlotPlayButton", undo: Undo?): TimecodeSlotPlayButton
+---@overload fun(class: "MainDlgLoginButton", undo: Undo?): MainDlgLoginButton
+---@overload fun(class: "MainDlgUndoButton", undo: Undo?): MainDlgUndoButton
+---@overload fun(class: "MainDlgButtonBase", undo: Undo?): MainDlgButtonBase
+---@overload fun(class: "MainDlgLeaveSessionButton", undo: Undo?): MainDlgLeaveSessionButton
+---@overload fun(class: "MainDlgJoinSessionButton", undo: Undo?): MainDlgJoinSessionButton
+---@overload fun(class: "MainDlgDismissStationButton", undo: Undo?): MainDlgDismissStationButton
+---@overload fun(class: "MainDlgInviteStationButton", undo: Undo?): MainDlgInviteStationButton
+---@overload fun(class: "MainDlgGridSelectDown", undo: Undo?): MainDlgGridSelectDown
+---@overload fun(class: "MainDlgGridSelectUp", undo: Undo?): MainDlgGridSelectUp
+---@overload fun(class: "MainDlgExportButton", undo: Undo?): MainDlgExportButton
+---@overload fun(class: "MainDlgExportEditorButton", undo: Undo?): MainDlgExportEditorButton
+---@overload fun(class: "MainDlgImportButton", undo: Undo?): MainDlgImportButton
+---@overload fun(class: "MainDlgImportEditorButton", undo: Undo?): MainDlgImportEditorButton
+---@overload fun(class: "MainDlgSelectButton", undo: Undo?): MainDlgSelectButton
+---@overload fun(class: "MainDlgEditButton", undo: Undo?): MainDlgEditButton
+---@overload fun(class: "MainDlgPasteButton", undo: Undo?): MainDlgPasteButton
+---@overload fun(class: "MainDlgCopyButton", undo: Undo?): MainDlgCopyButton
+---@overload fun(class: "MainDlgCutButton", undo: Undo?): MainDlgCutButton
+---@overload fun(class: "MainDlgDelButton", undo: Undo?): MainDlgDelButton
+---@overload fun(class: "MainDlgBlindButton", undo: Undo?): MainDlgBlindButton
+---@overload fun(class: "MainDlgInsertButton", undo: Undo?): MainDlgInsertButton
+---@overload fun(class: "PropertyControl", undo: Undo?): PropertyControl
+---@overload fun(class: "BatteryControl", undo: Undo?): BatteryControl
+---@overload fun(class: "RotationButton", undo: Undo?): RotationButton
+---@overload fun(class: "KeyboardShortcutControl", undo: Undo?): KeyboardShortcutControl
+---@overload fun(class: "XlrModeButton", undo: Undo?): XlrModeButton
+---@overload fun(class: "UIToggleButton", undo: Undo?): UIToggleButton
+---@overload fun(class: "IndicatorControl", undo: Undo?): IndicatorControl
+---@overload fun(class: "CalculatorChannelSetControl", undo: Undo?): CalculatorChannelSetControl
+---@overload fun(class: "BaseStateButton", undo: Undo?): BaseStateButton
+---@overload fun(class: "ToggleButtonList", undo: Undo?): ToggleButtonList
+---@overload fun(class: "SwipeButtonList", undo: Undo?): SwipeButtonList
+---@overload fun(class: "ToggleButton", undo: Undo?): ToggleButton
+---@overload fun(class: "SwipeButton", undo: Undo?): SwipeButton
+---@overload fun(class: "ObjectSelector", undo: Undo?): ObjectSelector
+---@overload fun(class: "DriveSelector", undo: Undo?): DriveSelector
+---@overload fun(class: "UserEncoderPageSelector", undo: Undo?): UserEncoderPageSelector
+---@overload fun(class: "EnableMasterFaderButton", undo: Undo?): EnableMasterFaderButton
+---@overload fun(class: "ExecConfigSwipe", undo: Undo?): ExecConfigSwipe
+---@overload fun(class: "EncoderLinkButton", undo: Undo?): EncoderLinkButton
+---@overload fun(class: "StateButton", undo: Undo?): StateButton
+---@overload fun(class: "CheckBox", undo: Undo?): CheckBox
+---@overload fun(class: "ContentCheckBox", undo: Undo?): ContentCheckBox
+---@overload fun(class: "PropertyInput", undo: Undo?): PropertyInput
+---@overload fun(class: "TCTimeButton", undo: Undo?): TCTimeButton
+---@overload fun(class: "TitlebuttonControl", undo: Undo?): TitlebuttonControl
+---@overload fun(class: "SpecialExecConfigInput", undo: Undo?): SpecialExecConfigInput
+---@overload fun(class: "ExecConfigInput", undo: Undo?): ExecConfigInput
+---@overload fun(class: "OSCActivityButton", undo: Undo?): OSCActivityButton
+---@overload fun(class: "ScribbleInput", undo: Undo?): ScribbleInput
+---@overload fun(class: "AppearanceInput", undo: Undo?): AppearanceInput
+---@overload fun(class: "ColorPropertyInput", undo: Undo?): ColorPropertyInput
+---@overload fun(class: "GelColorPropertyInput", undo: Undo?): GelColorPropertyInput
+---@overload fun(class: "DialogButton", undo: Undo?): DialogButton
+---@overload fun(class: "ScreenSelectorButton", undo: Undo?): ScreenSelectorButton
+---@overload fun(class: "CloneFilterButton", undo: Undo?): CloneFilterButton
+---@overload fun(class: "EncoderControl", undo: Undo?): EncoderControl
+---@overload fun(class: "ScreenEncoderControl", undo: Undo?): ScreenEncoderControl
+---@overload fun(class: "ShaperEncoderControl", undo: Undo?): ShaperEncoderControl
+---@overload fun(class: "Gma3EncoderControl", undo: Undo?): Gma3EncoderControl
+---@overload fun(class: "PresetEncoderControl", undo: Undo?): PresetEncoderControl
+---@overload fun(class: "PhaserEncoderControl", undo: Undo?): PhaserEncoderControl
+---@overload fun(class: "TrackpadPanTiltControl", undo: Undo?): TrackpadPanTiltControl
+---@overload fun(class: "ValueControl", undo: Undo?): ValueControl
+---@overload fun(class: "AuxValueControl", undo: Undo?): AuxValueControl
+---@overload fun(class: "ShowCreatorTypeControl", undo: Undo?): ShowCreatorTypeControl
+---@overload fun(class: "ValueRadioControl", undo: Undo?): ValueRadioControl
+---@overload fun(class: "SpecialExecutorKey", undo: Undo?): SpecialExecutorKey
+---@overload fun(class: "EditTitlebarButton", undo: Undo?): EditTitlebarButton
+---@overload fun(class: "SelectionIndicatorButton", undo: Undo?): SelectionIndicatorButton
+---@overload fun(class: "ValueFadeControl", undo: Undo?): ValueFadeControl
+---@overload fun(class: "MatricksIndicatorButton", undo: Undo?): MatricksIndicatorButton
+---@overload fun(class: "MatricksToggleButton", undo: Undo?): MatricksToggleButton
+---@overload fun(class: "ExecConfigColButton", undo: Undo?): ExecConfigColButton
+---@overload fun(class: "ExecConfigRowButton", undo: Undo?): ExecConfigRowButton
+---@overload fun(class: "MainDlgGridToggleButton", undo: Undo?): MainDlgGridToggleButton
+---@overload fun(class: "MainDlgMergeToggleButton", undo: Undo?): MainDlgMergeToggleButton
+---@overload fun(class: "MainDlgNewLineToggleButton", undo: Undo?): MainDlgNewLineToggleButton
+---@overload fun(class: "AtFilterControl", undo: Undo?): AtFilterControl
+---@overload fun(class: "AttributeToggleButton", undo: Undo?): AttributeToggleButton
+---@overload fun(class: "AtFilterPreview", undo: Undo?): AtFilterPreview
+---@overload fun(class: "ScrollBarButton", undo: Undo?): ScrollBarButton
+---@overload fun(class: "ScrollBarButtonH", undo: Undo?): ScrollBarButtonH
+---@overload fun(class: "ScrollBarButtonV", undo: Undo?): ScrollBarButtonV
+---@overload fun(class: "MovableButton", undo: Undo?): MovableButton
+---@overload fun(class: "MouseButton", undo: Undo?): MouseButton
+---@overload fun(class: "ProgressButton", undo: Undo?): ProgressButton
+---@overload fun(class: "MessageCenterInfoButton", undo: Undo?): MessageCenterInfoButton
+---@overload fun(class: "TagButton", undo: Undo?): TagButton
+---@overload fun(class: "RevertButton", undo: Undo?): RevertButton
+---@overload fun(class: "DriveStatusButton", undo: Undo?): DriveStatusButton
+---@overload fun(class: "MiniEncoder", undo: Undo?): MiniEncoder
+---@overload fun(class: "HardwareMiniEncoder", undo: Undo?): HardwareMiniEncoder
+---@overload fun(class: "XKeysHardwareMiniEncoder", undo: Undo?): XKeysHardwareMiniEncoder
+---@overload fun(class: "PlaybackHardwareMiniEncoder", undo: Undo?): PlaybackHardwareMiniEncoder
+---@overload fun(class: "Splitter", undo: Undo?): Splitter
+---@overload fun(class: "SplitterV", undo: Undo?): SplitterV
+---@overload fun(class: "SplitterH", undo: Undo?): SplitterH
+---@overload fun(class: "EncoderBarSlot", undo: Undo?): EncoderBarSlot
+---@overload fun(class: "UILayoutGrid", undo: Undo?): UILayoutGrid
+---@overload fun(class: "NotificationsGridScroller", undo: Undo?): NotificationsGridScroller
+---@overload fun(class: "Navigator", undo: Undo?): Navigator
+---@overload fun(class: "PropertyBox", undo: Undo?): PropertyBox
+---@overload fun(class: "SettingsBox", undo: Undo?): SettingsBox
+---@overload fun(class: "VirtualKeyboard", undo: Undo?): VirtualKeyboard
+---@overload fun(class: "ScrollContainerPageBase", undo: Undo?): ScrollContainerPageBase
+---@overload fun(class: "ScrollContainerPageScrollItemList", undo: Undo?): ScrollContainerPageScrollItemList
+---@overload fun(class: "ScrollContainerPage", undo: Undo?): ScrollContainerPage
+---@overload fun(class: "ScrollContainer", undo: Undo?): ScrollContainer
+---@overload fun(class: "MainDialogSubMenu", undo: Undo?): MainDialogSubMenu
+---@overload fun(class: "AutoLayout", undo: Undo?): AutoLayout
+---@overload fun(class: "UIGridConfigLayout", undo: Undo?): UIGridConfigLayout
+---@overload fun(class: "TitleAutoLayout", undo: Undo?): TitleAutoLayout
+---@overload fun(class: "StepControl", undo: Undo?): StepControl
+---@overload fun(class: "ObjectProperties", undo: Undo?): ObjectProperties
+---@overload fun(class: "Dialog", undo: Undo?): Dialog
+---@overload fun(class: "UIGrid", undo: Undo?): UIGrid
+---@overload fun(class: "DBObjectGridBase", undo: Undo?): DBObjectGridBase
+---@overload fun(class: "StationGrid", undo: Undo?): StationGrid
+---@overload fun(class: "UiStationGrid", undo: Undo?): UiStationGrid
+---@overload fun(class: "DBObjectGrid", undo: Undo?): DBObjectGrid
+---@overload fun(class: "TimecodeTextGrid", undo: Undo?): TimecodeTextGrid
+---@overload fun(class: "TimecodeGrid", undo: Undo?): TimecodeGrid
+---@overload fun(class: "PSRResultShowGrid", undo: Undo?): PSRResultShowGrid
+---@overload fun(class: "PSRImportGrid", undo: Undo?): PSRImportGrid
+---@overload fun(class: "PSRPatchGrid", undo: Undo?): PSRPatchGrid
+---@overload fun(class: "CloneFilterGrid", undo: Undo?): CloneFilterGrid
+---@overload fun(class: "PosCalibrationView", undo: Undo?): PosCalibrationView
+---@overload fun(class: "OSMidiGrid", undo: Undo?): OSMidiGrid
+---@overload fun(class: "TimezoneGrid", undo: Undo?): TimezoneGrid
+---@overload fun(class: "WindowTypeGrid", undo: Undo?): WindowTypeGrid
+---@overload fun(class: "SelectedGrid", undo: Undo?): SelectedGrid
+---@overload fun(class: "OopsGrid", undo: Undo?): OopsGrid
+---@overload fun(class: "FixtureTypeGrid", undo: Undo?): FixtureTypeGrid
+---@overload fun(class: "CueInputGrid", undo: Undo?): CueInputGrid
+---@overload fun(class: "LayoutEditorGrid", undo: Undo?): LayoutEditorGrid
+---@overload fun(class: "AgendaGrid", undo: Undo?): AgendaGrid
+---@overload fun(class: "ProgrammerGrid", undo: Undo?): ProgrammerGrid
+---@overload fun(class: "ProgUpdateGrid", undo: Undo?): ProgUpdateGrid
+---@overload fun(class: "MeshMaterialGrid", undo: Undo?): MeshMaterialGrid
+---@overload fun(class: "GelGrid", undo: Undo?): GelGrid
+---@overload fun(class: "SequenceGrid", undo: Undo?): SequenceGrid
+---@overload fun(class: "OutputConfigGrid", undo: Undo?): OutputConfigGrid
+---@overload fun(class: "PatchFixtureGrid", undo: Undo?): PatchFixtureGrid
+---@overload fun(class: "ShowHistoryGrid", undo: Undo?): ShowHistoryGrid
+---@overload fun(class: "FilebrowserView", undo: Undo?): FilebrowserView
+---@overload fun(class: "ReferencesGrid", undo: Undo?): ReferencesGrid
+---@overload fun(class: "CloneGrid", undo: Undo?): CloneGrid
+---@overload fun(class: "GenericSheet", undo: Undo?): GenericSheet
+---@overload fun(class: "PhaserStepSheet", undo: Undo?): PhaserStepSheet
+---@overload fun(class: "FixtureSheet", undo: Undo?): FixtureSheet
+---@overload fun(class: "ContentSheet", undo: Undo?): ContentSheet
+---@overload fun(class: "DMXSheet", undo: Undo?): DMXSheet
+---@overload fun(class: "NetworkSpeedTestGrid", undo: Undo?): NetworkSpeedTestGrid
+---@overload fun(class: "TextEdit", undo: Undo?): TextEdit
+---@overload fun(class: "MeshLineEdit", undo: Undo?): MeshLineEdit
+---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(class: "Bar", undo: Undo?): Bar
+---@overload fun(class: "GraphicsEncoderBar", undo: Undo?): GraphicsEncoderBar
+---@overload fun(class: "ScreenEncoderBar", undo: Undo?): ScreenEncoderBar
+---@overload fun(class: "TimecodeBar", undo: Undo?): TimecodeBar
+---@overload fun(class: "PhaserEditorBar", undo: Undo?): PhaserEditorBar
+---@overload fun(class: "SequenceEditBar", undo: Undo?): SequenceEditBar
+---@overload fun(class: "StageViewBar", undo: Undo?): StageViewBar
+---@overload fun(class: "LayoutBar", undo: Undo?): LayoutBar
+---@overload fun(class: "ShaperEditBar", undo: Undo?): ShaperEditBar
+---@overload fun(class: "ColorEditBar", undo: Undo?): ColorEditBar
+---@overload fun(class: "Gma3EncoderBar", undo: Undo?): Gma3EncoderBar
+---@overload fun(class: "DmxTesterBar", undo: Undo?): DmxTesterBar
+---@overload fun(class: "PresetBar", undo: Undo?): PresetBar
+---@overload fun(class: "PhaserBar", undo: Undo?): PhaserBar
+---@overload fun(class: "ExecutorBar", undo: Undo?): ExecutorBar
+---@overload fun(class: "ExecutorBarXKeys", undo: Undo?): ExecutorBarXKeys
+---@overload fun(class: "XKeysViewExecutorBar", undo: Undo?): XKeysViewExecutorBar
+---@overload fun(class: "Overlay", undo: Undo?): Overlay
+---@overload fun(class: "SwipeMenuOverlay", undo: Undo?): SwipeMenuOverlay
+---@overload fun(class: "ContentOverlay", undo: Undo?): ContentOverlay
+---@overload fun(class: "ShadedOverlay", undo: Undo?): ShadedOverlay
+---@overload fun(class: "NotificationArea", undo: Undo?): NotificationArea
+---@overload fun(class: "MessageBox", undo: Undo?): MessageBox
+---@overload fun(class: "BaseInput", undo: Undo?): BaseInput
+---@overload fun(class: "ImageInput", undo: Undo?): ImageInput
+---@overload fun(class: "ViewInput", undo: Undo?): ViewInput
+---@overload fun(class: "ColorInput", undo: Undo?): ColorInput
+---@overload fun(class: "NumericInput", undo: Undo?): NumericInput
+---@overload fun(class: "Popup", undo: Undo?): Popup
+---@overload fun(class: "ZoomFactorPopup", undo: Undo?): ZoomFactorPopup
+---@overload fun(class: "ImagePopup", undo: Undo?): ImagePopup
+---@overload fun(class: "TextInput", undo: Undo?): TextInput
+---@overload fun(class: "MultiLineTextInput", undo: Undo?): MultiLineTextInput
+---@overload fun(class: "KeybSCInput", undo: Undo?): KeybSCInput
+---@overload fun(class: "MacrolineTextInput", undo: Undo?): MacrolineTextInput
+---@overload fun(class: "CueNumberInput", undo: Undo?): CueNumberInput
+---@overload fun(class: "CopyStoreCueMessageBoxBase", undo: Undo?): CopyStoreCueMessageBoxBase
+---@overload fun(class: "DeleteCueMessageBox", undo: Undo?): DeleteCueMessageBox
+---@overload fun(class: "StoreCueMessageBox", undo: Undo?): StoreCueMessageBox
+---@overload fun(class: "CopyCueMessageBox", undo: Undo?): CopyCueMessageBox
+---@overload fun(class: "CloneAtFilterSelector", undo: Undo?): CloneAtFilterSelector
+---@overload fun(class: "DatumInput", undo: Undo?): DatumInput
+---@overload fun(class: "OSMidiSelect", undo: Undo?): OSMidiSelect
+---@overload fun(class: "TimezoneInput", undo: Undo?): TimezoneInput
+---@overload fun(class: "InsertFixturesWizard", undo: Undo?): InsertFixturesWizard
+---@overload fun(class: "XlrPortInput", undo: Undo?): XlrPortInput
+---@overload fun(class: "UIDMXPatch", undo: Undo?): UIDMXPatch
+---@overload fun(class: "GenericImport", undo: Undo?): GenericImport
+---@overload fun(class: "GenericAssignmentInput", undo: Undo?): GenericAssignmentInput
+---@overload fun(class: "FixtureTypeImport", undo: Undo?): FixtureTypeImport
+---@overload fun(class: "RecurringOverlay", undo: Undo?): RecurringOverlay
+---@overload fun(class: "RemoteInputLock", undo: Undo?): RemoteInputLock
+---@overload fun(class: "DeskLock", undo: Undo?): DeskLock
+---@overload fun(class: "HelpPopup", undo: Undo?): HelpPopup
+---@overload fun(class: "PatchToOverlay", undo: Undo?): PatchToOverlay
+---@overload fun(class: "ColorMeasurementOverlay", undo: Undo?): ColorMeasurementOverlay
+---@overload fun(class: "GenericContext", undo: Undo?): GenericContext
+---@overload fun(class: "SpecialWindowContext", undo: Undo?): SpecialWindowContext
+---@overload fun(class: "Settings3dContext", undo: Undo?): Settings3dContext
+---@overload fun(class: "GenericEditorOverlay", undo: Undo?): GenericEditorOverlay
+---@overload fun(class: "TimerEditor", undo: Undo?): TimerEditor
+---@overload fun(class: "LayoutElementEditorOverlay", undo: Undo?): LayoutElementEditorOverlay
+---@overload fun(class: "RenderQualityEditor", undo: Undo?): RenderQualityEditor
+---@overload fun(class: "AppearanceEditor", undo: Undo?): AppearanceEditor
+---@overload fun(class: "ScribbleEditor", undo: Undo?): ScribbleEditor
+---@overload fun(class: "CameraEditor", undo: Undo?): CameraEditor
+---@overload fun(class: "MeshSettings", undo: Undo?): MeshSettings
+---@overload fun(class: "NetworkSpeedTestOverlay", undo: Undo?): NetworkSpeedTestOverlay
+---@overload fun(class: "EncoderOverlay", undo: Undo?): EncoderOverlay
+---@overload fun(class: "OffMenuOverlay", undo: Undo?): OffMenuOverlay
+---@overload fun(class: "PoolOverlay", undo: Undo?): PoolOverlay
+---@overload fun(class: "MainDialog", undo: Undo?): MainDialog
+---@overload fun(class: "PSRPatchMainDialog", undo: Undo?): PSRPatchMainDialog
+---@overload fun(class: "ShowCreatorMainDialogBase", undo: Undo?): ShowCreatorMainDialogBase
+---@overload fun(class: "PSRImportMainDialog", undo: Undo?): PSRImportMainDialog
+---@overload fun(class: "ShowCreatorFTPresetsMainDialog", undo: Undo?): ShowCreatorFTPresetsMainDialog
+---@overload fun(class: "MainDlgCommandControl", undo: Undo?): MainDlgCommandControl
+---@overload fun(class: "MainDlgDErrorReport", undo: Undo?): MainDlgDErrorReport
+---@overload fun(class: "MainDlgFixtureSetup", undo: Undo?): MainDlgFixtureSetup
+---@overload fun(class: "MainDlgFixtureSetup", undo: Undo?): MainDlgFixtureSetup
+---@overload fun(class: "PositionCalibration", undo: Undo?): PositionCalibration
+---@overload fun(class: "GenericEditor", undo: Undo?): GenericEditor
+---@overload fun(class: "TimecodeEditor", undo: Undo?): TimecodeEditor
+---@overload fun(class: "LayoutEditor", undo: Undo?): LayoutEditor
+---@overload fun(class: "KeyboardShortcutEditor", undo: Undo?): KeyboardShortcutEditor
+---@overload fun(class: "FixtureEditor", undo: Undo?): FixtureEditor
+---@overload fun(class: "StageEditor", undo: Undo?): StageEditor
+---@overload fun(class: "GenericSettingsEditor", undo: Undo?): GenericSettingsEditor
+---@overload fun(class: "GeneratorBitmapEditor", undo: Undo?): GeneratorBitmapEditor
+---@overload fun(class: "AllExecEditor", undo: Undo?): AllExecEditor
+---@overload fun(class: "MainDlgDmxModeEditor", undo: Undo?): MainDlgDmxModeEditor
+---@overload fun(class: "MainDlgFixtureTypeEditor", undo: Undo?): MainDlgFixtureTypeEditor
+---@overload fun(class: "PlaybackControls", undo: Undo?): PlaybackControls
+---@overload fun(class: "CloneOverlay", undo: Undo?): CloneOverlay
+---@overload fun(class: "ThemeMergeDialog", undo: Undo?): ThemeMergeDialog
+---@overload fun(class: "BackupMenu", undo: Undo?): BackupMenu
+---@overload fun(class: "MainDlgUpdateMenu", undo: Undo?): MainDlgUpdateMenu
+---@overload fun(class: "MainDialogDest", undo: Undo?): MainDialogDest
+---@overload fun(class: "CommandLineHistory", undo: Undo?): CommandLineHistory
+---@overload fun(class: "Drawable", undo: Undo?): Drawable
+---@overload fun(class: "FrameBufferObject", undo: Undo?): FrameBufferObject
+---@overload fun(class: "WebView", undo: Undo?): WebView
+---@overload fun(class: "WebView", undo: Undo?): WebView
+---@overload fun(class: "DialogHelp", undo: Undo?): DialogHelp
+---@overload fun(class: "DialogPrivacyPolicy", undo: Undo?): DialogPrivacyPolicy
+---@overload fun(class: "DialogTrademarks", undo: Undo?): DialogTrademarks
+---@overload fun(class: "DialogReleaseNotes", undo: Undo?): DialogReleaseNotes
+---@overload fun(class: "UI2DView", undo: Undo?): UI2DView
+---@overload fun(class: "UI2DView", undo: Undo?): UI2DView
+---@overload fun(class: "TexPageDebugView", undo: Undo?): TexPageDebugView
+---@overload fun(class: "MeshPreview", undo: Undo?): MeshPreview
+---@overload fun(class: "WindowFixturetypeVisualizer", undo: Undo?): WindowFixturetypeVisualizer
+---@overload fun(class: "ColorEngineDebugView", undo: Undo?): ColorEngineDebugView
+---@overload fun(class: "WindowTextureStatistics", undo: Undo?): WindowTextureStatistics
+---@overload fun(class: "SelectionView", undo: Undo?): SelectionView
+---@overload fun(class: "View3D", undo: Undo?): View3D
+---@overload fun(class: "PatchView3D", undo: Undo?): PatchView3D
+---@overload fun(class: "LivePatchView3D", undo: Undo?): LivePatchView3D
+---@overload fun(class: "WindowMeshStatistics", undo: Undo?): WindowMeshStatistics
+---@overload fun(class: "FrameBufferObject", undo: Undo?): FrameBufferObject
+---@overload fun(class: "LayoutCanvas", undo: Undo?): LayoutCanvas
+---@overload fun(class: "LayoutCanvas", undo: Undo?): LayoutCanvas
+---@overload fun(class: "GlWindowBase", undo: Undo?): GlWindowBase
+---@overload fun(class: "Window", undo: Undo?): Window
+---@overload fun(class: "CommandWingBarWindow", undo: Undo?): CommandWingBarWindow
+---@overload fun(class: "WindowEncoderBar", undo: Undo?): WindowEncoderBar
+---@overload fun(class: "TimecodeWindow", undo: Undo?): TimecodeWindow
+---@overload fun(class: "LayoutView", undo: Undo?): LayoutView
+---@overload fun(class: "RecipeWindow", undo: Undo?): RecipeWindow
+---@overload fun(class: "SpecialWindow", undo: Undo?): SpecialWindow
+---@overload fun(class: "WindowAgenda", undo: Undo?): WindowAgenda
+---@overload fun(class: "WindowTrackpad", undo: Undo?): WindowTrackpad
+---@overload fun(class: "WindowInfo", undo: Undo?): WindowInfo
+---@overload fun(class: "XKeysViewWindow", undo: Undo?): XKeysViewWindow
+---@overload fun(class: "PlaybackViewWindow", undo: Undo?): PlaybackViewWindow
+---@overload fun(class: "WindowHelpViewer", undo: Undo?): WindowHelpViewer
+---@overload fun(class: "ClockWindow", undo: Undo?): ClockWindow
+---@overload fun(class: "SystemMonitorWindow", undo: Undo?): SystemMonitorWindow
+---@overload fun(class: "PhaserViewWindow", undo: Undo?): PhaserViewWindow
+---@overload fun(class: "SelectionViewWindow", undo: Undo?): SelectionViewWindow
+---@overload fun(class: "StatusWindow", undo: Undo?): StatusWindow
+---@overload fun(class: "ContentWindow", undo: Undo?): ContentWindow
+---@overload fun(class: "SequenceWindow", undo: Undo?): SequenceWindow
+---@overload fun(class: "CommandLineWindow", undo: Undo?): CommandLineWindow
+---@overload fun(class: "CommandWingBarContainer", undo: Undo?): CommandWingBarContainer
+---@overload fun(class: "PhaserLayoutGrid", undo: Undo?): PhaserLayoutGrid
+---@overload fun(class: "UIPhaserTimeLineGrid", undo: Undo?): UIPhaserTimeLineGrid
+---@overload fun(class: "PhaserUICenter", undo: Undo?): PhaserUICenter
+---@overload fun(class: "DialogTrackpad", undo: Undo?): DialogTrackpad
+---@overload fun(class: "ReferencesContainer", undo: Undo?): ReferencesContainer
+---@overload fun(class: "TouchMonitor", undo: Undo?): TouchMonitor
+---@overload fun(class: "CloningDialog", undo: Undo?): CloningDialog
+---@overload fun(class: "AgendaMonthsGrid", undo: Undo?): AgendaMonthsGrid
+---@overload fun(class: "AgendaDaysGrid", undo: Undo?): AgendaDaysGrid
+---@overload fun(class: "CustomMasterLayoutGrid", undo: Undo?): CustomMasterLayoutGrid
+---@overload fun(class: "SpecialWindowContent", undo: Undo?): SpecialWindowContent
+---@overload fun(class: "ShaperWindowContent", undo: Undo?): ShaperWindowContent
+---@overload fun(class: "ColorPickerContent", undo: Undo?): ColorPickerContent
+---@overload fun(class: "BladeView", undo: Undo?): BladeView
+---@overload fun(class: "BaseClock", undo: Undo?): BaseClock
+---@overload fun(class: "AnalogClock", undo: Undo?): AnalogClock
+---@overload fun(class: "DigitalClock", undo: Undo?): DigitalClock
+---@overload fun(class: "DateClock", undo: Undo?): DateClock
+---@overload fun(class: "TimecodeSlotClock", undo: Undo?): TimecodeSlotClock
+---@overload fun(class: "TimerClock", undo: Undo?): TimerClock
+---@overload fun(class: "TreeViewFrame", undo: Undo?): TreeViewFrame
+---@overload fun(class: "ObjTreeViewFrame", undo: Undo?): ObjTreeViewFrame
+---@overload fun(class: "PSRTreeViewFrame", undo: Undo?): PSRTreeViewFrame
+---@overload fun(class: "NormedGrid", undo: Undo?): NormedGrid
+---@overload fun(class: "GridContentFilterEditor", undo: Undo?): GridContentFilterEditor
+---@overload fun(class: "GridPatchContentFilterEditor", undo: Undo?): GridPatchContentFilterEditor
+---@overload fun(class: "UiMessageCenter", undo: Undo?): UiMessageCenter
+---@overload fun(class: "ShaperEditorFaderGrid", undo: Undo?): ShaperEditorFaderGrid
+---@overload fun(class: "AllPoolLayoutGrid", undo: Undo?): AllPoolLayoutGrid
+---@overload fun(class: "PoolLayoutGrid", undo: Undo?): PoolLayoutGrid
+---@overload fun(class: "RunningPlaybacksPoolLayoutGrid", undo: Undo?): RunningPlaybacksPoolLayoutGrid
+---@overload fun(class: "ViewBar", undo: Undo?): ViewBar
+---@overload fun(class: "TimePoolLayoutGrid", undo: Undo?): TimePoolLayoutGrid
+---@overload fun(class: "TimecodeSlotLayoutGrid", undo: Undo?): TimecodeSlotLayoutGrid
+---@overload fun(class: "SmartViewPoolLayoutGrid", undo: Undo?): SmartViewPoolLayoutGrid
+---@overload fun(class: "SoundPoolLayoutGrid", undo: Undo?): SoundPoolLayoutGrid
+---@overload fun(class: "EncoderBarPoolLayoutGrid", undo: Undo?): EncoderBarPoolLayoutGrid
+---@overload fun(class: "UserPoolLayoutGrid", undo: Undo?): UserPoolLayoutGrid
+---@overload fun(class: "UniversePoolLayoutGrid", undo: Undo?): UniversePoolLayoutGrid
+---@overload fun(class: "GeneratorBitmapPoolLayoutGrid", undo: Undo?): GeneratorBitmapPoolLayoutGrid
+---@overload fun(class: "GeneratorRandomPoolLayoutGrid", undo: Undo?): GeneratorRandomPoolLayoutGrid
+---@overload fun(class: "LayoutPoolLayoutGrid", undo: Undo?): LayoutPoolLayoutGrid
+---@overload fun(class: "TimecodePoolLayoutGrid", undo: Undo?): TimecodePoolLayoutGrid
+---@overload fun(class: "MeshPoolLayoutGrid", undo: Undo?): MeshPoolLayoutGrid
+---@overload fun(class: "MatricksPoolLayoutGrid", undo: Undo?): MatricksPoolLayoutGrid
+---@overload fun(class: "MaterialPoolLayoutGrid", undo: Undo?): MaterialPoolLayoutGrid
+---@overload fun(class: "RenderQualityPoolLayoutGrid", undo: Undo?): RenderQualityPoolLayoutGrid
+---@overload fun(class: "CameraPoolLayoutGrid", undo: Undo?): CameraPoolLayoutGrid
+---@overload fun(class: "GelPoolLayoutGrid", undo: Undo?): GelPoolLayoutGrid
+---@overload fun(class: "ScribblePoolLayoutGrid", undo: Undo?): ScribblePoolLayoutGrid
+---@overload fun(class: "AppearancePoolLayoutGrid", undo: Undo?): AppearancePoolLayoutGrid
+---@overload fun(class: "TagPoolLayoutGrid", undo: Undo?): TagPoolLayoutGrid
+---@overload fun(class: "SymbolPoolLayoutGrid", undo: Undo?): SymbolPoolLayoutGrid
+---@overload fun(class: "GoboPoolLayoutGrid", undo: Undo?): GoboPoolLayoutGrid
+---@overload fun(class: "VideoPoolLayoutGrid", undo: Undo?): VideoPoolLayoutGrid
+---@overload fun(class: "ImagePoolLayoutGrid", undo: Undo?): ImagePoolLayoutGrid
+---@overload fun(class: "ConfigurationPoolLayoutGrid", undo: Undo?): ConfigurationPoolLayoutGrid
+---@overload fun(class: "DataPoolLayoutGrid", undo: Undo?): DataPoolLayoutGrid
+---@overload fun(class: "MenuPoolLayoutGrid", undo: Undo?): MenuPoolLayoutGrid
+---@overload fun(class: "PluginPoolLayoutGrid", undo: Undo?): PluginPoolLayoutGrid
+---@overload fun(class: "FilterPoolLayoutGrid", undo: Undo?): FilterPoolLayoutGrid
+---@overload fun(class: "WorldPoolLayoutGrid", undo: Undo?): WorldPoolLayoutGrid
+---@overload fun(class: "ViewPoolLayoutGrid", undo: Undo?): ViewPoolLayoutGrid
+---@overload fun(class: "SequencePoolLayoutGrid", undo: Undo?): SequencePoolLayoutGrid
+---@overload fun(class: "PresetPoolLayoutGrid", undo: Undo?): PresetPoolLayoutGrid
+---@overload fun(class: "PagePoolLayoutGrid", undo: Undo?): PagePoolLayoutGrid
+---@overload fun(class: "QuickeyPoolLayoutGrid", undo: Undo?): QuickeyPoolLayoutGrid
+---@overload fun(class: "MacroPoolLayoutGrid", undo: Undo?): MacroPoolLayoutGrid
+---@overload fun(class: "GroupPoolLayoutGrid", undo: Undo?): GroupPoolLayoutGrid
+---@overload fun(class: "TagsEditContent", undo: Undo?): TagsEditContent
+---@overload fun(class: "AppearanceEditContent", undo: Undo?): AppearanceEditContent
+---@overload fun(class: "ScribbleEditContent", undo: Undo?): ScribbleEditContent
+---@overload fun(class: "GenericAssignmentSelector", undo: Undo?): GenericAssignmentSelector
+---@overload fun(class: "TagButtonList", undo: Undo?): TagButtonList
+---@overload fun(class: "MatricksContainer", undo: Undo?): MatricksContainer
+---@overload fun(class: "AtFilterDialog", undo: Undo?): AtFilterDialog
+---@overload fun(class: "PlaybackControlModularContent", undo: Undo?): PlaybackControlModularContent
+---@overload fun(class: "PlaybackControlContent", undo: Undo?): PlaybackControlContent
+---@overload fun(class: "CommandWingBarPlaybackContent", undo: Undo?): CommandWingBarPlaybackContent
+---@overload fun(class: "ThemeMergeToolBar", undo: Undo?): ThemeMergeToolBar
+---@overload fun(class: "EditorPropertyButtons", undo: Undo?): EditorPropertyButtons
+---@overload fun(class: "CmdDlgFunctionButtonsBase", undo: Undo?): CmdDlgFunctionButtonsBase
+---@overload fun(class: "CmdDlgFunctionButtonsLeft", undo: Undo?): CmdDlgFunctionButtonsLeft
+---@overload fun(class: "CmdDlgFunctionButtonsRight", undo: Undo?): CmdDlgFunctionButtonsRight
+---@overload fun(class: "MainDialogFunctionButtons", undo: Undo?): MainDialogFunctionButtons
+---@overload fun(class: "MainDialogSubMenuContent", undo: Undo?): MainDialogSubMenuContent
+---@overload fun(class: "UiScreen", undo: Undo?): UiScreen
+---@overload fun(class: "SpecialExecSection", undo: Undo?): SpecialExecSection
+---@overload fun(class: "PlaceHolderBase", undo: Undo?): PlaceHolderBase
+---@overload fun(class: "PlaceHolder", undo: Undo?): PlaceHolder
+---@overload fun(class: "EncoderOverlayPlaceholder", undo: Undo?): EncoderOverlayPlaceholder
+---@overload fun(class: "PopupPlaceholder", undo: Undo?): PopupPlaceholder
+---@overload fun(class: "EncoderBarPlaceHolder", undo: Undo?): EncoderBarPlaceHolder
+---@overload fun(class: "ModalPlaceholder", undo: Undo?): ModalPlaceholder
+---@overload fun(class: "UIObjectFake", undo: Undo?): UIObjectFake
+---@overload fun(class: "BaseItemButtons", undo: Undo?): BaseItemButtons
+---@overload fun(class: "UIGridInternals", undo: Undo?): UIGridInternals
+---@overload fun(class: "AudioPreview", undo: Undo?): AudioPreview
+---@overload fun(class: "OutputTest", undo: Undo?): OutputTest
+---@overload fun(class: "EditorBase", undo: Undo?): EditorBase
+---@overload fun(class: "PhaserPathEditor", undo: Undo?): PhaserPathEditor
+---@overload fun(class: "PhaserSpeedEditor", undo: Undo?): PhaserSpeedEditor
+---@overload fun(class: "PhaserPhaseEditor", undo: Undo?): PhaserPhaseEditor
+---@overload fun(class: "PhaserWidthEditor", undo: Undo?): PhaserWidthEditor
+---@overload fun(class: "TrackpadMouseControl", undo: Undo?): TrackpadMouseControl
+---@overload fun(class: "InfoNotesGridScroller", undo: Undo?): InfoNotesGridScroller
+---@overload fun(class: "TouchTarget", undo: Undo?): TouchTarget
+---@overload fun(class: "TouchConfigurator", undo: Undo?): TouchConfigurator
+---@overload fun(class: "ShaperTestView", undo: Undo?): ShaperTestView
+---@overload fun(class: "ColorTestView", undo: Undo?): ColorTestView
+---@overload fun(class: "SoundLevelView", undo: Undo?): SoundLevelView
+---@overload fun(class: "SoundBandView", undo: Undo?): SoundBandView
+---@overload fun(class: "PerformanceView", undo: Undo?): PerformanceView
+---@overload fun(class: "SignalView", undo: Undo?): SignalView
+---@overload fun(class: "GraphEditor", undo: Undo?): GraphEditor
+---@overload fun(class: "UIDmxCurveEditor", undo: Undo?): UIDmxCurveEditor
+---@overload fun(class: "UIPhaserTimeLine", undo: Undo?): UIPhaserTimeLine
+---@overload fun(class: "SoundBeatView", undo: Undo?): SoundBeatView
+---@overload fun(class: "SoundWaveView", undo: Undo?): SoundWaveView
+---@overload fun(class: "ColorPickBase", undo: Undo?): ColorPickBase
+---@overload fun(class: "ColorPickHSRect", undo: Undo?): ColorPickHSRect
+---@overload fun(class: "ColorPickXYZ", undo: Undo?): ColorPickXYZ
+---@overload fun(class: "ColorPickHSCircle", undo: Undo?): ColorPickHSCircle
+---@overload fun(class: "MacrolinePreview", undo: Undo?): MacrolinePreview
+---@overload fun(class: "AppearancePreview", undo: Undo?): AppearancePreview
+---@overload fun(class: "CommandLineOutput", undo: Undo?): CommandLineOutput
+---@overload fun(class: nil, undo: Undo?): UIObject
+---@deprecated use "Acquire" instead
+function ScrollBox:Aquire(class, undo) end
+---@overload fun(index: integer, class: "UIObject", undo: Undo?, count: integer?): UIObject
+---@overload fun(index: integer, class: "SampleTableView", undo: Undo?, count: integer?): SampleTableView
+---@overload fun(index: integer, class: "FanRpmView", undo: Undo?, count: integer?): FanRpmView
+---@overload fun(index: integer, class: "SysTempView", undo: Undo?, count: integer?): SysTempView
+---@overload fun(index: integer, class: "GpuTempView", undo: Undo?, count: integer?): GpuTempView
+---@overload fun(index: integer, class: "CpuTempView", undo: Undo?, count: integer?): CpuTempView
+---@overload fun(index: integer, class: "ShowDataMemTestView", undo: Undo?, count: integer?): ShowDataMemTestView
+---@overload fun(index: integer, class: "MemTestView", undo: Undo?, count: integer?): MemTestView
+---@overload fun(index: integer, class: "CPUTestView", undo: Undo?, count: integer?): CPUTestView
+---@overload fun(index: integer, class: "SyncTestView", undo: Undo?, count: integer?): SyncTestView
+---@overload fun(index: integer, class: "NetworkTestView", undo: Undo?, count: integer?): NetworkTestView
+---@overload fun(index: integer, class: "ChannelTestView", undo: Undo?, count: integer?): ChannelTestView
+---@overload fun(index: integer, class: "FaderTestView", undo: Undo?, count: integer?): FaderTestView
+---@overload fun(index: integer, class: "SensorView", undo: Undo?, count: integer?): SensorView
+---@overload fun(index: integer, class: "Toolbar", undo: Undo?, count: integer?): Toolbar
+---@overload fun(index: integer, class: "StatusBar", undo: Undo?, count: integer?): StatusBar
+---@overload fun(index: integer, class: "ScrollableItemList", undo: Undo?, count: integer?): ScrollableItemList
+---@overload fun(index: integer, class: "PopupList", undo: Undo?, count: integer?): PopupList
+---@overload fun(index: integer, class: "UITab", undo: Undo?, count: integer?): UITab
+---@overload fun(index: integer, class: "DBObjectTab", undo: Undo?, count: integer?): DBObjectTab
+---@overload fun(index: integer, class: "RadioButtonList", undo: Undo?, count: integer?): RadioButtonList
+---@overload fun(index: integer, class: "PropertyRadioButtonList", undo: Undo?, count: integer?): PropertyRadioButtonList
+---@overload fun(index: integer, class: "ChildRadioButtonList", undo: Undo?, count: integer?): ChildRadioButtonList
+---@overload fun(index: integer, class: "ShowCreatorSubpoolSelectorList", undo: Undo?, count: integer?): ShowCreatorSubpoolSelectorList
+---@overload fun(index: integer, class: "EncoderBankSelector", undo: Undo?, count: integer?): EncoderBankSelector
+---@overload fun(index: integer, class: "AttributeRadioButtonList", undo: Undo?, count: integer?): AttributeRadioButtonList
+---@overload fun(index: integer, class: "FeatureRadioButtonList", undo: Undo?, count: integer?): FeatureRadioButtonList
+---@overload fun(index: integer, class: "FixturetypeItemList", undo: Undo?, count: integer?): FixturetypeItemList
+---@overload fun(index: integer, class: "MultiScroller", undo: Undo?, count: integer?): MultiScroller
+---@overload fun(index: integer, class: "MultiSyncGridScroller", undo: Undo?, count: integer?): MultiSyncGridScroller
+---@overload fun(index: integer, class: "ContentSheetGridScroller", undo: Undo?, count: integer?): ContentSheetGridScroller
+---@overload fun(index: integer, class: "UIGridCellBase", undo: Undo?, count: integer?): UIGridCellBase
+---@overload fun(index: integer, class: "TimelineCell", undo: Undo?, count: integer?): TimelineCell
+---@overload fun(index: integer, class: "TimelineHeaderCell", undo: Undo?, count: integer?): TimelineHeaderCell
+---@overload fun(index: integer, class: "TimelineDataCell", undo: Undo?, count: integer?): TimelineDataCell
+---@overload fun(index: integer, class: "TrackGroupTimelineCell", undo: Undo?, count: integer?): TrackGroupTimelineCell
+---@overload fun(index: integer, class: "TrackTimelineCell", undo: Undo?, count: integer?): TrackTimelineCell
+---@overload fun(index: integer, class: "TimeMarkerTimelineCell", undo: Undo?, count: integer?): TimeMarkerTimelineCell
+---@overload fun(index: integer, class: "BandFader", undo: Undo?, count: integer?): BandFader
+---@overload fun(index: integer, class: "DCRemoteInfo", undo: Undo?, count: integer?): DCRemoteInfo
+---@overload fun(index: integer, class: "TimecodeSlotInfo", undo: Undo?, count: integer?): TimecodeSlotInfo
+---@overload fun(index: integer, class: "ColorView", undo: Undo?, count: integer?): ColorView
+---@overload fun(index: integer, class: "ScribbleEditView", undo: Undo?, count: integer?): ScribbleEditView
+---@overload fun(index: integer, class: "ScrollBox", undo: Undo?, count: integer?): ScrollBox
+---@overload fun(index: integer, class: "MainDialogSubMenuScrollBox", undo: Undo?, count: integer?): MainDialogSubMenuScrollBox
+---@overload fun(index: integer, class: "DialogContainer", undo: Undo?, count: integer?): DialogContainer
+---@overload fun(index: integer, class: "TextView", undo: Undo?, count: integer?): TextView
+---@overload fun(index: integer, class: "CommandlineHistoryTextView", undo: Undo?, count: integer?): CommandlineHistoryTextView
+---@overload fun(index: integer, class: "LineEdit", undo: Undo?, count: integer?): LineEdit
+---@overload fun(index: integer, class: "LineEditExt", undo: Undo?, count: integer?): LineEditExt
+---@overload fun(index: integer, class: "MacrolineEdit", undo: Undo?, count: integer?): MacrolineEdit
+---@overload fun(index: integer, class: "NumInputEdit", undo: Undo?, count: integer?): NumInputEdit
+---@overload fun(index: integer, class: "KeybSCEdit", undo: Undo?, count: integer?): KeybSCEdit
+---@overload fun(index: integer, class: "CmdlineEdit", undo: Undo?, count: integer?): CmdlineEdit
+---@overload fun(index: integer, class: "UiFader", undo: Undo?, count: integer?): UiFader
+---@overload fun(index: integer, class: "DeskLightsFader", undo: Undo?, count: integer?): DeskLightsFader
+---@overload fun(index: integer, class: "GrandMasterFader", undo: Undo?, count: integer?): GrandMasterFader
+---@overload fun(index: integer, class: "ShaperPovFader", undo: Undo?, count: integer?): ShaperPovFader
+---@overload fun(index: integer, class: "ColorInterfaceFader", undo: Undo?, count: integer?): ColorInterfaceFader
+---@overload fun(index: integer, class: "ColorPickerFader", undo: Undo?, count: integer?): ColorPickerFader
+---@overload fun(index: integer, class: "HardwareFader", undo: Undo?, count: integer?): HardwareFader
+---@overload fun(index: integer, class: "PlaybackHardwareFader", undo: Undo?, count: integer?): PlaybackHardwareFader
+---@overload fun(index: integer, class: "PropertyLabel", undo: Undo?, count: integer?): PropertyLabel
+---@overload fun(index: integer, class: "ProgressBar", undo: Undo?, count: integer?): ProgressBar
+---@overload fun(index: integer, class: "ScrollBar", undo: Undo?, count: integer?): ScrollBar
+---@overload fun(index: integer, class: "ScrollBarH", undo: Undo?, count: integer?): ScrollBarH
+---@overload fun(index: integer, class: "ScrollBarV", undo: Undo?, count: integer?): ScrollBarV
+---@overload fun(index: integer, class: "Button", undo: Undo?, count: integer?): Button
+---@overload fun(index: integer, class: "UIGridConfigButton", undo: Undo?, count: integer?): UIGridConfigButton
+---@overload fun(index: integer, class: "UIGridEditModeButton", undo: Undo?, count: integer?): UIGridEditModeButton
+---@overload fun(index: integer, class: "DimmerWheelButton", undo: Undo?, count: integer?): DimmerWheelButton
+---@overload fun(index: integer, class: "EjectButton", undo: Undo?, count: integer?): EjectButton
+---@overload fun(index: integer, class: "TitleButton", undo: Undo?, count: integer?): TitleButton
+---@overload fun(index: integer, class: "DeleteWindowButton", undo: Undo?, count: integer?): DeleteWindowButton
+---@overload fun(index: integer, class: "WarningInfoButton", undo: Undo?, count: integer?): WarningInfoButton
+---@overload fun(index: integer, class: "LogoButton", undo: Undo?, count: integer?): LogoButton
+---@overload fun(index: integer, class: "ContextButton", undo: Undo?, count: integer?): ContextButton
+---@overload fun(index: integer, class: "IndicatorButton", undo: Undo?, count: integer?): IndicatorButton
+---@overload fun(index: integer, class: "VirtualKeyboardButton", undo: Undo?, count: integer?): VirtualKeyboardButton
+---@overload fun(index: integer, class: "ExpandableButton", undo: Undo?, count: integer?): ExpandableButton
+---@overload fun(index: integer, class: "KBShortcutButton", undo: Undo?, count: integer?): KBShortcutButton
+---@overload fun(index: integer, class: "HardkeyButton", undo: Undo?, count: integer?): HardkeyButton
+---@overload fun(index: integer, class: "HardwareButton", undo: Undo?, count: integer?): HardwareButton
+---@overload fun(index: integer, class: "XKeysHardwareButton", undo: Undo?, count: integer?): XKeysHardwareButton
+---@overload fun(index: integer, class: "PlaybackHardwareButton", undo: Undo?, count: integer?): PlaybackHardwareButton
+---@overload fun(index: integer, class: "DisplayButton", undo: Undo?, count: integer?): DisplayButton
+---@overload fun(index: integer, class: "BlinkingFadeButton", undo: Undo?, count: integer?): BlinkingFadeButton
+---@overload fun(index: integer, class: "TimerButton", undo: Undo?, count: integer?): TimerButton
+---@overload fun(index: integer, class: "TimerPauseButton", undo: Undo?, count: integer?): TimerPauseButton
+---@overload fun(index: integer, class: "TimerStopButton", undo: Undo?, count: integer?): TimerStopButton
+---@overload fun(index: integer, class: "TimerPlayButton", undo: Undo?, count: integer?): TimerPlayButton
+---@overload fun(index: integer, class: "TimecodeSlotButton", undo: Undo?, count: integer?): TimecodeSlotButton
+---@overload fun(index: integer, class: "TimecodeSlotPauseButton", undo: Undo?, count: integer?): TimecodeSlotPauseButton
+---@overload fun(index: integer, class: "TimecodeSlotStopButton", undo: Undo?, count: integer?): TimecodeSlotStopButton
+---@overload fun(index: integer, class: "TimecodeSlotPlayButton", undo: Undo?, count: integer?): TimecodeSlotPlayButton
+---@overload fun(index: integer, class: "MainDlgLoginButton", undo: Undo?, count: integer?): MainDlgLoginButton
+---@overload fun(index: integer, class: "MainDlgUndoButton", undo: Undo?, count: integer?): MainDlgUndoButton
+---@overload fun(index: integer, class: "MainDlgButtonBase", undo: Undo?, count: integer?): MainDlgButtonBase
+---@overload fun(index: integer, class: "MainDlgLeaveSessionButton", undo: Undo?, count: integer?): MainDlgLeaveSessionButton
+---@overload fun(index: integer, class: "MainDlgJoinSessionButton", undo: Undo?, count: integer?): MainDlgJoinSessionButton
+---@overload fun(index: integer, class: "MainDlgDismissStationButton", undo: Undo?, count: integer?): MainDlgDismissStationButton
+---@overload fun(index: integer, class: "MainDlgInviteStationButton", undo: Undo?, count: integer?): MainDlgInviteStationButton
+---@overload fun(index: integer, class: "MainDlgGridSelectDown", undo: Undo?, count: integer?): MainDlgGridSelectDown
+---@overload fun(index: integer, class: "MainDlgGridSelectUp", undo: Undo?, count: integer?): MainDlgGridSelectUp
+---@overload fun(index: integer, class: "MainDlgExportButton", undo: Undo?, count: integer?): MainDlgExportButton
+---@overload fun(index: integer, class: "MainDlgExportEditorButton", undo: Undo?, count: integer?): MainDlgExportEditorButton
+---@overload fun(index: integer, class: "MainDlgImportButton", undo: Undo?, count: integer?): MainDlgImportButton
+---@overload fun(index: integer, class: "MainDlgImportEditorButton", undo: Undo?, count: integer?): MainDlgImportEditorButton
+---@overload fun(index: integer, class: "MainDlgSelectButton", undo: Undo?, count: integer?): MainDlgSelectButton
+---@overload fun(index: integer, class: "MainDlgEditButton", undo: Undo?, count: integer?): MainDlgEditButton
+---@overload fun(index: integer, class: "MainDlgPasteButton", undo: Undo?, count: integer?): MainDlgPasteButton
+---@overload fun(index: integer, class: "MainDlgCopyButton", undo: Undo?, count: integer?): MainDlgCopyButton
+---@overload fun(index: integer, class: "MainDlgCutButton", undo: Undo?, count: integer?): MainDlgCutButton
+---@overload fun(index: integer, class: "MainDlgDelButton", undo: Undo?, count: integer?): MainDlgDelButton
+---@overload fun(index: integer, class: "MainDlgBlindButton", undo: Undo?, count: integer?): MainDlgBlindButton
+---@overload fun(index: integer, class: "MainDlgInsertButton", undo: Undo?, count: integer?): MainDlgInsertButton
+---@overload fun(index: integer, class: "PropertyControl", undo: Undo?, count: integer?): PropertyControl
+---@overload fun(index: integer, class: "BatteryControl", undo: Undo?, count: integer?): BatteryControl
+---@overload fun(index: integer, class: "RotationButton", undo: Undo?, count: integer?): RotationButton
+---@overload fun(index: integer, class: "KeyboardShortcutControl", undo: Undo?, count: integer?): KeyboardShortcutControl
+---@overload fun(index: integer, class: "XlrModeButton", undo: Undo?, count: integer?): XlrModeButton
+---@overload fun(index: integer, class: "UIToggleButton", undo: Undo?, count: integer?): UIToggleButton
+---@overload fun(index: integer, class: "IndicatorControl", undo: Undo?, count: integer?): IndicatorControl
+---@overload fun(index: integer, class: "CalculatorChannelSetControl", undo: Undo?, count: integer?): CalculatorChannelSetControl
+---@overload fun(index: integer, class: "BaseStateButton", undo: Undo?, count: integer?): BaseStateButton
+---@overload fun(index: integer, class: "ToggleButtonList", undo: Undo?, count: integer?): ToggleButtonList
+---@overload fun(index: integer, class: "SwipeButtonList", undo: Undo?, count: integer?): SwipeButtonList
+---@overload fun(index: integer, class: "ToggleButton", undo: Undo?, count: integer?): ToggleButton
+---@overload fun(index: integer, class: "SwipeButton", undo: Undo?, count: integer?): SwipeButton
+---@overload fun(index: integer, class: "ObjectSelector", undo: Undo?, count: integer?): ObjectSelector
+---@overload fun(index: integer, class: "DriveSelector", undo: Undo?, count: integer?): DriveSelector
+---@overload fun(index: integer, class: "UserEncoderPageSelector", undo: Undo?, count: integer?): UserEncoderPageSelector
+---@overload fun(index: integer, class: "EnableMasterFaderButton", undo: Undo?, count: integer?): EnableMasterFaderButton
+---@overload fun(index: integer, class: "ExecConfigSwipe", undo: Undo?, count: integer?): ExecConfigSwipe
+---@overload fun(index: integer, class: "EncoderLinkButton", undo: Undo?, count: integer?): EncoderLinkButton
+---@overload fun(index: integer, class: "StateButton", undo: Undo?, count: integer?): StateButton
+---@overload fun(index: integer, class: "CheckBox", undo: Undo?, count: integer?): CheckBox
+---@overload fun(index: integer, class: "ContentCheckBox", undo: Undo?, count: integer?): ContentCheckBox
+---@overload fun(index: integer, class: "PropertyInput", undo: Undo?, count: integer?): PropertyInput
+---@overload fun(index: integer, class: "TCTimeButton", undo: Undo?, count: integer?): TCTimeButton
+---@overload fun(index: integer, class: "TitlebuttonControl", undo: Undo?, count: integer?): TitlebuttonControl
+---@overload fun(index: integer, class: "SpecialExecConfigInput", undo: Undo?, count: integer?): SpecialExecConfigInput
+---@overload fun(index: integer, class: "ExecConfigInput", undo: Undo?, count: integer?): ExecConfigInput
+---@overload fun(index: integer, class: "OSCActivityButton", undo: Undo?, count: integer?): OSCActivityButton
+---@overload fun(index: integer, class: "ScribbleInput", undo: Undo?, count: integer?): ScribbleInput
+---@overload fun(index: integer, class: "AppearanceInput", undo: Undo?, count: integer?): AppearanceInput
+---@overload fun(index: integer, class: "ColorPropertyInput", undo: Undo?, count: integer?): ColorPropertyInput
+---@overload fun(index: integer, class: "GelColorPropertyInput", undo: Undo?, count: integer?): GelColorPropertyInput
+---@overload fun(index: integer, class: "DialogButton", undo: Undo?, count: integer?): DialogButton
+---@overload fun(index: integer, class: "ScreenSelectorButton", undo: Undo?, count: integer?): ScreenSelectorButton
+---@overload fun(index: integer, class: "CloneFilterButton", undo: Undo?, count: integer?): CloneFilterButton
+---@overload fun(index: integer, class: "EncoderControl", undo: Undo?, count: integer?): EncoderControl
+---@overload fun(index: integer, class: "ScreenEncoderControl", undo: Undo?, count: integer?): ScreenEncoderControl
+---@overload fun(index: integer, class: "ShaperEncoderControl", undo: Undo?, count: integer?): ShaperEncoderControl
+---@overload fun(index: integer, class: "Gma3EncoderControl", undo: Undo?, count: integer?): Gma3EncoderControl
+---@overload fun(index: integer, class: "PresetEncoderControl", undo: Undo?, count: integer?): PresetEncoderControl
+---@overload fun(index: integer, class: "PhaserEncoderControl", undo: Undo?, count: integer?): PhaserEncoderControl
+---@overload fun(index: integer, class: "TrackpadPanTiltControl", undo: Undo?, count: integer?): TrackpadPanTiltControl
+---@overload fun(index: integer, class: "ValueControl", undo: Undo?, count: integer?): ValueControl
+---@overload fun(index: integer, class: "AuxValueControl", undo: Undo?, count: integer?): AuxValueControl
+---@overload fun(index: integer, class: "ShowCreatorTypeControl", undo: Undo?, count: integer?): ShowCreatorTypeControl
+---@overload fun(index: integer, class: "ValueRadioControl", undo: Undo?, count: integer?): ValueRadioControl
+---@overload fun(index: integer, class: "SpecialExecutorKey", undo: Undo?, count: integer?): SpecialExecutorKey
+---@overload fun(index: integer, class: "EditTitlebarButton", undo: Undo?, count: integer?): EditTitlebarButton
+---@overload fun(index: integer, class: "SelectionIndicatorButton", undo: Undo?, count: integer?): SelectionIndicatorButton
+---@overload fun(index: integer, class: "ValueFadeControl", undo: Undo?, count: integer?): ValueFadeControl
+---@overload fun(index: integer, class: "MatricksIndicatorButton", undo: Undo?, count: integer?): MatricksIndicatorButton
+---@overload fun(index: integer, class: "MatricksToggleButton", undo: Undo?, count: integer?): MatricksToggleButton
+---@overload fun(index: integer, class: "ExecConfigColButton", undo: Undo?, count: integer?): ExecConfigColButton
+---@overload fun(index: integer, class: "ExecConfigRowButton", undo: Undo?, count: integer?): ExecConfigRowButton
+---@overload fun(index: integer, class: "MainDlgGridToggleButton", undo: Undo?, count: integer?): MainDlgGridToggleButton
+---@overload fun(index: integer, class: "MainDlgMergeToggleButton", undo: Undo?, count: integer?): MainDlgMergeToggleButton
+---@overload fun(index: integer, class: "MainDlgNewLineToggleButton", undo: Undo?, count: integer?): MainDlgNewLineToggleButton
+---@overload fun(index: integer, class: "AtFilterControl", undo: Undo?, count: integer?): AtFilterControl
+---@overload fun(index: integer, class: "AttributeToggleButton", undo: Undo?, count: integer?): AttributeToggleButton
+---@overload fun(index: integer, class: "AtFilterPreview", undo: Undo?, count: integer?): AtFilterPreview
+---@overload fun(index: integer, class: "ScrollBarButton", undo: Undo?, count: integer?): ScrollBarButton
+---@overload fun(index: integer, class: "ScrollBarButtonH", undo: Undo?, count: integer?): ScrollBarButtonH
+---@overload fun(index: integer, class: "ScrollBarButtonV", undo: Undo?, count: integer?): ScrollBarButtonV
+---@overload fun(index: integer, class: "MovableButton", undo: Undo?, count: integer?): MovableButton
+---@overload fun(index: integer, class: "MouseButton", undo: Undo?, count: integer?): MouseButton
+---@overload fun(index: integer, class: "ProgressButton", undo: Undo?, count: integer?): ProgressButton
+---@overload fun(index: integer, class: "MessageCenterInfoButton", undo: Undo?, count: integer?): MessageCenterInfoButton
+---@overload fun(index: integer, class: "TagButton", undo: Undo?, count: integer?): TagButton
+---@overload fun(index: integer, class: "RevertButton", undo: Undo?, count: integer?): RevertButton
+---@overload fun(index: integer, class: "DriveStatusButton", undo: Undo?, count: integer?): DriveStatusButton
+---@overload fun(index: integer, class: "MiniEncoder", undo: Undo?, count: integer?): MiniEncoder
+---@overload fun(index: integer, class: "HardwareMiniEncoder", undo: Undo?, count: integer?): HardwareMiniEncoder
+---@overload fun(index: integer, class: "XKeysHardwareMiniEncoder", undo: Undo?, count: integer?): XKeysHardwareMiniEncoder
+---@overload fun(index: integer, class: "PlaybackHardwareMiniEncoder", undo: Undo?, count: integer?): PlaybackHardwareMiniEncoder
+---@overload fun(index: integer, class: "Splitter", undo: Undo?, count: integer?): Splitter
+---@overload fun(index: integer, class: "SplitterV", undo: Undo?, count: integer?): SplitterV
+---@overload fun(index: integer, class: "SplitterH", undo: Undo?, count: integer?): SplitterH
+---@overload fun(index: integer, class: "EncoderBarSlot", undo: Undo?, count: integer?): EncoderBarSlot
+---@overload fun(index: integer, class: "UILayoutGrid", undo: Undo?, count: integer?): UILayoutGrid
+---@overload fun(index: integer, class: "NotificationsGridScroller", undo: Undo?, count: integer?): NotificationsGridScroller
+---@overload fun(index: integer, class: "Navigator", undo: Undo?, count: integer?): Navigator
+---@overload fun(index: integer, class: "PropertyBox", undo: Undo?, count: integer?): PropertyBox
+---@overload fun(index: integer, class: "SettingsBox", undo: Undo?, count: integer?): SettingsBox
+---@overload fun(index: integer, class: "VirtualKeyboard", undo: Undo?, count: integer?): VirtualKeyboard
+---@overload fun(index: integer, class: "ScrollContainerPageBase", undo: Undo?, count: integer?): ScrollContainerPageBase
+---@overload fun(index: integer, class: "ScrollContainerPageScrollItemList", undo: Undo?, count: integer?): ScrollContainerPageScrollItemList
+---@overload fun(index: integer, class: "ScrollContainerPage", undo: Undo?, count: integer?): ScrollContainerPage
+---@overload fun(index: integer, class: "ScrollContainer", undo: Undo?, count: integer?): ScrollContainer
+---@overload fun(index: integer, class: "MainDialogSubMenu", undo: Undo?, count: integer?): MainDialogSubMenu
+---@overload fun(index: integer, class: "AutoLayout", undo: Undo?, count: integer?): AutoLayout
+---@overload fun(index: integer, class: "UIGridConfigLayout", undo: Undo?, count: integer?): UIGridConfigLayout
+---@overload fun(index: integer, class: "TitleAutoLayout", undo: Undo?, count: integer?): TitleAutoLayout
+---@overload fun(index: integer, class: "StepControl", undo: Undo?, count: integer?): StepControl
+---@overload fun(index: integer, class: "ObjectProperties", undo: Undo?, count: integer?): ObjectProperties
+---@overload fun(index: integer, class: "Dialog", undo: Undo?, count: integer?): Dialog
+---@overload fun(index: integer, class: "UIGrid", undo: Undo?, count: integer?): UIGrid
+---@overload fun(index: integer, class: "DBObjectGridBase", undo: Undo?, count: integer?): DBObjectGridBase
+---@overload fun(index: integer, class: "StationGrid", undo: Undo?, count: integer?): StationGrid
+---@overload fun(index: integer, class: "UiStationGrid", undo: Undo?, count: integer?): UiStationGrid
+---@overload fun(index: integer, class: "DBObjectGrid", undo: Undo?, count: integer?): DBObjectGrid
+---@overload fun(index: integer, class: "TimecodeTextGrid", undo: Undo?, count: integer?): TimecodeTextGrid
+---@overload fun(index: integer, class: "TimecodeGrid", undo: Undo?, count: integer?): TimecodeGrid
+---@overload fun(index: integer, class: "PSRResultShowGrid", undo: Undo?, count: integer?): PSRResultShowGrid
+---@overload fun(index: integer, class: "PSRImportGrid", undo: Undo?, count: integer?): PSRImportGrid
+---@overload fun(index: integer, class: "PSRPatchGrid", undo: Undo?, count: integer?): PSRPatchGrid
+---@overload fun(index: integer, class: "CloneFilterGrid", undo: Undo?, count: integer?): CloneFilterGrid
+---@overload fun(index: integer, class: "PosCalibrationView", undo: Undo?, count: integer?): PosCalibrationView
+---@overload fun(index: integer, class: "OSMidiGrid", undo: Undo?, count: integer?): OSMidiGrid
+---@overload fun(index: integer, class: "TimezoneGrid", undo: Undo?, count: integer?): TimezoneGrid
+---@overload fun(index: integer, class: "WindowTypeGrid", undo: Undo?, count: integer?): WindowTypeGrid
+---@overload fun(index: integer, class: "SelectedGrid", undo: Undo?, count: integer?): SelectedGrid
+---@overload fun(index: integer, class: "OopsGrid", undo: Undo?, count: integer?): OopsGrid
+---@overload fun(index: integer, class: "FixtureTypeGrid", undo: Undo?, count: integer?): FixtureTypeGrid
+---@overload fun(index: integer, class: "CueInputGrid", undo: Undo?, count: integer?): CueInputGrid
+---@overload fun(index: integer, class: "LayoutEditorGrid", undo: Undo?, count: integer?): LayoutEditorGrid
+---@overload fun(index: integer, class: "AgendaGrid", undo: Undo?, count: integer?): AgendaGrid
+---@overload fun(index: integer, class: "ProgrammerGrid", undo: Undo?, count: integer?): ProgrammerGrid
+---@overload fun(index: integer, class: "ProgUpdateGrid", undo: Undo?, count: integer?): ProgUpdateGrid
+---@overload fun(index: integer, class: "MeshMaterialGrid", undo: Undo?, count: integer?): MeshMaterialGrid
+---@overload fun(index: integer, class: "GelGrid", undo: Undo?, count: integer?): GelGrid
+---@overload fun(index: integer, class: "SequenceGrid", undo: Undo?, count: integer?): SequenceGrid
+---@overload fun(index: integer, class: "OutputConfigGrid", undo: Undo?, count: integer?): OutputConfigGrid
+---@overload fun(index: integer, class: "PatchFixtureGrid", undo: Undo?, count: integer?): PatchFixtureGrid
+---@overload fun(index: integer, class: "ShowHistoryGrid", undo: Undo?, count: integer?): ShowHistoryGrid
+---@overload fun(index: integer, class: "FilebrowserView", undo: Undo?, count: integer?): FilebrowserView
+---@overload fun(index: integer, class: "ReferencesGrid", undo: Undo?, count: integer?): ReferencesGrid
+---@overload fun(index: integer, class: "CloneGrid", undo: Undo?, count: integer?): CloneGrid
+---@overload fun(index: integer, class: "GenericSheet", undo: Undo?, count: integer?): GenericSheet
+---@overload fun(index: integer, class: "PhaserStepSheet", undo: Undo?, count: integer?): PhaserStepSheet
+---@overload fun(index: integer, class: "FixtureSheet", undo: Undo?, count: integer?): FixtureSheet
+---@overload fun(index: integer, class: "ContentSheet", undo: Undo?, count: integer?): ContentSheet
+---@overload fun(index: integer, class: "DMXSheet", undo: Undo?, count: integer?): DMXSheet
+---@overload fun(index: integer, class: "NetworkSpeedTestGrid", undo: Undo?, count: integer?): NetworkSpeedTestGrid
+---@overload fun(index: integer, class: "TextEdit", undo: Undo?, count: integer?): TextEdit
+---@overload fun(index: integer, class: "MeshLineEdit", undo: Undo?, count: integer?): MeshLineEdit
+---@overload fun(index: integer, class: "NoteTextEdit", undo: Undo?, count: integer?): NoteTextEdit
+---@overload fun(index: integer, class: "Bar", undo: Undo?, count: integer?): Bar
+---@overload fun(index: integer, class: "GraphicsEncoderBar", undo: Undo?, count: integer?): GraphicsEncoderBar
+---@overload fun(index: integer, class: "ScreenEncoderBar", undo: Undo?, count: integer?): ScreenEncoderBar
+---@overload fun(index: integer, class: "TimecodeBar", undo: Undo?, count: integer?): TimecodeBar
+---@overload fun(index: integer, class: "PhaserEditorBar", undo: Undo?, count: integer?): PhaserEditorBar
+---@overload fun(index: integer, class: "SequenceEditBar", undo: Undo?, count: integer?): SequenceEditBar
+---@overload fun(index: integer, class: "StageViewBar", undo: Undo?, count: integer?): StageViewBar
+---@overload fun(index: integer, class: "LayoutBar", undo: Undo?, count: integer?): LayoutBar
+---@overload fun(index: integer, class: "ShaperEditBar", undo: Undo?, count: integer?): ShaperEditBar
+---@overload fun(index: integer, class: "ColorEditBar", undo: Undo?, count: integer?): ColorEditBar
+---@overload fun(index: integer, class: "Gma3EncoderBar", undo: Undo?, count: integer?): Gma3EncoderBar
+---@overload fun(index: integer, class: "DmxTesterBar", undo: Undo?, count: integer?): DmxTesterBar
+---@overload fun(index: integer, class: "PresetBar", undo: Undo?, count: integer?): PresetBar
+---@overload fun(index: integer, class: "PhaserBar", undo: Undo?, count: integer?): PhaserBar
+---@overload fun(index: integer, class: "ExecutorBar", undo: Undo?, count: integer?): ExecutorBar
+---@overload fun(index: integer, class: "ExecutorBarXKeys", undo: Undo?, count: integer?): ExecutorBarXKeys
+---@overload fun(index: integer, class: "XKeysViewExecutorBar", undo: Undo?, count: integer?): XKeysViewExecutorBar
+---@overload fun(index: integer, class: "Overlay", undo: Undo?, count: integer?): Overlay
+---@overload fun(index: integer, class: "SwipeMenuOverlay", undo: Undo?, count: integer?): SwipeMenuOverlay
+---@overload fun(index: integer, class: "ContentOverlay", undo: Undo?, count: integer?): ContentOverlay
+---@overload fun(index: integer, class: "ShadedOverlay", undo: Undo?, count: integer?): ShadedOverlay
+---@overload fun(index: integer, class: "NotificationArea", undo: Undo?, count: integer?): NotificationArea
+---@overload fun(index: integer, class: "MessageBox", undo: Undo?, count: integer?): MessageBox
+---@overload fun(index: integer, class: "BaseInput", undo: Undo?, count: integer?): BaseInput
+---@overload fun(index: integer, class: "ImageInput", undo: Undo?, count: integer?): ImageInput
+---@overload fun(index: integer, class: "ViewInput", undo: Undo?, count: integer?): ViewInput
+---@overload fun(index: integer, class: "ColorInput", undo: Undo?, count: integer?): ColorInput
+---@overload fun(index: integer, class: "NumericInput", undo: Undo?, count: integer?): NumericInput
+---@overload fun(index: integer, class: "Popup", undo: Undo?, count: integer?): Popup
+---@overload fun(index: integer, class: "ZoomFactorPopup", undo: Undo?, count: integer?): ZoomFactorPopup
+---@overload fun(index: integer, class: "ImagePopup", undo: Undo?, count: integer?): ImagePopup
+---@overload fun(index: integer, class: "TextInput", undo: Undo?, count: integer?): TextInput
+---@overload fun(index: integer, class: "MultiLineTextInput", undo: Undo?, count: integer?): MultiLineTextInput
+---@overload fun(index: integer, class: "KeybSCInput", undo: Undo?, count: integer?): KeybSCInput
+---@overload fun(index: integer, class: "MacrolineTextInput", undo: Undo?, count: integer?): MacrolineTextInput
+---@overload fun(index: integer, class: "CueNumberInput", undo: Undo?, count: integer?): CueNumberInput
+---@overload fun(index: integer, class: "CopyStoreCueMessageBoxBase", undo: Undo?, count: integer?): CopyStoreCueMessageBoxBase
+---@overload fun(index: integer, class: "DeleteCueMessageBox", undo: Undo?, count: integer?): DeleteCueMessageBox
+---@overload fun(index: integer, class: "StoreCueMessageBox", undo: Undo?, count: integer?): StoreCueMessageBox
+---@overload fun(index: integer, class: "CopyCueMessageBox", undo: Undo?, count: integer?): CopyCueMessageBox
+---@overload fun(index: integer, class: "CloneAtFilterSelector", undo: Undo?, count: integer?): CloneAtFilterSelector
+---@overload fun(index: integer, class: "DatumInput", undo: Undo?, count: integer?): DatumInput
+---@overload fun(index: integer, class: "OSMidiSelect", undo: Undo?, count: integer?): OSMidiSelect
+---@overload fun(index: integer, class: "TimezoneInput", undo: Undo?, count: integer?): TimezoneInput
+---@overload fun(index: integer, class: "InsertFixturesWizard", undo: Undo?, count: integer?): InsertFixturesWizard
+---@overload fun(index: integer, class: "XlrPortInput", undo: Undo?, count: integer?): XlrPortInput
+---@overload fun(index: integer, class: "UIDMXPatch", undo: Undo?, count: integer?): UIDMXPatch
+---@overload fun(index: integer, class: "GenericImport", undo: Undo?, count: integer?): GenericImport
+---@overload fun(index: integer, class: "GenericAssignmentInput", undo: Undo?, count: integer?): GenericAssignmentInput
+---@overload fun(index: integer, class: "FixtureTypeImport", undo: Undo?, count: integer?): FixtureTypeImport
+---@overload fun(index: integer, class: "RecurringOverlay", undo: Undo?, count: integer?): RecurringOverlay
+---@overload fun(index: integer, class: "RemoteInputLock", undo: Undo?, count: integer?): RemoteInputLock
+---@overload fun(index: integer, class: "DeskLock", undo: Undo?, count: integer?): DeskLock
+---@overload fun(index: integer, class: "HelpPopup", undo: Undo?, count: integer?): HelpPopup
+---@overload fun(index: integer, class: "PatchToOverlay", undo: Undo?, count: integer?): PatchToOverlay
+---@overload fun(index: integer, class: "ColorMeasurementOverlay", undo: Undo?, count: integer?): ColorMeasurementOverlay
+---@overload fun(index: integer, class: "GenericContext", undo: Undo?, count: integer?): GenericContext
+---@overload fun(index: integer, class: "SpecialWindowContext", undo: Undo?, count: integer?): SpecialWindowContext
+---@overload fun(index: integer, class: "Settings3dContext", undo: Undo?, count: integer?): Settings3dContext
+---@overload fun(index: integer, class: "GenericEditorOverlay", undo: Undo?, count: integer?): GenericEditorOverlay
+---@overload fun(index: integer, class: "TimerEditor", undo: Undo?, count: integer?): TimerEditor
+---@overload fun(index: integer, class: "LayoutElementEditorOverlay", undo: Undo?, count: integer?): LayoutElementEditorOverlay
+---@overload fun(index: integer, class: "RenderQualityEditor", undo: Undo?, count: integer?): RenderQualityEditor
+---@overload fun(index: integer, class: "AppearanceEditor", undo: Undo?, count: integer?): AppearanceEditor
+---@overload fun(index: integer, class: "ScribbleEditor", undo: Undo?, count: integer?): ScribbleEditor
+---@overload fun(index: integer, class: "CameraEditor", undo: Undo?, count: integer?): CameraEditor
+---@overload fun(index: integer, class: "MeshSettings", undo: Undo?, count: integer?): MeshSettings
+---@overload fun(index: integer, class: "NetworkSpeedTestOverlay", undo: Undo?, count: integer?): NetworkSpeedTestOverlay
+---@overload fun(index: integer, class: "EncoderOverlay", undo: Undo?, count: integer?): EncoderOverlay
+---@overload fun(index: integer, class: "OffMenuOverlay", undo: Undo?, count: integer?): OffMenuOverlay
+---@overload fun(index: integer, class: "PoolOverlay", undo: Undo?, count: integer?): PoolOverlay
+---@overload fun(index: integer, class: "MainDialog", undo: Undo?, count: integer?): MainDialog
+---@overload fun(index: integer, class: "PSRPatchMainDialog", undo: Undo?, count: integer?): PSRPatchMainDialog
+---@overload fun(index: integer, class: "ShowCreatorMainDialogBase", undo: Undo?, count: integer?): ShowCreatorMainDialogBase
+---@overload fun(index: integer, class: "PSRImportMainDialog", undo: Undo?, count: integer?): PSRImportMainDialog
+---@overload fun(index: integer, class: "ShowCreatorFTPresetsMainDialog", undo: Undo?, count: integer?): ShowCreatorFTPresetsMainDialog
+---@overload fun(index: integer, class: "MainDlgCommandControl", undo: Undo?, count: integer?): MainDlgCommandControl
+---@overload fun(index: integer, class: "MainDlgDErrorReport", undo: Undo?, count: integer?): MainDlgDErrorReport
+---@overload fun(index: integer, class: "MainDlgFixtureSetup", undo: Undo?, count: integer?): MainDlgFixtureSetup
+---@overload fun(index: integer, class: "MainDlgFixtureSetup", undo: Undo?, count: integer?): MainDlgFixtureSetup
+---@overload fun(index: integer, class: "PositionCalibration", undo: Undo?, count: integer?): PositionCalibration
+---@overload fun(index: integer, class: "GenericEditor", undo: Undo?, count: integer?): GenericEditor
+---@overload fun(index: integer, class: "TimecodeEditor", undo: Undo?, count: integer?): TimecodeEditor
+---@overload fun(index: integer, class: "LayoutEditor", undo: Undo?, count: integer?): LayoutEditor
+---@overload fun(index: integer, class: "KeyboardShortcutEditor", undo: Undo?, count: integer?): KeyboardShortcutEditor
+---@overload fun(index: integer, class: "FixtureEditor", undo: Undo?, count: integer?): FixtureEditor
+---@overload fun(index: integer, class: "StageEditor", undo: Undo?, count: integer?): StageEditor
+---@overload fun(index: integer, class: "GenericSettingsEditor", undo: Undo?, count: integer?): GenericSettingsEditor
+---@overload fun(index: integer, class: "GeneratorBitmapEditor", undo: Undo?, count: integer?): GeneratorBitmapEditor
+---@overload fun(index: integer, class: "AllExecEditor", undo: Undo?, count: integer?): AllExecEditor
+---@overload fun(index: integer, class: "MainDlgDmxModeEditor", undo: Undo?, count: integer?): MainDlgDmxModeEditor
+---@overload fun(index: integer, class: "MainDlgFixtureTypeEditor", undo: Undo?, count: integer?): MainDlgFixtureTypeEditor
+---@overload fun(index: integer, class: "PlaybackControls", undo: Undo?, count: integer?): PlaybackControls
+---@overload fun(index: integer, class: "CloneOverlay", undo: Undo?, count: integer?): CloneOverlay
+---@overload fun(index: integer, class: "ThemeMergeDialog", undo: Undo?, count: integer?): ThemeMergeDialog
+---@overload fun(index: integer, class: "BackupMenu", undo: Undo?, count: integer?): BackupMenu
+---@overload fun(index: integer, class: "MainDlgUpdateMenu", undo: Undo?, count: integer?): MainDlgUpdateMenu
+---@overload fun(index: integer, class: "MainDialogDest", undo: Undo?, count: integer?): MainDialogDest
+---@overload fun(index: integer, class: "CommandLineHistory", undo: Undo?, count: integer?): CommandLineHistory
+---@overload fun(index: integer, class: "Drawable", undo: Undo?, count: integer?): Drawable
+---@overload fun(index: integer, class: "FrameBufferObject", undo: Undo?, count: integer?): FrameBufferObject
+---@overload fun(index: integer, class: "WebView", undo: Undo?, count: integer?): WebView
+---@overload fun(index: integer, class: "WebView", undo: Undo?, count: integer?): WebView
+---@overload fun(index: integer, class: "DialogHelp", undo: Undo?, count: integer?): DialogHelp
+---@overload fun(index: integer, class: "DialogPrivacyPolicy", undo: Undo?, count: integer?): DialogPrivacyPolicy
+---@overload fun(index: integer, class: "DialogTrademarks", undo: Undo?, count: integer?): DialogTrademarks
+---@overload fun(index: integer, class: "DialogReleaseNotes", undo: Undo?, count: integer?): DialogReleaseNotes
+---@overload fun(index: integer, class: "UI2DView", undo: Undo?, count: integer?): UI2DView
+---@overload fun(index: integer, class: "UI2DView", undo: Undo?, count: integer?): UI2DView
+---@overload fun(index: integer, class: "TexPageDebugView", undo: Undo?, count: integer?): TexPageDebugView
+---@overload fun(index: integer, class: "MeshPreview", undo: Undo?, count: integer?): MeshPreview
+---@overload fun(index: integer, class: "WindowFixturetypeVisualizer", undo: Undo?, count: integer?): WindowFixturetypeVisualizer
+---@overload fun(index: integer, class: "ColorEngineDebugView", undo: Undo?, count: integer?): ColorEngineDebugView
+---@overload fun(index: integer, class: "WindowTextureStatistics", undo: Undo?, count: integer?): WindowTextureStatistics
+---@overload fun(index: integer, class: "SelectionView", undo: Undo?, count: integer?): SelectionView
+---@overload fun(index: integer, class: "View3D", undo: Undo?, count: integer?): View3D
+---@overload fun(index: integer, class: "PatchView3D", undo: Undo?, count: integer?): PatchView3D
+---@overload fun(index: integer, class: "LivePatchView3D", undo: Undo?, count: integer?): LivePatchView3D
+---@overload fun(index: integer, class: "WindowMeshStatistics", undo: Undo?, count: integer?): WindowMeshStatistics
+---@overload fun(index: integer, class: "FrameBufferObject", undo: Undo?, count: integer?): FrameBufferObject
+---@overload fun(index: integer, class: "LayoutCanvas", undo: Undo?, count: integer?): LayoutCanvas
+---@overload fun(index: integer, class: "LayoutCanvas", undo: Undo?, count: integer?): LayoutCanvas
+---@overload fun(index: integer, class: "GlWindowBase", undo: Undo?, count: integer?): GlWindowBase
+---@overload fun(index: integer, class: "Window", undo: Undo?, count: integer?): Window
+---@overload fun(index: integer, class: "CommandWingBarWindow", undo: Undo?, count: integer?): CommandWingBarWindow
+---@overload fun(index: integer, class: "WindowEncoderBar", undo: Undo?, count: integer?): WindowEncoderBar
+---@overload fun(index: integer, class: "TimecodeWindow", undo: Undo?, count: integer?): TimecodeWindow
+---@overload fun(index: integer, class: "LayoutView", undo: Undo?, count: integer?): LayoutView
+---@overload fun(index: integer, class: "RecipeWindow", undo: Undo?, count: integer?): RecipeWindow
+---@overload fun(index: integer, class: "SpecialWindow", undo: Undo?, count: integer?): SpecialWindow
+---@overload fun(index: integer, class: "WindowAgenda", undo: Undo?, count: integer?): WindowAgenda
+---@overload fun(index: integer, class: "WindowTrackpad", undo: Undo?, count: integer?): WindowTrackpad
+---@overload fun(index: integer, class: "WindowInfo", undo: Undo?, count: integer?): WindowInfo
+---@overload fun(index: integer, class: "XKeysViewWindow", undo: Undo?, count: integer?): XKeysViewWindow
+---@overload fun(index: integer, class: "PlaybackViewWindow", undo: Undo?, count: integer?): PlaybackViewWindow
+---@overload fun(index: integer, class: "WindowHelpViewer", undo: Undo?, count: integer?): WindowHelpViewer
+---@overload fun(index: integer, class: "ClockWindow", undo: Undo?, count: integer?): ClockWindow
+---@overload fun(index: integer, class: "SystemMonitorWindow", undo: Undo?, count: integer?): SystemMonitorWindow
+---@overload fun(index: integer, class: "PhaserViewWindow", undo: Undo?, count: integer?): PhaserViewWindow
+---@overload fun(index: integer, class: "SelectionViewWindow", undo: Undo?, count: integer?): SelectionViewWindow
+---@overload fun(index: integer, class: "StatusWindow", undo: Undo?, count: integer?): StatusWindow
+---@overload fun(index: integer, class: "ContentWindow", undo: Undo?, count: integer?): ContentWindow
+---@overload fun(index: integer, class: "SequenceWindow", undo: Undo?, count: integer?): SequenceWindow
+---@overload fun(index: integer, class: "CommandLineWindow", undo: Undo?, count: integer?): CommandLineWindow
+---@overload fun(index: integer, class: "CommandWingBarContainer", undo: Undo?, count: integer?): CommandWingBarContainer
+---@overload fun(index: integer, class: "PhaserLayoutGrid", undo: Undo?, count: integer?): PhaserLayoutGrid
+---@overload fun(index: integer, class: "UIPhaserTimeLineGrid", undo: Undo?, count: integer?): UIPhaserTimeLineGrid
+---@overload fun(index: integer, class: "PhaserUICenter", undo: Undo?, count: integer?): PhaserUICenter
+---@overload fun(index: integer, class: "DialogTrackpad", undo: Undo?, count: integer?): DialogTrackpad
+---@overload fun(index: integer, class: "ReferencesContainer", undo: Undo?, count: integer?): ReferencesContainer
+---@overload fun(index: integer, class: "TouchMonitor", undo: Undo?, count: integer?): TouchMonitor
+---@overload fun(index: integer, class: "CloningDialog", undo: Undo?, count: integer?): CloningDialog
+---@overload fun(index: integer, class: "AgendaMonthsGrid", undo: Undo?, count: integer?): AgendaMonthsGrid
+---@overload fun(index: integer, class: "AgendaDaysGrid", undo: Undo?, count: integer?): AgendaDaysGrid
+---@overload fun(index: integer, class: "CustomMasterLayoutGrid", undo: Undo?, count: integer?): CustomMasterLayoutGrid
+---@overload fun(index: integer, class: "SpecialWindowContent", undo: Undo?, count: integer?): SpecialWindowContent
+---@overload fun(index: integer, class: "ShaperWindowContent", undo: Undo?, count: integer?): ShaperWindowContent
+---@overload fun(index: integer, class: "ColorPickerContent", undo: Undo?, count: integer?): ColorPickerContent
+---@overload fun(index: integer, class: "BladeView", undo: Undo?, count: integer?): BladeView
+---@overload fun(index: integer, class: "BaseClock", undo: Undo?, count: integer?): BaseClock
+---@overload fun(index: integer, class: "AnalogClock", undo: Undo?, count: integer?): AnalogClock
+---@overload fun(index: integer, class: "DigitalClock", undo: Undo?, count: integer?): DigitalClock
+---@overload fun(index: integer, class: "DateClock", undo: Undo?, count: integer?): DateClock
+---@overload fun(index: integer, class: "TimecodeSlotClock", undo: Undo?, count: integer?): TimecodeSlotClock
+---@overload fun(index: integer, class: "TimerClock", undo: Undo?, count: integer?): TimerClock
+---@overload fun(index: integer, class: "TreeViewFrame", undo: Undo?, count: integer?): TreeViewFrame
+---@overload fun(index: integer, class: "ObjTreeViewFrame", undo: Undo?, count: integer?): ObjTreeViewFrame
+---@overload fun(index: integer, class: "PSRTreeViewFrame", undo: Undo?, count: integer?): PSRTreeViewFrame
+---@overload fun(index: integer, class: "NormedGrid", undo: Undo?, count: integer?): NormedGrid
+---@overload fun(index: integer, class: "GridContentFilterEditor", undo: Undo?, count: integer?): GridContentFilterEditor
+---@overload fun(index: integer, class: "GridPatchContentFilterEditor", undo: Undo?, count: integer?): GridPatchContentFilterEditor
+---@overload fun(index: integer, class: "UiMessageCenter", undo: Undo?, count: integer?): UiMessageCenter
+---@overload fun(index: integer, class: "ShaperEditorFaderGrid", undo: Undo?, count: integer?): ShaperEditorFaderGrid
+---@overload fun(index: integer, class: "AllPoolLayoutGrid", undo: Undo?, count: integer?): AllPoolLayoutGrid
+---@overload fun(index: integer, class: "PoolLayoutGrid", undo: Undo?, count: integer?): PoolLayoutGrid
+---@overload fun(index: integer, class: "RunningPlaybacksPoolLayoutGrid", undo: Undo?, count: integer?): RunningPlaybacksPoolLayoutGrid
+---@overload fun(index: integer, class: "ViewBar", undo: Undo?, count: integer?): ViewBar
+---@overload fun(index: integer, class: "TimePoolLayoutGrid", undo: Undo?, count: integer?): TimePoolLayoutGrid
+---@overload fun(index: integer, class: "TimecodeSlotLayoutGrid", undo: Undo?, count: integer?): TimecodeSlotLayoutGrid
+---@overload fun(index: integer, class: "SmartViewPoolLayoutGrid", undo: Undo?, count: integer?): SmartViewPoolLayoutGrid
+---@overload fun(index: integer, class: "SoundPoolLayoutGrid", undo: Undo?, count: integer?): SoundPoolLayoutGrid
+---@overload fun(index: integer, class: "EncoderBarPoolLayoutGrid", undo: Undo?, count: integer?): EncoderBarPoolLayoutGrid
+---@overload fun(index: integer, class: "UserPoolLayoutGrid", undo: Undo?, count: integer?): UserPoolLayoutGrid
+---@overload fun(index: integer, class: "UniversePoolLayoutGrid", undo: Undo?, count: integer?): UniversePoolLayoutGrid
+---@overload fun(index: integer, class: "GeneratorBitmapPoolLayoutGrid", undo: Undo?, count: integer?): GeneratorBitmapPoolLayoutGrid
+---@overload fun(index: integer, class: "GeneratorRandomPoolLayoutGrid", undo: Undo?, count: integer?): GeneratorRandomPoolLayoutGrid
+---@overload fun(index: integer, class: "LayoutPoolLayoutGrid", undo: Undo?, count: integer?): LayoutPoolLayoutGrid
+---@overload fun(index: integer, class: "TimecodePoolLayoutGrid", undo: Undo?, count: integer?): TimecodePoolLayoutGrid
+---@overload fun(index: integer, class: "MeshPoolLayoutGrid", undo: Undo?, count: integer?): MeshPoolLayoutGrid
+---@overload fun(index: integer, class: "MatricksPoolLayoutGrid", undo: Undo?, count: integer?): MatricksPoolLayoutGrid
+---@overload fun(index: integer, class: "MaterialPoolLayoutGrid", undo: Undo?, count: integer?): MaterialPoolLayoutGrid
+---@overload fun(index: integer, class: "RenderQualityPoolLayoutGrid", undo: Undo?, count: integer?): RenderQualityPoolLayoutGrid
+---@overload fun(index: integer, class: "CameraPoolLayoutGrid", undo: Undo?, count: integer?): CameraPoolLayoutGrid
+---@overload fun(index: integer, class: "GelPoolLayoutGrid", undo: Undo?, count: integer?): GelPoolLayoutGrid
+---@overload fun(index: integer, class: "ScribblePoolLayoutGrid", undo: Undo?, count: integer?): ScribblePoolLayoutGrid
+---@overload fun(index: integer, class: "AppearancePoolLayoutGrid", undo: Undo?, count: integer?): AppearancePoolLayoutGrid
+---@overload fun(index: integer, class: "TagPoolLayoutGrid", undo: Undo?, count: integer?): TagPoolLayoutGrid
+---@overload fun(index: integer, class: "SymbolPoolLayoutGrid", undo: Undo?, count: integer?): SymbolPoolLayoutGrid
+---@overload fun(index: integer, class: "GoboPoolLayoutGrid", undo: Undo?, count: integer?): GoboPoolLayoutGrid
+---@overload fun(index: integer, class: "VideoPoolLayoutGrid", undo: Undo?, count: integer?): VideoPoolLayoutGrid
+---@overload fun(index: integer, class: "ImagePoolLayoutGrid", undo: Undo?, count: integer?): ImagePoolLayoutGrid
+---@overload fun(index: integer, class: "ConfigurationPoolLayoutGrid", undo: Undo?, count: integer?): ConfigurationPoolLayoutGrid
+---@overload fun(index: integer, class: "DataPoolLayoutGrid", undo: Undo?, count: integer?): DataPoolLayoutGrid
+---@overload fun(index: integer, class: "MenuPoolLayoutGrid", undo: Undo?, count: integer?): MenuPoolLayoutGrid
+---@overload fun(index: integer, class: "PluginPoolLayoutGrid", undo: Undo?, count: integer?): PluginPoolLayoutGrid
+---@overload fun(index: integer, class: "FilterPoolLayoutGrid", undo: Undo?, count: integer?): FilterPoolLayoutGrid
+---@overload fun(index: integer, class: "WorldPoolLayoutGrid", undo: Undo?, count: integer?): WorldPoolLayoutGrid
+---@overload fun(index: integer, class: "ViewPoolLayoutGrid", undo: Undo?, count: integer?): ViewPoolLayoutGrid
+---@overload fun(index: integer, class: "SequencePoolLayoutGrid", undo: Undo?, count: integer?): SequencePoolLayoutGrid
+---@overload fun(index: integer, class: "PresetPoolLayoutGrid", undo: Undo?, count: integer?): PresetPoolLayoutGrid
+---@overload fun(index: integer, class: "PagePoolLayoutGrid", undo: Undo?, count: integer?): PagePoolLayoutGrid
+---@overload fun(index: integer, class: "QuickeyPoolLayoutGrid", undo: Undo?, count: integer?): QuickeyPoolLayoutGrid
+---@overload fun(index: integer, class: "MacroPoolLayoutGrid", undo: Undo?, count: integer?): MacroPoolLayoutGrid
+---@overload fun(index: integer, class: "GroupPoolLayoutGrid", undo: Undo?, count: integer?): GroupPoolLayoutGrid
+---@overload fun(index: integer, class: "TagsEditContent", undo: Undo?, count: integer?): TagsEditContent
+---@overload fun(index: integer, class: "AppearanceEditContent", undo: Undo?, count: integer?): AppearanceEditContent
+---@overload fun(index: integer, class: "ScribbleEditContent", undo: Undo?, count: integer?): ScribbleEditContent
+---@overload fun(index: integer, class: "GenericAssignmentSelector", undo: Undo?, count: integer?): GenericAssignmentSelector
+---@overload fun(index: integer, class: "TagButtonList", undo: Undo?, count: integer?): TagButtonList
+---@overload fun(index: integer, class: "MatricksContainer", undo: Undo?, count: integer?): MatricksContainer
+---@overload fun(index: integer, class: "AtFilterDialog", undo: Undo?, count: integer?): AtFilterDialog
+---@overload fun(index: integer, class: "PlaybackControlModularContent", undo: Undo?, count: integer?): PlaybackControlModularContent
+---@overload fun(index: integer, class: "PlaybackControlContent", undo: Undo?, count: integer?): PlaybackControlContent
+---@overload fun(index: integer, class: "CommandWingBarPlaybackContent", undo: Undo?, count: integer?): CommandWingBarPlaybackContent
+---@overload fun(index: integer, class: "ThemeMergeToolBar", undo: Undo?, count: integer?): ThemeMergeToolBar
+---@overload fun(index: integer, class: "EditorPropertyButtons", undo: Undo?, count: integer?): EditorPropertyButtons
+---@overload fun(index: integer, class: "CmdDlgFunctionButtonsBase", undo: Undo?, count: integer?): CmdDlgFunctionButtonsBase
+---@overload fun(index: integer, class: "CmdDlgFunctionButtonsLeft", undo: Undo?, count: integer?): CmdDlgFunctionButtonsLeft
+---@overload fun(index: integer, class: "CmdDlgFunctionButtonsRight", undo: Undo?, count: integer?): CmdDlgFunctionButtonsRight
+---@overload fun(index: integer, class: "MainDialogFunctionButtons", undo: Undo?, count: integer?): MainDialogFunctionButtons
+---@overload fun(index: integer, class: "MainDialogSubMenuContent", undo: Undo?, count: integer?): MainDialogSubMenuContent
+---@overload fun(index: integer, class: "UiScreen", undo: Undo?, count: integer?): UiScreen
+---@overload fun(index: integer, class: "SpecialExecSection", undo: Undo?, count: integer?): SpecialExecSection
+---@overload fun(index: integer, class: "PlaceHolderBase", undo: Undo?, count: integer?): PlaceHolderBase
+---@overload fun(index: integer, class: "PlaceHolder", undo: Undo?, count: integer?): PlaceHolder
+---@overload fun(index: integer, class: "EncoderOverlayPlaceholder", undo: Undo?, count: integer?): EncoderOverlayPlaceholder
+---@overload fun(index: integer, class: "PopupPlaceholder", undo: Undo?, count: integer?): PopupPlaceholder
+---@overload fun(index: integer, class: "EncoderBarPlaceHolder", undo: Undo?, count: integer?): EncoderBarPlaceHolder
+---@overload fun(index: integer, class: "ModalPlaceholder", undo: Undo?, count: integer?): ModalPlaceholder
+---@overload fun(index: integer, class: "UIObjectFake", undo: Undo?, count: integer?): UIObjectFake
+---@overload fun(index: integer, class: "BaseItemButtons", undo: Undo?, count: integer?): BaseItemButtons
+---@overload fun(index: integer, class: "UIGridInternals", undo: Undo?, count: integer?): UIGridInternals
+---@overload fun(index: integer, class: "AudioPreview", undo: Undo?, count: integer?): AudioPreview
+---@overload fun(index: integer, class: "OutputTest", undo: Undo?, count: integer?): OutputTest
+---@overload fun(index: integer, class: "EditorBase", undo: Undo?, count: integer?): EditorBase
+---@overload fun(index: integer, class: "PhaserPathEditor", undo: Undo?, count: integer?): PhaserPathEditor
+---@overload fun(index: integer, class: "PhaserSpeedEditor", undo: Undo?, count: integer?): PhaserSpeedEditor
+---@overload fun(index: integer, class: "PhaserPhaseEditor", undo: Undo?, count: integer?): PhaserPhaseEditor
+---@overload fun(index: integer, class: "PhaserWidthEditor", undo: Undo?, count: integer?): PhaserWidthEditor
+---@overload fun(index: integer, class: "TrackpadMouseControl", undo: Undo?, count: integer?): TrackpadMouseControl
+---@overload fun(index: integer, class: "InfoNotesGridScroller", undo: Undo?, count: integer?): InfoNotesGridScroller
+---@overload fun(index: integer, class: "TouchTarget", undo: Undo?, count: integer?): TouchTarget
+---@overload fun(index: integer, class: "TouchConfigurator", undo: Undo?, count: integer?): TouchConfigurator
+---@overload fun(index: integer, class: "ShaperTestView", undo: Undo?, count: integer?): ShaperTestView
+---@overload fun(index: integer, class: "ColorTestView", undo: Undo?, count: integer?): ColorTestView
+---@overload fun(index: integer, class: "SoundLevelView", undo: Undo?, count: integer?): SoundLevelView
+---@overload fun(index: integer, class: "SoundBandView", undo: Undo?, count: integer?): SoundBandView
+---@overload fun(index: integer, class: "PerformanceView", undo: Undo?, count: integer?): PerformanceView
+---@overload fun(index: integer, class: "SignalView", undo: Undo?, count: integer?): SignalView
+---@overload fun(index: integer, class: "GraphEditor", undo: Undo?, count: integer?): GraphEditor
+---@overload fun(index: integer, class: "UIDmxCurveEditor", undo: Undo?, count: integer?): UIDmxCurveEditor
+---@overload fun(index: integer, class: "UIPhaserTimeLine", undo: Undo?, count: integer?): UIPhaserTimeLine
+---@overload fun(index: integer, class: "SoundBeatView", undo: Undo?, count: integer?): SoundBeatView
+---@overload fun(index: integer, class: "SoundWaveView", undo: Undo?, count: integer?): SoundWaveView
+---@overload fun(index: integer, class: "ColorPickBase", undo: Undo?, count: integer?): ColorPickBase
+---@overload fun(index: integer, class: "ColorPickHSRect", undo: Undo?, count: integer?): ColorPickHSRect
+---@overload fun(index: integer, class: "ColorPickXYZ", undo: Undo?, count: integer?): ColorPickXYZ
+---@overload fun(index: integer, class: "ColorPickHSCircle", undo: Undo?, count: integer?): ColorPickHSCircle
+---@overload fun(index: integer, class: "MacrolinePreview", undo: Undo?, count: integer?): MacrolinePreview
+---@overload fun(index: integer, class: "AppearancePreview", undo: Undo?, count: integer?): AppearancePreview
+---@overload fun(index: integer, class: "CommandLineOutput", undo: Undo?, count: integer?): CommandLineOutput
+---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): UIObject
+function ScrollBox:Insert(index, class, undo, count) end
+---@overload fun(name: string, class: "UIObject"): UIObject
+---@overload fun(name: string, class: "SampleTableView"): SampleTableView
+---@overload fun(name: string, class: "FanRpmView"): FanRpmView
+---@overload fun(name: string, class: "SysTempView"): SysTempView
+---@overload fun(name: string, class: "GpuTempView"): GpuTempView
+---@overload fun(name: string, class: "CpuTempView"): CpuTempView
+---@overload fun(name: string, class: "ShowDataMemTestView"): ShowDataMemTestView
+---@overload fun(name: string, class: "MemTestView"): MemTestView
+---@overload fun(name: string, class: "CPUTestView"): CPUTestView
+---@overload fun(name: string, class: "SyncTestView"): SyncTestView
+---@overload fun(name: string, class: "NetworkTestView"): NetworkTestView
+---@overload fun(name: string, class: "ChannelTestView"): ChannelTestView
+---@overload fun(name: string, class: "FaderTestView"): FaderTestView
+---@overload fun(name: string, class: "SensorView"): SensorView
+---@overload fun(name: string, class: "Toolbar"): Toolbar
+---@overload fun(name: string, class: "StatusBar"): StatusBar
+---@overload fun(name: string, class: "ScrollableItemList"): ScrollableItemList
+---@overload fun(name: string, class: "PopupList"): PopupList
+---@overload fun(name: string, class: "UITab"): UITab
+---@overload fun(name: string, class: "DBObjectTab"): DBObjectTab
+---@overload fun(name: string, class: "RadioButtonList"): RadioButtonList
+---@overload fun(name: string, class: "PropertyRadioButtonList"): PropertyRadioButtonList
+---@overload fun(name: string, class: "ChildRadioButtonList"): ChildRadioButtonList
+---@overload fun(name: string, class: "ShowCreatorSubpoolSelectorList"): ShowCreatorSubpoolSelectorList
+---@overload fun(name: string, class: "EncoderBankSelector"): EncoderBankSelector
+---@overload fun(name: string, class: "AttributeRadioButtonList"): AttributeRadioButtonList
+---@overload fun(name: string, class: "FeatureRadioButtonList"): FeatureRadioButtonList
+---@overload fun(name: string, class: "FixturetypeItemList"): FixturetypeItemList
+---@overload fun(name: string, class: "MultiScroller"): MultiScroller
+---@overload fun(name: string, class: "MultiSyncGridScroller"): MultiSyncGridScroller
+---@overload fun(name: string, class: "ContentSheetGridScroller"): ContentSheetGridScroller
+---@overload fun(name: string, class: "UIGridCellBase"): UIGridCellBase
+---@overload fun(name: string, class: "TimelineCell"): TimelineCell
+---@overload fun(name: string, class: "TimelineHeaderCell"): TimelineHeaderCell
+---@overload fun(name: string, class: "TimelineDataCell"): TimelineDataCell
+---@overload fun(name: string, class: "TrackGroupTimelineCell"): TrackGroupTimelineCell
+---@overload fun(name: string, class: "TrackTimelineCell"): TrackTimelineCell
+---@overload fun(name: string, class: "TimeMarkerTimelineCell"): TimeMarkerTimelineCell
+---@overload fun(name: string, class: "BandFader"): BandFader
+---@overload fun(name: string, class: "DCRemoteInfo"): DCRemoteInfo
+---@overload fun(name: string, class: "TimecodeSlotInfo"): TimecodeSlotInfo
+---@overload fun(name: string, class: "ColorView"): ColorView
+---@overload fun(name: string, class: "ScribbleEditView"): ScribbleEditView
+---@overload fun(name: string, class: "ScrollBox"): ScrollBox
+---@overload fun(name: string, class: "MainDialogSubMenuScrollBox"): MainDialogSubMenuScrollBox
+---@overload fun(name: string, class: "DialogContainer"): DialogContainer
+---@overload fun(name: string, class: "TextView"): TextView
+---@overload fun(name: string, class: "CommandlineHistoryTextView"): CommandlineHistoryTextView
+---@overload fun(name: string, class: "LineEdit"): LineEdit
+---@overload fun(name: string, class: "LineEditExt"): LineEditExt
+---@overload fun(name: string, class: "MacrolineEdit"): MacrolineEdit
+---@overload fun(name: string, class: "NumInputEdit"): NumInputEdit
+---@overload fun(name: string, class: "KeybSCEdit"): KeybSCEdit
+---@overload fun(name: string, class: "CmdlineEdit"): CmdlineEdit
+---@overload fun(name: string, class: "UiFader"): UiFader
+---@overload fun(name: string, class: "DeskLightsFader"): DeskLightsFader
+---@overload fun(name: string, class: "GrandMasterFader"): GrandMasterFader
+---@overload fun(name: string, class: "ShaperPovFader"): ShaperPovFader
+---@overload fun(name: string, class: "ColorInterfaceFader"): ColorInterfaceFader
+---@overload fun(name: string, class: "ColorPickerFader"): ColorPickerFader
+---@overload fun(name: string, class: "HardwareFader"): HardwareFader
+---@overload fun(name: string, class: "PlaybackHardwareFader"): PlaybackHardwareFader
+---@overload fun(name: string, class: "PropertyLabel"): PropertyLabel
+---@overload fun(name: string, class: "ProgressBar"): ProgressBar
+---@overload fun(name: string, class: "ScrollBar"): ScrollBar
+---@overload fun(name: string, class: "ScrollBarH"): ScrollBarH
+---@overload fun(name: string, class: "ScrollBarV"): ScrollBarV
+---@overload fun(name: string, class: "Button"): Button
+---@overload fun(name: string, class: "UIGridConfigButton"): UIGridConfigButton
+---@overload fun(name: string, class: "UIGridEditModeButton"): UIGridEditModeButton
+---@overload fun(name: string, class: "DimmerWheelButton"): DimmerWheelButton
+---@overload fun(name: string, class: "EjectButton"): EjectButton
+---@overload fun(name: string, class: "TitleButton"): TitleButton
+---@overload fun(name: string, class: "DeleteWindowButton"): DeleteWindowButton
+---@overload fun(name: string, class: "WarningInfoButton"): WarningInfoButton
+---@overload fun(name: string, class: "LogoButton"): LogoButton
+---@overload fun(name: string, class: "ContextButton"): ContextButton
+---@overload fun(name: string, class: "IndicatorButton"): IndicatorButton
+---@overload fun(name: string, class: "VirtualKeyboardButton"): VirtualKeyboardButton
+---@overload fun(name: string, class: "ExpandableButton"): ExpandableButton
+---@overload fun(name: string, class: "KBShortcutButton"): KBShortcutButton
+---@overload fun(name: string, class: "HardkeyButton"): HardkeyButton
+---@overload fun(name: string, class: "HardwareButton"): HardwareButton
+---@overload fun(name: string, class: "XKeysHardwareButton"): XKeysHardwareButton
+---@overload fun(name: string, class: "PlaybackHardwareButton"): PlaybackHardwareButton
+---@overload fun(name: string, class: "DisplayButton"): DisplayButton
+---@overload fun(name: string, class: "BlinkingFadeButton"): BlinkingFadeButton
+---@overload fun(name: string, class: "TimerButton"): TimerButton
+---@overload fun(name: string, class: "TimerPauseButton"): TimerPauseButton
+---@overload fun(name: string, class: "TimerStopButton"): TimerStopButton
+---@overload fun(name: string, class: "TimerPlayButton"): TimerPlayButton
+---@overload fun(name: string, class: "TimecodeSlotButton"): TimecodeSlotButton
+---@overload fun(name: string, class: "TimecodeSlotPauseButton"): TimecodeSlotPauseButton
+---@overload fun(name: string, class: "TimecodeSlotStopButton"): TimecodeSlotStopButton
+---@overload fun(name: string, class: "TimecodeSlotPlayButton"): TimecodeSlotPlayButton
+---@overload fun(name: string, class: "MainDlgLoginButton"): MainDlgLoginButton
+---@overload fun(name: string, class: "MainDlgUndoButton"): MainDlgUndoButton
+---@overload fun(name: string, class: "MainDlgButtonBase"): MainDlgButtonBase
+---@overload fun(name: string, class: "MainDlgLeaveSessionButton"): MainDlgLeaveSessionButton
+---@overload fun(name: string, class: "MainDlgJoinSessionButton"): MainDlgJoinSessionButton
+---@overload fun(name: string, class: "MainDlgDismissStationButton"): MainDlgDismissStationButton
+---@overload fun(name: string, class: "MainDlgInviteStationButton"): MainDlgInviteStationButton
+---@overload fun(name: string, class: "MainDlgGridSelectDown"): MainDlgGridSelectDown
+---@overload fun(name: string, class: "MainDlgGridSelectUp"): MainDlgGridSelectUp
+---@overload fun(name: string, class: "MainDlgExportButton"): MainDlgExportButton
+---@overload fun(name: string, class: "MainDlgExportEditorButton"): MainDlgExportEditorButton
+---@overload fun(name: string, class: "MainDlgImportButton"): MainDlgImportButton
+---@overload fun(name: string, class: "MainDlgImportEditorButton"): MainDlgImportEditorButton
+---@overload fun(name: string, class: "MainDlgSelectButton"): MainDlgSelectButton
+---@overload fun(name: string, class: "MainDlgEditButton"): MainDlgEditButton
+---@overload fun(name: string, class: "MainDlgPasteButton"): MainDlgPasteButton
+---@overload fun(name: string, class: "MainDlgCopyButton"): MainDlgCopyButton
+---@overload fun(name: string, class: "MainDlgCutButton"): MainDlgCutButton
+---@overload fun(name: string, class: "MainDlgDelButton"): MainDlgDelButton
+---@overload fun(name: string, class: "MainDlgBlindButton"): MainDlgBlindButton
+---@overload fun(name: string, class: "MainDlgInsertButton"): MainDlgInsertButton
+---@overload fun(name: string, class: "PropertyControl"): PropertyControl
+---@overload fun(name: string, class: "BatteryControl"): BatteryControl
+---@overload fun(name: string, class: "RotationButton"): RotationButton
+---@overload fun(name: string, class: "KeyboardShortcutControl"): KeyboardShortcutControl
+---@overload fun(name: string, class: "XlrModeButton"): XlrModeButton
+---@overload fun(name: string, class: "UIToggleButton"): UIToggleButton
+---@overload fun(name: string, class: "IndicatorControl"): IndicatorControl
+---@overload fun(name: string, class: "CalculatorChannelSetControl"): CalculatorChannelSetControl
+---@overload fun(name: string, class: "BaseStateButton"): BaseStateButton
+---@overload fun(name: string, class: "ToggleButtonList"): ToggleButtonList
+---@overload fun(name: string, class: "SwipeButtonList"): SwipeButtonList
+---@overload fun(name: string, class: "ToggleButton"): ToggleButton
+---@overload fun(name: string, class: "SwipeButton"): SwipeButton
+---@overload fun(name: string, class: "ObjectSelector"): ObjectSelector
+---@overload fun(name: string, class: "DriveSelector"): DriveSelector
+---@overload fun(name: string, class: "UserEncoderPageSelector"): UserEncoderPageSelector
+---@overload fun(name: string, class: "EnableMasterFaderButton"): EnableMasterFaderButton
+---@overload fun(name: string, class: "ExecConfigSwipe"): ExecConfigSwipe
+---@overload fun(name: string, class: "EncoderLinkButton"): EncoderLinkButton
+---@overload fun(name: string, class: "StateButton"): StateButton
+---@overload fun(name: string, class: "CheckBox"): CheckBox
+---@overload fun(name: string, class: "ContentCheckBox"): ContentCheckBox
+---@overload fun(name: string, class: "PropertyInput"): PropertyInput
+---@overload fun(name: string, class: "TCTimeButton"): TCTimeButton
+---@overload fun(name: string, class: "TitlebuttonControl"): TitlebuttonControl
+---@overload fun(name: string, class: "SpecialExecConfigInput"): SpecialExecConfigInput
+---@overload fun(name: string, class: "ExecConfigInput"): ExecConfigInput
+---@overload fun(name: string, class: "OSCActivityButton"): OSCActivityButton
+---@overload fun(name: string, class: "ScribbleInput"): ScribbleInput
+---@overload fun(name: string, class: "AppearanceInput"): AppearanceInput
+---@overload fun(name: string, class: "ColorPropertyInput"): ColorPropertyInput
+---@overload fun(name: string, class: "GelColorPropertyInput"): GelColorPropertyInput
+---@overload fun(name: string, class: "DialogButton"): DialogButton
+---@overload fun(name: string, class: "ScreenSelectorButton"): ScreenSelectorButton
+---@overload fun(name: string, class: "CloneFilterButton"): CloneFilterButton
+---@overload fun(name: string, class: "EncoderControl"): EncoderControl
+---@overload fun(name: string, class: "ScreenEncoderControl"): ScreenEncoderControl
+---@overload fun(name: string, class: "ShaperEncoderControl"): ShaperEncoderControl
+---@overload fun(name: string, class: "Gma3EncoderControl"): Gma3EncoderControl
+---@overload fun(name: string, class: "PresetEncoderControl"): PresetEncoderControl
+---@overload fun(name: string, class: "PhaserEncoderControl"): PhaserEncoderControl
+---@overload fun(name: string, class: "TrackpadPanTiltControl"): TrackpadPanTiltControl
+---@overload fun(name: string, class: "ValueControl"): ValueControl
+---@overload fun(name: string, class: "AuxValueControl"): AuxValueControl
+---@overload fun(name: string, class: "ShowCreatorTypeControl"): ShowCreatorTypeControl
+---@overload fun(name: string, class: "ValueRadioControl"): ValueRadioControl
+---@overload fun(name: string, class: "SpecialExecutorKey"): SpecialExecutorKey
+---@overload fun(name: string, class: "EditTitlebarButton"): EditTitlebarButton
+---@overload fun(name: string, class: "SelectionIndicatorButton"): SelectionIndicatorButton
+---@overload fun(name: string, class: "ValueFadeControl"): ValueFadeControl
+---@overload fun(name: string, class: "MatricksIndicatorButton"): MatricksIndicatorButton
+---@overload fun(name: string, class: "MatricksToggleButton"): MatricksToggleButton
+---@overload fun(name: string, class: "ExecConfigColButton"): ExecConfigColButton
+---@overload fun(name: string, class: "ExecConfigRowButton"): ExecConfigRowButton
+---@overload fun(name: string, class: "MainDlgGridToggleButton"): MainDlgGridToggleButton
+---@overload fun(name: string, class: "MainDlgMergeToggleButton"): MainDlgMergeToggleButton
+---@overload fun(name: string, class: "MainDlgNewLineToggleButton"): MainDlgNewLineToggleButton
+---@overload fun(name: string, class: "AtFilterControl"): AtFilterControl
+---@overload fun(name: string, class: "AttributeToggleButton"): AttributeToggleButton
+---@overload fun(name: string, class: "AtFilterPreview"): AtFilterPreview
+---@overload fun(name: string, class: "ScrollBarButton"): ScrollBarButton
+---@overload fun(name: string, class: "ScrollBarButtonH"): ScrollBarButtonH
+---@overload fun(name: string, class: "ScrollBarButtonV"): ScrollBarButtonV
+---@overload fun(name: string, class: "MovableButton"): MovableButton
+---@overload fun(name: string, class: "MouseButton"): MouseButton
+---@overload fun(name: string, class: "ProgressButton"): ProgressButton
+---@overload fun(name: string, class: "MessageCenterInfoButton"): MessageCenterInfoButton
+---@overload fun(name: string, class: "TagButton"): TagButton
+---@overload fun(name: string, class: "RevertButton"): RevertButton
+---@overload fun(name: string, class: "DriveStatusButton"): DriveStatusButton
+---@overload fun(name: string, class: "MiniEncoder"): MiniEncoder
+---@overload fun(name: string, class: "HardwareMiniEncoder"): HardwareMiniEncoder
+---@overload fun(name: string, class: "XKeysHardwareMiniEncoder"): XKeysHardwareMiniEncoder
+---@overload fun(name: string, class: "PlaybackHardwareMiniEncoder"): PlaybackHardwareMiniEncoder
+---@overload fun(name: string, class: "Splitter"): Splitter
+---@overload fun(name: string, class: "SplitterV"): SplitterV
+---@overload fun(name: string, class: "SplitterH"): SplitterH
+---@overload fun(name: string, class: "EncoderBarSlot"): EncoderBarSlot
+---@overload fun(name: string, class: "UILayoutGrid"): UILayoutGrid
+---@overload fun(name: string, class: "NotificationsGridScroller"): NotificationsGridScroller
+---@overload fun(name: string, class: "Navigator"): Navigator
+---@overload fun(name: string, class: "PropertyBox"): PropertyBox
+---@overload fun(name: string, class: "SettingsBox"): SettingsBox
+---@overload fun(name: string, class: "VirtualKeyboard"): VirtualKeyboard
+---@overload fun(name: string, class: "ScrollContainerPageBase"): ScrollContainerPageBase
+---@overload fun(name: string, class: "ScrollContainerPageScrollItemList"): ScrollContainerPageScrollItemList
+---@overload fun(name: string, class: "ScrollContainerPage"): ScrollContainerPage
+---@overload fun(name: string, class: "ScrollContainer"): ScrollContainer
+---@overload fun(name: string, class: "MainDialogSubMenu"): MainDialogSubMenu
+---@overload fun(name: string, class: "AutoLayout"): AutoLayout
+---@overload fun(name: string, class: "UIGridConfigLayout"): UIGridConfigLayout
+---@overload fun(name: string, class: "TitleAutoLayout"): TitleAutoLayout
+---@overload fun(name: string, class: "StepControl"): StepControl
+---@overload fun(name: string, class: "ObjectProperties"): ObjectProperties
+---@overload fun(name: string, class: "Dialog"): Dialog
+---@overload fun(name: string, class: "UIGrid"): UIGrid
+---@overload fun(name: string, class: "DBObjectGridBase"): DBObjectGridBase
+---@overload fun(name: string, class: "StationGrid"): StationGrid
+---@overload fun(name: string, class: "UiStationGrid"): UiStationGrid
+---@overload fun(name: string, class: "DBObjectGrid"): DBObjectGrid
+---@overload fun(name: string, class: "TimecodeTextGrid"): TimecodeTextGrid
+---@overload fun(name: string, class: "TimecodeGrid"): TimecodeGrid
+---@overload fun(name: string, class: "PSRResultShowGrid"): PSRResultShowGrid
+---@overload fun(name: string, class: "PSRImportGrid"): PSRImportGrid
+---@overload fun(name: string, class: "PSRPatchGrid"): PSRPatchGrid
+---@overload fun(name: string, class: "CloneFilterGrid"): CloneFilterGrid
+---@overload fun(name: string, class: "PosCalibrationView"): PosCalibrationView
+---@overload fun(name: string, class: "OSMidiGrid"): OSMidiGrid
+---@overload fun(name: string, class: "TimezoneGrid"): TimezoneGrid
+---@overload fun(name: string, class: "WindowTypeGrid"): WindowTypeGrid
+---@overload fun(name: string, class: "SelectedGrid"): SelectedGrid
+---@overload fun(name: string, class: "OopsGrid"): OopsGrid
+---@overload fun(name: string, class: "FixtureTypeGrid"): FixtureTypeGrid
+---@overload fun(name: string, class: "CueInputGrid"): CueInputGrid
+---@overload fun(name: string, class: "LayoutEditorGrid"): LayoutEditorGrid
+---@overload fun(name: string, class: "AgendaGrid"): AgendaGrid
+---@overload fun(name: string, class: "ProgrammerGrid"): ProgrammerGrid
+---@overload fun(name: string, class: "ProgUpdateGrid"): ProgUpdateGrid
+---@overload fun(name: string, class: "MeshMaterialGrid"): MeshMaterialGrid
+---@overload fun(name: string, class: "GelGrid"): GelGrid
+---@overload fun(name: string, class: "SequenceGrid"): SequenceGrid
+---@overload fun(name: string, class: "OutputConfigGrid"): OutputConfigGrid
+---@overload fun(name: string, class: "PatchFixtureGrid"): PatchFixtureGrid
+---@overload fun(name: string, class: "ShowHistoryGrid"): ShowHistoryGrid
+---@overload fun(name: string, class: "FilebrowserView"): FilebrowserView
+---@overload fun(name: string, class: "ReferencesGrid"): ReferencesGrid
+---@overload fun(name: string, class: "CloneGrid"): CloneGrid
+---@overload fun(name: string, class: "GenericSheet"): GenericSheet
+---@overload fun(name: string, class: "PhaserStepSheet"): PhaserStepSheet
+---@overload fun(name: string, class: "FixtureSheet"): FixtureSheet
+---@overload fun(name: string, class: "ContentSheet"): ContentSheet
+---@overload fun(name: string, class: "DMXSheet"): DMXSheet
+---@overload fun(name: string, class: "NetworkSpeedTestGrid"): NetworkSpeedTestGrid
+---@overload fun(name: string, class: "TextEdit"): TextEdit
+---@overload fun(name: string, class: "MeshLineEdit"): MeshLineEdit
+---@overload fun(name: string, class: "NoteTextEdit"): NoteTextEdit
+---@overload fun(name: string, class: "Bar"): Bar
+---@overload fun(name: string, class: "GraphicsEncoderBar"): GraphicsEncoderBar
+---@overload fun(name: string, class: "ScreenEncoderBar"): ScreenEncoderBar
+---@overload fun(name: string, class: "TimecodeBar"): TimecodeBar
+---@overload fun(name: string, class: "PhaserEditorBar"): PhaserEditorBar
+---@overload fun(name: string, class: "SequenceEditBar"): SequenceEditBar
+---@overload fun(name: string, class: "StageViewBar"): StageViewBar
+---@overload fun(name: string, class: "LayoutBar"): LayoutBar
+---@overload fun(name: string, class: "ShaperEditBar"): ShaperEditBar
+---@overload fun(name: string, class: "ColorEditBar"): ColorEditBar
+---@overload fun(name: string, class: "Gma3EncoderBar"): Gma3EncoderBar
+---@overload fun(name: string, class: "DmxTesterBar"): DmxTesterBar
+---@overload fun(name: string, class: "PresetBar"): PresetBar
+---@overload fun(name: string, class: "PhaserBar"): PhaserBar
+---@overload fun(name: string, class: "ExecutorBar"): ExecutorBar
+---@overload fun(name: string, class: "ExecutorBarXKeys"): ExecutorBarXKeys
+---@overload fun(name: string, class: "XKeysViewExecutorBar"): XKeysViewExecutorBar
+---@overload fun(name: string, class: "Overlay"): Overlay
+---@overload fun(name: string, class: "SwipeMenuOverlay"): SwipeMenuOverlay
+---@overload fun(name: string, class: "ContentOverlay"): ContentOverlay
+---@overload fun(name: string, class: "ShadedOverlay"): ShadedOverlay
+---@overload fun(name: string, class: "NotificationArea"): NotificationArea
+---@overload fun(name: string, class: "MessageBox"): MessageBox
+---@overload fun(name: string, class: "BaseInput"): BaseInput
+---@overload fun(name: string, class: "ImageInput"): ImageInput
+---@overload fun(name: string, class: "ViewInput"): ViewInput
+---@overload fun(name: string, class: "ColorInput"): ColorInput
+---@overload fun(name: string, class: "NumericInput"): NumericInput
+---@overload fun(name: string, class: "Popup"): Popup
+---@overload fun(name: string, class: "ZoomFactorPopup"): ZoomFactorPopup
+---@overload fun(name: string, class: "ImagePopup"): ImagePopup
+---@overload fun(name: string, class: "TextInput"): TextInput
+---@overload fun(name: string, class: "MultiLineTextInput"): MultiLineTextInput
+---@overload fun(name: string, class: "KeybSCInput"): KeybSCInput
+---@overload fun(name: string, class: "MacrolineTextInput"): MacrolineTextInput
+---@overload fun(name: string, class: "CueNumberInput"): CueNumberInput
+---@overload fun(name: string, class: "CopyStoreCueMessageBoxBase"): CopyStoreCueMessageBoxBase
+---@overload fun(name: string, class: "DeleteCueMessageBox"): DeleteCueMessageBox
+---@overload fun(name: string, class: "StoreCueMessageBox"): StoreCueMessageBox
+---@overload fun(name: string, class: "CopyCueMessageBox"): CopyCueMessageBox
+---@overload fun(name: string, class: "CloneAtFilterSelector"): CloneAtFilterSelector
+---@overload fun(name: string, class: "DatumInput"): DatumInput
+---@overload fun(name: string, class: "OSMidiSelect"): OSMidiSelect
+---@overload fun(name: string, class: "TimezoneInput"): TimezoneInput
+---@overload fun(name: string, class: "InsertFixturesWizard"): InsertFixturesWizard
+---@overload fun(name: string, class: "XlrPortInput"): XlrPortInput
+---@overload fun(name: string, class: "UIDMXPatch"): UIDMXPatch
+---@overload fun(name: string, class: "GenericImport"): GenericImport
+---@overload fun(name: string, class: "GenericAssignmentInput"): GenericAssignmentInput
+---@overload fun(name: string, class: "FixtureTypeImport"): FixtureTypeImport
+---@overload fun(name: string, class: "RecurringOverlay"): RecurringOverlay
+---@overload fun(name: string, class: "RemoteInputLock"): RemoteInputLock
+---@overload fun(name: string, class: "DeskLock"): DeskLock
+---@overload fun(name: string, class: "HelpPopup"): HelpPopup
+---@overload fun(name: string, class: "PatchToOverlay"): PatchToOverlay
+---@overload fun(name: string, class: "ColorMeasurementOverlay"): ColorMeasurementOverlay
+---@overload fun(name: string, class: "GenericContext"): GenericContext
+---@overload fun(name: string, class: "SpecialWindowContext"): SpecialWindowContext
+---@overload fun(name: string, class: "Settings3dContext"): Settings3dContext
+---@overload fun(name: string, class: "GenericEditorOverlay"): GenericEditorOverlay
+---@overload fun(name: string, class: "TimerEditor"): TimerEditor
+---@overload fun(name: string, class: "LayoutElementEditorOverlay"): LayoutElementEditorOverlay
+---@overload fun(name: string, class: "RenderQualityEditor"): RenderQualityEditor
+---@overload fun(name: string, class: "AppearanceEditor"): AppearanceEditor
+---@overload fun(name: string, class: "ScribbleEditor"): ScribbleEditor
+---@overload fun(name: string, class: "CameraEditor"): CameraEditor
+---@overload fun(name: string, class: "MeshSettings"): MeshSettings
+---@overload fun(name: string, class: "NetworkSpeedTestOverlay"): NetworkSpeedTestOverlay
+---@overload fun(name: string, class: "EncoderOverlay"): EncoderOverlay
+---@overload fun(name: string, class: "OffMenuOverlay"): OffMenuOverlay
+---@overload fun(name: string, class: "PoolOverlay"): PoolOverlay
+---@overload fun(name: string, class: "MainDialog"): MainDialog
+---@overload fun(name: string, class: "PSRPatchMainDialog"): PSRPatchMainDialog
+---@overload fun(name: string, class: "ShowCreatorMainDialogBase"): ShowCreatorMainDialogBase
+---@overload fun(name: string, class: "PSRImportMainDialog"): PSRImportMainDialog
+---@overload fun(name: string, class: "ShowCreatorFTPresetsMainDialog"): ShowCreatorFTPresetsMainDialog
+---@overload fun(name: string, class: "MainDlgCommandControl"): MainDlgCommandControl
+---@overload fun(name: string, class: "MainDlgDErrorReport"): MainDlgDErrorReport
+---@overload fun(name: string, class: "MainDlgFixtureSetup"): MainDlgFixtureSetup
+---@overload fun(name: string, class: "MainDlgFixtureSetup"): MainDlgFixtureSetup
+---@overload fun(name: string, class: "PositionCalibration"): PositionCalibration
+---@overload fun(name: string, class: "GenericEditor"): GenericEditor
+---@overload fun(name: string, class: "TimecodeEditor"): TimecodeEditor
+---@overload fun(name: string, class: "LayoutEditor"): LayoutEditor
+---@overload fun(name: string, class: "KeyboardShortcutEditor"): KeyboardShortcutEditor
+---@overload fun(name: string, class: "FixtureEditor"): FixtureEditor
+---@overload fun(name: string, class: "StageEditor"): StageEditor
+---@overload fun(name: string, class: "GenericSettingsEditor"): GenericSettingsEditor
+---@overload fun(name: string, class: "GeneratorBitmapEditor"): GeneratorBitmapEditor
+---@overload fun(name: string, class: "AllExecEditor"): AllExecEditor
+---@overload fun(name: string, class: "MainDlgDmxModeEditor"): MainDlgDmxModeEditor
+---@overload fun(name: string, class: "MainDlgFixtureTypeEditor"): MainDlgFixtureTypeEditor
+---@overload fun(name: string, class: "PlaybackControls"): PlaybackControls
+---@overload fun(name: string, class: "CloneOverlay"): CloneOverlay
+---@overload fun(name: string, class: "ThemeMergeDialog"): ThemeMergeDialog
+---@overload fun(name: string, class: "BackupMenu"): BackupMenu
+---@overload fun(name: string, class: "MainDlgUpdateMenu"): MainDlgUpdateMenu
+---@overload fun(name: string, class: "MainDialogDest"): MainDialogDest
+---@overload fun(name: string, class: "CommandLineHistory"): CommandLineHistory
+---@overload fun(name: string, class: "Drawable"): Drawable
+---@overload fun(name: string, class: "FrameBufferObject"): FrameBufferObject
+---@overload fun(name: string, class: "WebView"): WebView
+---@overload fun(name: string, class: "WebView"): WebView
+---@overload fun(name: string, class: "DialogHelp"): DialogHelp
+---@overload fun(name: string, class: "DialogPrivacyPolicy"): DialogPrivacyPolicy
+---@overload fun(name: string, class: "DialogTrademarks"): DialogTrademarks
+---@overload fun(name: string, class: "DialogReleaseNotes"): DialogReleaseNotes
+---@overload fun(name: string, class: "UI2DView"): UI2DView
+---@overload fun(name: string, class: "UI2DView"): UI2DView
+---@overload fun(name: string, class: "TexPageDebugView"): TexPageDebugView
+---@overload fun(name: string, class: "MeshPreview"): MeshPreview
+---@overload fun(name: string, class: "WindowFixturetypeVisualizer"): WindowFixturetypeVisualizer
+---@overload fun(name: string, class: "ColorEngineDebugView"): ColorEngineDebugView
+---@overload fun(name: string, class: "WindowTextureStatistics"): WindowTextureStatistics
+---@overload fun(name: string, class: "SelectionView"): SelectionView
+---@overload fun(name: string, class: "View3D"): View3D
+---@overload fun(name: string, class: "PatchView3D"): PatchView3D
+---@overload fun(name: string, class: "LivePatchView3D"): LivePatchView3D
+---@overload fun(name: string, class: "WindowMeshStatistics"): WindowMeshStatistics
+---@overload fun(name: string, class: "FrameBufferObject"): FrameBufferObject
+---@overload fun(name: string, class: "LayoutCanvas"): LayoutCanvas
+---@overload fun(name: string, class: "LayoutCanvas"): LayoutCanvas
+---@overload fun(name: string, class: "GlWindowBase"): GlWindowBase
+---@overload fun(name: string, class: "Window"): Window
+---@overload fun(name: string, class: "CommandWingBarWindow"): CommandWingBarWindow
+---@overload fun(name: string, class: "WindowEncoderBar"): WindowEncoderBar
+---@overload fun(name: string, class: "TimecodeWindow"): TimecodeWindow
+---@overload fun(name: string, class: "LayoutView"): LayoutView
+---@overload fun(name: string, class: "RecipeWindow"): RecipeWindow
+---@overload fun(name: string, class: "SpecialWindow"): SpecialWindow
+---@overload fun(name: string, class: "WindowAgenda"): WindowAgenda
+---@overload fun(name: string, class: "WindowTrackpad"): WindowTrackpad
+---@overload fun(name: string, class: "WindowInfo"): WindowInfo
+---@overload fun(name: string, class: "XKeysViewWindow"): XKeysViewWindow
+---@overload fun(name: string, class: "PlaybackViewWindow"): PlaybackViewWindow
+---@overload fun(name: string, class: "WindowHelpViewer"): WindowHelpViewer
+---@overload fun(name: string, class: "ClockWindow"): ClockWindow
+---@overload fun(name: string, class: "SystemMonitorWindow"): SystemMonitorWindow
+---@overload fun(name: string, class: "PhaserViewWindow"): PhaserViewWindow
+---@overload fun(name: string, class: "SelectionViewWindow"): SelectionViewWindow
+---@overload fun(name: string, class: "StatusWindow"): StatusWindow
+---@overload fun(name: string, class: "ContentWindow"): ContentWindow
+---@overload fun(name: string, class: "SequenceWindow"): SequenceWindow
+---@overload fun(name: string, class: "CommandLineWindow"): CommandLineWindow
+---@overload fun(name: string, class: "CommandWingBarContainer"): CommandWingBarContainer
+---@overload fun(name: string, class: "PhaserLayoutGrid"): PhaserLayoutGrid
+---@overload fun(name: string, class: "UIPhaserTimeLineGrid"): UIPhaserTimeLineGrid
+---@overload fun(name: string, class: "PhaserUICenter"): PhaserUICenter
+---@overload fun(name: string, class: "DialogTrackpad"): DialogTrackpad
+---@overload fun(name: string, class: "ReferencesContainer"): ReferencesContainer
+---@overload fun(name: string, class: "TouchMonitor"): TouchMonitor
+---@overload fun(name: string, class: "CloningDialog"): CloningDialog
+---@overload fun(name: string, class: "AgendaMonthsGrid"): AgendaMonthsGrid
+---@overload fun(name: string, class: "AgendaDaysGrid"): AgendaDaysGrid
+---@overload fun(name: string, class: "CustomMasterLayoutGrid"): CustomMasterLayoutGrid
+---@overload fun(name: string, class: "SpecialWindowContent"): SpecialWindowContent
+---@overload fun(name: string, class: "ShaperWindowContent"): ShaperWindowContent
+---@overload fun(name: string, class: "ColorPickerContent"): ColorPickerContent
+---@overload fun(name: string, class: "BladeView"): BladeView
+---@overload fun(name: string, class: "BaseClock"): BaseClock
+---@overload fun(name: string, class: "AnalogClock"): AnalogClock
+---@overload fun(name: string, class: "DigitalClock"): DigitalClock
+---@overload fun(name: string, class: "DateClock"): DateClock
+---@overload fun(name: string, class: "TimecodeSlotClock"): TimecodeSlotClock
+---@overload fun(name: string, class: "TimerClock"): TimerClock
+---@overload fun(name: string, class: "TreeViewFrame"): TreeViewFrame
+---@overload fun(name: string, class: "ObjTreeViewFrame"): ObjTreeViewFrame
+---@overload fun(name: string, class: "PSRTreeViewFrame"): PSRTreeViewFrame
+---@overload fun(name: string, class: "NormedGrid"): NormedGrid
+---@overload fun(name: string, class: "GridContentFilterEditor"): GridContentFilterEditor
+---@overload fun(name: string, class: "GridPatchContentFilterEditor"): GridPatchContentFilterEditor
+---@overload fun(name: string, class: "UiMessageCenter"): UiMessageCenter
+---@overload fun(name: string, class: "ShaperEditorFaderGrid"): ShaperEditorFaderGrid
+---@overload fun(name: string, class: "AllPoolLayoutGrid"): AllPoolLayoutGrid
+---@overload fun(name: string, class: "PoolLayoutGrid"): PoolLayoutGrid
+---@overload fun(name: string, class: "RunningPlaybacksPoolLayoutGrid"): RunningPlaybacksPoolLayoutGrid
+---@overload fun(name: string, class: "ViewBar"): ViewBar
+---@overload fun(name: string, class: "TimePoolLayoutGrid"): TimePoolLayoutGrid
+---@overload fun(name: string, class: "TimecodeSlotLayoutGrid"): TimecodeSlotLayoutGrid
+---@overload fun(name: string, class: "SmartViewPoolLayoutGrid"): SmartViewPoolLayoutGrid
+---@overload fun(name: string, class: "SoundPoolLayoutGrid"): SoundPoolLayoutGrid
+---@overload fun(name: string, class: "EncoderBarPoolLayoutGrid"): EncoderBarPoolLayoutGrid
+---@overload fun(name: string, class: "UserPoolLayoutGrid"): UserPoolLayoutGrid
+---@overload fun(name: string, class: "UniversePoolLayoutGrid"): UniversePoolLayoutGrid
+---@overload fun(name: string, class: "GeneratorBitmapPoolLayoutGrid"): GeneratorBitmapPoolLayoutGrid
+---@overload fun(name: string, class: "GeneratorRandomPoolLayoutGrid"): GeneratorRandomPoolLayoutGrid
+---@overload fun(name: string, class: "LayoutPoolLayoutGrid"): LayoutPoolLayoutGrid
+---@overload fun(name: string, class: "TimecodePoolLayoutGrid"): TimecodePoolLayoutGrid
+---@overload fun(name: string, class: "MeshPoolLayoutGrid"): MeshPoolLayoutGrid
+---@overload fun(name: string, class: "MatricksPoolLayoutGrid"): MatricksPoolLayoutGrid
+---@overload fun(name: string, class: "MaterialPoolLayoutGrid"): MaterialPoolLayoutGrid
+---@overload fun(name: string, class: "RenderQualityPoolLayoutGrid"): RenderQualityPoolLayoutGrid
+---@overload fun(name: string, class: "CameraPoolLayoutGrid"): CameraPoolLayoutGrid
+---@overload fun(name: string, class: "GelPoolLayoutGrid"): GelPoolLayoutGrid
+---@overload fun(name: string, class: "ScribblePoolLayoutGrid"): ScribblePoolLayoutGrid
+---@overload fun(name: string, class: "AppearancePoolLayoutGrid"): AppearancePoolLayoutGrid
+---@overload fun(name: string, class: "TagPoolLayoutGrid"): TagPoolLayoutGrid
+---@overload fun(name: string, class: "SymbolPoolLayoutGrid"): SymbolPoolLayoutGrid
+---@overload fun(name: string, class: "GoboPoolLayoutGrid"): GoboPoolLayoutGrid
+---@overload fun(name: string, class: "VideoPoolLayoutGrid"): VideoPoolLayoutGrid
+---@overload fun(name: string, class: "ImagePoolLayoutGrid"): ImagePoolLayoutGrid
+---@overload fun(name: string, class: "ConfigurationPoolLayoutGrid"): ConfigurationPoolLayoutGrid
+---@overload fun(name: string, class: "DataPoolLayoutGrid"): DataPoolLayoutGrid
+---@overload fun(name: string, class: "MenuPoolLayoutGrid"): MenuPoolLayoutGrid
+---@overload fun(name: string, class: "PluginPoolLayoutGrid"): PluginPoolLayoutGrid
+---@overload fun(name: string, class: "FilterPoolLayoutGrid"): FilterPoolLayoutGrid
+---@overload fun(name: string, class: "WorldPoolLayoutGrid"): WorldPoolLayoutGrid
+---@overload fun(name: string, class: "ViewPoolLayoutGrid"): ViewPoolLayoutGrid
+---@overload fun(name: string, class: "SequencePoolLayoutGrid"): SequencePoolLayoutGrid
+---@overload fun(name: string, class: "PresetPoolLayoutGrid"): PresetPoolLayoutGrid
+---@overload fun(name: string, class: "PagePoolLayoutGrid"): PagePoolLayoutGrid
+---@overload fun(name: string, class: "QuickeyPoolLayoutGrid"): QuickeyPoolLayoutGrid
+---@overload fun(name: string, class: "MacroPoolLayoutGrid"): MacroPoolLayoutGrid
+---@overload fun(name: string, class: "GroupPoolLayoutGrid"): GroupPoolLayoutGrid
+---@overload fun(name: string, class: "TagsEditContent"): TagsEditContent
+---@overload fun(name: string, class: "AppearanceEditContent"): AppearanceEditContent
+---@overload fun(name: string, class: "ScribbleEditContent"): ScribbleEditContent
+---@overload fun(name: string, class: "GenericAssignmentSelector"): GenericAssignmentSelector
+---@overload fun(name: string, class: "TagButtonList"): TagButtonList
+---@overload fun(name: string, class: "MatricksContainer"): MatricksContainer
+---@overload fun(name: string, class: "AtFilterDialog"): AtFilterDialog
+---@overload fun(name: string, class: "PlaybackControlModularContent"): PlaybackControlModularContent
+---@overload fun(name: string, class: "PlaybackControlContent"): PlaybackControlContent
+---@overload fun(name: string, class: "CommandWingBarPlaybackContent"): CommandWingBarPlaybackContent
+---@overload fun(name: string, class: "ThemeMergeToolBar"): ThemeMergeToolBar
+---@overload fun(name: string, class: "EditorPropertyButtons"): EditorPropertyButtons
+---@overload fun(name: string, class: "CmdDlgFunctionButtonsBase"): CmdDlgFunctionButtonsBase
+---@overload fun(name: string, class: "CmdDlgFunctionButtonsLeft"): CmdDlgFunctionButtonsLeft
+---@overload fun(name: string, class: "CmdDlgFunctionButtonsRight"): CmdDlgFunctionButtonsRight
+---@overload fun(name: string, class: "MainDialogFunctionButtons"): MainDialogFunctionButtons
+---@overload fun(name: string, class: "MainDialogSubMenuContent"): MainDialogSubMenuContent
+---@overload fun(name: string, class: "UiScreen"): UiScreen
+---@overload fun(name: string, class: "SpecialExecSection"): SpecialExecSection
+---@overload fun(name: string, class: "PlaceHolderBase"): PlaceHolderBase
+---@overload fun(name: string, class: "PlaceHolder"): PlaceHolder
+---@overload fun(name: string, class: "EncoderOverlayPlaceholder"): EncoderOverlayPlaceholder
+---@overload fun(name: string, class: "PopupPlaceholder"): PopupPlaceholder
+---@overload fun(name: string, class: "EncoderBarPlaceHolder"): EncoderBarPlaceHolder
+---@overload fun(name: string, class: "ModalPlaceholder"): ModalPlaceholder
+---@overload fun(name: string, class: "UIObjectFake"): UIObjectFake
+---@overload fun(name: string, class: "BaseItemButtons"): BaseItemButtons
+---@overload fun(name: string, class: "UIGridInternals"): UIGridInternals
+---@overload fun(name: string, class: "AudioPreview"): AudioPreview
+---@overload fun(name: string, class: "OutputTest"): OutputTest
+---@overload fun(name: string, class: "EditorBase"): EditorBase
+---@overload fun(name: string, class: "PhaserPathEditor"): PhaserPathEditor
+---@overload fun(name: string, class: "PhaserSpeedEditor"): PhaserSpeedEditor
+---@overload fun(name: string, class: "PhaserPhaseEditor"): PhaserPhaseEditor
+---@overload fun(name: string, class: "PhaserWidthEditor"): PhaserWidthEditor
+---@overload fun(name: string, class: "TrackpadMouseControl"): TrackpadMouseControl
+---@overload fun(name: string, class: "InfoNotesGridScroller"): InfoNotesGridScroller
+---@overload fun(name: string, class: "TouchTarget"): TouchTarget
+---@overload fun(name: string, class: "TouchConfigurator"): TouchConfigurator
+---@overload fun(name: string, class: "ShaperTestView"): ShaperTestView
+---@overload fun(name: string, class: "ColorTestView"): ColorTestView
+---@overload fun(name: string, class: "SoundLevelView"): SoundLevelView
+---@overload fun(name: string, class: "SoundBandView"): SoundBandView
+---@overload fun(name: string, class: "PerformanceView"): PerformanceView
+---@overload fun(name: string, class: "SignalView"): SignalView
+---@overload fun(name: string, class: "GraphEditor"): GraphEditor
+---@overload fun(name: string, class: "UIDmxCurveEditor"): UIDmxCurveEditor
+---@overload fun(name: string, class: "UIPhaserTimeLine"): UIPhaserTimeLine
+---@overload fun(name: string, class: "SoundBeatView"): SoundBeatView
+---@overload fun(name: string, class: "SoundWaveView"): SoundWaveView
+---@overload fun(name: string, class: "ColorPickBase"): ColorPickBase
+---@overload fun(name: string, class: "ColorPickHSRect"): ColorPickHSRect
+---@overload fun(name: string, class: "ColorPickXYZ"): ColorPickXYZ
+---@overload fun(name: string, class: "ColorPickHSCircle"): ColorPickHSCircle
+---@overload fun(name: string, class: "MacrolinePreview"): MacrolinePreview
+---@overload fun(name: string, class: "AppearancePreview"): AppearancePreview
+---@overload fun(name: string, class: "CommandLineOutput"): CommandLineOutput
+---@overload fun(name: string, class: nil): UIObject
+function ScrollBox:Find(name, class) end
+---@overload fun(name: string, class: "UIObject"): UIObject
+---@overload fun(name: string, class: "SampleTableView"): SampleTableView
+---@overload fun(name: string, class: "FanRpmView"): FanRpmView
+---@overload fun(name: string, class: "SysTempView"): SysTempView
+---@overload fun(name: string, class: "GpuTempView"): GpuTempView
+---@overload fun(name: string, class: "CpuTempView"): CpuTempView
+---@overload fun(name: string, class: "ShowDataMemTestView"): ShowDataMemTestView
+---@overload fun(name: string, class: "MemTestView"): MemTestView
+---@overload fun(name: string, class: "CPUTestView"): CPUTestView
+---@overload fun(name: string, class: "SyncTestView"): SyncTestView
+---@overload fun(name: string, class: "NetworkTestView"): NetworkTestView
+---@overload fun(name: string, class: "ChannelTestView"): ChannelTestView
+---@overload fun(name: string, class: "FaderTestView"): FaderTestView
+---@overload fun(name: string, class: "SensorView"): SensorView
+---@overload fun(name: string, class: "Toolbar"): Toolbar
+---@overload fun(name: string, class: "StatusBar"): StatusBar
+---@overload fun(name: string, class: "ScrollableItemList"): ScrollableItemList
+---@overload fun(name: string, class: "PopupList"): PopupList
+---@overload fun(name: string, class: "UITab"): UITab
+---@overload fun(name: string, class: "DBObjectTab"): DBObjectTab
+---@overload fun(name: string, class: "RadioButtonList"): RadioButtonList
+---@overload fun(name: string, class: "PropertyRadioButtonList"): PropertyRadioButtonList
+---@overload fun(name: string, class: "ChildRadioButtonList"): ChildRadioButtonList
+---@overload fun(name: string, class: "ShowCreatorSubpoolSelectorList"): ShowCreatorSubpoolSelectorList
+---@overload fun(name: string, class: "EncoderBankSelector"): EncoderBankSelector
+---@overload fun(name: string, class: "AttributeRadioButtonList"): AttributeRadioButtonList
+---@overload fun(name: string, class: "FeatureRadioButtonList"): FeatureRadioButtonList
+---@overload fun(name: string, class: "FixturetypeItemList"): FixturetypeItemList
+---@overload fun(name: string, class: "MultiScroller"): MultiScroller
+---@overload fun(name: string, class: "MultiSyncGridScroller"): MultiSyncGridScroller
+---@overload fun(name: string, class: "ContentSheetGridScroller"): ContentSheetGridScroller
+---@overload fun(name: string, class: "UIGridCellBase"): UIGridCellBase
+---@overload fun(name: string, class: "TimelineCell"): TimelineCell
+---@overload fun(name: string, class: "TimelineHeaderCell"): TimelineHeaderCell
+---@overload fun(name: string, class: "TimelineDataCell"): TimelineDataCell
+---@overload fun(name: string, class: "TrackGroupTimelineCell"): TrackGroupTimelineCell
+---@overload fun(name: string, class: "TrackTimelineCell"): TrackTimelineCell
+---@overload fun(name: string, class: "TimeMarkerTimelineCell"): TimeMarkerTimelineCell
+---@overload fun(name: string, class: "BandFader"): BandFader
+---@overload fun(name: string, class: "DCRemoteInfo"): DCRemoteInfo
+---@overload fun(name: string, class: "TimecodeSlotInfo"): TimecodeSlotInfo
+---@overload fun(name: string, class: "ColorView"): ColorView
+---@overload fun(name: string, class: "ScribbleEditView"): ScribbleEditView
+---@overload fun(name: string, class: "ScrollBox"): ScrollBox
+---@overload fun(name: string, class: "MainDialogSubMenuScrollBox"): MainDialogSubMenuScrollBox
+---@overload fun(name: string, class: "DialogContainer"): DialogContainer
+---@overload fun(name: string, class: "TextView"): TextView
+---@overload fun(name: string, class: "CommandlineHistoryTextView"): CommandlineHistoryTextView
+---@overload fun(name: string, class: "LineEdit"): LineEdit
+---@overload fun(name: string, class: "LineEditExt"): LineEditExt
+---@overload fun(name: string, class: "MacrolineEdit"): MacrolineEdit
+---@overload fun(name: string, class: "NumInputEdit"): NumInputEdit
+---@overload fun(name: string, class: "KeybSCEdit"): KeybSCEdit
+---@overload fun(name: string, class: "CmdlineEdit"): CmdlineEdit
+---@overload fun(name: string, class: "UiFader"): UiFader
+---@overload fun(name: string, class: "DeskLightsFader"): DeskLightsFader
+---@overload fun(name: string, class: "GrandMasterFader"): GrandMasterFader
+---@overload fun(name: string, class: "ShaperPovFader"): ShaperPovFader
+---@overload fun(name: string, class: "ColorInterfaceFader"): ColorInterfaceFader
+---@overload fun(name: string, class: "ColorPickerFader"): ColorPickerFader
+---@overload fun(name: string, class: "HardwareFader"): HardwareFader
+---@overload fun(name: string, class: "PlaybackHardwareFader"): PlaybackHardwareFader
+---@overload fun(name: string, class: "PropertyLabel"): PropertyLabel
+---@overload fun(name: string, class: "ProgressBar"): ProgressBar
+---@overload fun(name: string, class: "ScrollBar"): ScrollBar
+---@overload fun(name: string, class: "ScrollBarH"): ScrollBarH
+---@overload fun(name: string, class: "ScrollBarV"): ScrollBarV
+---@overload fun(name: string, class: "Button"): Button
+---@overload fun(name: string, class: "UIGridConfigButton"): UIGridConfigButton
+---@overload fun(name: string, class: "UIGridEditModeButton"): UIGridEditModeButton
+---@overload fun(name: string, class: "DimmerWheelButton"): DimmerWheelButton
+---@overload fun(name: string, class: "EjectButton"): EjectButton
+---@overload fun(name: string, class: "TitleButton"): TitleButton
+---@overload fun(name: string, class: "DeleteWindowButton"): DeleteWindowButton
+---@overload fun(name: string, class: "WarningInfoButton"): WarningInfoButton
+---@overload fun(name: string, class: "LogoButton"): LogoButton
+---@overload fun(name: string, class: "ContextButton"): ContextButton
+---@overload fun(name: string, class: "IndicatorButton"): IndicatorButton
+---@overload fun(name: string, class: "VirtualKeyboardButton"): VirtualKeyboardButton
+---@overload fun(name: string, class: "ExpandableButton"): ExpandableButton
+---@overload fun(name: string, class: "KBShortcutButton"): KBShortcutButton
+---@overload fun(name: string, class: "HardkeyButton"): HardkeyButton
+---@overload fun(name: string, class: "HardwareButton"): HardwareButton
+---@overload fun(name: string, class: "XKeysHardwareButton"): XKeysHardwareButton
+---@overload fun(name: string, class: "PlaybackHardwareButton"): PlaybackHardwareButton
+---@overload fun(name: string, class: "DisplayButton"): DisplayButton
+---@overload fun(name: string, class: "BlinkingFadeButton"): BlinkingFadeButton
+---@overload fun(name: string, class: "TimerButton"): TimerButton
+---@overload fun(name: string, class: "TimerPauseButton"): TimerPauseButton
+---@overload fun(name: string, class: "TimerStopButton"): TimerStopButton
+---@overload fun(name: string, class: "TimerPlayButton"): TimerPlayButton
+---@overload fun(name: string, class: "TimecodeSlotButton"): TimecodeSlotButton
+---@overload fun(name: string, class: "TimecodeSlotPauseButton"): TimecodeSlotPauseButton
+---@overload fun(name: string, class: "TimecodeSlotStopButton"): TimecodeSlotStopButton
+---@overload fun(name: string, class: "TimecodeSlotPlayButton"): TimecodeSlotPlayButton
+---@overload fun(name: string, class: "MainDlgLoginButton"): MainDlgLoginButton
+---@overload fun(name: string, class: "MainDlgUndoButton"): MainDlgUndoButton
+---@overload fun(name: string, class: "MainDlgButtonBase"): MainDlgButtonBase
+---@overload fun(name: string, class: "MainDlgLeaveSessionButton"): MainDlgLeaveSessionButton
+---@overload fun(name: string, class: "MainDlgJoinSessionButton"): MainDlgJoinSessionButton
+---@overload fun(name: string, class: "MainDlgDismissStationButton"): MainDlgDismissStationButton
+---@overload fun(name: string, class: "MainDlgInviteStationButton"): MainDlgInviteStationButton
+---@overload fun(name: string, class: "MainDlgGridSelectDown"): MainDlgGridSelectDown
+---@overload fun(name: string, class: "MainDlgGridSelectUp"): MainDlgGridSelectUp
+---@overload fun(name: string, class: "MainDlgExportButton"): MainDlgExportButton
+---@overload fun(name: string, class: "MainDlgExportEditorButton"): MainDlgExportEditorButton
+---@overload fun(name: string, class: "MainDlgImportButton"): MainDlgImportButton
+---@overload fun(name: string, class: "MainDlgImportEditorButton"): MainDlgImportEditorButton
+---@overload fun(name: string, class: "MainDlgSelectButton"): MainDlgSelectButton
+---@overload fun(name: string, class: "MainDlgEditButton"): MainDlgEditButton
+---@overload fun(name: string, class: "MainDlgPasteButton"): MainDlgPasteButton
+---@overload fun(name: string, class: "MainDlgCopyButton"): MainDlgCopyButton
+---@overload fun(name: string, class: "MainDlgCutButton"): MainDlgCutButton
+---@overload fun(name: string, class: "MainDlgDelButton"): MainDlgDelButton
+---@overload fun(name: string, class: "MainDlgBlindButton"): MainDlgBlindButton
+---@overload fun(name: string, class: "MainDlgInsertButton"): MainDlgInsertButton
+---@overload fun(name: string, class: "PropertyControl"): PropertyControl
+---@overload fun(name: string, class: "BatteryControl"): BatteryControl
+---@overload fun(name: string, class: "RotationButton"): RotationButton
+---@overload fun(name: string, class: "KeyboardShortcutControl"): KeyboardShortcutControl
+---@overload fun(name: string, class: "XlrModeButton"): XlrModeButton
+---@overload fun(name: string, class: "UIToggleButton"): UIToggleButton
+---@overload fun(name: string, class: "IndicatorControl"): IndicatorControl
+---@overload fun(name: string, class: "CalculatorChannelSetControl"): CalculatorChannelSetControl
+---@overload fun(name: string, class: "BaseStateButton"): BaseStateButton
+---@overload fun(name: string, class: "ToggleButtonList"): ToggleButtonList
+---@overload fun(name: string, class: "SwipeButtonList"): SwipeButtonList
+---@overload fun(name: string, class: "ToggleButton"): ToggleButton
+---@overload fun(name: string, class: "SwipeButton"): SwipeButton
+---@overload fun(name: string, class: "ObjectSelector"): ObjectSelector
+---@overload fun(name: string, class: "DriveSelector"): DriveSelector
+---@overload fun(name: string, class: "UserEncoderPageSelector"): UserEncoderPageSelector
+---@overload fun(name: string, class: "EnableMasterFaderButton"): EnableMasterFaderButton
+---@overload fun(name: string, class: "ExecConfigSwipe"): ExecConfigSwipe
+---@overload fun(name: string, class: "EncoderLinkButton"): EncoderLinkButton
+---@overload fun(name: string, class: "StateButton"): StateButton
+---@overload fun(name: string, class: "CheckBox"): CheckBox
+---@overload fun(name: string, class: "ContentCheckBox"): ContentCheckBox
+---@overload fun(name: string, class: "PropertyInput"): PropertyInput
+---@overload fun(name: string, class: "TCTimeButton"): TCTimeButton
+---@overload fun(name: string, class: "TitlebuttonControl"): TitlebuttonControl
+---@overload fun(name: string, class: "SpecialExecConfigInput"): SpecialExecConfigInput
+---@overload fun(name: string, class: "ExecConfigInput"): ExecConfigInput
+---@overload fun(name: string, class: "OSCActivityButton"): OSCActivityButton
+---@overload fun(name: string, class: "ScribbleInput"): ScribbleInput
+---@overload fun(name: string, class: "AppearanceInput"): AppearanceInput
+---@overload fun(name: string, class: "ColorPropertyInput"): ColorPropertyInput
+---@overload fun(name: string, class: "GelColorPropertyInput"): GelColorPropertyInput
+---@overload fun(name: string, class: "DialogButton"): DialogButton
+---@overload fun(name: string, class: "ScreenSelectorButton"): ScreenSelectorButton
+---@overload fun(name: string, class: "CloneFilterButton"): CloneFilterButton
+---@overload fun(name: string, class: "EncoderControl"): EncoderControl
+---@overload fun(name: string, class: "ScreenEncoderControl"): ScreenEncoderControl
+---@overload fun(name: string, class: "ShaperEncoderControl"): ShaperEncoderControl
+---@overload fun(name: string, class: "Gma3EncoderControl"): Gma3EncoderControl
+---@overload fun(name: string, class: "PresetEncoderControl"): PresetEncoderControl
+---@overload fun(name: string, class: "PhaserEncoderControl"): PhaserEncoderControl
+---@overload fun(name: string, class: "TrackpadPanTiltControl"): TrackpadPanTiltControl
+---@overload fun(name: string, class: "ValueControl"): ValueControl
+---@overload fun(name: string, class: "AuxValueControl"): AuxValueControl
+---@overload fun(name: string, class: "ShowCreatorTypeControl"): ShowCreatorTypeControl
+---@overload fun(name: string, class: "ValueRadioControl"): ValueRadioControl
+---@overload fun(name: string, class: "SpecialExecutorKey"): SpecialExecutorKey
+---@overload fun(name: string, class: "EditTitlebarButton"): EditTitlebarButton
+---@overload fun(name: string, class: "SelectionIndicatorButton"): SelectionIndicatorButton
+---@overload fun(name: string, class: "ValueFadeControl"): ValueFadeControl
+---@overload fun(name: string, class: "MatricksIndicatorButton"): MatricksIndicatorButton
+---@overload fun(name: string, class: "MatricksToggleButton"): MatricksToggleButton
+---@overload fun(name: string, class: "ExecConfigColButton"): ExecConfigColButton
+---@overload fun(name: string, class: "ExecConfigRowButton"): ExecConfigRowButton
+---@overload fun(name: string, class: "MainDlgGridToggleButton"): MainDlgGridToggleButton
+---@overload fun(name: string, class: "MainDlgMergeToggleButton"): MainDlgMergeToggleButton
+---@overload fun(name: string, class: "MainDlgNewLineToggleButton"): MainDlgNewLineToggleButton
+---@overload fun(name: string, class: "AtFilterControl"): AtFilterControl
+---@overload fun(name: string, class: "AttributeToggleButton"): AttributeToggleButton
+---@overload fun(name: string, class: "AtFilterPreview"): AtFilterPreview
+---@overload fun(name: string, class: "ScrollBarButton"): ScrollBarButton
+---@overload fun(name: string, class: "ScrollBarButtonH"): ScrollBarButtonH
+---@overload fun(name: string, class: "ScrollBarButtonV"): ScrollBarButtonV
+---@overload fun(name: string, class: "MovableButton"): MovableButton
+---@overload fun(name: string, class: "MouseButton"): MouseButton
+---@overload fun(name: string, class: "ProgressButton"): ProgressButton
+---@overload fun(name: string, class: "MessageCenterInfoButton"): MessageCenterInfoButton
+---@overload fun(name: string, class: "TagButton"): TagButton
+---@overload fun(name: string, class: "RevertButton"): RevertButton
+---@overload fun(name: string, class: "DriveStatusButton"): DriveStatusButton
+---@overload fun(name: string, class: "MiniEncoder"): MiniEncoder
+---@overload fun(name: string, class: "HardwareMiniEncoder"): HardwareMiniEncoder
+---@overload fun(name: string, class: "XKeysHardwareMiniEncoder"): XKeysHardwareMiniEncoder
+---@overload fun(name: string, class: "PlaybackHardwareMiniEncoder"): PlaybackHardwareMiniEncoder
+---@overload fun(name: string, class: "Splitter"): Splitter
+---@overload fun(name: string, class: "SplitterV"): SplitterV
+---@overload fun(name: string, class: "SplitterH"): SplitterH
+---@overload fun(name: string, class: "EncoderBarSlot"): EncoderBarSlot
+---@overload fun(name: string, class: "UILayoutGrid"): UILayoutGrid
+---@overload fun(name: string, class: "NotificationsGridScroller"): NotificationsGridScroller
+---@overload fun(name: string, class: "Navigator"): Navigator
+---@overload fun(name: string, class: "PropertyBox"): PropertyBox
+---@overload fun(name: string, class: "SettingsBox"): SettingsBox
+---@overload fun(name: string, class: "VirtualKeyboard"): VirtualKeyboard
+---@overload fun(name: string, class: "ScrollContainerPageBase"): ScrollContainerPageBase
+---@overload fun(name: string, class: "ScrollContainerPageScrollItemList"): ScrollContainerPageScrollItemList
+---@overload fun(name: string, class: "ScrollContainerPage"): ScrollContainerPage
+---@overload fun(name: string, class: "ScrollContainer"): ScrollContainer
+---@overload fun(name: string, class: "MainDialogSubMenu"): MainDialogSubMenu
+---@overload fun(name: string, class: "AutoLayout"): AutoLayout
+---@overload fun(name: string, class: "UIGridConfigLayout"): UIGridConfigLayout
+---@overload fun(name: string, class: "TitleAutoLayout"): TitleAutoLayout
+---@overload fun(name: string, class: "StepControl"): StepControl
+---@overload fun(name: string, class: "ObjectProperties"): ObjectProperties
+---@overload fun(name: string, class: "Dialog"): Dialog
+---@overload fun(name: string, class: "UIGrid"): UIGrid
+---@overload fun(name: string, class: "DBObjectGridBase"): DBObjectGridBase
+---@overload fun(name: string, class: "StationGrid"): StationGrid
+---@overload fun(name: string, class: "UiStationGrid"): UiStationGrid
+---@overload fun(name: string, class: "DBObjectGrid"): DBObjectGrid
+---@overload fun(name: string, class: "TimecodeTextGrid"): TimecodeTextGrid
+---@overload fun(name: string, class: "TimecodeGrid"): TimecodeGrid
+---@overload fun(name: string, class: "PSRResultShowGrid"): PSRResultShowGrid
+---@overload fun(name: string, class: "PSRImportGrid"): PSRImportGrid
+---@overload fun(name: string, class: "PSRPatchGrid"): PSRPatchGrid
+---@overload fun(name: string, class: "CloneFilterGrid"): CloneFilterGrid
+---@overload fun(name: string, class: "PosCalibrationView"): PosCalibrationView
+---@overload fun(name: string, class: "OSMidiGrid"): OSMidiGrid
+---@overload fun(name: string, class: "TimezoneGrid"): TimezoneGrid
+---@overload fun(name: string, class: "WindowTypeGrid"): WindowTypeGrid
+---@overload fun(name: string, class: "SelectedGrid"): SelectedGrid
+---@overload fun(name: string, class: "OopsGrid"): OopsGrid
+---@overload fun(name: string, class: "FixtureTypeGrid"): FixtureTypeGrid
+---@overload fun(name: string, class: "CueInputGrid"): CueInputGrid
+---@overload fun(name: string, class: "LayoutEditorGrid"): LayoutEditorGrid
+---@overload fun(name: string, class: "AgendaGrid"): AgendaGrid
+---@overload fun(name: string, class: "ProgrammerGrid"): ProgrammerGrid
+---@overload fun(name: string, class: "ProgUpdateGrid"): ProgUpdateGrid
+---@overload fun(name: string, class: "MeshMaterialGrid"): MeshMaterialGrid
+---@overload fun(name: string, class: "GelGrid"): GelGrid
+---@overload fun(name: string, class: "SequenceGrid"): SequenceGrid
+---@overload fun(name: string, class: "OutputConfigGrid"): OutputConfigGrid
+---@overload fun(name: string, class: "PatchFixtureGrid"): PatchFixtureGrid
+---@overload fun(name: string, class: "ShowHistoryGrid"): ShowHistoryGrid
+---@overload fun(name: string, class: "FilebrowserView"): FilebrowserView
+---@overload fun(name: string, class: "ReferencesGrid"): ReferencesGrid
+---@overload fun(name: string, class: "CloneGrid"): CloneGrid
+---@overload fun(name: string, class: "GenericSheet"): GenericSheet
+---@overload fun(name: string, class: "PhaserStepSheet"): PhaserStepSheet
+---@overload fun(name: string, class: "FixtureSheet"): FixtureSheet
+---@overload fun(name: string, class: "ContentSheet"): ContentSheet
+---@overload fun(name: string, class: "DMXSheet"): DMXSheet
+---@overload fun(name: string, class: "NetworkSpeedTestGrid"): NetworkSpeedTestGrid
+---@overload fun(name: string, class: "TextEdit"): TextEdit
+---@overload fun(name: string, class: "MeshLineEdit"): MeshLineEdit
+---@overload fun(name: string, class: "NoteTextEdit"): NoteTextEdit
+---@overload fun(name: string, class: "Bar"): Bar
+---@overload fun(name: string, class: "GraphicsEncoderBar"): GraphicsEncoderBar
+---@overload fun(name: string, class: "ScreenEncoderBar"): ScreenEncoderBar
+---@overload fun(name: string, class: "TimecodeBar"): TimecodeBar
+---@overload fun(name: string, class: "PhaserEditorBar"): PhaserEditorBar
+---@overload fun(name: string, class: "SequenceEditBar"): SequenceEditBar
+---@overload fun(name: string, class: "StageViewBar"): StageViewBar
+---@overload fun(name: string, class: "LayoutBar"): LayoutBar
+---@overload fun(name: string, class: "ShaperEditBar"): ShaperEditBar
+---@overload fun(name: string, class: "ColorEditBar"): ColorEditBar
+---@overload fun(name: string, class: "Gma3EncoderBar"): Gma3EncoderBar
+---@overload fun(name: string, class: "DmxTesterBar"): DmxTesterBar
+---@overload fun(name: string, class: "PresetBar"): PresetBar
+---@overload fun(name: string, class: "PhaserBar"): PhaserBar
+---@overload fun(name: string, class: "ExecutorBar"): ExecutorBar
+---@overload fun(name: string, class: "ExecutorBarXKeys"): ExecutorBarXKeys
+---@overload fun(name: string, class: "XKeysViewExecutorBar"): XKeysViewExecutorBar
+---@overload fun(name: string, class: "Overlay"): Overlay
+---@overload fun(name: string, class: "SwipeMenuOverlay"): SwipeMenuOverlay
+---@overload fun(name: string, class: "ContentOverlay"): ContentOverlay
+---@overload fun(name: string, class: "ShadedOverlay"): ShadedOverlay
+---@overload fun(name: string, class: "NotificationArea"): NotificationArea
+---@overload fun(name: string, class: "MessageBox"): MessageBox
+---@overload fun(name: string, class: "BaseInput"): BaseInput
+---@overload fun(name: string, class: "ImageInput"): ImageInput
+---@overload fun(name: string, class: "ViewInput"): ViewInput
+---@overload fun(name: string, class: "ColorInput"): ColorInput
+---@overload fun(name: string, class: "NumericInput"): NumericInput
+---@overload fun(name: string, class: "Popup"): Popup
+---@overload fun(name: string, class: "ZoomFactorPopup"): ZoomFactorPopup
+---@overload fun(name: string, class: "ImagePopup"): ImagePopup
+---@overload fun(name: string, class: "TextInput"): TextInput
+---@overload fun(name: string, class: "MultiLineTextInput"): MultiLineTextInput
+---@overload fun(name: string, class: "KeybSCInput"): KeybSCInput
+---@overload fun(name: string, class: "MacrolineTextInput"): MacrolineTextInput
+---@overload fun(name: string, class: "CueNumberInput"): CueNumberInput
+---@overload fun(name: string, class: "CopyStoreCueMessageBoxBase"): CopyStoreCueMessageBoxBase
+---@overload fun(name: string, class: "DeleteCueMessageBox"): DeleteCueMessageBox
+---@overload fun(name: string, class: "StoreCueMessageBox"): StoreCueMessageBox
+---@overload fun(name: string, class: "CopyCueMessageBox"): CopyCueMessageBox
+---@overload fun(name: string, class: "CloneAtFilterSelector"): CloneAtFilterSelector
+---@overload fun(name: string, class: "DatumInput"): DatumInput
+---@overload fun(name: string, class: "OSMidiSelect"): OSMidiSelect
+---@overload fun(name: string, class: "TimezoneInput"): TimezoneInput
+---@overload fun(name: string, class: "InsertFixturesWizard"): InsertFixturesWizard
+---@overload fun(name: string, class: "XlrPortInput"): XlrPortInput
+---@overload fun(name: string, class: "UIDMXPatch"): UIDMXPatch
+---@overload fun(name: string, class: "GenericImport"): GenericImport
+---@overload fun(name: string, class: "GenericAssignmentInput"): GenericAssignmentInput
+---@overload fun(name: string, class: "FixtureTypeImport"): FixtureTypeImport
+---@overload fun(name: string, class: "RecurringOverlay"): RecurringOverlay
+---@overload fun(name: string, class: "RemoteInputLock"): RemoteInputLock
+---@overload fun(name: string, class: "DeskLock"): DeskLock
+---@overload fun(name: string, class: "HelpPopup"): HelpPopup
+---@overload fun(name: string, class: "PatchToOverlay"): PatchToOverlay
+---@overload fun(name: string, class: "ColorMeasurementOverlay"): ColorMeasurementOverlay
+---@overload fun(name: string, class: "GenericContext"): GenericContext
+---@overload fun(name: string, class: "SpecialWindowContext"): SpecialWindowContext
+---@overload fun(name: string, class: "Settings3dContext"): Settings3dContext
+---@overload fun(name: string, class: "GenericEditorOverlay"): GenericEditorOverlay
+---@overload fun(name: string, class: "TimerEditor"): TimerEditor
+---@overload fun(name: string, class: "LayoutElementEditorOverlay"): LayoutElementEditorOverlay
+---@overload fun(name: string, class: "RenderQualityEditor"): RenderQualityEditor
+---@overload fun(name: string, class: "AppearanceEditor"): AppearanceEditor
+---@overload fun(name: string, class: "ScribbleEditor"): ScribbleEditor
+---@overload fun(name: string, class: "CameraEditor"): CameraEditor
+---@overload fun(name: string, class: "MeshSettings"): MeshSettings
+---@overload fun(name: string, class: "NetworkSpeedTestOverlay"): NetworkSpeedTestOverlay
+---@overload fun(name: string, class: "EncoderOverlay"): EncoderOverlay
+---@overload fun(name: string, class: "OffMenuOverlay"): OffMenuOverlay
+---@overload fun(name: string, class: "PoolOverlay"): PoolOverlay
+---@overload fun(name: string, class: "MainDialog"): MainDialog
+---@overload fun(name: string, class: "PSRPatchMainDialog"): PSRPatchMainDialog
+---@overload fun(name: string, class: "ShowCreatorMainDialogBase"): ShowCreatorMainDialogBase
+---@overload fun(name: string, class: "PSRImportMainDialog"): PSRImportMainDialog
+---@overload fun(name: string, class: "ShowCreatorFTPresetsMainDialog"): ShowCreatorFTPresetsMainDialog
+---@overload fun(name: string, class: "MainDlgCommandControl"): MainDlgCommandControl
+---@overload fun(name: string, class: "MainDlgDErrorReport"): MainDlgDErrorReport
+---@overload fun(name: string, class: "MainDlgFixtureSetup"): MainDlgFixtureSetup
+---@overload fun(name: string, class: "MainDlgFixtureSetup"): MainDlgFixtureSetup
+---@overload fun(name: string, class: "PositionCalibration"): PositionCalibration
+---@overload fun(name: string, class: "GenericEditor"): GenericEditor
+---@overload fun(name: string, class: "TimecodeEditor"): TimecodeEditor
+---@overload fun(name: string, class: "LayoutEditor"): LayoutEditor
+---@overload fun(name: string, class: "KeyboardShortcutEditor"): KeyboardShortcutEditor
+---@overload fun(name: string, class: "FixtureEditor"): FixtureEditor
+---@overload fun(name: string, class: "StageEditor"): StageEditor
+---@overload fun(name: string, class: "GenericSettingsEditor"): GenericSettingsEditor
+---@overload fun(name: string, class: "GeneratorBitmapEditor"): GeneratorBitmapEditor
+---@overload fun(name: string, class: "AllExecEditor"): AllExecEditor
+---@overload fun(name: string, class: "MainDlgDmxModeEditor"): MainDlgDmxModeEditor
+---@overload fun(name: string, class: "MainDlgFixtureTypeEditor"): MainDlgFixtureTypeEditor
+---@overload fun(name: string, class: "PlaybackControls"): PlaybackControls
+---@overload fun(name: string, class: "CloneOverlay"): CloneOverlay
+---@overload fun(name: string, class: "ThemeMergeDialog"): ThemeMergeDialog
+---@overload fun(name: string, class: "BackupMenu"): BackupMenu
+---@overload fun(name: string, class: "MainDlgUpdateMenu"): MainDlgUpdateMenu
+---@overload fun(name: string, class: "MainDialogDest"): MainDialogDest
+---@overload fun(name: string, class: "CommandLineHistory"): CommandLineHistory
+---@overload fun(name: string, class: "Drawable"): Drawable
+---@overload fun(name: string, class: "FrameBufferObject"): FrameBufferObject
+---@overload fun(name: string, class: "WebView"): WebView
+---@overload fun(name: string, class: "WebView"): WebView
+---@overload fun(name: string, class: "DialogHelp"): DialogHelp
+---@overload fun(name: string, class: "DialogPrivacyPolicy"): DialogPrivacyPolicy
+---@overload fun(name: string, class: "DialogTrademarks"): DialogTrademarks
+---@overload fun(name: string, class: "DialogReleaseNotes"): DialogReleaseNotes
+---@overload fun(name: string, class: "UI2DView"): UI2DView
+---@overload fun(name: string, class: "UI2DView"): UI2DView
+---@overload fun(name: string, class: "TexPageDebugView"): TexPageDebugView
+---@overload fun(name: string, class: "MeshPreview"): MeshPreview
+---@overload fun(name: string, class: "WindowFixturetypeVisualizer"): WindowFixturetypeVisualizer
+---@overload fun(name: string, class: "ColorEngineDebugView"): ColorEngineDebugView
+---@overload fun(name: string, class: "WindowTextureStatistics"): WindowTextureStatistics
+---@overload fun(name: string, class: "SelectionView"): SelectionView
+---@overload fun(name: string, class: "View3D"): View3D
+---@overload fun(name: string, class: "PatchView3D"): PatchView3D
+---@overload fun(name: string, class: "LivePatchView3D"): LivePatchView3D
+---@overload fun(name: string, class: "WindowMeshStatistics"): WindowMeshStatistics
+---@overload fun(name: string, class: "FrameBufferObject"): FrameBufferObject
+---@overload fun(name: string, class: "LayoutCanvas"): LayoutCanvas
+---@overload fun(name: string, class: "LayoutCanvas"): LayoutCanvas
+---@overload fun(name: string, class: "GlWindowBase"): GlWindowBase
+---@overload fun(name: string, class: "Window"): Window
+---@overload fun(name: string, class: "CommandWingBarWindow"): CommandWingBarWindow
+---@overload fun(name: string, class: "WindowEncoderBar"): WindowEncoderBar
+---@overload fun(name: string, class: "TimecodeWindow"): TimecodeWindow
+---@overload fun(name: string, class: "LayoutView"): LayoutView
+---@overload fun(name: string, class: "RecipeWindow"): RecipeWindow
+---@overload fun(name: string, class: "SpecialWindow"): SpecialWindow
+---@overload fun(name: string, class: "WindowAgenda"): WindowAgenda
+---@overload fun(name: string, class: "WindowTrackpad"): WindowTrackpad
+---@overload fun(name: string, class: "WindowInfo"): WindowInfo
+---@overload fun(name: string, class: "XKeysViewWindow"): XKeysViewWindow
+---@overload fun(name: string, class: "PlaybackViewWindow"): PlaybackViewWindow
+---@overload fun(name: string, class: "WindowHelpViewer"): WindowHelpViewer
+---@overload fun(name: string, class: "ClockWindow"): ClockWindow
+---@overload fun(name: string, class: "SystemMonitorWindow"): SystemMonitorWindow
+---@overload fun(name: string, class: "PhaserViewWindow"): PhaserViewWindow
+---@overload fun(name: string, class: "SelectionViewWindow"): SelectionViewWindow
+---@overload fun(name: string, class: "StatusWindow"): StatusWindow
+---@overload fun(name: string, class: "ContentWindow"): ContentWindow
+---@overload fun(name: string, class: "SequenceWindow"): SequenceWindow
+---@overload fun(name: string, class: "CommandLineWindow"): CommandLineWindow
+---@overload fun(name: string, class: "CommandWingBarContainer"): CommandWingBarContainer
+---@overload fun(name: string, class: "PhaserLayoutGrid"): PhaserLayoutGrid
+---@overload fun(name: string, class: "UIPhaserTimeLineGrid"): UIPhaserTimeLineGrid
+---@overload fun(name: string, class: "PhaserUICenter"): PhaserUICenter
+---@overload fun(name: string, class: "DialogTrackpad"): DialogTrackpad
+---@overload fun(name: string, class: "ReferencesContainer"): ReferencesContainer
+---@overload fun(name: string, class: "TouchMonitor"): TouchMonitor
+---@overload fun(name: string, class: "CloningDialog"): CloningDialog
+---@overload fun(name: string, class: "AgendaMonthsGrid"): AgendaMonthsGrid
+---@overload fun(name: string, class: "AgendaDaysGrid"): AgendaDaysGrid
+---@overload fun(name: string, class: "CustomMasterLayoutGrid"): CustomMasterLayoutGrid
+---@overload fun(name: string, class: "SpecialWindowContent"): SpecialWindowContent
+---@overload fun(name: string, class: "ShaperWindowContent"): ShaperWindowContent
+---@overload fun(name: string, class: "ColorPickerContent"): ColorPickerContent
+---@overload fun(name: string, class: "BladeView"): BladeView
+---@overload fun(name: string, class: "BaseClock"): BaseClock
+---@overload fun(name: string, class: "AnalogClock"): AnalogClock
+---@overload fun(name: string, class: "DigitalClock"): DigitalClock
+---@overload fun(name: string, class: "DateClock"): DateClock
+---@overload fun(name: string, class: "TimecodeSlotClock"): TimecodeSlotClock
+---@overload fun(name: string, class: "TimerClock"): TimerClock
+---@overload fun(name: string, class: "TreeViewFrame"): TreeViewFrame
+---@overload fun(name: string, class: "ObjTreeViewFrame"): ObjTreeViewFrame
+---@overload fun(name: string, class: "PSRTreeViewFrame"): PSRTreeViewFrame
+---@overload fun(name: string, class: "NormedGrid"): NormedGrid
+---@overload fun(name: string, class: "GridContentFilterEditor"): GridContentFilterEditor
+---@overload fun(name: string, class: "GridPatchContentFilterEditor"): GridPatchContentFilterEditor
+---@overload fun(name: string, class: "UiMessageCenter"): UiMessageCenter
+---@overload fun(name: string, class: "ShaperEditorFaderGrid"): ShaperEditorFaderGrid
+---@overload fun(name: string, class: "AllPoolLayoutGrid"): AllPoolLayoutGrid
+---@overload fun(name: string, class: "PoolLayoutGrid"): PoolLayoutGrid
+---@overload fun(name: string, class: "RunningPlaybacksPoolLayoutGrid"): RunningPlaybacksPoolLayoutGrid
+---@overload fun(name: string, class: "ViewBar"): ViewBar
+---@overload fun(name: string, class: "TimePoolLayoutGrid"): TimePoolLayoutGrid
+---@overload fun(name: string, class: "TimecodeSlotLayoutGrid"): TimecodeSlotLayoutGrid
+---@overload fun(name: string, class: "SmartViewPoolLayoutGrid"): SmartViewPoolLayoutGrid
+---@overload fun(name: string, class: "SoundPoolLayoutGrid"): SoundPoolLayoutGrid
+---@overload fun(name: string, class: "EncoderBarPoolLayoutGrid"): EncoderBarPoolLayoutGrid
+---@overload fun(name: string, class: "UserPoolLayoutGrid"): UserPoolLayoutGrid
+---@overload fun(name: string, class: "UniversePoolLayoutGrid"): UniversePoolLayoutGrid
+---@overload fun(name: string, class: "GeneratorBitmapPoolLayoutGrid"): GeneratorBitmapPoolLayoutGrid
+---@overload fun(name: string, class: "GeneratorRandomPoolLayoutGrid"): GeneratorRandomPoolLayoutGrid
+---@overload fun(name: string, class: "LayoutPoolLayoutGrid"): LayoutPoolLayoutGrid
+---@overload fun(name: string, class: "TimecodePoolLayoutGrid"): TimecodePoolLayoutGrid
+---@overload fun(name: string, class: "MeshPoolLayoutGrid"): MeshPoolLayoutGrid
+---@overload fun(name: string, class: "MatricksPoolLayoutGrid"): MatricksPoolLayoutGrid
+---@overload fun(name: string, class: "MaterialPoolLayoutGrid"): MaterialPoolLayoutGrid
+---@overload fun(name: string, class: "RenderQualityPoolLayoutGrid"): RenderQualityPoolLayoutGrid
+---@overload fun(name: string, class: "CameraPoolLayoutGrid"): CameraPoolLayoutGrid
+---@overload fun(name: string, class: "GelPoolLayoutGrid"): GelPoolLayoutGrid
+---@overload fun(name: string, class: "ScribblePoolLayoutGrid"): ScribblePoolLayoutGrid
+---@overload fun(name: string, class: "AppearancePoolLayoutGrid"): AppearancePoolLayoutGrid
+---@overload fun(name: string, class: "TagPoolLayoutGrid"): TagPoolLayoutGrid
+---@overload fun(name: string, class: "SymbolPoolLayoutGrid"): SymbolPoolLayoutGrid
+---@overload fun(name: string, class: "GoboPoolLayoutGrid"): GoboPoolLayoutGrid
+---@overload fun(name: string, class: "VideoPoolLayoutGrid"): VideoPoolLayoutGrid
+---@overload fun(name: string, class: "ImagePoolLayoutGrid"): ImagePoolLayoutGrid
+---@overload fun(name: string, class: "ConfigurationPoolLayoutGrid"): ConfigurationPoolLayoutGrid
+---@overload fun(name: string, class: "DataPoolLayoutGrid"): DataPoolLayoutGrid
+---@overload fun(name: string, class: "MenuPoolLayoutGrid"): MenuPoolLayoutGrid
+---@overload fun(name: string, class: "PluginPoolLayoutGrid"): PluginPoolLayoutGrid
+---@overload fun(name: string, class: "FilterPoolLayoutGrid"): FilterPoolLayoutGrid
+---@overload fun(name: string, class: "WorldPoolLayoutGrid"): WorldPoolLayoutGrid
+---@overload fun(name: string, class: "ViewPoolLayoutGrid"): ViewPoolLayoutGrid
+---@overload fun(name: string, class: "SequencePoolLayoutGrid"): SequencePoolLayoutGrid
+---@overload fun(name: string, class: "PresetPoolLayoutGrid"): PresetPoolLayoutGrid
+---@overload fun(name: string, class: "PagePoolLayoutGrid"): PagePoolLayoutGrid
+---@overload fun(name: string, class: "QuickeyPoolLayoutGrid"): QuickeyPoolLayoutGrid
+---@overload fun(name: string, class: "MacroPoolLayoutGrid"): MacroPoolLayoutGrid
+---@overload fun(name: string, class: "GroupPoolLayoutGrid"): GroupPoolLayoutGrid
+---@overload fun(name: string, class: "TagsEditContent"): TagsEditContent
+---@overload fun(name: string, class: "AppearanceEditContent"): AppearanceEditContent
+---@overload fun(name: string, class: "ScribbleEditContent"): ScribbleEditContent
+---@overload fun(name: string, class: "GenericAssignmentSelector"): GenericAssignmentSelector
+---@overload fun(name: string, class: "TagButtonList"): TagButtonList
+---@overload fun(name: string, class: "MatricksContainer"): MatricksContainer
+---@overload fun(name: string, class: "AtFilterDialog"): AtFilterDialog
+---@overload fun(name: string, class: "PlaybackControlModularContent"): PlaybackControlModularContent
+---@overload fun(name: string, class: "PlaybackControlContent"): PlaybackControlContent
+---@overload fun(name: string, class: "CommandWingBarPlaybackContent"): CommandWingBarPlaybackContent
+---@overload fun(name: string, class: "ThemeMergeToolBar"): ThemeMergeToolBar
+---@overload fun(name: string, class: "EditorPropertyButtons"): EditorPropertyButtons
+---@overload fun(name: string, class: "CmdDlgFunctionButtonsBase"): CmdDlgFunctionButtonsBase
+---@overload fun(name: string, class: "CmdDlgFunctionButtonsLeft"): CmdDlgFunctionButtonsLeft
+---@overload fun(name: string, class: "CmdDlgFunctionButtonsRight"): CmdDlgFunctionButtonsRight
+---@overload fun(name: string, class: "MainDialogFunctionButtons"): MainDialogFunctionButtons
+---@overload fun(name: string, class: "MainDialogSubMenuContent"): MainDialogSubMenuContent
+---@overload fun(name: string, class: "UiScreen"): UiScreen
+---@overload fun(name: string, class: "SpecialExecSection"): SpecialExecSection
+---@overload fun(name: string, class: "PlaceHolderBase"): PlaceHolderBase
+---@overload fun(name: string, class: "PlaceHolder"): PlaceHolder
+---@overload fun(name: string, class: "EncoderOverlayPlaceholder"): EncoderOverlayPlaceholder
+---@overload fun(name: string, class: "PopupPlaceholder"): PopupPlaceholder
+---@overload fun(name: string, class: "EncoderBarPlaceHolder"): EncoderBarPlaceHolder
+---@overload fun(name: string, class: "ModalPlaceholder"): ModalPlaceholder
+---@overload fun(name: string, class: "UIObjectFake"): UIObjectFake
+---@overload fun(name: string, class: "BaseItemButtons"): BaseItemButtons
+---@overload fun(name: string, class: "UIGridInternals"): UIGridInternals
+---@overload fun(name: string, class: "AudioPreview"): AudioPreview
+---@overload fun(name: string, class: "OutputTest"): OutputTest
+---@overload fun(name: string, class: "EditorBase"): EditorBase
+---@overload fun(name: string, class: "PhaserPathEditor"): PhaserPathEditor
+---@overload fun(name: string, class: "PhaserSpeedEditor"): PhaserSpeedEditor
+---@overload fun(name: string, class: "PhaserPhaseEditor"): PhaserPhaseEditor
+---@overload fun(name: string, class: "PhaserWidthEditor"): PhaserWidthEditor
+---@overload fun(name: string, class: "TrackpadMouseControl"): TrackpadMouseControl
+---@overload fun(name: string, class: "InfoNotesGridScroller"): InfoNotesGridScroller
+---@overload fun(name: string, class: "TouchTarget"): TouchTarget
+---@overload fun(name: string, class: "TouchConfigurator"): TouchConfigurator
+---@overload fun(name: string, class: "ShaperTestView"): ShaperTestView
+---@overload fun(name: string, class: "ColorTestView"): ColorTestView
+---@overload fun(name: string, class: "SoundLevelView"): SoundLevelView
+---@overload fun(name: string, class: "SoundBandView"): SoundBandView
+---@overload fun(name: string, class: "PerformanceView"): PerformanceView
+---@overload fun(name: string, class: "SignalView"): SignalView
+---@overload fun(name: string, class: "GraphEditor"): GraphEditor
+---@overload fun(name: string, class: "UIDmxCurveEditor"): UIDmxCurveEditor
+---@overload fun(name: string, class: "UIPhaserTimeLine"): UIPhaserTimeLine
+---@overload fun(name: string, class: "SoundBeatView"): SoundBeatView
+---@overload fun(name: string, class: "SoundWaveView"): SoundWaveView
+---@overload fun(name: string, class: "ColorPickBase"): ColorPickBase
+---@overload fun(name: string, class: "ColorPickHSRect"): ColorPickHSRect
+---@overload fun(name: string, class: "ColorPickXYZ"): ColorPickXYZ
+---@overload fun(name: string, class: "ColorPickHSCircle"): ColorPickHSCircle
+---@overload fun(name: string, class: "MacrolinePreview"): MacrolinePreview
+---@overload fun(name: string, class: "AppearancePreview"): AppearancePreview
+---@overload fun(name: string, class: "CommandLineOutput"): CommandLineOutput
+---@overload fun(name: string, class: nil): Object
+function ScrollBox:FindRecursive(name, class) end

@@ -1,0 +1,51 @@
+---@meta
+
+---@class WiringObject: Geometry
+---@field ConnectorType string
+---@field ComponentType ComponentType
+---@field SignalType string
+---@field PinCount integer
+---@field ElectricalPayLoad number
+---@field VoltageRangeMax number
+---@field VoltageRangeMin number
+---@field FrequencyRangeMax number
+---@field FrequencyRangeMin number
+---@field MaxPayLoad number
+---@field Voltage number
+---@field SignalLayer integer
+---@field CosPhi number
+---@field FuseCurrent number
+---@field FuseRating FuseRating
+---@field Orientation Orientation
+---@field WireGroup string
+local WiringObject = {}
+---@return "WiringObject"
+function WiringObject:GetClass() end
+---@return "Geometry"
+function WiringObject:GetChildClass() end
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
+---@overload fun(name: "Name"|"Note", role: nil): string
+---@overload fun(name: "UserExpanded", role: nil): integer
+---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "Hidden", role: nil): integer
+---@overload fun(name: "DependencyExport", role: nil): string
+---@overload fun(name: "MemoryFootprint", role: nil): integer
+---@overload fun(name: "Type", role: nil): string
+---@overload fun(name: "Model", role: nil): Model
+---@overload fun(name: "PosX"|"PosY"|"PosZ", role: nil): LengthPropertyValue
+---@overload fun(name: "RotX"|"RotY"|"RotZ", role: nil): number
+---@overload fun(name: "RotDirect", role: nil): Math.TQuaternion<float>
+---@overload fun(name: "GridAuto"|"GridSwapXY"|"GridInvX"|"GridInvY"|"GridInvZ"|"GridX"|"GridY"|"GridZ"|"MergeGeometries", role: nil): integer
+---@overload fun(name: "ConnectorType", role: nil): string
+---@overload fun(name: "ComponentType", role: nil): ComponentType
+---@overload fun(name: "SignalType", role: nil): string
+---@overload fun(name: "PinCount", role: nil): integer
+---@overload fun(name: "ElectricalPayLoad"|"VoltageRangeMax"|"VoltageRangeMin"|"FrequencyRangeMax"|"FrequencyRangeMin"|"MaxPayLoad"|"Voltage", role: nil): number
+---@overload fun(name: "SignalLayer", role: nil): integer
+---@overload fun(name: "CosPhi"|"FuseCurrent", role: nil): number
+---@overload fun(name: "FuseRating", role: nil): FuseRating
+---@overload fun(name: "Orientation", role: nil): Orientation
+---@overload fun(name: "WireGroup", role: nil): string
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Type"|"Model"|"PosX"|"PosY"|"PosZ"|"RotX"|"RotY"|"RotZ"|"RotDirect"|"GridAuto"|"GridSwapXY"|"GridInvX"|"GridInvY"|"GridInvZ"|"GridX"|"GridY"|"GridZ"|"MergeGeometries"|"ConnectorType"|"ComponentType"|"SignalType"|"PinCount"|"ElectricalPayLoad"|"VoltageRangeMax"|"VoltageRangeMin"|"FrequencyRangeMax"|"FrequencyRangeMin"|"MaxPayLoad"|"Voltage"|"SignalLayer"|"CosPhi"|"FuseCurrent"|"FuseRating"|"Orientation"|"WireGroup", role: Enums.Roles): string
+---@overload fun(name: integer, role: nil): Geometry
+function WiringObject:Get(name, role) end

@@ -1,0 +1,41 @@
+---@meta
+
+---@class Views: GenericPool
+local Views = {}
+---@return "Views"
+function Views:GetClass() end
+---@return "View"
+function Views:GetChildClass() end
+---@return UserProfile
+function Views:Parent() end
+---@param index integer
+---@return View
+function Views:Ptr(index) end
+---@return View[]
+function Views:Children() end
+---@return View?
+function Views:CurrentChild() end
+---@overload fun(name: integer, role: nil): View
+function Views:Get(name, role) end
+---@overload fun(index: integer, class: "View", undo: Undo?): View
+---@overload fun(index: integer, class: nil, undo: Undo?): View
+function Views:Create(index, class, undo) end
+---@overload fun(class: "View", undo: Undo?, count: integer?): View
+---@overload fun(class: nil, undo: Undo?, count: integer?): View
+function Views:Append(class, undo, count) end
+---@overload fun(class: "View", undo: Undo?): View
+---@overload fun(class: nil, undo: Undo?): View
+function Views:Acquire(class, undo) end
+---@overload fun(class: "View", undo: Undo?): View
+---@overload fun(class: nil, undo: Undo?): View
+---@deprecated use "Acquire" instead
+function Views:Aquire(class, undo) end
+---@overload fun(index: integer, class: "View", undo: Undo?, count: integer?): View
+---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): View
+function Views:Insert(index, class, undo, count) end
+---@overload fun(name: string, class: "View"): View
+---@overload fun(name: string, class: nil): View
+function Views:Find(name, class) end
+---@overload fun(name: string, class: "View"): View
+---@overload fun(name: string, class: nil): Object
+function Views:FindRecursive(name, class) end

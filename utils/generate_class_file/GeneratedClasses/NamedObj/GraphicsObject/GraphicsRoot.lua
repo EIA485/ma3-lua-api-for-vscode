@@ -1,0 +1,123 @@
+---@meta
+
+---@class GraphicsRoot: GraphicsObject A root object for a complete UI objects hierarchy
+local GraphicsRoot = {}
+---@return "GraphicsRoot"
+function GraphicsRoot:GetClass() end
+---@return "GraphicsObject"
+function GraphicsRoot:GetChildClass() end
+---@return Root
+function GraphicsRoot:Parent() end
+---@overload fun(index: integer, class: "GraphicsObject", undo: Undo?): GraphicsObject
+---@overload fun(index: integer, class: "MonitorCollect", undo: Undo?): MonitorCollect
+---@overload fun(index: integer, class: "MonitorCollect", undo: Undo?): MonitorCollect
+---@overload fun(index: integer, class: "ContentSheetGridScroller", undo: Undo?): ContentSheetGridScroller
+---@overload fun(index: integer, class: "MeshMaterialGrid", undo: Undo?): MeshMaterialGrid
+---@overload fun(index: integer, class: "FixtureSheet", undo: Undo?): FixtureSheet
+---@overload fun(index: integer, class: "ContentSheet", undo: Undo?): ContentSheet
+---@overload fun(index: integer, class: "DMXSheet", undo: Undo?): DMXSheet
+---@overload fun(index: integer, class: "MeshLineEdit", undo: Undo?): MeshLineEdit
+---@overload fun(index: integer, class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(index: integer, class: "ShaderProgramCollect", undo: Undo?): ShaderProgramCollect
+---@overload fun(index: integer, class: "ShaderProgramCollect", undo: Undo?): ShaderProgramCollect
+---@overload fun(index: integer, class: "TextureCollect", undo: Undo?): TextureCollect
+---@overload fun(index: integer, class: "TextureCollect", undo: Undo?): TextureCollect
+---@overload fun(index: integer, class: nil, undo: Undo?): GraphicsObject
+function GraphicsRoot:Create(index, class, undo) end
+---@overload fun(class: "GraphicsObject", undo: Undo?, count: integer?): GraphicsObject
+---@overload fun(class: "MonitorCollect", undo: Undo?, count: integer?): MonitorCollect
+---@overload fun(class: "MonitorCollect", undo: Undo?, count: integer?): MonitorCollect
+---@overload fun(class: "ContentSheetGridScroller", undo: Undo?, count: integer?): ContentSheetGridScroller
+---@overload fun(class: "MeshMaterialGrid", undo: Undo?, count: integer?): MeshMaterialGrid
+---@overload fun(class: "FixtureSheet", undo: Undo?, count: integer?): FixtureSheet
+---@overload fun(class: "ContentSheet", undo: Undo?, count: integer?): ContentSheet
+---@overload fun(class: "DMXSheet", undo: Undo?, count: integer?): DMXSheet
+---@overload fun(class: "MeshLineEdit", undo: Undo?, count: integer?): MeshLineEdit
+---@overload fun(class: "NoteTextEdit", undo: Undo?, count: integer?): NoteTextEdit
+---@overload fun(class: "ShaderProgramCollect", undo: Undo?, count: integer?): ShaderProgramCollect
+---@overload fun(class: "ShaderProgramCollect", undo: Undo?, count: integer?): ShaderProgramCollect
+---@overload fun(class: "TextureCollect", undo: Undo?, count: integer?): TextureCollect
+---@overload fun(class: "TextureCollect", undo: Undo?, count: integer?): TextureCollect
+---@overload fun(class: nil, undo: Undo?, count: integer?): GraphicsObject
+function GraphicsRoot:Append(class, undo, count) end
+---@overload fun(class: "GraphicsObject", undo: Undo?): GraphicsObject
+---@overload fun(class: "MonitorCollect", undo: Undo?): MonitorCollect
+---@overload fun(class: "MonitorCollect", undo: Undo?): MonitorCollect
+---@overload fun(class: "ContentSheetGridScroller", undo: Undo?): ContentSheetGridScroller
+---@overload fun(class: "MeshMaterialGrid", undo: Undo?): MeshMaterialGrid
+---@overload fun(class: "FixtureSheet", undo: Undo?): FixtureSheet
+---@overload fun(class: "ContentSheet", undo: Undo?): ContentSheet
+---@overload fun(class: "DMXSheet", undo: Undo?): DMXSheet
+---@overload fun(class: "MeshLineEdit", undo: Undo?): MeshLineEdit
+---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(class: "ShaderProgramCollect", undo: Undo?): ShaderProgramCollect
+---@overload fun(class: "ShaderProgramCollect", undo: Undo?): ShaderProgramCollect
+---@overload fun(class: "TextureCollect", undo: Undo?): TextureCollect
+---@overload fun(class: "TextureCollect", undo: Undo?): TextureCollect
+---@overload fun(class: nil, undo: Undo?): GraphicsObject
+function GraphicsRoot:Acquire(class, undo) end
+---@overload fun(class: "GraphicsObject", undo: Undo?): GraphicsObject
+---@overload fun(class: "MonitorCollect", undo: Undo?): MonitorCollect
+---@overload fun(class: "MonitorCollect", undo: Undo?): MonitorCollect
+---@overload fun(class: "ContentSheetGridScroller", undo: Undo?): ContentSheetGridScroller
+---@overload fun(class: "MeshMaterialGrid", undo: Undo?): MeshMaterialGrid
+---@overload fun(class: "FixtureSheet", undo: Undo?): FixtureSheet
+---@overload fun(class: "ContentSheet", undo: Undo?): ContentSheet
+---@overload fun(class: "DMXSheet", undo: Undo?): DMXSheet
+---@overload fun(class: "MeshLineEdit", undo: Undo?): MeshLineEdit
+---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(class: "ShaderProgramCollect", undo: Undo?): ShaderProgramCollect
+---@overload fun(class: "ShaderProgramCollect", undo: Undo?): ShaderProgramCollect
+---@overload fun(class: "TextureCollect", undo: Undo?): TextureCollect
+---@overload fun(class: "TextureCollect", undo: Undo?): TextureCollect
+---@overload fun(class: nil, undo: Undo?): GraphicsObject
+---@deprecated use "Acquire" instead
+function GraphicsRoot:Aquire(class, undo) end
+---@overload fun(index: integer, class: "GraphicsObject", undo: Undo?, count: integer?): GraphicsObject
+---@overload fun(index: integer, class: "MonitorCollect", undo: Undo?, count: integer?): MonitorCollect
+---@overload fun(index: integer, class: "MonitorCollect", undo: Undo?, count: integer?): MonitorCollect
+---@overload fun(index: integer, class: "ContentSheetGridScroller", undo: Undo?, count: integer?): ContentSheetGridScroller
+---@overload fun(index: integer, class: "MeshMaterialGrid", undo: Undo?, count: integer?): MeshMaterialGrid
+---@overload fun(index: integer, class: "FixtureSheet", undo: Undo?, count: integer?): FixtureSheet
+---@overload fun(index: integer, class: "ContentSheet", undo: Undo?, count: integer?): ContentSheet
+---@overload fun(index: integer, class: "DMXSheet", undo: Undo?, count: integer?): DMXSheet
+---@overload fun(index: integer, class: "MeshLineEdit", undo: Undo?, count: integer?): MeshLineEdit
+---@overload fun(index: integer, class: "NoteTextEdit", undo: Undo?, count: integer?): NoteTextEdit
+---@overload fun(index: integer, class: "ShaderProgramCollect", undo: Undo?, count: integer?): ShaderProgramCollect
+---@overload fun(index: integer, class: "ShaderProgramCollect", undo: Undo?, count: integer?): ShaderProgramCollect
+---@overload fun(index: integer, class: "TextureCollect", undo: Undo?, count: integer?): TextureCollect
+---@overload fun(index: integer, class: "TextureCollect", undo: Undo?, count: integer?): TextureCollect
+---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): GraphicsObject
+function GraphicsRoot:Insert(index, class, undo, count) end
+---@overload fun(name: string, class: "GraphicsObject"): GraphicsObject
+---@overload fun(name: string, class: "MonitorCollect"): MonitorCollect
+---@overload fun(name: string, class: "MonitorCollect"): MonitorCollect
+---@overload fun(name: string, class: "ContentSheetGridScroller"): ContentSheetGridScroller
+---@overload fun(name: string, class: "MeshMaterialGrid"): MeshMaterialGrid
+---@overload fun(name: string, class: "FixtureSheet"): FixtureSheet
+---@overload fun(name: string, class: "ContentSheet"): ContentSheet
+---@overload fun(name: string, class: "DMXSheet"): DMXSheet
+---@overload fun(name: string, class: "MeshLineEdit"): MeshLineEdit
+---@overload fun(name: string, class: "NoteTextEdit"): NoteTextEdit
+---@overload fun(name: string, class: "ShaderProgramCollect"): ShaderProgramCollect
+---@overload fun(name: string, class: "ShaderProgramCollect"): ShaderProgramCollect
+---@overload fun(name: string, class: "TextureCollect"): TextureCollect
+---@overload fun(name: string, class: "TextureCollect"): TextureCollect
+---@overload fun(name: string, class: nil): GraphicsObject
+function GraphicsRoot:Find(name, class) end
+---@overload fun(name: string, class: "GraphicsObject"): GraphicsObject
+---@overload fun(name: string, class: "MonitorCollect"): MonitorCollect
+---@overload fun(name: string, class: "MonitorCollect"): MonitorCollect
+---@overload fun(name: string, class: "ContentSheetGridScroller"): ContentSheetGridScroller
+---@overload fun(name: string, class: "MeshMaterialGrid"): MeshMaterialGrid
+---@overload fun(name: string, class: "FixtureSheet"): FixtureSheet
+---@overload fun(name: string, class: "ContentSheet"): ContentSheet
+---@overload fun(name: string, class: "DMXSheet"): DMXSheet
+---@overload fun(name: string, class: "MeshLineEdit"): MeshLineEdit
+---@overload fun(name: string, class: "NoteTextEdit"): NoteTextEdit
+---@overload fun(name: string, class: "ShaderProgramCollect"): ShaderProgramCollect
+---@overload fun(name: string, class: "ShaderProgramCollect"): ShaderProgramCollect
+---@overload fun(name: string, class: "TextureCollect"): TextureCollect
+---@overload fun(name: string, class: "TextureCollect"): TextureCollect
+---@overload fun(name: string, class: nil): Object
+function GraphicsRoot:FindRecursive(name, class) end

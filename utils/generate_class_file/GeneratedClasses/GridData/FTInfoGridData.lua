@@ -1,0 +1,20 @@
+---@meta
+
+---@class FTInfoGridData: GridData
+---@field Channels DeskLightChannel[]
+local FTInfoGridData = {}
+---@return "FTInfoGridData"
+function FTInfoGridData:GetClass() end
+---@return "Object"
+function FTInfoGridData:GetChildClass() end
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
+---@overload fun(name: "Name"|"Note", role: nil): string
+---@overload fun(name: "UserExpanded", role: nil): integer
+---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "Hidden", role: nil): integer
+---@overload fun(name: "DependencyExport", role: nil): string
+---@overload fun(name: "MemoryFootprint", role: nil): integer
+---@overload fun(name: "Channels", role: nil): DeskLightChannel[]
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Channels", role: Enums.Roles): string
+---@overload fun(name: integer, role: nil): Object
+function FTInfoGridData:Get(name, role) end

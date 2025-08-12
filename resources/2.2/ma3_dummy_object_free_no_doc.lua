@@ -4,6 +4,8 @@
 -- Not documented Object free definition
 -- ========================================
 
+---@alias AbsoluteAddress integer
+
 ---@param queueName string
 ---@return boolean success
 function CloseMessageQueue(queueName)
@@ -38,17 +40,10 @@ function DevMode3d()
     return ""
 end
 
----@param handle Handle @handle to UIGrid (or derived)
----@param cell table @{r, c}
----@return boolean
-function FSExtendedModeHasDots(handle, cell)
-    return true
-end
-
 ---@param patch Handle
 ---@param startingAddress integer
 ---@param footprint integer
----@return integer absoluteAddress
+---@return AbsoluteAddress absoluteAddress
 function FindBestDMXPatchAddr(patch, startingAddress, footprint)
     return 0
 end
