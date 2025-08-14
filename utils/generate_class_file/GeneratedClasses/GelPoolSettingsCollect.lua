@@ -15,25 +15,44 @@ function GelPoolSettingsCollect:Children() end
 function GelPoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): GelPoolSettings
 function GelPoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "GelPoolSettings", undo: Undo?): GelPoolSettings
+---@generic T : GelPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): GelPoolSettings
 function GelPoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "GelPoolSettings", undo: Undo?, count: integer?): GelPoolSettings
+---@generic T : GelPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): GelPoolSettings
 function GelPoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "GelPoolSettings", undo: Undo?): GelPoolSettings
+---@generic T : GelPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): GelPoolSettings
 function GelPoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "GelPoolSettings", undo: Undo?): GelPoolSettings
+---@generic T : GelPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): GelPoolSettings
 ---@deprecated use "Acquire" instead
 function GelPoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "GelPoolSettings", undo: Undo?, count: integer?): GelPoolSettings
+---@generic T : GelPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): GelPoolSettings
 function GelPoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "GelPoolSettings"): GelPoolSettings
----@overload fun(name: string, class: nil): GelPoolSettings
-function GelPoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "GelPoolSettings"): GelPoolSettings
----@overload fun(name: string, class: nil): Object
-function GelPoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : GelPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): GelPoolSettings
+function GelPoolSettingsCollect:Find(class, undo) end

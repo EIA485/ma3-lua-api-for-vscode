@@ -15,5 +15,10 @@ function PatternChannels:Children() end
 function PatternChannels:CurrentChild() end
 ---@overload fun(name: integer, role: nil): PatternChannel
 function PatternChannels:Get(name, role) end
----@overload fun(name: string, class: nil): Object
-function PatternChannels:FindRecursive(name, class) end
+function PatternChannels:Create(index, class, undo) end
+function PatternChannels:Append(class, undo, count) end
+function PatternChannels:Acquire(class, undo) end
+---@deprecated use "Acquire" instead
+function PatternChannels:Aquire(class, undo) end
+function PatternChannels:Insert(index, class, undo, count) end
+function PatternChannels:Find(class, undo) end

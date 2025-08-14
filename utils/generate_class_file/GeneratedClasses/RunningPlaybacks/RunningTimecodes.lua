@@ -17,5 +17,10 @@ function RunningTimecodes:Children() end
 function RunningTimecodes:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Timecode
 function RunningTimecodes:Get(name, role) end
----@overload fun(name: string, class: nil): Object
-function RunningTimecodes:FindRecursive(name, class) end
+function RunningTimecodes:Create(index, class, undo) end
+function RunningTimecodes:Append(class, undo, count) end
+function RunningTimecodes:Acquire(class, undo) end
+---@deprecated use "Acquire" instead
+function RunningTimecodes:Aquire(class, undo) end
+function RunningTimecodes:Insert(index, class, undo, count) end
+function RunningTimecodes:Find(class, undo) end

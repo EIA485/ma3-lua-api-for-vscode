@@ -15,25 +15,44 @@ function RunningPlaybacksSettingsCollect:Children() end
 function RunningPlaybacksSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): RunningPlaybacksSettings
 function RunningPlaybacksSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "RunningPlaybacksSettings", undo: Undo?): RunningPlaybacksSettings
+---@generic T : RunningPlaybacksSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): RunningPlaybacksSettings
 function RunningPlaybacksSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "RunningPlaybacksSettings", undo: Undo?, count: integer?): RunningPlaybacksSettings
+---@generic T : RunningPlaybacksSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): RunningPlaybacksSettings
 function RunningPlaybacksSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "RunningPlaybacksSettings", undo: Undo?): RunningPlaybacksSettings
+---@generic T : RunningPlaybacksSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): RunningPlaybacksSettings
 function RunningPlaybacksSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "RunningPlaybacksSettings", undo: Undo?): RunningPlaybacksSettings
+---@generic T : RunningPlaybacksSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): RunningPlaybacksSettings
 ---@deprecated use "Acquire" instead
 function RunningPlaybacksSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "RunningPlaybacksSettings", undo: Undo?, count: integer?): RunningPlaybacksSettings
+---@generic T : RunningPlaybacksSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): RunningPlaybacksSettings
 function RunningPlaybacksSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "RunningPlaybacksSettings"): RunningPlaybacksSettings
----@overload fun(name: string, class: nil): RunningPlaybacksSettings
-function RunningPlaybacksSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "RunningPlaybacksSettings"): RunningPlaybacksSettings
----@overload fun(name: string, class: nil): Object
-function RunningPlaybacksSettingsCollect:FindRecursive(name, class) end
+---@generic T : RunningPlaybacksSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): RunningPlaybacksSettings
+function RunningPlaybacksSettingsCollect:Find(class, undo) end

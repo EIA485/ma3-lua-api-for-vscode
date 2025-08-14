@@ -15,25 +15,44 @@ function BitmapPoolSettingsCollect:Children() end
 function BitmapPoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): BitmapPoolSettings
 function BitmapPoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "BitmapPoolSettings", undo: Undo?): BitmapPoolSettings
+---@generic T : BitmapPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): BitmapPoolSettings
 function BitmapPoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "BitmapPoolSettings", undo: Undo?, count: integer?): BitmapPoolSettings
+---@generic T : BitmapPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): BitmapPoolSettings
 function BitmapPoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "BitmapPoolSettings", undo: Undo?): BitmapPoolSettings
+---@generic T : BitmapPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): BitmapPoolSettings
 function BitmapPoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "BitmapPoolSettings", undo: Undo?): BitmapPoolSettings
+---@generic T : BitmapPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): BitmapPoolSettings
 ---@deprecated use "Acquire" instead
 function BitmapPoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "BitmapPoolSettings", undo: Undo?, count: integer?): BitmapPoolSettings
+---@generic T : BitmapPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): BitmapPoolSettings
 function BitmapPoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "BitmapPoolSettings"): BitmapPoolSettings
----@overload fun(name: string, class: nil): BitmapPoolSettings
-function BitmapPoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "BitmapPoolSettings"): BitmapPoolSettings
----@overload fun(name: string, class: nil): Object
-function BitmapPoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : BitmapPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): BitmapPoolSettings
+function BitmapPoolSettingsCollect:Find(class, undo) end

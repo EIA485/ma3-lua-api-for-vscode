@@ -14,13 +14,9 @@ function RDMSensorNotification:Ptr(index) end
 function RDMSensorNotification:Children() end
 ---@return ValueSensor?
 function RDMSensorNotification:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
 ---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint"|"SensorOffset", role: nil): integer
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"SensorOffset", role: Enums.Roles): string
+---@overload fun(name: "SensorOffset"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "SensorOffset"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): ValueSensor
 function RDMSensorNotification:Get(name, role) end

@@ -286,7 +286,7 @@ end
 ---@param executorNumber integer
 ---@return Exec executor, Page page
 function GetExecutor(executorNumber)
-    return Handle:new(), Handle:new()
+    return Object:new(), Object:new()
 end
 
 ---@return UIObject focusHandle
@@ -346,6 +346,11 @@ function GetRTChannelCount()
     return 0
 end
 
+--define fallback sig since emmylua's global overload handeling is not the best (issue#651)
+
+---@param fixture integer|Fixture
+---@param returnHandles bool?
+---@return RTChannel[]|integer[]
 ---@overload fun(fixture: integer|Fixture, returnHandles: false?) : integer[]
 ---@overload fun(fixture: integer|Fixture, returnHandles: true) : RTChannel[]
 function GetRTChannels(fixture, returnHandles)
@@ -673,8 +678,8 @@ function Unhook(hookId)
 end
 
 ---@param functionName function?
----@param targetObjectHandle Handle?
----@param contextObjectHandle Handle?
+---@param targetObjectHandle Object?
+---@param contextObjectHandle Object?
 ---@return integer amount
 function UnhookMultiple(functionName, targetObjectHandle, contextObjectHandle)
     return 0

@@ -15,25 +15,44 @@ function MeshImagePool:Children() end
 function MeshImagePool:CurrentChild() end
 ---@overload fun(name: integer, role: nil): MeshImage
 function MeshImagePool:Get(name, role) end
----@overload fun(index: integer, class: "MeshImage", undo: Undo?): MeshImage
+---@generic T : MeshImage
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): MeshImage
 function MeshImagePool:Create(index, class, undo) end
----@overload fun(class: "MeshImage", undo: Undo?, count: integer?): MeshImage
+---@generic T : MeshImage
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): MeshImage
 function MeshImagePool:Append(class, undo, count) end
----@overload fun(class: "MeshImage", undo: Undo?): MeshImage
+---@generic T : MeshImage
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MeshImage
 function MeshImagePool:Acquire(class, undo) end
----@overload fun(class: "MeshImage", undo: Undo?): MeshImage
+---@generic T : MeshImage
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MeshImage
 ---@deprecated use "Acquire" instead
 function MeshImagePool:Aquire(class, undo) end
----@overload fun(index: integer, class: "MeshImage", undo: Undo?, count: integer?): MeshImage
+---@generic T : MeshImage
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): MeshImage
 function MeshImagePool:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "MeshImage"): MeshImage
----@overload fun(name: string, class: nil): MeshImage
-function MeshImagePool:Find(name, class) end
----@overload fun(name: string, class: "MeshImage"): MeshImage
----@overload fun(name: string, class: nil): Object
-function MeshImagePool:FindRecursive(name, class) end
+---@generic T : MeshImage
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): MeshImage
+function MeshImagePool:Find(class, undo) end

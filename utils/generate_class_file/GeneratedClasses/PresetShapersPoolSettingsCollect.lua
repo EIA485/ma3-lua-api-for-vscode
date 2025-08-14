@@ -15,25 +15,44 @@ function PresetShapersPoolSettingsCollect:Children() end
 function PresetShapersPoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): PresetShapersPoolSettings
 function PresetShapersPoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "PresetShapersPoolSettings", undo: Undo?): PresetShapersPoolSettings
+---@generic T : PresetShapersPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): PresetShapersPoolSettings
 function PresetShapersPoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "PresetShapersPoolSettings", undo: Undo?, count: integer?): PresetShapersPoolSettings
+---@generic T : PresetShapersPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): PresetShapersPoolSettings
 function PresetShapersPoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "PresetShapersPoolSettings", undo: Undo?): PresetShapersPoolSettings
+---@generic T : PresetShapersPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetShapersPoolSettings
 function PresetShapersPoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "PresetShapersPoolSettings", undo: Undo?): PresetShapersPoolSettings
+---@generic T : PresetShapersPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetShapersPoolSettings
 ---@deprecated use "Acquire" instead
 function PresetShapersPoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "PresetShapersPoolSettings", undo: Undo?, count: integer?): PresetShapersPoolSettings
+---@generic T : PresetShapersPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): PresetShapersPoolSettings
 function PresetShapersPoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "PresetShapersPoolSettings"): PresetShapersPoolSettings
----@overload fun(name: string, class: nil): PresetShapersPoolSettings
-function PresetShapersPoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "PresetShapersPoolSettings"): PresetShapersPoolSettings
----@overload fun(name: string, class: nil): Object
-function PresetShapersPoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : PresetShapersPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): PresetShapersPoolSettings
+function PresetShapersPoolSettingsCollect:Find(class, undo) end

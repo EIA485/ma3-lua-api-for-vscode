@@ -16,18 +16,14 @@ function Mouse:GetClass() end
 function Mouse:GetChildClass() end
 ---@return MouseCollect
 function Mouse:Parent() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
 ---@overload fun(name: "AbsPos", role: nil): ItemGroupPosition
----@overload fun(name: "DisplayIndex", role: nil): integer
----@overload fun(name: "Cursor", role: nil): string
----@overload fun(name: "Visible", role: nil): boolean
----@overload fun(name: "AutoHideInterval", role: nil): integer
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"AbsPos"|"DisplayIndex"|"Cursor"|"Visible"|"AutoHideInterval", role: Enums.Roles): string
+---@overload fun(name: "Visible"|"FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "DisplayIndex"|"AutoHideInterval"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Cursor"|"Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "AbsPos"|"DisplayIndex"|"Cursor"|"Visible"|"AutoHideInterval"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): Object
 function Mouse:Get(name, role) end
+---@generic T : MouseCollect
+---@param class `T`
+---@return T
+function Mouse:FindParent(class) end

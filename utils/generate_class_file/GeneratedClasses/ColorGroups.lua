@@ -17,25 +17,44 @@ function ColorGroups:Children() end
 function ColorGroups:CurrentChild() end
 ---@overload fun(name: integer, role: nil): ColorGroup
 function ColorGroups:Get(name, role) end
----@overload fun(index: integer, class: "ColorGroup", undo: Undo?): ColorGroup
+---@generic T : ColorGroup
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): ColorGroup
 function ColorGroups:Create(index, class, undo) end
----@overload fun(class: "ColorGroup", undo: Undo?, count: integer?): ColorGroup
+---@generic T : ColorGroup
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): ColorGroup
 function ColorGroups:Append(class, undo, count) end
----@overload fun(class: "ColorGroup", undo: Undo?): ColorGroup
+---@generic T : ColorGroup
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ColorGroup
 function ColorGroups:Acquire(class, undo) end
----@overload fun(class: "ColorGroup", undo: Undo?): ColorGroup
+---@generic T : ColorGroup
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ColorGroup
 ---@deprecated use "Acquire" instead
 function ColorGroups:Aquire(class, undo) end
----@overload fun(index: integer, class: "ColorGroup", undo: Undo?, count: integer?): ColorGroup
+---@generic T : ColorGroup
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): ColorGroup
 function ColorGroups:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "ColorGroup"): ColorGroup
----@overload fun(name: string, class: nil): ColorGroup
-function ColorGroups:Find(name, class) end
----@overload fun(name: string, class: "ColorGroup"): ColorGroup
----@overload fun(name: string, class: nil): Object
-function ColorGroups:FindRecursive(name, class) end
+---@generic T : ColorGroup
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): ColorGroup
+function ColorGroups:Find(class, undo) end

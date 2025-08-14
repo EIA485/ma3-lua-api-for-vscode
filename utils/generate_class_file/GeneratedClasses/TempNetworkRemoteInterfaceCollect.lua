@@ -17,25 +17,44 @@ function TempNetworkRemoteInterfaceCollect:Children() end
 function TempNetworkRemoteInterfaceCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): NetworkInterface
 function TempNetworkRemoteInterfaceCollect:Get(name, role) end
----@overload fun(index: integer, class: "NetworkInterface", undo: Undo?): NetworkInterface
+---@generic T : NetworkInterface
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): NetworkInterface
 function TempNetworkRemoteInterfaceCollect:Create(index, class, undo) end
----@overload fun(class: "NetworkInterface", undo: Undo?, count: integer?): NetworkInterface
+---@generic T : NetworkInterface
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): NetworkInterface
 function TempNetworkRemoteInterfaceCollect:Append(class, undo, count) end
----@overload fun(class: "NetworkInterface", undo: Undo?): NetworkInterface
+---@generic T : NetworkInterface
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): NetworkInterface
 function TempNetworkRemoteInterfaceCollect:Acquire(class, undo) end
----@overload fun(class: "NetworkInterface", undo: Undo?): NetworkInterface
+---@generic T : NetworkInterface
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): NetworkInterface
 ---@deprecated use "Acquire" instead
 function TempNetworkRemoteInterfaceCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "NetworkInterface", undo: Undo?, count: integer?): NetworkInterface
+---@generic T : NetworkInterface
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): NetworkInterface
 function TempNetworkRemoteInterfaceCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "NetworkInterface"): NetworkInterface
----@overload fun(name: string, class: nil): NetworkInterface
-function TempNetworkRemoteInterfaceCollect:Find(name, class) end
----@overload fun(name: string, class: "NetworkInterface"): NetworkInterface
----@overload fun(name: string, class: nil): Object
-function TempNetworkRemoteInterfaceCollect:FindRecursive(name, class) end
+---@generic T : NetworkInterface
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): NetworkInterface
+function TempNetworkRemoteInterfaceCollect:Find(class, undo) end

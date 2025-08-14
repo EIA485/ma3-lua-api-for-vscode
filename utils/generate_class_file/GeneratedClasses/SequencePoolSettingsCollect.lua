@@ -15,25 +15,44 @@ function SequencePoolSettingsCollect:Children() end
 function SequencePoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): SequencePoolSettings
 function SequencePoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "SequencePoolSettings", undo: Undo?): SequencePoolSettings
+---@generic T : SequencePoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): SequencePoolSettings
 function SequencePoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "SequencePoolSettings", undo: Undo?, count: integer?): SequencePoolSettings
+---@generic T : SequencePoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): SequencePoolSettings
 function SequencePoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "SequencePoolSettings", undo: Undo?): SequencePoolSettings
+---@generic T : SequencePoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SequencePoolSettings
 function SequencePoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "SequencePoolSettings", undo: Undo?): SequencePoolSettings
+---@generic T : SequencePoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SequencePoolSettings
 ---@deprecated use "Acquire" instead
 function SequencePoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "SequencePoolSettings", undo: Undo?, count: integer?): SequencePoolSettings
+---@generic T : SequencePoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): SequencePoolSettings
 function SequencePoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "SequencePoolSettings"): SequencePoolSettings
----@overload fun(name: string, class: nil): SequencePoolSettings
-function SequencePoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "SequencePoolSettings"): SequencePoolSettings
----@overload fun(name: string, class: nil): Object
-function SequencePoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : SequencePoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): SequencePoolSettings
+function SequencePoolSettingsCollect:Find(class, undo) end

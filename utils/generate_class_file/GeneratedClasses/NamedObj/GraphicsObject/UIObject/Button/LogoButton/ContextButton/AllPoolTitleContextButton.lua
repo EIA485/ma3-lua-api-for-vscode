@@ -8,3 +8,260 @@ function AllPoolTitleContextButton:GetClass() end
 function AllPoolTitleContextButton:GetChildClass() end
 ---@return AllPoolTitleButton
 function AllPoolTitleContextButton:Parent() end
+---@generic T : SampleTableView|Toolbar|GrandMasterFader|HardwareFader|ShaperPovFader|ColorInterfaceFader|DeskLightsFader|ProgressBar|DCRemoteInfo|TimelineCell|ScrollBar|ScrollContainer|Dialog|UIGridConfigLayout|TitleAutoLayout|StepControl|ScrollContainerPageBase|FrameBufferObject|Navigator|PropertyBox|SwipeMenuOverlay|RecurringOverlay|NotificationArea|ColorInput|Popup|TextInput|NumericInput|ImageInput|ViewInput|UIDMXPatch|InsertFixturesWizard|CopyStoreCueMessageBoxBase|GenericAssignmentInput|FixtureTypeImport|CloneAtFilterSelector|OSMidiSelect|DatumInput|TimezoneInput|XlrPortInput|MessageBox|EncoderOverlay|PatchToOverlay|GenericContext|GenericEditorOverlay|HelpPopup|NetworkSpeedTestOverlay|ColorMeasurementOverlay|ContentOverlay|OffMenuOverlay|MainDialog|CommandLineHistory|PoolOverlay|MeshLineEdit|ObjectProperties|VirtualKeyboard|GraphicsEncoderBar|ExecutorBarXKeys|RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|CommandLineWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow|UiMessageCenter|CustomMasterLayoutGrid|TagButtonList|PhaserUICenter|CloningDialog|DialogTrackpad|UserPoolLayoutGrid|ScribblePoolLayoutGrid|GroupPoolLayoutGrid|ConfigurationPoolLayoutGrid|FilterPoolLayoutGrid|LayoutPoolLayoutGrid|ImagePoolLayoutGrid|RenderQualityPoolLayoutGrid|SmartViewPoolLayoutGrid|WorldPoolLayoutGrid|UniversePoolLayoutGrid|DataPoolLayoutGrid|SymbolPoolLayoutGrid|EncoderBarPoolLayoutGrid|GeneratorBitmapPoolLayoutGrid|GoboPoolLayoutGrid|GelPoolLayoutGrid|CameraPoolLayoutGrid|ViewPoolLayoutGrid|TimecodeSlotLayoutGrid|RunningPlaybacksPoolLayoutGrid|PresetPoolLayoutGrid|TimecodePoolLayoutGrid|PagePoolLayoutGrid|SequencePoolLayoutGrid|PluginPoolLayoutGrid|MeshPoolLayoutGrid|ViewBar|AppearancePoolLayoutGrid|MatricksPoolLayoutGrid|TagPoolLayoutGrid|QuickeyPoolLayoutGrid|MenuPoolLayoutGrid|SoundPoolLayoutGrid|VideoPoolLayoutGrid|GeneratorRandomPoolLayoutGrid|TimePoolLayoutGrid|MaterialPoolLayoutGrid|MacroPoolLayoutGrid|ScribbleEditContent|MainDialogSubMenuContent|MainDialogFunctionButtons|AgendaMonthsGrid|GridContentFilterEditor|SpecialWindowContent|BladeView|MatricksContainer|ThemeMergeToolBar|CmdDlgFunctionButtonsBase|GenericAssignmentSelector|PlaybackControlContent|AppearanceEditContent|ShaperEditorFaderGrid|EditorPropertyButtons|TagsEditContent|ReferencesContainer|PlaybackControlModularContent|NormedGrid|CommandWingBarContainer|AtFilterDialog|UIPhaserTimeLineGrid|SpecialExecSection|AllPoolLayoutGrid|BaseClock|TouchMonitor|AgendaDaysGrid|TreeViewFrame|PhaserLayoutGrid|EncoderBarSlot|Splitter|BaseItemButtons|UIGridInternals|AudioPreview|XlrModeButton|SpecialExecConfigInput|OSCActivityButton|TitlebuttonControl|ColorPropertyInput|ExecConfigInput|TCTimeButton|CalculatorChannelSetControl|EncoderControl|DialogButton|DisplaySelectButton|StateButton|ValueControl|InfoButton|ToggleButtonList|ObjectSelector|UserEncoderPageSelector|ExecConfigSwipe|EnableMasterFaderButton|EncoderLinkButton|EditTitlebarButton|ValueFadeControl|SelectionIndicatorButton|MatricksToggleButton|ExecConfigRowButton|AtFilterControl|MainDlgGridToggleButton|ExecConfigColButton|SpecialExecutorKey|MatricksIndicatorButton|UIToggleButton|RotationButton|KeyboardShortcutControl|BatteryControl|AtFilterPreview|UIGridConfigButton|ScrollBarButton|MovableButton|DeleteWindowButton|VirtualKeyboardButton|KBShortcutButton|ExpandableButton|TimerButton|MainDlgButtonBase|MainDlgLoginButton|TimecodeSlotButton|DisplayButton|MainDlgUndoButton|BlinkingFadeButton|WarningInfoButton|EjectButton|DimmerWheelButton|MouseButton|ProgressButton|TagButton|MessageCenterInfoButton|DriveStatusButton|RevertButton|EncoderOverlayPlaceholder|ModalPlaceholder|EncoderBarPlaceHolder|PopupPlaceholder|LineEdit|ColorView|SensorView|DialogContainer|PopupList|DBObjectTab|RadioButtonList|FixturetypeItemList|ScribbleEditView|PropertyLabel|BandFader|MiniEncoder|ScrollBox|StatusBar|MultiScroller|TimecodeSlotInfo|TextView|TouchConfigurator|AppearancePreview|MacrolinePreview|TrackpadMouseControl|SoundBandView|CommandLineOutput|SoundLevelView|PerformanceView|ColorTestView|InfoNotesGridScroller|TouchTarget|EditorBase|OutputTest|ColorPickBase|SignalView|ShaperTestView
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(index: integer, class: "UIObject", undo: Undo?): UIObject
+---@overload fun(index: integer, class: "UiFader", undo: Undo?): UiFader
+---@overload fun(index: integer, class: "UIGridCellBase", undo: Undo?): UIGridCellBase
+---@overload fun(index: integer, class: "UILayoutGrid", undo: Undo?): UILayoutGrid
+---@overload fun(index: integer, class: "AutoLayout", undo: Undo?): AutoLayout
+---@overload fun(index: integer, class: "Drawable", undo: Undo?): Drawable
+---@overload fun(index: integer, class: "Overlay", undo: Undo?): Overlay
+---@overload fun(index: integer, class: "ShadedOverlay", undo: Undo?): ShadedOverlay
+---@overload fun(index: integer, class: "BaseInput", undo: Undo?): BaseInput
+---@overload fun(index: integer, class: "GenericImport", undo: Undo?): GenericImport
+---@overload fun(index: integer, class: "TextEdit", undo: Undo?): TextEdit
+---@overload fun(index: integer, class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(index: integer, class: "Bar", undo: Undo?): Bar
+---@overload fun(index: integer, class: "ExecutorBar", undo: Undo?): ExecutorBar
+---@overload fun(index: integer, class: "GlWindowBase", undo: Undo?): GlWindowBase
+---@overload fun(index: integer, class: "Window", undo: Undo?): Window
+---@overload fun(index: integer, class: "PoolLayoutGrid", undo: Undo?): PoolLayoutGrid
+---@overload fun(index: integer, class: "UiScreen", undo: Undo?): UiScreen
+---@overload fun(index: integer, class: "UIObjectFake", undo: Undo?): UIObjectFake
+---@overload fun(index: integer, class: "Button", undo: Undo?): Button
+---@overload fun(index: integer, class: "PropertyControl", undo: Undo?): PropertyControl
+---@overload fun(index: integer, class: "IndicatorControl", undo: Undo?): IndicatorControl
+---@overload fun(index: integer, class: "PropertyInput", undo: Undo?): PropertyInput
+---@overload fun(index: integer, class: "AppearanceInput", undo: Undo?): AppearanceInput
+---@overload fun(index: integer, class: "ScribbleInput", undo: Undo?): ScribbleInput
+---@overload fun(index: integer, class: "BaseStateButton", undo: Undo?): BaseStateButton
+---@overload fun(index: integer, class: "ToggleButton", undo: Undo?): ToggleButton
+---@overload fun(index: integer, class: "SwipeButton", undo: Undo?): SwipeButton
+---@overload fun(index: integer, class: "LogoButton", undo: Undo?): LogoButton
+---@overload fun(index: integer, class: "ContextButton", undo: Undo?): ContextButton
+---@overload fun(index: integer, class: "IndicatorButton", undo: Undo?): IndicatorButton
+---@overload fun(index: integer, class: "TitleButton", undo: Undo?): TitleButton
+---@overload fun(index: integer, class: "PlaceHolderBase", undo: Undo?): PlaceHolderBase
+---@overload fun(index: integer, class: "PlaceHolder", undo: Undo?): PlaceHolder
+---@overload fun(index: integer, class: "ScrollableItemList", undo: Undo?): ScrollableItemList
+---@overload fun(index: integer, class: "UITab", undo: Undo?): UITab
+---@overload fun(index: integer, class: nil, undo: Undo?): UIObject
+function AllPoolTitleContextButton:Create(index, class, undo) end
+---@generic T : SampleTableView|Toolbar|GrandMasterFader|HardwareFader|ShaperPovFader|ColorInterfaceFader|DeskLightsFader|ProgressBar|DCRemoteInfo|TimelineCell|ScrollBar|ScrollContainer|Dialog|UIGridConfigLayout|TitleAutoLayout|StepControl|ScrollContainerPageBase|FrameBufferObject|Navigator|PropertyBox|SwipeMenuOverlay|RecurringOverlay|NotificationArea|ColorInput|Popup|TextInput|NumericInput|ImageInput|ViewInput|UIDMXPatch|InsertFixturesWizard|CopyStoreCueMessageBoxBase|GenericAssignmentInput|FixtureTypeImport|CloneAtFilterSelector|OSMidiSelect|DatumInput|TimezoneInput|XlrPortInput|MessageBox|EncoderOverlay|PatchToOverlay|GenericContext|GenericEditorOverlay|HelpPopup|NetworkSpeedTestOverlay|ColorMeasurementOverlay|ContentOverlay|OffMenuOverlay|MainDialog|CommandLineHistory|PoolOverlay|MeshLineEdit|ObjectProperties|VirtualKeyboard|GraphicsEncoderBar|ExecutorBarXKeys|RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|CommandLineWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow|UiMessageCenter|CustomMasterLayoutGrid|TagButtonList|PhaserUICenter|CloningDialog|DialogTrackpad|UserPoolLayoutGrid|ScribblePoolLayoutGrid|GroupPoolLayoutGrid|ConfigurationPoolLayoutGrid|FilterPoolLayoutGrid|LayoutPoolLayoutGrid|ImagePoolLayoutGrid|RenderQualityPoolLayoutGrid|SmartViewPoolLayoutGrid|WorldPoolLayoutGrid|UniversePoolLayoutGrid|DataPoolLayoutGrid|SymbolPoolLayoutGrid|EncoderBarPoolLayoutGrid|GeneratorBitmapPoolLayoutGrid|GoboPoolLayoutGrid|GelPoolLayoutGrid|CameraPoolLayoutGrid|ViewPoolLayoutGrid|TimecodeSlotLayoutGrid|RunningPlaybacksPoolLayoutGrid|PresetPoolLayoutGrid|TimecodePoolLayoutGrid|PagePoolLayoutGrid|SequencePoolLayoutGrid|PluginPoolLayoutGrid|MeshPoolLayoutGrid|ViewBar|AppearancePoolLayoutGrid|MatricksPoolLayoutGrid|TagPoolLayoutGrid|QuickeyPoolLayoutGrid|MenuPoolLayoutGrid|SoundPoolLayoutGrid|VideoPoolLayoutGrid|GeneratorRandomPoolLayoutGrid|TimePoolLayoutGrid|MaterialPoolLayoutGrid|MacroPoolLayoutGrid|ScribbleEditContent|MainDialogSubMenuContent|MainDialogFunctionButtons|AgendaMonthsGrid|GridContentFilterEditor|SpecialWindowContent|BladeView|MatricksContainer|ThemeMergeToolBar|CmdDlgFunctionButtonsBase|GenericAssignmentSelector|PlaybackControlContent|AppearanceEditContent|ShaperEditorFaderGrid|EditorPropertyButtons|TagsEditContent|ReferencesContainer|PlaybackControlModularContent|NormedGrid|CommandWingBarContainer|AtFilterDialog|UIPhaserTimeLineGrid|SpecialExecSection|AllPoolLayoutGrid|BaseClock|TouchMonitor|AgendaDaysGrid|TreeViewFrame|PhaserLayoutGrid|EncoderBarSlot|Splitter|BaseItemButtons|UIGridInternals|AudioPreview|XlrModeButton|SpecialExecConfigInput|OSCActivityButton|TitlebuttonControl|ColorPropertyInput|ExecConfigInput|TCTimeButton|CalculatorChannelSetControl|EncoderControl|DialogButton|DisplaySelectButton|StateButton|ValueControl|InfoButton|ToggleButtonList|ObjectSelector|UserEncoderPageSelector|ExecConfigSwipe|EnableMasterFaderButton|EncoderLinkButton|EditTitlebarButton|ValueFadeControl|SelectionIndicatorButton|MatricksToggleButton|ExecConfigRowButton|AtFilterControl|MainDlgGridToggleButton|ExecConfigColButton|SpecialExecutorKey|MatricksIndicatorButton|UIToggleButton|RotationButton|KeyboardShortcutControl|BatteryControl|AtFilterPreview|UIGridConfigButton|ScrollBarButton|MovableButton|DeleteWindowButton|VirtualKeyboardButton|KBShortcutButton|ExpandableButton|TimerButton|MainDlgButtonBase|MainDlgLoginButton|TimecodeSlotButton|DisplayButton|MainDlgUndoButton|BlinkingFadeButton|WarningInfoButton|EjectButton|DimmerWheelButton|MouseButton|ProgressButton|TagButton|MessageCenterInfoButton|DriveStatusButton|RevertButton|EncoderOverlayPlaceholder|ModalPlaceholder|EncoderBarPlaceHolder|PopupPlaceholder|LineEdit|ColorView|SensorView|DialogContainer|PopupList|DBObjectTab|RadioButtonList|FixturetypeItemList|ScribbleEditView|PropertyLabel|BandFader|MiniEncoder|ScrollBox|StatusBar|MultiScroller|TimecodeSlotInfo|TextView|TouchConfigurator|AppearancePreview|MacrolinePreview|TrackpadMouseControl|SoundBandView|CommandLineOutput|SoundLevelView|PerformanceView|ColorTestView|InfoNotesGridScroller|TouchTarget|EditorBase|OutputTest|ColorPickBase|SignalView|ShaperTestView
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
+---@overload fun(class: "UIObject", undo: Undo?, count: integer?): UIObject
+---@overload fun(class: "UiFader", undo: Undo?, count: integer?): UiFader
+---@overload fun(class: "UIGridCellBase", undo: Undo?, count: integer?): UIGridCellBase
+---@overload fun(class: "UILayoutGrid", undo: Undo?, count: integer?): UILayoutGrid
+---@overload fun(class: "AutoLayout", undo: Undo?, count: integer?): AutoLayout
+---@overload fun(class: "Drawable", undo: Undo?, count: integer?): Drawable
+---@overload fun(class: "Overlay", undo: Undo?, count: integer?): Overlay
+---@overload fun(class: "ShadedOverlay", undo: Undo?, count: integer?): ShadedOverlay
+---@overload fun(class: "BaseInput", undo: Undo?, count: integer?): BaseInput
+---@overload fun(class: "GenericImport", undo: Undo?, count: integer?): GenericImport
+---@overload fun(class: "TextEdit", undo: Undo?, count: integer?): TextEdit
+---@overload fun(class: "NoteTextEdit", undo: Undo?, count: integer?): NoteTextEdit
+---@overload fun(class: "Bar", undo: Undo?, count: integer?): Bar
+---@overload fun(class: "ExecutorBar", undo: Undo?, count: integer?): ExecutorBar
+---@overload fun(class: "GlWindowBase", undo: Undo?, count: integer?): GlWindowBase
+---@overload fun(class: "Window", undo: Undo?, count: integer?): Window
+---@overload fun(class: "PoolLayoutGrid", undo: Undo?, count: integer?): PoolLayoutGrid
+---@overload fun(class: "UiScreen", undo: Undo?, count: integer?): UiScreen
+---@overload fun(class: "UIObjectFake", undo: Undo?, count: integer?): UIObjectFake
+---@overload fun(class: "Button", undo: Undo?, count: integer?): Button
+---@overload fun(class: "PropertyControl", undo: Undo?, count: integer?): PropertyControl
+---@overload fun(class: "IndicatorControl", undo: Undo?, count: integer?): IndicatorControl
+---@overload fun(class: "PropertyInput", undo: Undo?, count: integer?): PropertyInput
+---@overload fun(class: "AppearanceInput", undo: Undo?, count: integer?): AppearanceInput
+---@overload fun(class: "ScribbleInput", undo: Undo?, count: integer?): ScribbleInput
+---@overload fun(class: "BaseStateButton", undo: Undo?, count: integer?): BaseStateButton
+---@overload fun(class: "ToggleButton", undo: Undo?, count: integer?): ToggleButton
+---@overload fun(class: "SwipeButton", undo: Undo?, count: integer?): SwipeButton
+---@overload fun(class: "LogoButton", undo: Undo?, count: integer?): LogoButton
+---@overload fun(class: "ContextButton", undo: Undo?, count: integer?): ContextButton
+---@overload fun(class: "IndicatorButton", undo: Undo?, count: integer?): IndicatorButton
+---@overload fun(class: "TitleButton", undo: Undo?, count: integer?): TitleButton
+---@overload fun(class: "PlaceHolderBase", undo: Undo?, count: integer?): PlaceHolderBase
+---@overload fun(class: "PlaceHolder", undo: Undo?, count: integer?): PlaceHolder
+---@overload fun(class: "ScrollableItemList", undo: Undo?, count: integer?): ScrollableItemList
+---@overload fun(class: "UITab", undo: Undo?, count: integer?): UITab
+---@overload fun(class: nil, undo: Undo?, count: integer?): UIObject
+function AllPoolTitleContextButton:Append(class, undo, count) end
+---@generic T : SampleTableView|Toolbar|GrandMasterFader|HardwareFader|ShaperPovFader|ColorInterfaceFader|DeskLightsFader|ProgressBar|DCRemoteInfo|TimelineCell|ScrollBar|ScrollContainer|Dialog|UIGridConfigLayout|TitleAutoLayout|StepControl|ScrollContainerPageBase|FrameBufferObject|Navigator|PropertyBox|SwipeMenuOverlay|RecurringOverlay|NotificationArea|ColorInput|Popup|TextInput|NumericInput|ImageInput|ViewInput|UIDMXPatch|InsertFixturesWizard|CopyStoreCueMessageBoxBase|GenericAssignmentInput|FixtureTypeImport|CloneAtFilterSelector|OSMidiSelect|DatumInput|TimezoneInput|XlrPortInput|MessageBox|EncoderOverlay|PatchToOverlay|GenericContext|GenericEditorOverlay|HelpPopup|NetworkSpeedTestOverlay|ColorMeasurementOverlay|ContentOverlay|OffMenuOverlay|MainDialog|CommandLineHistory|PoolOverlay|MeshLineEdit|ObjectProperties|VirtualKeyboard|GraphicsEncoderBar|ExecutorBarXKeys|RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|CommandLineWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow|UiMessageCenter|CustomMasterLayoutGrid|TagButtonList|PhaserUICenter|CloningDialog|DialogTrackpad|UserPoolLayoutGrid|ScribblePoolLayoutGrid|GroupPoolLayoutGrid|ConfigurationPoolLayoutGrid|FilterPoolLayoutGrid|LayoutPoolLayoutGrid|ImagePoolLayoutGrid|RenderQualityPoolLayoutGrid|SmartViewPoolLayoutGrid|WorldPoolLayoutGrid|UniversePoolLayoutGrid|DataPoolLayoutGrid|SymbolPoolLayoutGrid|EncoderBarPoolLayoutGrid|GeneratorBitmapPoolLayoutGrid|GoboPoolLayoutGrid|GelPoolLayoutGrid|CameraPoolLayoutGrid|ViewPoolLayoutGrid|TimecodeSlotLayoutGrid|RunningPlaybacksPoolLayoutGrid|PresetPoolLayoutGrid|TimecodePoolLayoutGrid|PagePoolLayoutGrid|SequencePoolLayoutGrid|PluginPoolLayoutGrid|MeshPoolLayoutGrid|ViewBar|AppearancePoolLayoutGrid|MatricksPoolLayoutGrid|TagPoolLayoutGrid|QuickeyPoolLayoutGrid|MenuPoolLayoutGrid|SoundPoolLayoutGrid|VideoPoolLayoutGrid|GeneratorRandomPoolLayoutGrid|TimePoolLayoutGrid|MaterialPoolLayoutGrid|MacroPoolLayoutGrid|ScribbleEditContent|MainDialogSubMenuContent|MainDialogFunctionButtons|AgendaMonthsGrid|GridContentFilterEditor|SpecialWindowContent|BladeView|MatricksContainer|ThemeMergeToolBar|CmdDlgFunctionButtonsBase|GenericAssignmentSelector|PlaybackControlContent|AppearanceEditContent|ShaperEditorFaderGrid|EditorPropertyButtons|TagsEditContent|ReferencesContainer|PlaybackControlModularContent|NormedGrid|CommandWingBarContainer|AtFilterDialog|UIPhaserTimeLineGrid|SpecialExecSection|AllPoolLayoutGrid|BaseClock|TouchMonitor|AgendaDaysGrid|TreeViewFrame|PhaserLayoutGrid|EncoderBarSlot|Splitter|BaseItemButtons|UIGridInternals|AudioPreview|XlrModeButton|SpecialExecConfigInput|OSCActivityButton|TitlebuttonControl|ColorPropertyInput|ExecConfigInput|TCTimeButton|CalculatorChannelSetControl|EncoderControl|DialogButton|DisplaySelectButton|StateButton|ValueControl|InfoButton|ToggleButtonList|ObjectSelector|UserEncoderPageSelector|ExecConfigSwipe|EnableMasterFaderButton|EncoderLinkButton|EditTitlebarButton|ValueFadeControl|SelectionIndicatorButton|MatricksToggleButton|ExecConfigRowButton|AtFilterControl|MainDlgGridToggleButton|ExecConfigColButton|SpecialExecutorKey|MatricksIndicatorButton|UIToggleButton|RotationButton|KeyboardShortcutControl|BatteryControl|AtFilterPreview|UIGridConfigButton|ScrollBarButton|MovableButton|DeleteWindowButton|VirtualKeyboardButton|KBShortcutButton|ExpandableButton|TimerButton|MainDlgButtonBase|MainDlgLoginButton|TimecodeSlotButton|DisplayButton|MainDlgUndoButton|BlinkingFadeButton|WarningInfoButton|EjectButton|DimmerWheelButton|MouseButton|ProgressButton|TagButton|MessageCenterInfoButton|DriveStatusButton|RevertButton|EncoderOverlayPlaceholder|ModalPlaceholder|EncoderBarPlaceHolder|PopupPlaceholder|LineEdit|ColorView|SensorView|DialogContainer|PopupList|DBObjectTab|RadioButtonList|FixturetypeItemList|ScribbleEditView|PropertyLabel|BandFader|MiniEncoder|ScrollBox|StatusBar|MultiScroller|TimecodeSlotInfo|TextView|TouchConfigurator|AppearancePreview|MacrolinePreview|TrackpadMouseControl|SoundBandView|CommandLineOutput|SoundLevelView|PerformanceView|ColorTestView|InfoNotesGridScroller|TouchTarget|EditorBase|OutputTest|ColorPickBase|SignalView|ShaperTestView
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: "UIObject", undo: Undo?): UIObject
+---@overload fun(class: "UiFader", undo: Undo?): UiFader
+---@overload fun(class: "UIGridCellBase", undo: Undo?): UIGridCellBase
+---@overload fun(class: "UILayoutGrid", undo: Undo?): UILayoutGrid
+---@overload fun(class: "AutoLayout", undo: Undo?): AutoLayout
+---@overload fun(class: "Drawable", undo: Undo?): Drawable
+---@overload fun(class: "Overlay", undo: Undo?): Overlay
+---@overload fun(class: "ShadedOverlay", undo: Undo?): ShadedOverlay
+---@overload fun(class: "BaseInput", undo: Undo?): BaseInput
+---@overload fun(class: "GenericImport", undo: Undo?): GenericImport
+---@overload fun(class: "TextEdit", undo: Undo?): TextEdit
+---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(class: "Bar", undo: Undo?): Bar
+---@overload fun(class: "ExecutorBar", undo: Undo?): ExecutorBar
+---@overload fun(class: "GlWindowBase", undo: Undo?): GlWindowBase
+---@overload fun(class: "Window", undo: Undo?): Window
+---@overload fun(class: "PoolLayoutGrid", undo: Undo?): PoolLayoutGrid
+---@overload fun(class: "UiScreen", undo: Undo?): UiScreen
+---@overload fun(class: "UIObjectFake", undo: Undo?): UIObjectFake
+---@overload fun(class: "Button", undo: Undo?): Button
+---@overload fun(class: "PropertyControl", undo: Undo?): PropertyControl
+---@overload fun(class: "IndicatorControl", undo: Undo?): IndicatorControl
+---@overload fun(class: "PropertyInput", undo: Undo?): PropertyInput
+---@overload fun(class: "AppearanceInput", undo: Undo?): AppearanceInput
+---@overload fun(class: "ScribbleInput", undo: Undo?): ScribbleInput
+---@overload fun(class: "BaseStateButton", undo: Undo?): BaseStateButton
+---@overload fun(class: "ToggleButton", undo: Undo?): ToggleButton
+---@overload fun(class: "SwipeButton", undo: Undo?): SwipeButton
+---@overload fun(class: "LogoButton", undo: Undo?): LogoButton
+---@overload fun(class: "ContextButton", undo: Undo?): ContextButton
+---@overload fun(class: "IndicatorButton", undo: Undo?): IndicatorButton
+---@overload fun(class: "TitleButton", undo: Undo?): TitleButton
+---@overload fun(class: "PlaceHolderBase", undo: Undo?): PlaceHolderBase
+---@overload fun(class: "PlaceHolder", undo: Undo?): PlaceHolder
+---@overload fun(class: "ScrollableItemList", undo: Undo?): ScrollableItemList
+---@overload fun(class: "UITab", undo: Undo?): UITab
+---@overload fun(class: nil, undo: Undo?): UIObject
+function AllPoolTitleContextButton:Acquire(class, undo) end
+---@generic T : SampleTableView|Toolbar|GrandMasterFader|HardwareFader|ShaperPovFader|ColorInterfaceFader|DeskLightsFader|ProgressBar|DCRemoteInfo|TimelineCell|ScrollBar|ScrollContainer|Dialog|UIGridConfigLayout|TitleAutoLayout|StepControl|ScrollContainerPageBase|FrameBufferObject|Navigator|PropertyBox|SwipeMenuOverlay|RecurringOverlay|NotificationArea|ColorInput|Popup|TextInput|NumericInput|ImageInput|ViewInput|UIDMXPatch|InsertFixturesWizard|CopyStoreCueMessageBoxBase|GenericAssignmentInput|FixtureTypeImport|CloneAtFilterSelector|OSMidiSelect|DatumInput|TimezoneInput|XlrPortInput|MessageBox|EncoderOverlay|PatchToOverlay|GenericContext|GenericEditorOverlay|HelpPopup|NetworkSpeedTestOverlay|ColorMeasurementOverlay|ContentOverlay|OffMenuOverlay|MainDialog|CommandLineHistory|PoolOverlay|MeshLineEdit|ObjectProperties|VirtualKeyboard|GraphicsEncoderBar|ExecutorBarXKeys|RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|CommandLineWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow|UiMessageCenter|CustomMasterLayoutGrid|TagButtonList|PhaserUICenter|CloningDialog|DialogTrackpad|UserPoolLayoutGrid|ScribblePoolLayoutGrid|GroupPoolLayoutGrid|ConfigurationPoolLayoutGrid|FilterPoolLayoutGrid|LayoutPoolLayoutGrid|ImagePoolLayoutGrid|RenderQualityPoolLayoutGrid|SmartViewPoolLayoutGrid|WorldPoolLayoutGrid|UniversePoolLayoutGrid|DataPoolLayoutGrid|SymbolPoolLayoutGrid|EncoderBarPoolLayoutGrid|GeneratorBitmapPoolLayoutGrid|GoboPoolLayoutGrid|GelPoolLayoutGrid|CameraPoolLayoutGrid|ViewPoolLayoutGrid|TimecodeSlotLayoutGrid|RunningPlaybacksPoolLayoutGrid|PresetPoolLayoutGrid|TimecodePoolLayoutGrid|PagePoolLayoutGrid|SequencePoolLayoutGrid|PluginPoolLayoutGrid|MeshPoolLayoutGrid|ViewBar|AppearancePoolLayoutGrid|MatricksPoolLayoutGrid|TagPoolLayoutGrid|QuickeyPoolLayoutGrid|MenuPoolLayoutGrid|SoundPoolLayoutGrid|VideoPoolLayoutGrid|GeneratorRandomPoolLayoutGrid|TimePoolLayoutGrid|MaterialPoolLayoutGrid|MacroPoolLayoutGrid|ScribbleEditContent|MainDialogSubMenuContent|MainDialogFunctionButtons|AgendaMonthsGrid|GridContentFilterEditor|SpecialWindowContent|BladeView|MatricksContainer|ThemeMergeToolBar|CmdDlgFunctionButtonsBase|GenericAssignmentSelector|PlaybackControlContent|AppearanceEditContent|ShaperEditorFaderGrid|EditorPropertyButtons|TagsEditContent|ReferencesContainer|PlaybackControlModularContent|NormedGrid|CommandWingBarContainer|AtFilterDialog|UIPhaserTimeLineGrid|SpecialExecSection|AllPoolLayoutGrid|BaseClock|TouchMonitor|AgendaDaysGrid|TreeViewFrame|PhaserLayoutGrid|EncoderBarSlot|Splitter|BaseItemButtons|UIGridInternals|AudioPreview|XlrModeButton|SpecialExecConfigInput|OSCActivityButton|TitlebuttonControl|ColorPropertyInput|ExecConfigInput|TCTimeButton|CalculatorChannelSetControl|EncoderControl|DialogButton|DisplaySelectButton|StateButton|ValueControl|InfoButton|ToggleButtonList|ObjectSelector|UserEncoderPageSelector|ExecConfigSwipe|EnableMasterFaderButton|EncoderLinkButton|EditTitlebarButton|ValueFadeControl|SelectionIndicatorButton|MatricksToggleButton|ExecConfigRowButton|AtFilterControl|MainDlgGridToggleButton|ExecConfigColButton|SpecialExecutorKey|MatricksIndicatorButton|UIToggleButton|RotationButton|KeyboardShortcutControl|BatteryControl|AtFilterPreview|UIGridConfigButton|ScrollBarButton|MovableButton|DeleteWindowButton|VirtualKeyboardButton|KBShortcutButton|ExpandableButton|TimerButton|MainDlgButtonBase|MainDlgLoginButton|TimecodeSlotButton|DisplayButton|MainDlgUndoButton|BlinkingFadeButton|WarningInfoButton|EjectButton|DimmerWheelButton|MouseButton|ProgressButton|TagButton|MessageCenterInfoButton|DriveStatusButton|RevertButton|EncoderOverlayPlaceholder|ModalPlaceholder|EncoderBarPlaceHolder|PopupPlaceholder|LineEdit|ColorView|SensorView|DialogContainer|PopupList|DBObjectTab|RadioButtonList|FixturetypeItemList|ScribbleEditView|PropertyLabel|BandFader|MiniEncoder|ScrollBox|StatusBar|MultiScroller|TimecodeSlotInfo|TextView|TouchConfigurator|AppearancePreview|MacrolinePreview|TrackpadMouseControl|SoundBandView|CommandLineOutput|SoundLevelView|PerformanceView|ColorTestView|InfoNotesGridScroller|TouchTarget|EditorBase|OutputTest|ColorPickBase|SignalView|ShaperTestView
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: "UIObject", undo: Undo?): UIObject
+---@overload fun(class: "UiFader", undo: Undo?): UiFader
+---@overload fun(class: "UIGridCellBase", undo: Undo?): UIGridCellBase
+---@overload fun(class: "UILayoutGrid", undo: Undo?): UILayoutGrid
+---@overload fun(class: "AutoLayout", undo: Undo?): AutoLayout
+---@overload fun(class: "Drawable", undo: Undo?): Drawable
+---@overload fun(class: "Overlay", undo: Undo?): Overlay
+---@overload fun(class: "ShadedOverlay", undo: Undo?): ShadedOverlay
+---@overload fun(class: "BaseInput", undo: Undo?): BaseInput
+---@overload fun(class: "GenericImport", undo: Undo?): GenericImport
+---@overload fun(class: "TextEdit", undo: Undo?): TextEdit
+---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(class: "Bar", undo: Undo?): Bar
+---@overload fun(class: "ExecutorBar", undo: Undo?): ExecutorBar
+---@overload fun(class: "GlWindowBase", undo: Undo?): GlWindowBase
+---@overload fun(class: "Window", undo: Undo?): Window
+---@overload fun(class: "PoolLayoutGrid", undo: Undo?): PoolLayoutGrid
+---@overload fun(class: "UiScreen", undo: Undo?): UiScreen
+---@overload fun(class: "UIObjectFake", undo: Undo?): UIObjectFake
+---@overload fun(class: "Button", undo: Undo?): Button
+---@overload fun(class: "PropertyControl", undo: Undo?): PropertyControl
+---@overload fun(class: "IndicatorControl", undo: Undo?): IndicatorControl
+---@overload fun(class: "PropertyInput", undo: Undo?): PropertyInput
+---@overload fun(class: "AppearanceInput", undo: Undo?): AppearanceInput
+---@overload fun(class: "ScribbleInput", undo: Undo?): ScribbleInput
+---@overload fun(class: "BaseStateButton", undo: Undo?): BaseStateButton
+---@overload fun(class: "ToggleButton", undo: Undo?): ToggleButton
+---@overload fun(class: "SwipeButton", undo: Undo?): SwipeButton
+---@overload fun(class: "LogoButton", undo: Undo?): LogoButton
+---@overload fun(class: "ContextButton", undo: Undo?): ContextButton
+---@overload fun(class: "IndicatorButton", undo: Undo?): IndicatorButton
+---@overload fun(class: "TitleButton", undo: Undo?): TitleButton
+---@overload fun(class: "PlaceHolderBase", undo: Undo?): PlaceHolderBase
+---@overload fun(class: "PlaceHolder", undo: Undo?): PlaceHolder
+---@overload fun(class: "ScrollableItemList", undo: Undo?): ScrollableItemList
+---@overload fun(class: "UITab", undo: Undo?): UITab
+---@overload fun(class: nil, undo: Undo?): UIObject
+---@deprecated use "Acquire" instead
+function AllPoolTitleContextButton:Aquire(class, undo) end
+---@generic T : SampleTableView|Toolbar|GrandMasterFader|HardwareFader|ShaperPovFader|ColorInterfaceFader|DeskLightsFader|ProgressBar|DCRemoteInfo|TimelineCell|ScrollBar|ScrollContainer|Dialog|UIGridConfigLayout|TitleAutoLayout|StepControl|ScrollContainerPageBase|FrameBufferObject|Navigator|PropertyBox|SwipeMenuOverlay|RecurringOverlay|NotificationArea|ColorInput|Popup|TextInput|NumericInput|ImageInput|ViewInput|UIDMXPatch|InsertFixturesWizard|CopyStoreCueMessageBoxBase|GenericAssignmentInput|FixtureTypeImport|CloneAtFilterSelector|OSMidiSelect|DatumInput|TimezoneInput|XlrPortInput|MessageBox|EncoderOverlay|PatchToOverlay|GenericContext|GenericEditorOverlay|HelpPopup|NetworkSpeedTestOverlay|ColorMeasurementOverlay|ContentOverlay|OffMenuOverlay|MainDialog|CommandLineHistory|PoolOverlay|MeshLineEdit|ObjectProperties|VirtualKeyboard|GraphicsEncoderBar|ExecutorBarXKeys|RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|CommandLineWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow|UiMessageCenter|CustomMasterLayoutGrid|TagButtonList|PhaserUICenter|CloningDialog|DialogTrackpad|UserPoolLayoutGrid|ScribblePoolLayoutGrid|GroupPoolLayoutGrid|ConfigurationPoolLayoutGrid|FilterPoolLayoutGrid|LayoutPoolLayoutGrid|ImagePoolLayoutGrid|RenderQualityPoolLayoutGrid|SmartViewPoolLayoutGrid|WorldPoolLayoutGrid|UniversePoolLayoutGrid|DataPoolLayoutGrid|SymbolPoolLayoutGrid|EncoderBarPoolLayoutGrid|GeneratorBitmapPoolLayoutGrid|GoboPoolLayoutGrid|GelPoolLayoutGrid|CameraPoolLayoutGrid|ViewPoolLayoutGrid|TimecodeSlotLayoutGrid|RunningPlaybacksPoolLayoutGrid|PresetPoolLayoutGrid|TimecodePoolLayoutGrid|PagePoolLayoutGrid|SequencePoolLayoutGrid|PluginPoolLayoutGrid|MeshPoolLayoutGrid|ViewBar|AppearancePoolLayoutGrid|MatricksPoolLayoutGrid|TagPoolLayoutGrid|QuickeyPoolLayoutGrid|MenuPoolLayoutGrid|SoundPoolLayoutGrid|VideoPoolLayoutGrid|GeneratorRandomPoolLayoutGrid|TimePoolLayoutGrid|MaterialPoolLayoutGrid|MacroPoolLayoutGrid|ScribbleEditContent|MainDialogSubMenuContent|MainDialogFunctionButtons|AgendaMonthsGrid|GridContentFilterEditor|SpecialWindowContent|BladeView|MatricksContainer|ThemeMergeToolBar|CmdDlgFunctionButtonsBase|GenericAssignmentSelector|PlaybackControlContent|AppearanceEditContent|ShaperEditorFaderGrid|EditorPropertyButtons|TagsEditContent|ReferencesContainer|PlaybackControlModularContent|NormedGrid|CommandWingBarContainer|AtFilterDialog|UIPhaserTimeLineGrid|SpecialExecSection|AllPoolLayoutGrid|BaseClock|TouchMonitor|AgendaDaysGrid|TreeViewFrame|PhaserLayoutGrid|EncoderBarSlot|Splitter|BaseItemButtons|UIGridInternals|AudioPreview|XlrModeButton|SpecialExecConfigInput|OSCActivityButton|TitlebuttonControl|ColorPropertyInput|ExecConfigInput|TCTimeButton|CalculatorChannelSetControl|EncoderControl|DialogButton|DisplaySelectButton|StateButton|ValueControl|InfoButton|ToggleButtonList|ObjectSelector|UserEncoderPageSelector|ExecConfigSwipe|EnableMasterFaderButton|EncoderLinkButton|EditTitlebarButton|ValueFadeControl|SelectionIndicatorButton|MatricksToggleButton|ExecConfigRowButton|AtFilterControl|MainDlgGridToggleButton|ExecConfigColButton|SpecialExecutorKey|MatricksIndicatorButton|UIToggleButton|RotationButton|KeyboardShortcutControl|BatteryControl|AtFilterPreview|UIGridConfigButton|ScrollBarButton|MovableButton|DeleteWindowButton|VirtualKeyboardButton|KBShortcutButton|ExpandableButton|TimerButton|MainDlgButtonBase|MainDlgLoginButton|TimecodeSlotButton|DisplayButton|MainDlgUndoButton|BlinkingFadeButton|WarningInfoButton|EjectButton|DimmerWheelButton|MouseButton|ProgressButton|TagButton|MessageCenterInfoButton|DriveStatusButton|RevertButton|EncoderOverlayPlaceholder|ModalPlaceholder|EncoderBarPlaceHolder|PopupPlaceholder|LineEdit|ColorView|SensorView|DialogContainer|PopupList|DBObjectTab|RadioButtonList|FixturetypeItemList|ScribbleEditView|PropertyLabel|BandFader|MiniEncoder|ScrollBox|StatusBar|MultiScroller|TimecodeSlotInfo|TextView|TouchConfigurator|AppearancePreview|MacrolinePreview|TrackpadMouseControl|SoundBandView|CommandLineOutput|SoundLevelView|PerformanceView|ColorTestView|InfoNotesGridScroller|TouchTarget|EditorBase|OutputTest|ColorPickBase|SignalView|ShaperTestView
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
+---@overload fun(index: integer, class: "UIObject", undo: Undo?, count: integer?): UIObject
+---@overload fun(index: integer, class: "UiFader", undo: Undo?, count: integer?): UiFader
+---@overload fun(index: integer, class: "UIGridCellBase", undo: Undo?, count: integer?): UIGridCellBase
+---@overload fun(index: integer, class: "UILayoutGrid", undo: Undo?, count: integer?): UILayoutGrid
+---@overload fun(index: integer, class: "AutoLayout", undo: Undo?, count: integer?): AutoLayout
+---@overload fun(index: integer, class: "Drawable", undo: Undo?, count: integer?): Drawable
+---@overload fun(index: integer, class: "Overlay", undo: Undo?, count: integer?): Overlay
+---@overload fun(index: integer, class: "ShadedOverlay", undo: Undo?, count: integer?): ShadedOverlay
+---@overload fun(index: integer, class: "BaseInput", undo: Undo?, count: integer?): BaseInput
+---@overload fun(index: integer, class: "GenericImport", undo: Undo?, count: integer?): GenericImport
+---@overload fun(index: integer, class: "TextEdit", undo: Undo?, count: integer?): TextEdit
+---@overload fun(index: integer, class: "NoteTextEdit", undo: Undo?, count: integer?): NoteTextEdit
+---@overload fun(index: integer, class: "Bar", undo: Undo?, count: integer?): Bar
+---@overload fun(index: integer, class: "ExecutorBar", undo: Undo?, count: integer?): ExecutorBar
+---@overload fun(index: integer, class: "GlWindowBase", undo: Undo?, count: integer?): GlWindowBase
+---@overload fun(index: integer, class: "Window", undo: Undo?, count: integer?): Window
+---@overload fun(index: integer, class: "PoolLayoutGrid", undo: Undo?, count: integer?): PoolLayoutGrid
+---@overload fun(index: integer, class: "UiScreen", undo: Undo?, count: integer?): UiScreen
+---@overload fun(index: integer, class: "UIObjectFake", undo: Undo?, count: integer?): UIObjectFake
+---@overload fun(index: integer, class: "Button", undo: Undo?, count: integer?): Button
+---@overload fun(index: integer, class: "PropertyControl", undo: Undo?, count: integer?): PropertyControl
+---@overload fun(index: integer, class: "IndicatorControl", undo: Undo?, count: integer?): IndicatorControl
+---@overload fun(index: integer, class: "PropertyInput", undo: Undo?, count: integer?): PropertyInput
+---@overload fun(index: integer, class: "AppearanceInput", undo: Undo?, count: integer?): AppearanceInput
+---@overload fun(index: integer, class: "ScribbleInput", undo: Undo?, count: integer?): ScribbleInput
+---@overload fun(index: integer, class: "BaseStateButton", undo: Undo?, count: integer?): BaseStateButton
+---@overload fun(index: integer, class: "ToggleButton", undo: Undo?, count: integer?): ToggleButton
+---@overload fun(index: integer, class: "SwipeButton", undo: Undo?, count: integer?): SwipeButton
+---@overload fun(index: integer, class: "LogoButton", undo: Undo?, count: integer?): LogoButton
+---@overload fun(index: integer, class: "ContextButton", undo: Undo?, count: integer?): ContextButton
+---@overload fun(index: integer, class: "IndicatorButton", undo: Undo?, count: integer?): IndicatorButton
+---@overload fun(index: integer, class: "TitleButton", undo: Undo?, count: integer?): TitleButton
+---@overload fun(index: integer, class: "PlaceHolderBase", undo: Undo?, count: integer?): PlaceHolderBase
+---@overload fun(index: integer, class: "PlaceHolder", undo: Undo?, count: integer?): PlaceHolder
+---@overload fun(index: integer, class: "ScrollableItemList", undo: Undo?, count: integer?): ScrollableItemList
+---@overload fun(index: integer, class: "UITab", undo: Undo?, count: integer?): UITab
+---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): UIObject
+function AllPoolTitleContextButton:Insert(index, class, undo, count) end
+---@generic T : SampleTableView|Toolbar|GrandMasterFader|HardwareFader|ShaperPovFader|ColorInterfaceFader|DeskLightsFader|ProgressBar|DCRemoteInfo|TimelineCell|ScrollBar|ScrollContainer|Dialog|UIGridConfigLayout|TitleAutoLayout|StepControl|ScrollContainerPageBase|FrameBufferObject|Navigator|PropertyBox|SwipeMenuOverlay|RecurringOverlay|NotificationArea|ColorInput|Popup|TextInput|NumericInput|ImageInput|ViewInput|UIDMXPatch|InsertFixturesWizard|CopyStoreCueMessageBoxBase|GenericAssignmentInput|FixtureTypeImport|CloneAtFilterSelector|OSMidiSelect|DatumInput|TimezoneInput|XlrPortInput|MessageBox|EncoderOverlay|PatchToOverlay|GenericContext|GenericEditorOverlay|HelpPopup|NetworkSpeedTestOverlay|ColorMeasurementOverlay|ContentOverlay|OffMenuOverlay|MainDialog|CommandLineHistory|PoolOverlay|MeshLineEdit|ObjectProperties|VirtualKeyboard|GraphicsEncoderBar|ExecutorBarXKeys|RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|CommandLineWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow|UiMessageCenter|CustomMasterLayoutGrid|TagButtonList|PhaserUICenter|CloningDialog|DialogTrackpad|UserPoolLayoutGrid|ScribblePoolLayoutGrid|GroupPoolLayoutGrid|ConfigurationPoolLayoutGrid|FilterPoolLayoutGrid|LayoutPoolLayoutGrid|ImagePoolLayoutGrid|RenderQualityPoolLayoutGrid|SmartViewPoolLayoutGrid|WorldPoolLayoutGrid|UniversePoolLayoutGrid|DataPoolLayoutGrid|SymbolPoolLayoutGrid|EncoderBarPoolLayoutGrid|GeneratorBitmapPoolLayoutGrid|GoboPoolLayoutGrid|GelPoolLayoutGrid|CameraPoolLayoutGrid|ViewPoolLayoutGrid|TimecodeSlotLayoutGrid|RunningPlaybacksPoolLayoutGrid|PresetPoolLayoutGrid|TimecodePoolLayoutGrid|PagePoolLayoutGrid|SequencePoolLayoutGrid|PluginPoolLayoutGrid|MeshPoolLayoutGrid|ViewBar|AppearancePoolLayoutGrid|MatricksPoolLayoutGrid|TagPoolLayoutGrid|QuickeyPoolLayoutGrid|MenuPoolLayoutGrid|SoundPoolLayoutGrid|VideoPoolLayoutGrid|GeneratorRandomPoolLayoutGrid|TimePoolLayoutGrid|MaterialPoolLayoutGrid|MacroPoolLayoutGrid|ScribbleEditContent|MainDialogSubMenuContent|MainDialogFunctionButtons|AgendaMonthsGrid|GridContentFilterEditor|SpecialWindowContent|BladeView|MatricksContainer|ThemeMergeToolBar|CmdDlgFunctionButtonsBase|GenericAssignmentSelector|PlaybackControlContent|AppearanceEditContent|ShaperEditorFaderGrid|EditorPropertyButtons|TagsEditContent|ReferencesContainer|PlaybackControlModularContent|NormedGrid|CommandWingBarContainer|AtFilterDialog|UIPhaserTimeLineGrid|SpecialExecSection|AllPoolLayoutGrid|BaseClock|TouchMonitor|AgendaDaysGrid|TreeViewFrame|PhaserLayoutGrid|EncoderBarSlot|Splitter|BaseItemButtons|UIGridInternals|AudioPreview|XlrModeButton|SpecialExecConfigInput|OSCActivityButton|TitlebuttonControl|ColorPropertyInput|ExecConfigInput|TCTimeButton|CalculatorChannelSetControl|EncoderControl|DialogButton|DisplaySelectButton|StateButton|ValueControl|InfoButton|ToggleButtonList|ObjectSelector|UserEncoderPageSelector|ExecConfigSwipe|EnableMasterFaderButton|EncoderLinkButton|EditTitlebarButton|ValueFadeControl|SelectionIndicatorButton|MatricksToggleButton|ExecConfigRowButton|AtFilterControl|MainDlgGridToggleButton|ExecConfigColButton|SpecialExecutorKey|MatricksIndicatorButton|UIToggleButton|RotationButton|KeyboardShortcutControl|BatteryControl|AtFilterPreview|UIGridConfigButton|ScrollBarButton|MovableButton|DeleteWindowButton|VirtualKeyboardButton|KBShortcutButton|ExpandableButton|TimerButton|MainDlgButtonBase|MainDlgLoginButton|TimecodeSlotButton|DisplayButton|MainDlgUndoButton|BlinkingFadeButton|WarningInfoButton|EjectButton|DimmerWheelButton|MouseButton|ProgressButton|TagButton|MessageCenterInfoButton|DriveStatusButton|RevertButton|EncoderOverlayPlaceholder|ModalPlaceholder|EncoderBarPlaceHolder|PopupPlaceholder|LineEdit|ColorView|SensorView|DialogContainer|PopupList|DBObjectTab|RadioButtonList|FixturetypeItemList|ScribbleEditView|PropertyLabel|BandFader|MiniEncoder|ScrollBox|StatusBar|MultiScroller|TimecodeSlotInfo|TextView|TouchConfigurator|AppearancePreview|MacrolinePreview|TrackpadMouseControl|SoundBandView|CommandLineOutput|SoundLevelView|PerformanceView|ColorTestView|InfoNotesGridScroller|TouchTarget|EditorBase|OutputTest|ColorPickBase|SignalView|ShaperTestView
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: "UIObject", undo: Undo?): UIObject
+---@overload fun(class: "UiFader", undo: Undo?): UiFader
+---@overload fun(class: "UIGridCellBase", undo: Undo?): UIGridCellBase
+---@overload fun(class: "UILayoutGrid", undo: Undo?): UILayoutGrid
+---@overload fun(class: "AutoLayout", undo: Undo?): AutoLayout
+---@overload fun(class: "Drawable", undo: Undo?): Drawable
+---@overload fun(class: "Overlay", undo: Undo?): Overlay
+---@overload fun(class: "ShadedOverlay", undo: Undo?): ShadedOverlay
+---@overload fun(class: "BaseInput", undo: Undo?): BaseInput
+---@overload fun(class: "GenericImport", undo: Undo?): GenericImport
+---@overload fun(class: "TextEdit", undo: Undo?): TextEdit
+---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(class: "Bar", undo: Undo?): Bar
+---@overload fun(class: "ExecutorBar", undo: Undo?): ExecutorBar
+---@overload fun(class: "GlWindowBase", undo: Undo?): GlWindowBase
+---@overload fun(class: "Window", undo: Undo?): Window
+---@overload fun(class: "PoolLayoutGrid", undo: Undo?): PoolLayoutGrid
+---@overload fun(class: "UiScreen", undo: Undo?): UiScreen
+---@overload fun(class: "UIObjectFake", undo: Undo?): UIObjectFake
+---@overload fun(class: "Button", undo: Undo?): Button
+---@overload fun(class: "PropertyControl", undo: Undo?): PropertyControl
+---@overload fun(class: "IndicatorControl", undo: Undo?): IndicatorControl
+---@overload fun(class: "PropertyInput", undo: Undo?): PropertyInput
+---@overload fun(class: "AppearanceInput", undo: Undo?): AppearanceInput
+---@overload fun(class: "ScribbleInput", undo: Undo?): ScribbleInput
+---@overload fun(class: "BaseStateButton", undo: Undo?): BaseStateButton
+---@overload fun(class: "ToggleButton", undo: Undo?): ToggleButton
+---@overload fun(class: "SwipeButton", undo: Undo?): SwipeButton
+---@overload fun(class: "LogoButton", undo: Undo?): LogoButton
+---@overload fun(class: "ContextButton", undo: Undo?): ContextButton
+---@overload fun(class: "IndicatorButton", undo: Undo?): IndicatorButton
+---@overload fun(class: "TitleButton", undo: Undo?): TitleButton
+---@overload fun(class: "PlaceHolderBase", undo: Undo?): PlaceHolderBase
+---@overload fun(class: "PlaceHolder", undo: Undo?): PlaceHolder
+---@overload fun(class: "ScrollableItemList", undo: Undo?): ScrollableItemList
+---@overload fun(class: "UITab", undo: Undo?): UITab
+---@overload fun(class: nil, undo: Undo?): UIObject
+function AllPoolTitleContextButton:Find(class, undo) end

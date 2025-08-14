@@ -16,36 +16,51 @@ function FTMacro:Ptr(index) end
 function FTMacro:Children() end
 ---@return MacroDMX?
 function FTMacro:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
 ---@overload fun(name: "ChannelFunction", role: nil): ChannelFunction
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"ChannelFunction", role: Enums.Roles): string
+---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "ChannelFunction"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): MacroDMX
 function FTMacro:Get(name, role) end
----@overload fun(index: integer, class: "MacroDMX", undo: Undo?): MacroDMX
+---@generic T : MacroDMX
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): MacroDMX
 function FTMacro:Create(index, class, undo) end
----@overload fun(class: "MacroDMX", undo: Undo?, count: integer?): MacroDMX
+---@generic T : MacroDMX
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): MacroDMX
 function FTMacro:Append(class, undo, count) end
----@overload fun(class: "MacroDMX", undo: Undo?): MacroDMX
+---@generic T : MacroDMX
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MacroDMX
 function FTMacro:Acquire(class, undo) end
----@overload fun(class: "MacroDMX", undo: Undo?): MacroDMX
+---@generic T : MacroDMX
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MacroDMX
 ---@deprecated use "Acquire" instead
 function FTMacro:Aquire(class, undo) end
----@overload fun(index: integer, class: "MacroDMX", undo: Undo?, count: integer?): MacroDMX
+---@generic T : MacroDMX
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): MacroDMX
 function FTMacro:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "MacroDMX"): MacroDMX
----@overload fun(name: string, class: nil): MacroDMX
-function FTMacro:Find(name, class) end
----@overload fun(name: string, class: "MacroDMX"): MacroDMX
----@overload fun(name: string, class: nil): Object
-function FTMacro:FindRecursive(name, class) end
+---@generic T : MacroDMX
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): MacroDMX
+function FTMacro:Find(class, undo) end

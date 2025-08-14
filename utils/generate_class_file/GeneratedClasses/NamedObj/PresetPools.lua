@@ -17,25 +17,51 @@ function PresetPools:Children() end
 function PresetPools:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Presets
 function PresetPools:Get(name, role) end
----@overload fun(index: integer, class: "Presets", undo: Undo?): Presets
+---@generic T : Presets
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Presets
 function PresetPools:Create(index, class, undo) end
----@overload fun(class: "Presets", undo: Undo?, count: integer?): Presets
+---@generic T : Presets
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Presets
 function PresetPools:Append(class, undo, count) end
----@overload fun(class: "Presets", undo: Undo?): Presets
+---@generic T : Presets
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Presets
 function PresetPools:Acquire(class, undo) end
----@overload fun(class: "Presets", undo: Undo?): Presets
+---@generic T : Presets
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Presets
 ---@deprecated use "Acquire" instead
 function PresetPools:Aquire(class, undo) end
----@overload fun(index: integer, class: "Presets", undo: Undo?, count: integer?): Presets
+---@generic T : Presets
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Presets
 function PresetPools:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Presets"): Presets
----@overload fun(name: string, class: nil): Presets
-function PresetPools:Find(name, class) end
----@overload fun(name: string, class: "Presets"): Presets
+---@generic T : Presets
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Presets
+function PresetPools:Find(class, undo) end
+---@generic T : Presets|Recipe|IllegalObject
+---@param name string
+---@param class `T`
+---@return T
+---@overload fun(name: string, class: "Preset"): Preset
 ---@overload fun(name: string, class: nil): Object
 function PresetPools:FindRecursive(name, class) end

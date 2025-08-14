@@ -15,25 +15,44 @@ function MouseDevices:Children() end
 function MouseDevices:CurrentChild() end
 ---@overload fun(name: integer, role: nil): UsbDeviceMouse
 function MouseDevices:Get(name, role) end
----@overload fun(index: integer, class: "UsbDeviceMouse", undo: Undo?): UsbDeviceMouse
+---@generic T : UsbDeviceMouse
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): UsbDeviceMouse
 function MouseDevices:Create(index, class, undo) end
----@overload fun(class: "UsbDeviceMouse", undo: Undo?, count: integer?): UsbDeviceMouse
+---@generic T : UsbDeviceMouse
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): UsbDeviceMouse
 function MouseDevices:Append(class, undo, count) end
----@overload fun(class: "UsbDeviceMouse", undo: Undo?): UsbDeviceMouse
+---@generic T : UsbDeviceMouse
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): UsbDeviceMouse
 function MouseDevices:Acquire(class, undo) end
----@overload fun(class: "UsbDeviceMouse", undo: Undo?): UsbDeviceMouse
+---@generic T : UsbDeviceMouse
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): UsbDeviceMouse
 ---@deprecated use "Acquire" instead
 function MouseDevices:Aquire(class, undo) end
----@overload fun(index: integer, class: "UsbDeviceMouse", undo: Undo?, count: integer?): UsbDeviceMouse
+---@generic T : UsbDeviceMouse
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): UsbDeviceMouse
 function MouseDevices:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "UsbDeviceMouse"): UsbDeviceMouse
----@overload fun(name: string, class: nil): UsbDeviceMouse
-function MouseDevices:Find(name, class) end
----@overload fun(name: string, class: "UsbDeviceMouse"): UsbDeviceMouse
----@overload fun(name: string, class: nil): Object
-function MouseDevices:FindRecursive(name, class) end
+---@generic T : UsbDeviceMouse
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): UsbDeviceMouse
+function MouseDevices:Find(class, undo) end

@@ -15,25 +15,44 @@ function SysmonWindowSettingsCollect:Children() end
 function SysmonWindowSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): SysmonWindowSettings
 function SysmonWindowSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "SysmonWindowSettings", undo: Undo?): SysmonWindowSettings
+---@generic T : SysmonWindowSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): SysmonWindowSettings
 function SysmonWindowSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "SysmonWindowSettings", undo: Undo?, count: integer?): SysmonWindowSettings
+---@generic T : SysmonWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): SysmonWindowSettings
 function SysmonWindowSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "SysmonWindowSettings", undo: Undo?): SysmonWindowSettings
+---@generic T : SysmonWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SysmonWindowSettings
 function SysmonWindowSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "SysmonWindowSettings", undo: Undo?): SysmonWindowSettings
+---@generic T : SysmonWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SysmonWindowSettings
 ---@deprecated use "Acquire" instead
 function SysmonWindowSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "SysmonWindowSettings", undo: Undo?, count: integer?): SysmonWindowSettings
+---@generic T : SysmonWindowSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): SysmonWindowSettings
 function SysmonWindowSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "SysmonWindowSettings"): SysmonWindowSettings
----@overload fun(name: string, class: nil): SysmonWindowSettings
-function SysmonWindowSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "SysmonWindowSettings"): SysmonWindowSettings
----@overload fun(name: string, class: nil): Object
-function SysmonWindowSettingsCollect:FindRecursive(name, class) end
+---@generic T : SysmonWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): SysmonWindowSettings
+function SysmonWindowSettingsCollect:Find(class, undo) end

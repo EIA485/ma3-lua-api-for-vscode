@@ -17,25 +17,44 @@ function Videos:Children() end
 function Videos:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Video
 function Videos:Get(name, role) end
----@overload fun(index: integer, class: "Video", undo: Undo?): Video
+---@generic T : Video
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Video
 function Videos:Create(index, class, undo) end
----@overload fun(class: "Video", undo: Undo?, count: integer?): Video
+---@generic T : Video
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Video
 function Videos:Append(class, undo, count) end
----@overload fun(class: "Video", undo: Undo?): Video
+---@generic T : Video
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Video
 function Videos:Acquire(class, undo) end
----@overload fun(class: "Video", undo: Undo?): Video
+---@generic T : Video
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Video
 ---@deprecated use "Acquire" instead
 function Videos:Aquire(class, undo) end
----@overload fun(index: integer, class: "Video", undo: Undo?, count: integer?): Video
+---@generic T : Video
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Video
 function Videos:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Video"): Video
----@overload fun(name: string, class: nil): Video
-function Videos:Find(name, class) end
----@overload fun(name: string, class: "Video"): Video
----@overload fun(name: string, class: nil): Object
-function Videos:FindRecursive(name, class) end
+---@generic T : Video
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Video
+function Videos:Find(class, undo) end

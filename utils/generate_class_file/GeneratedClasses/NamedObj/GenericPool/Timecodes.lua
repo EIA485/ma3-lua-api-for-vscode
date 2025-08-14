@@ -17,25 +17,44 @@ function Timecodes:Children() end
 function Timecodes:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Timecode
 function Timecodes:Get(name, role) end
----@overload fun(index: integer, class: "Timecode", undo: Undo?): Timecode
+---@generic T : Timecode
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Timecode
 function Timecodes:Create(index, class, undo) end
----@overload fun(class: "Timecode", undo: Undo?, count: integer?): Timecode
+---@generic T : Timecode
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Timecode
 function Timecodes:Append(class, undo, count) end
----@overload fun(class: "Timecode", undo: Undo?): Timecode
+---@generic T : Timecode
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Timecode
 function Timecodes:Acquire(class, undo) end
----@overload fun(class: "Timecode", undo: Undo?): Timecode
+---@generic T : Timecode
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Timecode
 ---@deprecated use "Acquire" instead
 function Timecodes:Aquire(class, undo) end
----@overload fun(index: integer, class: "Timecode", undo: Undo?, count: integer?): Timecode
+---@generic T : Timecode
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Timecode
 function Timecodes:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Timecode"): Timecode
----@overload fun(name: string, class: nil): Timecode
-function Timecodes:Find(name, class) end
----@overload fun(name: string, class: "Timecode"): Timecode
----@overload fun(name: string, class: nil): Object
-function Timecodes:FindRecursive(name, class) end
+---@generic T : Timecode
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Timecode
+function Timecodes:Find(class, undo) end

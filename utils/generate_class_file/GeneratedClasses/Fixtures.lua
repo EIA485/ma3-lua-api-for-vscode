@@ -17,5 +17,10 @@ function Fixtures:Children() end
 function Fixtures:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Fixture
 function Fixtures:Get(name, role) end
----@overload fun(name: string, class: nil): Object
-function Fixtures:FindRecursive(name, class) end
+function Fixtures:Create(index, class, undo) end
+function Fixtures:Append(class, undo, count) end
+function Fixtures:Acquire(class, undo) end
+---@deprecated use "Acquire" instead
+function Fixtures:Aquire(class, undo) end
+function Fixtures:Insert(index, class, undo, count) end
+function Fixtures:Find(class, undo) end

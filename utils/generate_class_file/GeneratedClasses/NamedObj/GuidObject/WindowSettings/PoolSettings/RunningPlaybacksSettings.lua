@@ -1,72 +1,223 @@
 ---@meta
 
 ---@class RunningPlaybacksSettings: PoolSettings
----@field MyPlaybacks
-Only integer Show only my playbacks
----@field Sheet
-Style integer Show pool in sheet-style
----@field Off
-Mode integer Turn Selected Items Off
----@field Playbacks
-ToShow integer Show playbacks of type
----@field Hold
-List integer Lock Listed Items in Place while turning them Off
+---@field MyPlaybacksOnly integer Show only my playbacks
+---@field SheetStyle integer Show pool in sheet-style
+---@field OffMode integer Turn Selected Items Off
+---@field PlaybacksToShow integer Show playbacks of type
+---@field HoldList integer Lock Listed Items in Place while turning them Off
 ---@field User User
 ---@field SelectedDataPool string
 local RunningPlaybacksSettings = {
-    ["MyPlaybacks
-Only"]="false",
-    ["Sheet
-Style"]="false",
-    ["Off
-Mode"]="false",
-    ["Playbacks
-ToShow"]="ShowAllPlaybacks",
-    ["Hold
-List"]="false"
+    MyPlaybacksOnly="false",
+    SheetStyle="false",
+    OffMode="false",
+    PlaybacksToShow="ShowAllPlaybacks",
+    HoldList="false"
 }
 ---@return "RunningPlaybacksSettings"
 function RunningPlaybacksSettings:GetClass() end
 ---@return "Object"
 function RunningPlaybacksSettings:GetChildClass() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
----@overload fun(name: "Guid", role: nil): Crypto.Guid<128>
----@overload fun(name: "Scribble", role: nil): Scribble
 ---@overload fun(name: "Appearance", role: nil): Appearance
----@overload fun(name: "NameAndApp"|"Note", role: nil): string
----@overload fun(name: "Tags", role: nil): TagMap
----@overload fun(name: "PreferenceHandle", role: nil): Object
+---@overload fun(name: "Guid", role: nil): Crypto.Guid<128>
 ---@overload fun(name: "FontSize", role: nil): FontSizes
----@overload fun(name: "ShowTitleBar", role: nil): integer
----@overload fun(name: "VisibleTitlebuttons", role: nil): string[]
----@overload fun(name: "RequestDefaultTitlebuttons", role: nil): integer
----@overload fun(name: "TitleButtonMask", role: nil): string
----@overload fun(name: "ShowEmpty", role: nil): integer
----@overload fun(name: "PoolColor"|"EmptyColor"|"ForNoneColor"|"ForSomeColor"|"ForAllColor", role: nil): UColor
----@overload fun(name: "ShowBottomMenu"|"RightClick
-ToEdit"|"ObjectActionEnabled"|"PoolColumnsCount", role: nil): integer
+---@overload fun(name: "PreferenceHandle", role: nil): Object
 ---@overload fun(name: "DataPool", role: nil): Pool
 ---@overload fun(name: "PoolType", role: nil): Pooltype
----@overload fun(name: "DrawActiveMode"|"MyPlaybacks
-Only"|"Sheet
-Style"|"Off
-Mode"|"Playbacks
-ToShow"|"Hold
-List", role: nil): integer
+---@overload fun(name: "Scribble", role: nil): Scribble
+---@overload fun(name: "Tags", role: nil): TagMap
+---@overload fun(name: "PoolColor"|"EmptyColor"|"ForNoneColor"|"ForSomeColor"|"ForAllColor", role: nil): UColor
 ---@overload fun(name: "User", role: nil): User
----@overload fun(name: "SelectedDataPool", role: nil): string
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Guid"|"Scribble"|"Appearance"|"NameAndApp"|"Note"|"Tags"|"PreferenceHandle"|"FontSize"|"ShowTitleBar"|"VisibleTitlebuttons"|"RequestDefaultTitlebuttons"|"TitleButtonMask"|"ShowEmpty"|"PoolColor"|"EmptyColor"|"ForNoneColor"|"ForSomeColor"|"ForAllColor"|"ShowBottomMenu"|"RightClick
-ToEdit"|"ObjectActionEnabled"|"PoolColumnsCount"|"DataPool"|"PoolType"|"DrawActiveMode"|"MyPlaybacks
-Only"|"Sheet
-Style"|"Off
-Mode"|"Playbacks
-ToShow"|"Hold
-List"|"User"|"SelectedDataPool", role: Enums.Roles): string
+---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "MyPlaybacksOnly"|"SheetStyle"|"OffMode"|"PlaybacksToShow"|"HoldList"|"ShowEmpty"|"ShowBottomMenu"|"RightClickToEdit"|"ObjectActionEnabled"|"PoolColumnsCount"|"DrawActiveMode"|"ShowTitleBar"|"RequestDefaultTitlebuttons"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "SelectedDataPool"|"TitleButtonMask"|"NameAndApp"|"Note"|"Name"|"DependencyExport", role: nil): string
+---@overload fun(name: "VisibleTitlebuttons", role: nil): string[]
+---@overload fun(name: "MyPlaybacksOnly"|"SheetStyle"|"OffMode"|"PlaybacksToShow"|"HoldList"|"User"|"SelectedDataPool"|"ShowEmpty"|"PoolColor"|"EmptyColor"|"ForNoneColor"|"ForSomeColor"|"ForAllColor"|"ShowBottomMenu"|"RightClickToEdit"|"ObjectActionEnabled"|"PoolColumnsCount"|"DataPool"|"PoolType"|"DrawActiveMode"|"PreferenceHandle"|"FontSize"|"ShowTitleBar"|"VisibleTitlebuttons"|"RequestDefaultTitlebuttons"|"TitleButtonMask"|"Guid"|"Scribble"|"Appearance"|"NameAndApp"|"Note"|"Tags"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): Object
 function RunningPlaybacksSettings:Get(name, role) end
+---@generic T : GroupPoolSettingsCollect|RdmWindowSettingsCollect|WindowPhaserEditorSettingsCollect|TimecodeWindowSettingsCollect|UnassignedTagGridFilter|NetworkGridFilter|FixtureSheetRowFilter|PhaserSheetRowFilter|RunningPlaybacksGirdContentFilter|GridPatchContentFilter|RunningPlaybacksSettingsCollect|PresetShapersPoolSettingsCollect|FixtureSheetSettingsCollect|PresetGoboPoolSettingsCollect|PresetColorPoolSettingsCollect|FilterPoolSettingsCollect|MacroPoolSettingsCollect|MidiInDescriptions|TimecodePoolSettingsCollect|CommandlineWindowSettingsCollect|SysmonWindowSettingsCollect|ExecConfigPoolSettingsCollect|AttributeDefinitions|Tags|Images|GoboImages|Symbols|MeshImagePool|Scribbles|Variables|RDMFixtureType|RenderQuality|ExecEditorSettings|CommandlineWindowSettings|WindowInfoSettings|CloningWindowSettings|ClockWindowSettings|PagePoolSettings|VideoPoolSettings|FilterPoolSettings|QuickeyPoolSettings|WorldPoolSettings|SoundPoolSettings|TimecodeSlotPoolSettings|MacroPoolSettings|SmartViewSettings|TimecodePoolSettings|GeneratorPoolSettings|ExecConfigPoolSettings|GroupPoolSettings|PluginPoolSettings|SequencePoolSettings|LayoutPoolSettings|PresetPoolSettings|BitmapPoolSettings|TimerPoolSettings|GelPoolSettings|MatricksPoolSettings|ShowCreatorSettings|SpecialWindowSettings|ModularPlaybackWindowSettings|WindowAgendaSettings|TimecodeWindowSettings|FixtureEditorSettings|PSRPatchSheetSettings|MessageGridSettings|GelGridSettings|SequenceSheetSettings|DMXSheetSettings|FixtureSheetSettings|RdmWindowSettings|RecipeSheetSettings|RunningPlaybacksSheetSettings|ShowCreatorSheetSettings|WindowPhaserEditorSettings|AtFilterSettings|WindowSoundSettings|LayoutViewSettings|CustomMasterSectionWindowSettings|HelpViewerWindowSettings|SysmonWindowSettings|ColorPickerSettings|WindowTrackpadSettings|EncoderBarWindowSettings|ShaperWindowSettings|MatricksWindowSettings|View3DSettings|SelectionViewSettings|SysteminfoWindowSettings|XkeysWindowSettings|CommandWingBarSettings|PlaybackWindowSettings|Camera|ShowData|AudioInDeviceDescription|GridColumnConfiguration|MIDIDeviceDescription|HelperWindowSettingsCollect|WindowInfoSettingsCollect|TagFakeCollect|ClockWindowSettingsCollect|IllegalObject|AddonVariables|WindowSettingsCollect|NtpMonitor|Timezones|GridColumnConfigurationCollect|Root|MatricksPoolSettingsCollect|TimerPoolSettingsCollect|PresetDimmerPoolSettingsCollect|LayoutViewSettingsCollect|PoolSettingsCollect|PluginPoolSettingsCollect|PultCollect|MidiOutDescriptions|PresetControlPoolSettingsCollect|KeyboardLayouts|PluginPreferencesCollect|WindowAgendaSettingsCollect|DmxSheetSettingsCollect|PresetAllPoolSettingsCollect|SoundChannels|SysteminfoWindowSettingsCollect|GridBase|AutoCreateSettings|LayoutElementDefaultsCollect|GridColumnFilterCollect|GridContentFilterSettings|DMXRoot|PlaybackWindowSettingsCollect|ShowMetaData|GelPoolSettingsCollect|PresetVideoPoolSettingsCollect|AudioInDescriptions|SequenceSheetSettingsCollect|TabRegistry|SelectionViewSettingsCollect|DriveCollect|ColorTheme|BitmapPoolSettingsCollect|WorldPoolSettingsCollect|EncoderBarWindowSettingsCollect|PresetFocusPoolSettingsCollect|ScribbleEdit|MessageGridSettingsCollect|GeneratorPoolSettingsCollect|PresetBeamPoolSettingsCollect|TimecodeSlotPoolSettingsCollect|ExecutorFixation|PresetPositionPoolSettingsCollect|LayoutCameraObject|VideoPoolSettingsCollect|View3DSettingsCollect|LayoutPoolSettingsCollect|PresetDynamicPoolSettingsCollect|SoundPoolSettingsCollect|MVRxchange|SequencePoolSettingsCollect|TestRGBInterface|PresetPoolSettingsCollect|QuickeyPoolSettingsCollect|ModularPlaybackWindowSettingsCollect|ProgLayers|SmartViewSettingsCollect|SpecialWindowSettingsCollect|ContentSheetSettingsCollect|ColorPickerSettingsCollect|PagePoolSettingsCollect|Recipe|grandMA3Modules|ContentSheetGridScroller|MeshLineEdit|DMXSheet|MeshMaterialGrid|FixtureSheet
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(index: integer, class: "Object", undo: Undo?): Object
+---@overload fun(index: integer, class: "GridContentFilterBase", undo: Undo?): GridContentFilterBase
+---@overload fun(index: integer, class: "GridContentFilter", undo: Undo?): GridContentFilter
+---@overload fun(index: integer, class: "GridObjectContentFilter", undo: Undo?): GridObjectContentFilter
+---@overload fun(index: integer, class: "NamedObj", undo: Undo?): NamedObj
+---@overload fun(index: integer, class: "GenericPool", undo: Undo?): GenericPool
+---@overload fun(index: integer, class: "CachedObjectPool", undo: Undo?): CachedObjectPool
+---@overload fun(index: integer, class: "ImagePool", undo: Undo?): ImagePool
+---@overload fun(index: integer, class: "GuidObject", undo: Undo?): GuidObject
+---@overload fun(index: integer, class: "WindowSettings", undo: Undo?): WindowSettings
+---@overload fun(index: integer, class: "PoolSettings", undo: Undo?): PoolSettings
+---@overload fun(index: integer, class: "GridSettings", undo: Undo?): GridSettings
+---@overload fun(index: integer, class: "Plugin", undo: Undo?): Plugin
+---@overload fun(index: integer, class: "CachedObj", undo: Undo?): CachedObj
+---@overload fun(index: integer, class: "Material", undo: Undo?): Material
+---@overload fun(index: integer, class: "Image", undo: Undo?): Image
+---@overload fun(index: integer, class: "ColorThemeContent", undo: Undo?): ColorThemeContent
+---@overload fun(index: integer, class: "MVRLocalFile", undo: Undo?): MVRLocalFile
+---@overload fun(index: integer, class: "TypedNamedObj", undo: Undo?): TypedNamedObj
+---@overload fun(index: integer, class: "Measurement", undo: Undo?): Measurement
+---@overload fun(index: integer, class: "RunningPlaybacks", undo: Undo?): RunningPlaybacks
+---@overload fun(index: integer, class: "TypedObject", undo: Undo?): TypedObject
+---@overload fun(index: integer, class: "Preset", undo: Undo?): Preset
+---@overload fun(index: integer, class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(index: integer, class: nil, undo: Undo?): Object
+function RunningPlaybacksSettings:Create(index, class, undo) end
+---@generic T : GroupPoolSettingsCollect|RdmWindowSettingsCollect|WindowPhaserEditorSettingsCollect|TimecodeWindowSettingsCollect|UnassignedTagGridFilter|NetworkGridFilter|FixtureSheetRowFilter|PhaserSheetRowFilter|RunningPlaybacksGirdContentFilter|GridPatchContentFilter|RunningPlaybacksSettingsCollect|PresetShapersPoolSettingsCollect|FixtureSheetSettingsCollect|PresetGoboPoolSettingsCollect|PresetColorPoolSettingsCollect|FilterPoolSettingsCollect|MacroPoolSettingsCollect|MidiInDescriptions|TimecodePoolSettingsCollect|CommandlineWindowSettingsCollect|SysmonWindowSettingsCollect|ExecConfigPoolSettingsCollect|AttributeDefinitions|Tags|Images|GoboImages|Symbols|MeshImagePool|Scribbles|Variables|RDMFixtureType|RenderQuality|ExecEditorSettings|CommandlineWindowSettings|WindowInfoSettings|CloningWindowSettings|ClockWindowSettings|PagePoolSettings|VideoPoolSettings|FilterPoolSettings|QuickeyPoolSettings|WorldPoolSettings|SoundPoolSettings|TimecodeSlotPoolSettings|MacroPoolSettings|SmartViewSettings|TimecodePoolSettings|GeneratorPoolSettings|ExecConfigPoolSettings|GroupPoolSettings|PluginPoolSettings|SequencePoolSettings|LayoutPoolSettings|PresetPoolSettings|BitmapPoolSettings|TimerPoolSettings|GelPoolSettings|MatricksPoolSettings|ShowCreatorSettings|SpecialWindowSettings|ModularPlaybackWindowSettings|WindowAgendaSettings|TimecodeWindowSettings|FixtureEditorSettings|PSRPatchSheetSettings|MessageGridSettings|GelGridSettings|SequenceSheetSettings|DMXSheetSettings|FixtureSheetSettings|RdmWindowSettings|RecipeSheetSettings|RunningPlaybacksSheetSettings|ShowCreatorSheetSettings|WindowPhaserEditorSettings|AtFilterSettings|WindowSoundSettings|LayoutViewSettings|CustomMasterSectionWindowSettings|HelpViewerWindowSettings|SysmonWindowSettings|ColorPickerSettings|WindowTrackpadSettings|EncoderBarWindowSettings|ShaperWindowSettings|MatricksWindowSettings|View3DSettings|SelectionViewSettings|SysteminfoWindowSettings|XkeysWindowSettings|CommandWingBarSettings|PlaybackWindowSettings|Camera|ShowData|AudioInDeviceDescription|GridColumnConfiguration|MIDIDeviceDescription|HelperWindowSettingsCollect|WindowInfoSettingsCollect|TagFakeCollect|ClockWindowSettingsCollect|IllegalObject|AddonVariables|WindowSettingsCollect|NtpMonitor|Timezones|GridColumnConfigurationCollect|Root|MatricksPoolSettingsCollect|TimerPoolSettingsCollect|PresetDimmerPoolSettingsCollect|LayoutViewSettingsCollect|PoolSettingsCollect|PluginPoolSettingsCollect|PultCollect|MidiOutDescriptions|PresetControlPoolSettingsCollect|KeyboardLayouts|PluginPreferencesCollect|WindowAgendaSettingsCollect|DmxSheetSettingsCollect|PresetAllPoolSettingsCollect|SoundChannels|SysteminfoWindowSettingsCollect|GridBase|AutoCreateSettings|LayoutElementDefaultsCollect|GridColumnFilterCollect|GridContentFilterSettings|DMXRoot|PlaybackWindowSettingsCollect|ShowMetaData|GelPoolSettingsCollect|PresetVideoPoolSettingsCollect|AudioInDescriptions|SequenceSheetSettingsCollect|TabRegistry|SelectionViewSettingsCollect|DriveCollect|ColorTheme|BitmapPoolSettingsCollect|WorldPoolSettingsCollect|EncoderBarWindowSettingsCollect|PresetFocusPoolSettingsCollect|ScribbleEdit|MessageGridSettingsCollect|GeneratorPoolSettingsCollect|PresetBeamPoolSettingsCollect|TimecodeSlotPoolSettingsCollect|ExecutorFixation|PresetPositionPoolSettingsCollect|LayoutCameraObject|VideoPoolSettingsCollect|View3DSettingsCollect|LayoutPoolSettingsCollect|PresetDynamicPoolSettingsCollect|SoundPoolSettingsCollect|MVRxchange|SequencePoolSettingsCollect|TestRGBInterface|PresetPoolSettingsCollect|QuickeyPoolSettingsCollect|ModularPlaybackWindowSettingsCollect|ProgLayers|SmartViewSettingsCollect|SpecialWindowSettingsCollect|ContentSheetSettingsCollect|ColorPickerSettingsCollect|PagePoolSettingsCollect|Recipe|grandMA3Modules|ContentSheetGridScroller|MeshLineEdit|DMXSheet|MeshMaterialGrid|FixtureSheet
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
+---@overload fun(class: "Object", undo: Undo?, count: integer?): Object
+---@overload fun(class: "GridContentFilterBase", undo: Undo?, count: integer?): GridContentFilterBase
+---@overload fun(class: "GridContentFilter", undo: Undo?, count: integer?): GridContentFilter
+---@overload fun(class: "GridObjectContentFilter", undo: Undo?, count: integer?): GridObjectContentFilter
+---@overload fun(class: "NamedObj", undo: Undo?, count: integer?): NamedObj
+---@overload fun(class: "GenericPool", undo: Undo?, count: integer?): GenericPool
+---@overload fun(class: "CachedObjectPool", undo: Undo?, count: integer?): CachedObjectPool
+---@overload fun(class: "ImagePool", undo: Undo?, count: integer?): ImagePool
+---@overload fun(class: "GuidObject", undo: Undo?, count: integer?): GuidObject
+---@overload fun(class: "WindowSettings", undo: Undo?, count: integer?): WindowSettings
+---@overload fun(class: "PoolSettings", undo: Undo?, count: integer?): PoolSettings
+---@overload fun(class: "GridSettings", undo: Undo?, count: integer?): GridSettings
+---@overload fun(class: "Plugin", undo: Undo?, count: integer?): Plugin
+---@overload fun(class: "CachedObj", undo: Undo?, count: integer?): CachedObj
+---@overload fun(class: "Material", undo: Undo?, count: integer?): Material
+---@overload fun(class: "Image", undo: Undo?, count: integer?): Image
+---@overload fun(class: "ColorThemeContent", undo: Undo?, count: integer?): ColorThemeContent
+---@overload fun(class: "MVRLocalFile", undo: Undo?, count: integer?): MVRLocalFile
+---@overload fun(class: "TypedNamedObj", undo: Undo?, count: integer?): TypedNamedObj
+---@overload fun(class: "Measurement", undo: Undo?, count: integer?): Measurement
+---@overload fun(class: "RunningPlaybacks", undo: Undo?, count: integer?): RunningPlaybacks
+---@overload fun(class: "TypedObject", undo: Undo?, count: integer?): TypedObject
+---@overload fun(class: "Preset", undo: Undo?, count: integer?): Preset
+---@overload fun(class: "NoteTextEdit", undo: Undo?, count: integer?): NoteTextEdit
+---@overload fun(class: nil, undo: Undo?, count: integer?): Object
+function RunningPlaybacksSettings:Append(class, undo, count) end
+---@generic T : GroupPoolSettingsCollect|RdmWindowSettingsCollect|WindowPhaserEditorSettingsCollect|TimecodeWindowSettingsCollect|UnassignedTagGridFilter|NetworkGridFilter|FixtureSheetRowFilter|PhaserSheetRowFilter|RunningPlaybacksGirdContentFilter|GridPatchContentFilter|RunningPlaybacksSettingsCollect|PresetShapersPoolSettingsCollect|FixtureSheetSettingsCollect|PresetGoboPoolSettingsCollect|PresetColorPoolSettingsCollect|FilterPoolSettingsCollect|MacroPoolSettingsCollect|MidiInDescriptions|TimecodePoolSettingsCollect|CommandlineWindowSettingsCollect|SysmonWindowSettingsCollect|ExecConfigPoolSettingsCollect|AttributeDefinitions|Tags|Images|GoboImages|Symbols|MeshImagePool|Scribbles|Variables|RDMFixtureType|RenderQuality|ExecEditorSettings|CommandlineWindowSettings|WindowInfoSettings|CloningWindowSettings|ClockWindowSettings|PagePoolSettings|VideoPoolSettings|FilterPoolSettings|QuickeyPoolSettings|WorldPoolSettings|SoundPoolSettings|TimecodeSlotPoolSettings|MacroPoolSettings|SmartViewSettings|TimecodePoolSettings|GeneratorPoolSettings|ExecConfigPoolSettings|GroupPoolSettings|PluginPoolSettings|SequencePoolSettings|LayoutPoolSettings|PresetPoolSettings|BitmapPoolSettings|TimerPoolSettings|GelPoolSettings|MatricksPoolSettings|ShowCreatorSettings|SpecialWindowSettings|ModularPlaybackWindowSettings|WindowAgendaSettings|TimecodeWindowSettings|FixtureEditorSettings|PSRPatchSheetSettings|MessageGridSettings|GelGridSettings|SequenceSheetSettings|DMXSheetSettings|FixtureSheetSettings|RdmWindowSettings|RecipeSheetSettings|RunningPlaybacksSheetSettings|ShowCreatorSheetSettings|WindowPhaserEditorSettings|AtFilterSettings|WindowSoundSettings|LayoutViewSettings|CustomMasterSectionWindowSettings|HelpViewerWindowSettings|SysmonWindowSettings|ColorPickerSettings|WindowTrackpadSettings|EncoderBarWindowSettings|ShaperWindowSettings|MatricksWindowSettings|View3DSettings|SelectionViewSettings|SysteminfoWindowSettings|XkeysWindowSettings|CommandWingBarSettings|PlaybackWindowSettings|Camera|ShowData|AudioInDeviceDescription|GridColumnConfiguration|MIDIDeviceDescription|HelperWindowSettingsCollect|WindowInfoSettingsCollect|TagFakeCollect|ClockWindowSettingsCollect|IllegalObject|AddonVariables|WindowSettingsCollect|NtpMonitor|Timezones|GridColumnConfigurationCollect|Root|MatricksPoolSettingsCollect|TimerPoolSettingsCollect|PresetDimmerPoolSettingsCollect|LayoutViewSettingsCollect|PoolSettingsCollect|PluginPoolSettingsCollect|PultCollect|MidiOutDescriptions|PresetControlPoolSettingsCollect|KeyboardLayouts|PluginPreferencesCollect|WindowAgendaSettingsCollect|DmxSheetSettingsCollect|PresetAllPoolSettingsCollect|SoundChannels|SysteminfoWindowSettingsCollect|GridBase|AutoCreateSettings|LayoutElementDefaultsCollect|GridColumnFilterCollect|GridContentFilterSettings|DMXRoot|PlaybackWindowSettingsCollect|ShowMetaData|GelPoolSettingsCollect|PresetVideoPoolSettingsCollect|AudioInDescriptions|SequenceSheetSettingsCollect|TabRegistry|SelectionViewSettingsCollect|DriveCollect|ColorTheme|BitmapPoolSettingsCollect|WorldPoolSettingsCollect|EncoderBarWindowSettingsCollect|PresetFocusPoolSettingsCollect|ScribbleEdit|MessageGridSettingsCollect|GeneratorPoolSettingsCollect|PresetBeamPoolSettingsCollect|TimecodeSlotPoolSettingsCollect|ExecutorFixation|PresetPositionPoolSettingsCollect|LayoutCameraObject|VideoPoolSettingsCollect|View3DSettingsCollect|LayoutPoolSettingsCollect|PresetDynamicPoolSettingsCollect|SoundPoolSettingsCollect|MVRxchange|SequencePoolSettingsCollect|TestRGBInterface|PresetPoolSettingsCollect|QuickeyPoolSettingsCollect|ModularPlaybackWindowSettingsCollect|ProgLayers|SmartViewSettingsCollect|SpecialWindowSettingsCollect|ContentSheetSettingsCollect|ColorPickerSettingsCollect|PagePoolSettingsCollect|Recipe|grandMA3Modules|ContentSheetGridScroller|MeshLineEdit|DMXSheet|MeshMaterialGrid|FixtureSheet
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: "Object", undo: Undo?): Object
+---@overload fun(class: "GridContentFilterBase", undo: Undo?): GridContentFilterBase
+---@overload fun(class: "GridContentFilter", undo: Undo?): GridContentFilter
+---@overload fun(class: "GridObjectContentFilter", undo: Undo?): GridObjectContentFilter
+---@overload fun(class: "NamedObj", undo: Undo?): NamedObj
+---@overload fun(class: "GenericPool", undo: Undo?): GenericPool
+---@overload fun(class: "CachedObjectPool", undo: Undo?): CachedObjectPool
+---@overload fun(class: "ImagePool", undo: Undo?): ImagePool
+---@overload fun(class: "GuidObject", undo: Undo?): GuidObject
+---@overload fun(class: "WindowSettings", undo: Undo?): WindowSettings
+---@overload fun(class: "PoolSettings", undo: Undo?): PoolSettings
+---@overload fun(class: "GridSettings", undo: Undo?): GridSettings
+---@overload fun(class: "Plugin", undo: Undo?): Plugin
+---@overload fun(class: "CachedObj", undo: Undo?): CachedObj
+---@overload fun(class: "Material", undo: Undo?): Material
+---@overload fun(class: "Image", undo: Undo?): Image
+---@overload fun(class: "ColorThemeContent", undo: Undo?): ColorThemeContent
+---@overload fun(class: "MVRLocalFile", undo: Undo?): MVRLocalFile
+---@overload fun(class: "TypedNamedObj", undo: Undo?): TypedNamedObj
+---@overload fun(class: "Measurement", undo: Undo?): Measurement
+---@overload fun(class: "RunningPlaybacks", undo: Undo?): RunningPlaybacks
+---@overload fun(class: "TypedObject", undo: Undo?): TypedObject
+---@overload fun(class: "Preset", undo: Undo?): Preset
+---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(class: nil, undo: Undo?): Object
+function RunningPlaybacksSettings:Acquire(class, undo) end
+---@generic T : GroupPoolSettingsCollect|RdmWindowSettingsCollect|WindowPhaserEditorSettingsCollect|TimecodeWindowSettingsCollect|UnassignedTagGridFilter|NetworkGridFilter|FixtureSheetRowFilter|PhaserSheetRowFilter|RunningPlaybacksGirdContentFilter|GridPatchContentFilter|RunningPlaybacksSettingsCollect|PresetShapersPoolSettingsCollect|FixtureSheetSettingsCollect|PresetGoboPoolSettingsCollect|PresetColorPoolSettingsCollect|FilterPoolSettingsCollect|MacroPoolSettingsCollect|MidiInDescriptions|TimecodePoolSettingsCollect|CommandlineWindowSettingsCollect|SysmonWindowSettingsCollect|ExecConfigPoolSettingsCollect|AttributeDefinitions|Tags|Images|GoboImages|Symbols|MeshImagePool|Scribbles|Variables|RDMFixtureType|RenderQuality|ExecEditorSettings|CommandlineWindowSettings|WindowInfoSettings|CloningWindowSettings|ClockWindowSettings|PagePoolSettings|VideoPoolSettings|FilterPoolSettings|QuickeyPoolSettings|WorldPoolSettings|SoundPoolSettings|TimecodeSlotPoolSettings|MacroPoolSettings|SmartViewSettings|TimecodePoolSettings|GeneratorPoolSettings|ExecConfigPoolSettings|GroupPoolSettings|PluginPoolSettings|SequencePoolSettings|LayoutPoolSettings|PresetPoolSettings|BitmapPoolSettings|TimerPoolSettings|GelPoolSettings|MatricksPoolSettings|ShowCreatorSettings|SpecialWindowSettings|ModularPlaybackWindowSettings|WindowAgendaSettings|TimecodeWindowSettings|FixtureEditorSettings|PSRPatchSheetSettings|MessageGridSettings|GelGridSettings|SequenceSheetSettings|DMXSheetSettings|FixtureSheetSettings|RdmWindowSettings|RecipeSheetSettings|RunningPlaybacksSheetSettings|ShowCreatorSheetSettings|WindowPhaserEditorSettings|AtFilterSettings|WindowSoundSettings|LayoutViewSettings|CustomMasterSectionWindowSettings|HelpViewerWindowSettings|SysmonWindowSettings|ColorPickerSettings|WindowTrackpadSettings|EncoderBarWindowSettings|ShaperWindowSettings|MatricksWindowSettings|View3DSettings|SelectionViewSettings|SysteminfoWindowSettings|XkeysWindowSettings|CommandWingBarSettings|PlaybackWindowSettings|Camera|ShowData|AudioInDeviceDescription|GridColumnConfiguration|MIDIDeviceDescription|HelperWindowSettingsCollect|WindowInfoSettingsCollect|TagFakeCollect|ClockWindowSettingsCollect|IllegalObject|AddonVariables|WindowSettingsCollect|NtpMonitor|Timezones|GridColumnConfigurationCollect|Root|MatricksPoolSettingsCollect|TimerPoolSettingsCollect|PresetDimmerPoolSettingsCollect|LayoutViewSettingsCollect|PoolSettingsCollect|PluginPoolSettingsCollect|PultCollect|MidiOutDescriptions|PresetControlPoolSettingsCollect|KeyboardLayouts|PluginPreferencesCollect|WindowAgendaSettingsCollect|DmxSheetSettingsCollect|PresetAllPoolSettingsCollect|SoundChannels|SysteminfoWindowSettingsCollect|GridBase|AutoCreateSettings|LayoutElementDefaultsCollect|GridColumnFilterCollect|GridContentFilterSettings|DMXRoot|PlaybackWindowSettingsCollect|ShowMetaData|GelPoolSettingsCollect|PresetVideoPoolSettingsCollect|AudioInDescriptions|SequenceSheetSettingsCollect|TabRegistry|SelectionViewSettingsCollect|DriveCollect|ColorTheme|BitmapPoolSettingsCollect|WorldPoolSettingsCollect|EncoderBarWindowSettingsCollect|PresetFocusPoolSettingsCollect|ScribbleEdit|MessageGridSettingsCollect|GeneratorPoolSettingsCollect|PresetBeamPoolSettingsCollect|TimecodeSlotPoolSettingsCollect|ExecutorFixation|PresetPositionPoolSettingsCollect|LayoutCameraObject|VideoPoolSettingsCollect|View3DSettingsCollect|LayoutPoolSettingsCollect|PresetDynamicPoolSettingsCollect|SoundPoolSettingsCollect|MVRxchange|SequencePoolSettingsCollect|TestRGBInterface|PresetPoolSettingsCollect|QuickeyPoolSettingsCollect|ModularPlaybackWindowSettingsCollect|ProgLayers|SmartViewSettingsCollect|SpecialWindowSettingsCollect|ContentSheetSettingsCollect|ColorPickerSettingsCollect|PagePoolSettingsCollect|Recipe|grandMA3Modules|ContentSheetGridScroller|MeshLineEdit|DMXSheet|MeshMaterialGrid|FixtureSheet
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: "Object", undo: Undo?): Object
+---@overload fun(class: "GridContentFilterBase", undo: Undo?): GridContentFilterBase
+---@overload fun(class: "GridContentFilter", undo: Undo?): GridContentFilter
+---@overload fun(class: "GridObjectContentFilter", undo: Undo?): GridObjectContentFilter
+---@overload fun(class: "NamedObj", undo: Undo?): NamedObj
+---@overload fun(class: "GenericPool", undo: Undo?): GenericPool
+---@overload fun(class: "CachedObjectPool", undo: Undo?): CachedObjectPool
+---@overload fun(class: "ImagePool", undo: Undo?): ImagePool
+---@overload fun(class: "GuidObject", undo: Undo?): GuidObject
+---@overload fun(class: "WindowSettings", undo: Undo?): WindowSettings
+---@overload fun(class: "PoolSettings", undo: Undo?): PoolSettings
+---@overload fun(class: "GridSettings", undo: Undo?): GridSettings
+---@overload fun(class: "Plugin", undo: Undo?): Plugin
+---@overload fun(class: "CachedObj", undo: Undo?): CachedObj
+---@overload fun(class: "Material", undo: Undo?): Material
+---@overload fun(class: "Image", undo: Undo?): Image
+---@overload fun(class: "ColorThemeContent", undo: Undo?): ColorThemeContent
+---@overload fun(class: "MVRLocalFile", undo: Undo?): MVRLocalFile
+---@overload fun(class: "TypedNamedObj", undo: Undo?): TypedNamedObj
+---@overload fun(class: "Measurement", undo: Undo?): Measurement
+---@overload fun(class: "RunningPlaybacks", undo: Undo?): RunningPlaybacks
+---@overload fun(class: "TypedObject", undo: Undo?): TypedObject
+---@overload fun(class: "Preset", undo: Undo?): Preset
+---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(class: nil, undo: Undo?): Object
+---@deprecated use "Acquire" instead
+function RunningPlaybacksSettings:Aquire(class, undo) end
+---@generic T : GroupPoolSettingsCollect|RdmWindowSettingsCollect|WindowPhaserEditorSettingsCollect|TimecodeWindowSettingsCollect|UnassignedTagGridFilter|NetworkGridFilter|FixtureSheetRowFilter|PhaserSheetRowFilter|RunningPlaybacksGirdContentFilter|GridPatchContentFilter|RunningPlaybacksSettingsCollect|PresetShapersPoolSettingsCollect|FixtureSheetSettingsCollect|PresetGoboPoolSettingsCollect|PresetColorPoolSettingsCollect|FilterPoolSettingsCollect|MacroPoolSettingsCollect|MidiInDescriptions|TimecodePoolSettingsCollect|CommandlineWindowSettingsCollect|SysmonWindowSettingsCollect|ExecConfigPoolSettingsCollect|AttributeDefinitions|Tags|Images|GoboImages|Symbols|MeshImagePool|Scribbles|Variables|RDMFixtureType|RenderQuality|ExecEditorSettings|CommandlineWindowSettings|WindowInfoSettings|CloningWindowSettings|ClockWindowSettings|PagePoolSettings|VideoPoolSettings|FilterPoolSettings|QuickeyPoolSettings|WorldPoolSettings|SoundPoolSettings|TimecodeSlotPoolSettings|MacroPoolSettings|SmartViewSettings|TimecodePoolSettings|GeneratorPoolSettings|ExecConfigPoolSettings|GroupPoolSettings|PluginPoolSettings|SequencePoolSettings|LayoutPoolSettings|PresetPoolSettings|BitmapPoolSettings|TimerPoolSettings|GelPoolSettings|MatricksPoolSettings|ShowCreatorSettings|SpecialWindowSettings|ModularPlaybackWindowSettings|WindowAgendaSettings|TimecodeWindowSettings|FixtureEditorSettings|PSRPatchSheetSettings|MessageGridSettings|GelGridSettings|SequenceSheetSettings|DMXSheetSettings|FixtureSheetSettings|RdmWindowSettings|RecipeSheetSettings|RunningPlaybacksSheetSettings|ShowCreatorSheetSettings|WindowPhaserEditorSettings|AtFilterSettings|WindowSoundSettings|LayoutViewSettings|CustomMasterSectionWindowSettings|HelpViewerWindowSettings|SysmonWindowSettings|ColorPickerSettings|WindowTrackpadSettings|EncoderBarWindowSettings|ShaperWindowSettings|MatricksWindowSettings|View3DSettings|SelectionViewSettings|SysteminfoWindowSettings|XkeysWindowSettings|CommandWingBarSettings|PlaybackWindowSettings|Camera|ShowData|AudioInDeviceDescription|GridColumnConfiguration|MIDIDeviceDescription|HelperWindowSettingsCollect|WindowInfoSettingsCollect|TagFakeCollect|ClockWindowSettingsCollect|IllegalObject|AddonVariables|WindowSettingsCollect|NtpMonitor|Timezones|GridColumnConfigurationCollect|Root|MatricksPoolSettingsCollect|TimerPoolSettingsCollect|PresetDimmerPoolSettingsCollect|LayoutViewSettingsCollect|PoolSettingsCollect|PluginPoolSettingsCollect|PultCollect|MidiOutDescriptions|PresetControlPoolSettingsCollect|KeyboardLayouts|PluginPreferencesCollect|WindowAgendaSettingsCollect|DmxSheetSettingsCollect|PresetAllPoolSettingsCollect|SoundChannels|SysteminfoWindowSettingsCollect|GridBase|AutoCreateSettings|LayoutElementDefaultsCollect|GridColumnFilterCollect|GridContentFilterSettings|DMXRoot|PlaybackWindowSettingsCollect|ShowMetaData|GelPoolSettingsCollect|PresetVideoPoolSettingsCollect|AudioInDescriptions|SequenceSheetSettingsCollect|TabRegistry|SelectionViewSettingsCollect|DriveCollect|ColorTheme|BitmapPoolSettingsCollect|WorldPoolSettingsCollect|EncoderBarWindowSettingsCollect|PresetFocusPoolSettingsCollect|ScribbleEdit|MessageGridSettingsCollect|GeneratorPoolSettingsCollect|PresetBeamPoolSettingsCollect|TimecodeSlotPoolSettingsCollect|ExecutorFixation|PresetPositionPoolSettingsCollect|LayoutCameraObject|VideoPoolSettingsCollect|View3DSettingsCollect|LayoutPoolSettingsCollect|PresetDynamicPoolSettingsCollect|SoundPoolSettingsCollect|MVRxchange|SequencePoolSettingsCollect|TestRGBInterface|PresetPoolSettingsCollect|QuickeyPoolSettingsCollect|ModularPlaybackWindowSettingsCollect|ProgLayers|SmartViewSettingsCollect|SpecialWindowSettingsCollect|ContentSheetSettingsCollect|ColorPickerSettingsCollect|PagePoolSettingsCollect|Recipe|grandMA3Modules|ContentSheetGridScroller|MeshLineEdit|DMXSheet|MeshMaterialGrid|FixtureSheet
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
+---@overload fun(index: integer, class: "Object", undo: Undo?, count: integer?): Object
+---@overload fun(index: integer, class: "GridContentFilterBase", undo: Undo?, count: integer?): GridContentFilterBase
+---@overload fun(index: integer, class: "GridContentFilter", undo: Undo?, count: integer?): GridContentFilter
+---@overload fun(index: integer, class: "GridObjectContentFilter", undo: Undo?, count: integer?): GridObjectContentFilter
+---@overload fun(index: integer, class: "NamedObj", undo: Undo?, count: integer?): NamedObj
+---@overload fun(index: integer, class: "GenericPool", undo: Undo?, count: integer?): GenericPool
+---@overload fun(index: integer, class: "CachedObjectPool", undo: Undo?, count: integer?): CachedObjectPool
+---@overload fun(index: integer, class: "ImagePool", undo: Undo?, count: integer?): ImagePool
+---@overload fun(index: integer, class: "GuidObject", undo: Undo?, count: integer?): GuidObject
+---@overload fun(index: integer, class: "WindowSettings", undo: Undo?, count: integer?): WindowSettings
+---@overload fun(index: integer, class: "PoolSettings", undo: Undo?, count: integer?): PoolSettings
+---@overload fun(index: integer, class: "GridSettings", undo: Undo?, count: integer?): GridSettings
+---@overload fun(index: integer, class: "Plugin", undo: Undo?, count: integer?): Plugin
+---@overload fun(index: integer, class: "CachedObj", undo: Undo?, count: integer?): CachedObj
+---@overload fun(index: integer, class: "Material", undo: Undo?, count: integer?): Material
+---@overload fun(index: integer, class: "Image", undo: Undo?, count: integer?): Image
+---@overload fun(index: integer, class: "ColorThemeContent", undo: Undo?, count: integer?): ColorThemeContent
+---@overload fun(index: integer, class: "MVRLocalFile", undo: Undo?, count: integer?): MVRLocalFile
+---@overload fun(index: integer, class: "TypedNamedObj", undo: Undo?, count: integer?): TypedNamedObj
+---@overload fun(index: integer, class: "Measurement", undo: Undo?, count: integer?): Measurement
+---@overload fun(index: integer, class: "RunningPlaybacks", undo: Undo?, count: integer?): RunningPlaybacks
+---@overload fun(index: integer, class: "TypedObject", undo: Undo?, count: integer?): TypedObject
+---@overload fun(index: integer, class: "Preset", undo: Undo?, count: integer?): Preset
+---@overload fun(index: integer, class: "NoteTextEdit", undo: Undo?, count: integer?): NoteTextEdit
+---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Object
+function RunningPlaybacksSettings:Insert(index, class, undo, count) end
+---@generic T : GroupPoolSettingsCollect|RdmWindowSettingsCollect|WindowPhaserEditorSettingsCollect|TimecodeWindowSettingsCollect|UnassignedTagGridFilter|NetworkGridFilter|FixtureSheetRowFilter|PhaserSheetRowFilter|RunningPlaybacksGirdContentFilter|GridPatchContentFilter|RunningPlaybacksSettingsCollect|PresetShapersPoolSettingsCollect|FixtureSheetSettingsCollect|PresetGoboPoolSettingsCollect|PresetColorPoolSettingsCollect|FilterPoolSettingsCollect|MacroPoolSettingsCollect|MidiInDescriptions|TimecodePoolSettingsCollect|CommandlineWindowSettingsCollect|SysmonWindowSettingsCollect|ExecConfigPoolSettingsCollect|AttributeDefinitions|Tags|Images|GoboImages|Symbols|MeshImagePool|Scribbles|Variables|RDMFixtureType|RenderQuality|ExecEditorSettings|CommandlineWindowSettings|WindowInfoSettings|CloningWindowSettings|ClockWindowSettings|PagePoolSettings|VideoPoolSettings|FilterPoolSettings|QuickeyPoolSettings|WorldPoolSettings|SoundPoolSettings|TimecodeSlotPoolSettings|MacroPoolSettings|SmartViewSettings|TimecodePoolSettings|GeneratorPoolSettings|ExecConfigPoolSettings|GroupPoolSettings|PluginPoolSettings|SequencePoolSettings|LayoutPoolSettings|PresetPoolSettings|BitmapPoolSettings|TimerPoolSettings|GelPoolSettings|MatricksPoolSettings|ShowCreatorSettings|SpecialWindowSettings|ModularPlaybackWindowSettings|WindowAgendaSettings|TimecodeWindowSettings|FixtureEditorSettings|PSRPatchSheetSettings|MessageGridSettings|GelGridSettings|SequenceSheetSettings|DMXSheetSettings|FixtureSheetSettings|RdmWindowSettings|RecipeSheetSettings|RunningPlaybacksSheetSettings|ShowCreatorSheetSettings|WindowPhaserEditorSettings|AtFilterSettings|WindowSoundSettings|LayoutViewSettings|CustomMasterSectionWindowSettings|HelpViewerWindowSettings|SysmonWindowSettings|ColorPickerSettings|WindowTrackpadSettings|EncoderBarWindowSettings|ShaperWindowSettings|MatricksWindowSettings|View3DSettings|SelectionViewSettings|SysteminfoWindowSettings|XkeysWindowSettings|CommandWingBarSettings|PlaybackWindowSettings|Camera|ShowData|AudioInDeviceDescription|GridColumnConfiguration|MIDIDeviceDescription|HelperWindowSettingsCollect|WindowInfoSettingsCollect|TagFakeCollect|ClockWindowSettingsCollect|IllegalObject|AddonVariables|WindowSettingsCollect|NtpMonitor|Timezones|GridColumnConfigurationCollect|Root|MatricksPoolSettingsCollect|TimerPoolSettingsCollect|PresetDimmerPoolSettingsCollect|LayoutViewSettingsCollect|PoolSettingsCollect|PluginPoolSettingsCollect|PultCollect|MidiOutDescriptions|PresetControlPoolSettingsCollect|KeyboardLayouts|PluginPreferencesCollect|WindowAgendaSettingsCollect|DmxSheetSettingsCollect|PresetAllPoolSettingsCollect|SoundChannels|SysteminfoWindowSettingsCollect|GridBase|AutoCreateSettings|LayoutElementDefaultsCollect|GridColumnFilterCollect|GridContentFilterSettings|DMXRoot|PlaybackWindowSettingsCollect|ShowMetaData|GelPoolSettingsCollect|PresetVideoPoolSettingsCollect|AudioInDescriptions|SequenceSheetSettingsCollect|TabRegistry|SelectionViewSettingsCollect|DriveCollect|ColorTheme|BitmapPoolSettingsCollect|WorldPoolSettingsCollect|EncoderBarWindowSettingsCollect|PresetFocusPoolSettingsCollect|ScribbleEdit|MessageGridSettingsCollect|GeneratorPoolSettingsCollect|PresetBeamPoolSettingsCollect|TimecodeSlotPoolSettingsCollect|ExecutorFixation|PresetPositionPoolSettingsCollect|LayoutCameraObject|VideoPoolSettingsCollect|View3DSettingsCollect|LayoutPoolSettingsCollect|PresetDynamicPoolSettingsCollect|SoundPoolSettingsCollect|MVRxchange|SequencePoolSettingsCollect|TestRGBInterface|PresetPoolSettingsCollect|QuickeyPoolSettingsCollect|ModularPlaybackWindowSettingsCollect|ProgLayers|SmartViewSettingsCollect|SpecialWindowSettingsCollect|ContentSheetSettingsCollect|ColorPickerSettingsCollect|PagePoolSettingsCollect|Recipe|grandMA3Modules|ContentSheetGridScroller|MeshLineEdit|DMXSheet|MeshMaterialGrid|FixtureSheet
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: "Object", undo: Undo?): Object
+---@overload fun(class: "GridContentFilterBase", undo: Undo?): GridContentFilterBase
+---@overload fun(class: "GridContentFilter", undo: Undo?): GridContentFilter
+---@overload fun(class: "GridObjectContentFilter", undo: Undo?): GridObjectContentFilter
+---@overload fun(class: "NamedObj", undo: Undo?): NamedObj
+---@overload fun(class: "GenericPool", undo: Undo?): GenericPool
+---@overload fun(class: "CachedObjectPool", undo: Undo?): CachedObjectPool
+---@overload fun(class: "ImagePool", undo: Undo?): ImagePool
+---@overload fun(class: "GuidObject", undo: Undo?): GuidObject
+---@overload fun(class: "WindowSettings", undo: Undo?): WindowSettings
+---@overload fun(class: "PoolSettings", undo: Undo?): PoolSettings
+---@overload fun(class: "GridSettings", undo: Undo?): GridSettings
+---@overload fun(class: "Plugin", undo: Undo?): Plugin
+---@overload fun(class: "CachedObj", undo: Undo?): CachedObj
+---@overload fun(class: "Material", undo: Undo?): Material
+---@overload fun(class: "Image", undo: Undo?): Image
+---@overload fun(class: "ColorThemeContent", undo: Undo?): ColorThemeContent
+---@overload fun(class: "MVRLocalFile", undo: Undo?): MVRLocalFile
+---@overload fun(class: "TypedNamedObj", undo: Undo?): TypedNamedObj
+---@overload fun(class: "Measurement", undo: Undo?): Measurement
+---@overload fun(class: "RunningPlaybacks", undo: Undo?): RunningPlaybacks
+---@overload fun(class: "TypedObject", undo: Undo?): TypedObject
+---@overload fun(class: "Preset", undo: Undo?): Preset
+---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(class: nil, undo: Undo?): Object
+function RunningPlaybacksSettings:Find(class, undo) end

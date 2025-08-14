@@ -17,25 +17,44 @@ function TimecodeWindowSharedContainer:Children() end
 function TimecodeWindowSharedContainer:CurrentChild() end
 ---@overload fun(name: integer, role: nil): TimecodeWindowSharedData
 function TimecodeWindowSharedContainer:Get(name, role) end
----@overload fun(index: integer, class: "TimecodeWindowSharedData", undo: Undo?): TimecodeWindowSharedData
+---@generic T : TimecodeWindowSharedData
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): TimecodeWindowSharedData
 function TimecodeWindowSharedContainer:Create(index, class, undo) end
----@overload fun(class: "TimecodeWindowSharedData", undo: Undo?, count: integer?): TimecodeWindowSharedData
+---@generic T : TimecodeWindowSharedData
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): TimecodeWindowSharedData
 function TimecodeWindowSharedContainer:Append(class, undo, count) end
----@overload fun(class: "TimecodeWindowSharedData", undo: Undo?): TimecodeWindowSharedData
+---@generic T : TimecodeWindowSharedData
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): TimecodeWindowSharedData
 function TimecodeWindowSharedContainer:Acquire(class, undo) end
----@overload fun(class: "TimecodeWindowSharedData", undo: Undo?): TimecodeWindowSharedData
+---@generic T : TimecodeWindowSharedData
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): TimecodeWindowSharedData
 ---@deprecated use "Acquire" instead
 function TimecodeWindowSharedContainer:Aquire(class, undo) end
----@overload fun(index: integer, class: "TimecodeWindowSharedData", undo: Undo?, count: integer?): TimecodeWindowSharedData
+---@generic T : TimecodeWindowSharedData
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): TimecodeWindowSharedData
 function TimecodeWindowSharedContainer:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "TimecodeWindowSharedData"): TimecodeWindowSharedData
----@overload fun(name: string, class: nil): TimecodeWindowSharedData
-function TimecodeWindowSharedContainer:Find(name, class) end
----@overload fun(name: string, class: "TimecodeWindowSharedData"): TimecodeWindowSharedData
----@overload fun(name: string, class: nil): Object
-function TimecodeWindowSharedContainer:FindRecursive(name, class) end
+---@generic T : TimecodeWindowSharedData
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): TimecodeWindowSharedData
+function TimecodeWindowSharedContainer:Find(class, undo) end

@@ -17,25 +17,44 @@ function ColorGroup:Children() end
 function ColorGroup:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Color
 function ColorGroup:Get(name, role) end
----@overload fun(index: integer, class: "Color", undo: Undo?): Color
+---@generic T : Color
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Color
 function ColorGroup:Create(index, class, undo) end
----@overload fun(class: "Color", undo: Undo?, count: integer?): Color
+---@generic T : Color
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Color
 function ColorGroup:Append(class, undo, count) end
----@overload fun(class: "Color", undo: Undo?): Color
+---@generic T : Color
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Color
 function ColorGroup:Acquire(class, undo) end
----@overload fun(class: "Color", undo: Undo?): Color
+---@generic T : Color
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Color
 ---@deprecated use "Acquire" instead
 function ColorGroup:Aquire(class, undo) end
----@overload fun(index: integer, class: "Color", undo: Undo?, count: integer?): Color
+---@generic T : Color
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Color
 function ColorGroup:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Color"): Color
----@overload fun(name: string, class: nil): Color
-function ColorGroup:Find(name, class) end
----@overload fun(name: string, class: "Color"): Color
----@overload fun(name: string, class: nil): Object
-function ColorGroup:FindRecursive(name, class) end
+---@generic T : Color
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Color
+function ColorGroup:Find(class, undo) end

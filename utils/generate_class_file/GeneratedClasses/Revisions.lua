@@ -17,25 +17,44 @@ function Revisions:Children() end
 function Revisions:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Revision
 function Revisions:Get(name, role) end
----@overload fun(index: integer, class: "Revision", undo: Undo?): Revision
+---@generic T : Revision
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Revision
 function Revisions:Create(index, class, undo) end
----@overload fun(class: "Revision", undo: Undo?, count: integer?): Revision
+---@generic T : Revision
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Revision
 function Revisions:Append(class, undo, count) end
----@overload fun(class: "Revision", undo: Undo?): Revision
+---@generic T : Revision
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Revision
 function Revisions:Acquire(class, undo) end
----@overload fun(class: "Revision", undo: Undo?): Revision
+---@generic T : Revision
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Revision
 ---@deprecated use "Acquire" instead
 function Revisions:Aquire(class, undo) end
----@overload fun(index: integer, class: "Revision", undo: Undo?, count: integer?): Revision
+---@generic T : Revision
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Revision
 function Revisions:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Revision"): Revision
----@overload fun(name: string, class: nil): Revision
-function Revisions:Find(name, class) end
----@overload fun(name: string, class: "Revision"): Revision
----@overload fun(name: string, class: nil): Object
-function Revisions:FindRecursive(name, class) end
+---@generic T : Revision
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Revision
+function Revisions:Find(class, undo) end

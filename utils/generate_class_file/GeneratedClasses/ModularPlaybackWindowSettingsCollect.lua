@@ -15,25 +15,44 @@ function ModularPlaybackWindowSettingsCollect:Children() end
 function ModularPlaybackWindowSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): ModularPlaybackWindowSettings
 function ModularPlaybackWindowSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "ModularPlaybackWindowSettings", undo: Undo?): ModularPlaybackWindowSettings
+---@generic T : ModularPlaybackWindowSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): ModularPlaybackWindowSettings
 function ModularPlaybackWindowSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "ModularPlaybackWindowSettings", undo: Undo?, count: integer?): ModularPlaybackWindowSettings
+---@generic T : ModularPlaybackWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): ModularPlaybackWindowSettings
 function ModularPlaybackWindowSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "ModularPlaybackWindowSettings", undo: Undo?): ModularPlaybackWindowSettings
+---@generic T : ModularPlaybackWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ModularPlaybackWindowSettings
 function ModularPlaybackWindowSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "ModularPlaybackWindowSettings", undo: Undo?): ModularPlaybackWindowSettings
+---@generic T : ModularPlaybackWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ModularPlaybackWindowSettings
 ---@deprecated use "Acquire" instead
 function ModularPlaybackWindowSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "ModularPlaybackWindowSettings", undo: Undo?, count: integer?): ModularPlaybackWindowSettings
+---@generic T : ModularPlaybackWindowSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): ModularPlaybackWindowSettings
 function ModularPlaybackWindowSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "ModularPlaybackWindowSettings"): ModularPlaybackWindowSettings
----@overload fun(name: string, class: nil): ModularPlaybackWindowSettings
-function ModularPlaybackWindowSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "ModularPlaybackWindowSettings"): ModularPlaybackWindowSettings
----@overload fun(name: string, class: nil): Object
-function ModularPlaybackWindowSettingsCollect:FindRecursive(name, class) end
+---@generic T : ModularPlaybackWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): ModularPlaybackWindowSettings
+function ModularPlaybackWindowSettingsCollect:Find(class, undo) end

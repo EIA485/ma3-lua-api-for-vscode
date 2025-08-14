@@ -15,25 +15,44 @@ function EncoderBarWindowSettingsCollect:Children() end
 function EncoderBarWindowSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): EncoderBarWindowSettings
 function EncoderBarWindowSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "EncoderBarWindowSettings", undo: Undo?): EncoderBarWindowSettings
+---@generic T : EncoderBarWindowSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): EncoderBarWindowSettings
 function EncoderBarWindowSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "EncoderBarWindowSettings", undo: Undo?, count: integer?): EncoderBarWindowSettings
+---@generic T : EncoderBarWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): EncoderBarWindowSettings
 function EncoderBarWindowSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "EncoderBarWindowSettings", undo: Undo?): EncoderBarWindowSettings
+---@generic T : EncoderBarWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): EncoderBarWindowSettings
 function EncoderBarWindowSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "EncoderBarWindowSettings", undo: Undo?): EncoderBarWindowSettings
+---@generic T : EncoderBarWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): EncoderBarWindowSettings
 ---@deprecated use "Acquire" instead
 function EncoderBarWindowSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "EncoderBarWindowSettings", undo: Undo?, count: integer?): EncoderBarWindowSettings
+---@generic T : EncoderBarWindowSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): EncoderBarWindowSettings
 function EncoderBarWindowSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "EncoderBarWindowSettings"): EncoderBarWindowSettings
----@overload fun(name: string, class: nil): EncoderBarWindowSettings
-function EncoderBarWindowSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "EncoderBarWindowSettings"): EncoderBarWindowSettings
----@overload fun(name: string, class: nil): Object
-function EncoderBarWindowSettingsCollect:FindRecursive(name, class) end
+---@generic T : EncoderBarWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): EncoderBarWindowSettings
+function EncoderBarWindowSettingsCollect:Find(class, undo) end

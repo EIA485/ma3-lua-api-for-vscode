@@ -17,25 +17,44 @@ function GelPools:Children() end
 function GelPools:CurrentChild() end
 ---@overload fun(name: integer, role: nil): GelPool
 function GelPools:Get(name, role) end
----@overload fun(index: integer, class: "GelPool", undo: Undo?): GelPool
+---@generic T : GelPool
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): GelPool
 function GelPools:Create(index, class, undo) end
----@overload fun(class: "GelPool", undo: Undo?, count: integer?): GelPool
+---@generic T : GelPool
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): GelPool
 function GelPools:Append(class, undo, count) end
----@overload fun(class: "GelPool", undo: Undo?): GelPool
+---@generic T : GelPool
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): GelPool
 function GelPools:Acquire(class, undo) end
----@overload fun(class: "GelPool", undo: Undo?): GelPool
+---@generic T : GelPool
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): GelPool
 ---@deprecated use "Acquire" instead
 function GelPools:Aquire(class, undo) end
----@overload fun(index: integer, class: "GelPool", undo: Undo?, count: integer?): GelPool
+---@generic T : GelPool
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): GelPool
 function GelPools:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "GelPool"): GelPool
----@overload fun(name: string, class: nil): GelPool
-function GelPools:Find(name, class) end
----@overload fun(name: string, class: "GelPool"): GelPool
----@overload fun(name: string, class: nil): Object
-function GelPools:FindRecursive(name, class) end
+---@generic T : GelPool
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): GelPool
+function GelPools:Find(class, undo) end

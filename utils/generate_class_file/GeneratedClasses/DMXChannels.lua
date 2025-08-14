@@ -17,25 +17,44 @@ function DMXChannels:Children() end
 function DMXChannels:CurrentChild() end
 ---@overload fun(name: integer, role: nil): DMXChannel
 function DMXChannels:Get(name, role) end
----@overload fun(index: integer, class: "DMXChannel", undo: Undo?): DMXChannel
+---@generic T : DMXChannel
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): DMXChannel
 function DMXChannels:Create(index, class, undo) end
----@overload fun(class: "DMXChannel", undo: Undo?, count: integer?): DMXChannel
+---@generic T : DMXChannel
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): DMXChannel
 function DMXChannels:Append(class, undo, count) end
----@overload fun(class: "DMXChannel", undo: Undo?): DMXChannel
+---@generic T : DMXChannel
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DMXChannel
 function DMXChannels:Acquire(class, undo) end
----@overload fun(class: "DMXChannel", undo: Undo?): DMXChannel
+---@generic T : DMXChannel
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DMXChannel
 ---@deprecated use "Acquire" instead
 function DMXChannels:Aquire(class, undo) end
----@overload fun(index: integer, class: "DMXChannel", undo: Undo?, count: integer?): DMXChannel
+---@generic T : DMXChannel
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): DMXChannel
 function DMXChannels:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "DMXChannel"): DMXChannel
----@overload fun(name: string, class: nil): DMXChannel
-function DMXChannels:Find(name, class) end
----@overload fun(name: string, class: "DMXChannel"): DMXChannel
----@overload fun(name: string, class: nil): Object
-function DMXChannels:FindRecursive(name, class) end
+---@generic T : DMXChannel
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): DMXChannel
+function DMXChannels:Find(class, undo) end

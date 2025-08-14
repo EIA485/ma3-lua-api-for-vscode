@@ -15,25 +15,44 @@ function MidiOutDescriptions:Children() end
 function MidiOutDescriptions:CurrentChild() end
 ---@overload fun(name: integer, role: nil): MIDIDeviceDescription
 function MidiOutDescriptions:Get(name, role) end
----@overload fun(index: integer, class: "MIDIDeviceDescription", undo: Undo?): MIDIDeviceDescription
+---@generic T : MIDIDeviceDescription
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): MIDIDeviceDescription
 function MidiOutDescriptions:Create(index, class, undo) end
----@overload fun(class: "MIDIDeviceDescription", undo: Undo?, count: integer?): MIDIDeviceDescription
+---@generic T : MIDIDeviceDescription
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): MIDIDeviceDescription
 function MidiOutDescriptions:Append(class, undo, count) end
----@overload fun(class: "MIDIDeviceDescription", undo: Undo?): MIDIDeviceDescription
+---@generic T : MIDIDeviceDescription
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MIDIDeviceDescription
 function MidiOutDescriptions:Acquire(class, undo) end
----@overload fun(class: "MIDIDeviceDescription", undo: Undo?): MIDIDeviceDescription
+---@generic T : MIDIDeviceDescription
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MIDIDeviceDescription
 ---@deprecated use "Acquire" instead
 function MidiOutDescriptions:Aquire(class, undo) end
----@overload fun(index: integer, class: "MIDIDeviceDescription", undo: Undo?, count: integer?): MIDIDeviceDescription
+---@generic T : MIDIDeviceDescription
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): MIDIDeviceDescription
 function MidiOutDescriptions:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "MIDIDeviceDescription"): MIDIDeviceDescription
----@overload fun(name: string, class: nil): MIDIDeviceDescription
-function MidiOutDescriptions:Find(name, class) end
----@overload fun(name: string, class: "MIDIDeviceDescription"): MIDIDeviceDescription
----@overload fun(name: string, class: nil): Object
-function MidiOutDescriptions:FindRecursive(name, class) end
+---@generic T : MIDIDeviceDescription
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): MIDIDeviceDescription
+function MidiOutDescriptions:Find(class, undo) end

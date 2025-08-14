@@ -15,25 +15,44 @@ function TimecodeWindowSettingsCollect:Children() end
 function TimecodeWindowSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): TimecodeWindowSettings
 function TimecodeWindowSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "TimecodeWindowSettings", undo: Undo?): TimecodeWindowSettings
+---@generic T : TimecodeWindowSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): TimecodeWindowSettings
 function TimecodeWindowSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "TimecodeWindowSettings", undo: Undo?, count: integer?): TimecodeWindowSettings
+---@generic T : TimecodeWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): TimecodeWindowSettings
 function TimecodeWindowSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "TimecodeWindowSettings", undo: Undo?): TimecodeWindowSettings
+---@generic T : TimecodeWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): TimecodeWindowSettings
 function TimecodeWindowSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "TimecodeWindowSettings", undo: Undo?): TimecodeWindowSettings
+---@generic T : TimecodeWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): TimecodeWindowSettings
 ---@deprecated use "Acquire" instead
 function TimecodeWindowSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "TimecodeWindowSettings", undo: Undo?, count: integer?): TimecodeWindowSettings
+---@generic T : TimecodeWindowSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): TimecodeWindowSettings
 function TimecodeWindowSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "TimecodeWindowSettings"): TimecodeWindowSettings
----@overload fun(name: string, class: nil): TimecodeWindowSettings
-function TimecodeWindowSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "TimecodeWindowSettings"): TimecodeWindowSettings
----@overload fun(name: string, class: nil): Object
-function TimecodeWindowSettingsCollect:FindRecursive(name, class) end
+---@generic T : TimecodeWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): TimecodeWindowSettings
+function TimecodeWindowSettingsCollect:Find(class, undo) end

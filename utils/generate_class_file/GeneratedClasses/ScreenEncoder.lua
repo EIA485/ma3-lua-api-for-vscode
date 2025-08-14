@@ -17,25 +17,44 @@ function ScreenEncoder:Children() end
 function ScreenEncoder:CurrentChild() end
 ---@overload fun(name: integer, role: nil): ScreenEncoderDirection
 function ScreenEncoder:Get(name, role) end
----@overload fun(index: integer, class: "ScreenEncoderDirection", undo: Undo?): ScreenEncoderDirection
+---@generic T : ScreenEncoderDirection
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): ScreenEncoderDirection
 function ScreenEncoder:Create(index, class, undo) end
----@overload fun(class: "ScreenEncoderDirection", undo: Undo?, count: integer?): ScreenEncoderDirection
+---@generic T : ScreenEncoderDirection
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): ScreenEncoderDirection
 function ScreenEncoder:Append(class, undo, count) end
----@overload fun(class: "ScreenEncoderDirection", undo: Undo?): ScreenEncoderDirection
+---@generic T : ScreenEncoderDirection
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ScreenEncoderDirection
 function ScreenEncoder:Acquire(class, undo) end
----@overload fun(class: "ScreenEncoderDirection", undo: Undo?): ScreenEncoderDirection
+---@generic T : ScreenEncoderDirection
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ScreenEncoderDirection
 ---@deprecated use "Acquire" instead
 function ScreenEncoder:Aquire(class, undo) end
----@overload fun(index: integer, class: "ScreenEncoderDirection", undo: Undo?, count: integer?): ScreenEncoderDirection
+---@generic T : ScreenEncoderDirection
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): ScreenEncoderDirection
 function ScreenEncoder:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "ScreenEncoderDirection"): ScreenEncoderDirection
----@overload fun(name: string, class: nil): ScreenEncoderDirection
-function ScreenEncoder:Find(name, class) end
----@overload fun(name: string, class: "ScreenEncoderDirection"): ScreenEncoderDirection
----@overload fun(name: string, class: nil): Object
-function ScreenEncoder:FindRecursive(name, class) end
+---@generic T : ScreenEncoderDirection
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): ScreenEncoderDirection
+function ScreenEncoder:Find(class, undo) end

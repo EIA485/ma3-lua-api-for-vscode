@@ -15,25 +15,44 @@ function KeyboardLayouts:Children() end
 function KeyboardLayouts:CurrentChild() end
 ---@overload fun(name: integer, role: nil): KeyboardLayout
 function KeyboardLayouts:Get(name, role) end
----@overload fun(index: integer, class: "KeyboardLayout", undo: Undo?): KeyboardLayout
+---@generic T : KeyboardLayout
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): KeyboardLayout
 function KeyboardLayouts:Create(index, class, undo) end
----@overload fun(class: "KeyboardLayout", undo: Undo?, count: integer?): KeyboardLayout
+---@generic T : KeyboardLayout
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): KeyboardLayout
 function KeyboardLayouts:Append(class, undo, count) end
----@overload fun(class: "KeyboardLayout", undo: Undo?): KeyboardLayout
+---@generic T : KeyboardLayout
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): KeyboardLayout
 function KeyboardLayouts:Acquire(class, undo) end
----@overload fun(class: "KeyboardLayout", undo: Undo?): KeyboardLayout
+---@generic T : KeyboardLayout
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): KeyboardLayout
 ---@deprecated use "Acquire" instead
 function KeyboardLayouts:Aquire(class, undo) end
----@overload fun(index: integer, class: "KeyboardLayout", undo: Undo?, count: integer?): KeyboardLayout
+---@generic T : KeyboardLayout
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): KeyboardLayout
 function KeyboardLayouts:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "KeyboardLayout"): KeyboardLayout
----@overload fun(name: string, class: nil): KeyboardLayout
-function KeyboardLayouts:Find(name, class) end
----@overload fun(name: string, class: "KeyboardLayout"): KeyboardLayout
----@overload fun(name: string, class: nil): Object
-function KeyboardLayouts:FindRecursive(name, class) end
+---@generic T : KeyboardLayout
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): KeyboardLayout
+function KeyboardLayouts:Find(class, undo) end

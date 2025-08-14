@@ -17,25 +17,44 @@ function Bitmaps:Children() end
 function Bitmaps:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Bitmap
 function Bitmaps:Get(name, role) end
----@overload fun(index: integer, class: "Bitmap", undo: Undo?): Bitmap
+---@generic T : Bitmap
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Bitmap
 function Bitmaps:Create(index, class, undo) end
----@overload fun(class: "Bitmap", undo: Undo?, count: integer?): Bitmap
+---@generic T : Bitmap
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Bitmap
 function Bitmaps:Append(class, undo, count) end
----@overload fun(class: "Bitmap", undo: Undo?): Bitmap
+---@generic T : Bitmap
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Bitmap
 function Bitmaps:Acquire(class, undo) end
----@overload fun(class: "Bitmap", undo: Undo?): Bitmap
+---@generic T : Bitmap
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Bitmap
 ---@deprecated use "Acquire" instead
 function Bitmaps:Aquire(class, undo) end
----@overload fun(index: integer, class: "Bitmap", undo: Undo?, count: integer?): Bitmap
+---@generic T : Bitmap
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Bitmap
 function Bitmaps:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Bitmap"): Bitmap
----@overload fun(name: string, class: nil): Bitmap
-function Bitmaps:Find(name, class) end
----@overload fun(name: string, class: "Bitmap"): Bitmap
----@overload fun(name: string, class: nil): Object
-function Bitmaps:FindRecursive(name, class) end
+---@generic T : Bitmap
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Bitmap
+function Bitmaps:Find(class, undo) end

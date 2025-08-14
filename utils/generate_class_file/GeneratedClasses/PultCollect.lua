@@ -15,53 +15,44 @@ function PultCollect:Children() end
 function PultCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Pult
 function PultCollect:Get(name, role) end
----@overload fun(index: integer, class: "Pult", undo: Undo?): Pult
----@overload fun(index: integer, class: "Pult", undo: Undo?): Pult
----@overload fun(index: integer, class: "Pult", undo: Undo?): Pult
----@overload fun(index: integer, class: "Pult", undo: Undo?): Pult
----@overload fun(index: integer, class: "Pult", undo: Undo?): Pult
+---@generic T : Pult
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Pult
 function PultCollect:Create(index, class, undo) end
----@overload fun(class: "Pult", undo: Undo?, count: integer?): Pult
----@overload fun(class: "Pult", undo: Undo?, count: integer?): Pult
----@overload fun(class: "Pult", undo: Undo?, count: integer?): Pult
----@overload fun(class: "Pult", undo: Undo?, count: integer?): Pult
----@overload fun(class: "Pult", undo: Undo?, count: integer?): Pult
+---@generic T : Pult
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Pult
 function PultCollect:Append(class, undo, count) end
----@overload fun(class: "Pult", undo: Undo?): Pult
----@overload fun(class: "Pult", undo: Undo?): Pult
----@overload fun(class: "Pult", undo: Undo?): Pult
----@overload fun(class: "Pult", undo: Undo?): Pult
----@overload fun(class: "Pult", undo: Undo?): Pult
+---@generic T : Pult
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Pult
 function PultCollect:Acquire(class, undo) end
----@overload fun(class: "Pult", undo: Undo?): Pult
----@overload fun(class: "Pult", undo: Undo?): Pult
----@overload fun(class: "Pult", undo: Undo?): Pult
----@overload fun(class: "Pult", undo: Undo?): Pult
----@overload fun(class: "Pult", undo: Undo?): Pult
+---@generic T : Pult
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Pult
 ---@deprecated use "Acquire" instead
 function PultCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "Pult", undo: Undo?, count: integer?): Pult
----@overload fun(index: integer, class: "Pult", undo: Undo?, count: integer?): Pult
----@overload fun(index: integer, class: "Pult", undo: Undo?, count: integer?): Pult
----@overload fun(index: integer, class: "Pult", undo: Undo?, count: integer?): Pult
----@overload fun(index: integer, class: "Pult", undo: Undo?, count: integer?): Pult
+---@generic T : Pult
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Pult
 function PultCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Pult"): Pult
----@overload fun(name: string, class: "Pult"): Pult
----@overload fun(name: string, class: "Pult"): Pult
----@overload fun(name: string, class: "Pult"): Pult
----@overload fun(name: string, class: "Pult"): Pult
----@overload fun(name: string, class: nil): Pult
-function PultCollect:Find(name, class) end
----@overload fun(name: string, class: "Pult"): Pult
----@overload fun(name: string, class: "Pult"): Pult
----@overload fun(name: string, class: "Pult"): Pult
----@overload fun(name: string, class: "Pult"): Pult
----@overload fun(name: string, class: "Pult"): Pult
----@overload fun(name: string, class: nil): Object
-function PultCollect:FindRecursive(name, class) end
+---@generic T : Pult
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Pult
+function PultCollect:Find(class, undo) end

@@ -4,7 +4,7 @@
 ---@field IP Manet.IP4
 ---@field IsActive boolean
 local ArtNetNode = {}
----@return "ArtNetNode"
+---@return "Art-Net-Node"
 function ArtNetNode:GetClass() end
 ---@return "BindIndex"
 function ArtNetNode:GetChildClass() end
@@ -17,37 +17,51 @@ function ArtNetNode:Ptr(index) end
 function ArtNetNode:Children() end
 ---@return BindIndex?
 function ArtNetNode:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
 ---@overload fun(name: "IP", role: nil): Manet.IP4
----@overload fun(name: "IsActive", role: nil): boolean
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"IP"|"IsActive", role: Enums.Roles): string
+---@overload fun(name: "IsActive"|"FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "IP"|"IsActive"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): BindIndex
 function ArtNetNode:Get(name, role) end
----@overload fun(index: integer, class: "BindIndex", undo: Undo?): BindIndex
+---@generic T : BindIndex
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): BindIndex
 function ArtNetNode:Create(index, class, undo) end
----@overload fun(class: "BindIndex", undo: Undo?, count: integer?): BindIndex
+---@generic T : BindIndex
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): BindIndex
 function ArtNetNode:Append(class, undo, count) end
----@overload fun(class: "BindIndex", undo: Undo?): BindIndex
+---@generic T : BindIndex
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): BindIndex
 function ArtNetNode:Acquire(class, undo) end
----@overload fun(class: "BindIndex", undo: Undo?): BindIndex
+---@generic T : BindIndex
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): BindIndex
 ---@deprecated use "Acquire" instead
 function ArtNetNode:Aquire(class, undo) end
----@overload fun(index: integer, class: "BindIndex", undo: Undo?, count: integer?): BindIndex
+---@generic T : BindIndex
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): BindIndex
 function ArtNetNode:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "BindIndex"): BindIndex
----@overload fun(name: string, class: nil): BindIndex
-function ArtNetNode:Find(name, class) end
----@overload fun(name: string, class: "BindIndex"): BindIndex
----@overload fun(name: string, class: nil): Object
-function ArtNetNode:FindRecursive(name, class) end
+---@generic T : BindIndex
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): BindIndex
+function ArtNetNode:Find(class, undo) end

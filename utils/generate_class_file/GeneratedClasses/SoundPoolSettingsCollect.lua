@@ -15,25 +15,44 @@ function SoundPoolSettingsCollect:Children() end
 function SoundPoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): SoundPoolSettings
 function SoundPoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "SoundPoolSettings", undo: Undo?): SoundPoolSettings
+---@generic T : SoundPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): SoundPoolSettings
 function SoundPoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "SoundPoolSettings", undo: Undo?, count: integer?): SoundPoolSettings
+---@generic T : SoundPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): SoundPoolSettings
 function SoundPoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "SoundPoolSettings", undo: Undo?): SoundPoolSettings
+---@generic T : SoundPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SoundPoolSettings
 function SoundPoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "SoundPoolSettings", undo: Undo?): SoundPoolSettings
+---@generic T : SoundPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SoundPoolSettings
 ---@deprecated use "Acquire" instead
 function SoundPoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "SoundPoolSettings", undo: Undo?, count: integer?): SoundPoolSettings
+---@generic T : SoundPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): SoundPoolSettings
 function SoundPoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "SoundPoolSettings"): SoundPoolSettings
----@overload fun(name: string, class: nil): SoundPoolSettings
-function SoundPoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "SoundPoolSettings"): SoundPoolSettings
----@overload fun(name: string, class: nil): Object
-function SoundPoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : SoundPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): SoundPoolSettings
+function SoundPoolSettingsCollect:Find(class, undo) end

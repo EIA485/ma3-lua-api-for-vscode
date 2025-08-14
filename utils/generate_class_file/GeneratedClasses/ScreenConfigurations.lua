@@ -17,25 +17,44 @@ function ScreenConfigurations:Children() end
 function ScreenConfigurations:CurrentChild() end
 ---@overload fun(name: integer, role: nil): ScreenConfig
 function ScreenConfigurations:Get(name, role) end
----@overload fun(index: integer, class: "ScreenConfig", undo: Undo?): ScreenConfig
+---@generic T : ScreenConfig
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): ScreenConfig
 function ScreenConfigurations:Create(index, class, undo) end
----@overload fun(class: "ScreenConfig", undo: Undo?, count: integer?): ScreenConfig
+---@generic T : ScreenConfig
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): ScreenConfig
 function ScreenConfigurations:Append(class, undo, count) end
----@overload fun(class: "ScreenConfig", undo: Undo?): ScreenConfig
+---@generic T : ScreenConfig
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ScreenConfig
 function ScreenConfigurations:Acquire(class, undo) end
----@overload fun(class: "ScreenConfig", undo: Undo?): ScreenConfig
+---@generic T : ScreenConfig
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ScreenConfig
 ---@deprecated use "Acquire" instead
 function ScreenConfigurations:Aquire(class, undo) end
----@overload fun(index: integer, class: "ScreenConfig", undo: Undo?, count: integer?): ScreenConfig
+---@generic T : ScreenConfig
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): ScreenConfig
 function ScreenConfigurations:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "ScreenConfig"): ScreenConfig
----@overload fun(name: string, class: nil): ScreenConfig
-function ScreenConfigurations:Find(name, class) end
----@overload fun(name: string, class: "ScreenConfig"): ScreenConfig
----@overload fun(name: string, class: nil): Object
-function ScreenConfigurations:FindRecursive(name, class) end
+---@generic T : ScreenConfig
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): ScreenConfig
+function ScreenConfigurations:Find(class, undo) end

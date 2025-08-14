@@ -18,35 +18,50 @@ function Quickeys:Ptr(index) end
 function Quickeys:Children() end
 ---@return Quickey?
 function Quickeys:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
 ---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint"|"DefaultsLoaded"|"CLI", role: nil): integer
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"DefaultsLoaded"|"CLI", role: Enums.Roles): string
+---@overload fun(name: "CLI"|"DefaultsLoaded"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "CLI"|"DefaultsLoaded"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): Quickey
 function Quickeys:Get(name, role) end
----@overload fun(index: integer, class: "Quickey", undo: Undo?): Quickey
+---@generic T : Quickey
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Quickey
 function Quickeys:Create(index, class, undo) end
----@overload fun(class: "Quickey", undo: Undo?, count: integer?): Quickey
+---@generic T : Quickey
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Quickey
 function Quickeys:Append(class, undo, count) end
----@overload fun(class: "Quickey", undo: Undo?): Quickey
+---@generic T : Quickey
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Quickey
 function Quickeys:Acquire(class, undo) end
----@overload fun(class: "Quickey", undo: Undo?): Quickey
+---@generic T : Quickey
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Quickey
 ---@deprecated use "Acquire" instead
 function Quickeys:Aquire(class, undo) end
----@overload fun(index: integer, class: "Quickey", undo: Undo?, count: integer?): Quickey
+---@generic T : Quickey
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Quickey
 function Quickeys:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Quickey"): Quickey
----@overload fun(name: string, class: nil): Quickey
-function Quickeys:Find(name, class) end
----@overload fun(name: string, class: "Quickey"): Quickey
----@overload fun(name: string, class: nil): Object
-function Quickeys:FindRecursive(name, class) end
+---@generic T : Quickey
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Quickey
+function Quickeys:Find(class, undo) end

@@ -15,25 +15,44 @@ function AddonVariables:Children() end
 function AddonVariables:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Variables
 function AddonVariables:Get(name, role) end
----@overload fun(index: integer, class: "Variables", undo: Undo?): Variables
+---@generic T : Variables
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Variables
 function AddonVariables:Create(index, class, undo) end
----@overload fun(class: "Variables", undo: Undo?, count: integer?): Variables
+---@generic T : Variables
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Variables
 function AddonVariables:Append(class, undo, count) end
----@overload fun(class: "Variables", undo: Undo?): Variables
+---@generic T : Variables
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Variables
 function AddonVariables:Acquire(class, undo) end
----@overload fun(class: "Variables", undo: Undo?): Variables
+---@generic T : Variables
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Variables
 ---@deprecated use "Acquire" instead
 function AddonVariables:Aquire(class, undo) end
----@overload fun(index: integer, class: "Variables", undo: Undo?, count: integer?): Variables
+---@generic T : Variables
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Variables
 function AddonVariables:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Variables"): Variables
----@overload fun(name: string, class: nil): Variables
-function AddonVariables:Find(name, class) end
----@overload fun(name: string, class: "Variables"): Variables
----@overload fun(name: string, class: nil): Object
-function AddonVariables:FindRecursive(name, class) end
+---@generic T : Variables
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Variables
+function AddonVariables:Find(class, undo) end

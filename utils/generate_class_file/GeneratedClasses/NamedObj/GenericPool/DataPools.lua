@@ -17,25 +17,44 @@ function DataPools:Children() end
 function DataPools:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Pool
 function DataPools:Get(name, role) end
----@overload fun(index: integer, class: "Pool", undo: Undo?): Pool
+---@generic T : Pool
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Pool
 function DataPools:Create(index, class, undo) end
----@overload fun(class: "Pool", undo: Undo?, count: integer?): Pool
+---@generic T : Pool
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Pool
 function DataPools:Append(class, undo, count) end
----@overload fun(class: "Pool", undo: Undo?): Pool
+---@generic T : Pool
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Pool
 function DataPools:Acquire(class, undo) end
----@overload fun(class: "Pool", undo: Undo?): Pool
+---@generic T : Pool
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Pool
 ---@deprecated use "Acquire" instead
 function DataPools:Aquire(class, undo) end
----@overload fun(index: integer, class: "Pool", undo: Undo?, count: integer?): Pool
+---@generic T : Pool
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Pool
 function DataPools:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Pool"): Pool
----@overload fun(name: string, class: nil): Pool
-function DataPools:Find(name, class) end
----@overload fun(name: string, class: "Pool"): Pool
----@overload fun(name: string, class: nil): Object
-function DataPools:FindRecursive(name, class) end
+---@generic T : Pool
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Pool
+function DataPools:Find(class, undo) end

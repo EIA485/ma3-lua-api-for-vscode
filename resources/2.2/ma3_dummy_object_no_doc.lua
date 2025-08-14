@@ -5,14 +5,14 @@
 -- ========================================
 
 
----@param parent Handle
+---@param parent Object
 ---@param role? string @Optional
-function Handle:AddListChildren(parent, role)
+function Object:AddListChildren(parent, role)
 end
 
----@param parent Handle
+---@param parent Object
 ---@param role? string @Optional
-function Handle:AddListChildrenNames(parent, role)
+function Object:AddListChildrenNames(parent, role)
 end
 
 ---@param name string
@@ -20,342 +20,342 @@ end
 ---@param callback function
 ---@param argument? any @Optional
 ---@param appearance? table @Optional
-function Handle:AddListLuaItem(name, value, callback, argument, appearance)
+function Object:AddListLuaItem(name, value, callback, argument, appearance)
 end
 
 ---@param items table
-function Handle:AddListLuaItems(items)
+function Object:AddListLuaItems(items)
 end
 
 ---@param name string
 ---@param value number
----@param baseHandle? Handle @Optional
+---@param baseHandle? Object @Optional
 ---@param appearance? table @Optional
-function Handle:AddListNumericItem(name, value, baseHandle, appearance)
+function Object:AddListNumericItem(name, value, baseHandle, appearance)
 end
 
 ---@param items table
-function Handle:AddListNumericItems(items)
+function Object:AddListNumericItems(items)
 end
 
----@param targetObject Handle
+---@param targetObject Object
 ---@param explicitName? string @Optional
 ---@param appearance? table @Optional
-function Handle:AddListObjectItem(targetObject, explicitName, appearance)
+function Object:AddListObjectItem(targetObject, explicitName, appearance)
 end
 
 ---@param name string
 ---@param value string
----@param targetHandle Handle
+---@param targetHandle Object
 ---@param appearance? table @Optional
-function Handle:AddListPropertyItem(name, value, targetHandle, appearance)
+function Object:AddListPropertyItem(name, value, targetHandle, appearance)
 end
 
 ---@param items table
-function Handle:AddListPropertyItems(items)
+function Object:AddListPropertyItems(items)
 end
 
----@param parent Handle
+---@param parent Object
 ---@param role? string @Optional
-function Handle:AddListRecursiveNames(parent, role)
+function Object:AddListRecursiveNames(parent, role)
 end
 
 ---@param name string
 ---@param value string
 ---@param appearance? table @Optional
-function Handle:AddListStringItem(name, value, appearance)
+function Object:AddListStringItem(name, value, appearance)
 end
 
 ---@param items table
-function Handle:AddListStringItems(items)
+function Object:AddListStringItems(items)
 end
 
 
 ---@param changeLevelEnum string
-function Handle:Changed(changeLevelEnum)
+function Object:Changed(changeLevelEnum)
 end
 
-function Handle:ClearList()
+function Object:ClearList()
 end
 
 
 ---@return table childHandles
-function Handle:CmdlineChildren()
+function Object:CmdlineChildren()
     return {}
 end
 
 ---@param index integer
----@return Handle childHandle
-function Handle:CmdlinePtr(index)
-    return Handle:new()
+---@return Object childHandle
+function Object:CmdlinePtr(index)
+    return Object:new()
 end
 
-function Handle:CommandAt()
+function Object:CommandAt()
 end
 
----@param destHandle Handle
+---@param destHandle Object
 ---@param focusSearchAllowed? boolean @Optional
-function Handle:CommandCall(destHandle, focusSearchAllowed)
+function Object:CommandCall(destHandle, focusSearchAllowed)
 end
 
-function Handle:CommandCreateDefaults()
+function Object:CommandCreateDefaults()
 end
 
-function Handle:CommandDelete()
+function Object:CommandDelete()
 end
 
-function Handle:CommandStore()
+function Object:CommandStore()
 end
 
----@param otherHandle Handle
+---@param otherHandle Object
 ---@return boolean isEqual
 ---@return string whatDiffers
-function Handle:Compare(otherHandle)
+function Object:Compare(otherHandle)
     return false, ""
 end
 
----@param srcHandle Handle
----@param undo? Handle @Optional
-function Handle:Copy(srcHandle, undo)
+---@param srcHandle Object
+---@param undo? Object @Optional
+function Object:Copy(srcHandle, undo)
 end
 
 
 ---@param childIndex integer
----@param undo? Handle @Optional
-function Handle:Delete(childIndex, undo)
+---@param undo? Object @Optional
+function Object:Delete(childIndex, undo)
 end
 
 ---@param value string
 ---@return integer index
-function Handle:FindListItemByName(value)
+function Object:FindListItemByName(value)
     return 1
 end
 
 ---@param value string
 ---@return integer index
-function Handle:FindListItemByValueStr(value)
+function Object:FindListItemByValueStr(value)
     return 1
 end
 
 ---@param searchName string
----@return Handle foundHandle
-function Handle:FindWild(searchName)
-    return Handle:new()
+---@return Object foundHandle
+function Object:FindWild(searchName)
+    return Object:new()
 end
 
----@return Handle assignedHandle
-function Handle:GetAssignedObj()
-    return Handle:new()
+---@return Object assignedHandle
+function Object:GetAssignedObj()
+    return Object:new()
 end
 
 ---@param camelCaseToFileName? boolean @Optional
 ---@return string fileName
-function Handle:GetExportFileName(camelCaseToFileName)
+function Object:GetExportFileName(camelCaseToFileName)
     return ""
 end
 
 ---@param lineNumber integer
 ---@return string lineContent
-function Handle:GetLineAt(lineNumber)
+function Object:GetLineAt(lineNumber)
     return ""
 end
 
 ---@return integer count
-function Handle:GetLineCount()
+function Object:GetLineCount()
     return 0
 end
 
 ---@param index integer
 ---@return table appearance
-function Handle:GetListItemAppearance(index)
+function Object:GetListItemAppearance(index)
     return {}
 end
 
 ---@param index integer
----@return Handle|nil buttonHandle
-function Handle:GetListItemButton(index)
-    return Handle:new()
+---@return Object|nil buttonHandle
+function Object:GetListItemButton(index)
+    return Object:new()
 end
 
 ---@param index integer
 ---@return string name
-function Handle:GetListItemName(index)
+function Object:GetListItemName(index)
     return ""
 end
 
 ---@param index integer
 ---@return integer value
-function Handle:GetListItemValueI64(index)
+function Object:GetListItemValueI64(index)
     return 0
 end
 
 ---@param index integer
 ---@return string value
-function Handle:GetListItemValueStr(index)
+function Object:GetListItemValueStr(index)
     return ""
 end
 
 ---@return integer count
-function Handle:GetListItemsCount()
+function Object:GetListItemsCount()
     return 0
 end
 
 ---@return integer index
-function Handle:GetListSelectedItemIndex()
+function Object:GetListSelectedItemIndex()
     return 1
 end
 
 
 ---@return boolean hasDependencies
-function Handle:HasDependencies()
+function Object:HasDependencies()
     return false
 end
 
 ---@return boolean hasEditSettingUI
-function Handle:HasEditSettingUI()
+function Object:HasEditSettingUI()
     return false
 end
 
 ---@return boolean hasEditUI
-function Handle:HasEditUI()
+function Object:HasEditUI()
     return false
 end
 
----@param objectToCheck Handle
-function Handle:HasParent(objectToCheck)
+---@param objectToCheck Object
+function Object:HasParent(objectToCheck)
 end
 
 ---@return boolean hasReferences
-function Handle:HasReferences()
+function Object:HasReferences()
     return false
 end
 
 ---@return integer index
-function Handle:Index()
+function Object:Index()
     return 0
 end
 
 ---@param functionName string
 ---@return any result
-function Handle:InputCallFunction(functionName)
+function Object:InputCallFunction(functionName)
     return nil
 end
 
 ---@param functionName string
 ---@return boolean|nil hasFunction
-function Handle:InputHasFunction(functionName)
+function Object:InputHasFunction(functionName)
     return true
 end
 
-function Handle:InputRun()
+function Object:InputRun()
 end
 
 ---@param parameterName string
 ---@param parameterValue string
-function Handle:InputSetAdditionalParameter(parameterName, parameterValue)
+function Object:InputSetAdditionalParameter(parameterName, parameterValue)
 end
 
 ---@param nameValue string
-function Handle:InputSetEditTitle(nameValue)
+function Object:InputSetEditTitle(nameValue)
 end
 
 ---@param length integer
-function Handle:InputSetMaxLength(length)
+function Object:InputSetMaxLength(length)
 end
 
 ---@param nameValue string
-function Handle:InputSetTitle(nameValue)
+function Object:InputSetTitle(nameValue)
 end
 
 ---@param value string
-function Handle:InputSetValue(value)
+function Object:InputSetValue(value)
 end
 
 
 ---@return boolean isClass
-function Handle:IsClass()
+function Object:IsClass()
     return false
 end
 
 ---@return boolean isEmpty
-function Handle:IsEmpty()
+function Object:IsEmpty()
     return false
 end
 
 
 ---@param index integer
-function Handle:IsListItemEmpty(index)
+function Object:IsListItemEmpty(index)
 end
 
 ---@param index integer
-function Handle:IsListItemEnabled(index)
+function Object:IsListItemEnabled(index)
 end
 
 ---@return boolean isLocked
-function Handle:IsLocked()
+function Object:IsLocked()
     return false
 end
 
 ---@return boolean isValid
-function Handle:IsValid()
+function Object:IsValid()
     return false
 end
 
 ---@param filePath string
 ---@param fileName string
 ---@return boolean success
-function Handle:Load(filePath, fileName)
+function Object:Load(filePath, fileName)
     return false
 end
 
 ---@return integer maxCount
-function Handle:MaxCount()
+function Object:MaxCount()
     return 0
 end
 
-function Handle:PrepareAccess()
+function Object:PrepareAccess()
 end
 
 ---@return integer propertyCount
-function Handle:PropertyCount()
+function Object:PropertyCount()
     return 0
 end
 
 ---@param propertyIndex integer
 ---@return table propertyInfo
-function Handle:PropertyInfo(propertyIndex)
+function Object:PropertyInfo(propertyIndex)
     return {}
 end
 
 ---@param propertyIndex integer
 ---@return string propertyName
-function Handle:PropertyName(propertyIndex)
+function Object:PropertyName(propertyIndex)
     return ""
 end
 
 ---@param propertyIndex integer
 ---@return string propertyType
-function Handle:PropertyType(propertyIndex)
+function Object:PropertyType(propertyIndex)
     return ""
 end
 
 ---@param childIndex integer
----@param undo? Handle @Optional
-function Handle:Remove(childIndex, undo)
+---@param undo? Object @Optional
+function Object:Remove(childIndex, undo)
 end
 
 ---@param name string
-function Handle:RemoveListItem(name)
+function Object:RemoveListItem(name)
 end
 
 ---@param size integer
-function Handle:Resize(size)
+function Object:Resize(size)
 end
 
 ---@param filePath string
 ---@param fileName string
 ---@return boolean success
-function Handle:Save(filePath, fileName)
+function Object:Save(filePath, fileName)
     return false
 end
 
@@ -365,103 +365,103 @@ end
 ---@param value number
 ---@param updateOpposite boolean
 ---@return boolean success
-function Handle:ScrollDo(scrollType, scrollEntity, valueType, value, updateOpposite)
+function Object:ScrollDo(scrollType, scrollEntity, valueType, value, updateOpposite)
     return false
 end
 
 ---@param scrollType integer
 ---@return table|nil scrollInfo
-function Handle:ScrollGetInfo(scrollType)
+function Object:ScrollGetInfo(scrollType)
     return {}
 end
 
 ---@param scrollType integer
 ---@param offset integer
 ---@return integer itemIndex
-function Handle:ScrollGetItemByOffset(scrollType, offset)
+function Object:ScrollGetItemByOffset(scrollType, offset)
     return 1
 end
 
 ---@param scrollType integer
 ---@param itemIdx integer
 ---@return integer|nil offset
-function Handle:ScrollGetItemOffset(scrollType, itemIdx)
+function Object:ScrollGetItemOffset(scrollType, itemIdx)
     return 0
 end
 
 ---@param scrollType integer
 ---@param itemIdx integer
 ---@return integer|nil size
-function Handle:ScrollGetItemSize(scrollType, itemIdx)
+function Object:ScrollGetItemSize(scrollType, itemIdx)
     return 0
 end
 
 ---@param scrollType integer
 ---@return boolean isNeeded
-function Handle:ScrollIsNeeded(scrollType)
+function Object:ScrollIsNeeded(scrollType)
     return false
 end
 
 ---@param index integer
-function Handle:SelectListItemByIndex(index)
+function Object:SelectListItemByIndex(index)
 end
 
 ---@param nameValue string
-function Handle:SelectListItemByName(nameValue)
+function Object:SelectListItemByName(nameValue)
 end
 
 ---@param value string
-function Handle:SelectListItemByValue(value)
+function Object:SelectListItemByValue(value)
 end
 
 ---@param propertyName string
 ---@param propertyValue string
 ---@param overrideChangeLevel? integer @Optional
-function Handle:Set(propertyName, propertyValue, overrideChangeLevel)
+function Object:Set(propertyName, propertyValue, overrideChangeLevel)
 end
 
 ---@param propertyName string
 ---@param propertyValue string
 ---@param recursive? boolean @Optional
-function Handle:SetChildren(propertyName, propertyValue, recursive)
+function Object:SetChildren(propertyName, propertyValue, recursive)
 end
 
 ---@param propertyName string
 ---@param propertyValue string
 ---@param recursive? boolean @Optional
-function Handle:SetChildrenRecursive(propertyName, propertyValue, recursive)
+function Object:SetChildrenRecursive(propertyName, propertyValue, recursive)
 end
 
 ---@param index integer
 ---@param empty? boolean @Optional
-function Handle:SetEmptyListItem(index, empty)
+function Object:SetEmptyListItem(index, empty)
 end
 
 ---@param index integer
 ---@param enable? boolean @Optional
-function Handle:SetEnabledListItem(index, enable)
+function Object:SetEnabledListItem(index, enable)
 end
 
 ---@param index integer
 ---@param appearance table
-function Handle:SetListItemAppearance(index, appearance)
+function Object:SetListItemAppearance(index, appearance)
 end
 
 ---@param index integer
 ---@param name string
-function Handle:SetListItemName(index, name)
+function Object:SetListItemName(index, name)
 end
 
 ---@param index integer
 ---@param value string
-function Handle:SetListItemValueStr(index, value)
+function Object:SetListItemValueStr(index, value)
 end
 
 ---@param x integer
 ---@param y integer
-function Handle:SetPositionHint(x, y)
+function Object:SetPositionHint(x, y)
 end
 
 ---@param callback function
-function Handle:ShowModal(callback)
+function Object:ShowModal(callback)
 end

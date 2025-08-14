@@ -15,25 +15,44 @@ function TouchConfigurator:Children() end
 function TouchConfigurator:CurrentChild() end
 ---@overload fun(name: integer, role: nil): TouchMonitor
 function TouchConfigurator:Get(name, role) end
----@overload fun(index: integer, class: "TouchMonitor", undo: Undo?): TouchMonitor
+---@generic T : TouchMonitor
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): TouchMonitor
 function TouchConfigurator:Create(index, class, undo) end
----@overload fun(class: "TouchMonitor", undo: Undo?, count: integer?): TouchMonitor
+---@generic T : TouchMonitor
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): TouchMonitor
 function TouchConfigurator:Append(class, undo, count) end
----@overload fun(class: "TouchMonitor", undo: Undo?): TouchMonitor
+---@generic T : TouchMonitor
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): TouchMonitor
 function TouchConfigurator:Acquire(class, undo) end
----@overload fun(class: "TouchMonitor", undo: Undo?): TouchMonitor
+---@generic T : TouchMonitor
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): TouchMonitor
 ---@deprecated use "Acquire" instead
 function TouchConfigurator:Aquire(class, undo) end
----@overload fun(index: integer, class: "TouchMonitor", undo: Undo?, count: integer?): TouchMonitor
+---@generic T : TouchMonitor
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): TouchMonitor
 function TouchConfigurator:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "TouchMonitor"): TouchMonitor
----@overload fun(name: string, class: nil): TouchMonitor
-function TouchConfigurator:Find(name, class) end
----@overload fun(name: string, class: "TouchMonitor"): TouchMonitor
----@overload fun(name: string, class: nil): Object
-function TouchConfigurator:FindRecursive(name, class) end
+---@generic T : TouchMonitor
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): TouchMonitor
+function TouchConfigurator:Find(class, undo) end

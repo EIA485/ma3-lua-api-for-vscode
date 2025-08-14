@@ -17,25 +17,44 @@ function LogInterface:Children() end
 function LogInterface:CurrentChild() end
 ---@overload fun(name: integer, role: nil): TimeLogBuffer
 function LogInterface:Get(name, role) end
----@overload fun(index: integer, class: "TimeLogBuffer", undo: Undo?): TimeLogBuffer
+---@generic T : TimeLogBuffer
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): TimeLogBuffer
 function LogInterface:Create(index, class, undo) end
----@overload fun(class: "TimeLogBuffer", undo: Undo?, count: integer?): TimeLogBuffer
+---@generic T : TimeLogBuffer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): TimeLogBuffer
 function LogInterface:Append(class, undo, count) end
----@overload fun(class: "TimeLogBuffer", undo: Undo?): TimeLogBuffer
+---@generic T : TimeLogBuffer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): TimeLogBuffer
 function LogInterface:Acquire(class, undo) end
----@overload fun(class: "TimeLogBuffer", undo: Undo?): TimeLogBuffer
+---@generic T : TimeLogBuffer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): TimeLogBuffer
 ---@deprecated use "Acquire" instead
 function LogInterface:Aquire(class, undo) end
----@overload fun(index: integer, class: "TimeLogBuffer", undo: Undo?, count: integer?): TimeLogBuffer
+---@generic T : TimeLogBuffer
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): TimeLogBuffer
 function LogInterface:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "TimeLogBuffer"): TimeLogBuffer
----@overload fun(name: string, class: nil): TimeLogBuffer
-function LogInterface:Find(name, class) end
----@overload fun(name: string, class: "TimeLogBuffer"): TimeLogBuffer
----@overload fun(name: string, class: nil): Object
-function LogInterface:FindRecursive(name, class) end
+---@generic T : TimeLogBuffer
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): TimeLogBuffer
+function LogInterface:Find(class, undo) end

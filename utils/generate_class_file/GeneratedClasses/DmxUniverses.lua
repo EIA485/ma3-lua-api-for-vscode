@@ -17,25 +17,44 @@ function DmxUniverses:Children() end
 function DmxUniverses:CurrentChild() end
 ---@overload fun(name: integer, role: nil): DmxUniverse
 function DmxUniverses:Get(name, role) end
----@overload fun(index: integer, class: "DmxUniverse", undo: Undo?): DmxUniverse
+---@generic T : DmxUniverse
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): DmxUniverse
 function DmxUniverses:Create(index, class, undo) end
----@overload fun(class: "DmxUniverse", undo: Undo?, count: integer?): DmxUniverse
+---@generic T : DmxUniverse
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): DmxUniverse
 function DmxUniverses:Append(class, undo, count) end
----@overload fun(class: "DmxUniverse", undo: Undo?): DmxUniverse
+---@generic T : DmxUniverse
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DmxUniverse
 function DmxUniverses:Acquire(class, undo) end
----@overload fun(class: "DmxUniverse", undo: Undo?): DmxUniverse
+---@generic T : DmxUniverse
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DmxUniverse
 ---@deprecated use "Acquire" instead
 function DmxUniverses:Aquire(class, undo) end
----@overload fun(index: integer, class: "DmxUniverse", undo: Undo?, count: integer?): DmxUniverse
+---@generic T : DmxUniverse
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): DmxUniverse
 function DmxUniverses:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "DmxUniverse"): DmxUniverse
----@overload fun(name: string, class: nil): DmxUniverse
-function DmxUniverses:Find(name, class) end
----@overload fun(name: string, class: "DmxUniverse"): DmxUniverse
----@overload fun(name: string, class: nil): Object
-function DmxUniverses:FindRecursive(name, class) end
+---@generic T : DmxUniverse
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): DmxUniverse
+function DmxUniverses:Find(class, undo) end

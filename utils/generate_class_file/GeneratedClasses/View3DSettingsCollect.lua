@@ -15,25 +15,44 @@ function View3DSettingsCollect:Children() end
 function View3DSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): View3DSettings
 function View3DSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "View3DSettings", undo: Undo?): View3DSettings
+---@generic T : View3DSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): View3DSettings
 function View3DSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "View3DSettings", undo: Undo?, count: integer?): View3DSettings
+---@generic T : View3DSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): View3DSettings
 function View3DSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "View3DSettings", undo: Undo?): View3DSettings
+---@generic T : View3DSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): View3DSettings
 function View3DSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "View3DSettings", undo: Undo?): View3DSettings
+---@generic T : View3DSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): View3DSettings
 ---@deprecated use "Acquire" instead
 function View3DSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "View3DSettings", undo: Undo?, count: integer?): View3DSettings
+---@generic T : View3DSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): View3DSettings
 function View3DSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "View3DSettings"): View3DSettings
----@overload fun(name: string, class: nil): View3DSettings
-function View3DSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "View3DSettings"): View3DSettings
----@overload fun(name: string, class: nil): Object
-function View3DSettingsCollect:FindRecursive(name, class) end
+---@generic T : View3DSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): View3DSettings
+function View3DSettingsCollect:Find(class, undo) end

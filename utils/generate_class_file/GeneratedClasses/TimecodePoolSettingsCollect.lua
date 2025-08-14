@@ -15,25 +15,44 @@ function TimecodePoolSettingsCollect:Children() end
 function TimecodePoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): TimecodePoolSettings
 function TimecodePoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "TimecodePoolSettings", undo: Undo?): TimecodePoolSettings
+---@generic T : TimecodePoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): TimecodePoolSettings
 function TimecodePoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "TimecodePoolSettings", undo: Undo?, count: integer?): TimecodePoolSettings
+---@generic T : TimecodePoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): TimecodePoolSettings
 function TimecodePoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "TimecodePoolSettings", undo: Undo?): TimecodePoolSettings
+---@generic T : TimecodePoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): TimecodePoolSettings
 function TimecodePoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "TimecodePoolSettings", undo: Undo?): TimecodePoolSettings
+---@generic T : TimecodePoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): TimecodePoolSettings
 ---@deprecated use "Acquire" instead
 function TimecodePoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "TimecodePoolSettings", undo: Undo?, count: integer?): TimecodePoolSettings
+---@generic T : TimecodePoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): TimecodePoolSettings
 function TimecodePoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "TimecodePoolSettings"): TimecodePoolSettings
----@overload fun(name: string, class: nil): TimecodePoolSettings
-function TimecodePoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "TimecodePoolSettings"): TimecodePoolSettings
----@overload fun(name: string, class: nil): Object
-function TimecodePoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : TimecodePoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): TimecodePoolSettings
+function TimecodePoolSettingsCollect:Find(class, undo) end

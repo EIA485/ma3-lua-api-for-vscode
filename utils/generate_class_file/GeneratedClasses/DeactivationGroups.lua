@@ -17,25 +17,44 @@ function DeactivationGroups:Children() end
 function DeactivationGroups:CurrentChild() end
 ---@overload fun(name: integer, role: nil): DeactivationGroup
 function DeactivationGroups:Get(name, role) end
----@overload fun(index: integer, class: "DeactivationGroup", undo: Undo?): DeactivationGroup
+---@generic T : DeactivationGroup
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): DeactivationGroup
 function DeactivationGroups:Create(index, class, undo) end
----@overload fun(class: "DeactivationGroup", undo: Undo?, count: integer?): DeactivationGroup
+---@generic T : DeactivationGroup
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): DeactivationGroup
 function DeactivationGroups:Append(class, undo, count) end
----@overload fun(class: "DeactivationGroup", undo: Undo?): DeactivationGroup
+---@generic T : DeactivationGroup
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DeactivationGroup
 function DeactivationGroups:Acquire(class, undo) end
----@overload fun(class: "DeactivationGroup", undo: Undo?): DeactivationGroup
+---@generic T : DeactivationGroup
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DeactivationGroup
 ---@deprecated use "Acquire" instead
 function DeactivationGroups:Aquire(class, undo) end
----@overload fun(index: integer, class: "DeactivationGroup", undo: Undo?, count: integer?): DeactivationGroup
+---@generic T : DeactivationGroup
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): DeactivationGroup
 function DeactivationGroups:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "DeactivationGroup"): DeactivationGroup
----@overload fun(name: string, class: nil): DeactivationGroup
-function DeactivationGroups:Find(name, class) end
----@overload fun(name: string, class: "DeactivationGroup"): DeactivationGroup
----@overload fun(name: string, class: nil): Object
-function DeactivationGroups:FindRecursive(name, class) end
+---@generic T : DeactivationGroup
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): DeactivationGroup
+function DeactivationGroups:Find(class, undo) end

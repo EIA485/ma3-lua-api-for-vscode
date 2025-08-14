@@ -38,11 +38,7 @@ function Page:Aquire(class, undo) end
 ---@overload fun(index: integer, class: "Exec", undo: Undo?, count: integer?): Exec
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Proxy
 function Page:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Proxy"): Proxy
----@overload fun(name: string, class: "Exec"): Exec
----@overload fun(name: string, class: nil): Proxy
-function Page:Find(name, class) end
----@overload fun(name: string, class: "Proxy"): Proxy
----@overload fun(name: string, class: "Exec"): Exec
----@overload fun(name: string, class: nil): Object
-function Page:FindRecursive(name, class) end
+---@overload fun(class: "Proxy", undo: Undo?): Proxy
+---@overload fun(class: "Exec", undo: Undo?): Exec
+---@overload fun(class: nil, undo: Undo?): Proxy
+function Page:Find(class, undo) end

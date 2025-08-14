@@ -32,264 +32,87 @@ function UiScreen:Ptr(index) end
 function UiScreen:Children() end
 ---@return Window?
 function UiScreen:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
----@overload fun(name: "X"|"Y"|"W"|"H", role: nil): Graphics.SizeDescriptor
----@overload fun(name: "AbsRect"|"AbsClientRect", role: nil): {left: number, right: number, top: number, bottom: number}
----@overload fun(name: "Texture", role: nil): Texture
----@overload fun(name: "Font"|"LowDpiFont", role: nil): Font
----@overload fun(name: "Text"|"ToolTip"|"HelpTopic", role: nil): string
----@overload fun(name: "BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor", role: nil): Color
----@overload fun(name: "TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth", role: nil): integer
----@overload fun(name: "Padding", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
----@overload fun(name: "Focus", role: nil): FocusPriority
----@overload fun(name: "UserRights", role: nil): UserRights
----@overload fun(name: "Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect", role: nil): integer
----@overload fun(name: "CloseAction", role: nil): GestureResult
----@overload fun(name: "AutoCloseValue"|"UiGroupId", role: nil): integer
----@overload fun(name: "LabelLinkHandle", role: nil): UIObject
----@overload fun(name: "IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow", role: nil): integer
----@overload fun(name: "MinSize"|"MaxSize", role: nil): Graphics.SizeDimension
----@overload fun(name: "Anchors", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
----@overload fun(name: "SignalValue"|"SignalValueHold", role: nil): string
----@overload fun(name: "AlignmentH", role: nil): AlignmentH
----@overload fun(name: "AlignmentV", role: nil): AlignmentV
----@overload fun(name: "TextAlignmentH", role: nil): AlignmentH
----@overload fun(name: "TextAlignmentV", role: nil): AlignmentV
----@overload fun(name: "Margin", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
+---@overload fun(name: "AlignmentH"|"TextAlignmentH", role: nil): AlignmentH
+---@overload fun(name: "AlignmentV"|"TextAlignmentV", role: nil): AlignmentV
+---@overload fun(name: "DelimiterColor"|"ActiveDelimiterColor"|"BlockerColor"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor", role: nil): Color
 ---@overload fun(name: "PluginComponent", role: nil): Component
----@overload fun(name: "HasFocus"|"HideFocusFrame", role: nil): boolean
----@overload fun(name: "AppearanceSourceClassName", role: nil): string
----@overload fun(name: "VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease", role: nil): integer
----@overload fun(name: "Clicked", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
----@overload fun(name: "ClickedLeft"|"ClickedRight", role: nil): fun(str: string, X: integer, Y: integer)
----@overload fun(name: "DoubleClicked", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
----@overload fun(name: "MouseEnter"|"MouseLeave"|"MouseOverHold", role: nil): fun(str: string, X: integer, Y: integer)
----@overload fun(name: "MouseUp", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
----@overload fun(name: "MouseUpLeft"|"MouseUpRight", role: nil): fun(str: string, X: integer, Y: integer)
----@overload fun(name: "MouseDown", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
----@overload fun(name: "MouseDownLeft"|"MouseDownRight", role: nil): fun(str: string, X: integer, Y: integer)
----@overload fun(name: "MouseDownHold", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
----@overload fun(name: "KeyDown"|"KeyUp", role: nil): fun(str: string, keyCode: VirtualKeyCode, bool1: boolean, bool2: boolean, bool3: boolean)
----@overload fun(name: "CharInput", role: nil): fun(str: string, utf32Char: integer)
----@overload fun(name: "TouchStart"|"TouchUpdate"|"TouchEnd", role: nil): fun(str: string, pointID: integer, X: integer, Y: integer)
----@overload fun(name: "OnLoad", role: nil): fun(str: string, obj: Object)
----@overload fun(name: "OnVisible", role: nil): fun(str: string, bool: boolean)
----@overload fun(name: "DescriptionChanged", role: nil): fun(str: string)
----@overload fun(name: "FocusGet"|"FocusLost", role: nil): fun(str: string, obj1: Object, obj2: Object)
----@overload fun(name: "ForceIntensity"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight", role: nil): integer
----@overload fun(name: "ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay", role: nil): boolean
+---@overload fun(name: "Focus", role: nil): FocusPriority
+---@overload fun(name: "Font"|"LowDpiFont", role: nil): Font
+---@overload fun(name: "CloseAction", role: nil): GestureResult
+---@overload fun(name: "X"|"Y"|"W"|"H", role: nil): Graphics.SizeDescriptor
+---@overload fun(name: "MinSize"|"MaxSize", role: nil): Graphics.SizeDimension
 ---@overload fun(name: "RowReductionPolicy"|"ColReductionPolicy", role: nil): ReductionPolicy
+---@overload fun(name: "DelimiterTexture"|"SelectionFrame"|"BlockerTexture"|"Texture", role: nil): Texture
+---@overload fun(name: "LabelLinkHandle", role: nil): UIObject
+---@overload fun(name: "UserRights", role: nil): UserRights
+---@overload fun(name: "ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"HasFocus"|"HideFocusFrame"|"FaderEnabled"|"Owned", role: nil): boolean
 ---@overload fun(name: "SetRow", role: nil): fun(int1: integer, layoutSizePolicy: LayoutSizePolicy, num: number, int2: integer) : boolean
----@overload fun(name: "DelimiterTexture", role: nil): Texture
----@overload fun(name: "DelimiterColor"|"ActiveDelimiterColor", role: nil): Color
----@overload fun(name: "DelimiterSize", role: nil): integer
----@overload fun(name: "SelectionFrame"|"BlockerTexture", role: nil): Texture
----@overload fun(name: "BlockerColor", role: nil): Color
----@overload fun(name: "WindowRect", role: nil): {left: number, right: number, top: number, bottom: number}
----@overload fun(name: "ViewW"|"ViewH", role: nil): integer
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"X"|"Y"|"W"|"H"|"AbsRect"|"AbsClientRect"|"Texture"|"Font"|"LowDpiFont"|"Text"|"ToolTip"|"HelpTopic"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Padding"|"Focus"|"UserRights"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"CloseAction"|"AutoCloseValue"|"UiGroupId"|"LabelLinkHandle"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"MinSize"|"MaxSize"|"Anchors"|"SignalValue"|"SignalValueHold"|"AlignmentH"|"AlignmentV"|"TextAlignmentH"|"TextAlignmentV"|"Margin"|"PluginComponent"|"HasFocus"|"HideFocusFrame"|"AppearanceSourceClassName"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"Clicked"|"ClickedLeft"|"ClickedRight"|"DoubleClicked"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUp"|"MouseUpLeft"|"MouseUpRight"|"MouseDown"|"MouseDownLeft"|"MouseDownRight"|"MouseDownHold"|"KeyDown"|"KeyUp"|"CharInput"|"TouchStart"|"TouchUpdate"|"TouchEnd"|"OnLoad"|"OnVisible"|"DescriptionChanged"|"FocusGet"|"FocusLost"|"ForceIntensity"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"RowReductionPolicy"|"ColReductionPolicy"|"SetRow"|"DelimiterTexture"|"DelimiterColor"|"ActiveDelimiterColor"|"DelimiterSize"|"SelectionFrame"|"BlockerTexture"|"BlockerColor"|"WindowRect"|"ViewW"|"ViewH", role: Enums.Roles): string
+---@overload fun(name: "DescriptionChanged", role: nil): fun(str: string)
+---@overload fun(name: "Clicked"|"DoubleClicked"|"MouseUp"|"MouseDown"|"MouseDownHold", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
+---@overload fun(name: "ClickedLeft"|"ClickedRight"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUpLeft"|"MouseUpRight"|"MouseDownLeft"|"MouseDownRight", role: nil): fun(str: string, X: integer, Y: integer)
+---@overload fun(name: "OnVisible", role: nil): fun(str: string, bool: boolean)
+---@overload fun(name: "KeyDown"|"KeyUp", role: nil): fun(str: string, keyCode: VirtualKeyCode, bool1: boolean, bool2: boolean, bool3: boolean)
+---@overload fun(name: "FocusGet"|"FocusLost", role: nil): fun(str: string, obj1: Object, obj2: Object)
+---@overload fun(name: "OnLoad", role: nil): fun(str: string, obj: Object)
+---@overload fun(name: "TouchStart"|"TouchUpdate"|"TouchEnd", role: nil): fun(str: string, pointID: integer, X: integer, Y: integer)
+---@overload fun(name: "CharInput", role: nil): fun(str: string, utf32Char: integer)
+---@overload fun(name: "DelimiterSize"|"ViewW"|"ViewH"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"AutoCloseValue"|"UiGroupId"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"ForceIntensity"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Text"|"ToolTip"|"HelpTopic"|"SignalValue"|"SignalValueHold"|"AppearanceSourceClassName"|"Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "Padding"|"Anchors"|"Margin", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
+---@overload fun(name: "WindowRect"|"AbsRect"|"AbsClientRect", role: nil): {left: number, right: number, top: number, bottom: number}
+---@overload fun(name: "DelimiterTexture"|"DelimiterColor"|"ActiveDelimiterColor"|"DelimiterSize"|"SelectionFrame"|"BlockerTexture"|"BlockerColor"|"WindowRect"|"ViewW"|"ViewH"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"RowReductionPolicy"|"ColReductionPolicy"|"SetRow"|"X"|"Y"|"W"|"H"|"AbsRect"|"AbsClientRect"|"Texture"|"Font"|"LowDpiFont"|"Text"|"ToolTip"|"HelpTopic"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Padding"|"Focus"|"UserRights"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"CloseAction"|"AutoCloseValue"|"UiGroupId"|"LabelLinkHandle"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"MinSize"|"MaxSize"|"Anchors"|"SignalValue"|"SignalValueHold"|"AlignmentH"|"AlignmentV"|"TextAlignmentH"|"TextAlignmentV"|"Margin"|"PluginComponent"|"HasFocus"|"HideFocusFrame"|"AppearanceSourceClassName"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"Clicked"|"ClickedLeft"|"ClickedRight"|"DoubleClicked"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUp"|"MouseUpLeft"|"MouseUpRight"|"MouseDown"|"MouseDownLeft"|"MouseDownRight"|"MouseDownHold"|"KeyDown"|"KeyUp"|"CharInput"|"TouchStart"|"TouchUpdate"|"TouchEnd"|"OnLoad"|"OnVisible"|"DescriptionChanged"|"FocusGet"|"FocusLost"|"ForceIntensity"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): Window
 function UiScreen:Get(name, role) end
+---@generic T : RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|MessageCenterWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|ResultPoolWindow|RunningPlaybacksWindow|CommandLineWindow|AllPoolWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: "Window", undo: Undo?): Window
----@overload fun(index: integer, class: "CommandWingBarWindow", undo: Undo?): CommandWingBarWindow
----@overload fun(index: integer, class: "WindowEncoderBar", undo: Undo?): WindowEncoderBar
----@overload fun(index: integer, class: "TimecodeWindow", undo: Undo?): TimecodeWindow
----@overload fun(index: integer, class: "LayoutView", undo: Undo?): LayoutView
----@overload fun(index: integer, class: "RecipeWindow", undo: Undo?): RecipeWindow
----@overload fun(index: integer, class: "SpecialWindow", undo: Undo?): SpecialWindow
----@overload fun(index: integer, class: "WindowAgenda", undo: Undo?): WindowAgenda
----@overload fun(index: integer, class: "WindowTrackpad", undo: Undo?): WindowTrackpad
----@overload fun(index: integer, class: "WindowInfo", undo: Undo?): WindowInfo
----@overload fun(index: integer, class: "XKeysViewWindow", undo: Undo?): XKeysViewWindow
----@overload fun(index: integer, class: "PlaybackViewWindow", undo: Undo?): PlaybackViewWindow
----@overload fun(index: integer, class: "WindowHelpViewer", undo: Undo?): WindowHelpViewer
----@overload fun(index: integer, class: "ClockWindow", undo: Undo?): ClockWindow
----@overload fun(index: integer, class: "SystemMonitorWindow", undo: Undo?): SystemMonitorWindow
----@overload fun(index: integer, class: "PhaserViewWindow", undo: Undo?): PhaserViewWindow
----@overload fun(index: integer, class: "SelectionViewWindow", undo: Undo?): SelectionViewWindow
----@overload fun(index: integer, class: "StatusWindow", undo: Undo?): StatusWindow
----@overload fun(index: integer, class: "ContentWindow", undo: Undo?): ContentWindow
----@overload fun(index: integer, class: "SequenceWindow", undo: Undo?): SequenceWindow
----@overload fun(index: integer, class: "MessageCenterWindow", undo: Undo?): MessageCenterWindow
 ---@overload fun(index: integer, class: "PoolWindow", undo: Undo?): PoolWindow
----@overload fun(index: integer, class: "ResultPoolWindow", undo: Undo?): ResultPoolWindow
----@overload fun(index: integer, class: "RunningPlaybacksWindow", undo: Undo?): RunningPlaybacksWindow
----@overload fun(index: integer, class: "AllPoolWindow", undo: Undo?): AllPoolWindow
----@overload fun(index: integer, class: "CommandLineWindow", undo: Undo?): CommandLineWindow
 ---@overload fun(index: integer, class: nil, undo: Undo?): Window
 function UiScreen:Create(index, class, undo) end
+---@generic T : RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|MessageCenterWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|ResultPoolWindow|RunningPlaybacksWindow|CommandLineWindow|AllPoolWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: "Window", undo: Undo?, count: integer?): Window
----@overload fun(class: "CommandWingBarWindow", undo: Undo?, count: integer?): CommandWingBarWindow
----@overload fun(class: "WindowEncoderBar", undo: Undo?, count: integer?): WindowEncoderBar
----@overload fun(class: "TimecodeWindow", undo: Undo?, count: integer?): TimecodeWindow
----@overload fun(class: "LayoutView", undo: Undo?, count: integer?): LayoutView
----@overload fun(class: "RecipeWindow", undo: Undo?, count: integer?): RecipeWindow
----@overload fun(class: "SpecialWindow", undo: Undo?, count: integer?): SpecialWindow
----@overload fun(class: "WindowAgenda", undo: Undo?, count: integer?): WindowAgenda
----@overload fun(class: "WindowTrackpad", undo: Undo?, count: integer?): WindowTrackpad
----@overload fun(class: "WindowInfo", undo: Undo?, count: integer?): WindowInfo
----@overload fun(class: "XKeysViewWindow", undo: Undo?, count: integer?): XKeysViewWindow
----@overload fun(class: "PlaybackViewWindow", undo: Undo?, count: integer?): PlaybackViewWindow
----@overload fun(class: "WindowHelpViewer", undo: Undo?, count: integer?): WindowHelpViewer
----@overload fun(class: "ClockWindow", undo: Undo?, count: integer?): ClockWindow
----@overload fun(class: "SystemMonitorWindow", undo: Undo?, count: integer?): SystemMonitorWindow
----@overload fun(class: "PhaserViewWindow", undo: Undo?, count: integer?): PhaserViewWindow
----@overload fun(class: "SelectionViewWindow", undo: Undo?, count: integer?): SelectionViewWindow
----@overload fun(class: "StatusWindow", undo: Undo?, count: integer?): StatusWindow
----@overload fun(class: "ContentWindow", undo: Undo?, count: integer?): ContentWindow
----@overload fun(class: "SequenceWindow", undo: Undo?, count: integer?): SequenceWindow
----@overload fun(class: "MessageCenterWindow", undo: Undo?, count: integer?): MessageCenterWindow
 ---@overload fun(class: "PoolWindow", undo: Undo?, count: integer?): PoolWindow
----@overload fun(class: "ResultPoolWindow", undo: Undo?, count: integer?): ResultPoolWindow
----@overload fun(class: "RunningPlaybacksWindow", undo: Undo?, count: integer?): RunningPlaybacksWindow
----@overload fun(class: "AllPoolWindow", undo: Undo?, count: integer?): AllPoolWindow
----@overload fun(class: "CommandLineWindow", undo: Undo?, count: integer?): CommandLineWindow
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Window
 function UiScreen:Append(class, undo, count) end
+---@generic T : RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|MessageCenterWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|ResultPoolWindow|RunningPlaybacksWindow|CommandLineWindow|AllPoolWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: "Window", undo: Undo?): Window
----@overload fun(class: "CommandWingBarWindow", undo: Undo?): CommandWingBarWindow
----@overload fun(class: "WindowEncoderBar", undo: Undo?): WindowEncoderBar
----@overload fun(class: "TimecodeWindow", undo: Undo?): TimecodeWindow
----@overload fun(class: "LayoutView", undo: Undo?): LayoutView
----@overload fun(class: "RecipeWindow", undo: Undo?): RecipeWindow
----@overload fun(class: "SpecialWindow", undo: Undo?): SpecialWindow
----@overload fun(class: "WindowAgenda", undo: Undo?): WindowAgenda
----@overload fun(class: "WindowTrackpad", undo: Undo?): WindowTrackpad
----@overload fun(class: "WindowInfo", undo: Undo?): WindowInfo
----@overload fun(class: "XKeysViewWindow", undo: Undo?): XKeysViewWindow
----@overload fun(class: "PlaybackViewWindow", undo: Undo?): PlaybackViewWindow
----@overload fun(class: "WindowHelpViewer", undo: Undo?): WindowHelpViewer
----@overload fun(class: "ClockWindow", undo: Undo?): ClockWindow
----@overload fun(class: "SystemMonitorWindow", undo: Undo?): SystemMonitorWindow
----@overload fun(class: "PhaserViewWindow", undo: Undo?): PhaserViewWindow
----@overload fun(class: "SelectionViewWindow", undo: Undo?): SelectionViewWindow
----@overload fun(class: "StatusWindow", undo: Undo?): StatusWindow
----@overload fun(class: "ContentWindow", undo: Undo?): ContentWindow
----@overload fun(class: "SequenceWindow", undo: Undo?): SequenceWindow
----@overload fun(class: "MessageCenterWindow", undo: Undo?): MessageCenterWindow
 ---@overload fun(class: "PoolWindow", undo: Undo?): PoolWindow
----@overload fun(class: "ResultPoolWindow", undo: Undo?): ResultPoolWindow
----@overload fun(class: "RunningPlaybacksWindow", undo: Undo?): RunningPlaybacksWindow
----@overload fun(class: "AllPoolWindow", undo: Undo?): AllPoolWindow
----@overload fun(class: "CommandLineWindow", undo: Undo?): CommandLineWindow
 ---@overload fun(class: nil, undo: Undo?): Window
 function UiScreen:Acquire(class, undo) end
+---@generic T : RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|MessageCenterWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|ResultPoolWindow|RunningPlaybacksWindow|CommandLineWindow|AllPoolWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: "Window", undo: Undo?): Window
----@overload fun(class: "CommandWingBarWindow", undo: Undo?): CommandWingBarWindow
----@overload fun(class: "WindowEncoderBar", undo: Undo?): WindowEncoderBar
----@overload fun(class: "TimecodeWindow", undo: Undo?): TimecodeWindow
----@overload fun(class: "LayoutView", undo: Undo?): LayoutView
----@overload fun(class: "RecipeWindow", undo: Undo?): RecipeWindow
----@overload fun(class: "SpecialWindow", undo: Undo?): SpecialWindow
----@overload fun(class: "WindowAgenda", undo: Undo?): WindowAgenda
----@overload fun(class: "WindowTrackpad", undo: Undo?): WindowTrackpad
----@overload fun(class: "WindowInfo", undo: Undo?): WindowInfo
----@overload fun(class: "XKeysViewWindow", undo: Undo?): XKeysViewWindow
----@overload fun(class: "PlaybackViewWindow", undo: Undo?): PlaybackViewWindow
----@overload fun(class: "WindowHelpViewer", undo: Undo?): WindowHelpViewer
----@overload fun(class: "ClockWindow", undo: Undo?): ClockWindow
----@overload fun(class: "SystemMonitorWindow", undo: Undo?): SystemMonitorWindow
----@overload fun(class: "PhaserViewWindow", undo: Undo?): PhaserViewWindow
----@overload fun(class: "SelectionViewWindow", undo: Undo?): SelectionViewWindow
----@overload fun(class: "StatusWindow", undo: Undo?): StatusWindow
----@overload fun(class: "ContentWindow", undo: Undo?): ContentWindow
----@overload fun(class: "SequenceWindow", undo: Undo?): SequenceWindow
----@overload fun(class: "MessageCenterWindow", undo: Undo?): MessageCenterWindow
 ---@overload fun(class: "PoolWindow", undo: Undo?): PoolWindow
----@overload fun(class: "ResultPoolWindow", undo: Undo?): ResultPoolWindow
----@overload fun(class: "RunningPlaybacksWindow", undo: Undo?): RunningPlaybacksWindow
----@overload fun(class: "AllPoolWindow", undo: Undo?): AllPoolWindow
----@overload fun(class: "CommandLineWindow", undo: Undo?): CommandLineWindow
 ---@overload fun(class: nil, undo: Undo?): Window
 ---@deprecated use "Acquire" instead
 function UiScreen:Aquire(class, undo) end
+---@generic T : RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|MessageCenterWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|ResultPoolWindow|RunningPlaybacksWindow|CommandLineWindow|AllPoolWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: "Window", undo: Undo?, count: integer?): Window
----@overload fun(index: integer, class: "CommandWingBarWindow", undo: Undo?, count: integer?): CommandWingBarWindow
----@overload fun(index: integer, class: "WindowEncoderBar", undo: Undo?, count: integer?): WindowEncoderBar
----@overload fun(index: integer, class: "TimecodeWindow", undo: Undo?, count: integer?): TimecodeWindow
----@overload fun(index: integer, class: "LayoutView", undo: Undo?, count: integer?): LayoutView
----@overload fun(index: integer, class: "RecipeWindow", undo: Undo?, count: integer?): RecipeWindow
----@overload fun(index: integer, class: "SpecialWindow", undo: Undo?, count: integer?): SpecialWindow
----@overload fun(index: integer, class: "WindowAgenda", undo: Undo?, count: integer?): WindowAgenda
----@overload fun(index: integer, class: "WindowTrackpad", undo: Undo?, count: integer?): WindowTrackpad
----@overload fun(index: integer, class: "WindowInfo", undo: Undo?, count: integer?): WindowInfo
----@overload fun(index: integer, class: "XKeysViewWindow", undo: Undo?, count: integer?): XKeysViewWindow
----@overload fun(index: integer, class: "PlaybackViewWindow", undo: Undo?, count: integer?): PlaybackViewWindow
----@overload fun(index: integer, class: "WindowHelpViewer", undo: Undo?, count: integer?): WindowHelpViewer
----@overload fun(index: integer, class: "ClockWindow", undo: Undo?, count: integer?): ClockWindow
----@overload fun(index: integer, class: "SystemMonitorWindow", undo: Undo?, count: integer?): SystemMonitorWindow
----@overload fun(index: integer, class: "PhaserViewWindow", undo: Undo?, count: integer?): PhaserViewWindow
----@overload fun(index: integer, class: "SelectionViewWindow", undo: Undo?, count: integer?): SelectionViewWindow
----@overload fun(index: integer, class: "StatusWindow", undo: Undo?, count: integer?): StatusWindow
----@overload fun(index: integer, class: "ContentWindow", undo: Undo?, count: integer?): ContentWindow
----@overload fun(index: integer, class: "SequenceWindow", undo: Undo?, count: integer?): SequenceWindow
----@overload fun(index: integer, class: "MessageCenterWindow", undo: Undo?, count: integer?): MessageCenterWindow
 ---@overload fun(index: integer, class: "PoolWindow", undo: Undo?, count: integer?): PoolWindow
----@overload fun(index: integer, class: "ResultPoolWindow", undo: Undo?, count: integer?): ResultPoolWindow
----@overload fun(index: integer, class: "RunningPlaybacksWindow", undo: Undo?, count: integer?): RunningPlaybacksWindow
----@overload fun(index: integer, class: "AllPoolWindow", undo: Undo?, count: integer?): AllPoolWindow
----@overload fun(index: integer, class: "CommandLineWindow", undo: Undo?, count: integer?): CommandLineWindow
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Window
 function UiScreen:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Window"): Window
----@overload fun(name: string, class: "CommandWingBarWindow"): CommandWingBarWindow
----@overload fun(name: string, class: "WindowEncoderBar"): WindowEncoderBar
----@overload fun(name: string, class: "TimecodeWindow"): TimecodeWindow
----@overload fun(name: string, class: "LayoutView"): LayoutView
----@overload fun(name: string, class: "RecipeWindow"): RecipeWindow
----@overload fun(name: string, class: "SpecialWindow"): SpecialWindow
----@overload fun(name: string, class: "WindowAgenda"): WindowAgenda
----@overload fun(name: string, class: "WindowTrackpad"): WindowTrackpad
----@overload fun(name: string, class: "WindowInfo"): WindowInfo
----@overload fun(name: string, class: "XKeysViewWindow"): XKeysViewWindow
----@overload fun(name: string, class: "PlaybackViewWindow"): PlaybackViewWindow
----@overload fun(name: string, class: "WindowHelpViewer"): WindowHelpViewer
----@overload fun(name: string, class: "ClockWindow"): ClockWindow
----@overload fun(name: string, class: "SystemMonitorWindow"): SystemMonitorWindow
----@overload fun(name: string, class: "PhaserViewWindow"): PhaserViewWindow
----@overload fun(name: string, class: "SelectionViewWindow"): SelectionViewWindow
----@overload fun(name: string, class: "StatusWindow"): StatusWindow
----@overload fun(name: string, class: "ContentWindow"): ContentWindow
----@overload fun(name: string, class: "SequenceWindow"): SequenceWindow
----@overload fun(name: string, class: "MessageCenterWindow"): MessageCenterWindow
----@overload fun(name: string, class: "PoolWindow"): PoolWindow
----@overload fun(name: string, class: "ResultPoolWindow"): ResultPoolWindow
----@overload fun(name: string, class: "RunningPlaybacksWindow"): RunningPlaybacksWindow
----@overload fun(name: string, class: "AllPoolWindow"): AllPoolWindow
----@overload fun(name: string, class: "CommandLineWindow"): CommandLineWindow
----@overload fun(name: string, class: nil): Window
-function UiScreen:Find(name, class) end
----@overload fun(name: string, class: "Window"): Window
----@overload fun(name: string, class: "CommandWingBarWindow"): CommandWingBarWindow
----@overload fun(name: string, class: "WindowEncoderBar"): WindowEncoderBar
----@overload fun(name: string, class: "TimecodeWindow"): TimecodeWindow
----@overload fun(name: string, class: "LayoutView"): LayoutView
----@overload fun(name: string, class: "RecipeWindow"): RecipeWindow
----@overload fun(name: string, class: "SpecialWindow"): SpecialWindow
----@overload fun(name: string, class: "WindowAgenda"): WindowAgenda
----@overload fun(name: string, class: "WindowTrackpad"): WindowTrackpad
----@overload fun(name: string, class: "WindowInfo"): WindowInfo
----@overload fun(name: string, class: "XKeysViewWindow"): XKeysViewWindow
----@overload fun(name: string, class: "PlaybackViewWindow"): PlaybackViewWindow
----@overload fun(name: string, class: "WindowHelpViewer"): WindowHelpViewer
----@overload fun(name: string, class: "ClockWindow"): ClockWindow
----@overload fun(name: string, class: "SystemMonitorWindow"): SystemMonitorWindow
----@overload fun(name: string, class: "PhaserViewWindow"): PhaserViewWindow
----@overload fun(name: string, class: "SelectionViewWindow"): SelectionViewWindow
----@overload fun(name: string, class: "StatusWindow"): StatusWindow
----@overload fun(name: string, class: "ContentWindow"): ContentWindow
----@overload fun(name: string, class: "SequenceWindow"): SequenceWindow
----@overload fun(name: string, class: "MessageCenterWindow"): MessageCenterWindow
----@overload fun(name: string, class: "PoolWindow"): PoolWindow
----@overload fun(name: string, class: "ResultPoolWindow"): ResultPoolWindow
----@overload fun(name: string, class: "RunningPlaybacksWindow"): RunningPlaybacksWindow
----@overload fun(name: string, class: "AllPoolWindow"): AllPoolWindow
----@overload fun(name: string, class: "CommandLineWindow"): CommandLineWindow
----@overload fun(name: string, class: nil): Object
-function UiScreen:FindRecursive(name, class) end
+---@generic T : RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|MessageCenterWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|ResultPoolWindow|RunningPlaybacksWindow|CommandLineWindow|AllPoolWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: "Window", undo: Undo?): Window
+---@overload fun(class: "PoolWindow", undo: Undo?): PoolWindow
+---@overload fun(class: nil, undo: Undo?): Window
+function UiScreen:Find(class, undo) end

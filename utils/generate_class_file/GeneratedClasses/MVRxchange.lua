@@ -19,15 +19,10 @@ function MVRxchange:Ptr(index) end
 function MVRxchange:Children() end
 ---@return MVRLocalFile?
 function MVRxchange:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
 ---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint"|"Enabled", role: nil): integer
----@overload fun(name: "GroupName"|"Interface", role: nil): string
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Enabled"|"GroupName"|"Interface", role: Enums.Roles): string
+---@overload fun(name: "Enabled"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "GroupName"|"Interface"|"Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "Enabled"|"GroupName"|"Interface"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): MVRLocalFile
 function MVRxchange:Get(name, role) end
 ---@overload fun(index: integer, class: "MVRLocalFile", undo: Undo?): MVRLocalFile
@@ -46,9 +41,6 @@ function MVRxchange:Aquire(class, undo) end
 ---@overload fun(index: integer, class: "MVRLocalFile", undo: Undo?, count: integer?): MVRLocalFile
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): MVRLocalFile
 function MVRxchange:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "MVRLocalFile"): MVRLocalFile
----@overload fun(name: string, class: nil): MVRLocalFile
-function MVRxchange:Find(name, class) end
----@overload fun(name: string, class: "MVRLocalFile"): MVRLocalFile
----@overload fun(name: string, class: nil): Object
-function MVRxchange:FindRecursive(name, class) end
+---@overload fun(class: "MVRLocalFile", undo: Undo?): MVRLocalFile
+---@overload fun(class: nil, undo: Undo?): MVRLocalFile
+function MVRxchange:Find(class, undo) end

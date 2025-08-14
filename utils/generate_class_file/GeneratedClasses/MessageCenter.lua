@@ -17,25 +17,44 @@ function MessageCenter:Children() end
 function MessageCenter:CurrentChild() end
 ---@overload fun(name: integer, role: nil): MessageCategory
 function MessageCenter:Get(name, role) end
----@overload fun(index: integer, class: "MessageCategory", undo: Undo?): MessageCategory
+---@generic T : MessageCategory
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): MessageCategory
 function MessageCenter:Create(index, class, undo) end
----@overload fun(class: "MessageCategory", undo: Undo?, count: integer?): MessageCategory
+---@generic T : MessageCategory
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): MessageCategory
 function MessageCenter:Append(class, undo, count) end
----@overload fun(class: "MessageCategory", undo: Undo?): MessageCategory
+---@generic T : MessageCategory
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MessageCategory
 function MessageCenter:Acquire(class, undo) end
----@overload fun(class: "MessageCategory", undo: Undo?): MessageCategory
+---@generic T : MessageCategory
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MessageCategory
 ---@deprecated use "Acquire" instead
 function MessageCenter:Aquire(class, undo) end
----@overload fun(index: integer, class: "MessageCategory", undo: Undo?, count: integer?): MessageCategory
+---@generic T : MessageCategory
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): MessageCategory
 function MessageCenter:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "MessageCategory"): MessageCategory
----@overload fun(name: string, class: nil): MessageCategory
-function MessageCenter:Find(name, class) end
----@overload fun(name: string, class: "MessageCategory"): MessageCategory
----@overload fun(name: string, class: nil): Object
-function MessageCenter:FindRecursive(name, class) end
+---@generic T : MessageCategory
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): MessageCategory
+function MessageCenter:Find(class, undo) end

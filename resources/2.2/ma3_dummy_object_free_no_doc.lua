@@ -40,7 +40,7 @@ function DevMode3d()
     return ""
 end
 
----@param patch Handle
+---@param patch Object
 ---@param startingAddress integer
 ---@param footprint integer
 ---@return AbsoluteAddress absoluteAddress
@@ -48,7 +48,7 @@ function FindBestDMXPatchAddr(patch, startingAddress, footprint)
     return 0
 end
 
----@param handle? Handle @Optional
+---@param handle? Object @Optional
 function FindBestFocus(handle)
 end
 
@@ -57,15 +57,15 @@ end
 function FindNextFocus(backwards, reason)
 end
 
----@param handle Handle
----@param attribute Handle
+---@param handle Object
+---@param attribute Object
 ---@return integer columnId
 function GetAttributeColumnId(handle, attribute)
     return 0
 end
 
 ---@param address string
----@return Handle handle
+---@return Object handle
 function GetObject(address) end
 
 ---@param uiChannelIndex integer
@@ -82,7 +82,7 @@ function GetProgPhaserValue(uiChannelIndex, step)
     return {}
 end
 
----@param handle Handle
+---@param handle Object
 ---@param propertyName string
 ---@return integer columnId
 function GetPropertyColumnId(handle, propertyName)
@@ -139,7 +139,7 @@ function OpenMessageQueue(queueName)
     return true
 end
 
----@return Handle handle
+---@return Object handle
 function OverallDeviceCertificate() end
 
 ---@param pluginName? string @Optional
@@ -152,14 +152,14 @@ function PopupInput(options)
     return 0, ""
 end
 
----@param handle Handle
+---@param handle Object
 ---@param changeLevelThreshold? integer @Optional
 ---@return boolean
 function PrepareWaitObjectChange(handle, changeLevelThreshold)
     return true
 end
 
----@param handle Handle
+---@param handle Object
 function RefreshLibrary(handle)
 end
 
@@ -198,15 +198,15 @@ function SelectionComponentZ()
     return 0, 0, 0, 0, 0
 end
 
----@param context Handle
+---@param context Object
 function SelectionNotifyBegin(context)
 end
 
----@param context Handle
+---@param context Object
 function SelectionNotifyEnd(context)
 end
 
----@param objectToNotify Handle
+---@param objectToNotify Object
 function SelectionNotifyObject(objectToNotify)
 end
 

@@ -15,25 +15,44 @@ function TimecodeSlotPoolSettingsCollect:Children() end
 function TimecodeSlotPoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): TimecodeSlotPoolSettings
 function TimecodeSlotPoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "TimecodeSlotPoolSettings", undo: Undo?): TimecodeSlotPoolSettings
+---@generic T : TimecodeSlotPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): TimecodeSlotPoolSettings
 function TimecodeSlotPoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "TimecodeSlotPoolSettings", undo: Undo?, count: integer?): TimecodeSlotPoolSettings
+---@generic T : TimecodeSlotPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): TimecodeSlotPoolSettings
 function TimecodeSlotPoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "TimecodeSlotPoolSettings", undo: Undo?): TimecodeSlotPoolSettings
+---@generic T : TimecodeSlotPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): TimecodeSlotPoolSettings
 function TimecodeSlotPoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "TimecodeSlotPoolSettings", undo: Undo?): TimecodeSlotPoolSettings
+---@generic T : TimecodeSlotPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): TimecodeSlotPoolSettings
 ---@deprecated use "Acquire" instead
 function TimecodeSlotPoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "TimecodeSlotPoolSettings", undo: Undo?, count: integer?): TimecodeSlotPoolSettings
+---@generic T : TimecodeSlotPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): TimecodeSlotPoolSettings
 function TimecodeSlotPoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "TimecodeSlotPoolSettings"): TimecodeSlotPoolSettings
----@overload fun(name: string, class: nil): TimecodeSlotPoolSettings
-function TimecodeSlotPoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "TimecodeSlotPoolSettings"): TimecodeSlotPoolSettings
----@overload fun(name: string, class: nil): Object
-function TimecodeSlotPoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : TimecodeSlotPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): TimecodeSlotPoolSettings
+function TimecodeSlotPoolSettingsCollect:Find(class, undo) end

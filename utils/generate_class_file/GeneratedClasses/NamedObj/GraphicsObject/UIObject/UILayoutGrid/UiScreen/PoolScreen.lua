@@ -17,39 +17,50 @@ function PoolScreen:Children() end
 function PoolScreen:CurrentChild() end
 ---@overload fun(name: integer, role: nil): PoolWindow
 function PoolScreen:Get(name, role) end
+---@generic T : ResultPoolWindow|RunningPlaybacksWindow
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: "PoolWindow", undo: Undo?): PoolWindow
----@overload fun(index: integer, class: "ResultPoolWindow", undo: Undo?): ResultPoolWindow
----@overload fun(index: integer, class: "RunningPlaybacksWindow", undo: Undo?): RunningPlaybacksWindow
 ---@overload fun(index: integer, class: nil, undo: Undo?): PoolWindow
 function PoolScreen:Create(index, class, undo) end
+---@generic T : ResultPoolWindow|RunningPlaybacksWindow
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: "PoolWindow", undo: Undo?, count: integer?): PoolWindow
----@overload fun(class: "ResultPoolWindow", undo: Undo?, count: integer?): ResultPoolWindow
----@overload fun(class: "RunningPlaybacksWindow", undo: Undo?, count: integer?): RunningPlaybacksWindow
 ---@overload fun(class: nil, undo: Undo?, count: integer?): PoolWindow
 function PoolScreen:Append(class, undo, count) end
+---@generic T : ResultPoolWindow|RunningPlaybacksWindow
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: "PoolWindow", undo: Undo?): PoolWindow
----@overload fun(class: "ResultPoolWindow", undo: Undo?): ResultPoolWindow
----@overload fun(class: "RunningPlaybacksWindow", undo: Undo?): RunningPlaybacksWindow
 ---@overload fun(class: nil, undo: Undo?): PoolWindow
 function PoolScreen:Acquire(class, undo) end
+---@generic T : ResultPoolWindow|RunningPlaybacksWindow
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: "PoolWindow", undo: Undo?): PoolWindow
----@overload fun(class: "ResultPoolWindow", undo: Undo?): ResultPoolWindow
----@overload fun(class: "RunningPlaybacksWindow", undo: Undo?): RunningPlaybacksWindow
 ---@overload fun(class: nil, undo: Undo?): PoolWindow
 ---@deprecated use "Acquire" instead
 function PoolScreen:Aquire(class, undo) end
+---@generic T : ResultPoolWindow|RunningPlaybacksWindow
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: "PoolWindow", undo: Undo?, count: integer?): PoolWindow
----@overload fun(index: integer, class: "ResultPoolWindow", undo: Undo?, count: integer?): ResultPoolWindow
----@overload fun(index: integer, class: "RunningPlaybacksWindow", undo: Undo?, count: integer?): RunningPlaybacksWindow
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): PoolWindow
 function PoolScreen:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "PoolWindow"): PoolWindow
----@overload fun(name: string, class: "ResultPoolWindow"): ResultPoolWindow
----@overload fun(name: string, class: "RunningPlaybacksWindow"): RunningPlaybacksWindow
----@overload fun(name: string, class: nil): PoolWindow
-function PoolScreen:Find(name, class) end
----@overload fun(name: string, class: "PoolWindow"): PoolWindow
----@overload fun(name: string, class: "ResultPoolWindow"): ResultPoolWindow
----@overload fun(name: string, class: "RunningPlaybacksWindow"): RunningPlaybacksWindow
----@overload fun(name: string, class: nil): Object
-function PoolScreen:FindRecursive(name, class) end
+---@generic T : ResultPoolWindow|RunningPlaybacksWindow
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: "PoolWindow", undo: Undo?): PoolWindow
+---@overload fun(class: nil, undo: Undo?): PoolWindow
+function PoolScreen:Find(class, undo) end

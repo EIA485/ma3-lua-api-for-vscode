@@ -15,25 +15,44 @@ function MatricksPoolSettingsCollect:Children() end
 function MatricksPoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): MatricksPoolSettings
 function MatricksPoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "MatricksPoolSettings", undo: Undo?): MatricksPoolSettings
+---@generic T : MatricksPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): MatricksPoolSettings
 function MatricksPoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "MatricksPoolSettings", undo: Undo?, count: integer?): MatricksPoolSettings
+---@generic T : MatricksPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): MatricksPoolSettings
 function MatricksPoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "MatricksPoolSettings", undo: Undo?): MatricksPoolSettings
+---@generic T : MatricksPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MatricksPoolSettings
 function MatricksPoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "MatricksPoolSettings", undo: Undo?): MatricksPoolSettings
+---@generic T : MatricksPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MatricksPoolSettings
 ---@deprecated use "Acquire" instead
 function MatricksPoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "MatricksPoolSettings", undo: Undo?, count: integer?): MatricksPoolSettings
+---@generic T : MatricksPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): MatricksPoolSettings
 function MatricksPoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "MatricksPoolSettings"): MatricksPoolSettings
----@overload fun(name: string, class: nil): MatricksPoolSettings
-function MatricksPoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "MatricksPoolSettings"): MatricksPoolSettings
----@overload fun(name: string, class: nil): Object
-function MatricksPoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : MatricksPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): MatricksPoolSettings
+function MatricksPoolSettingsCollect:Find(class, undo) end

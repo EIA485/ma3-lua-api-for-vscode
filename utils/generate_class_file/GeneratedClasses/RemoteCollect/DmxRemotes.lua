@@ -15,25 +15,44 @@ function DmxRemotes:Children() end
 function DmxRemotes:CurrentChild() end
 ---@overload fun(name: integer, role: nil): DmxRemote
 function DmxRemotes:Get(name, role) end
----@overload fun(index: integer, class: "DmxRemote", undo: Undo?): DmxRemote
+---@generic T : DmxRemote
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): DmxRemote
 function DmxRemotes:Create(index, class, undo) end
----@overload fun(class: "DmxRemote", undo: Undo?, count: integer?): DmxRemote
+---@generic T : DmxRemote
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): DmxRemote
 function DmxRemotes:Append(class, undo, count) end
----@overload fun(class: "DmxRemote", undo: Undo?): DmxRemote
+---@generic T : DmxRemote
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DmxRemote
 function DmxRemotes:Acquire(class, undo) end
----@overload fun(class: "DmxRemote", undo: Undo?): DmxRemote
+---@generic T : DmxRemote
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DmxRemote
 ---@deprecated use "Acquire" instead
 function DmxRemotes:Aquire(class, undo) end
----@overload fun(index: integer, class: "DmxRemote", undo: Undo?, count: integer?): DmxRemote
+---@generic T : DmxRemote
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): DmxRemote
 function DmxRemotes:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "DmxRemote"): DmxRemote
----@overload fun(name: string, class: nil): DmxRemote
-function DmxRemotes:Find(name, class) end
----@overload fun(name: string, class: "DmxRemote"): DmxRemote
----@overload fun(name: string, class: nil): Object
-function DmxRemotes:FindRecursive(name, class) end
+---@generic T : DmxRemote
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): DmxRemote
+function DmxRemotes:Find(class, undo) end

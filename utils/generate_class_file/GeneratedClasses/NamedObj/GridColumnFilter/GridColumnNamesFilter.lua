@@ -15,25 +15,44 @@ function GridColumnNamesFilter:Children() end
 function GridColumnNamesFilter:CurrentChild() end
 ---@overload fun(name: integer, role: nil): GridColumn
 function GridColumnNamesFilter:Get(name, role) end
----@overload fun(index: integer, class: "GridColumn", undo: Undo?): GridColumn
+---@generic T : GridColumn
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): GridColumn
 function GridColumnNamesFilter:Create(index, class, undo) end
----@overload fun(class: "GridColumn", undo: Undo?, count: integer?): GridColumn
+---@generic T : GridColumn
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): GridColumn
 function GridColumnNamesFilter:Append(class, undo, count) end
----@overload fun(class: "GridColumn", undo: Undo?): GridColumn
+---@generic T : GridColumn
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): GridColumn
 function GridColumnNamesFilter:Acquire(class, undo) end
----@overload fun(class: "GridColumn", undo: Undo?): GridColumn
+---@generic T : GridColumn
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): GridColumn
 ---@deprecated use "Acquire" instead
 function GridColumnNamesFilter:Aquire(class, undo) end
----@overload fun(index: integer, class: "GridColumn", undo: Undo?, count: integer?): GridColumn
+---@generic T : GridColumn
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): GridColumn
 function GridColumnNamesFilter:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "GridColumn"): GridColumn
----@overload fun(name: string, class: nil): GridColumn
-function GridColumnNamesFilter:Find(name, class) end
----@overload fun(name: string, class: "GridColumn"): GridColumn
----@overload fun(name: string, class: nil): Object
-function GridColumnNamesFilter:FindRecursive(name, class) end
+---@generic T : GridColumn
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): GridColumn
+function GridColumnNamesFilter:Find(class, undo) end

@@ -17,25 +17,44 @@ function EncoderBar:Children() end
 function EncoderBar:CurrentChild() end
 ---@overload fun(name: integer, role: nil): EncoderBank
 function EncoderBar:Get(name, role) end
----@overload fun(index: integer, class: "EncoderBank", undo: Undo?): EncoderBank
+---@generic T : EncoderBank
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): EncoderBank
 function EncoderBar:Create(index, class, undo) end
----@overload fun(class: "EncoderBank", undo: Undo?, count: integer?): EncoderBank
+---@generic T : EncoderBank
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): EncoderBank
 function EncoderBar:Append(class, undo, count) end
----@overload fun(class: "EncoderBank", undo: Undo?): EncoderBank
+---@generic T : EncoderBank
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): EncoderBank
 function EncoderBar:Acquire(class, undo) end
----@overload fun(class: "EncoderBank", undo: Undo?): EncoderBank
+---@generic T : EncoderBank
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): EncoderBank
 ---@deprecated use "Acquire" instead
 function EncoderBar:Aquire(class, undo) end
----@overload fun(index: integer, class: "EncoderBank", undo: Undo?, count: integer?): EncoderBank
+---@generic T : EncoderBank
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): EncoderBank
 function EncoderBar:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "EncoderBank"): EncoderBank
----@overload fun(name: string, class: nil): EncoderBank
-function EncoderBar:Find(name, class) end
----@overload fun(name: string, class: "EncoderBank"): EncoderBank
----@overload fun(name: string, class: nil): Object
-function EncoderBar:FindRecursive(name, class) end
+---@generic T : EncoderBank
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): EncoderBank
+function EncoderBar:Find(class, undo) end

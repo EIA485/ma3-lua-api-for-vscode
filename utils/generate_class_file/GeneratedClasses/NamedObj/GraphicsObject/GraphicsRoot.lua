@@ -8,116 +8,85 @@ function GraphicsRoot:GetClass() end
 function GraphicsRoot:GetChildClass() end
 ---@return Root
 function GraphicsRoot:Parent() end
+---@generic T : MonitorCollect|ShaderProgramCollect|TextureCollect|ContentSheetGridScroller|MeshLineEdit|DMXSheet|MeshMaterialGrid|FixtureSheet
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: "GraphicsObject", undo: Undo?): GraphicsObject
----@overload fun(index: integer, class: "MonitorCollect", undo: Undo?): MonitorCollect
----@overload fun(index: integer, class: "MonitorCollect", undo: Undo?): MonitorCollect
----@overload fun(index: integer, class: "ContentSheetGridScroller", undo: Undo?): ContentSheetGridScroller
----@overload fun(index: integer, class: "MeshMaterialGrid", undo: Undo?): MeshMaterialGrid
----@overload fun(index: integer, class: "FixtureSheet", undo: Undo?): FixtureSheet
----@overload fun(index: integer, class: "ContentSheet", undo: Undo?): ContentSheet
----@overload fun(index: integer, class: "DMXSheet", undo: Undo?): DMXSheet
----@overload fun(index: integer, class: "MeshLineEdit", undo: Undo?): MeshLineEdit
 ---@overload fun(index: integer, class: "NoteTextEdit", undo: Undo?): NoteTextEdit
----@overload fun(index: integer, class: "ShaderProgramCollect", undo: Undo?): ShaderProgramCollect
----@overload fun(index: integer, class: "ShaderProgramCollect", undo: Undo?): ShaderProgramCollect
----@overload fun(index: integer, class: "TextureCollect", undo: Undo?): TextureCollect
----@overload fun(index: integer, class: "TextureCollect", undo: Undo?): TextureCollect
 ---@overload fun(index: integer, class: nil, undo: Undo?): GraphicsObject
 function GraphicsRoot:Create(index, class, undo) end
+---@generic T : MonitorCollect|ShaderProgramCollect|TextureCollect|ContentSheetGridScroller|MeshLineEdit|DMXSheet|MeshMaterialGrid|FixtureSheet
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: "GraphicsObject", undo: Undo?, count: integer?): GraphicsObject
----@overload fun(class: "MonitorCollect", undo: Undo?, count: integer?): MonitorCollect
----@overload fun(class: "MonitorCollect", undo: Undo?, count: integer?): MonitorCollect
----@overload fun(class: "ContentSheetGridScroller", undo: Undo?, count: integer?): ContentSheetGridScroller
----@overload fun(class: "MeshMaterialGrid", undo: Undo?, count: integer?): MeshMaterialGrid
----@overload fun(class: "FixtureSheet", undo: Undo?, count: integer?): FixtureSheet
----@overload fun(class: "ContentSheet", undo: Undo?, count: integer?): ContentSheet
----@overload fun(class: "DMXSheet", undo: Undo?, count: integer?): DMXSheet
----@overload fun(class: "MeshLineEdit", undo: Undo?, count: integer?): MeshLineEdit
 ---@overload fun(class: "NoteTextEdit", undo: Undo?, count: integer?): NoteTextEdit
----@overload fun(class: "ShaderProgramCollect", undo: Undo?, count: integer?): ShaderProgramCollect
----@overload fun(class: "ShaderProgramCollect", undo: Undo?, count: integer?): ShaderProgramCollect
----@overload fun(class: "TextureCollect", undo: Undo?, count: integer?): TextureCollect
----@overload fun(class: "TextureCollect", undo: Undo?, count: integer?): TextureCollect
 ---@overload fun(class: nil, undo: Undo?, count: integer?): GraphicsObject
 function GraphicsRoot:Append(class, undo, count) end
+---@generic T : MonitorCollect|ShaderProgramCollect|TextureCollect|ContentSheetGridScroller|MeshLineEdit|DMXSheet|MeshMaterialGrid|FixtureSheet
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: "GraphicsObject", undo: Undo?): GraphicsObject
----@overload fun(class: "MonitorCollect", undo: Undo?): MonitorCollect
----@overload fun(class: "MonitorCollect", undo: Undo?): MonitorCollect
----@overload fun(class: "ContentSheetGridScroller", undo: Undo?): ContentSheetGridScroller
----@overload fun(class: "MeshMaterialGrid", undo: Undo?): MeshMaterialGrid
----@overload fun(class: "FixtureSheet", undo: Undo?): FixtureSheet
----@overload fun(class: "ContentSheet", undo: Undo?): ContentSheet
----@overload fun(class: "DMXSheet", undo: Undo?): DMXSheet
----@overload fun(class: "MeshLineEdit", undo: Undo?): MeshLineEdit
 ---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
----@overload fun(class: "ShaderProgramCollect", undo: Undo?): ShaderProgramCollect
----@overload fun(class: "ShaderProgramCollect", undo: Undo?): ShaderProgramCollect
----@overload fun(class: "TextureCollect", undo: Undo?): TextureCollect
----@overload fun(class: "TextureCollect", undo: Undo?): TextureCollect
 ---@overload fun(class: nil, undo: Undo?): GraphicsObject
 function GraphicsRoot:Acquire(class, undo) end
+---@generic T : MonitorCollect|ShaderProgramCollect|TextureCollect|ContentSheetGridScroller|MeshLineEdit|DMXSheet|MeshMaterialGrid|FixtureSheet
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: "GraphicsObject", undo: Undo?): GraphicsObject
----@overload fun(class: "MonitorCollect", undo: Undo?): MonitorCollect
----@overload fun(class: "MonitorCollect", undo: Undo?): MonitorCollect
----@overload fun(class: "ContentSheetGridScroller", undo: Undo?): ContentSheetGridScroller
----@overload fun(class: "MeshMaterialGrid", undo: Undo?): MeshMaterialGrid
----@overload fun(class: "FixtureSheet", undo: Undo?): FixtureSheet
----@overload fun(class: "ContentSheet", undo: Undo?): ContentSheet
----@overload fun(class: "DMXSheet", undo: Undo?): DMXSheet
----@overload fun(class: "MeshLineEdit", undo: Undo?): MeshLineEdit
 ---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
----@overload fun(class: "ShaderProgramCollect", undo: Undo?): ShaderProgramCollect
----@overload fun(class: "ShaderProgramCollect", undo: Undo?): ShaderProgramCollect
----@overload fun(class: "TextureCollect", undo: Undo?): TextureCollect
----@overload fun(class: "TextureCollect", undo: Undo?): TextureCollect
 ---@overload fun(class: nil, undo: Undo?): GraphicsObject
 ---@deprecated use "Acquire" instead
 function GraphicsRoot:Aquire(class, undo) end
+---@generic T : MonitorCollect|ShaderProgramCollect|TextureCollect|ContentSheetGridScroller|MeshLineEdit|DMXSheet|MeshMaterialGrid|FixtureSheet
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: "GraphicsObject", undo: Undo?, count: integer?): GraphicsObject
----@overload fun(index: integer, class: "MonitorCollect", undo: Undo?, count: integer?): MonitorCollect
----@overload fun(index: integer, class: "MonitorCollect", undo: Undo?, count: integer?): MonitorCollect
----@overload fun(index: integer, class: "ContentSheetGridScroller", undo: Undo?, count: integer?): ContentSheetGridScroller
----@overload fun(index: integer, class: "MeshMaterialGrid", undo: Undo?, count: integer?): MeshMaterialGrid
----@overload fun(index: integer, class: "FixtureSheet", undo: Undo?, count: integer?): FixtureSheet
----@overload fun(index: integer, class: "ContentSheet", undo: Undo?, count: integer?): ContentSheet
----@overload fun(index: integer, class: "DMXSheet", undo: Undo?, count: integer?): DMXSheet
----@overload fun(index: integer, class: "MeshLineEdit", undo: Undo?, count: integer?): MeshLineEdit
 ---@overload fun(index: integer, class: "NoteTextEdit", undo: Undo?, count: integer?): NoteTextEdit
----@overload fun(index: integer, class: "ShaderProgramCollect", undo: Undo?, count: integer?): ShaderProgramCollect
----@overload fun(index: integer, class: "ShaderProgramCollect", undo: Undo?, count: integer?): ShaderProgramCollect
----@overload fun(index: integer, class: "TextureCollect", undo: Undo?, count: integer?): TextureCollect
----@overload fun(index: integer, class: "TextureCollect", undo: Undo?, count: integer?): TextureCollect
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): GraphicsObject
 function GraphicsRoot:Insert(index, class, undo, count) end
+---@generic T : MonitorCollect|ShaderProgramCollect|TextureCollect|ContentSheetGridScroller|MeshLineEdit|DMXSheet|MeshMaterialGrid|FixtureSheet
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: "GraphicsObject", undo: Undo?): GraphicsObject
+---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(class: nil, undo: Undo?): GraphicsObject
+function GraphicsRoot:Find(class, undo) end
+---@generic T : MonitorCollect|Resolution|Monitor|ShaderProgram|Font|Texture|ShaderProgramCollect|TextureCollect|Shader|Textures|SampleTableView|Toolbar|UiFader|NotificationTitle|ProgressBar|DCRemoteInfo|UIGridCellBase|ScrollBar|UIGridFilterBlock|ScrollContainer|NotificationsWrapper|NotificationsGridScroller|Dialog|AutoLayout|SplitView|ScrollContainerPageBase|FrameBufferObject|Navigator|TitleBar|DialogFrame|PropertyBox|Overlay|TextEdit|ObjectProperties|VirtualKeyboard|Bar|GlWindowBase|UiMessageCenter|CustomMasterLayoutGrid|TagButtonList|PhaserUICenter|CloningDialog|AllExecDisplay|DialogTrackpad|PoolLayoutGrid|ScribbleEditContent|MainDialogSubMenuContent|ExecutorSection|MainDialogFunctionButtons|AgendaMonthsGrid|GridContentFilterEditor|SpecialWindowContent|UiScreen|BladeView|MainDialogContent|MatricksContainer|ThemeMergeToolBar|CmdDlgFunctionButtonsBase|GenericAssignmentSelector|PlaybackControlContent|AppearanceEditContent|ShaperEditorFaderGrid|EditorPropertyButtons|TagsEditContent|ReferencesContainer|PlaybackControlModularContent|NormedGrid|CommandWingBarContainer|InfoNotesWrapper|AtFilterDialog|UIPhaserTimeLineGrid|SpecialExecSection|AllPoolLayoutGrid|BaseClock|TouchMonitor|AgendaDaysGrid|TreeViewFrame|PhaserLayoutGrid|EncoderBarSlot|Splitter|LinearResizer|UIObjectFake|PropertyControl|UIGridConfigButton|ShowVKButton|ScrollBarButton|MovableButton|LogoButton|UIGridButton|DeleteWindowButton|IndicatorButton|WarningInfoButton|EjectButton|DimmerWheelButton|CloseButton|SoundPoolTitleButton|FilterPoolTitleButton|TimecodePoolTitleButton|TimerPoolTitleButton|VideoPoolTitleButton|PluginPoolTitleButton|GelPoolTitleButton|TimecodeSlotPoolTitleButton|SequencePoolTitleButton|MacroPoolTitleButton|AllPoolTitleButton|ShowMoreButton|MouseButton|MessageCenterButton|TreeExpandButton|AgendaDayButton|ProgressButton|TagButton|MessageCenterInfoButton|DriveStatusButton|SelectButton|RevertButton|PlaceHolderBase|LineEdit|ColorView|NotificationIcon|SensorView|DialogContainer|ScrollableItemList|ResizeCorner|ScribbleEditView|PropertyLabel|BandFader|MiniEncoder|ScrollBox|StatusBar|MultiScroller|NotificationText|TimecodeSlotInfo|TextView|TouchConfigurator|InfoNotesLabel|AppearancePreview|MacrolinePreview|TrackpadMouseControl|SoundBandView|MainDialogDummy|EditorSubCategoryButton|CommandLineOutput|InfoNotesLevel|AllExecContent|TreeViewRows|SoundLevelView|PerformanceView|ColorTestView|EditorCategoryButton|InfoNotesGridScroller|TouchTarget|EditorBase|BladeViewButton|OutputTest|BaseSymbol|ColorPickBase|TreeViewRow|SignalView|ShaperTestView
+---@param name string
+---@param class `T`
+---@return T
 ---@overload fun(name: string, class: "GraphicsObject"): GraphicsObject
----@overload fun(name: string, class: "MonitorCollect"): MonitorCollect
----@overload fun(name: string, class: "MonitorCollect"): MonitorCollect
----@overload fun(name: string, class: "ContentSheetGridScroller"): ContentSheetGridScroller
----@overload fun(name: string, class: "MeshMaterialGrid"): MeshMaterialGrid
----@overload fun(name: string, class: "FixtureSheet"): FixtureSheet
----@overload fun(name: string, class: "ContentSheet"): ContentSheet
----@overload fun(name: string, class: "DMXSheet"): DMXSheet
----@overload fun(name: string, class: "MeshLineEdit"): MeshLineEdit
----@overload fun(name: string, class: "NoteTextEdit"): NoteTextEdit
----@overload fun(name: string, class: "ShaderProgramCollect"): ShaderProgramCollect
----@overload fun(name: string, class: "ShaderProgramCollect"): ShaderProgramCollect
----@overload fun(name: string, class: "TextureCollect"): TextureCollect
----@overload fun(name: string, class: "TextureCollect"): TextureCollect
----@overload fun(name: string, class: nil): GraphicsObject
-function GraphicsRoot:Find(name, class) end
----@overload fun(name: string, class: "GraphicsObject"): GraphicsObject
----@overload fun(name: string, class: "MonitorCollect"): MonitorCollect
----@overload fun(name: string, class: "MonitorCollect"): MonitorCollect
----@overload fun(name: string, class: "ContentSheetGridScroller"): ContentSheetGridScroller
----@overload fun(name: string, class: "MeshMaterialGrid"): MeshMaterialGrid
----@overload fun(name: string, class: "FixtureSheet"): FixtureSheet
----@overload fun(name: string, class: "ContentSheet"): ContentSheet
----@overload fun(name: string, class: "DMXSheet"): DMXSheet
----@overload fun(name: string, class: "MeshLineEdit"): MeshLineEdit
----@overload fun(name: string, class: "NoteTextEdit"): NoteTextEdit
----@overload fun(name: string, class: "ShaderProgramCollect"): ShaderProgramCollect
----@overload fun(name: string, class: "ShaderProgramCollect"): ShaderProgramCollect
----@overload fun(name: string, class: "TextureCollect"): TextureCollect
----@overload fun(name: string, class: "TextureCollect"): TextureCollect
+---@overload fun(name: string, class: "UIObject"): UIObject
+---@overload fun(name: string, class: "UILayoutGrid"): UILayoutGrid
+---@overload fun(name: string, class: "Drawable"): Drawable
+---@overload fun(name: string, class: "Button"): Button
+---@overload fun(name: string, class: "TitleButton"): TitleButton
+---@overload fun(name: string, class: "PoolTitleButton"): PoolTitleButton
 ---@overload fun(name: string, class: nil): Object
 function GraphicsRoot:FindRecursive(name, class) end
+---@generic T : KeyRegistry|MediaPools|GroupPoolSettingsCollect|WindowAppearance|RdmWindowSettingsCollect|StorePreferencesSequence|WindowPhaserEditorSettingsCollect|Drive|DeactivationGroups|TimecodeWindowSettingsCollect|Hardkeys|SpecialExecutorPages|UIChannel|Relations|GridContentFilterBase|TagFakeObject|Attributes|RunningPlaybacksSettingsCollect|DeskLightsSet|TimecodeSlots|FTMacros|TagReference|PresetShapersPoolSettingsCollect|Classes|PhysicalPropertiesData|ProgUpdateCollect|CRI|ViewButton|Layers|MVRFileCollect|Break|Models|SequenceSelection|PinPatch|FixtureSheetSettingsCollect|UserEnvironment|PresetGoboPoolSettingsCollect|PresetColorPoolSettingsCollect|FilterPoolSettingsCollect|MidiSettings|ColorDefCollect|UdpProtocol|PowerConsumption|MacroPoolSettingsCollect|GridData|TimecodeWindowSharedData|SoftwareVersions|MidiInDescriptions|PsrExtraData|TimecodePoolSettingsCollect|TempStoreSettings|TempNetworkRemoteInterfaceCollect|Masters|CommandlineWindowSettingsCollect|SysmonWindowSettingsCollect|SubfixtureOverview|ExecConfigPoolSettingsCollect|Library|TimeLogBuffer|Cmdlines|RecipeEditor|DeskLightsCollect|AttributeDefinitions|FTMacro|FTFilter|MVRService|MVRServiceInterface|HardwareConfiguration|EncoderBank|Timezone|OutputStationCollect|ColorSpaceData|FeatureGroup|GridContentFilterItem|Configurations|Materials|Quickeys|Patterns|Timers|Tags|Views|RenderQualities|Worlds|Bitmaps|Timecodes|MAtricks|CachedObjectPool|Appearances|Layouts|Cameras|Pages|GelPool|Filters|Generators|Scribbles|Groups|EncoderBarPool|DataPools|Macros|GridColumnFilter|Variables|RDMFixtureType|Feature|ActivationGroup|OutputStation|RenderQuality|WindowSettings|Stage|EncoderBar|Quickey|Selection|World|Class|Pool|Camera|Layout|Timecode|ShowData|Configuration|AgendaEvent|Page|TimeRange|System|Scribble|Tag|MacroLine|Timer|Element|LayoutElementDefaults|OSCData|Remote|Macro|DmxCurve|User|Track|sACNData|DmxUniverse|ScreenConfig|Appearance|Plugin|FixtureLayer|CachedObj|View|Gel|UserProfile|Master|ViewWidget|MasterPool|KeyboardLayout|FixtureTypeModeFile|EncoderPage|FTPreset|Gamut|OutputConfiguration|ColorThemeContent|DeactivationGroup|MVRLocalFile|AudioInDeviceDescription|WindowType|Tracker|Emitter|GridColumn|NDISource|AddonApi|Undo|Parameter|USBDeviceContainer|TrackGroup|Wheel|IDs|MetaFile|Attribute|Connector|RDMFixture|USBDevice|Relation|Facet|ViewButtonScreen|File|TypedNamedObj|DefaultDisplayPositions|Model|Session|Key|DMXMode|GridColumnConfiguration|Addon|PluginPreferences|MIDIDeviceDescription|TimeConfig|StorePreferencesExec|HelperWindowSettingsCollect|WindowInfoSettingsCollect|TagFakeCollect|FixtureFilterRuleItemBase|Connectors|Addons|Measurement|MacroDMX|ConvertTask|MessageCategory|StorePreferencesPreset|ClockWindowSettingsCollect|Encoder|PhysicalProperties|AddonVariables|ScreenEncoder|FakeValueSensor|Parameters|WindowSettingsCollect|ExtensionConfigurations|NtpMonitor|ShowMetaDataCollect|Timezones|GridColumnConfigurationCollect|Hardkey|DefaultDisplayPositionsCollect|Root|Interface|BatteryStatus|MatricksPoolSettingsCollect|HardwareConfigurations|GeneratorConfiguration|GeneratorTypes|GeneratorBaseChannel|TimerPoolSettingsCollect|StorePreferencesTimer|MacroDMXStep|FaderDefinition|DmxAddresses|DMXAddress|DmxUniverses|StorePreferencesViews|FTFilters|GamutCollect|ConfigEntry|ReleaseFile|WindowTypes|OutputStations|VirtualKey|PresetDimmerPoolSettingsCollect|LayoutViewSettingsCollect|PoolSettingsCollect|Interfaces|EncoderDefinition|FaderDefinitions|LogInterface|PluginPoolSettingsCollect|DMXModes|DefaultDisplayPosition|Emitters|PultCollect|PatchFilter|Collection|ViewButtonScreens|UserAttribute|MidiOutDescriptions|KeyModifier|FixtureTypesOverview|ScreenEncoderDirection|PresetControlPoolSettingsCollect|StationSettings|KeyboardLayouts|RunningPlaybacksCollect|StorePreferencesGroup|TimecodeWindowSharedContainer|GridSelection|PluginPreferencesCollect|ActivationGroups|WindowAgendaSettingsCollect|VKValue|FTRDMPersonalityCollect|DmxSheetSettingsCollect|ProgUpdate|PresetAllPoolSettingsCollect|DisplaySurfaces|Revision|EncoderDefinitions|SubTrack|DMXChannels|WebSocketsConnection|ColorSpaceCollect|VirtualKeys|ProgLayer|PsrFakeFixture|SoundChannels|RTChannels|SysteminfoWindowSettingsCollect|GridBase|StorePreferences|PsrFixtures|Personality|Certificates|PatchFakeObject|AutoCreateSettings|LayoutElementDefaultsCollect|CRIGroup|GridColumnFilterCollect|UserAttributePreferences|MAPacket|Environments|GridContentFilterSettings|DMXRoot|GridLine|MouseCollect|PlaybackWindowSettingsCollect|ShowMetaData|TypedObject|SoundSettings|RDMFixtureTypes|Device|GelPoolSettingsCollect|DmxCurvePoint|PresetVideoPoolSettingsCollect|DefaultPlaybackSettings|KeyboardKey|CRIs|Stages|BitmapChannels|RandomChannels|AudioInDescriptions|FixtureTypes|LocalSettings|Undos|Wheels|ExecutorKeyStatus|MessagePriority|SequenceSheetSettingsCollect|RDMPort|ScreenConfigurations|MeasurementPoint|HardwareStatus|ShowSettings|DisplaySurface|TabRegistry|PlaybackTable|SelectionViewSettingsCollect|DriveCollect|UserProfiles|ColorTheme|SoundChannel|FixtureFilterRules|LoadedPlaybacks|PatchFakeCollect|LedDefinitions|FixtureTypeFake|UsbNotifier|Event|TempMVRExchange|DmxCurves|MessageCenter|TempNetworkInterfaces|FTPresets|Remotes|GlobalSettings|DMX|BitmapPoolSettingsCollect|ColorGroups|WorldPoolSettingsCollect|NDI|LedDefinition|FilterRuleFixture|SoftwareVersion|EncoderBarWindowSettingsCollect|FTSubfixture|Temp|ExtensionConfig|PresetFocusPoolSettingsCollect|Protocols|DMXProtocol|sACNDataCollect|BindIndex|ArtNetDataCollect|DMXProtocols|ArtNetNodeCollect|sACNDiscoveryCollect|ScribbleEdit|MessageGridSettingsCollect|Revisions|GeneratorPoolSettingsCollect|KeyboardShortcut|ImportFakeObject|PresetBeamPoolSettingsCollect|TimecodeSlotPoolSettingsCollect|DeviceConfigurations|ExecutorFixation|PresetPositionPoolSettingsCollect|RTChannel|MacroDMXValue|TemporaryWindowSettings|ImportObjectCollect|LayoutCameraObject|Cloud|HostTypes|MAnetSocket|CloudMember|Sessions|FTPresetType|Certificate|MVRServiceCollect|VideoPoolSettingsCollect|FeatureGroups|GelPools|View3DSettingsCollect|TimecodeStatuses|Output|Patch|Cmdline|LayoutPoolSettingsCollect|WebServer|HardwareIoConnectors|PatchFilterItem|PresetDynamicPoolSettingsCollect|Users|RDMPorts|RemoteCollect|SoundPoolSettingsCollect|MVRxchange|AtFilter|GeneratorConfigurations|Agendas|FTPresetValue|StorePreferencesTimecode|NetworkStations|UIChannels|SequencePoolSettingsCollect|TestRGBInterface|PresetPoolSettingsCollect|DMXModeFake|NetworkIP|Pult|QuickeyPoolSettingsCollect|NetworkStation|ModularPlaybackWindowSettingsCollect|Proxy|Devices|WindowScrollPositions|ValueBase|ProgLayers|SmartViewSettingsCollect|SpecialWindowSettingsCollect|ContentSheetSettingsCollect|RDMData|ColorPickerSettingsCollect|KeyboardShortCuts|PagePoolSettingsCollect|OSCBase|ShowDeletedData|IDTypes
+---@param class `T`
+---@return T
+---@overload fun(class: "Object"): Object
+---@overload fun(class: "NamedObj"): NamedObj
+---@overload fun(class: "GenericPool"): GenericPool
+---@overload fun(class: "GuidObject"): GuidObject
+---@overload fun(class: "MAtrick"): MAtrick
+---@overload fun(class: "Group"): Group
+---@overload fun(class: "Art-Net-Data"): ArtNetData
+---@overload fun(class: "Art-Net-Node"): ArtNetNode
+---@overload fun(class: "sACN-Node"): sACNNode
+---@overload fun(class: "RunningPlaybacks"): RunningPlaybacks
+---@overload fun(class: "GeneratorChannels"): GeneratorChannels
+---@overload fun(class: "Page-Nr"): PageNr
+function GraphicsRoot:FindParent(class) end

@@ -15,46 +15,38 @@ function UIObjectFake:Children() end
 function UIObjectFake:CurrentChild() end
 ---@overload fun(name: integer, role: nil): UIObjectFake
 function UIObjectFake:Get(name, role) end
----@overload fun(index: integer, class: "UIObjectFake", undo: Undo?): UIObjectFake
----@overload fun(index: integer, class: "BaseItemButtons", undo: Undo?): BaseItemButtons
----@overload fun(index: integer, class: "UIGridInternals", undo: Undo?): UIGridInternals
----@overload fun(index: integer, class: "AudioPreview", undo: Undo?): AudioPreview
----@overload fun(index: integer, class: nil, undo: Undo?): UIObjectFake
+---@generic T : BaseItemButtons|UIGridInternals|AudioPreview
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 function UIObjectFake:Create(index, class, undo) end
----@overload fun(class: "UIObjectFake", undo: Undo?, count: integer?): UIObjectFake
----@overload fun(class: "BaseItemButtons", undo: Undo?, count: integer?): BaseItemButtons
----@overload fun(class: "UIGridInternals", undo: Undo?, count: integer?): UIGridInternals
----@overload fun(class: "AudioPreview", undo: Undo?, count: integer?): AudioPreview
----@overload fun(class: nil, undo: Undo?, count: integer?): UIObjectFake
+---@generic T : BaseItemButtons|UIGridInternals|AudioPreview
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 function UIObjectFake:Append(class, undo, count) end
----@overload fun(class: "UIObjectFake", undo: Undo?): UIObjectFake
----@overload fun(class: "BaseItemButtons", undo: Undo?): BaseItemButtons
----@overload fun(class: "UIGridInternals", undo: Undo?): UIGridInternals
----@overload fun(class: "AudioPreview", undo: Undo?): AudioPreview
----@overload fun(class: nil, undo: Undo?): UIObjectFake
+---@generic T : BaseItemButtons|UIGridInternals|AudioPreview
+---@param class `T`
+---@param undo Undo?
+---@return T
 function UIObjectFake:Acquire(class, undo) end
----@overload fun(class: "UIObjectFake", undo: Undo?): UIObjectFake
----@overload fun(class: "BaseItemButtons", undo: Undo?): BaseItemButtons
----@overload fun(class: "UIGridInternals", undo: Undo?): UIGridInternals
----@overload fun(class: "AudioPreview", undo: Undo?): AudioPreview
----@overload fun(class: nil, undo: Undo?): UIObjectFake
+---@generic T : BaseItemButtons|UIGridInternals|AudioPreview
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@deprecated use "Acquire" instead
 function UIObjectFake:Aquire(class, undo) end
----@overload fun(index: integer, class: "UIObjectFake", undo: Undo?, count: integer?): UIObjectFake
----@overload fun(index: integer, class: "BaseItemButtons", undo: Undo?, count: integer?): BaseItemButtons
----@overload fun(index: integer, class: "UIGridInternals", undo: Undo?, count: integer?): UIGridInternals
----@overload fun(index: integer, class: "AudioPreview", undo: Undo?, count: integer?): AudioPreview
----@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): UIObjectFake
+---@generic T : BaseItemButtons|UIGridInternals|AudioPreview
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 function UIObjectFake:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "UIObjectFake"): UIObjectFake
----@overload fun(name: string, class: "BaseItemButtons"): BaseItemButtons
----@overload fun(name: string, class: "UIGridInternals"): UIGridInternals
----@overload fun(name: string, class: "AudioPreview"): AudioPreview
----@overload fun(name: string, class: nil): UIObjectFake
-function UIObjectFake:Find(name, class) end
----@overload fun(name: string, class: "UIObjectFake"): UIObjectFake
----@overload fun(name: string, class: "BaseItemButtons"): BaseItemButtons
----@overload fun(name: string, class: "UIGridInternals"): UIGridInternals
----@overload fun(name: string, class: "AudioPreview"): AudioPreview
----@overload fun(name: string, class: nil): Object
-function UIObjectFake:FindRecursive(name, class) end
+---@generic T : BaseItemButtons|UIGridInternals|AudioPreview
+---@param class `T`
+---@param undo Undo?
+---@return T
+function UIObjectFake:Find(class, undo) end

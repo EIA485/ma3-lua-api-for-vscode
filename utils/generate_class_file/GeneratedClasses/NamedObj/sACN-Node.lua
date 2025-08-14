@@ -2,9 +2,9 @@
 
 ---@class sACNNode: NamedObj
 local sACNNode = {}
----@return "sACNNode"
+---@return "sACN-Node"
 function sACNNode:GetClass() end
----@return "PageNr"
+---@return "Page-Nr"
 function sACNNode:GetChildClass() end
 ---@return sACNDiscoveryCollect
 function sACNNode:Parent() end
@@ -33,9 +33,6 @@ function sACNNode:Aquire(class, undo) end
 ---@overload fun(index: integer, class: "Page-Nr", undo: Undo?, count: integer?): PageNr
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): PageNr
 function sACNNode:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Page-Nr"): PageNr
----@overload fun(name: string, class: nil): PageNr
-function sACNNode:Find(name, class) end
----@overload fun(name: string, class: "Page-Nr"): PageNr
----@overload fun(name: string, class: nil): Object
-function sACNNode:FindRecursive(name, class) end
+---@overload fun(class: "Page-Nr", undo: Undo?): PageNr
+---@overload fun(class: nil, undo: Undo?): PageNr
+function sACNNode:Find(class, undo) end

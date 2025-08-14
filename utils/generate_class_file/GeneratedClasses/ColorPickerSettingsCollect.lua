@@ -15,25 +15,44 @@ function ColorPickerSettingsCollect:Children() end
 function ColorPickerSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): ColorPickerSettings
 function ColorPickerSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "ColorPickerSettings", undo: Undo?): ColorPickerSettings
+---@generic T : ColorPickerSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): ColorPickerSettings
 function ColorPickerSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "ColorPickerSettings", undo: Undo?, count: integer?): ColorPickerSettings
+---@generic T : ColorPickerSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): ColorPickerSettings
 function ColorPickerSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "ColorPickerSettings", undo: Undo?): ColorPickerSettings
+---@generic T : ColorPickerSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ColorPickerSettings
 function ColorPickerSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "ColorPickerSettings", undo: Undo?): ColorPickerSettings
+---@generic T : ColorPickerSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ColorPickerSettings
 ---@deprecated use "Acquire" instead
 function ColorPickerSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "ColorPickerSettings", undo: Undo?, count: integer?): ColorPickerSettings
+---@generic T : ColorPickerSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): ColorPickerSettings
 function ColorPickerSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "ColorPickerSettings"): ColorPickerSettings
----@overload fun(name: string, class: nil): ColorPickerSettings
-function ColorPickerSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "ColorPickerSettings"): ColorPickerSettings
----@overload fun(name: string, class: nil): Object
-function ColorPickerSettingsCollect:FindRecursive(name, class) end
+---@generic T : ColorPickerSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): ColorPickerSettings
+function ColorPickerSettingsCollect:Find(class, undo) end

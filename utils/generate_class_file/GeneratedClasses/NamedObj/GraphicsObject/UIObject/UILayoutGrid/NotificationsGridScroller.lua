@@ -17,25 +17,44 @@ function NotificationsGridScroller:Children() end
 function NotificationsGridScroller:CurrentChild() end
 ---@overload fun(name: integer, role: nil): NotificationsWrapper
 function NotificationsGridScroller:Get(name, role) end
----@overload fun(index: integer, class: "NotificationsWrapper", undo: Undo?): NotificationsWrapper
+---@generic T : NotificationsWrapper
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): NotificationsWrapper
 function NotificationsGridScroller:Create(index, class, undo) end
----@overload fun(class: "NotificationsWrapper", undo: Undo?, count: integer?): NotificationsWrapper
+---@generic T : NotificationsWrapper
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): NotificationsWrapper
 function NotificationsGridScroller:Append(class, undo, count) end
----@overload fun(class: "NotificationsWrapper", undo: Undo?): NotificationsWrapper
+---@generic T : NotificationsWrapper
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): NotificationsWrapper
 function NotificationsGridScroller:Acquire(class, undo) end
----@overload fun(class: "NotificationsWrapper", undo: Undo?): NotificationsWrapper
+---@generic T : NotificationsWrapper
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): NotificationsWrapper
 ---@deprecated use "Acquire" instead
 function NotificationsGridScroller:Aquire(class, undo) end
----@overload fun(index: integer, class: "NotificationsWrapper", undo: Undo?, count: integer?): NotificationsWrapper
+---@generic T : NotificationsWrapper
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): NotificationsWrapper
 function NotificationsGridScroller:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "NotificationsWrapper"): NotificationsWrapper
----@overload fun(name: string, class: nil): NotificationsWrapper
-function NotificationsGridScroller:Find(name, class) end
----@overload fun(name: string, class: "NotificationsWrapper"): NotificationsWrapper
----@overload fun(name: string, class: nil): Object
-function NotificationsGridScroller:FindRecursive(name, class) end
+---@generic T : NotificationsWrapper
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): NotificationsWrapper
+function NotificationsGridScroller:Find(class, undo) end

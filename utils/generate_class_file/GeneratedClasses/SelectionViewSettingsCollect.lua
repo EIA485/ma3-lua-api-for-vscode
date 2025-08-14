@@ -15,25 +15,44 @@ function SelectionViewSettingsCollect:Children() end
 function SelectionViewSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): SelectionViewSettings
 function SelectionViewSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "SelectionViewSettings", undo: Undo?): SelectionViewSettings
+---@generic T : SelectionViewSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): SelectionViewSettings
 function SelectionViewSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "SelectionViewSettings", undo: Undo?, count: integer?): SelectionViewSettings
+---@generic T : SelectionViewSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): SelectionViewSettings
 function SelectionViewSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "SelectionViewSettings", undo: Undo?): SelectionViewSettings
+---@generic T : SelectionViewSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SelectionViewSettings
 function SelectionViewSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "SelectionViewSettings", undo: Undo?): SelectionViewSettings
+---@generic T : SelectionViewSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SelectionViewSettings
 ---@deprecated use "Acquire" instead
 function SelectionViewSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "SelectionViewSettings", undo: Undo?, count: integer?): SelectionViewSettings
+---@generic T : SelectionViewSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): SelectionViewSettings
 function SelectionViewSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "SelectionViewSettings"): SelectionViewSettings
----@overload fun(name: string, class: nil): SelectionViewSettings
-function SelectionViewSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "SelectionViewSettings"): SelectionViewSettings
----@overload fun(name: string, class: nil): Object
-function SelectionViewSettingsCollect:FindRecursive(name, class) end
+---@generic T : SelectionViewSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): SelectionViewSettings
+function SelectionViewSettingsCollect:Find(class, undo) end

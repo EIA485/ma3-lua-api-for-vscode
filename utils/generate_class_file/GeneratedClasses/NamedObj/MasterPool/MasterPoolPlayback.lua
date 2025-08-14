@@ -15,25 +15,44 @@ function MasterPoolPlayback:Children() end
 function MasterPoolPlayback:CurrentChild() end
 ---@overload fun(name: integer, role: nil): MasterPlayback
 function MasterPoolPlayback:Get(name, role) end
----@overload fun(index: integer, class: "MasterPlayback", undo: Undo?): MasterPlayback
+---@generic T : MasterPlayback
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): MasterPlayback
 function MasterPoolPlayback:Create(index, class, undo) end
----@overload fun(class: "MasterPlayback", undo: Undo?, count: integer?): MasterPlayback
+---@generic T : MasterPlayback
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): MasterPlayback
 function MasterPoolPlayback:Append(class, undo, count) end
----@overload fun(class: "MasterPlayback", undo: Undo?): MasterPlayback
+---@generic T : MasterPlayback
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MasterPlayback
 function MasterPoolPlayback:Acquire(class, undo) end
----@overload fun(class: "MasterPlayback", undo: Undo?): MasterPlayback
+---@generic T : MasterPlayback
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MasterPlayback
 ---@deprecated use "Acquire" instead
 function MasterPoolPlayback:Aquire(class, undo) end
----@overload fun(index: integer, class: "MasterPlayback", undo: Undo?, count: integer?): MasterPlayback
+---@generic T : MasterPlayback
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): MasterPlayback
 function MasterPoolPlayback:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "MasterPlayback"): MasterPlayback
----@overload fun(name: string, class: nil): MasterPlayback
-function MasterPoolPlayback:Find(name, class) end
----@overload fun(name: string, class: "MasterPlayback"): MasterPlayback
----@overload fun(name: string, class: nil): Object
-function MasterPoolPlayback:FindRecursive(name, class) end
+---@generic T : MasterPlayback
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): MasterPlayback
+function MasterPoolPlayback:Find(class, undo) end

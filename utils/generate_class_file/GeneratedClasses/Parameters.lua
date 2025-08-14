@@ -17,25 +17,44 @@ function Parameters:Children() end
 function Parameters:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Parameter
 function Parameters:Get(name, role) end
----@overload fun(index: integer, class: "Parameter", undo: Undo?): Parameter
+---@generic T : Parameter
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Parameter
 function Parameters:Create(index, class, undo) end
----@overload fun(class: "Parameter", undo: Undo?, count: integer?): Parameter
+---@generic T : Parameter
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Parameter
 function Parameters:Append(class, undo, count) end
----@overload fun(class: "Parameter", undo: Undo?): Parameter
+---@generic T : Parameter
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Parameter
 function Parameters:Acquire(class, undo) end
----@overload fun(class: "Parameter", undo: Undo?): Parameter
+---@generic T : Parameter
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Parameter
 ---@deprecated use "Acquire" instead
 function Parameters:Aquire(class, undo) end
----@overload fun(index: integer, class: "Parameter", undo: Undo?, count: integer?): Parameter
+---@generic T : Parameter
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Parameter
 function Parameters:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Parameter"): Parameter
----@overload fun(name: string, class: nil): Parameter
-function Parameters:Find(name, class) end
----@overload fun(name: string, class: "Parameter"): Parameter
----@overload fun(name: string, class: nil): Object
-function Parameters:FindRecursive(name, class) end
+---@generic T : Parameter
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Parameter
+function Parameters:Find(class, undo) end

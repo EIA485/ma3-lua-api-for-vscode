@@ -17,25 +17,44 @@ function HardwareConfigurations:Children() end
 function HardwareConfigurations:CurrentChild() end
 ---@overload fun(name: integer, role: nil): HardwareConfiguration
 function HardwareConfigurations:Get(name, role) end
----@overload fun(index: integer, class: "HardwareConfiguration", undo: Undo?): HardwareConfiguration
+---@generic T : HardwareConfiguration
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): HardwareConfiguration
 function HardwareConfigurations:Create(index, class, undo) end
----@overload fun(class: "HardwareConfiguration", undo: Undo?, count: integer?): HardwareConfiguration
+---@generic T : HardwareConfiguration
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): HardwareConfiguration
 function HardwareConfigurations:Append(class, undo, count) end
----@overload fun(class: "HardwareConfiguration", undo: Undo?): HardwareConfiguration
+---@generic T : HardwareConfiguration
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): HardwareConfiguration
 function HardwareConfigurations:Acquire(class, undo) end
----@overload fun(class: "HardwareConfiguration", undo: Undo?): HardwareConfiguration
+---@generic T : HardwareConfiguration
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): HardwareConfiguration
 ---@deprecated use "Acquire" instead
 function HardwareConfigurations:Aquire(class, undo) end
----@overload fun(index: integer, class: "HardwareConfiguration", undo: Undo?, count: integer?): HardwareConfiguration
+---@generic T : HardwareConfiguration
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): HardwareConfiguration
 function HardwareConfigurations:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "HardwareConfiguration"): HardwareConfiguration
----@overload fun(name: string, class: nil): HardwareConfiguration
-function HardwareConfigurations:Find(name, class) end
----@overload fun(name: string, class: "HardwareConfiguration"): HardwareConfiguration
----@overload fun(name: string, class: nil): Object
-function HardwareConfigurations:FindRecursive(name, class) end
+---@generic T : HardwareConfiguration
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): HardwareConfiguration
+function HardwareConfigurations:Find(class, undo) end

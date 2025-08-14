@@ -22,9 +22,6 @@ function Cmdlines:Aquire(class, undo) end
 ---@overload fun(index: integer, class: "Cmdline", undo: Undo?, count: integer?): Cmdline
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Cmdline
 function Cmdlines:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Cmdline"): Cmdline
----@overload fun(name: string, class: nil): Cmdline
-function Cmdlines:Find(name, class) end
----@overload fun(name: string, class: "Cmdline"): Cmdline
----@overload fun(name: string, class: nil): Object
-function Cmdlines:FindRecursive(name, class) end
+---@overload fun(class: "Cmdline", undo: Undo?): Cmdline
+---@overload fun(class: nil, undo: Undo?): Cmdline
+function Cmdlines:Find(class, undo) end

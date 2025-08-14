@@ -15,25 +15,44 @@ function InfoNotesGridScroller:Children() end
 function InfoNotesGridScroller:CurrentChild() end
 ---@overload fun(name: integer, role: nil): InfoNotesWrapper
 function InfoNotesGridScroller:Get(name, role) end
----@overload fun(index: integer, class: "InfoNotesWrapper", undo: Undo?): InfoNotesWrapper
+---@generic T : InfoNotesWrapper
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): InfoNotesWrapper
 function InfoNotesGridScroller:Create(index, class, undo) end
----@overload fun(class: "InfoNotesWrapper", undo: Undo?, count: integer?): InfoNotesWrapper
+---@generic T : InfoNotesWrapper
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): InfoNotesWrapper
 function InfoNotesGridScroller:Append(class, undo, count) end
----@overload fun(class: "InfoNotesWrapper", undo: Undo?): InfoNotesWrapper
+---@generic T : InfoNotesWrapper
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): InfoNotesWrapper
 function InfoNotesGridScroller:Acquire(class, undo) end
----@overload fun(class: "InfoNotesWrapper", undo: Undo?): InfoNotesWrapper
+---@generic T : InfoNotesWrapper
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): InfoNotesWrapper
 ---@deprecated use "Acquire" instead
 function InfoNotesGridScroller:Aquire(class, undo) end
----@overload fun(index: integer, class: "InfoNotesWrapper", undo: Undo?, count: integer?): InfoNotesWrapper
+---@generic T : InfoNotesWrapper
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): InfoNotesWrapper
 function InfoNotesGridScroller:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "InfoNotesWrapper"): InfoNotesWrapper
----@overload fun(name: string, class: nil): InfoNotesWrapper
-function InfoNotesGridScroller:Find(name, class) end
----@overload fun(name: string, class: "InfoNotesWrapper"): InfoNotesWrapper
----@overload fun(name: string, class: nil): Object
-function InfoNotesGridScroller:FindRecursive(name, class) end
+---@generic T : InfoNotesWrapper
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): InfoNotesWrapper
+function InfoNotesGridScroller:Find(class, undo) end

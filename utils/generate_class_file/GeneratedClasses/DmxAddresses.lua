@@ -17,25 +17,44 @@ function DmxAddresses:Children() end
 function DmxAddresses:CurrentChild() end
 ---@overload fun(name: integer, role: nil): DMXAddress
 function DmxAddresses:Get(name, role) end
----@overload fun(index: integer, class: "DMXAddress", undo: Undo?): DMXAddress
+---@generic T : DMXAddress
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): DMXAddress
 function DmxAddresses:Create(index, class, undo) end
----@overload fun(class: "DMXAddress", undo: Undo?, count: integer?): DMXAddress
+---@generic T : DMXAddress
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): DMXAddress
 function DmxAddresses:Append(class, undo, count) end
----@overload fun(class: "DMXAddress", undo: Undo?): DMXAddress
+---@generic T : DMXAddress
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DMXAddress
 function DmxAddresses:Acquire(class, undo) end
----@overload fun(class: "DMXAddress", undo: Undo?): DMXAddress
+---@generic T : DMXAddress
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DMXAddress
 ---@deprecated use "Acquire" instead
 function DmxAddresses:Aquire(class, undo) end
----@overload fun(index: integer, class: "DMXAddress", undo: Undo?, count: integer?): DMXAddress
+---@generic T : DMXAddress
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): DMXAddress
 function DmxAddresses:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "DMXAddress"): DMXAddress
----@overload fun(name: string, class: nil): DMXAddress
-function DmxAddresses:Find(name, class) end
----@overload fun(name: string, class: "DMXAddress"): DMXAddress
----@overload fun(name: string, class: nil): Object
-function DmxAddresses:FindRecursive(name, class) end
+---@generic T : DMXAddress
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): DMXAddress
+function DmxAddresses:Find(class, undo) end

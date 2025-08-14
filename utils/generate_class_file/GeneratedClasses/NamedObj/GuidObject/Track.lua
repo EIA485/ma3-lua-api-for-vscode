@@ -21,21 +21,15 @@ function Track:Ptr(index) end
 function Track:Children() end
 ---@return TimeRange?
 function Track:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
----@overload fun(name: "Guid", role: nil): Crypto.Guid<128>
----@overload fun(name: "Scribble", role: nil): Scribble
 ---@overload fun(name: "Appearance", role: nil): Appearance
----@overload fun(name: "NameAndApp"|"Note", role: nil): string
----@overload fun(name: "Tags", role: nil): TagMap
+---@overload fun(name: "Guid", role: nil): Crypto.Guid<128>
 ---@overload fun(name: "Target", role: nil): Object
----@overload fun(name: "Play"|"Rec", role: nil): integer
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Guid"|"Scribble"|"Appearance"|"NameAndApp"|"Note"|"Tags"|"Target"|"Play"|"Rec", role: Enums.Roles): string
+---@overload fun(name: "Scribble", role: nil): Scribble
+---@overload fun(name: "Tags", role: nil): TagMap
+---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "Play"|"Rec"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "NameAndApp"|"Note"|"Name"|"DependencyExport", role: nil): string
+---@overload fun(name: "Target"|"Play"|"Rec"|"Guid"|"Scribble"|"Appearance"|"NameAndApp"|"Note"|"Tags"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): TimeRange
 function Track:Get(name, role) end
 ---@overload fun(index: integer, class: "TimeRange", undo: Undo?): TimeRange
@@ -54,9 +48,6 @@ function Track:Aquire(class, undo) end
 ---@overload fun(index: integer, class: "TimeRange", undo: Undo?, count: integer?): TimeRange
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): TimeRange
 function Track:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "TimeRange"): TimeRange
----@overload fun(name: string, class: nil): TimeRange
-function Track:Find(name, class) end
----@overload fun(name: string, class: "TimeRange"): TimeRange
----@overload fun(name: string, class: nil): Object
-function Track:FindRecursive(name, class) end
+---@overload fun(class: "TimeRange", undo: Undo?): TimeRange
+---@overload fun(class: nil, undo: Undo?): TimeRange
+function Track:Find(class, undo) end

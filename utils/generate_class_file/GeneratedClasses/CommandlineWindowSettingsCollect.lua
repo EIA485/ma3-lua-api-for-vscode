@@ -15,25 +15,44 @@ function CommandlineWindowSettingsCollect:Children() end
 function CommandlineWindowSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): CommandlineWindowSettings
 function CommandlineWindowSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "CommandlineWindowSettings", undo: Undo?): CommandlineWindowSettings
+---@generic T : CommandlineWindowSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): CommandlineWindowSettings
 function CommandlineWindowSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "CommandlineWindowSettings", undo: Undo?, count: integer?): CommandlineWindowSettings
+---@generic T : CommandlineWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): CommandlineWindowSettings
 function CommandlineWindowSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "CommandlineWindowSettings", undo: Undo?): CommandlineWindowSettings
+---@generic T : CommandlineWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): CommandlineWindowSettings
 function CommandlineWindowSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "CommandlineWindowSettings", undo: Undo?): CommandlineWindowSettings
+---@generic T : CommandlineWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): CommandlineWindowSettings
 ---@deprecated use "Acquire" instead
 function CommandlineWindowSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "CommandlineWindowSettings", undo: Undo?, count: integer?): CommandlineWindowSettings
+---@generic T : CommandlineWindowSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): CommandlineWindowSettings
 function CommandlineWindowSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "CommandlineWindowSettings"): CommandlineWindowSettings
----@overload fun(name: string, class: nil): CommandlineWindowSettings
-function CommandlineWindowSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "CommandlineWindowSettings"): CommandlineWindowSettings
----@overload fun(name: string, class: nil): Object
-function CommandlineWindowSettingsCollect:FindRecursive(name, class) end
+---@generic T : CommandlineWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): CommandlineWindowSettings
+function CommandlineWindowSettingsCollect:Find(class, undo) end

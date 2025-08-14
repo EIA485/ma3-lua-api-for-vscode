@@ -15,25 +15,44 @@ function MarkerTrack:Children() end
 function MarkerTrack:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Marker
 function MarkerTrack:Get(name, role) end
----@overload fun(index: integer, class: "Marker", undo: Undo?): Marker
+---@generic T : Marker
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Marker
 function MarkerTrack:Create(index, class, undo) end
----@overload fun(class: "Marker", undo: Undo?, count: integer?): Marker
+---@generic T : Marker
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Marker
 function MarkerTrack:Append(class, undo, count) end
----@overload fun(class: "Marker", undo: Undo?): Marker
+---@generic T : Marker
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Marker
 function MarkerTrack:Acquire(class, undo) end
----@overload fun(class: "Marker", undo: Undo?): Marker
+---@generic T : Marker
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Marker
 ---@deprecated use "Acquire" instead
 function MarkerTrack:Aquire(class, undo) end
----@overload fun(index: integer, class: "Marker", undo: Undo?, count: integer?): Marker
+---@generic T : Marker
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Marker
 function MarkerTrack:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Marker"): Marker
----@overload fun(name: string, class: nil): Marker
-function MarkerTrack:Find(name, class) end
----@overload fun(name: string, class: "Marker"): Marker
----@overload fun(name: string, class: nil): Object
-function MarkerTrack:FindRecursive(name, class) end
+---@generic T : Marker
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Marker
+function MarkerTrack:Find(class, undo) end

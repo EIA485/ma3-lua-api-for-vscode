@@ -17,25 +17,44 @@ function Layouts:Children() end
 function Layouts:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Layout
 function Layouts:Get(name, role) end
----@overload fun(index: integer, class: "Layout", undo: Undo?): Layout
+---@generic T : Layout
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Layout
 function Layouts:Create(index, class, undo) end
----@overload fun(class: "Layout", undo: Undo?, count: integer?): Layout
+---@generic T : Layout
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Layout
 function Layouts:Append(class, undo, count) end
----@overload fun(class: "Layout", undo: Undo?): Layout
+---@generic T : Layout
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Layout
 function Layouts:Acquire(class, undo) end
----@overload fun(class: "Layout", undo: Undo?): Layout
+---@generic T : Layout
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Layout
 ---@deprecated use "Acquire" instead
 function Layouts:Aquire(class, undo) end
----@overload fun(index: integer, class: "Layout", undo: Undo?, count: integer?): Layout
+---@generic T : Layout
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Layout
 function Layouts:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Layout"): Layout
----@overload fun(name: string, class: nil): Layout
-function Layouts:Find(name, class) end
----@overload fun(name: string, class: "Layout"): Layout
----@overload fun(name: string, class: nil): Object
-function Layouts:FindRecursive(name, class) end
+---@generic T : Layout
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Layout
+function Layouts:Find(class, undo) end

@@ -17,25 +17,44 @@ function Patterns:Children() end
 function Patterns:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Pattern
 function Patterns:Get(name, role) end
----@overload fun(index: integer, class: "Pattern", undo: Undo?): Pattern
+---@generic T : Pattern
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Pattern
 function Patterns:Create(index, class, undo) end
----@overload fun(class: "Pattern", undo: Undo?, count: integer?): Pattern
+---@generic T : Pattern
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Pattern
 function Patterns:Append(class, undo, count) end
----@overload fun(class: "Pattern", undo: Undo?): Pattern
+---@generic T : Pattern
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Pattern
 function Patterns:Acquire(class, undo) end
----@overload fun(class: "Pattern", undo: Undo?): Pattern
+---@generic T : Pattern
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Pattern
 ---@deprecated use "Acquire" instead
 function Patterns:Aquire(class, undo) end
----@overload fun(index: integer, class: "Pattern", undo: Undo?, count: integer?): Pattern
+---@generic T : Pattern
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Pattern
 function Patterns:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Pattern"): Pattern
----@overload fun(name: string, class: nil): Pattern
-function Patterns:Find(name, class) end
----@overload fun(name: string, class: "Pattern"): Pattern
----@overload fun(name: string, class: nil): Object
-function Patterns:FindRecursive(name, class) end
+---@generic T : Pattern
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Pattern
+function Patterns:Find(class, undo) end

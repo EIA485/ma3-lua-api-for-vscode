@@ -17,25 +17,44 @@ function DisplaySurfaces:Children() end
 function DisplaySurfaces:CurrentChild() end
 ---@overload fun(name: integer, role: nil): DisplaySurface
 function DisplaySurfaces:Get(name, role) end
----@overload fun(index: integer, class: "DisplaySurface", undo: Undo?): DisplaySurface
+---@generic T : DisplaySurface
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): DisplaySurface
 function DisplaySurfaces:Create(index, class, undo) end
----@overload fun(class: "DisplaySurface", undo: Undo?, count: integer?): DisplaySurface
+---@generic T : DisplaySurface
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): DisplaySurface
 function DisplaySurfaces:Append(class, undo, count) end
----@overload fun(class: "DisplaySurface", undo: Undo?): DisplaySurface
+---@generic T : DisplaySurface
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DisplaySurface
 function DisplaySurfaces:Acquire(class, undo) end
----@overload fun(class: "DisplaySurface", undo: Undo?): DisplaySurface
+---@generic T : DisplaySurface
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DisplaySurface
 ---@deprecated use "Acquire" instead
 function DisplaySurfaces:Aquire(class, undo) end
----@overload fun(index: integer, class: "DisplaySurface", undo: Undo?, count: integer?): DisplaySurface
+---@generic T : DisplaySurface
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): DisplaySurface
 function DisplaySurfaces:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "DisplaySurface"): DisplaySurface
----@overload fun(name: string, class: nil): DisplaySurface
-function DisplaySurfaces:Find(name, class) end
----@overload fun(name: string, class: "DisplaySurface"): DisplaySurface
----@overload fun(name: string, class: nil): Object
-function DisplaySurfaces:FindRecursive(name, class) end
+---@generic T : DisplaySurface
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): DisplaySurface
+function DisplaySurfaces:Find(class, undo) end

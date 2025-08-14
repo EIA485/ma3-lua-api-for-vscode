@@ -15,25 +15,44 @@ function Storage:Children() end
 function Storage:CurrentChild() end
 ---@overload fun(name: integer, role: nil): USBDeviceStorage
 function Storage:Get(name, role) end
----@overload fun(index: integer, class: "USBDeviceStorage", undo: Undo?): USBDeviceStorage
+---@generic T : USBDeviceStorage
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): USBDeviceStorage
 function Storage:Create(index, class, undo) end
----@overload fun(class: "USBDeviceStorage", undo: Undo?, count: integer?): USBDeviceStorage
+---@generic T : USBDeviceStorage
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): USBDeviceStorage
 function Storage:Append(class, undo, count) end
----@overload fun(class: "USBDeviceStorage", undo: Undo?): USBDeviceStorage
+---@generic T : USBDeviceStorage
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): USBDeviceStorage
 function Storage:Acquire(class, undo) end
----@overload fun(class: "USBDeviceStorage", undo: Undo?): USBDeviceStorage
+---@generic T : USBDeviceStorage
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): USBDeviceStorage
 ---@deprecated use "Acquire" instead
 function Storage:Aquire(class, undo) end
----@overload fun(index: integer, class: "USBDeviceStorage", undo: Undo?, count: integer?): USBDeviceStorage
+---@generic T : USBDeviceStorage
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): USBDeviceStorage
 function Storage:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "USBDeviceStorage"): USBDeviceStorage
----@overload fun(name: string, class: nil): USBDeviceStorage
-function Storage:Find(name, class) end
----@overload fun(name: string, class: "USBDeviceStorage"): USBDeviceStorage
----@overload fun(name: string, class: nil): Object
-function Storage:FindRecursive(name, class) end
+---@generic T : USBDeviceStorage
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): USBDeviceStorage
+function Storage:Find(class, undo) end

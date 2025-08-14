@@ -17,25 +17,44 @@ function UIChannels:Children() end
 function UIChannels:CurrentChild() end
 ---@overload fun(name: integer, role: nil): UIChannel
 function UIChannels:Get(name, role) end
----@overload fun(index: integer, class: "UIChannel", undo: Undo?): UIChannel
+---@generic T : UIChannel
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): UIChannel
 function UIChannels:Create(index, class, undo) end
----@overload fun(class: "UIChannel", undo: Undo?, count: integer?): UIChannel
+---@generic T : UIChannel
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): UIChannel
 function UIChannels:Append(class, undo, count) end
----@overload fun(class: "UIChannel", undo: Undo?): UIChannel
+---@generic T : UIChannel
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): UIChannel
 function UIChannels:Acquire(class, undo) end
----@overload fun(class: "UIChannel", undo: Undo?): UIChannel
+---@generic T : UIChannel
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): UIChannel
 ---@deprecated use "Acquire" instead
 function UIChannels:Aquire(class, undo) end
----@overload fun(index: integer, class: "UIChannel", undo: Undo?, count: integer?): UIChannel
+---@generic T : UIChannel
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): UIChannel
 function UIChannels:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "UIChannel"): UIChannel
----@overload fun(name: string, class: nil): UIChannel
-function UIChannels:Find(name, class) end
----@overload fun(name: string, class: "UIChannel"): UIChannel
----@overload fun(name: string, class: nil): Object
-function UIChannels:FindRecursive(name, class) end
+---@generic T : UIChannel
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): UIChannel
+function UIChannels:Find(class, undo) end

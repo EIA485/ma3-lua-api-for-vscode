@@ -17,25 +17,44 @@ function Layers:Children() end
 function Layers:CurrentChild() end
 ---@overload fun(name: integer, role: nil): FixtureLayer
 function Layers:Get(name, role) end
----@overload fun(index: integer, class: "FixtureLayer", undo: Undo?): FixtureLayer
+---@generic T : FixtureLayer
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): FixtureLayer
 function Layers:Create(index, class, undo) end
----@overload fun(class: "FixtureLayer", undo: Undo?, count: integer?): FixtureLayer
+---@generic T : FixtureLayer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): FixtureLayer
 function Layers:Append(class, undo, count) end
----@overload fun(class: "FixtureLayer", undo: Undo?): FixtureLayer
+---@generic T : FixtureLayer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): FixtureLayer
 function Layers:Acquire(class, undo) end
----@overload fun(class: "FixtureLayer", undo: Undo?): FixtureLayer
+---@generic T : FixtureLayer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): FixtureLayer
 ---@deprecated use "Acquire" instead
 function Layers:Aquire(class, undo) end
----@overload fun(index: integer, class: "FixtureLayer", undo: Undo?, count: integer?): FixtureLayer
+---@generic T : FixtureLayer
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): FixtureLayer
 function Layers:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "FixtureLayer"): FixtureLayer
----@overload fun(name: string, class: nil): FixtureLayer
-function Layers:Find(name, class) end
----@overload fun(name: string, class: "FixtureLayer"): FixtureLayer
----@overload fun(name: string, class: nil): Object
-function Layers:FindRecursive(name, class) end
+---@generic T : FixtureLayer
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): FixtureLayer
+function Layers:Find(class, undo) end

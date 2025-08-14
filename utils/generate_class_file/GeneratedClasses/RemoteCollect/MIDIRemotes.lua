@@ -15,25 +15,44 @@ function MIDIRemotes:Children() end
 function MIDIRemotes:CurrentChild() end
 ---@overload fun(name: integer, role: nil): MIDIRemote
 function MIDIRemotes:Get(name, role) end
----@overload fun(index: integer, class: "MIDIRemote", undo: Undo?): MIDIRemote
+---@generic T : MIDIRemote
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): MIDIRemote
 function MIDIRemotes:Create(index, class, undo) end
----@overload fun(class: "MIDIRemote", undo: Undo?, count: integer?): MIDIRemote
+---@generic T : MIDIRemote
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): MIDIRemote
 function MIDIRemotes:Append(class, undo, count) end
----@overload fun(class: "MIDIRemote", undo: Undo?): MIDIRemote
+---@generic T : MIDIRemote
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MIDIRemote
 function MIDIRemotes:Acquire(class, undo) end
----@overload fun(class: "MIDIRemote", undo: Undo?): MIDIRemote
+---@generic T : MIDIRemote
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MIDIRemote
 ---@deprecated use "Acquire" instead
 function MIDIRemotes:Aquire(class, undo) end
----@overload fun(index: integer, class: "MIDIRemote", undo: Undo?, count: integer?): MIDIRemote
+---@generic T : MIDIRemote
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): MIDIRemote
 function MIDIRemotes:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "MIDIRemote"): MIDIRemote
----@overload fun(name: string, class: nil): MIDIRemote
-function MIDIRemotes:Find(name, class) end
----@overload fun(name: string, class: "MIDIRemote"): MIDIRemote
----@overload fun(name: string, class: nil): Object
-function MIDIRemotes:FindRecursive(name, class) end
+---@generic T : MIDIRemote
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): MIDIRemote
+function MIDIRemotes:Find(class, undo) end

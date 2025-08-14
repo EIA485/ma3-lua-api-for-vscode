@@ -17,25 +17,44 @@ function Macros:Children() end
 function Macros:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Macro
 function Macros:Get(name, role) end
----@overload fun(index: integer, class: "Macro", undo: Undo?): Macro
+---@generic T : Macro
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Macro
 function Macros:Create(index, class, undo) end
----@overload fun(class: "Macro", undo: Undo?, count: integer?): Macro
+---@generic T : Macro
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Macro
 function Macros:Append(class, undo, count) end
----@overload fun(class: "Macro", undo: Undo?): Macro
+---@generic T : Macro
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Macro
 function Macros:Acquire(class, undo) end
----@overload fun(class: "Macro", undo: Undo?): Macro
+---@generic T : Macro
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Macro
 ---@deprecated use "Acquire" instead
 function Macros:Aquire(class, undo) end
----@overload fun(index: integer, class: "Macro", undo: Undo?, count: integer?): Macro
+---@generic T : Macro
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Macro
 function Macros:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Macro"): Macro
----@overload fun(name: string, class: nil): Macro
-function Macros:Find(name, class) end
----@overload fun(name: string, class: "Macro"): Macro
----@overload fun(name: string, class: nil): Object
-function Macros:FindRecursive(name, class) end
+---@generic T : Macro
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Macro
+function Macros:Find(class, undo) end

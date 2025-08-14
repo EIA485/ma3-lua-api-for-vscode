@@ -17,25 +17,44 @@ function ColorDefGroup:Children() end
 function ColorDefGroup:CurrentChild() end
 ---@overload fun(name: integer, role: nil): ColorDef
 function ColorDefGroup:Get(name, role) end
----@overload fun(index: integer, class: "ColorDef", undo: Undo?): ColorDef
+---@generic T : ColorDef
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): ColorDef
 function ColorDefGroup:Create(index, class, undo) end
----@overload fun(class: "ColorDef", undo: Undo?, count: integer?): ColorDef
+---@generic T : ColorDef
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): ColorDef
 function ColorDefGroup:Append(class, undo, count) end
----@overload fun(class: "ColorDef", undo: Undo?): ColorDef
+---@generic T : ColorDef
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ColorDef
 function ColorDefGroup:Acquire(class, undo) end
----@overload fun(class: "ColorDef", undo: Undo?): ColorDef
+---@generic T : ColorDef
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ColorDef
 ---@deprecated use "Acquire" instead
 function ColorDefGroup:Aquire(class, undo) end
----@overload fun(index: integer, class: "ColorDef", undo: Undo?, count: integer?): ColorDef
+---@generic T : ColorDef
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): ColorDef
 function ColorDefGroup:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "ColorDef"): ColorDef
----@overload fun(name: string, class: nil): ColorDef
-function ColorDefGroup:Find(name, class) end
----@overload fun(name: string, class: "ColorDef"): ColorDef
----@overload fun(name: string, class: nil): Object
-function ColorDefGroup:FindRecursive(name, class) end
+---@generic T : ColorDef
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): ColorDef
+function ColorDefGroup:Find(class, undo) end

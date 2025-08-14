@@ -17,25 +17,44 @@ function SoftwareVersions:Children() end
 function SoftwareVersions:CurrentChild() end
 ---@overload fun(name: integer, role: nil): SoftwareVersion
 function SoftwareVersions:Get(name, role) end
----@overload fun(index: integer, class: "SoftwareVersion", undo: Undo?): SoftwareVersion
+---@generic T : SoftwareVersion
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): SoftwareVersion
 function SoftwareVersions:Create(index, class, undo) end
----@overload fun(class: "SoftwareVersion", undo: Undo?, count: integer?): SoftwareVersion
+---@generic T : SoftwareVersion
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): SoftwareVersion
 function SoftwareVersions:Append(class, undo, count) end
----@overload fun(class: "SoftwareVersion", undo: Undo?): SoftwareVersion
+---@generic T : SoftwareVersion
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SoftwareVersion
 function SoftwareVersions:Acquire(class, undo) end
----@overload fun(class: "SoftwareVersion", undo: Undo?): SoftwareVersion
+---@generic T : SoftwareVersion
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SoftwareVersion
 ---@deprecated use "Acquire" instead
 function SoftwareVersions:Aquire(class, undo) end
----@overload fun(index: integer, class: "SoftwareVersion", undo: Undo?, count: integer?): SoftwareVersion
+---@generic T : SoftwareVersion
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): SoftwareVersion
 function SoftwareVersions:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "SoftwareVersion"): SoftwareVersion
----@overload fun(name: string, class: nil): SoftwareVersion
-function SoftwareVersions:Find(name, class) end
----@overload fun(name: string, class: "SoftwareVersion"): SoftwareVersion
----@overload fun(name: string, class: nil): Object
-function SoftwareVersions:FindRecursive(name, class) end
+---@generic T : SoftwareVersion
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): SoftwareVersion
+function SoftwareVersions:Find(class, undo) end

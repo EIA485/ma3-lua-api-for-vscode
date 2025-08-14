@@ -15,25 +15,44 @@ function SoundChannels:Children() end
 function SoundChannels:CurrentChild() end
 ---@overload fun(name: integer, role: nil): SoundChannel
 function SoundChannels:Get(name, role) end
----@overload fun(index: integer, class: "SoundChannel", undo: Undo?): SoundChannel
+---@generic T : SoundChannel
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): SoundChannel
 function SoundChannels:Create(index, class, undo) end
----@overload fun(class: "SoundChannel", undo: Undo?, count: integer?): SoundChannel
+---@generic T : SoundChannel
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): SoundChannel
 function SoundChannels:Append(class, undo, count) end
----@overload fun(class: "SoundChannel", undo: Undo?): SoundChannel
+---@generic T : SoundChannel
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SoundChannel
 function SoundChannels:Acquire(class, undo) end
----@overload fun(class: "SoundChannel", undo: Undo?): SoundChannel
+---@generic T : SoundChannel
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SoundChannel
 ---@deprecated use "Acquire" instead
 function SoundChannels:Aquire(class, undo) end
----@overload fun(index: integer, class: "SoundChannel", undo: Undo?, count: integer?): SoundChannel
+---@generic T : SoundChannel
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): SoundChannel
 function SoundChannels:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "SoundChannel"): SoundChannel
----@overload fun(name: string, class: nil): SoundChannel
-function SoundChannels:Find(name, class) end
----@overload fun(name: string, class: "SoundChannel"): SoundChannel
----@overload fun(name: string, class: nil): Object
-function SoundChannels:FindRecursive(name, class) end
+---@generic T : SoundChannel
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): SoundChannel
+function SoundChannels:Find(class, undo) end

@@ -31,9 +31,6 @@ function GridObjectContentFilter:Aquire(class, undo) end
 ---@overload fun(index: integer, class: "GridObjectContentFilterItem", undo: Undo?, count: integer?): GridObjectContentFilterItem
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): GridObjectContentFilterItem
 function GridObjectContentFilter:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "GridObjectContentFilterItem"): GridObjectContentFilterItem
----@overload fun(name: string, class: nil): GridObjectContentFilterItem
-function GridObjectContentFilter:Find(name, class) end
----@overload fun(name: string, class: "GridObjectContentFilterItem"): GridObjectContentFilterItem
----@overload fun(name: string, class: nil): Object
-function GridObjectContentFilter:FindRecursive(name, class) end
+---@overload fun(class: "GridObjectContentFilterItem", undo: Undo?): GridObjectContentFilterItem
+---@overload fun(class: nil, undo: Undo?): GridObjectContentFilterItem
+function GridObjectContentFilter:Find(class, undo) end

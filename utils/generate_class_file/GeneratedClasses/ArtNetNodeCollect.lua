@@ -4,7 +4,7 @@
 local ArtNetNodeCollect = {}
 ---@return "ArtNetNodeCollect"
 function ArtNetNodeCollect:GetClass() end
----@return "ArtNetNode"
+---@return "Art-Net-Node"
 function ArtNetNodeCollect:GetChildClass() end
 ---@return ArtNet
 function ArtNetNodeCollect:Parent() end
@@ -33,9 +33,6 @@ function ArtNetNodeCollect:Aquire(class, undo) end
 ---@overload fun(index: integer, class: "Art-Net-Node", undo: Undo?, count: integer?): ArtNetNode
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): ArtNetNode
 function ArtNetNodeCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Art-Net-Node"): ArtNetNode
----@overload fun(name: string, class: nil): ArtNetNode
-function ArtNetNodeCollect:Find(name, class) end
----@overload fun(name: string, class: "Art-Net-Node"): ArtNetNode
----@overload fun(name: string, class: nil): Object
-function ArtNetNodeCollect:FindRecursive(name, class) end
+---@overload fun(class: "Art-Net-Node", undo: Undo?): ArtNetNode
+---@overload fun(class: nil, undo: Undo?): ArtNetNode
+function ArtNetNodeCollect:Find(class, undo) end

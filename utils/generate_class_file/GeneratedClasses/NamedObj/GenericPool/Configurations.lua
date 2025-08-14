@@ -17,25 +17,44 @@ function Configurations:Children() end
 function Configurations:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Configuration
 function Configurations:Get(name, role) end
----@overload fun(index: integer, class: "Configuration", undo: Undo?): Configuration
+---@generic T : Configuration
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Configuration
 function Configurations:Create(index, class, undo) end
----@overload fun(class: "Configuration", undo: Undo?, count: integer?): Configuration
+---@generic T : Configuration
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Configuration
 function Configurations:Append(class, undo, count) end
----@overload fun(class: "Configuration", undo: Undo?): Configuration
+---@generic T : Configuration
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Configuration
 function Configurations:Acquire(class, undo) end
----@overload fun(class: "Configuration", undo: Undo?): Configuration
+---@generic T : Configuration
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Configuration
 ---@deprecated use "Acquire" instead
 function Configurations:Aquire(class, undo) end
----@overload fun(index: integer, class: "Configuration", undo: Undo?, count: integer?): Configuration
+---@generic T : Configuration
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Configuration
 function Configurations:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Configuration"): Configuration
----@overload fun(name: string, class: nil): Configuration
-function Configurations:Find(name, class) end
----@overload fun(name: string, class: "Configuration"): Configuration
----@overload fun(name: string, class: nil): Object
-function Configurations:FindRecursive(name, class) end
+---@generic T : Configuration
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Configuration
+function Configurations:Find(class, undo) end

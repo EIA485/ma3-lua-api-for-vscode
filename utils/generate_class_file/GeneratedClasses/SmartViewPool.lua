@@ -17,5 +17,10 @@ function SmartViewPool:Children() end
 function SmartViewPool:CurrentChild() end
 ---@overload fun(name: integer, role: nil): ChannelSet
 function SmartViewPool:Get(name, role) end
----@overload fun(name: string, class: nil): Object
-function SmartViewPool:FindRecursive(name, class) end
+function SmartViewPool:Create(index, class, undo) end
+function SmartViewPool:Append(class, undo, count) end
+function SmartViewPool:Acquire(class, undo) end
+---@deprecated use "Acquire" instead
+function SmartViewPool:Aquire(class, undo) end
+function SmartViewPool:Insert(index, class, undo, count) end
+function SmartViewPool:Find(class, undo) end

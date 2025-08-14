@@ -16,339 +16,81 @@ function RunningPlaybacksPoolLayoutGrid:Ptr(index) end
 function RunningPlaybacksPoolLayoutGrid:Children() end
 ---@return PoolButton?
 function RunningPlaybacksPoolLayoutGrid:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
----@overload fun(name: "X"|"Y"|"W"|"H", role: nil): Graphics.SizeDescriptor
----@overload fun(name: "AbsRect"|"AbsClientRect", role: nil): {left: number, right: number, top: number, bottom: number}
----@overload fun(name: "Texture", role: nil): Texture
----@overload fun(name: "Font"|"LowDpiFont", role: nil): Font
----@overload fun(name: "Text"|"ToolTip"|"HelpTopic", role: nil): string
----@overload fun(name: "BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor", role: nil): Color
----@overload fun(name: "TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth", role: nil): integer
----@overload fun(name: "Padding", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
----@overload fun(name: "Focus", role: nil): FocusPriority
----@overload fun(name: "UserRights", role: nil): UserRights
----@overload fun(name: "Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect", role: nil): integer
----@overload fun(name: "CloseAction", role: nil): GestureResult
----@overload fun(name: "AutoCloseValue"|"UiGroupId", role: nil): integer
----@overload fun(name: "LabelLinkHandle", role: nil): UIObject
----@overload fun(name: "IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow", role: nil): integer
----@overload fun(name: "MinSize"|"MaxSize", role: nil): Graphics.SizeDimension
----@overload fun(name: "Anchors", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
----@overload fun(name: "SignalValue"|"SignalValueHold", role: nil): string
----@overload fun(name: "AlignmentH", role: nil): AlignmentH
----@overload fun(name: "AlignmentV", role: nil): AlignmentV
----@overload fun(name: "TextAlignmentH", role: nil): AlignmentH
----@overload fun(name: "TextAlignmentV", role: nil): AlignmentV
----@overload fun(name: "Margin", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
+---@overload fun(name: "AlignmentH"|"TextAlignmentH", role: nil): AlignmentH
+---@overload fun(name: "AlignmentV"|"TextAlignmentV", role: nil): AlignmentV
+---@overload fun(name: "PoolColor"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor", role: nil): Color
 ---@overload fun(name: "PluginComponent", role: nil): Component
----@overload fun(name: "HasFocus"|"HideFocusFrame", role: nil): boolean
----@overload fun(name: "AppearanceSourceClassName", role: nil): string
----@overload fun(name: "VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease", role: nil): integer
----@overload fun(name: "Clicked", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
----@overload fun(name: "ClickedLeft"|"ClickedRight", role: nil): fun(str: string, X: integer, Y: integer)
----@overload fun(name: "DoubleClicked", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
----@overload fun(name: "MouseEnter"|"MouseLeave"|"MouseOverHold", role: nil): fun(str: string, X: integer, Y: integer)
----@overload fun(name: "MouseUp", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
----@overload fun(name: "MouseUpLeft"|"MouseUpRight", role: nil): fun(str: string, X: integer, Y: integer)
----@overload fun(name: "MouseDown", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
----@overload fun(name: "MouseDownLeft"|"MouseDownRight", role: nil): fun(str: string, X: integer, Y: integer)
----@overload fun(name: "MouseDownHold", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
----@overload fun(name: "KeyDown"|"KeyUp", role: nil): fun(str: string, keyCode: VirtualKeyCode, bool1: boolean, bool2: boolean, bool3: boolean)
----@overload fun(name: "CharInput", role: nil): fun(str: string, utf32Char: integer)
----@overload fun(name: "TouchStart"|"TouchUpdate"|"TouchEnd", role: nil): fun(str: string, pointID: integer, X: integer, Y: integer)
----@overload fun(name: "OnLoad", role: nil): fun(str: string, obj: Object)
----@overload fun(name: "OnVisible", role: nil): fun(str: string, bool: boolean)
----@overload fun(name: "DescriptionChanged", role: nil): fun(str: string)
----@overload fun(name: "FocusGet"|"FocusLost", role: nil): fun(str: string, obj1: Object, obj2: Object)
----@overload fun(name: "ForceIntensity"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight", role: nil): integer
----@overload fun(name: "ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay", role: nil): boolean
----@overload fun(name: "RowReductionPolicy"|"ColReductionPolicy", role: nil): ReductionPolicy
----@overload fun(name: "SetRow", role: nil): fun(int1: integer, layoutSizePolicy: LayoutSizePolicy, num: number, int2: integer) : boolean
----@overload fun(name: "PoolColor", role: nil): Color
----@overload fun(name: "SizeX"|"SizeY", role: nil): PoolSizeFactor
----@overload fun(name: "SwipeMenu", role: nil): string
+---@overload fun(name: "Focus", role: nil): FocusPriority
+---@overload fun(name: "Font"|"LowDpiFont", role: nil): Font
+---@overload fun(name: "CloseAction", role: nil): GestureResult
+---@overload fun(name: "X"|"Y"|"W"|"H", role: nil): Graphics.SizeDescriptor
+---@overload fun(name: "MinSize"|"MaxSize", role: nil): Graphics.SizeDimension
 ---@overload fun(name: "PoolObject", role: nil): Object
----@overload fun(name: "NoEmptyNames", role: nil): boolean
----@overload fun(name: "TitleButtonIcon", role: nil): Texture
+---@overload fun(name: "PoolSettings", role: nil): PoolSettings
+---@overload fun(name: "SizeX"|"SizeY", role: nil): PoolSizeFactor
+---@overload fun(name: "RowReductionPolicy"|"ColReductionPolicy", role: nil): ReductionPolicy
+---@overload fun(name: "TitleButtonIcon"|"Texture", role: nil): Texture
+---@overload fun(name: "LabelLinkHandle", role: nil): UIObject
+---@overload fun(name: "UserRights", role: nil): UserRights
+---@overload fun(name: "NoEmptyNames"|"ReactToRecipeEdit"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"HasFocus"|"HideFocusFrame"|"FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "SetRow", role: nil): fun(int1: integer, layoutSizePolicy: LayoutSizePolicy, num: number, int2: integer) : boolean
+---@overload fun(name: "DescriptionChanged", role: nil): fun(str: string)
+---@overload fun(name: "OnSwipeMenu", role: nil): fun(str: string) : boolean
+---@overload fun(name: "Clicked"|"DoubleClicked"|"MouseUp"|"MouseDown"|"MouseDownHold", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
+---@overload fun(name: "ClickedLeft"|"ClickedRight"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUpLeft"|"MouseUpRight"|"MouseDownLeft"|"MouseDownRight", role: nil): fun(str: string, X: integer, Y: integer)
+---@overload fun(name: "OnVisible", role: nil): fun(str: string, bool: boolean)
 ---@overload fun(name: "OnClick", role: nil): fun(str: string, int1: integer, int2: integer, int3: integer) : boolean
 ---@overload fun(name: "OnChar", role: nil): fun(str: string, int: integer) : boolean
----@overload fun(name: "OnSwipeMenu", role: nil): fun(str: string) : boolean
----@overload fun(name: "PoolSettings", role: nil): PoolSettings
----@overload fun(name: "ReactToRecipeEdit", role: nil): boolean
----@overload fun(name: "PoolColor", role: nil): Color
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"X"|"Y"|"W"|"H"|"AbsRect"|"AbsClientRect"|"Texture"|"Font"|"LowDpiFont"|"Text"|"ToolTip"|"HelpTopic"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Padding"|"Focus"|"UserRights"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"CloseAction"|"AutoCloseValue"|"UiGroupId"|"LabelLinkHandle"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"MinSize"|"MaxSize"|"Anchors"|"SignalValue"|"SignalValueHold"|"AlignmentH"|"AlignmentV"|"TextAlignmentH"|"TextAlignmentV"|"Margin"|"PluginComponent"|"HasFocus"|"HideFocusFrame"|"AppearanceSourceClassName"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"Clicked"|"ClickedLeft"|"ClickedRight"|"DoubleClicked"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUp"|"MouseUpLeft"|"MouseUpRight"|"MouseDown"|"MouseDownLeft"|"MouseDownRight"|"MouseDownHold"|"KeyDown"|"KeyUp"|"CharInput"|"TouchStart"|"TouchUpdate"|"TouchEnd"|"OnLoad"|"OnVisible"|"DescriptionChanged"|"FocusGet"|"FocusLost"|"ForceIntensity"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"RowReductionPolicy"|"ColReductionPolicy"|"SetRow"|"PoolColor"|"SizeX"|"SizeY"|"SwipeMenu"|"PoolObject"|"NoEmptyNames"|"TitleButtonIcon"|"OnClick"|"OnChar"|"OnSwipeMenu"|"PoolSettings"|"ReactToRecipeEdit"|"PoolColor", role: Enums.Roles): string
+---@overload fun(name: "KeyDown"|"KeyUp", role: nil): fun(str: string, keyCode: VirtualKeyCode, bool1: boolean, bool2: boolean, bool3: boolean)
+---@overload fun(name: "FocusGet"|"FocusLost", role: nil): fun(str: string, obj1: Object, obj2: Object)
+---@overload fun(name: "OnLoad", role: nil): fun(str: string, obj: Object)
+---@overload fun(name: "TouchStart"|"TouchUpdate"|"TouchEnd", role: nil): fun(str: string, pointID: integer, X: integer, Y: integer)
+---@overload fun(name: "CharInput", role: nil): fun(str: string, utf32Char: integer)
+---@overload fun(name: "DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"AutoCloseValue"|"UiGroupId"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"ForceIntensity"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "SwipeMenu"|"Text"|"ToolTip"|"HelpTopic"|"SignalValue"|"SignalValueHold"|"AppearanceSourceClassName"|"Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "Padding"|"Anchors"|"Margin", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
+---@overload fun(name: "AbsRect"|"AbsClientRect", role: nil): {left: number, right: number, top: number, bottom: number}
+---@overload fun(name: "PoolColor"|"SizeX"|"SizeY"|"SwipeMenu"|"PoolObject"|"NoEmptyNames"|"TitleButtonIcon"|"OnClick"|"OnChar"|"OnSwipeMenu"|"PoolSettings"|"ReactToRecipeEdit"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"RowReductionPolicy"|"ColReductionPolicy"|"SetRow"|"X"|"Y"|"W"|"H"|"AbsRect"|"AbsClientRect"|"Texture"|"Font"|"LowDpiFont"|"Text"|"ToolTip"|"HelpTopic"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Padding"|"Focus"|"UserRights"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"CloseAction"|"AutoCloseValue"|"UiGroupId"|"LabelLinkHandle"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"MinSize"|"MaxSize"|"Anchors"|"SignalValue"|"SignalValueHold"|"AlignmentH"|"AlignmentV"|"TextAlignmentH"|"TextAlignmentV"|"Margin"|"PluginComponent"|"HasFocus"|"HideFocusFrame"|"AppearanceSourceClassName"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"Clicked"|"ClickedLeft"|"ClickedRight"|"DoubleClicked"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUp"|"MouseUpLeft"|"MouseUpRight"|"MouseDown"|"MouseDownLeft"|"MouseDownRight"|"MouseDownHold"|"KeyDown"|"KeyUp"|"CharInput"|"TouchStart"|"TouchUpdate"|"TouchEnd"|"OnLoad"|"OnVisible"|"DescriptionChanged"|"FocusGet"|"FocusLost"|"ForceIntensity"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): PoolButton
 function RunningPlaybacksPoolLayoutGrid:Get(name, role) end
----@overload fun(index: integer, class: "PoolButton", undo: Undo?): PoolButton
----@overload fun(index: integer, class: "ViewBarButton", undo: Undo?): ViewBarButton
----@overload fun(index: integer, class: "TimerPoolButton", undo: Undo?): TimerPoolButton
----@overload fun(index: integer, class: "TimecodeSlotPoolButton", undo: Undo?): TimecodeSlotPoolButton
----@overload fun(index: integer, class: "SmartViewPoolButton", undo: Undo?): SmartViewPoolButton
----@overload fun(index: integer, class: "SoundPoolButton", undo: Undo?): SoundPoolButton
----@overload fun(index: integer, class: "EncoderBarPoolButton", undo: Undo?): EncoderBarPoolButton
----@overload fun(index: integer, class: "UserPoolButton", undo: Undo?): UserPoolButton
----@overload fun(index: integer, class: "UniversePoolButton", undo: Undo?): UniversePoolButton
----@overload fun(index: integer, class: "GeneratorPoolButton", undo: Undo?): GeneratorPoolButton
----@overload fun(index: integer, class: "TimecodePoolButton", undo: Undo?): TimecodePoolButton
----@overload fun(index: integer, class: "MeshPoolButton", undo: Undo?): MeshPoolButton
----@overload fun(index: integer, class: "MatricksPoolButton", undo: Undo?): MatricksPoolButton
----@overload fun(index: integer, class: "MaterialPoolButton", undo: Undo?): MaterialPoolButton
----@overload fun(index: integer, class: "RenderQualityPoolButton", undo: Undo?): RenderQualityPoolButton
----@overload fun(index: integer, class: "CameraPoolButton", undo: Undo?): CameraPoolButton
----@overload fun(index: integer, class: "GelPoolButton", undo: Undo?): GelPoolButton
----@overload fun(index: integer, class: "ScribblePoolButton", undo: Undo?): ScribblePoolButton
----@overload fun(index: integer, class: "AppearancePoolButton", undo: Undo?): AppearancePoolButton
----@overload fun(index: integer, class: "TagPoolButton", undo: Undo?): TagPoolButton
----@overload fun(index: integer, class: "GoboPoolButton", undo: Undo?): GoboPoolButton
----@overload fun(index: integer, class: "VideoPoolButton", undo: Undo?): VideoPoolButton
----@overload fun(index: integer, class: "ImagePoolButton", undo: Undo?): ImagePoolButton
----@overload fun(index: integer, class: "ConfigurationPoolButton", undo: Undo?): ConfigurationPoolButton
----@overload fun(index: integer, class: "DataPoolButton", undo: Undo?): DataPoolButton
----@overload fun(index: integer, class: "MenuPoolButton", undo: Undo?): MenuPoolButton
----@overload fun(index: integer, class: "PluginPoolButton", undo: Undo?): PluginPoolButton
----@overload fun(index: integer, class: "WorldPoolButton", undo: Undo?): WorldPoolButton
----@overload fun(index: integer, class: "FilterPoolButton", undo: Undo?): FilterPoolButton
----@overload fun(index: integer, class: "ViewPoolButton", undo: Undo?): ViewPoolButton
----@overload fun(index: integer, class: "SequencePoolButton", undo: Undo?): SequencePoolButton
----@overload fun(index: integer, class: "PresetPoolButton", undo: Undo?): PresetPoolButton
----@overload fun(index: integer, class: "PagePoolButton", undo: Undo?): PagePoolButton
----@overload fun(index: integer, class: "QuickeyPoolButton", undo: Undo?): QuickeyPoolButton
----@overload fun(index: integer, class: "MacroPoolButton", undo: Undo?): MacroPoolButton
----@overload fun(index: integer, class: "GroupPoolButton", undo: Undo?): GroupPoolButton
+---@generic T : PoolButton
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): PoolButton
 function RunningPlaybacksPoolLayoutGrid:Create(index, class, undo) end
----@overload fun(class: "PoolButton", undo: Undo?, count: integer?): PoolButton
----@overload fun(class: "ViewBarButton", undo: Undo?, count: integer?): ViewBarButton
----@overload fun(class: "TimerPoolButton", undo: Undo?, count: integer?): TimerPoolButton
----@overload fun(class: "TimecodeSlotPoolButton", undo: Undo?, count: integer?): TimecodeSlotPoolButton
----@overload fun(class: "SmartViewPoolButton", undo: Undo?, count: integer?): SmartViewPoolButton
----@overload fun(class: "SoundPoolButton", undo: Undo?, count: integer?): SoundPoolButton
----@overload fun(class: "EncoderBarPoolButton", undo: Undo?, count: integer?): EncoderBarPoolButton
----@overload fun(class: "UserPoolButton", undo: Undo?, count: integer?): UserPoolButton
----@overload fun(class: "UniversePoolButton", undo: Undo?, count: integer?): UniversePoolButton
----@overload fun(class: "GeneratorPoolButton", undo: Undo?, count: integer?): GeneratorPoolButton
----@overload fun(class: "TimecodePoolButton", undo: Undo?, count: integer?): TimecodePoolButton
----@overload fun(class: "MeshPoolButton", undo: Undo?, count: integer?): MeshPoolButton
----@overload fun(class: "MatricksPoolButton", undo: Undo?, count: integer?): MatricksPoolButton
----@overload fun(class: "MaterialPoolButton", undo: Undo?, count: integer?): MaterialPoolButton
----@overload fun(class: "RenderQualityPoolButton", undo: Undo?, count: integer?): RenderQualityPoolButton
----@overload fun(class: "CameraPoolButton", undo: Undo?, count: integer?): CameraPoolButton
----@overload fun(class: "GelPoolButton", undo: Undo?, count: integer?): GelPoolButton
----@overload fun(class: "ScribblePoolButton", undo: Undo?, count: integer?): ScribblePoolButton
----@overload fun(class: "AppearancePoolButton", undo: Undo?, count: integer?): AppearancePoolButton
----@overload fun(class: "TagPoolButton", undo: Undo?, count: integer?): TagPoolButton
----@overload fun(class: "GoboPoolButton", undo: Undo?, count: integer?): GoboPoolButton
----@overload fun(class: "VideoPoolButton", undo: Undo?, count: integer?): VideoPoolButton
----@overload fun(class: "ImagePoolButton", undo: Undo?, count: integer?): ImagePoolButton
----@overload fun(class: "ConfigurationPoolButton", undo: Undo?, count: integer?): ConfigurationPoolButton
----@overload fun(class: "DataPoolButton", undo: Undo?, count: integer?): DataPoolButton
----@overload fun(class: "MenuPoolButton", undo: Undo?, count: integer?): MenuPoolButton
----@overload fun(class: "PluginPoolButton", undo: Undo?, count: integer?): PluginPoolButton
----@overload fun(class: "WorldPoolButton", undo: Undo?, count: integer?): WorldPoolButton
----@overload fun(class: "FilterPoolButton", undo: Undo?, count: integer?): FilterPoolButton
----@overload fun(class: "ViewPoolButton", undo: Undo?, count: integer?): ViewPoolButton
----@overload fun(class: "SequencePoolButton", undo: Undo?, count: integer?): SequencePoolButton
----@overload fun(class: "PresetPoolButton", undo: Undo?, count: integer?): PresetPoolButton
----@overload fun(class: "PagePoolButton", undo: Undo?, count: integer?): PagePoolButton
----@overload fun(class: "QuickeyPoolButton", undo: Undo?, count: integer?): QuickeyPoolButton
----@overload fun(class: "MacroPoolButton", undo: Undo?, count: integer?): MacroPoolButton
----@overload fun(class: "GroupPoolButton", undo: Undo?, count: integer?): GroupPoolButton
+---@generic T : PoolButton
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): PoolButton
 function RunningPlaybacksPoolLayoutGrid:Append(class, undo, count) end
----@overload fun(class: "PoolButton", undo: Undo?): PoolButton
----@overload fun(class: "ViewBarButton", undo: Undo?): ViewBarButton
----@overload fun(class: "TimerPoolButton", undo: Undo?): TimerPoolButton
----@overload fun(class: "TimecodeSlotPoolButton", undo: Undo?): TimecodeSlotPoolButton
----@overload fun(class: "SmartViewPoolButton", undo: Undo?): SmartViewPoolButton
----@overload fun(class: "SoundPoolButton", undo: Undo?): SoundPoolButton
----@overload fun(class: "EncoderBarPoolButton", undo: Undo?): EncoderBarPoolButton
----@overload fun(class: "UserPoolButton", undo: Undo?): UserPoolButton
----@overload fun(class: "UniversePoolButton", undo: Undo?): UniversePoolButton
----@overload fun(class: "GeneratorPoolButton", undo: Undo?): GeneratorPoolButton
----@overload fun(class: "TimecodePoolButton", undo: Undo?): TimecodePoolButton
----@overload fun(class: "MeshPoolButton", undo: Undo?): MeshPoolButton
----@overload fun(class: "MatricksPoolButton", undo: Undo?): MatricksPoolButton
----@overload fun(class: "MaterialPoolButton", undo: Undo?): MaterialPoolButton
----@overload fun(class: "RenderQualityPoolButton", undo: Undo?): RenderQualityPoolButton
----@overload fun(class: "CameraPoolButton", undo: Undo?): CameraPoolButton
----@overload fun(class: "GelPoolButton", undo: Undo?): GelPoolButton
----@overload fun(class: "ScribblePoolButton", undo: Undo?): ScribblePoolButton
----@overload fun(class: "AppearancePoolButton", undo: Undo?): AppearancePoolButton
----@overload fun(class: "TagPoolButton", undo: Undo?): TagPoolButton
----@overload fun(class: "GoboPoolButton", undo: Undo?): GoboPoolButton
----@overload fun(class: "VideoPoolButton", undo: Undo?): VideoPoolButton
----@overload fun(class: "ImagePoolButton", undo: Undo?): ImagePoolButton
----@overload fun(class: "ConfigurationPoolButton", undo: Undo?): ConfigurationPoolButton
----@overload fun(class: "DataPoolButton", undo: Undo?): DataPoolButton
----@overload fun(class: "MenuPoolButton", undo: Undo?): MenuPoolButton
----@overload fun(class: "PluginPoolButton", undo: Undo?): PluginPoolButton
----@overload fun(class: "WorldPoolButton", undo: Undo?): WorldPoolButton
----@overload fun(class: "FilterPoolButton", undo: Undo?): FilterPoolButton
----@overload fun(class: "ViewPoolButton", undo: Undo?): ViewPoolButton
----@overload fun(class: "SequencePoolButton", undo: Undo?): SequencePoolButton
----@overload fun(class: "PresetPoolButton", undo: Undo?): PresetPoolButton
----@overload fun(class: "PagePoolButton", undo: Undo?): PagePoolButton
----@overload fun(class: "QuickeyPoolButton", undo: Undo?): QuickeyPoolButton
----@overload fun(class: "MacroPoolButton", undo: Undo?): MacroPoolButton
----@overload fun(class: "GroupPoolButton", undo: Undo?): GroupPoolButton
+---@generic T : PoolButton
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PoolButton
 function RunningPlaybacksPoolLayoutGrid:Acquire(class, undo) end
----@overload fun(class: "PoolButton", undo: Undo?): PoolButton
----@overload fun(class: "ViewBarButton", undo: Undo?): ViewBarButton
----@overload fun(class: "TimerPoolButton", undo: Undo?): TimerPoolButton
----@overload fun(class: "TimecodeSlotPoolButton", undo: Undo?): TimecodeSlotPoolButton
----@overload fun(class: "SmartViewPoolButton", undo: Undo?): SmartViewPoolButton
----@overload fun(class: "SoundPoolButton", undo: Undo?): SoundPoolButton
----@overload fun(class: "EncoderBarPoolButton", undo: Undo?): EncoderBarPoolButton
----@overload fun(class: "UserPoolButton", undo: Undo?): UserPoolButton
----@overload fun(class: "UniversePoolButton", undo: Undo?): UniversePoolButton
----@overload fun(class: "GeneratorPoolButton", undo: Undo?): GeneratorPoolButton
----@overload fun(class: "TimecodePoolButton", undo: Undo?): TimecodePoolButton
----@overload fun(class: "MeshPoolButton", undo: Undo?): MeshPoolButton
----@overload fun(class: "MatricksPoolButton", undo: Undo?): MatricksPoolButton
----@overload fun(class: "MaterialPoolButton", undo: Undo?): MaterialPoolButton
----@overload fun(class: "RenderQualityPoolButton", undo: Undo?): RenderQualityPoolButton
----@overload fun(class: "CameraPoolButton", undo: Undo?): CameraPoolButton
----@overload fun(class: "GelPoolButton", undo: Undo?): GelPoolButton
----@overload fun(class: "ScribblePoolButton", undo: Undo?): ScribblePoolButton
----@overload fun(class: "AppearancePoolButton", undo: Undo?): AppearancePoolButton
----@overload fun(class: "TagPoolButton", undo: Undo?): TagPoolButton
----@overload fun(class: "GoboPoolButton", undo: Undo?): GoboPoolButton
----@overload fun(class: "VideoPoolButton", undo: Undo?): VideoPoolButton
----@overload fun(class: "ImagePoolButton", undo: Undo?): ImagePoolButton
----@overload fun(class: "ConfigurationPoolButton", undo: Undo?): ConfigurationPoolButton
----@overload fun(class: "DataPoolButton", undo: Undo?): DataPoolButton
----@overload fun(class: "MenuPoolButton", undo: Undo?): MenuPoolButton
----@overload fun(class: "PluginPoolButton", undo: Undo?): PluginPoolButton
----@overload fun(class: "WorldPoolButton", undo: Undo?): WorldPoolButton
----@overload fun(class: "FilterPoolButton", undo: Undo?): FilterPoolButton
----@overload fun(class: "ViewPoolButton", undo: Undo?): ViewPoolButton
----@overload fun(class: "SequencePoolButton", undo: Undo?): SequencePoolButton
----@overload fun(class: "PresetPoolButton", undo: Undo?): PresetPoolButton
----@overload fun(class: "PagePoolButton", undo: Undo?): PagePoolButton
----@overload fun(class: "QuickeyPoolButton", undo: Undo?): QuickeyPoolButton
----@overload fun(class: "MacroPoolButton", undo: Undo?): MacroPoolButton
----@overload fun(class: "GroupPoolButton", undo: Undo?): GroupPoolButton
+---@generic T : PoolButton
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PoolButton
 ---@deprecated use "Acquire" instead
 function RunningPlaybacksPoolLayoutGrid:Aquire(class, undo) end
----@overload fun(index: integer, class: "PoolButton", undo: Undo?, count: integer?): PoolButton
----@overload fun(index: integer, class: "ViewBarButton", undo: Undo?, count: integer?): ViewBarButton
----@overload fun(index: integer, class: "TimerPoolButton", undo: Undo?, count: integer?): TimerPoolButton
----@overload fun(index: integer, class: "TimecodeSlotPoolButton", undo: Undo?, count: integer?): TimecodeSlotPoolButton
----@overload fun(index: integer, class: "SmartViewPoolButton", undo: Undo?, count: integer?): SmartViewPoolButton
----@overload fun(index: integer, class: "SoundPoolButton", undo: Undo?, count: integer?): SoundPoolButton
----@overload fun(index: integer, class: "EncoderBarPoolButton", undo: Undo?, count: integer?): EncoderBarPoolButton
----@overload fun(index: integer, class: "UserPoolButton", undo: Undo?, count: integer?): UserPoolButton
----@overload fun(index: integer, class: "UniversePoolButton", undo: Undo?, count: integer?): UniversePoolButton
----@overload fun(index: integer, class: "GeneratorPoolButton", undo: Undo?, count: integer?): GeneratorPoolButton
----@overload fun(index: integer, class: "TimecodePoolButton", undo: Undo?, count: integer?): TimecodePoolButton
----@overload fun(index: integer, class: "MeshPoolButton", undo: Undo?, count: integer?): MeshPoolButton
----@overload fun(index: integer, class: "MatricksPoolButton", undo: Undo?, count: integer?): MatricksPoolButton
----@overload fun(index: integer, class: "MaterialPoolButton", undo: Undo?, count: integer?): MaterialPoolButton
----@overload fun(index: integer, class: "RenderQualityPoolButton", undo: Undo?, count: integer?): RenderQualityPoolButton
----@overload fun(index: integer, class: "CameraPoolButton", undo: Undo?, count: integer?): CameraPoolButton
----@overload fun(index: integer, class: "GelPoolButton", undo: Undo?, count: integer?): GelPoolButton
----@overload fun(index: integer, class: "ScribblePoolButton", undo: Undo?, count: integer?): ScribblePoolButton
----@overload fun(index: integer, class: "AppearancePoolButton", undo: Undo?, count: integer?): AppearancePoolButton
----@overload fun(index: integer, class: "TagPoolButton", undo: Undo?, count: integer?): TagPoolButton
----@overload fun(index: integer, class: "GoboPoolButton", undo: Undo?, count: integer?): GoboPoolButton
----@overload fun(index: integer, class: "VideoPoolButton", undo: Undo?, count: integer?): VideoPoolButton
----@overload fun(index: integer, class: "ImagePoolButton", undo: Undo?, count: integer?): ImagePoolButton
----@overload fun(index: integer, class: "ConfigurationPoolButton", undo: Undo?, count: integer?): ConfigurationPoolButton
----@overload fun(index: integer, class: "DataPoolButton", undo: Undo?, count: integer?): DataPoolButton
----@overload fun(index: integer, class: "MenuPoolButton", undo: Undo?, count: integer?): MenuPoolButton
----@overload fun(index: integer, class: "PluginPoolButton", undo: Undo?, count: integer?): PluginPoolButton
----@overload fun(index: integer, class: "WorldPoolButton", undo: Undo?, count: integer?): WorldPoolButton
----@overload fun(index: integer, class: "FilterPoolButton", undo: Undo?, count: integer?): FilterPoolButton
----@overload fun(index: integer, class: "ViewPoolButton", undo: Undo?, count: integer?): ViewPoolButton
----@overload fun(index: integer, class: "SequencePoolButton", undo: Undo?, count: integer?): SequencePoolButton
----@overload fun(index: integer, class: "PresetPoolButton", undo: Undo?, count: integer?): PresetPoolButton
----@overload fun(index: integer, class: "PagePoolButton", undo: Undo?, count: integer?): PagePoolButton
----@overload fun(index: integer, class: "QuickeyPoolButton", undo: Undo?, count: integer?): QuickeyPoolButton
----@overload fun(index: integer, class: "MacroPoolButton", undo: Undo?, count: integer?): MacroPoolButton
----@overload fun(index: integer, class: "GroupPoolButton", undo: Undo?, count: integer?): GroupPoolButton
+---@generic T : PoolButton
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): PoolButton
 function RunningPlaybacksPoolLayoutGrid:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "PoolButton"): PoolButton
----@overload fun(name: string, class: "ViewBarButton"): ViewBarButton
----@overload fun(name: string, class: "TimerPoolButton"): TimerPoolButton
----@overload fun(name: string, class: "TimecodeSlotPoolButton"): TimecodeSlotPoolButton
----@overload fun(name: string, class: "SmartViewPoolButton"): SmartViewPoolButton
----@overload fun(name: string, class: "SoundPoolButton"): SoundPoolButton
----@overload fun(name: string, class: "EncoderBarPoolButton"): EncoderBarPoolButton
----@overload fun(name: string, class: "UserPoolButton"): UserPoolButton
----@overload fun(name: string, class: "UniversePoolButton"): UniversePoolButton
----@overload fun(name: string, class: "GeneratorPoolButton"): GeneratorPoolButton
----@overload fun(name: string, class: "TimecodePoolButton"): TimecodePoolButton
----@overload fun(name: string, class: "MeshPoolButton"): MeshPoolButton
----@overload fun(name: string, class: "MatricksPoolButton"): MatricksPoolButton
----@overload fun(name: string, class: "MaterialPoolButton"): MaterialPoolButton
----@overload fun(name: string, class: "RenderQualityPoolButton"): RenderQualityPoolButton
----@overload fun(name: string, class: "CameraPoolButton"): CameraPoolButton
----@overload fun(name: string, class: "GelPoolButton"): GelPoolButton
----@overload fun(name: string, class: "ScribblePoolButton"): ScribblePoolButton
----@overload fun(name: string, class: "AppearancePoolButton"): AppearancePoolButton
----@overload fun(name: string, class: "TagPoolButton"): TagPoolButton
----@overload fun(name: string, class: "GoboPoolButton"): GoboPoolButton
----@overload fun(name: string, class: "VideoPoolButton"): VideoPoolButton
----@overload fun(name: string, class: "ImagePoolButton"): ImagePoolButton
----@overload fun(name: string, class: "ConfigurationPoolButton"): ConfigurationPoolButton
----@overload fun(name: string, class: "DataPoolButton"): DataPoolButton
----@overload fun(name: string, class: "MenuPoolButton"): MenuPoolButton
----@overload fun(name: string, class: "PluginPoolButton"): PluginPoolButton
----@overload fun(name: string, class: "WorldPoolButton"): WorldPoolButton
----@overload fun(name: string, class: "FilterPoolButton"): FilterPoolButton
----@overload fun(name: string, class: "ViewPoolButton"): ViewPoolButton
----@overload fun(name: string, class: "SequencePoolButton"): SequencePoolButton
----@overload fun(name: string, class: "PresetPoolButton"): PresetPoolButton
----@overload fun(name: string, class: "PagePoolButton"): PagePoolButton
----@overload fun(name: string, class: "QuickeyPoolButton"): QuickeyPoolButton
----@overload fun(name: string, class: "MacroPoolButton"): MacroPoolButton
----@overload fun(name: string, class: "GroupPoolButton"): GroupPoolButton
----@overload fun(name: string, class: nil): PoolButton
-function RunningPlaybacksPoolLayoutGrid:Find(name, class) end
----@overload fun(name: string, class: "PoolButton"): PoolButton
----@overload fun(name: string, class: "ViewBarButton"): ViewBarButton
----@overload fun(name: string, class: "TimerPoolButton"): TimerPoolButton
----@overload fun(name: string, class: "TimecodeSlotPoolButton"): TimecodeSlotPoolButton
----@overload fun(name: string, class: "SmartViewPoolButton"): SmartViewPoolButton
----@overload fun(name: string, class: "SoundPoolButton"): SoundPoolButton
----@overload fun(name: string, class: "EncoderBarPoolButton"): EncoderBarPoolButton
----@overload fun(name: string, class: "UserPoolButton"): UserPoolButton
----@overload fun(name: string, class: "UniversePoolButton"): UniversePoolButton
----@overload fun(name: string, class: "GeneratorPoolButton"): GeneratorPoolButton
----@overload fun(name: string, class: "TimecodePoolButton"): TimecodePoolButton
----@overload fun(name: string, class: "MeshPoolButton"): MeshPoolButton
----@overload fun(name: string, class: "MatricksPoolButton"): MatricksPoolButton
----@overload fun(name: string, class: "MaterialPoolButton"): MaterialPoolButton
----@overload fun(name: string, class: "RenderQualityPoolButton"): RenderQualityPoolButton
----@overload fun(name: string, class: "CameraPoolButton"): CameraPoolButton
----@overload fun(name: string, class: "GelPoolButton"): GelPoolButton
----@overload fun(name: string, class: "ScribblePoolButton"): ScribblePoolButton
----@overload fun(name: string, class: "AppearancePoolButton"): AppearancePoolButton
----@overload fun(name: string, class: "TagPoolButton"): TagPoolButton
----@overload fun(name: string, class: "GoboPoolButton"): GoboPoolButton
----@overload fun(name: string, class: "VideoPoolButton"): VideoPoolButton
----@overload fun(name: string, class: "ImagePoolButton"): ImagePoolButton
----@overload fun(name: string, class: "ConfigurationPoolButton"): ConfigurationPoolButton
----@overload fun(name: string, class: "DataPoolButton"): DataPoolButton
----@overload fun(name: string, class: "MenuPoolButton"): MenuPoolButton
----@overload fun(name: string, class: "PluginPoolButton"): PluginPoolButton
----@overload fun(name: string, class: "WorldPoolButton"): WorldPoolButton
----@overload fun(name: string, class: "FilterPoolButton"): FilterPoolButton
----@overload fun(name: string, class: "ViewPoolButton"): ViewPoolButton
----@overload fun(name: string, class: "SequencePoolButton"): SequencePoolButton
----@overload fun(name: string, class: "PresetPoolButton"): PresetPoolButton
----@overload fun(name: string, class: "PagePoolButton"): PagePoolButton
----@overload fun(name: string, class: "QuickeyPoolButton"): QuickeyPoolButton
----@overload fun(name: string, class: "MacroPoolButton"): MacroPoolButton
----@overload fun(name: string, class: "GroupPoolButton"): GroupPoolButton
----@overload fun(name: string, class: nil): Object
-function RunningPlaybacksPoolLayoutGrid:FindRecursive(name, class) end
+---@generic T : PoolButton
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): PoolButton
+function RunningPlaybacksPoolLayoutGrid:Find(class, undo) end

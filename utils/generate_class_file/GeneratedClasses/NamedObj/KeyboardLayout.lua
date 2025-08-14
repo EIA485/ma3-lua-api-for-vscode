@@ -16,36 +16,50 @@ function KeyboardLayout:Ptr(index) end
 function KeyboardLayout:Children() end
 ---@return KeyboardKey?
 function KeyboardLayout:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
 ---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
----@overload fun(name: "ShortName", role: nil): string
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"ShortName", role: Enums.Roles): string
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "ShortName"|"Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "ShortName"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): KeyboardKey
 function KeyboardLayout:Get(name, role) end
----@overload fun(index: integer, class: "KeyboardKey", undo: Undo?): KeyboardKey
+---@generic T : KeyboardKey
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): KeyboardKey
 function KeyboardLayout:Create(index, class, undo) end
----@overload fun(class: "KeyboardKey", undo: Undo?, count: integer?): KeyboardKey
+---@generic T : KeyboardKey
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): KeyboardKey
 function KeyboardLayout:Append(class, undo, count) end
----@overload fun(class: "KeyboardKey", undo: Undo?): KeyboardKey
+---@generic T : KeyboardKey
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): KeyboardKey
 function KeyboardLayout:Acquire(class, undo) end
----@overload fun(class: "KeyboardKey", undo: Undo?): KeyboardKey
+---@generic T : KeyboardKey
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): KeyboardKey
 ---@deprecated use "Acquire" instead
 function KeyboardLayout:Aquire(class, undo) end
----@overload fun(index: integer, class: "KeyboardKey", undo: Undo?, count: integer?): KeyboardKey
+---@generic T : KeyboardKey
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): KeyboardKey
 function KeyboardLayout:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "KeyboardKey"): KeyboardKey
----@overload fun(name: string, class: nil): KeyboardKey
-function KeyboardLayout:Find(name, class) end
----@overload fun(name: string, class: "KeyboardKey"): KeyboardKey
----@overload fun(name: string, class: nil): Object
-function KeyboardLayout:FindRecursive(name, class) end
+---@generic T : KeyboardKey
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): KeyboardKey
+function KeyboardLayout:Find(class, undo) end

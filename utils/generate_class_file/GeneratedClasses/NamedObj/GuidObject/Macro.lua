@@ -3,12 +3,9 @@
 ---@class Macro: GuidObject
 ---@field CLI integer
 ---@field Type string
----@field Line
-No string
----@field Line
-Name string
----@field Line
-Command string
+---@field LineNo string
+---@field LineName string
+---@field LineCommand string
 ---@field User string
 local Macro = {
     CLI="Yes"
@@ -26,48 +23,54 @@ function Macro:Ptr(index) end
 function Macro:Children() end
 ---@return MacroLine?
 function Macro:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
+---@overload fun(name: "Appearance", role: nil): Appearance
 ---@overload fun(name: "Guid", role: nil): Crypto.Guid<128>
 ---@overload fun(name: "Scribble", role: nil): Scribble
----@overload fun(name: "Appearance", role: nil): Appearance
----@overload fun(name: "NameAndApp"|"Note", role: nil): string
 ---@overload fun(name: "Tags", role: nil): TagMap
----@overload fun(name: "CLI", role: nil): integer
----@overload fun(name: "Type"|"Line
-No"|"Line
-Name"|"Line
-Command"|"User", role: nil): string
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Guid"|"Scribble"|"Appearance"|"NameAndApp"|"Note"|"Tags"|"CLI"|"Type"|"Line
-No"|"Line
-Name"|"Line
-Command"|"User", role: Enums.Roles): string
+---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "CLI"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Type"|"LineNo"|"LineName"|"LineCommand"|"User"|"NameAndApp"|"Note"|"Name"|"DependencyExport", role: nil): string
+---@overload fun(name: "CLI"|"Type"|"LineNo"|"LineName"|"LineCommand"|"User"|"Guid"|"Scribble"|"Appearance"|"NameAndApp"|"Note"|"Tags"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): MacroLine
 function Macro:Get(name, role) end
----@overload fun(index: integer, class: "MacroLine", undo: Undo?): MacroLine
+---@generic T : MacroLine
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): MacroLine
 function Macro:Create(index, class, undo) end
----@overload fun(class: "MacroLine", undo: Undo?, count: integer?): MacroLine
+---@generic T : MacroLine
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): MacroLine
 function Macro:Append(class, undo, count) end
----@overload fun(class: "MacroLine", undo: Undo?): MacroLine
+---@generic T : MacroLine
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MacroLine
 function Macro:Acquire(class, undo) end
----@overload fun(class: "MacroLine", undo: Undo?): MacroLine
+---@generic T : MacroLine
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MacroLine
 ---@deprecated use "Acquire" instead
 function Macro:Aquire(class, undo) end
----@overload fun(index: integer, class: "MacroLine", undo: Undo?, count: integer?): MacroLine
+---@generic T : MacroLine
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): MacroLine
 function Macro:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "MacroLine"): MacroLine
----@overload fun(name: string, class: nil): MacroLine
-function Macro:Find(name, class) end
----@overload fun(name: string, class: "MacroLine"): MacroLine
----@overload fun(name: string, class: nil): Object
-function Macro:FindRecursive(name, class) end
+---@generic T : MacroLine
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): MacroLine
+function Macro:Find(class, undo) end

@@ -33,9 +33,6 @@ function SubTrack:Aquire(class, undo) end
 ---@overload fun(index: integer, class: "Event", undo: Undo?, count: integer?): Event
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Event
 function SubTrack:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Event"): Event
----@overload fun(name: string, class: nil): Event
-function SubTrack:Find(name, class) end
----@overload fun(name: string, class: "Event"): Event
----@overload fun(name: string, class: nil): Object
-function SubTrack:FindRecursive(name, class) end
+---@overload fun(class: "Event", undo: Undo?): Event
+---@overload fun(class: nil, undo: Undo?): Event
+function SubTrack:Find(class, undo) end

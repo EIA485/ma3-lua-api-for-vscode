@@ -31,9 +31,6 @@ function FixtureFilterRuleIndices:Aquire(class, undo) end
 ---@overload fun(index: integer, class: "FixtureFilterRuleItemIndex", undo: Undo?, count: integer?): FixtureFilterRuleItemIndex
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): FixtureFilterRuleItemIndex
 function FixtureFilterRuleIndices:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "FixtureFilterRuleItemIndex"): FixtureFilterRuleItemIndex
----@overload fun(name: string, class: nil): FixtureFilterRuleItemIndex
-function FixtureFilterRuleIndices:Find(name, class) end
----@overload fun(name: string, class: "FixtureFilterRuleItemIndex"): FixtureFilterRuleItemIndex
----@overload fun(name: string, class: nil): Object
-function FixtureFilterRuleIndices:FindRecursive(name, class) end
+---@overload fun(class: "FixtureFilterRuleItemIndex", undo: Undo?): FixtureFilterRuleItemIndex
+---@overload fun(class: nil, undo: Undo?): FixtureFilterRuleItemIndex
+function FixtureFilterRuleIndices:Find(class, undo) end

@@ -16,15 +16,16 @@ function Geometries:Ptr(index) end
 function Geometries:Children() end
 ---@return Geometry?
 function Geometries:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
 ---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint"|"IgnoreEnforceUniqueChildNames", role: nil): integer
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"IgnoreEnforceUniqueChildNames", role: Enums.Roles): string
+---@overload fun(name: "IgnoreEnforceUniqueChildNames"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "IgnoreEnforceUniqueChildNames"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): Geometry
 function Geometries:Get(name, role) end
----@overload fun(name: string, class: nil): Object
-function Geometries:FindRecursive(name, class) end
+function Geometries:Create(index, class, undo) end
+function Geometries:Append(class, undo, count) end
+function Geometries:Acquire(class, undo) end
+---@deprecated use "Acquire" instead
+function Geometries:Aquire(class, undo) end
+function Geometries:Insert(index, class, undo, count) end
+function Geometries:Find(class, undo) end

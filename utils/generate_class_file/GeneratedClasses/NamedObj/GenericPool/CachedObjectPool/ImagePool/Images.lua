@@ -15,25 +15,44 @@ function Images:Children() end
 function Images:CurrentChild() end
 ---@overload fun(name: integer, role: nil): UserImage
 function Images:Get(name, role) end
----@overload fun(index: integer, class: "UserImage", undo: Undo?): UserImage
+---@generic T : UserImage
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): UserImage
 function Images:Create(index, class, undo) end
----@overload fun(class: "UserImage", undo: Undo?, count: integer?): UserImage
+---@generic T : UserImage
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): UserImage
 function Images:Append(class, undo, count) end
----@overload fun(class: "UserImage", undo: Undo?): UserImage
+---@generic T : UserImage
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): UserImage
 function Images:Acquire(class, undo) end
----@overload fun(class: "UserImage", undo: Undo?): UserImage
+---@generic T : UserImage
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): UserImage
 ---@deprecated use "Acquire" instead
 function Images:Aquire(class, undo) end
----@overload fun(index: integer, class: "UserImage", undo: Undo?, count: integer?): UserImage
+---@generic T : UserImage
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): UserImage
 function Images:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "UserImage"): UserImage
----@overload fun(name: string, class: nil): UserImage
-function Images:Find(name, class) end
----@overload fun(name: string, class: "UserImage"): UserImage
----@overload fun(name: string, class: nil): Object
-function Images:FindRecursive(name, class) end
+---@generic T : UserImage
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): UserImage
+function Images:Find(class, undo) end

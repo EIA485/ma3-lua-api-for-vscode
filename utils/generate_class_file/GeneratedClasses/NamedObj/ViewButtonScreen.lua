@@ -17,25 +17,44 @@ function ViewButtonScreen:Children() end
 function ViewButtonScreen:CurrentChild() end
 ---@overload fun(name: integer, role: nil): ViewButton
 function ViewButtonScreen:Get(name, role) end
----@overload fun(index: integer, class: "ViewButton", undo: Undo?): ViewButton
+---@generic T : ViewButton
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): ViewButton
 function ViewButtonScreen:Create(index, class, undo) end
----@overload fun(class: "ViewButton", undo: Undo?, count: integer?): ViewButton
+---@generic T : ViewButton
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): ViewButton
 function ViewButtonScreen:Append(class, undo, count) end
----@overload fun(class: "ViewButton", undo: Undo?): ViewButton
+---@generic T : ViewButton
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ViewButton
 function ViewButtonScreen:Acquire(class, undo) end
----@overload fun(class: "ViewButton", undo: Undo?): ViewButton
+---@generic T : ViewButton
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ViewButton
 ---@deprecated use "Acquire" instead
 function ViewButtonScreen:Aquire(class, undo) end
----@overload fun(index: integer, class: "ViewButton", undo: Undo?, count: integer?): ViewButton
+---@generic T : ViewButton
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): ViewButton
 function ViewButtonScreen:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "ViewButton"): ViewButton
----@overload fun(name: string, class: nil): ViewButton
-function ViewButtonScreen:Find(name, class) end
----@overload fun(name: string, class: "ViewButton"): ViewButton
----@overload fun(name: string, class: nil): Object
-function ViewButtonScreen:FindRecursive(name, class) end
+---@generic T : ViewButton
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): ViewButton
+function ViewButtonScreen:Find(class, undo) end

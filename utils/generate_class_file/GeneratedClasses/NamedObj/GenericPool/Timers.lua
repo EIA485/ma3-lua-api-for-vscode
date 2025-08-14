@@ -17,25 +17,44 @@ function Timers:Children() end
 function Timers:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Timer
 function Timers:Get(name, role) end
----@overload fun(index: integer, class: "Timer", undo: Undo?): Timer
+---@generic T : Timer
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Timer
 function Timers:Create(index, class, undo) end
----@overload fun(class: "Timer", undo: Undo?, count: integer?): Timer
+---@generic T : Timer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Timer
 function Timers:Append(class, undo, count) end
----@overload fun(class: "Timer", undo: Undo?): Timer
+---@generic T : Timer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Timer
 function Timers:Acquire(class, undo) end
----@overload fun(class: "Timer", undo: Undo?): Timer
+---@generic T : Timer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Timer
 ---@deprecated use "Acquire" instead
 function Timers:Aquire(class, undo) end
----@overload fun(index: integer, class: "Timer", undo: Undo?, count: integer?): Timer
+---@generic T : Timer
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Timer
 function Timers:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Timer"): Timer
----@overload fun(name: string, class: nil): Timer
-function Timers:Find(name, class) end
----@overload fun(name: string, class: "Timer"): Timer
----@overload fun(name: string, class: nil): Object
-function Timers:FindRecursive(name, class) end
+---@generic T : Timer
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Timer
+function Timers:Find(class, undo) end

@@ -17,25 +17,44 @@ function FixtureTypesOverview:Children() end
 function FixtureTypesOverview:CurrentChild() end
 ---@overload fun(name: integer, role: nil): FixtureTypeFake
 function FixtureTypesOverview:Get(name, role) end
----@overload fun(index: integer, class: "FixtureTypeFake", undo: Undo?): FixtureTypeFake
+---@generic T : FixtureTypeFake
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): FixtureTypeFake
 function FixtureTypesOverview:Create(index, class, undo) end
----@overload fun(class: "FixtureTypeFake", undo: Undo?, count: integer?): FixtureTypeFake
+---@generic T : FixtureTypeFake
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): FixtureTypeFake
 function FixtureTypesOverview:Append(class, undo, count) end
----@overload fun(class: "FixtureTypeFake", undo: Undo?): FixtureTypeFake
+---@generic T : FixtureTypeFake
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): FixtureTypeFake
 function FixtureTypesOverview:Acquire(class, undo) end
----@overload fun(class: "FixtureTypeFake", undo: Undo?): FixtureTypeFake
+---@generic T : FixtureTypeFake
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): FixtureTypeFake
 ---@deprecated use "Acquire" instead
 function FixtureTypesOverview:Aquire(class, undo) end
----@overload fun(index: integer, class: "FixtureTypeFake", undo: Undo?, count: integer?): FixtureTypeFake
+---@generic T : FixtureTypeFake
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): FixtureTypeFake
 function FixtureTypesOverview:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "FixtureTypeFake"): FixtureTypeFake
----@overload fun(name: string, class: nil): FixtureTypeFake
-function FixtureTypesOverview:Find(name, class) end
----@overload fun(name: string, class: "FixtureTypeFake"): FixtureTypeFake
----@overload fun(name: string, class: nil): Object
-function FixtureTypesOverview:FindRecursive(name, class) end
+---@generic T : FixtureTypeFake
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): FixtureTypeFake
+function FixtureTypesOverview:Find(class, undo) end

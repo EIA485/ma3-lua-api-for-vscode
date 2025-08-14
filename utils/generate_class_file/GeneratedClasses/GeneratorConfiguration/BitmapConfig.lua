@@ -6,8 +6,7 @@
 ---@field Height integer
 ---@field Interpolate integer
 ---@field Alpha integer
----@field Content
-Mode integer
+---@field ContentMode integer
 ---@field ControlX integer
 ---@field ControlY integer
 ---@field ControlZoom integer
@@ -21,8 +20,7 @@ local BitmapConfig = {
     Height="64",
     Interpolate="No",
     Alpha="No",
-    ["Content
-Mode"]="None",
+    ContentMode="None",
     ControlX="0",
     ControlY="0",
     ControlZoom="50.0",
@@ -38,17 +36,10 @@ function BitmapConfig:GetClass() end
 function BitmapConfig:GetChildClass() end
 ---@return BitmapConfigs
 function BitmapConfig:Parent() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
 ---@overload fun(name: "Content", role: nil): Image
----@overload fun(name: "Width"|"Height"|"Interpolate"|"Alpha"|"Content
-Mode"|"ControlX"|"ControlY"|"ControlZoom"|"ControlAspect"|"ControlRotate"|"ColorR"|"ColorG"|"ColorB", role: nil): integer
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Content"|"Width"|"Height"|"Interpolate"|"Alpha"|"Content
-Mode"|"ControlX"|"ControlY"|"ControlZoom"|"ControlAspect"|"ControlRotate"|"ColorR"|"ColorG"|"ColorB", role: Enums.Roles): string
+---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "Width"|"Height"|"Interpolate"|"Alpha"|"ContentMode"|"ControlX"|"ControlY"|"ControlZoom"|"ControlAspect"|"ControlRotate"|"ColorR"|"ColorG"|"ColorB"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "Content"|"Width"|"Height"|"Interpolate"|"Alpha"|"ContentMode"|"ControlX"|"ControlY"|"ControlZoom"|"ControlAspect"|"ControlRotate"|"ColorR"|"ColorG"|"ColorB"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): Object
 function BitmapConfig:Get(name, role) end

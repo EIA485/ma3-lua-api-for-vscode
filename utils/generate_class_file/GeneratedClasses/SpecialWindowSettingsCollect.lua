@@ -15,25 +15,44 @@ function SpecialWindowSettingsCollect:Children() end
 function SpecialWindowSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): SpecialWindowSettings
 function SpecialWindowSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "SpecialWindowSettings", undo: Undo?): SpecialWindowSettings
+---@generic T : SpecialWindowSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): SpecialWindowSettings
 function SpecialWindowSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "SpecialWindowSettings", undo: Undo?, count: integer?): SpecialWindowSettings
+---@generic T : SpecialWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): SpecialWindowSettings
 function SpecialWindowSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "SpecialWindowSettings", undo: Undo?): SpecialWindowSettings
+---@generic T : SpecialWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SpecialWindowSettings
 function SpecialWindowSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "SpecialWindowSettings", undo: Undo?): SpecialWindowSettings
+---@generic T : SpecialWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SpecialWindowSettings
 ---@deprecated use "Acquire" instead
 function SpecialWindowSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "SpecialWindowSettings", undo: Undo?, count: integer?): SpecialWindowSettings
+---@generic T : SpecialWindowSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): SpecialWindowSettings
 function SpecialWindowSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "SpecialWindowSettings"): SpecialWindowSettings
----@overload fun(name: string, class: nil): SpecialWindowSettings
-function SpecialWindowSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "SpecialWindowSettings"): SpecialWindowSettings
----@overload fun(name: string, class: nil): Object
-function SpecialWindowSettingsCollect:FindRecursive(name, class) end
+---@generic T : SpecialWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): SpecialWindowSettings
+function SpecialWindowSettingsCollect:Find(class, undo) end

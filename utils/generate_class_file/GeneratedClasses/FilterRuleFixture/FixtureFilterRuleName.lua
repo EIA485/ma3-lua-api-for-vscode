@@ -15,25 +15,44 @@ function FixtureFilterRuleName:Children() end
 function FixtureFilterRuleName:CurrentChild() end
 ---@overload fun(name: integer, role: nil): FixtureFilterRuleNameItem
 function FixtureFilterRuleName:Get(name, role) end
----@overload fun(index: integer, class: "FixtureFilterRuleNameItem", undo: Undo?): FixtureFilterRuleNameItem
+---@generic T : FixtureFilterRuleNameItem
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): FixtureFilterRuleNameItem
 function FixtureFilterRuleName:Create(index, class, undo) end
----@overload fun(class: "FixtureFilterRuleNameItem", undo: Undo?, count: integer?): FixtureFilterRuleNameItem
+---@generic T : FixtureFilterRuleNameItem
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): FixtureFilterRuleNameItem
 function FixtureFilterRuleName:Append(class, undo, count) end
----@overload fun(class: "FixtureFilterRuleNameItem", undo: Undo?): FixtureFilterRuleNameItem
+---@generic T : FixtureFilterRuleNameItem
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): FixtureFilterRuleNameItem
 function FixtureFilterRuleName:Acquire(class, undo) end
----@overload fun(class: "FixtureFilterRuleNameItem", undo: Undo?): FixtureFilterRuleNameItem
+---@generic T : FixtureFilterRuleNameItem
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): FixtureFilterRuleNameItem
 ---@deprecated use "Acquire" instead
 function FixtureFilterRuleName:Aquire(class, undo) end
----@overload fun(index: integer, class: "FixtureFilterRuleNameItem", undo: Undo?, count: integer?): FixtureFilterRuleNameItem
+---@generic T : FixtureFilterRuleNameItem
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): FixtureFilterRuleNameItem
 function FixtureFilterRuleName:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "FixtureFilterRuleNameItem"): FixtureFilterRuleNameItem
----@overload fun(name: string, class: nil): FixtureFilterRuleNameItem
-function FixtureFilterRuleName:Find(name, class) end
----@overload fun(name: string, class: "FixtureFilterRuleNameItem"): FixtureFilterRuleNameItem
----@overload fun(name: string, class: nil): Object
-function FixtureFilterRuleName:FindRecursive(name, class) end
+---@generic T : FixtureFilterRuleNameItem
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): FixtureFilterRuleNameItem
+function FixtureFilterRuleName:Find(class, undo) end

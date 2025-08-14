@@ -33,9 +33,6 @@ function GeneratorChannels:Aquire(class, undo) end
 ---@overload fun(index: integer, class: "GeneratorBaseChannel", undo: Undo?, count: integer?): GeneratorBaseChannel
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): GeneratorBaseChannel
 function GeneratorChannels:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "GeneratorBaseChannel"): GeneratorBaseChannel
----@overload fun(name: string, class: nil): GeneratorBaseChannel
-function GeneratorChannels:Find(name, class) end
----@overload fun(name: string, class: "GeneratorBaseChannel"): GeneratorBaseChannel
----@overload fun(name: string, class: nil): Object
-function GeneratorChannels:FindRecursive(name, class) end
+---@overload fun(class: "GeneratorBaseChannel", undo: Undo?): GeneratorBaseChannel
+---@overload fun(class: nil, undo: Undo?): GeneratorBaseChannel
+function GeneratorChannels:Find(class, undo) end

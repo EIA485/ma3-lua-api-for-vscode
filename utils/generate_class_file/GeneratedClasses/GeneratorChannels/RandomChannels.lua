@@ -17,25 +17,44 @@ function RandomChannels:Children() end
 function RandomChannels:CurrentChild() end
 ---@overload fun(name: integer, role: nil): RandomChannel
 function RandomChannels:Get(name, role) end
----@overload fun(index: integer, class: "RandomChannel", undo: Undo?): RandomChannel
+---@generic T : RandomChannel
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): RandomChannel
 function RandomChannels:Create(index, class, undo) end
----@overload fun(class: "RandomChannel", undo: Undo?, count: integer?): RandomChannel
+---@generic T : RandomChannel
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): RandomChannel
 function RandomChannels:Append(class, undo, count) end
----@overload fun(class: "RandomChannel", undo: Undo?): RandomChannel
+---@generic T : RandomChannel
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): RandomChannel
 function RandomChannels:Acquire(class, undo) end
----@overload fun(class: "RandomChannel", undo: Undo?): RandomChannel
+---@generic T : RandomChannel
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): RandomChannel
 ---@deprecated use "Acquire" instead
 function RandomChannels:Aquire(class, undo) end
----@overload fun(index: integer, class: "RandomChannel", undo: Undo?, count: integer?): RandomChannel
+---@generic T : RandomChannel
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): RandomChannel
 function RandomChannels:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "RandomChannel"): RandomChannel
----@overload fun(name: string, class: nil): RandomChannel
-function RandomChannels:Find(name, class) end
----@overload fun(name: string, class: "RandomChannel"): RandomChannel
----@overload fun(name: string, class: nil): Object
-function RandomChannels:FindRecursive(name, class) end
+---@generic T : RandomChannel
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): RandomChannel
+function RandomChannels:Find(class, undo) end

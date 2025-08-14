@@ -17,25 +17,44 @@ function NDI:Children() end
 function NDI:CurrentChild() end
 ---@overload fun(name: integer, role: nil): NDISource
 function NDI:Get(name, role) end
----@overload fun(index: integer, class: "NDISource", undo: Undo?): NDISource
+---@generic T : NDISource
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): NDISource
 function NDI:Create(index, class, undo) end
----@overload fun(class: "NDISource", undo: Undo?, count: integer?): NDISource
+---@generic T : NDISource
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): NDISource
 function NDI:Append(class, undo, count) end
----@overload fun(class: "NDISource", undo: Undo?): NDISource
+---@generic T : NDISource
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): NDISource
 function NDI:Acquire(class, undo) end
----@overload fun(class: "NDISource", undo: Undo?): NDISource
+---@generic T : NDISource
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): NDISource
 ---@deprecated use "Acquire" instead
 function NDI:Aquire(class, undo) end
----@overload fun(index: integer, class: "NDISource", undo: Undo?, count: integer?): NDISource
+---@generic T : NDISource
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): NDISource
 function NDI:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "NDISource"): NDISource
----@overload fun(name: string, class: nil): NDISource
-function NDI:Find(name, class) end
----@overload fun(name: string, class: "NDISource"): NDISource
----@overload fun(name: string, class: nil): Object
-function NDI:FindRecursive(name, class) end
+---@generic T : NDISource
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): NDISource
+function NDI:Find(class, undo) end

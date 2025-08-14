@@ -17,5 +17,10 @@ function MultiPatchBase:Children() end
 function MultiPatchBase:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Fixture
 function MultiPatchBase:Get(name, role) end
----@overload fun(name: string, class: nil): Object
-function MultiPatchBase:FindRecursive(name, class) end
+function MultiPatchBase:Create(index, class, undo) end
+function MultiPatchBase:Append(class, undo, count) end
+function MultiPatchBase:Acquire(class, undo) end
+---@deprecated use "Acquire" instead
+function MultiPatchBase:Aquire(class, undo) end
+function MultiPatchBase:Insert(index, class, undo, count) end
+function MultiPatchBase:Find(class, undo) end

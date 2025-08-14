@@ -17,25 +17,44 @@ function MacroDMX:Children() end
 function MacroDMX:CurrentChild() end
 ---@overload fun(name: integer, role: nil): MacroDMXStep
 function MacroDMX:Get(name, role) end
----@overload fun(index: integer, class: "MacroDMXStep", undo: Undo?): MacroDMXStep
+---@generic T : MacroDMXStep
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): MacroDMXStep
 function MacroDMX:Create(index, class, undo) end
----@overload fun(class: "MacroDMXStep", undo: Undo?, count: integer?): MacroDMXStep
+---@generic T : MacroDMXStep
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): MacroDMXStep
 function MacroDMX:Append(class, undo, count) end
----@overload fun(class: "MacroDMXStep", undo: Undo?): MacroDMXStep
+---@generic T : MacroDMXStep
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MacroDMXStep
 function MacroDMX:Acquire(class, undo) end
----@overload fun(class: "MacroDMXStep", undo: Undo?): MacroDMXStep
+---@generic T : MacroDMXStep
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MacroDMXStep
 ---@deprecated use "Acquire" instead
 function MacroDMX:Aquire(class, undo) end
----@overload fun(index: integer, class: "MacroDMXStep", undo: Undo?, count: integer?): MacroDMXStep
+---@generic T : MacroDMXStep
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): MacroDMXStep
 function MacroDMX:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "MacroDMXStep"): MacroDMXStep
----@overload fun(name: string, class: nil): MacroDMXStep
-function MacroDMX:Find(name, class) end
----@overload fun(name: string, class: "MacroDMXStep"): MacroDMXStep
----@overload fun(name: string, class: nil): Object
-function MacroDMX:FindRecursive(name, class) end
+---@generic T : MacroDMXStep
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): MacroDMXStep
+function MacroDMX:Find(class, undo) end

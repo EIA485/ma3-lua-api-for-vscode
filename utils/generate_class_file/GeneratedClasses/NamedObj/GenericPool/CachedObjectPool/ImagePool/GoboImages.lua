@@ -15,25 +15,44 @@ function GoboImages:Children() end
 function GoboImages:CurrentChild() end
 ---@overload fun(name: integer, role: nil): GoboImage
 function GoboImages:Get(name, role) end
----@overload fun(index: integer, class: "GoboImage", undo: Undo?): GoboImage
+---@generic T : GoboImage
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): GoboImage
 function GoboImages:Create(index, class, undo) end
----@overload fun(class: "GoboImage", undo: Undo?, count: integer?): GoboImage
+---@generic T : GoboImage
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): GoboImage
 function GoboImages:Append(class, undo, count) end
----@overload fun(class: "GoboImage", undo: Undo?): GoboImage
+---@generic T : GoboImage
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): GoboImage
 function GoboImages:Acquire(class, undo) end
----@overload fun(class: "GoboImage", undo: Undo?): GoboImage
+---@generic T : GoboImage
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): GoboImage
 ---@deprecated use "Acquire" instead
 function GoboImages:Aquire(class, undo) end
----@overload fun(index: integer, class: "GoboImage", undo: Undo?, count: integer?): GoboImage
+---@generic T : GoboImage
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): GoboImage
 function GoboImages:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "GoboImage"): GoboImage
----@overload fun(name: string, class: nil): GoboImage
-function GoboImages:Find(name, class) end
----@overload fun(name: string, class: "GoboImage"): GoboImage
----@overload fun(name: string, class: nil): Object
-function GoboImages:FindRecursive(name, class) end
+---@generic T : GoboImage
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): GoboImage
+function GoboImages:Find(class, undo) end

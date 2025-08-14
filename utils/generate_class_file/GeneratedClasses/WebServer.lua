@@ -17,25 +17,44 @@ function WebServer:Children() end
 function WebServer:CurrentChild() end
 ---@overload fun(name: integer, role: nil): WebSocketsConnection
 function WebServer:Get(name, role) end
----@overload fun(index: integer, class: "WebSocketsConnection", undo: Undo?): WebSocketsConnection
+---@generic T : WebSocketsConnection
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): WebSocketsConnection
 function WebServer:Create(index, class, undo) end
----@overload fun(class: "WebSocketsConnection", undo: Undo?, count: integer?): WebSocketsConnection
+---@generic T : WebSocketsConnection
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): WebSocketsConnection
 function WebServer:Append(class, undo, count) end
----@overload fun(class: "WebSocketsConnection", undo: Undo?): WebSocketsConnection
+---@generic T : WebSocketsConnection
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): WebSocketsConnection
 function WebServer:Acquire(class, undo) end
----@overload fun(class: "WebSocketsConnection", undo: Undo?): WebSocketsConnection
+---@generic T : WebSocketsConnection
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): WebSocketsConnection
 ---@deprecated use "Acquire" instead
 function WebServer:Aquire(class, undo) end
----@overload fun(index: integer, class: "WebSocketsConnection", undo: Undo?, count: integer?): WebSocketsConnection
+---@generic T : WebSocketsConnection
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): WebSocketsConnection
 function WebServer:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "WebSocketsConnection"): WebSocketsConnection
----@overload fun(name: string, class: nil): WebSocketsConnection
-function WebServer:Find(name, class) end
----@overload fun(name: string, class: "WebSocketsConnection"): WebSocketsConnection
----@overload fun(name: string, class: nil): Object
-function WebServer:FindRecursive(name, class) end
+---@generic T : WebSocketsConnection
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): WebSocketsConnection
+function WebServer:Find(class, undo) end

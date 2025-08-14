@@ -15,25 +15,44 @@ function DBObjectGridColumnConfiguration:Children() end
 function DBObjectGridColumnConfiguration:CurrentChild() end
 ---@overload fun(name: integer, role: nil): DBObjectGridLine
 function DBObjectGridColumnConfiguration:Get(name, role) end
----@overload fun(index: integer, class: "DBObjectGridLine", undo: Undo?): DBObjectGridLine
+---@generic T : DBObjectGridLine
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): DBObjectGridLine
 function DBObjectGridColumnConfiguration:Create(index, class, undo) end
----@overload fun(class: "DBObjectGridLine", undo: Undo?, count: integer?): DBObjectGridLine
+---@generic T : DBObjectGridLine
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): DBObjectGridLine
 function DBObjectGridColumnConfiguration:Append(class, undo, count) end
----@overload fun(class: "DBObjectGridLine", undo: Undo?): DBObjectGridLine
+---@generic T : DBObjectGridLine
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DBObjectGridLine
 function DBObjectGridColumnConfiguration:Acquire(class, undo) end
----@overload fun(class: "DBObjectGridLine", undo: Undo?): DBObjectGridLine
+---@generic T : DBObjectGridLine
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DBObjectGridLine
 ---@deprecated use "Acquire" instead
 function DBObjectGridColumnConfiguration:Aquire(class, undo) end
----@overload fun(index: integer, class: "DBObjectGridLine", undo: Undo?, count: integer?): DBObjectGridLine
+---@generic T : DBObjectGridLine
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): DBObjectGridLine
 function DBObjectGridColumnConfiguration:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "DBObjectGridLine"): DBObjectGridLine
----@overload fun(name: string, class: nil): DBObjectGridLine
-function DBObjectGridColumnConfiguration:Find(name, class) end
----@overload fun(name: string, class: "DBObjectGridLine"): DBObjectGridLine
----@overload fun(name: string, class: nil): Object
-function DBObjectGridColumnConfiguration:FindRecursive(name, class) end
+---@generic T : DBObjectGridLine
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): DBObjectGridLine
+function DBObjectGridColumnConfiguration:Find(class, undo) end

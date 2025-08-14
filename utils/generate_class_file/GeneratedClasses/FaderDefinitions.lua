@@ -17,25 +17,44 @@ function FaderDefinitions:Children() end
 function FaderDefinitions:CurrentChild() end
 ---@overload fun(name: integer, role: nil): FaderDefinition
 function FaderDefinitions:Get(name, role) end
----@overload fun(index: integer, class: "FaderDefinition", undo: Undo?): FaderDefinition
+---@generic T : FaderDefinition
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): FaderDefinition
 function FaderDefinitions:Create(index, class, undo) end
----@overload fun(class: "FaderDefinition", undo: Undo?, count: integer?): FaderDefinition
+---@generic T : FaderDefinition
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): FaderDefinition
 function FaderDefinitions:Append(class, undo, count) end
----@overload fun(class: "FaderDefinition", undo: Undo?): FaderDefinition
+---@generic T : FaderDefinition
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): FaderDefinition
 function FaderDefinitions:Acquire(class, undo) end
----@overload fun(class: "FaderDefinition", undo: Undo?): FaderDefinition
+---@generic T : FaderDefinition
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): FaderDefinition
 ---@deprecated use "Acquire" instead
 function FaderDefinitions:Aquire(class, undo) end
----@overload fun(index: integer, class: "FaderDefinition", undo: Undo?, count: integer?): FaderDefinition
+---@generic T : FaderDefinition
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): FaderDefinition
 function FaderDefinitions:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "FaderDefinition"): FaderDefinition
----@overload fun(name: string, class: nil): FaderDefinition
-function FaderDefinitions:Find(name, class) end
----@overload fun(name: string, class: "FaderDefinition"): FaderDefinition
----@overload fun(name: string, class: nil): Object
-function FaderDefinitions:FindRecursive(name, class) end
+---@generic T : FaderDefinition
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): FaderDefinition
+function FaderDefinitions:Find(class, undo) end

@@ -17,25 +17,44 @@ function Menus:Children() end
 function Menus:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Menu
 function Menus:Get(name, role) end
----@overload fun(index: integer, class: "Menu", undo: Undo?): Menu
+---@generic T : Menu
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Menu
 function Menus:Create(index, class, undo) end
----@overload fun(class: "Menu", undo: Undo?, count: integer?): Menu
+---@generic T : Menu
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Menu
 function Menus:Append(class, undo, count) end
----@overload fun(class: "Menu", undo: Undo?): Menu
+---@generic T : Menu
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Menu
 function Menus:Acquire(class, undo) end
----@overload fun(class: "Menu", undo: Undo?): Menu
+---@generic T : Menu
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Menu
 ---@deprecated use "Acquire" instead
 function Menus:Aquire(class, undo) end
----@overload fun(index: integer, class: "Menu", undo: Undo?, count: integer?): Menu
+---@generic T : Menu
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Menu
 function Menus:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Menu"): Menu
----@overload fun(name: string, class: nil): Menu
-function Menus:Find(name, class) end
----@overload fun(name: string, class: "Menu"): Menu
----@overload fun(name: string, class: nil): Object
-function Menus:FindRecursive(name, class) end
+---@generic T : Menu
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Menu
+function Menus:Find(class, undo) end

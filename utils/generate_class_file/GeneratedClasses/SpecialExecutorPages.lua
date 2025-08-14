@@ -17,25 +17,44 @@ function SpecialExecutorPages:Children() end
 function SpecialExecutorPages:CurrentChild() end
 ---@overload fun(name: integer, role: nil): SpecialExecutors
 function SpecialExecutorPages:Get(name, role) end
----@overload fun(index: integer, class: "SpecialExecutors", undo: Undo?): SpecialExecutors
+---@generic T : SpecialExecutors
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): SpecialExecutors
 function SpecialExecutorPages:Create(index, class, undo) end
----@overload fun(class: "SpecialExecutors", undo: Undo?, count: integer?): SpecialExecutors
+---@generic T : SpecialExecutors
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): SpecialExecutors
 function SpecialExecutorPages:Append(class, undo, count) end
----@overload fun(class: "SpecialExecutors", undo: Undo?): SpecialExecutors
+---@generic T : SpecialExecutors
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SpecialExecutors
 function SpecialExecutorPages:Acquire(class, undo) end
----@overload fun(class: "SpecialExecutors", undo: Undo?): SpecialExecutors
+---@generic T : SpecialExecutors
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SpecialExecutors
 ---@deprecated use "Acquire" instead
 function SpecialExecutorPages:Aquire(class, undo) end
----@overload fun(index: integer, class: "SpecialExecutors", undo: Undo?, count: integer?): SpecialExecutors
+---@generic T : SpecialExecutors
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): SpecialExecutors
 function SpecialExecutorPages:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "SpecialExecutors"): SpecialExecutors
----@overload fun(name: string, class: nil): SpecialExecutors
-function SpecialExecutorPages:Find(name, class) end
----@overload fun(name: string, class: "SpecialExecutors"): SpecialExecutors
----@overload fun(name: string, class: nil): Object
-function SpecialExecutorPages:FindRecursive(name, class) end
+---@generic T : SpecialExecutors
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): SpecialExecutors
+function SpecialExecutorPages:Find(class, undo) end

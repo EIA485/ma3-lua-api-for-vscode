@@ -15,25 +15,44 @@ function QuickeyPoolSettingsCollect:Children() end
 function QuickeyPoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): QuickeyPoolSettings
 function QuickeyPoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "QuickeyPoolSettings", undo: Undo?): QuickeyPoolSettings
+---@generic T : QuickeyPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): QuickeyPoolSettings
 function QuickeyPoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "QuickeyPoolSettings", undo: Undo?, count: integer?): QuickeyPoolSettings
+---@generic T : QuickeyPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): QuickeyPoolSettings
 function QuickeyPoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "QuickeyPoolSettings", undo: Undo?): QuickeyPoolSettings
+---@generic T : QuickeyPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): QuickeyPoolSettings
 function QuickeyPoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "QuickeyPoolSettings", undo: Undo?): QuickeyPoolSettings
+---@generic T : QuickeyPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): QuickeyPoolSettings
 ---@deprecated use "Acquire" instead
 function QuickeyPoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "QuickeyPoolSettings", undo: Undo?, count: integer?): QuickeyPoolSettings
+---@generic T : QuickeyPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): QuickeyPoolSettings
 function QuickeyPoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "QuickeyPoolSettings"): QuickeyPoolSettings
----@overload fun(name: string, class: nil): QuickeyPoolSettings
-function QuickeyPoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "QuickeyPoolSettings"): QuickeyPoolSettings
----@overload fun(name: string, class: nil): Object
-function QuickeyPoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : QuickeyPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): QuickeyPoolSettings
+function QuickeyPoolSettingsCollect:Find(class, undo) end

@@ -44,43 +44,54 @@ function VirtualKey:Ptr(index) end
 function VirtualKey:Children() end
 ---@return VKValue?
 function VirtualKey:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
----@overload fun(name: "Code", role: nil): VirtualKeyCode
----@overload fun(name: "KeyCode", role: nil): SCVirtualKeyCode
----@overload fun(name: "SpecialCycle", role: nil): SpecialCycle
----@overload fun(name: "RedirectKeyCode", role: nil): SCVirtualKeyCode
----@overload fun(name: "RedirectChar", role: nil): string
----@overload fun(name: "Toggle"|"IsFader"|"NumericRedirect"|"AlwaysNumericRedirect"|"RedirectWithShift"|"RedirectWithCtrl"|"RedirectWithAlt"|"CanBeProcessedWhileModal"|"UseKeyStatusForLED", role: nil): integer
----@overload fun(name: "HelpTopic", role: nil): string
 ---@overload fun(name: "LedToken", role: nil): PresetActionToken
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Code"|"KeyCode"|"SpecialCycle"|"RedirectKeyCode"|"RedirectChar"|"Toggle"|"IsFader"|"NumericRedirect"|"AlwaysNumericRedirect"|"RedirectWithShift"|"RedirectWithCtrl"|"RedirectWithAlt"|"CanBeProcessedWhileModal"|"UseKeyStatusForLED"|"HelpTopic"|"LedToken", role: Enums.Roles): string
+---@overload fun(name: "KeyCode"|"RedirectKeyCode", role: nil): SCVirtualKeyCode
+---@overload fun(name: "SpecialCycle", role: nil): SpecialCycle
+---@overload fun(name: "Code", role: nil): VirtualKeyCode
+---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "Toggle"|"IsFader"|"NumericRedirect"|"AlwaysNumericRedirect"|"RedirectWithShift"|"RedirectWithCtrl"|"RedirectWithAlt"|"CanBeProcessedWhileModal"|"UseKeyStatusForLED"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "RedirectChar"|"HelpTopic"|"Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "Code"|"KeyCode"|"SpecialCycle"|"RedirectKeyCode"|"RedirectChar"|"Toggle"|"IsFader"|"NumericRedirect"|"AlwaysNumericRedirect"|"RedirectWithShift"|"RedirectWithCtrl"|"RedirectWithAlt"|"CanBeProcessedWhileModal"|"UseKeyStatusForLED"|"HelpTopic"|"LedToken"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): VKValue
 function VirtualKey:Get(name, role) end
----@overload fun(index: integer, class: "VKValue", undo: Undo?): VKValue
+---@generic T : VKValue
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): VKValue
 function VirtualKey:Create(index, class, undo) end
----@overload fun(class: "VKValue", undo: Undo?, count: integer?): VKValue
+---@generic T : VKValue
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): VKValue
 function VirtualKey:Append(class, undo, count) end
----@overload fun(class: "VKValue", undo: Undo?): VKValue
+---@generic T : VKValue
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): VKValue
 function VirtualKey:Acquire(class, undo) end
----@overload fun(class: "VKValue", undo: Undo?): VKValue
+---@generic T : VKValue
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): VKValue
 ---@deprecated use "Acquire" instead
 function VirtualKey:Aquire(class, undo) end
----@overload fun(index: integer, class: "VKValue", undo: Undo?, count: integer?): VKValue
+---@generic T : VKValue
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): VKValue
 function VirtualKey:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "VKValue"): VKValue
----@overload fun(name: string, class: nil): VKValue
-function VirtualKey:Find(name, class) end
----@overload fun(name: string, class: "VKValue"): VKValue
----@overload fun(name: string, class: nil): Object
-function VirtualKey:FindRecursive(name, class) end
+---@generic T : VKValue
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): VKValue
+function VirtualKey:Find(class, undo) end

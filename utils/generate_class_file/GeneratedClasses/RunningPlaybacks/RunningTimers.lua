@@ -17,5 +17,10 @@ function RunningTimers:Children() end
 function RunningTimers:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Timer
 function RunningTimers:Get(name, role) end
----@overload fun(name: string, class: nil): Object
-function RunningTimers:FindRecursive(name, class) end
+function RunningTimers:Create(index, class, undo) end
+function RunningTimers:Append(class, undo, count) end
+function RunningTimers:Acquire(class, undo) end
+---@deprecated use "Acquire" instead
+function RunningTimers:Aquire(class, undo) end
+function RunningTimers:Insert(index, class, undo, count) end
+function RunningTimers:Find(class, undo) end

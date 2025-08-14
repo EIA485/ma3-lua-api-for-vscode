@@ -15,25 +15,44 @@ function Scribbles:Children() end
 function Scribbles:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Scribble
 function Scribbles:Get(name, role) end
----@overload fun(index: integer, class: "Scribble", undo: Undo?): Scribble
+---@generic T : Scribble
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Scribble
 function Scribbles:Create(index, class, undo) end
----@overload fun(class: "Scribble", undo: Undo?, count: integer?): Scribble
+---@generic T : Scribble
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Scribble
 function Scribbles:Append(class, undo, count) end
----@overload fun(class: "Scribble", undo: Undo?): Scribble
+---@generic T : Scribble
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Scribble
 function Scribbles:Acquire(class, undo) end
----@overload fun(class: "Scribble", undo: Undo?): Scribble
+---@generic T : Scribble
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Scribble
 ---@deprecated use "Acquire" instead
 function Scribbles:Aquire(class, undo) end
----@overload fun(index: integer, class: "Scribble", undo: Undo?, count: integer?): Scribble
+---@generic T : Scribble
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Scribble
 function Scribbles:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Scribble"): Scribble
----@overload fun(name: string, class: nil): Scribble
-function Scribbles:Find(name, class) end
----@overload fun(name: string, class: "Scribble"): Scribble
----@overload fun(name: string, class: nil): Object
-function Scribbles:FindRecursive(name, class) end
+---@generic T : Scribble
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Scribble
+function Scribbles:Find(class, undo) end

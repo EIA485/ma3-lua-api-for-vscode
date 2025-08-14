@@ -15,25 +15,44 @@ function PresetGoboPoolSettingsCollect:Children() end
 function PresetGoboPoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): PresetGoboPoolSettings
 function PresetGoboPoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "PresetGoboPoolSettings", undo: Undo?): PresetGoboPoolSettings
+---@generic T : PresetGoboPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): PresetGoboPoolSettings
 function PresetGoboPoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "PresetGoboPoolSettings", undo: Undo?, count: integer?): PresetGoboPoolSettings
+---@generic T : PresetGoboPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): PresetGoboPoolSettings
 function PresetGoboPoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "PresetGoboPoolSettings", undo: Undo?): PresetGoboPoolSettings
+---@generic T : PresetGoboPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetGoboPoolSettings
 function PresetGoboPoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "PresetGoboPoolSettings", undo: Undo?): PresetGoboPoolSettings
+---@generic T : PresetGoboPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetGoboPoolSettings
 ---@deprecated use "Acquire" instead
 function PresetGoboPoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "PresetGoboPoolSettings", undo: Undo?, count: integer?): PresetGoboPoolSettings
+---@generic T : PresetGoboPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): PresetGoboPoolSettings
 function PresetGoboPoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "PresetGoboPoolSettings"): PresetGoboPoolSettings
----@overload fun(name: string, class: nil): PresetGoboPoolSettings
-function PresetGoboPoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "PresetGoboPoolSettings"): PresetGoboPoolSettings
----@overload fun(name: string, class: nil): Object
-function PresetGoboPoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : PresetGoboPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): PresetGoboPoolSettings
+function PresetGoboPoolSettingsCollect:Find(class, undo) end

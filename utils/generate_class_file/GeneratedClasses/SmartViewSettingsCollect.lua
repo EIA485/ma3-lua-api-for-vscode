@@ -15,25 +15,44 @@ function SmartViewSettingsCollect:Children() end
 function SmartViewSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): SmartViewSettings
 function SmartViewSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "SmartViewSettings", undo: Undo?): SmartViewSettings
+---@generic T : SmartViewSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): SmartViewSettings
 function SmartViewSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "SmartViewSettings", undo: Undo?, count: integer?): SmartViewSettings
+---@generic T : SmartViewSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): SmartViewSettings
 function SmartViewSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "SmartViewSettings", undo: Undo?): SmartViewSettings
+---@generic T : SmartViewSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SmartViewSettings
 function SmartViewSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "SmartViewSettings", undo: Undo?): SmartViewSettings
+---@generic T : SmartViewSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SmartViewSettings
 ---@deprecated use "Acquire" instead
 function SmartViewSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "SmartViewSettings", undo: Undo?, count: integer?): SmartViewSettings
+---@generic T : SmartViewSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): SmartViewSettings
 function SmartViewSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "SmartViewSettings"): SmartViewSettings
----@overload fun(name: string, class: nil): SmartViewSettings
-function SmartViewSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "SmartViewSettings"): SmartViewSettings
----@overload fun(name: string, class: nil): Object
-function SmartViewSettingsCollect:FindRecursive(name, class) end
+---@generic T : SmartViewSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): SmartViewSettings
+function SmartViewSettingsCollect:Find(class, undo) end

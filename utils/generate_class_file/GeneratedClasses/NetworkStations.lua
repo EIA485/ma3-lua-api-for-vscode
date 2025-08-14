@@ -17,25 +17,44 @@ function NetworkStations:Children() end
 function NetworkStations:CurrentChild() end
 ---@overload fun(name: integer, role: nil): NetworkStation
 function NetworkStations:Get(name, role) end
----@overload fun(index: integer, class: "NetworkStation", undo: Undo?): NetworkStation
+---@generic T : NetworkStation
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): NetworkStation
 function NetworkStations:Create(index, class, undo) end
----@overload fun(class: "NetworkStation", undo: Undo?, count: integer?): NetworkStation
+---@generic T : NetworkStation
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): NetworkStation
 function NetworkStations:Append(class, undo, count) end
----@overload fun(class: "NetworkStation", undo: Undo?): NetworkStation
+---@generic T : NetworkStation
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): NetworkStation
 function NetworkStations:Acquire(class, undo) end
----@overload fun(class: "NetworkStation", undo: Undo?): NetworkStation
+---@generic T : NetworkStation
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): NetworkStation
 ---@deprecated use "Acquire" instead
 function NetworkStations:Aquire(class, undo) end
----@overload fun(index: integer, class: "NetworkStation", undo: Undo?, count: integer?): NetworkStation
+---@generic T : NetworkStation
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): NetworkStation
 function NetworkStations:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "NetworkStation"): NetworkStation
----@overload fun(name: string, class: nil): NetworkStation
-function NetworkStations:Find(name, class) end
----@overload fun(name: string, class: "NetworkStation"): NetworkStation
----@overload fun(name: string, class: nil): Object
-function NetworkStations:FindRecursive(name, class) end
+---@generic T : NetworkStation
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): NetworkStation
+function NetworkStations:Find(class, undo) end

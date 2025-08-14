@@ -19,37 +19,50 @@ function FeatureGroup:Ptr(index) end
 function FeatureGroup:Children() end
 ---@return Feature?
 function FeatureGroup:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
 ---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
----@overload fun(name: "Pretty", role: nil): string
----@overload fun(name: "PresetMode", role: nil): integer
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Pretty"|"PresetMode", role: Enums.Roles): string
+---@overload fun(name: "PresetMode"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Pretty"|"Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "Pretty"|"PresetMode"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): Feature
 function FeatureGroup:Get(name, role) end
----@overload fun(index: integer, class: "Feature", undo: Undo?): Feature
+---@generic T : Feature
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Feature
 function FeatureGroup:Create(index, class, undo) end
----@overload fun(class: "Feature", undo: Undo?, count: integer?): Feature
+---@generic T : Feature
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Feature
 function FeatureGroup:Append(class, undo, count) end
----@overload fun(class: "Feature", undo: Undo?): Feature
+---@generic T : Feature
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Feature
 function FeatureGroup:Acquire(class, undo) end
----@overload fun(class: "Feature", undo: Undo?): Feature
+---@generic T : Feature
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Feature
 ---@deprecated use "Acquire" instead
 function FeatureGroup:Aquire(class, undo) end
----@overload fun(index: integer, class: "Feature", undo: Undo?, count: integer?): Feature
+---@generic T : Feature
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Feature
 function FeatureGroup:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Feature"): Feature
----@overload fun(name: string, class: nil): Feature
-function FeatureGroup:Find(name, class) end
----@overload fun(name: string, class: "Feature"): Feature
----@overload fun(name: string, class: nil): Object
-function FeatureGroup:FindRecursive(name, class) end
+---@generic T : Feature
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Feature
+function FeatureGroup:Find(class, undo) end

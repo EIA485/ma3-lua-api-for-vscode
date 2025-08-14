@@ -17,5 +17,10 @@ function RunningSequences:Children() end
 function RunningSequences:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Sequence
 function RunningSequences:Get(name, role) end
----@overload fun(name: string, class: nil): Object
-function RunningSequences:FindRecursive(name, class) end
+function RunningSequences:Create(index, class, undo) end
+function RunningSequences:Append(class, undo, count) end
+function RunningSequences:Acquire(class, undo) end
+---@deprecated use "Acquire" instead
+function RunningSequences:Aquire(class, undo) end
+function RunningSequences:Insert(index, class, undo, count) end
+function RunningSequences:Find(class, undo) end

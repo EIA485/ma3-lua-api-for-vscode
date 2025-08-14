@@ -7,11 +7,9 @@
 ---@field Fine integer
 ---@field Ultra integer
 ---@field Frequency integer
----@field Calc
-Always integer
+---@field CalcAlways integer
 ---@field VirtualResolution DMXVirtualResolution
----@field Default
-ChannelFunction ChannelFunction
+---@field DefaultChannelFunction ChannelFunction
 ---@field Default DMXPropertyValue
 ---@field Highlight DMXPropertyValue
 ---@field Lowlight DMXPropertyValue
@@ -22,8 +20,7 @@ local DMXChannel = {
     Fine="None",
     Ultra="None",
     Frequency="30",
-    ["Calc
-Always"]="No",
+    CalcAlways="No",
     VirtualResolution="24 bits",
     Default="000000",
     Highlight="None",
@@ -42,45 +39,54 @@ function DMXChannel:Ptr(index) end
 function DMXChannel:Children() end
 ---@return LogicalChannel?
 function DMXChannel:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
----@overload fun(name: "Type"|"Name", role: nil): string
----@overload fun(name: "DMXBreak"|"Coarse"|"Fine"|"Ultra"|"Frequency"|"Calc
-Always", role: nil): integer
----@overload fun(name: "VirtualResolution", role: nil): DMXVirtualResolution
----@overload fun(name: "Default
-ChannelFunction", role: nil): ChannelFunction
+---@overload fun(name: "DefaultChannelFunction", role: nil): ChannelFunction
 ---@overload fun(name: "Default"|"Highlight"|"Lowlight", role: nil): DMXPropertyValue
+---@overload fun(name: "VirtualResolution", role: nil): DMXVirtualResolution
 ---@overload fun(name: "Geometry", role: nil): Geometry
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Type"|"Name"|"DMXBreak"|"Coarse"|"Fine"|"Ultra"|"Frequency"|"Calc
-Always"|"VirtualResolution"|"Default
-ChannelFunction"|"Default"|"Highlight"|"Lowlight"|"Geometry", role: Enums.Roles): string
+---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "DMXBreak"|"Coarse"|"Fine"|"Ultra"|"Frequency"|"CalcAlways"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Name"|"Type"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "Name"|"DMXBreak"|"Coarse"|"Fine"|"Ultra"|"Frequency"|"CalcAlways"|"VirtualResolution"|"DefaultChannelFunction"|"Default"|"Highlight"|"Lowlight"|"Geometry"|"Type"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): LogicalChannel
 function DMXChannel:Get(name, role) end
----@overload fun(index: integer, class: "LogicalChannel", undo: Undo?): LogicalChannel
+---@generic T : LogicalChannel
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): LogicalChannel
 function DMXChannel:Create(index, class, undo) end
----@overload fun(class: "LogicalChannel", undo: Undo?, count: integer?): LogicalChannel
+---@generic T : LogicalChannel
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): LogicalChannel
 function DMXChannel:Append(class, undo, count) end
----@overload fun(class: "LogicalChannel", undo: Undo?): LogicalChannel
+---@generic T : LogicalChannel
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): LogicalChannel
 function DMXChannel:Acquire(class, undo) end
----@overload fun(class: "LogicalChannel", undo: Undo?): LogicalChannel
+---@generic T : LogicalChannel
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): LogicalChannel
 ---@deprecated use "Acquire" instead
 function DMXChannel:Aquire(class, undo) end
----@overload fun(index: integer, class: "LogicalChannel", undo: Undo?, count: integer?): LogicalChannel
+---@generic T : LogicalChannel
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): LogicalChannel
 function DMXChannel:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "LogicalChannel"): LogicalChannel
----@overload fun(name: string, class: nil): LogicalChannel
-function DMXChannel:Find(name, class) end
----@overload fun(name: string, class: "LogicalChannel"): LogicalChannel
----@overload fun(name: string, class: nil): Object
-function DMXChannel:FindRecursive(name, class) end
+---@generic T : LogicalChannel
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): LogicalChannel
+function DMXChannel:Find(class, undo) end

@@ -21,30 +21,19 @@
 ---@field Break7 DMXPropertyAddress
 ---@field Break8 DMXPropertyAddress
 ---@field RotDirect Math.TQuaternion<double>
----@field Gel
-Color Colors.RGB<float>
+---@field GelColor Colors.RGB<float>
 ---@field Gel Gel
----@field Beam
-Angle number
----@field Shaper
-POV number
----@field Shadow
-Quality integer
----@field Cast
-Shadow integer
+---@field BeamAngle number
+---@field ShaperPOV number
+---@field ShadowQuality integer
+---@field CastShadow integer
 ---@field MeshMirrorX integer
----@field Follow
-Target integer
----@field Selectable
-3D integer
----@field Visible
-3D integer
----@field Target
-Space Space
----@field Movement
-Space Space
----@field Master
-React integer
+---@field FollowTarget integer
+---@field Selectable3D integer
+---@field Visible3D integer
+---@field TargetSpace Space
+---@field MovementSpace Space
+---@field MasterReact integer
 ---@field P1X number
 ---@field P1Y number
 ---@field P1Z number
@@ -66,20 +55,13 @@ local Fixture = {
     IDType="Fixture",
     IDTypeDirect="Fixture",
     CID="None",
-    ["Gel
-Color"]="1.000000,1.000000,1.000000,1.000000",
-    ["Beam
-Angle"]="0",
-    ["Shaper
-POV"]="0",
-    ["Shadow
-Quality"]="High",
-    ["Selectable
-3D"]="Yes",
-    ["Visible
-3D"]="Yes",
-    ["Master
-React"]="Grand",
+    GelColor="1.000000,1.000000,1.000000,1.000000",
+    BeamAngle="0",
+    ShaperPOV="0",
+    ShadowQuality="High",
+    Selectable3D="Yes",
+    Visible3D="Yes",
+    MasterReact="Grand",
     P1X="0",
     P1Y="0",
     P1Z="0",
@@ -100,70 +82,46 @@ React"]="Grand",
 function Fixture:GetClass() end
 ---@return "SubFixture"
 function Fixture:GetChildClass() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
----@overload fun(name: "Guid", role: nil): Crypto.Guid<128>
----@overload fun(name: "Scribble", role: nil): Scribble
 ---@overload fun(name: "Appearance", role: nil): Appearance
----@overload fun(name: "NameAndApp"|"Note", role: nil): string
----@overload fun(name: "Tags", role: nil): TagMap
----@overload fun(name: "OldSubfixtureIndex"|"SubfixtureIndex", role: nil): integer
----@overload fun(name: "Appearance", role: nil): Appearance
----@overload fun(name: "Fixture", role: nil): Fixture
----@overload fun(name: "Stage", role: nil): Stage
----@overload fun(name: "OffsetPan"|"OffsetTilt", role: nil): ValueTPropertyValue
----@overload fun(name: "ParameterCountViolation"|"SubfxitureCountViolation"|"ConflitedPatch", role: nil): integer
----@overload fun(name: "Name", role: nil): string
----@overload fun(name: "FixtureType", role: nil): FixtureType
----@overload fun(name: "Mode"|"ModeDirect", role: nil): DMXMode
----@overload fun(name: "FID"|"IDType"|"IDTypeDirect"|"CID", role: nil): integer
----@overload fun(name: "Patch", role: nil): Container.ArrayCount<class DMXPropertyAddress, 8>
----@overload fun(name: "Layer", role: nil): FixtureLayer
 ---@overload fun(name: "Class", role: nil): Class
+---@overload fun(name: "GelColor", role: nil): Colors.RGB<float>
+---@overload fun(name: "Patch", role: nil): Container.ArrayCount<class DMXPropertyAddress, 8>
+---@overload fun(name: "Guid", role: nil): Crypto.Guid<128>
+---@overload fun(name: "Mode"|"ModeDirect", role: nil): DMXMode
 ---@overload fun(name: "Break1"|"Break2"|"Break3"|"Break4"|"Break5"|"Break6"|"Break7"|"Break8", role: nil): DMXPropertyAddress
----@overload fun(name: "RotDirect", role: nil): Math.TQuaternion<double>
----@overload fun(name: "Gel
-Color", role: nil): Colors.RGB<float>
+---@overload fun(name: "MultipatchMain"|"Fixture", role: nil): Fixture
+---@overload fun(name: "Layer", role: nil): FixtureLayer
+---@overload fun(name: "FixtureType", role: nil): FixtureType
 ---@overload fun(name: "Gel", role: nil): Gel
----@overload fun(name: "Beam
-Angle"|"Shaper
-POV", role: nil): number
----@overload fun(name: "Shadow
-Quality"|"Cast
-Shadow"|"MeshMirrorX"|"Follow
-Target"|"Selectable
-3D"|"Visible
-3D", role: nil): integer
----@overload fun(name: "Target
-Space"|"Movement
-Space", role: nil): Space
----@overload fun(name: "Master
-React", role: nil): integer
----@overload fun(name: "P1X"|"P1Y"|"P1Z", role: nil): number
----@overload fun(name: "P1Pan"|"P1Tilt", role: nil): integer
----@overload fun(name: "P2X"|"P2Y"|"P2Z", role: nil): number
----@overload fun(name: "P2Pan"|"P2Tilt", role: nil): integer
----@overload fun(name: "P3X"|"P3Y", role: nil): number
----@overload fun(name: "ChannelRTCount", role: nil): integer
----@overload fun(name: "IsMultipatch", role: nil): boolean
----@overload fun(name: "MultipatchMain", role: nil): Fixture
----@overload fun(name: "MultipatchCount", role: nil): integer
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Guid"|"Scribble"|"Appearance"|"NameAndApp"|"Note"|"Tags"|"OldSubfixtureIndex"|"SubfixtureIndex"|"Appearance"|"Fixture"|"Stage"|"OffsetPan"|"OffsetTilt"|"ParameterCountViolation"|"SubfxitureCountViolation"|"ConflitedPatch"|"Name"|"FixtureType"|"Mode"|"ModeDirect"|"FID"|"IDType"|"IDTypeDirect"|"CID"|"Patch"|"Layer"|"Class"|"Break1"|"Break2"|"Break3"|"Break4"|"Break5"|"Break6"|"Break7"|"Break8"|"RotDirect"|"Gel
-Color"|"Gel"|"Beam
-Angle"|"Shaper
-POV"|"Shadow
-Quality"|"Cast
-Shadow"|"MeshMirrorX"|"Follow
-Target"|"Selectable
-3D"|"Visible
-3D"|"Target
-Space"|"Movement
-Space"|"Master
-React"|"P1X"|"P1Y"|"P1Z"|"P1Pan"|"P1Tilt"|"P2X"|"P2Y"|"P2Z"|"P2Pan"|"P2Tilt"|"P3X"|"P3Y"|"ChannelRTCount"|"IsMultipatch"|"MultipatchMain"|"MultipatchCount", role: Enums.Roles): string
+---@overload fun(name: "RotDirect", role: nil): Math.TQuaternion<double>
+---@overload fun(name: "Scribble", role: nil): Scribble
+---@overload fun(name: "TargetSpace"|"MovementSpace", role: nil): Space
+---@overload fun(name: "Stage", role: nil): Stage
+---@overload fun(name: "Tags", role: nil): TagMap
+---@overload fun(name: "OffsetPan"|"OffsetTilt", role: nil): ValueTPropertyValue
+---@overload fun(name: "IsMultipatch"|"FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "FID"|"IDType"|"IDTypeDirect"|"CID"|"ShadowQuality"|"CastShadow"|"MeshMirrorX"|"FollowTarget"|"Selectable3D"|"Visible3D"|"MasterReact"|"P1Pan"|"P1Tilt"|"P2Pan"|"P2Tilt"|"ChannelRTCount"|"MultipatchCount"|"OldSubfixtureIndex"|"SubfixtureIndex"|"ParameterCountViolation"|"SubfxitureCountViolation"|"ConflitedPatch"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "BeamAngle"|"ShaperPOV"|"P1X"|"P1Y"|"P1Z"|"P2X"|"P2Y"|"P2Z"|"P3X"|"P3Y", role: nil): number
+---@overload fun(name: "Name"|"NameAndApp"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "Name"|"FixtureType"|"Mode"|"ModeDirect"|"FID"|"IDType"|"IDTypeDirect"|"CID"|"Patch"|"Layer"|"Class"|"Break1"|"Break2"|"Break3"|"Break4"|"Break5"|"Break6"|"Break7"|"Break8"|"RotDirect"|"GelColor"|"Gel"|"BeamAngle"|"ShaperPOV"|"ShadowQuality"|"CastShadow"|"MeshMirrorX"|"FollowTarget"|"Selectable3D"|"Visible3D"|"TargetSpace"|"MovementSpace"|"MasterReact"|"P1X"|"P1Y"|"P1Z"|"P1Pan"|"P1Tilt"|"P2X"|"P2Y"|"P2Z"|"P2Pan"|"P2Tilt"|"P3X"|"P3Y"|"ChannelRTCount"|"IsMultipatch"|"MultipatchMain"|"MultipatchCount"|"OldSubfixtureIndex"|"SubfixtureIndex"|"Appearance"|"Fixture"|"Stage"|"OffsetPan"|"OffsetTilt"|"ParameterCountViolation"|"SubfxitureCountViolation"|"ConflitedPatch"|"Guid"|"Scribble"|"NameAndApp"|"Note"|"Tags"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): SubFixture
 function Fixture:Get(name, role) end
+---@overload fun(index: integer, class: "SubFixture", undo: Undo?): SubFixture
+---@overload fun(index: integer, class: nil, undo: Undo?): SubFixture
+function Fixture:Create(index, class, undo) end
+---@overload fun(class: "SubFixture", undo: Undo?, count: integer?): SubFixture
+---@overload fun(class: nil, undo: Undo?, count: integer?): SubFixture
+function Fixture:Append(class, undo, count) end
+---@overload fun(class: "SubFixture", undo: Undo?): SubFixture
+---@overload fun(class: nil, undo: Undo?): SubFixture
+function Fixture:Acquire(class, undo) end
+---@overload fun(class: "SubFixture", undo: Undo?): SubFixture
+---@overload fun(class: nil, undo: Undo?): SubFixture
+---@deprecated use "Acquire" instead
+function Fixture:Aquire(class, undo) end
+---@overload fun(index: integer, class: "SubFixture", undo: Undo?, count: integer?): SubFixture
+---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): SubFixture
+function Fixture:Insert(index, class, undo, count) end
+---@overload fun(class: "SubFixture", undo: Undo?): SubFixture
+---@overload fun(class: nil, undo: Undo?): SubFixture
+function Fixture:Find(class, undo) end

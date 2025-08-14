@@ -17,25 +17,44 @@ function UserProfiles:Children() end
 function UserProfiles:CurrentChild() end
 ---@overload fun(name: integer, role: nil): UserProfile
 function UserProfiles:Get(name, role) end
----@overload fun(index: integer, class: "UserProfile", undo: Undo?): UserProfile
+---@generic T : UserProfile
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): UserProfile
 function UserProfiles:Create(index, class, undo) end
----@overload fun(class: "UserProfile", undo: Undo?, count: integer?): UserProfile
+---@generic T : UserProfile
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): UserProfile
 function UserProfiles:Append(class, undo, count) end
----@overload fun(class: "UserProfile", undo: Undo?): UserProfile
+---@generic T : UserProfile
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): UserProfile
 function UserProfiles:Acquire(class, undo) end
----@overload fun(class: "UserProfile", undo: Undo?): UserProfile
+---@generic T : UserProfile
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): UserProfile
 ---@deprecated use "Acquire" instead
 function UserProfiles:Aquire(class, undo) end
----@overload fun(index: integer, class: "UserProfile", undo: Undo?, count: integer?): UserProfile
+---@generic T : UserProfile
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): UserProfile
 function UserProfiles:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "UserProfile"): UserProfile
----@overload fun(name: string, class: nil): UserProfile
-function UserProfiles:Find(name, class) end
----@overload fun(name: string, class: "UserProfile"): UserProfile
----@overload fun(name: string, class: nil): Object
-function UserProfiles:FindRecursive(name, class) end
+---@generic T : UserProfile
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): UserProfile
+function UserProfiles:Find(class, undo) end

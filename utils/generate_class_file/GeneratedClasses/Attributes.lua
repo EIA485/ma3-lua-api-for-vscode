@@ -17,25 +17,44 @@ function Attributes:Children() end
 function Attributes:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Attribute
 function Attributes:Get(name, role) end
----@overload fun(index: integer, class: "Attribute", undo: Undo?): Attribute
+---@generic T : Attribute
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Attribute
 function Attributes:Create(index, class, undo) end
----@overload fun(class: "Attribute", undo: Undo?, count: integer?): Attribute
+---@generic T : Attribute
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Attribute
 function Attributes:Append(class, undo, count) end
----@overload fun(class: "Attribute", undo: Undo?): Attribute
+---@generic T : Attribute
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Attribute
 function Attributes:Acquire(class, undo) end
----@overload fun(class: "Attribute", undo: Undo?): Attribute
+---@generic T : Attribute
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Attribute
 ---@deprecated use "Acquire" instead
 function Attributes:Aquire(class, undo) end
----@overload fun(index: integer, class: "Attribute", undo: Undo?, count: integer?): Attribute
+---@generic T : Attribute
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Attribute
 function Attributes:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Attribute"): Attribute
----@overload fun(name: string, class: nil): Attribute
-function Attributes:Find(name, class) end
----@overload fun(name: string, class: "Attribute"): Attribute
----@overload fun(name: string, class: nil): Object
-function Attributes:FindRecursive(name, class) end
+---@generic T : Attribute
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Attribute
+function Attributes:Find(class, undo) end

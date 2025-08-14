@@ -17,25 +17,44 @@ function Users:Children() end
 function Users:CurrentChild() end
 ---@overload fun(name: integer, role: nil): User
 function Users:Get(name, role) end
----@overload fun(index: integer, class: "User", undo: Undo?): User
+---@generic T : User
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): User
 function Users:Create(index, class, undo) end
----@overload fun(class: "User", undo: Undo?, count: integer?): User
+---@generic T : User
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): User
 function Users:Append(class, undo, count) end
----@overload fun(class: "User", undo: Undo?): User
+---@generic T : User
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): User
 function Users:Acquire(class, undo) end
----@overload fun(class: "User", undo: Undo?): User
+---@generic T : User
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): User
 ---@deprecated use "Acquire" instead
 function Users:Aquire(class, undo) end
----@overload fun(index: integer, class: "User", undo: Undo?, count: integer?): User
+---@generic T : User
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): User
 function Users:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "User"): User
----@overload fun(name: string, class: nil): User
-function Users:Find(name, class) end
----@overload fun(name: string, class: "User"): User
----@overload fun(name: string, class: nil): Object
-function Users:FindRecursive(name, class) end
+---@generic T : User
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): User
+function Users:Find(class, undo) end

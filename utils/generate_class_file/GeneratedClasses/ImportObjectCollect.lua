@@ -17,25 +17,44 @@ function ImportObjectCollect:Children() end
 function ImportObjectCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): ImportFakeObject
 function ImportObjectCollect:Get(name, role) end
----@overload fun(index: integer, class: "ImportFakeObject", undo: Undo?): ImportFakeObject
+---@generic T : ImportFakeObject
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): ImportFakeObject
 function ImportObjectCollect:Create(index, class, undo) end
----@overload fun(class: "ImportFakeObject", undo: Undo?, count: integer?): ImportFakeObject
+---@generic T : ImportFakeObject
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): ImportFakeObject
 function ImportObjectCollect:Append(class, undo, count) end
----@overload fun(class: "ImportFakeObject", undo: Undo?): ImportFakeObject
+---@generic T : ImportFakeObject
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ImportFakeObject
 function ImportObjectCollect:Acquire(class, undo) end
----@overload fun(class: "ImportFakeObject", undo: Undo?): ImportFakeObject
+---@generic T : ImportFakeObject
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ImportFakeObject
 ---@deprecated use "Acquire" instead
 function ImportObjectCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "ImportFakeObject", undo: Undo?, count: integer?): ImportFakeObject
+---@generic T : ImportFakeObject
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): ImportFakeObject
 function ImportObjectCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "ImportFakeObject"): ImportFakeObject
----@overload fun(name: string, class: nil): ImportFakeObject
-function ImportObjectCollect:Find(name, class) end
----@overload fun(name: string, class: "ImportFakeObject"): ImportFakeObject
----@overload fun(name: string, class: nil): Object
-function ImportObjectCollect:FindRecursive(name, class) end
+---@generic T : ImportFakeObject
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): ImportFakeObject
+function ImportObjectCollect:Find(class, undo) end

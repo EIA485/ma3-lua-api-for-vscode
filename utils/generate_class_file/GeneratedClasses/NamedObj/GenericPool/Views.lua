@@ -33,9 +33,6 @@ function Views:Aquire(class, undo) end
 ---@overload fun(index: integer, class: "View", undo: Undo?, count: integer?): View
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): View
 function Views:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "View"): View
----@overload fun(name: string, class: nil): View
-function Views:Find(name, class) end
----@overload fun(name: string, class: "View"): View
----@overload fun(name: string, class: nil): Object
-function Views:FindRecursive(name, class) end
+---@overload fun(class: "View", undo: Undo?): View
+---@overload fun(class: nil, undo: Undo?): View
+function Views:Find(class, undo) end

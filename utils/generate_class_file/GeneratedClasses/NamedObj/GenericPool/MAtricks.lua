@@ -17,39 +17,56 @@ function MAtricks:Children() end
 function MAtricks:CurrentChild() end
 ---@overload fun(name: integer, role: nil): MAtrick
 function MAtricks:Get(name, role) end
+---@generic T : Recipe
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: "MAtrick", undo: Undo?): MAtrick
 ---@overload fun(index: integer, class: "Preset", undo: Undo?): Preset
----@overload fun(index: integer, class: "Recipe", undo: Undo?): Recipe
 ---@overload fun(index: integer, class: nil, undo: Undo?): MAtrick
 function MAtricks:Create(index, class, undo) end
+---@generic T : Recipe
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: "MAtrick", undo: Undo?, count: integer?): MAtrick
 ---@overload fun(class: "Preset", undo: Undo?, count: integer?): Preset
----@overload fun(class: "Recipe", undo: Undo?, count: integer?): Recipe
 ---@overload fun(class: nil, undo: Undo?, count: integer?): MAtrick
 function MAtricks:Append(class, undo, count) end
+---@generic T : Recipe
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: "MAtrick", undo: Undo?): MAtrick
 ---@overload fun(class: "Preset", undo: Undo?): Preset
----@overload fun(class: "Recipe", undo: Undo?): Recipe
 ---@overload fun(class: nil, undo: Undo?): MAtrick
 function MAtricks:Acquire(class, undo) end
+---@generic T : Recipe
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: "MAtrick", undo: Undo?): MAtrick
 ---@overload fun(class: "Preset", undo: Undo?): Preset
----@overload fun(class: "Recipe", undo: Undo?): Recipe
 ---@overload fun(class: nil, undo: Undo?): MAtrick
 ---@deprecated use "Acquire" instead
 function MAtricks:Aquire(class, undo) end
+---@generic T : Recipe
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: "MAtrick", undo: Undo?, count: integer?): MAtrick
 ---@overload fun(index: integer, class: "Preset", undo: Undo?, count: integer?): Preset
----@overload fun(index: integer, class: "Recipe", undo: Undo?, count: integer?): Recipe
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): MAtrick
 function MAtricks:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "MAtrick"): MAtrick
----@overload fun(name: string, class: "Preset"): Preset
----@overload fun(name: string, class: "Recipe"): Recipe
----@overload fun(name: string, class: nil): MAtrick
-function MAtricks:Find(name, class) end
----@overload fun(name: string, class: "MAtrick"): MAtrick
----@overload fun(name: string, class: "Preset"): Preset
----@overload fun(name: string, class: "Recipe"): Recipe
----@overload fun(name: string, class: nil): Object
-function MAtricks:FindRecursive(name, class) end
+---@generic T : Recipe
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: "MAtrick", undo: Undo?): MAtrick
+---@overload fun(class: "Preset", undo: Undo?): Preset
+---@overload fun(class: nil, undo: Undo?): MAtrick
+function MAtricks:Find(class, undo) end

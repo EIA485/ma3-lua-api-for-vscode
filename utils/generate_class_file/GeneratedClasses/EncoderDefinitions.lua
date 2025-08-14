@@ -17,25 +17,44 @@ function EncoderDefinitions:Children() end
 function EncoderDefinitions:CurrentChild() end
 ---@overload fun(name: integer, role: nil): EncoderDefinition
 function EncoderDefinitions:Get(name, role) end
----@overload fun(index: integer, class: "EncoderDefinition", undo: Undo?): EncoderDefinition
+---@generic T : EncoderDefinition
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): EncoderDefinition
 function EncoderDefinitions:Create(index, class, undo) end
----@overload fun(class: "EncoderDefinition", undo: Undo?, count: integer?): EncoderDefinition
+---@generic T : EncoderDefinition
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): EncoderDefinition
 function EncoderDefinitions:Append(class, undo, count) end
----@overload fun(class: "EncoderDefinition", undo: Undo?): EncoderDefinition
+---@generic T : EncoderDefinition
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): EncoderDefinition
 function EncoderDefinitions:Acquire(class, undo) end
----@overload fun(class: "EncoderDefinition", undo: Undo?): EncoderDefinition
+---@generic T : EncoderDefinition
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): EncoderDefinition
 ---@deprecated use "Acquire" instead
 function EncoderDefinitions:Aquire(class, undo) end
----@overload fun(index: integer, class: "EncoderDefinition", undo: Undo?, count: integer?): EncoderDefinition
+---@generic T : EncoderDefinition
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): EncoderDefinition
 function EncoderDefinitions:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "EncoderDefinition"): EncoderDefinition
----@overload fun(name: string, class: nil): EncoderDefinition
-function EncoderDefinitions:Find(name, class) end
----@overload fun(name: string, class: "EncoderDefinition"): EncoderDefinition
----@overload fun(name: string, class: nil): Object
-function EncoderDefinitions:FindRecursive(name, class) end
+---@generic T : EncoderDefinition
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): EncoderDefinition
+function EncoderDefinitions:Find(class, undo) end

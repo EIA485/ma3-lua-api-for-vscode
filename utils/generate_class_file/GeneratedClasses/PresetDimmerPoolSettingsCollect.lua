@@ -15,25 +15,44 @@ function PresetDimmerPoolSettingsCollect:Children() end
 function PresetDimmerPoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): PresetDimmerPoolSettings
 function PresetDimmerPoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "PresetDimmerPoolSettings", undo: Undo?): PresetDimmerPoolSettings
+---@generic T : PresetDimmerPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): PresetDimmerPoolSettings
 function PresetDimmerPoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "PresetDimmerPoolSettings", undo: Undo?, count: integer?): PresetDimmerPoolSettings
+---@generic T : PresetDimmerPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): PresetDimmerPoolSettings
 function PresetDimmerPoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "PresetDimmerPoolSettings", undo: Undo?): PresetDimmerPoolSettings
+---@generic T : PresetDimmerPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetDimmerPoolSettings
 function PresetDimmerPoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "PresetDimmerPoolSettings", undo: Undo?): PresetDimmerPoolSettings
+---@generic T : PresetDimmerPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetDimmerPoolSettings
 ---@deprecated use "Acquire" instead
 function PresetDimmerPoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "PresetDimmerPoolSettings", undo: Undo?, count: integer?): PresetDimmerPoolSettings
+---@generic T : PresetDimmerPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): PresetDimmerPoolSettings
 function PresetDimmerPoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "PresetDimmerPoolSettings"): PresetDimmerPoolSettings
----@overload fun(name: string, class: nil): PresetDimmerPoolSettings
-function PresetDimmerPoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "PresetDimmerPoolSettings"): PresetDimmerPoolSettings
----@overload fun(name: string, class: nil): Object
-function PresetDimmerPoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : PresetDimmerPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): PresetDimmerPoolSettings
+function PresetDimmerPoolSettingsCollect:Find(class, undo) end

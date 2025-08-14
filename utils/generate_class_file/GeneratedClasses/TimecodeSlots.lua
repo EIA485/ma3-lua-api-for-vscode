@@ -17,25 +17,44 @@ function TimecodeSlots:Children() end
 function TimecodeSlots:CurrentChild() end
 ---@overload fun(name: integer, role: nil): TCSlot
 function TimecodeSlots:Get(name, role) end
----@overload fun(index: integer, class: "TCSlot", undo: Undo?): TCSlot
+---@generic T : TCSlot
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): TCSlot
 function TimecodeSlots:Create(index, class, undo) end
----@overload fun(class: "TCSlot", undo: Undo?, count: integer?): TCSlot
+---@generic T : TCSlot
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): TCSlot
 function TimecodeSlots:Append(class, undo, count) end
----@overload fun(class: "TCSlot", undo: Undo?): TCSlot
+---@generic T : TCSlot
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): TCSlot
 function TimecodeSlots:Acquire(class, undo) end
----@overload fun(class: "TCSlot", undo: Undo?): TCSlot
+---@generic T : TCSlot
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): TCSlot
 ---@deprecated use "Acquire" instead
 function TimecodeSlots:Aquire(class, undo) end
----@overload fun(index: integer, class: "TCSlot", undo: Undo?, count: integer?): TCSlot
+---@generic T : TCSlot
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): TCSlot
 function TimecodeSlots:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "TCSlot"): TCSlot
----@overload fun(name: string, class: nil): TCSlot
-function TimecodeSlots:Find(name, class) end
----@overload fun(name: string, class: "TCSlot"): TCSlot
----@overload fun(name: string, class: nil): Object
-function TimecodeSlots:FindRecursive(name, class) end
+---@generic T : TCSlot
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): TCSlot
+function TimecodeSlots:Find(class, undo) end

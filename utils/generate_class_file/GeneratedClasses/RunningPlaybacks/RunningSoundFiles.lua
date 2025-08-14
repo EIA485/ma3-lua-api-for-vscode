@@ -17,5 +17,10 @@ function RunningSoundFiles:Children() end
 function RunningSoundFiles:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Sound
 function RunningSoundFiles:Get(name, role) end
----@overload fun(name: string, class: nil): Object
-function RunningSoundFiles:FindRecursive(name, class) end
+function RunningSoundFiles:Create(index, class, undo) end
+function RunningSoundFiles:Append(class, undo, count) end
+function RunningSoundFiles:Acquire(class, undo) end
+---@deprecated use "Acquire" instead
+function RunningSoundFiles:Aquire(class, undo) end
+function RunningSoundFiles:Insert(index, class, undo, count) end
+function RunningSoundFiles:Find(class, undo) end

@@ -31,9 +31,6 @@ function HID:Aquire(class, undo) end
 ---@overload fun(index: integer, class: "USBDeviceHID", undo: Undo?, count: integer?): USBDeviceHID
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): USBDeviceHID
 function HID:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "USBDeviceHID"): USBDeviceHID
----@overload fun(name: string, class: nil): USBDeviceHID
-function HID:Find(name, class) end
----@overload fun(name: string, class: "USBDeviceHID"): USBDeviceHID
----@overload fun(name: string, class: nil): Object
-function HID:FindRecursive(name, class) end
+---@overload fun(class: "USBDeviceHID", undo: Undo?): USBDeviceHID
+---@overload fun(class: nil, undo: Undo?): USBDeviceHID
+function HID:Find(class, undo) end

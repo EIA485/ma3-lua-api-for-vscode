@@ -33,9 +33,6 @@ function GeneratorConfigurations:Aquire(class, undo) end
 ---@overload fun(index: integer, class: "GeneratorConfiguration", undo: Undo?, count: integer?): GeneratorConfiguration
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): GeneratorConfiguration
 function GeneratorConfigurations:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "GeneratorConfiguration"): GeneratorConfiguration
----@overload fun(name: string, class: nil): GeneratorConfiguration
-function GeneratorConfigurations:Find(name, class) end
----@overload fun(name: string, class: "GeneratorConfiguration"): GeneratorConfiguration
----@overload fun(name: string, class: nil): Object
-function GeneratorConfigurations:FindRecursive(name, class) end
+---@overload fun(class: "GeneratorConfiguration", undo: Undo?): GeneratorConfiguration
+---@overload fun(class: nil, undo: Undo?): GeneratorConfiguration
+function GeneratorConfigurations:Find(class, undo) end

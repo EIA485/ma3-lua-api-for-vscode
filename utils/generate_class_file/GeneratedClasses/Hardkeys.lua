@@ -17,25 +17,44 @@ function Hardkeys:Children() end
 function Hardkeys:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Hardkey
 function Hardkeys:Get(name, role) end
----@overload fun(index: integer, class: "Hardkey", undo: Undo?): Hardkey
+---@generic T : Hardkey
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Hardkey
 function Hardkeys:Create(index, class, undo) end
----@overload fun(class: "Hardkey", undo: Undo?, count: integer?): Hardkey
+---@generic T : Hardkey
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Hardkey
 function Hardkeys:Append(class, undo, count) end
----@overload fun(class: "Hardkey", undo: Undo?): Hardkey
+---@generic T : Hardkey
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Hardkey
 function Hardkeys:Acquire(class, undo) end
----@overload fun(class: "Hardkey", undo: Undo?): Hardkey
+---@generic T : Hardkey
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Hardkey
 ---@deprecated use "Acquire" instead
 function Hardkeys:Aquire(class, undo) end
----@overload fun(index: integer, class: "Hardkey", undo: Undo?, count: integer?): Hardkey
+---@generic T : Hardkey
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Hardkey
 function Hardkeys:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Hardkey"): Hardkey
----@overload fun(name: string, class: nil): Hardkey
-function Hardkeys:Find(name, class) end
----@overload fun(name: string, class: "Hardkey"): Hardkey
----@overload fun(name: string, class: nil): Object
-function Hardkeys:FindRecursive(name, class) end
+---@generic T : Hardkey
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Hardkey
+function Hardkeys:Find(class, undo) end

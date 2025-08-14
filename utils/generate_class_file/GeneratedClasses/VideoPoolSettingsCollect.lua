@@ -15,25 +15,44 @@ function VideoPoolSettingsCollect:Children() end
 function VideoPoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): VideoPoolSettings
 function VideoPoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "VideoPoolSettings", undo: Undo?): VideoPoolSettings
+---@generic T : VideoPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): VideoPoolSettings
 function VideoPoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "VideoPoolSettings", undo: Undo?, count: integer?): VideoPoolSettings
+---@generic T : VideoPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): VideoPoolSettings
 function VideoPoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "VideoPoolSettings", undo: Undo?): VideoPoolSettings
+---@generic T : VideoPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): VideoPoolSettings
 function VideoPoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "VideoPoolSettings", undo: Undo?): VideoPoolSettings
+---@generic T : VideoPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): VideoPoolSettings
 ---@deprecated use "Acquire" instead
 function VideoPoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "VideoPoolSettings", undo: Undo?, count: integer?): VideoPoolSettings
+---@generic T : VideoPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): VideoPoolSettings
 function VideoPoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "VideoPoolSettings"): VideoPoolSettings
----@overload fun(name: string, class: nil): VideoPoolSettings
-function VideoPoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "VideoPoolSettings"): VideoPoolSettings
----@overload fun(name: string, class: nil): Object
-function VideoPoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : VideoPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): VideoPoolSettings
+function VideoPoolSettingsCollect:Find(class, undo) end

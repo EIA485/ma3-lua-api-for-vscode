@@ -36,41 +36,54 @@ function View:Ptr(index) end
 function View:Children() end
 ---@return ViewWidget?
 function View:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
+---@overload fun(name: "Appearance", role: nil): Appearance
 ---@overload fun(name: "Guid", role: nil): Crypto.Guid<128>
 ---@overload fun(name: "Scribble", role: nil): Scribble
----@overload fun(name: "Appearance", role: nil): Appearance
----@overload fun(name: "NameAndApp"|"Note", role: nil): string
 ---@overload fun(name: "Tags", role: nil): TagMap
----@overload fun(name: "ScreenContentDisplay1"|"ScreenContentDisplay2"|"ScreenContentDisplay3"|"ScreenContentDisplay4"|"ScreenContentDisplay5"|"ScreenContentDisplay6"|"ScreenContentDisplay7"|"ScreenContentMask"|"RequestedW"|"RequestedH", role: nil): integer
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Guid"|"Scribble"|"Appearance"|"NameAndApp"|"Note"|"Tags"|"ScreenContentDisplay1"|"ScreenContentDisplay2"|"ScreenContentDisplay3"|"ScreenContentDisplay4"|"ScreenContentDisplay5"|"ScreenContentDisplay6"|"ScreenContentDisplay7"|"ScreenContentMask"|"RequestedW"|"RequestedH", role: Enums.Roles): string
+---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "ScreenContentDisplay1"|"ScreenContentDisplay2"|"ScreenContentDisplay3"|"ScreenContentDisplay4"|"ScreenContentDisplay5"|"ScreenContentDisplay6"|"ScreenContentDisplay7"|"ScreenContentMask"|"RequestedW"|"RequestedH"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "NameAndApp"|"Note"|"Name"|"DependencyExport", role: nil): string
+---@overload fun(name: "ScreenContentDisplay1"|"ScreenContentDisplay2"|"ScreenContentDisplay3"|"ScreenContentDisplay4"|"ScreenContentDisplay5"|"ScreenContentDisplay6"|"ScreenContentDisplay7"|"ScreenContentMask"|"RequestedW"|"RequestedH"|"Guid"|"Scribble"|"Appearance"|"NameAndApp"|"Note"|"Tags"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): ViewWidget
 function View:Get(name, role) end
----@overload fun(index: integer, class: "ViewWidget", undo: Undo?): ViewWidget
+---@generic T : ViewWidget
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): ViewWidget
 function View:Create(index, class, undo) end
----@overload fun(class: "ViewWidget", undo: Undo?, count: integer?): ViewWidget
+---@generic T : ViewWidget
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): ViewWidget
 function View:Append(class, undo, count) end
----@overload fun(class: "ViewWidget", undo: Undo?): ViewWidget
+---@generic T : ViewWidget
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ViewWidget
 function View:Acquire(class, undo) end
----@overload fun(class: "ViewWidget", undo: Undo?): ViewWidget
+---@generic T : ViewWidget
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ViewWidget
 ---@deprecated use "Acquire" instead
 function View:Aquire(class, undo) end
----@overload fun(index: integer, class: "ViewWidget", undo: Undo?, count: integer?): ViewWidget
+---@generic T : ViewWidget
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): ViewWidget
 function View:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "ViewWidget"): ViewWidget
----@overload fun(name: string, class: nil): ViewWidget
-function View:Find(name, class) end
----@overload fun(name: string, class: "ViewWidget"): ViewWidget
----@overload fun(name: string, class: nil): Object
-function View:FindRecursive(name, class) end
+---@generic T : ViewWidget
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): ViewWidget
+function View:Find(class, undo) end

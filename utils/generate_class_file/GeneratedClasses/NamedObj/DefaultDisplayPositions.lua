@@ -17,25 +17,44 @@ function DefaultDisplayPositions:Children() end
 function DefaultDisplayPositions:CurrentChild() end
 ---@overload fun(name: integer, role: nil): DefaultDisplayPosition
 function DefaultDisplayPositions:Get(name, role) end
----@overload fun(index: integer, class: "DefaultDisplayPosition", undo: Undo?): DefaultDisplayPosition
+---@generic T : DefaultDisplayPosition
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): DefaultDisplayPosition
 function DefaultDisplayPositions:Create(index, class, undo) end
----@overload fun(class: "DefaultDisplayPosition", undo: Undo?, count: integer?): DefaultDisplayPosition
+---@generic T : DefaultDisplayPosition
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): DefaultDisplayPosition
 function DefaultDisplayPositions:Append(class, undo, count) end
----@overload fun(class: "DefaultDisplayPosition", undo: Undo?): DefaultDisplayPosition
+---@generic T : DefaultDisplayPosition
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DefaultDisplayPosition
 function DefaultDisplayPositions:Acquire(class, undo) end
----@overload fun(class: "DefaultDisplayPosition", undo: Undo?): DefaultDisplayPosition
+---@generic T : DefaultDisplayPosition
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): DefaultDisplayPosition
 ---@deprecated use "Acquire" instead
 function DefaultDisplayPositions:Aquire(class, undo) end
----@overload fun(index: integer, class: "DefaultDisplayPosition", undo: Undo?, count: integer?): DefaultDisplayPosition
+---@generic T : DefaultDisplayPosition
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): DefaultDisplayPosition
 function DefaultDisplayPositions:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "DefaultDisplayPosition"): DefaultDisplayPosition
----@overload fun(name: string, class: nil): DefaultDisplayPosition
-function DefaultDisplayPositions:Find(name, class) end
----@overload fun(name: string, class: "DefaultDisplayPosition"): DefaultDisplayPosition
----@overload fun(name: string, class: nil): Object
-function DefaultDisplayPositions:FindRecursive(name, class) end
+---@generic T : DefaultDisplayPosition
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): DefaultDisplayPosition
+function DefaultDisplayPositions:Find(class, undo) end

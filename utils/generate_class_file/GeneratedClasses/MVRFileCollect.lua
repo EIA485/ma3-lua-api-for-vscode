@@ -17,25 +17,44 @@ function MVRFileCollect:Children() end
 function MVRFileCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): MVRFile
 function MVRFileCollect:Get(name, role) end
----@overload fun(index: integer, class: "MVRFile", undo: Undo?): MVRFile
+---@generic T : MVRFile
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): MVRFile
 function MVRFileCollect:Create(index, class, undo) end
----@overload fun(class: "MVRFile", undo: Undo?, count: integer?): MVRFile
+---@generic T : MVRFile
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): MVRFile
 function MVRFileCollect:Append(class, undo, count) end
----@overload fun(class: "MVRFile", undo: Undo?): MVRFile
+---@generic T : MVRFile
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MVRFile
 function MVRFileCollect:Acquire(class, undo) end
----@overload fun(class: "MVRFile", undo: Undo?): MVRFile
+---@generic T : MVRFile
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MVRFile
 ---@deprecated use "Acquire" instead
 function MVRFileCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "MVRFile", undo: Undo?, count: integer?): MVRFile
+---@generic T : MVRFile
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): MVRFile
 function MVRFileCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "MVRFile"): MVRFile
----@overload fun(name: string, class: nil): MVRFile
-function MVRFileCollect:Find(name, class) end
----@overload fun(name: string, class: "MVRFile"): MVRFile
----@overload fun(name: string, class: nil): Object
-function MVRFileCollect:FindRecursive(name, class) end
+---@generic T : MVRFile
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): MVRFile
+function MVRFileCollect:Find(class, undo) end

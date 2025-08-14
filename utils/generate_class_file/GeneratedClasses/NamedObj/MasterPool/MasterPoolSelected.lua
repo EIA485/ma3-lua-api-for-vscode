@@ -15,25 +15,44 @@ function MasterPoolSelected:Children() end
 function MasterPoolSelected:CurrentChild() end
 ---@overload fun(name: integer, role: nil): MasterSelected
 function MasterPoolSelected:Get(name, role) end
----@overload fun(index: integer, class: "MasterSelected", undo: Undo?): MasterSelected
+---@generic T : MasterSelected
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): MasterSelected
 function MasterPoolSelected:Create(index, class, undo) end
----@overload fun(class: "MasterSelected", undo: Undo?, count: integer?): MasterSelected
+---@generic T : MasterSelected
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): MasterSelected
 function MasterPoolSelected:Append(class, undo, count) end
----@overload fun(class: "MasterSelected", undo: Undo?): MasterSelected
+---@generic T : MasterSelected
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MasterSelected
 function MasterPoolSelected:Acquire(class, undo) end
----@overload fun(class: "MasterSelected", undo: Undo?): MasterSelected
+---@generic T : MasterSelected
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MasterSelected
 ---@deprecated use "Acquire" instead
 function MasterPoolSelected:Aquire(class, undo) end
----@overload fun(index: integer, class: "MasterSelected", undo: Undo?, count: integer?): MasterSelected
+---@generic T : MasterSelected
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): MasterSelected
 function MasterPoolSelected:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "MasterSelected"): MasterSelected
----@overload fun(name: string, class: nil): MasterSelected
-function MasterPoolSelected:Find(name, class) end
----@overload fun(name: string, class: "MasterSelected"): MasterSelected
----@overload fun(name: string, class: nil): Object
-function MasterPoolSelected:FindRecursive(name, class) end
+---@generic T : MasterSelected
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): MasterSelected
+function MasterPoolSelected:Find(class, undo) end

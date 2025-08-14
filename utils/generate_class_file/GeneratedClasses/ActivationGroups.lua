@@ -17,25 +17,44 @@ function ActivationGroups:Children() end
 function ActivationGroups:CurrentChild() end
 ---@overload fun(name: integer, role: nil): ActivationGroup
 function ActivationGroups:Get(name, role) end
----@overload fun(index: integer, class: "ActivationGroup", undo: Undo?): ActivationGroup
+---@generic T : ActivationGroup
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): ActivationGroup
 function ActivationGroups:Create(index, class, undo) end
----@overload fun(class: "ActivationGroup", undo: Undo?, count: integer?): ActivationGroup
+---@generic T : ActivationGroup
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): ActivationGroup
 function ActivationGroups:Append(class, undo, count) end
----@overload fun(class: "ActivationGroup", undo: Undo?): ActivationGroup
+---@generic T : ActivationGroup
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ActivationGroup
 function ActivationGroups:Acquire(class, undo) end
----@overload fun(class: "ActivationGroup", undo: Undo?): ActivationGroup
+---@generic T : ActivationGroup
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ActivationGroup
 ---@deprecated use "Acquire" instead
 function ActivationGroups:Aquire(class, undo) end
----@overload fun(index: integer, class: "ActivationGroup", undo: Undo?, count: integer?): ActivationGroup
+---@generic T : ActivationGroup
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): ActivationGroup
 function ActivationGroups:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "ActivationGroup"): ActivationGroup
----@overload fun(name: string, class: nil): ActivationGroup
-function ActivationGroups:Find(name, class) end
----@overload fun(name: string, class: "ActivationGroup"): ActivationGroup
----@overload fun(name: string, class: nil): Object
-function ActivationGroups:FindRecursive(name, class) end
+---@generic T : ActivationGroup
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): ActivationGroup
+function ActivationGroups:Find(class, undo) end

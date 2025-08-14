@@ -15,25 +15,44 @@ function PluginPoolSettingsCollect:Children() end
 function PluginPoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): PluginPoolSettings
 function PluginPoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "PluginPoolSettings", undo: Undo?): PluginPoolSettings
+---@generic T : PluginPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): PluginPoolSettings
 function PluginPoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "PluginPoolSettings", undo: Undo?, count: integer?): PluginPoolSettings
+---@generic T : PluginPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): PluginPoolSettings
 function PluginPoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "PluginPoolSettings", undo: Undo?): PluginPoolSettings
+---@generic T : PluginPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PluginPoolSettings
 function PluginPoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "PluginPoolSettings", undo: Undo?): PluginPoolSettings
+---@generic T : PluginPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PluginPoolSettings
 ---@deprecated use "Acquire" instead
 function PluginPoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "PluginPoolSettings", undo: Undo?, count: integer?): PluginPoolSettings
+---@generic T : PluginPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): PluginPoolSettings
 function PluginPoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "PluginPoolSettings"): PluginPoolSettings
----@overload fun(name: string, class: nil): PluginPoolSettings
-function PluginPoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "PluginPoolSettings"): PluginPoolSettings
----@overload fun(name: string, class: nil): Object
-function PluginPoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : PluginPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): PluginPoolSettings
+function PluginPoolSettingsCollect:Find(class, undo) end

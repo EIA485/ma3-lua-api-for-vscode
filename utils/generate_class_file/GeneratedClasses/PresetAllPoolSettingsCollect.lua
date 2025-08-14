@@ -15,25 +15,44 @@ function PresetAllPoolSettingsCollect:Children() end
 function PresetAllPoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): PresetAllPoolSettings
 function PresetAllPoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "PresetAllPoolSettings", undo: Undo?): PresetAllPoolSettings
+---@generic T : PresetAllPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): PresetAllPoolSettings
 function PresetAllPoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "PresetAllPoolSettings", undo: Undo?, count: integer?): PresetAllPoolSettings
+---@generic T : PresetAllPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): PresetAllPoolSettings
 function PresetAllPoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "PresetAllPoolSettings", undo: Undo?): PresetAllPoolSettings
+---@generic T : PresetAllPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetAllPoolSettings
 function PresetAllPoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "PresetAllPoolSettings", undo: Undo?): PresetAllPoolSettings
+---@generic T : PresetAllPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetAllPoolSettings
 ---@deprecated use "Acquire" instead
 function PresetAllPoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "PresetAllPoolSettings", undo: Undo?, count: integer?): PresetAllPoolSettings
+---@generic T : PresetAllPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): PresetAllPoolSettings
 function PresetAllPoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "PresetAllPoolSettings"): PresetAllPoolSettings
----@overload fun(name: string, class: nil): PresetAllPoolSettings
-function PresetAllPoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "PresetAllPoolSettings"): PresetAllPoolSettings
----@overload fun(name: string, class: nil): Object
-function PresetAllPoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : PresetAllPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): PresetAllPoolSettings
+function PresetAllPoolSettingsCollect:Find(class, undo) end

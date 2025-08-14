@@ -17,25 +17,44 @@ function Sessions:Children() end
 function Sessions:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Session
 function Sessions:Get(name, role) end
----@overload fun(index: integer, class: "Session", undo: Undo?): Session
+---@generic T : Session
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Session
 function Sessions:Create(index, class, undo) end
----@overload fun(class: "Session", undo: Undo?, count: integer?): Session
+---@generic T : Session
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Session
 function Sessions:Append(class, undo, count) end
----@overload fun(class: "Session", undo: Undo?): Session
+---@generic T : Session
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Session
 function Sessions:Acquire(class, undo) end
----@overload fun(class: "Session", undo: Undo?): Session
+---@generic T : Session
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Session
 ---@deprecated use "Acquire" instead
 function Sessions:Aquire(class, undo) end
----@overload fun(index: integer, class: "Session", undo: Undo?, count: integer?): Session
+---@generic T : Session
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Session
 function Sessions:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Session"): Session
----@overload fun(name: string, class: nil): Session
-function Sessions:Find(name, class) end
----@overload fun(name: string, class: "Session"): Session
----@overload fun(name: string, class: nil): Object
-function Sessions:FindRecursive(name, class) end
+---@generic T : Session
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Session
+function Sessions:Find(class, undo) end

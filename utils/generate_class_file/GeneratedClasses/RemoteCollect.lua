@@ -20,14 +20,10 @@ function RemoteCollect:Ptr(index) end
 function RemoteCollect:Children() end
 ---@return Remote?
 function RemoteCollect:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
 ---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint"|"Enabled"|"FeedbackInput", role: nil): integer
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Enabled"|"FeedbackInput", role: Enums.Roles): string
+---@overload fun(name: "Enabled"|"FeedbackInput"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "Enabled"|"FeedbackInput"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): Remote
 function RemoteCollect:Get(name, role) end
 ---@overload fun(index: integer, class: "Remote", undo: Undo?): Remote
@@ -46,9 +42,6 @@ function RemoteCollect:Aquire(class, undo) end
 ---@overload fun(index: integer, class: "Remote", undo: Undo?, count: integer?): Remote
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Remote
 function RemoteCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Remote"): Remote
----@overload fun(name: string, class: nil): Remote
-function RemoteCollect:Find(name, class) end
----@overload fun(name: string, class: "Remote"): Remote
----@overload fun(name: string, class: nil): Object
-function RemoteCollect:FindRecursive(name, class) end
+---@overload fun(class: "Remote", undo: Undo?): Remote
+---@overload fun(class: nil, undo: Undo?): Remote
+function RemoteCollect:Find(class, undo) end

@@ -15,25 +15,44 @@ function MasterPoolGrand:Children() end
 function MasterPoolGrand:CurrentChild() end
 ---@overload fun(name: integer, role: nil): MasterGrand
 function MasterPoolGrand:Get(name, role) end
----@overload fun(index: integer, class: "MasterGrand", undo: Undo?): MasterGrand
+---@generic T : MasterGrand
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): MasterGrand
 function MasterPoolGrand:Create(index, class, undo) end
----@overload fun(class: "MasterGrand", undo: Undo?, count: integer?): MasterGrand
+---@generic T : MasterGrand
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): MasterGrand
 function MasterPoolGrand:Append(class, undo, count) end
----@overload fun(class: "MasterGrand", undo: Undo?): MasterGrand
+---@generic T : MasterGrand
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MasterGrand
 function MasterPoolGrand:Acquire(class, undo) end
----@overload fun(class: "MasterGrand", undo: Undo?): MasterGrand
+---@generic T : MasterGrand
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MasterGrand
 ---@deprecated use "Acquire" instead
 function MasterPoolGrand:Aquire(class, undo) end
----@overload fun(index: integer, class: "MasterGrand", undo: Undo?, count: integer?): MasterGrand
+---@generic T : MasterGrand
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): MasterGrand
 function MasterPoolGrand:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "MasterGrand"): MasterGrand
----@overload fun(name: string, class: nil): MasterGrand
-function MasterPoolGrand:Find(name, class) end
----@overload fun(name: string, class: "MasterGrand"): MasterGrand
----@overload fun(name: string, class: nil): Object
-function MasterPoolGrand:FindRecursive(name, class) end
+---@generic T : MasterGrand
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): MasterGrand
+function MasterPoolGrand:Find(class, undo) end

@@ -17,25 +17,44 @@ function VirtualKeys:Children() end
 function VirtualKeys:CurrentChild() end
 ---@overload fun(name: integer, role: nil): VirtualKey
 function VirtualKeys:Get(name, role) end
----@overload fun(index: integer, class: "VirtualKey", undo: Undo?): VirtualKey
+---@generic T : VirtualKey
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): VirtualKey
 function VirtualKeys:Create(index, class, undo) end
----@overload fun(class: "VirtualKey", undo: Undo?, count: integer?): VirtualKey
+---@generic T : VirtualKey
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): VirtualKey
 function VirtualKeys:Append(class, undo, count) end
----@overload fun(class: "VirtualKey", undo: Undo?): VirtualKey
+---@generic T : VirtualKey
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): VirtualKey
 function VirtualKeys:Acquire(class, undo) end
----@overload fun(class: "VirtualKey", undo: Undo?): VirtualKey
+---@generic T : VirtualKey
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): VirtualKey
 ---@deprecated use "Acquire" instead
 function VirtualKeys:Aquire(class, undo) end
----@overload fun(index: integer, class: "VirtualKey", undo: Undo?, count: integer?): VirtualKey
+---@generic T : VirtualKey
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): VirtualKey
 function VirtualKeys:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "VirtualKey"): VirtualKey
----@overload fun(name: string, class: nil): VirtualKey
-function VirtualKeys:Find(name, class) end
----@overload fun(name: string, class: "VirtualKey"): VirtualKey
----@overload fun(name: string, class: nil): Object
-function VirtualKeys:FindRecursive(name, class) end
+---@generic T : VirtualKey
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): VirtualKey
+function VirtualKeys:Find(class, undo) end

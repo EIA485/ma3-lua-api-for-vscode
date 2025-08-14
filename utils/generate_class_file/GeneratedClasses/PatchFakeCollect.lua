@@ -17,25 +17,44 @@ function PatchFakeCollect:Children() end
 function PatchFakeCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): PatchFakeObject
 function PatchFakeCollect:Get(name, role) end
----@overload fun(index: integer, class: "PatchFakeObject", undo: Undo?): PatchFakeObject
+---@generic T : PatchFakeObject
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): PatchFakeObject
 function PatchFakeCollect:Create(index, class, undo) end
----@overload fun(class: "PatchFakeObject", undo: Undo?, count: integer?): PatchFakeObject
+---@generic T : PatchFakeObject
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): PatchFakeObject
 function PatchFakeCollect:Append(class, undo, count) end
----@overload fun(class: "PatchFakeObject", undo: Undo?): PatchFakeObject
+---@generic T : PatchFakeObject
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PatchFakeObject
 function PatchFakeCollect:Acquire(class, undo) end
----@overload fun(class: "PatchFakeObject", undo: Undo?): PatchFakeObject
+---@generic T : PatchFakeObject
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PatchFakeObject
 ---@deprecated use "Acquire" instead
 function PatchFakeCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "PatchFakeObject", undo: Undo?, count: integer?): PatchFakeObject
+---@generic T : PatchFakeObject
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): PatchFakeObject
 function PatchFakeCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "PatchFakeObject"): PatchFakeObject
----@overload fun(name: string, class: nil): PatchFakeObject
-function PatchFakeCollect:Find(name, class) end
----@overload fun(name: string, class: "PatchFakeObject"): PatchFakeObject
----@overload fun(name: string, class: nil): Object
-function PatchFakeCollect:FindRecursive(name, class) end
+---@generic T : PatchFakeObject
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): PatchFakeObject
+function PatchFakeCollect:Find(class, undo) end

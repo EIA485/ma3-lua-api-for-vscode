@@ -20,36 +20,51 @@ function KeyboardShortCuts:Ptr(index) end
 function KeyboardShortCuts:Children() end
 ---@return KeyboardShortcut?
 function KeyboardShortCuts:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
 ---@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint"|"KeyboardShortcutsActive", role: nil): integer
 ---@overload fun(name: "OnResetToDefault", role: nil): fun(str: string) : boolean
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"KeyboardShortcutsActive"|"OnResetToDefault", role: Enums.Roles): string
+---@overload fun(name: "KeyboardShortcutsActive"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "KeyboardShortcutsActive"|"OnResetToDefault"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): KeyboardShortcut
 function KeyboardShortCuts:Get(name, role) end
----@overload fun(index: integer, class: "KeyboardShortcut", undo: Undo?): KeyboardShortcut
+---@generic T : KeyboardShortcut
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): KeyboardShortcut
 function KeyboardShortCuts:Create(index, class, undo) end
----@overload fun(class: "KeyboardShortcut", undo: Undo?, count: integer?): KeyboardShortcut
+---@generic T : KeyboardShortcut
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): KeyboardShortcut
 function KeyboardShortCuts:Append(class, undo, count) end
----@overload fun(class: "KeyboardShortcut", undo: Undo?): KeyboardShortcut
+---@generic T : KeyboardShortcut
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): KeyboardShortcut
 function KeyboardShortCuts:Acquire(class, undo) end
----@overload fun(class: "KeyboardShortcut", undo: Undo?): KeyboardShortcut
+---@generic T : KeyboardShortcut
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): KeyboardShortcut
 ---@deprecated use "Acquire" instead
 function KeyboardShortCuts:Aquire(class, undo) end
----@overload fun(index: integer, class: "KeyboardShortcut", undo: Undo?, count: integer?): KeyboardShortcut
+---@generic T : KeyboardShortcut
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): KeyboardShortcut
 function KeyboardShortCuts:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "KeyboardShortcut"): KeyboardShortcut
----@overload fun(name: string, class: nil): KeyboardShortcut
-function KeyboardShortCuts:Find(name, class) end
----@overload fun(name: string, class: "KeyboardShortcut"): KeyboardShortcut
----@overload fun(name: string, class: nil): Object
-function KeyboardShortCuts:FindRecursive(name, class) end
+---@generic T : KeyboardShortcut
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): KeyboardShortcut
+function KeyboardShortCuts:Find(class, undo) end

@@ -17,25 +17,44 @@ function BitmapConfigs:Children() end
 function BitmapConfigs:CurrentChild() end
 ---@overload fun(name: integer, role: nil): BitmapConfig
 function BitmapConfigs:Get(name, role) end
----@overload fun(index: integer, class: "BitmapConfig", undo: Undo?): BitmapConfig
+---@generic T : BitmapConfig
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): BitmapConfig
 function BitmapConfigs:Create(index, class, undo) end
----@overload fun(class: "BitmapConfig", undo: Undo?, count: integer?): BitmapConfig
+---@generic T : BitmapConfig
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): BitmapConfig
 function BitmapConfigs:Append(class, undo, count) end
----@overload fun(class: "BitmapConfig", undo: Undo?): BitmapConfig
+---@generic T : BitmapConfig
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): BitmapConfig
 function BitmapConfigs:Acquire(class, undo) end
----@overload fun(class: "BitmapConfig", undo: Undo?): BitmapConfig
+---@generic T : BitmapConfig
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): BitmapConfig
 ---@deprecated use "Acquire" instead
 function BitmapConfigs:Aquire(class, undo) end
----@overload fun(index: integer, class: "BitmapConfig", undo: Undo?, count: integer?): BitmapConfig
+---@generic T : BitmapConfig
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): BitmapConfig
 function BitmapConfigs:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "BitmapConfig"): BitmapConfig
----@overload fun(name: string, class: nil): BitmapConfig
-function BitmapConfigs:Find(name, class) end
----@overload fun(name: string, class: "BitmapConfig"): BitmapConfig
----@overload fun(name: string, class: nil): Object
-function BitmapConfigs:FindRecursive(name, class) end
+---@generic T : BitmapConfig
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): BitmapConfig
+function BitmapConfigs:Find(class, undo) end

@@ -15,25 +15,44 @@ function GroupPoolSettingsCollect:Children() end
 function GroupPoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): GroupPoolSettings
 function GroupPoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "GroupPoolSettings", undo: Undo?): GroupPoolSettings
+---@generic T : GroupPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): GroupPoolSettings
 function GroupPoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "GroupPoolSettings", undo: Undo?, count: integer?): GroupPoolSettings
+---@generic T : GroupPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): GroupPoolSettings
 function GroupPoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "GroupPoolSettings", undo: Undo?): GroupPoolSettings
+---@generic T : GroupPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): GroupPoolSettings
 function GroupPoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "GroupPoolSettings", undo: Undo?): GroupPoolSettings
+---@generic T : GroupPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): GroupPoolSettings
 ---@deprecated use "Acquire" instead
 function GroupPoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "GroupPoolSettings", undo: Undo?, count: integer?): GroupPoolSettings
+---@generic T : GroupPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): GroupPoolSettings
 function GroupPoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "GroupPoolSettings"): GroupPoolSettings
----@overload fun(name: string, class: nil): GroupPoolSettings
-function GroupPoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "GroupPoolSettings"): GroupPoolSettings
----@overload fun(name: string, class: nil): Object
-function GroupPoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : GroupPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): GroupPoolSettings
+function GroupPoolSettingsCollect:Find(class, undo) end

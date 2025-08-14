@@ -15,25 +15,44 @@ function PresetDynamicPoolSettingsCollect:Children() end
 function PresetDynamicPoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): PresetDynamicPoolSettings
 function PresetDynamicPoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "PresetDynamicPoolSettings", undo: Undo?): PresetDynamicPoolSettings
+---@generic T : PresetDynamicPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): PresetDynamicPoolSettings
 function PresetDynamicPoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "PresetDynamicPoolSettings", undo: Undo?, count: integer?): PresetDynamicPoolSettings
+---@generic T : PresetDynamicPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): PresetDynamicPoolSettings
 function PresetDynamicPoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "PresetDynamicPoolSettings", undo: Undo?): PresetDynamicPoolSettings
+---@generic T : PresetDynamicPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetDynamicPoolSettings
 function PresetDynamicPoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "PresetDynamicPoolSettings", undo: Undo?): PresetDynamicPoolSettings
+---@generic T : PresetDynamicPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetDynamicPoolSettings
 ---@deprecated use "Acquire" instead
 function PresetDynamicPoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "PresetDynamicPoolSettings", undo: Undo?, count: integer?): PresetDynamicPoolSettings
+---@generic T : PresetDynamicPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): PresetDynamicPoolSettings
 function PresetDynamicPoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "PresetDynamicPoolSettings"): PresetDynamicPoolSettings
----@overload fun(name: string, class: nil): PresetDynamicPoolSettings
-function PresetDynamicPoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "PresetDynamicPoolSettings"): PresetDynamicPoolSettings
----@overload fun(name: string, class: nil): Object
-function PresetDynamicPoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : PresetDynamicPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): PresetDynamicPoolSettings
+function PresetDynamicPoolSettingsCollect:Find(class, undo) end

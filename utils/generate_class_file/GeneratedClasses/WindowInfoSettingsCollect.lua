@@ -15,25 +15,44 @@ function WindowInfoSettingsCollect:Children() end
 function WindowInfoSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): WindowInfoSettings
 function WindowInfoSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "WindowInfoSettings", undo: Undo?): WindowInfoSettings
+---@generic T : WindowInfoSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): WindowInfoSettings
 function WindowInfoSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "WindowInfoSettings", undo: Undo?, count: integer?): WindowInfoSettings
+---@generic T : WindowInfoSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): WindowInfoSettings
 function WindowInfoSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "WindowInfoSettings", undo: Undo?): WindowInfoSettings
+---@generic T : WindowInfoSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): WindowInfoSettings
 function WindowInfoSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "WindowInfoSettings", undo: Undo?): WindowInfoSettings
+---@generic T : WindowInfoSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): WindowInfoSettings
 ---@deprecated use "Acquire" instead
 function WindowInfoSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "WindowInfoSettings", undo: Undo?, count: integer?): WindowInfoSettings
+---@generic T : WindowInfoSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): WindowInfoSettings
 function WindowInfoSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "WindowInfoSettings"): WindowInfoSettings
----@overload fun(name: string, class: nil): WindowInfoSettings
-function WindowInfoSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "WindowInfoSettings"): WindowInfoSettings
----@overload fun(name: string, class: nil): Object
-function WindowInfoSettingsCollect:FindRecursive(name, class) end
+---@generic T : WindowInfoSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): WindowInfoSettings
+function WindowInfoSettingsCollect:Find(class, undo) end

@@ -17,25 +17,44 @@ function Relations:Children() end
 function Relations:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Relation
 function Relations:Get(name, role) end
----@overload fun(index: integer, class: "Relation", undo: Undo?): Relation
+---@generic T : Relation
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Relation
 function Relations:Create(index, class, undo) end
----@overload fun(class: "Relation", undo: Undo?, count: integer?): Relation
+---@generic T : Relation
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Relation
 function Relations:Append(class, undo, count) end
----@overload fun(class: "Relation", undo: Undo?): Relation
+---@generic T : Relation
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Relation
 function Relations:Acquire(class, undo) end
----@overload fun(class: "Relation", undo: Undo?): Relation
+---@generic T : Relation
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Relation
 ---@deprecated use "Acquire" instead
 function Relations:Aquire(class, undo) end
----@overload fun(index: integer, class: "Relation", undo: Undo?, count: integer?): Relation
+---@generic T : Relation
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Relation
 function Relations:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Relation"): Relation
----@overload fun(name: string, class: nil): Relation
-function Relations:Find(name, class) end
----@overload fun(name: string, class: "Relation"): Relation
----@overload fun(name: string, class: nil): Object
-function Relations:FindRecursive(name, class) end
+---@generic T : Relation
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Relation
+function Relations:Find(class, undo) end

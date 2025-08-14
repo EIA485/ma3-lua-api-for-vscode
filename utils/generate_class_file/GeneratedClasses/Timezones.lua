@@ -15,25 +15,44 @@ function Timezones:Children() end
 function Timezones:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Timezone
 function Timezones:Get(name, role) end
----@overload fun(index: integer, class: "Timezone", undo: Undo?): Timezone
+---@generic T : Timezone
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Timezone
 function Timezones:Create(index, class, undo) end
----@overload fun(class: "Timezone", undo: Undo?, count: integer?): Timezone
+---@generic T : Timezone
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Timezone
 function Timezones:Append(class, undo, count) end
----@overload fun(class: "Timezone", undo: Undo?): Timezone
+---@generic T : Timezone
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Timezone
 function Timezones:Acquire(class, undo) end
----@overload fun(class: "Timezone", undo: Undo?): Timezone
+---@generic T : Timezone
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Timezone
 ---@deprecated use "Acquire" instead
 function Timezones:Aquire(class, undo) end
----@overload fun(index: integer, class: "Timezone", undo: Undo?, count: integer?): Timezone
+---@generic T : Timezone
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Timezone
 function Timezones:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Timezone"): Timezone
----@overload fun(name: string, class: nil): Timezone
-function Timezones:Find(name, class) end
----@overload fun(name: string, class: "Timezone"): Timezone
----@overload fun(name: string, class: nil): Object
-function Timezones:FindRecursive(name, class) end
+---@generic T : Timezone
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Timezone
+function Timezones:Find(class, undo) end

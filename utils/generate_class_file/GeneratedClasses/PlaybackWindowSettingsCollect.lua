@@ -15,25 +15,44 @@ function PlaybackWindowSettingsCollect:Children() end
 function PlaybackWindowSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): PlaybackWindowSettings
 function PlaybackWindowSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "PlaybackWindowSettings", undo: Undo?): PlaybackWindowSettings
+---@generic T : PlaybackWindowSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): PlaybackWindowSettings
 function PlaybackWindowSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "PlaybackWindowSettings", undo: Undo?, count: integer?): PlaybackWindowSettings
+---@generic T : PlaybackWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): PlaybackWindowSettings
 function PlaybackWindowSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "PlaybackWindowSettings", undo: Undo?): PlaybackWindowSettings
+---@generic T : PlaybackWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PlaybackWindowSettings
 function PlaybackWindowSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "PlaybackWindowSettings", undo: Undo?): PlaybackWindowSettings
+---@generic T : PlaybackWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PlaybackWindowSettings
 ---@deprecated use "Acquire" instead
 function PlaybackWindowSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "PlaybackWindowSettings", undo: Undo?, count: integer?): PlaybackWindowSettings
+---@generic T : PlaybackWindowSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): PlaybackWindowSettings
 function PlaybackWindowSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "PlaybackWindowSettings"): PlaybackWindowSettings
----@overload fun(name: string, class: nil): PlaybackWindowSettings
-function PlaybackWindowSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "PlaybackWindowSettings"): PlaybackWindowSettings
----@overload fun(name: string, class: nil): Object
-function PlaybackWindowSettingsCollect:FindRecursive(name, class) end
+---@generic T : PlaybackWindowSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): PlaybackWindowSettings
+function PlaybackWindowSettingsCollect:Find(class, undo) end

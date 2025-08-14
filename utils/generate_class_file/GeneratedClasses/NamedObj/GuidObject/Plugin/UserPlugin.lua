@@ -17,25 +17,44 @@ function UserPlugin:Children() end
 function UserPlugin:CurrentChild() end
 ---@overload fun(name: integer, role: nil): ComponentLua
 function UserPlugin:Get(name, role) end
----@overload fun(index: integer, class: "ComponentLua", undo: Undo?): ComponentLua
+---@generic T : ComponentLua
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): ComponentLua
 function UserPlugin:Create(index, class, undo) end
----@overload fun(class: "ComponentLua", undo: Undo?, count: integer?): ComponentLua
+---@generic T : ComponentLua
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): ComponentLua
 function UserPlugin:Append(class, undo, count) end
----@overload fun(class: "ComponentLua", undo: Undo?): ComponentLua
+---@generic T : ComponentLua
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ComponentLua
 function UserPlugin:Acquire(class, undo) end
----@overload fun(class: "ComponentLua", undo: Undo?): ComponentLua
+---@generic T : ComponentLua
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): ComponentLua
 ---@deprecated use "Acquire" instead
 function UserPlugin:Aquire(class, undo) end
----@overload fun(index: integer, class: "ComponentLua", undo: Undo?, count: integer?): ComponentLua
+---@generic T : ComponentLua
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): ComponentLua
 function UserPlugin:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "ComponentLua"): ComponentLua
----@overload fun(name: string, class: nil): ComponentLua
-function UserPlugin:Find(name, class) end
----@overload fun(name: string, class: "ComponentLua"): ComponentLua
----@overload fun(name: string, class: nil): Object
-function UserPlugin:FindRecursive(name, class) end
+---@generic T : ComponentLua
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): ComponentLua
+function UserPlugin:Find(class, undo) end

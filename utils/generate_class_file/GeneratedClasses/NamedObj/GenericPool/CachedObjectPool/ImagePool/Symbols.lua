@@ -15,25 +15,44 @@ function Symbols:Children() end
 function Symbols:CurrentChild() end
 ---@overload fun(name: integer, role: nil): SymbolImage
 function Symbols:Get(name, role) end
----@overload fun(index: integer, class: "SymbolImage", undo: Undo?): SymbolImage
+---@generic T : SymbolImage
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): SymbolImage
 function Symbols:Create(index, class, undo) end
----@overload fun(class: "SymbolImage", undo: Undo?, count: integer?): SymbolImage
+---@generic T : SymbolImage
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): SymbolImage
 function Symbols:Append(class, undo, count) end
----@overload fun(class: "SymbolImage", undo: Undo?): SymbolImage
+---@generic T : SymbolImage
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SymbolImage
 function Symbols:Acquire(class, undo) end
----@overload fun(class: "SymbolImage", undo: Undo?): SymbolImage
+---@generic T : SymbolImage
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SymbolImage
 ---@deprecated use "Acquire" instead
 function Symbols:Aquire(class, undo) end
----@overload fun(index: integer, class: "SymbolImage", undo: Undo?, count: integer?): SymbolImage
+---@generic T : SymbolImage
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): SymbolImage
 function Symbols:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "SymbolImage"): SymbolImage
----@overload fun(name: string, class: nil): SymbolImage
-function Symbols:Find(name, class) end
----@overload fun(name: string, class: "SymbolImage"): SymbolImage
----@overload fun(name: string, class: nil): Object
-function Symbols:FindRecursive(name, class) end
+---@generic T : SymbolImage
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): SymbolImage
+function Symbols:Find(class, undo) end

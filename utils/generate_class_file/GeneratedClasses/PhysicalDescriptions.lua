@@ -17,5 +17,10 @@ function PhysicalDescriptions:Children() end
 function PhysicalDescriptions:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Emitter
 function PhysicalDescriptions:Get(name, role) end
----@overload fun(name: string, class: nil): Object
-function PhysicalDescriptions:FindRecursive(name, class) end
+function PhysicalDescriptions:Create(index, class, undo) end
+function PhysicalDescriptions:Append(class, undo, count) end
+function PhysicalDescriptions:Acquire(class, undo) end
+---@deprecated use "Acquire" instead
+function PhysicalDescriptions:Aquire(class, undo) end
+function PhysicalDescriptions:Insert(index, class, undo, count) end
+function PhysicalDescriptions:Find(class, undo) end

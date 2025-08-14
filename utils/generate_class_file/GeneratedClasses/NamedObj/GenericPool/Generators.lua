@@ -17,25 +17,44 @@ function Generators:Children() end
 function Generators:CurrentChild() end
 ---@overload fun(name: integer, role: nil): Random
 function Generators:Get(name, role) end
----@overload fun(index: integer, class: "Random", undo: Undo?): Random
+---@generic T : Random
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): Random
 function Generators:Create(index, class, undo) end
----@overload fun(class: "Random", undo: Undo?, count: integer?): Random
+---@generic T : Random
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): Random
 function Generators:Append(class, undo, count) end
----@overload fun(class: "Random", undo: Undo?): Random
+---@generic T : Random
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Random
 function Generators:Acquire(class, undo) end
----@overload fun(class: "Random", undo: Undo?): Random
+---@generic T : Random
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): Random
 ---@deprecated use "Acquire" instead
 function Generators:Aquire(class, undo) end
----@overload fun(index: integer, class: "Random", undo: Undo?, count: integer?): Random
+---@generic T : Random
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): Random
 function Generators:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "Random"): Random
----@overload fun(name: string, class: nil): Random
-function Generators:Find(name, class) end
----@overload fun(name: string, class: "Random"): Random
----@overload fun(name: string, class: nil): Object
-function Generators:FindRecursive(name, class) end
+---@generic T : Random
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): Random
+function Generators:Find(class, undo) end

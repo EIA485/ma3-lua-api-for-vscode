@@ -15,25 +15,44 @@ function TouchDevices:Children() end
 function TouchDevices:CurrentChild() end
 ---@overload fun(name: integer, role: nil): USBDeviceTouch
 function TouchDevices:Get(name, role) end
----@overload fun(index: integer, class: "USBDeviceTouch", undo: Undo?): USBDeviceTouch
+---@generic T : USBDeviceTouch
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): USBDeviceTouch
 function TouchDevices:Create(index, class, undo) end
----@overload fun(class: "USBDeviceTouch", undo: Undo?, count: integer?): USBDeviceTouch
+---@generic T : USBDeviceTouch
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): USBDeviceTouch
 function TouchDevices:Append(class, undo, count) end
----@overload fun(class: "USBDeviceTouch", undo: Undo?): USBDeviceTouch
+---@generic T : USBDeviceTouch
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): USBDeviceTouch
 function TouchDevices:Acquire(class, undo) end
----@overload fun(class: "USBDeviceTouch", undo: Undo?): USBDeviceTouch
+---@generic T : USBDeviceTouch
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): USBDeviceTouch
 ---@deprecated use "Acquire" instead
 function TouchDevices:Aquire(class, undo) end
----@overload fun(index: integer, class: "USBDeviceTouch", undo: Undo?, count: integer?): USBDeviceTouch
+---@generic T : USBDeviceTouch
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): USBDeviceTouch
 function TouchDevices:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "USBDeviceTouch"): USBDeviceTouch
----@overload fun(name: string, class: nil): USBDeviceTouch
-function TouchDevices:Find(name, class) end
----@overload fun(name: string, class: "USBDeviceTouch"): USBDeviceTouch
----@overload fun(name: string, class: nil): Object
-function TouchDevices:FindRecursive(name, class) end
+---@generic T : USBDeviceTouch
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): USBDeviceTouch
+function TouchDevices:Find(class, undo) end

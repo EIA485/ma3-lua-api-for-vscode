@@ -20,85 +20,292 @@ local GenericContext = {
 function GenericContext:GetClass() end
 ---@return "UIObject"
 function GenericContext:GetChildClass() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
----@overload fun(name: "X"|"Y"|"W"|"H", role: nil): Graphics.SizeDescriptor
----@overload fun(name: "AbsRect"|"AbsClientRect", role: nil): {left: number, right: number, top: number, bottom: number}
----@overload fun(name: "Texture", role: nil): Texture
----@overload fun(name: "Font"|"LowDpiFont", role: nil): Font
----@overload fun(name: "Text"|"ToolTip"|"HelpTopic", role: nil): string
----@overload fun(name: "BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor", role: nil): Color
----@overload fun(name: "TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth", role: nil): integer
----@overload fun(name: "Padding", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
----@overload fun(name: "Focus", role: nil): FocusPriority
----@overload fun(name: "UserRights", role: nil): UserRights
----@overload fun(name: "Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect", role: nil): integer
----@overload fun(name: "CloseAction", role: nil): GestureResult
----@overload fun(name: "AutoCloseValue"|"UiGroupId", role: nil): integer
----@overload fun(name: "LabelLinkHandle", role: nil): UIObject
----@overload fun(name: "IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow", role: nil): integer
----@overload fun(name: "MinSize"|"MaxSize", role: nil): Graphics.SizeDimension
----@overload fun(name: "Anchors", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
----@overload fun(name: "SignalValue"|"SignalValueHold", role: nil): string
----@overload fun(name: "AlignmentH", role: nil): AlignmentH
----@overload fun(name: "AlignmentV", role: nil): AlignmentV
----@overload fun(name: "TextAlignmentH", role: nil): AlignmentH
----@overload fun(name: "TextAlignmentV", role: nil): AlignmentV
----@overload fun(name: "Margin", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
+---@overload fun(name: "AlignmentH"|"TextAlignmentH", role: nil): AlignmentH
+---@overload fun(name: "AlignmentV"|"TextAlignmentV", role: nil): AlignmentV
+---@overload fun(name: "PreviewMixInColor"|"EditMixInColor"|"EditMixInNotOwnerColor"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor", role: nil): Color
 ---@overload fun(name: "PluginComponent", role: nil): Component
----@overload fun(name: "HasFocus"|"HideFocusFrame", role: nil): boolean
----@overload fun(name: "AppearanceSourceClassName", role: nil): string
----@overload fun(name: "VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease", role: nil): integer
----@overload fun(name: "Clicked", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
----@overload fun(name: "ClickedLeft"|"ClickedRight", role: nil): fun(str: string, X: integer, Y: integer)
----@overload fun(name: "DoubleClicked", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
----@overload fun(name: "MouseEnter"|"MouseLeave"|"MouseOverHold", role: nil): fun(str: string, X: integer, Y: integer)
----@overload fun(name: "MouseUp", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
----@overload fun(name: "MouseUpLeft"|"MouseUpRight", role: nil): fun(str: string, X: integer, Y: integer)
----@overload fun(name: "MouseDown", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
----@overload fun(name: "MouseDownLeft"|"MouseDownRight", role: nil): fun(str: string, X: integer, Y: integer)
----@overload fun(name: "MouseDownHold", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
----@overload fun(name: "KeyDown"|"KeyUp", role: nil): fun(str: string, keyCode: VirtualKeyCode, bool1: boolean, bool2: boolean, bool3: boolean)
----@overload fun(name: "CharInput", role: nil): fun(str: string, utf32Char: integer)
----@overload fun(name: "TouchStart"|"TouchUpdate"|"TouchEnd", role: nil): fun(str: string, pointID: integer, X: integer, Y: integer)
----@overload fun(name: "OnLoad", role: nil): fun(str: string, obj: Object)
----@overload fun(name: "OnVisible", role: nil): fun(str: string, bool: boolean)
----@overload fun(name: "DescriptionChanged", role: nil): fun(str: string)
----@overload fun(name: "FocusGet"|"FocusLost", role: nil): fun(str: string, obj1: Object, obj2: Object)
----@overload fun(name: "ForceIntensity"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight", role: nil): integer
----@overload fun(name: "ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay", role: nil): boolean
----@overload fun(name: "RowReductionPolicy"|"ColReductionPolicy", role: nil): ReductionPolicy
----@overload fun(name: "SetRow", role: nil): fun(int1: integer, layoutSizePolicy: LayoutSizePolicy, num: number, int2: integer) : boolean
----@overload fun(name: "Close"|"CloseConfirm"|"CloseCancel", role: nil): fun(dummyStr: string) : boolean
----@overload fun(name: "WantsModal"|"AutoClose"|"AutoCloseOnOverlay"|"CloseOnEscape", role: nil): boolean
----@overload fun(name: "Move", role: nil): fun(str: string, int1: integer, int2: integer) : boolean
----@overload fun(name: "MoveStart", role: nil): fun(str: string) : boolean
----@overload fun(name: "ResizeStart"|"Resize", role: nil): fun(str: string, int1: integer, int2: integer) : boolean
----@overload fun(name: "ResizeEnd", role: nil): fun(str: string) : boolean
----@overload fun(name: "EscModalResult", role: nil): GestureResult
----@overload fun(name: "StayAlwaysVisible"|"RelativeToDisplay", role: nil): boolean
----@overload fun(name: "EditEncoderBar"|"ControlEncoderBar", role: nil): string
----@overload fun(name: "AdjustInitialPosition", role: nil): boolean
----@overload fun(name: "BuddyGroupId", role: nil): string
----@overload fun(name: "IsMainBuddy", role: nil): boolean
----@overload fun(name: "MainBuddy", role: nil): Object
----@overload fun(name: "DependentBuddies", role: nil): string[]
----@overload fun(name: "UseSimplifiedResize", role: nil): boolean
----@overload fun(name: "WorkingDestination", role: nil): Object
----@overload fun(name: "DriveReset"|"OverrideKeybSC"|"ReactToPreview"|"ReactToEdit", role: nil): boolean
----@overload fun(name: "PreviewMixInColor"|"EditMixInColor"|"EditMixInNotOwnerColor", role: nil): Color
----@overload fun(name: "ReturnDestination", role: nil): Object
----@overload fun(name: "OnSetEditTarget", role: nil): fun(str: string, obj: Object)
----@overload fun(name: "EditTarget", role: nil): Object
----@overload fun(name: "WindowSettings"|"SubWindowSettings", role: nil): WindowSettings
----@overload fun(name: "EditTitlebar", role: nil): boolean
 ---@overload fun(name: "AllTitlebuttons", role: nil): Container.MapTpl<struct Container.DefaultMapItemDescr<class Text.TString<char>, class Container.Collect<class Gma3UI.TitlebuttonControl *, struct Container.CollectPolicies<class Gma3UI.TitlebuttonControl *>>, class ContainerInternal.MapCompare<class Text.TString<char>>>>
----@overload fun(name: "DeleteClicked"|"TBDeleteAll"|"TBLoadDefaults", role: nil): fun(str: string) : boolean
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"X"|"Y"|"W"|"H"|"AbsRect"|"AbsClientRect"|"Texture"|"Font"|"LowDpiFont"|"Text"|"ToolTip"|"HelpTopic"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Padding"|"Focus"|"UserRights"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"CloseAction"|"AutoCloseValue"|"UiGroupId"|"LabelLinkHandle"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"MinSize"|"MaxSize"|"Anchors"|"SignalValue"|"SignalValueHold"|"AlignmentH"|"AlignmentV"|"TextAlignmentH"|"TextAlignmentV"|"Margin"|"PluginComponent"|"HasFocus"|"HideFocusFrame"|"AppearanceSourceClassName"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"Clicked"|"ClickedLeft"|"ClickedRight"|"DoubleClicked"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUp"|"MouseUpLeft"|"MouseUpRight"|"MouseDown"|"MouseDownLeft"|"MouseDownRight"|"MouseDownHold"|"KeyDown"|"KeyUp"|"CharInput"|"TouchStart"|"TouchUpdate"|"TouchEnd"|"OnLoad"|"OnVisible"|"DescriptionChanged"|"FocusGet"|"FocusLost"|"ForceIntensity"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"RowReductionPolicy"|"ColReductionPolicy"|"SetRow"|"Close"|"CloseConfirm"|"CloseCancel"|"WantsModal"|"AutoClose"|"AutoCloseOnOverlay"|"CloseOnEscape"|"Move"|"MoveStart"|"ResizeStart"|"Resize"|"ResizeEnd"|"EscModalResult"|"StayAlwaysVisible"|"RelativeToDisplay"|"EditEncoderBar"|"ControlEncoderBar"|"AdjustInitialPosition"|"BuddyGroupId"|"IsMainBuddy"|"MainBuddy"|"DependentBuddies"|"UseSimplifiedResize"|"WorkingDestination"|"DriveReset"|"OverrideKeybSC"|"ReactToPreview"|"ReactToEdit"|"PreviewMixInColor"|"EditMixInColor"|"EditMixInNotOwnerColor"|"ReturnDestination"|"OnSetEditTarget"|"EditTarget"|"WindowSettings"|"SubWindowSettings"|"EditTitlebar"|"AllTitlebuttons"|"DeleteClicked"|"TBDeleteAll"|"TBLoadDefaults", role: Enums.Roles): string
+---@overload fun(name: "Focus", role: nil): FocusPriority
+---@overload fun(name: "Font"|"LowDpiFont", role: nil): Font
+---@overload fun(name: "EscModalResult"|"CloseAction", role: nil): GestureResult
+---@overload fun(name: "X"|"Y"|"W"|"H", role: nil): Graphics.SizeDescriptor
+---@overload fun(name: "MinSize"|"MaxSize", role: nil): Graphics.SizeDimension
+---@overload fun(name: "EditTarget"|"MainBuddy"|"WorkingDestination"|"ReturnDestination", role: nil): Object
+---@overload fun(name: "RowReductionPolicy"|"ColReductionPolicy", role: nil): ReductionPolicy
+---@overload fun(name: "Texture", role: nil): Texture
+---@overload fun(name: "LabelLinkHandle", role: nil): UIObject
+---@overload fun(name: "UserRights", role: nil): UserRights
+---@overload fun(name: "WindowSettings"|"SubWindowSettings", role: nil): WindowSettings
+---@overload fun(name: "EditTitlebar"|"WantsModal"|"AutoClose"|"AutoCloseOnOverlay"|"CloseOnEscape"|"StayAlwaysVisible"|"RelativeToDisplay"|"AdjustInitialPosition"|"IsMainBuddy"|"UseSimplifiedResize"|"DriveReset"|"OverrideKeybSC"|"ReactToPreview"|"ReactToEdit"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"HasFocus"|"HideFocusFrame"|"FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "Close"|"CloseConfirm"|"CloseCancel", role: nil): fun(dummyStr: string) : boolean
+---@overload fun(name: "SetRow", role: nil): fun(int1: integer, layoutSizePolicy: LayoutSizePolicy, num: number, int2: integer) : boolean
+---@overload fun(name: "DescriptionChanged", role: nil): fun(str: string)
+---@overload fun(name: "DeleteClicked"|"TBDeleteAll"|"TBLoadDefaults"|"MoveStart"|"ResizeEnd", role: nil): fun(str: string) : boolean
+---@overload fun(name: "Clicked"|"DoubleClicked"|"MouseUp"|"MouseDown"|"MouseDownHold", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
+---@overload fun(name: "ClickedLeft"|"ClickedRight"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUpLeft"|"MouseUpRight"|"MouseDownLeft"|"MouseDownRight", role: nil): fun(str: string, X: integer, Y: integer)
+---@overload fun(name: "OnVisible", role: nil): fun(str: string, bool: boolean)
+---@overload fun(name: "Move"|"ResizeStart"|"Resize", role: nil): fun(str: string, int1: integer, int2: integer) : boolean
+---@overload fun(name: "KeyDown"|"KeyUp", role: nil): fun(str: string, keyCode: VirtualKeyCode, bool1: boolean, bool2: boolean, bool3: boolean)
+---@overload fun(name: "FocusGet"|"FocusLost", role: nil): fun(str: string, obj1: Object, obj2: Object)
+---@overload fun(name: "OnSetEditTarget"|"OnLoad", role: nil): fun(str: string, obj: Object)
+---@overload fun(name: "TouchStart"|"TouchUpdate"|"TouchEnd", role: nil): fun(str: string, pointID: integer, X: integer, Y: integer)
+---@overload fun(name: "CharInput", role: nil): fun(str: string, utf32Char: integer)
+---@overload fun(name: "DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"AutoCloseValue"|"UiGroupId"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"ForceIntensity"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "EditEncoderBar"|"ControlEncoderBar"|"BuddyGroupId"|"Text"|"ToolTip"|"HelpTopic"|"SignalValue"|"SignalValueHold"|"AppearanceSourceClassName"|"Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "DependentBuddies", role: nil): string[]
+---@overload fun(name: "Padding"|"Anchors"|"Margin", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
+---@overload fun(name: "AbsRect"|"AbsClientRect", role: nil): {left: number, right: number, top: number, bottom: number}
+---@overload fun(name: "OnSetEditTarget"|"EditTarget"|"WindowSettings"|"SubWindowSettings"|"EditTitlebar"|"AllTitlebuttons"|"DeleteClicked"|"TBDeleteAll"|"TBLoadDefaults"|"Close"|"CloseConfirm"|"CloseCancel"|"WantsModal"|"AutoClose"|"AutoCloseOnOverlay"|"CloseOnEscape"|"Move"|"MoveStart"|"ResizeStart"|"Resize"|"ResizeEnd"|"EscModalResult"|"StayAlwaysVisible"|"RelativeToDisplay"|"EditEncoderBar"|"ControlEncoderBar"|"AdjustInitialPosition"|"BuddyGroupId"|"IsMainBuddy"|"MainBuddy"|"DependentBuddies"|"UseSimplifiedResize"|"WorkingDestination"|"DriveReset"|"OverrideKeybSC"|"ReactToPreview"|"ReactToEdit"|"PreviewMixInColor"|"EditMixInColor"|"EditMixInNotOwnerColor"|"ReturnDestination"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"RowReductionPolicy"|"ColReductionPolicy"|"SetRow"|"X"|"Y"|"W"|"H"|"AbsRect"|"AbsClientRect"|"Texture"|"Font"|"LowDpiFont"|"Text"|"ToolTip"|"HelpTopic"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Padding"|"Focus"|"UserRights"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"CloseAction"|"AutoCloseValue"|"UiGroupId"|"LabelLinkHandle"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"MinSize"|"MaxSize"|"Anchors"|"SignalValue"|"SignalValueHold"|"AlignmentH"|"AlignmentV"|"TextAlignmentH"|"TextAlignmentV"|"Margin"|"PluginComponent"|"HasFocus"|"HideFocusFrame"|"AppearanceSourceClassName"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"Clicked"|"ClickedLeft"|"ClickedRight"|"DoubleClicked"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUp"|"MouseUpLeft"|"MouseUpRight"|"MouseDown"|"MouseDownLeft"|"MouseDownRight"|"MouseDownHold"|"KeyDown"|"KeyUp"|"CharInput"|"TouchStart"|"TouchUpdate"|"TouchEnd"|"OnLoad"|"OnVisible"|"DescriptionChanged"|"FocusGet"|"FocusLost"|"ForceIntensity"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): UIObject
 function GenericContext:Get(name, role) end
+---@generic T : SampleTableView|Toolbar|GrandMasterFader|HardwareFader|ShaperPovFader|ColorInterfaceFader|DeskLightsFader|ProgressBar|DCRemoteInfo|TimelineCell|ScrollBar|ScrollContainer|Dialog|UIGridConfigLayout|TitleAutoLayout|StepControl|ScrollContainerPageBase|FrameBufferObject|Navigator|TitleBar|DialogFrame|PropertyBox|SwipeMenuOverlay|RecurringOverlay|NotificationArea|BaseInput|MessageBox|EncoderOverlay|PatchToOverlay|GenericEditorOverlay|HelpPopup|NetworkSpeedTestOverlay|ColorMeasurementOverlay|ContentOverlay|OffMenuOverlay|MainDialog|CommandLineHistory|PoolOverlay|MeshLineEdit|ObjectProperties|VirtualKeyboard|Bar|RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|ResultPoolWindow|RunningPlaybacksWindow|CommandLineWindow|AllPoolWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow|UiMessageCenter|CustomMasterLayoutGrid|TagButtonList|PhaserUICenter|CloningDialog|DialogTrackpad|UserPoolLayoutGrid|ScribblePoolLayoutGrid|GroupPoolLayoutGrid|ConfigurationPoolLayoutGrid|FilterPoolLayoutGrid|LayoutPoolLayoutGrid|ImagePoolLayoutGrid|RenderQualityPoolLayoutGrid|SmartViewPoolLayoutGrid|WorldPoolLayoutGrid|UniversePoolLayoutGrid|DataPoolLayoutGrid|SymbolPoolLayoutGrid|EncoderBarPoolLayoutGrid|GeneratorBitmapPoolLayoutGrid|GoboPoolLayoutGrid|GelPoolLayoutGrid|CameraPoolLayoutGrid|ViewPoolLayoutGrid|TimecodeSlotLayoutGrid|RunningPlaybacksPoolLayoutGrid|PresetPoolLayoutGrid|TimecodePoolLayoutGrid|PagePoolLayoutGrid|SequencePoolLayoutGrid|PluginPoolLayoutGrid|MeshPoolLayoutGrid|ViewBar|AppearancePoolLayoutGrid|MatricksPoolLayoutGrid|TagPoolLayoutGrid|QuickeyPoolLayoutGrid|MenuPoolLayoutGrid|SoundPoolLayoutGrid|VideoPoolLayoutGrid|GeneratorRandomPoolLayoutGrid|TimePoolLayoutGrid|MaterialPoolLayoutGrid|MacroPoolLayoutGrid|ScribbleEditContent|MainDialogSubMenuContent|MainDialogFunctionButtons|AgendaMonthsGrid|GridContentFilterEditor|SpecialWindowContent|BladeView|MatricksContainer|ThemeMergeToolBar|CmdDlgFunctionButtonsBase|GenericAssignmentSelector|PlaybackControlContent|AppearanceEditContent|ShaperEditorFaderGrid|EditorPropertyButtons|TagsEditContent|ReferencesContainer|PlaybackControlModularContent|NormedGrid|CommandWingBarContainer|AtFilterDialog|UIPhaserTimeLineGrid|SpecialExecSection|AllPoolLayoutGrid|BaseClock|TouchMonitor|AgendaDaysGrid|TreeViewFrame|PhaserLayoutGrid|EncoderBarSlot|Splitter|LinearResizer|BaseItemButtons|UIGridInternals|AudioPreview|XlrModeButton|SpecialExecConfigInput|OSCActivityButton|TitlebuttonControl|ColorPropertyInput|ExecConfigInput|TCTimeButton|CalculatorChannelSetControl|EncoderControl|DialogButton|StateButton|ValueControl|ToggleButtonList|ObjectSelector|UserEncoderPageSelector|ExecConfigSwipe|EnableMasterFaderButton|EncoderLinkButton|EditTitlebarButton|ValueFadeControl|SelectionIndicatorButton|MatricksToggleButton|ExecConfigRowButton|AtFilterControl|MainDlgGridToggleButton|ExecConfigColButton|SpecialExecutorKey|MatricksIndicatorButton|UIToggleButton|RotationButton|KeyboardShortcutControl|BatteryControl|AtFilterPreview|UIGridConfigButton|ScrollBarButton|MovableButton|DeleteWindowButton|VirtualKeyboardButton|KBShortcutButton|ExpandableButton|TimerButton|MainDlgButtonBase|MainDlgLoginButton|TimecodeSlotButton|DisplayButton|MainDlgUndoButton|BlinkingFadeButton|WarningInfoButton|EjectButton|DimmerWheelButton|MouseButton|ProgressButton|TagButton|MessageCenterInfoButton|DriveStatusButton|RevertButton|EncoderOverlayPlaceholder|ModalPlaceholder|EncoderBarPlaceHolder|PopupPlaceholder|LineEdit|ColorView|SensorView|DialogContainer|PopupList|DBObjectTab|RadioButtonList|FixturetypeItemList|ResizeCorner|ScribbleEditView|PropertyLabel|BandFader|MiniEncoder|ScrollBox|StatusBar|MultiScroller|TimecodeSlotInfo|TextView|TouchConfigurator|AppearancePreview|MacrolinePreview|TrackpadMouseControl|SoundBandView|CommandLineOutput|SoundLevelView|PerformanceView|ColorTestView|InfoNotesGridScroller|TouchTarget|EditorBase|OutputTest|ColorPickBase|SignalView|ShaperTestView|Settings3dContext|SpecialWindowContext
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(index: integer, class: "UIObject", undo: Undo?): UIObject
+---@overload fun(index: integer, class: "UiFader", undo: Undo?): UiFader
+---@overload fun(index: integer, class: "UIGridCellBase", undo: Undo?): UIGridCellBase
+---@overload fun(index: integer, class: "UILayoutGrid", undo: Undo?): UILayoutGrid
+---@overload fun(index: integer, class: "AutoLayout", undo: Undo?): AutoLayout
+---@overload fun(index: integer, class: "SplitView", undo: Undo?): SplitView
+---@overload fun(index: integer, class: "Drawable", undo: Undo?): Drawable
+---@overload fun(index: integer, class: "Overlay", undo: Undo?): Overlay
+---@overload fun(index: integer, class: "ShadedOverlay", undo: Undo?): ShadedOverlay
+---@overload fun(index: integer, class: "TextEdit", undo: Undo?): TextEdit
+---@overload fun(index: integer, class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(index: integer, class: "GlWindowBase", undo: Undo?): GlWindowBase
+---@overload fun(index: integer, class: "Window", undo: Undo?): Window
+---@overload fun(index: integer, class: "PoolWindow", undo: Undo?): PoolWindow
+---@overload fun(index: integer, class: "AllExecDisplay", undo: Undo?): AllExecDisplay
+---@overload fun(index: integer, class: "PoolLayoutGrid", undo: Undo?): PoolLayoutGrid
+---@overload fun(index: integer, class: "UiScreen", undo: Undo?): UiScreen
+---@overload fun(index: integer, class: "UIObjectFake", undo: Undo?): UIObjectFake
+---@overload fun(index: integer, class: "Button", undo: Undo?): Button
+---@overload fun(index: integer, class: "PropertyControl", undo: Undo?): PropertyControl
+---@overload fun(index: integer, class: "IndicatorControl", undo: Undo?): IndicatorControl
+---@overload fun(index: integer, class: "PropertyInput", undo: Undo?): PropertyInput
+---@overload fun(index: integer, class: "AppearanceInput", undo: Undo?): AppearanceInput
+---@overload fun(index: integer, class: "ScribbleInput", undo: Undo?): ScribbleInput
+---@overload fun(index: integer, class: "BaseStateButton", undo: Undo?): BaseStateButton
+---@overload fun(index: integer, class: "ToggleButton", undo: Undo?): ToggleButton
+---@overload fun(index: integer, class: "SwipeButton", undo: Undo?): SwipeButton
+---@overload fun(index: integer, class: "LogoButton", undo: Undo?): LogoButton
+---@overload fun(index: integer, class: "ContextButton", undo: Undo?): ContextButton
+---@overload fun(index: integer, class: "IndicatorButton", undo: Undo?): IndicatorButton
+---@overload fun(index: integer, class: "TitleButton", undo: Undo?): TitleButton
+---@overload fun(index: integer, class: "PlaceHolderBase", undo: Undo?): PlaceHolderBase
+---@overload fun(index: integer, class: "PlaceHolder", undo: Undo?): PlaceHolder
+---@overload fun(index: integer, class: "ScrollableItemList", undo: Undo?): ScrollableItemList
+---@overload fun(index: integer, class: "UITab", undo: Undo?): UITab
+---@overload fun(index: integer, class: nil, undo: Undo?): UIObject
+function GenericContext:Create(index, class, undo) end
+---@generic T : SampleTableView|Toolbar|GrandMasterFader|HardwareFader|ShaperPovFader|ColorInterfaceFader|DeskLightsFader|ProgressBar|DCRemoteInfo|TimelineCell|ScrollBar|ScrollContainer|Dialog|UIGridConfigLayout|TitleAutoLayout|StepControl|ScrollContainerPageBase|FrameBufferObject|Navigator|TitleBar|DialogFrame|PropertyBox|SwipeMenuOverlay|RecurringOverlay|NotificationArea|BaseInput|MessageBox|EncoderOverlay|PatchToOverlay|GenericEditorOverlay|HelpPopup|NetworkSpeedTestOverlay|ColorMeasurementOverlay|ContentOverlay|OffMenuOverlay|MainDialog|CommandLineHistory|PoolOverlay|MeshLineEdit|ObjectProperties|VirtualKeyboard|Bar|RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|ResultPoolWindow|RunningPlaybacksWindow|CommandLineWindow|AllPoolWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow|UiMessageCenter|CustomMasterLayoutGrid|TagButtonList|PhaserUICenter|CloningDialog|DialogTrackpad|UserPoolLayoutGrid|ScribblePoolLayoutGrid|GroupPoolLayoutGrid|ConfigurationPoolLayoutGrid|FilterPoolLayoutGrid|LayoutPoolLayoutGrid|ImagePoolLayoutGrid|RenderQualityPoolLayoutGrid|SmartViewPoolLayoutGrid|WorldPoolLayoutGrid|UniversePoolLayoutGrid|DataPoolLayoutGrid|SymbolPoolLayoutGrid|EncoderBarPoolLayoutGrid|GeneratorBitmapPoolLayoutGrid|GoboPoolLayoutGrid|GelPoolLayoutGrid|CameraPoolLayoutGrid|ViewPoolLayoutGrid|TimecodeSlotLayoutGrid|RunningPlaybacksPoolLayoutGrid|PresetPoolLayoutGrid|TimecodePoolLayoutGrid|PagePoolLayoutGrid|SequencePoolLayoutGrid|PluginPoolLayoutGrid|MeshPoolLayoutGrid|ViewBar|AppearancePoolLayoutGrid|MatricksPoolLayoutGrid|TagPoolLayoutGrid|QuickeyPoolLayoutGrid|MenuPoolLayoutGrid|SoundPoolLayoutGrid|VideoPoolLayoutGrid|GeneratorRandomPoolLayoutGrid|TimePoolLayoutGrid|MaterialPoolLayoutGrid|MacroPoolLayoutGrid|ScribbleEditContent|MainDialogSubMenuContent|MainDialogFunctionButtons|AgendaMonthsGrid|GridContentFilterEditor|SpecialWindowContent|BladeView|MatricksContainer|ThemeMergeToolBar|CmdDlgFunctionButtonsBase|GenericAssignmentSelector|PlaybackControlContent|AppearanceEditContent|ShaperEditorFaderGrid|EditorPropertyButtons|TagsEditContent|ReferencesContainer|PlaybackControlModularContent|NormedGrid|CommandWingBarContainer|AtFilterDialog|UIPhaserTimeLineGrid|SpecialExecSection|AllPoolLayoutGrid|BaseClock|TouchMonitor|AgendaDaysGrid|TreeViewFrame|PhaserLayoutGrid|EncoderBarSlot|Splitter|LinearResizer|BaseItemButtons|UIGridInternals|AudioPreview|XlrModeButton|SpecialExecConfigInput|OSCActivityButton|TitlebuttonControl|ColorPropertyInput|ExecConfigInput|TCTimeButton|CalculatorChannelSetControl|EncoderControl|DialogButton|StateButton|ValueControl|ToggleButtonList|ObjectSelector|UserEncoderPageSelector|ExecConfigSwipe|EnableMasterFaderButton|EncoderLinkButton|EditTitlebarButton|ValueFadeControl|SelectionIndicatorButton|MatricksToggleButton|ExecConfigRowButton|AtFilterControl|MainDlgGridToggleButton|ExecConfigColButton|SpecialExecutorKey|MatricksIndicatorButton|UIToggleButton|RotationButton|KeyboardShortcutControl|BatteryControl|AtFilterPreview|UIGridConfigButton|ScrollBarButton|MovableButton|DeleteWindowButton|VirtualKeyboardButton|KBShortcutButton|ExpandableButton|TimerButton|MainDlgButtonBase|MainDlgLoginButton|TimecodeSlotButton|DisplayButton|MainDlgUndoButton|BlinkingFadeButton|WarningInfoButton|EjectButton|DimmerWheelButton|MouseButton|ProgressButton|TagButton|MessageCenterInfoButton|DriveStatusButton|RevertButton|EncoderOverlayPlaceholder|ModalPlaceholder|EncoderBarPlaceHolder|PopupPlaceholder|LineEdit|ColorView|SensorView|DialogContainer|PopupList|DBObjectTab|RadioButtonList|FixturetypeItemList|ResizeCorner|ScribbleEditView|PropertyLabel|BandFader|MiniEncoder|ScrollBox|StatusBar|MultiScroller|TimecodeSlotInfo|TextView|TouchConfigurator|AppearancePreview|MacrolinePreview|TrackpadMouseControl|SoundBandView|CommandLineOutput|SoundLevelView|PerformanceView|ColorTestView|InfoNotesGridScroller|TouchTarget|EditorBase|OutputTest|ColorPickBase|SignalView|ShaperTestView|Settings3dContext|SpecialWindowContext
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
+---@overload fun(class: "UIObject", undo: Undo?, count: integer?): UIObject
+---@overload fun(class: "UiFader", undo: Undo?, count: integer?): UiFader
+---@overload fun(class: "UIGridCellBase", undo: Undo?, count: integer?): UIGridCellBase
+---@overload fun(class: "UILayoutGrid", undo: Undo?, count: integer?): UILayoutGrid
+---@overload fun(class: "AutoLayout", undo: Undo?, count: integer?): AutoLayout
+---@overload fun(class: "SplitView", undo: Undo?, count: integer?): SplitView
+---@overload fun(class: "Drawable", undo: Undo?, count: integer?): Drawable
+---@overload fun(class: "Overlay", undo: Undo?, count: integer?): Overlay
+---@overload fun(class: "ShadedOverlay", undo: Undo?, count: integer?): ShadedOverlay
+---@overload fun(class: "TextEdit", undo: Undo?, count: integer?): TextEdit
+---@overload fun(class: "NoteTextEdit", undo: Undo?, count: integer?): NoteTextEdit
+---@overload fun(class: "GlWindowBase", undo: Undo?, count: integer?): GlWindowBase
+---@overload fun(class: "Window", undo: Undo?, count: integer?): Window
+---@overload fun(class: "PoolWindow", undo: Undo?, count: integer?): PoolWindow
+---@overload fun(class: "AllExecDisplay", undo: Undo?, count: integer?): AllExecDisplay
+---@overload fun(class: "PoolLayoutGrid", undo: Undo?, count: integer?): PoolLayoutGrid
+---@overload fun(class: "UiScreen", undo: Undo?, count: integer?): UiScreen
+---@overload fun(class: "UIObjectFake", undo: Undo?, count: integer?): UIObjectFake
+---@overload fun(class: "Button", undo: Undo?, count: integer?): Button
+---@overload fun(class: "PropertyControl", undo: Undo?, count: integer?): PropertyControl
+---@overload fun(class: "IndicatorControl", undo: Undo?, count: integer?): IndicatorControl
+---@overload fun(class: "PropertyInput", undo: Undo?, count: integer?): PropertyInput
+---@overload fun(class: "AppearanceInput", undo: Undo?, count: integer?): AppearanceInput
+---@overload fun(class: "ScribbleInput", undo: Undo?, count: integer?): ScribbleInput
+---@overload fun(class: "BaseStateButton", undo: Undo?, count: integer?): BaseStateButton
+---@overload fun(class: "ToggleButton", undo: Undo?, count: integer?): ToggleButton
+---@overload fun(class: "SwipeButton", undo: Undo?, count: integer?): SwipeButton
+---@overload fun(class: "LogoButton", undo: Undo?, count: integer?): LogoButton
+---@overload fun(class: "ContextButton", undo: Undo?, count: integer?): ContextButton
+---@overload fun(class: "IndicatorButton", undo: Undo?, count: integer?): IndicatorButton
+---@overload fun(class: "TitleButton", undo: Undo?, count: integer?): TitleButton
+---@overload fun(class: "PlaceHolderBase", undo: Undo?, count: integer?): PlaceHolderBase
+---@overload fun(class: "PlaceHolder", undo: Undo?, count: integer?): PlaceHolder
+---@overload fun(class: "ScrollableItemList", undo: Undo?, count: integer?): ScrollableItemList
+---@overload fun(class: "UITab", undo: Undo?, count: integer?): UITab
+---@overload fun(class: nil, undo: Undo?, count: integer?): UIObject
+function GenericContext:Append(class, undo, count) end
+---@generic T : SampleTableView|Toolbar|GrandMasterFader|HardwareFader|ShaperPovFader|ColorInterfaceFader|DeskLightsFader|ProgressBar|DCRemoteInfo|TimelineCell|ScrollBar|ScrollContainer|Dialog|UIGridConfigLayout|TitleAutoLayout|StepControl|ScrollContainerPageBase|FrameBufferObject|Navigator|TitleBar|DialogFrame|PropertyBox|SwipeMenuOverlay|RecurringOverlay|NotificationArea|BaseInput|MessageBox|EncoderOverlay|PatchToOverlay|GenericEditorOverlay|HelpPopup|NetworkSpeedTestOverlay|ColorMeasurementOverlay|ContentOverlay|OffMenuOverlay|MainDialog|CommandLineHistory|PoolOverlay|MeshLineEdit|ObjectProperties|VirtualKeyboard|Bar|RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|ResultPoolWindow|RunningPlaybacksWindow|CommandLineWindow|AllPoolWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow|UiMessageCenter|CustomMasterLayoutGrid|TagButtonList|PhaserUICenter|CloningDialog|DialogTrackpad|UserPoolLayoutGrid|ScribblePoolLayoutGrid|GroupPoolLayoutGrid|ConfigurationPoolLayoutGrid|FilterPoolLayoutGrid|LayoutPoolLayoutGrid|ImagePoolLayoutGrid|RenderQualityPoolLayoutGrid|SmartViewPoolLayoutGrid|WorldPoolLayoutGrid|UniversePoolLayoutGrid|DataPoolLayoutGrid|SymbolPoolLayoutGrid|EncoderBarPoolLayoutGrid|GeneratorBitmapPoolLayoutGrid|GoboPoolLayoutGrid|GelPoolLayoutGrid|CameraPoolLayoutGrid|ViewPoolLayoutGrid|TimecodeSlotLayoutGrid|RunningPlaybacksPoolLayoutGrid|PresetPoolLayoutGrid|TimecodePoolLayoutGrid|PagePoolLayoutGrid|SequencePoolLayoutGrid|PluginPoolLayoutGrid|MeshPoolLayoutGrid|ViewBar|AppearancePoolLayoutGrid|MatricksPoolLayoutGrid|TagPoolLayoutGrid|QuickeyPoolLayoutGrid|MenuPoolLayoutGrid|SoundPoolLayoutGrid|VideoPoolLayoutGrid|GeneratorRandomPoolLayoutGrid|TimePoolLayoutGrid|MaterialPoolLayoutGrid|MacroPoolLayoutGrid|ScribbleEditContent|MainDialogSubMenuContent|MainDialogFunctionButtons|AgendaMonthsGrid|GridContentFilterEditor|SpecialWindowContent|BladeView|MatricksContainer|ThemeMergeToolBar|CmdDlgFunctionButtonsBase|GenericAssignmentSelector|PlaybackControlContent|AppearanceEditContent|ShaperEditorFaderGrid|EditorPropertyButtons|TagsEditContent|ReferencesContainer|PlaybackControlModularContent|NormedGrid|CommandWingBarContainer|AtFilterDialog|UIPhaserTimeLineGrid|SpecialExecSection|AllPoolLayoutGrid|BaseClock|TouchMonitor|AgendaDaysGrid|TreeViewFrame|PhaserLayoutGrid|EncoderBarSlot|Splitter|LinearResizer|BaseItemButtons|UIGridInternals|AudioPreview|XlrModeButton|SpecialExecConfigInput|OSCActivityButton|TitlebuttonControl|ColorPropertyInput|ExecConfigInput|TCTimeButton|CalculatorChannelSetControl|EncoderControl|DialogButton|StateButton|ValueControl|ToggleButtonList|ObjectSelector|UserEncoderPageSelector|ExecConfigSwipe|EnableMasterFaderButton|EncoderLinkButton|EditTitlebarButton|ValueFadeControl|SelectionIndicatorButton|MatricksToggleButton|ExecConfigRowButton|AtFilterControl|MainDlgGridToggleButton|ExecConfigColButton|SpecialExecutorKey|MatricksIndicatorButton|UIToggleButton|RotationButton|KeyboardShortcutControl|BatteryControl|AtFilterPreview|UIGridConfigButton|ScrollBarButton|MovableButton|DeleteWindowButton|VirtualKeyboardButton|KBShortcutButton|ExpandableButton|TimerButton|MainDlgButtonBase|MainDlgLoginButton|TimecodeSlotButton|DisplayButton|MainDlgUndoButton|BlinkingFadeButton|WarningInfoButton|EjectButton|DimmerWheelButton|MouseButton|ProgressButton|TagButton|MessageCenterInfoButton|DriveStatusButton|RevertButton|EncoderOverlayPlaceholder|ModalPlaceholder|EncoderBarPlaceHolder|PopupPlaceholder|LineEdit|ColorView|SensorView|DialogContainer|PopupList|DBObjectTab|RadioButtonList|FixturetypeItemList|ResizeCorner|ScribbleEditView|PropertyLabel|BandFader|MiniEncoder|ScrollBox|StatusBar|MultiScroller|TimecodeSlotInfo|TextView|TouchConfigurator|AppearancePreview|MacrolinePreview|TrackpadMouseControl|SoundBandView|CommandLineOutput|SoundLevelView|PerformanceView|ColorTestView|InfoNotesGridScroller|TouchTarget|EditorBase|OutputTest|ColorPickBase|SignalView|ShaperTestView|Settings3dContext|SpecialWindowContext
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: "UIObject", undo: Undo?): UIObject
+---@overload fun(class: "UiFader", undo: Undo?): UiFader
+---@overload fun(class: "UIGridCellBase", undo: Undo?): UIGridCellBase
+---@overload fun(class: "UILayoutGrid", undo: Undo?): UILayoutGrid
+---@overload fun(class: "AutoLayout", undo: Undo?): AutoLayout
+---@overload fun(class: "SplitView", undo: Undo?): SplitView
+---@overload fun(class: "Drawable", undo: Undo?): Drawable
+---@overload fun(class: "Overlay", undo: Undo?): Overlay
+---@overload fun(class: "ShadedOverlay", undo: Undo?): ShadedOverlay
+---@overload fun(class: "TextEdit", undo: Undo?): TextEdit
+---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(class: "GlWindowBase", undo: Undo?): GlWindowBase
+---@overload fun(class: "Window", undo: Undo?): Window
+---@overload fun(class: "PoolWindow", undo: Undo?): PoolWindow
+---@overload fun(class: "AllExecDisplay", undo: Undo?): AllExecDisplay
+---@overload fun(class: "PoolLayoutGrid", undo: Undo?): PoolLayoutGrid
+---@overload fun(class: "UiScreen", undo: Undo?): UiScreen
+---@overload fun(class: "UIObjectFake", undo: Undo?): UIObjectFake
+---@overload fun(class: "Button", undo: Undo?): Button
+---@overload fun(class: "PropertyControl", undo: Undo?): PropertyControl
+---@overload fun(class: "IndicatorControl", undo: Undo?): IndicatorControl
+---@overload fun(class: "PropertyInput", undo: Undo?): PropertyInput
+---@overload fun(class: "AppearanceInput", undo: Undo?): AppearanceInput
+---@overload fun(class: "ScribbleInput", undo: Undo?): ScribbleInput
+---@overload fun(class: "BaseStateButton", undo: Undo?): BaseStateButton
+---@overload fun(class: "ToggleButton", undo: Undo?): ToggleButton
+---@overload fun(class: "SwipeButton", undo: Undo?): SwipeButton
+---@overload fun(class: "LogoButton", undo: Undo?): LogoButton
+---@overload fun(class: "ContextButton", undo: Undo?): ContextButton
+---@overload fun(class: "IndicatorButton", undo: Undo?): IndicatorButton
+---@overload fun(class: "TitleButton", undo: Undo?): TitleButton
+---@overload fun(class: "PlaceHolderBase", undo: Undo?): PlaceHolderBase
+---@overload fun(class: "PlaceHolder", undo: Undo?): PlaceHolder
+---@overload fun(class: "ScrollableItemList", undo: Undo?): ScrollableItemList
+---@overload fun(class: "UITab", undo: Undo?): UITab
+---@overload fun(class: nil, undo: Undo?): UIObject
+function GenericContext:Acquire(class, undo) end
+---@generic T : SampleTableView|Toolbar|GrandMasterFader|HardwareFader|ShaperPovFader|ColorInterfaceFader|DeskLightsFader|ProgressBar|DCRemoteInfo|TimelineCell|ScrollBar|ScrollContainer|Dialog|UIGridConfigLayout|TitleAutoLayout|StepControl|ScrollContainerPageBase|FrameBufferObject|Navigator|TitleBar|DialogFrame|PropertyBox|SwipeMenuOverlay|RecurringOverlay|NotificationArea|BaseInput|MessageBox|EncoderOverlay|PatchToOverlay|GenericEditorOverlay|HelpPopup|NetworkSpeedTestOverlay|ColorMeasurementOverlay|ContentOverlay|OffMenuOverlay|MainDialog|CommandLineHistory|PoolOverlay|MeshLineEdit|ObjectProperties|VirtualKeyboard|Bar|RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|ResultPoolWindow|RunningPlaybacksWindow|CommandLineWindow|AllPoolWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow|UiMessageCenter|CustomMasterLayoutGrid|TagButtonList|PhaserUICenter|CloningDialog|DialogTrackpad|UserPoolLayoutGrid|ScribblePoolLayoutGrid|GroupPoolLayoutGrid|ConfigurationPoolLayoutGrid|FilterPoolLayoutGrid|LayoutPoolLayoutGrid|ImagePoolLayoutGrid|RenderQualityPoolLayoutGrid|SmartViewPoolLayoutGrid|WorldPoolLayoutGrid|UniversePoolLayoutGrid|DataPoolLayoutGrid|SymbolPoolLayoutGrid|EncoderBarPoolLayoutGrid|GeneratorBitmapPoolLayoutGrid|GoboPoolLayoutGrid|GelPoolLayoutGrid|CameraPoolLayoutGrid|ViewPoolLayoutGrid|TimecodeSlotLayoutGrid|RunningPlaybacksPoolLayoutGrid|PresetPoolLayoutGrid|TimecodePoolLayoutGrid|PagePoolLayoutGrid|SequencePoolLayoutGrid|PluginPoolLayoutGrid|MeshPoolLayoutGrid|ViewBar|AppearancePoolLayoutGrid|MatricksPoolLayoutGrid|TagPoolLayoutGrid|QuickeyPoolLayoutGrid|MenuPoolLayoutGrid|SoundPoolLayoutGrid|VideoPoolLayoutGrid|GeneratorRandomPoolLayoutGrid|TimePoolLayoutGrid|MaterialPoolLayoutGrid|MacroPoolLayoutGrid|ScribbleEditContent|MainDialogSubMenuContent|MainDialogFunctionButtons|AgendaMonthsGrid|GridContentFilterEditor|SpecialWindowContent|BladeView|MatricksContainer|ThemeMergeToolBar|CmdDlgFunctionButtonsBase|GenericAssignmentSelector|PlaybackControlContent|AppearanceEditContent|ShaperEditorFaderGrid|EditorPropertyButtons|TagsEditContent|ReferencesContainer|PlaybackControlModularContent|NormedGrid|CommandWingBarContainer|AtFilterDialog|UIPhaserTimeLineGrid|SpecialExecSection|AllPoolLayoutGrid|BaseClock|TouchMonitor|AgendaDaysGrid|TreeViewFrame|PhaserLayoutGrid|EncoderBarSlot|Splitter|LinearResizer|BaseItemButtons|UIGridInternals|AudioPreview|XlrModeButton|SpecialExecConfigInput|OSCActivityButton|TitlebuttonControl|ColorPropertyInput|ExecConfigInput|TCTimeButton|CalculatorChannelSetControl|EncoderControl|DialogButton|StateButton|ValueControl|ToggleButtonList|ObjectSelector|UserEncoderPageSelector|ExecConfigSwipe|EnableMasterFaderButton|EncoderLinkButton|EditTitlebarButton|ValueFadeControl|SelectionIndicatorButton|MatricksToggleButton|ExecConfigRowButton|AtFilterControl|MainDlgGridToggleButton|ExecConfigColButton|SpecialExecutorKey|MatricksIndicatorButton|UIToggleButton|RotationButton|KeyboardShortcutControl|BatteryControl|AtFilterPreview|UIGridConfigButton|ScrollBarButton|MovableButton|DeleteWindowButton|VirtualKeyboardButton|KBShortcutButton|ExpandableButton|TimerButton|MainDlgButtonBase|MainDlgLoginButton|TimecodeSlotButton|DisplayButton|MainDlgUndoButton|BlinkingFadeButton|WarningInfoButton|EjectButton|DimmerWheelButton|MouseButton|ProgressButton|TagButton|MessageCenterInfoButton|DriveStatusButton|RevertButton|EncoderOverlayPlaceholder|ModalPlaceholder|EncoderBarPlaceHolder|PopupPlaceholder|LineEdit|ColorView|SensorView|DialogContainer|PopupList|DBObjectTab|RadioButtonList|FixturetypeItemList|ResizeCorner|ScribbleEditView|PropertyLabel|BandFader|MiniEncoder|ScrollBox|StatusBar|MultiScroller|TimecodeSlotInfo|TextView|TouchConfigurator|AppearancePreview|MacrolinePreview|TrackpadMouseControl|SoundBandView|CommandLineOutput|SoundLevelView|PerformanceView|ColorTestView|InfoNotesGridScroller|TouchTarget|EditorBase|OutputTest|ColorPickBase|SignalView|ShaperTestView|Settings3dContext|SpecialWindowContext
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: "UIObject", undo: Undo?): UIObject
+---@overload fun(class: "UiFader", undo: Undo?): UiFader
+---@overload fun(class: "UIGridCellBase", undo: Undo?): UIGridCellBase
+---@overload fun(class: "UILayoutGrid", undo: Undo?): UILayoutGrid
+---@overload fun(class: "AutoLayout", undo: Undo?): AutoLayout
+---@overload fun(class: "SplitView", undo: Undo?): SplitView
+---@overload fun(class: "Drawable", undo: Undo?): Drawable
+---@overload fun(class: "Overlay", undo: Undo?): Overlay
+---@overload fun(class: "ShadedOverlay", undo: Undo?): ShadedOverlay
+---@overload fun(class: "TextEdit", undo: Undo?): TextEdit
+---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(class: "GlWindowBase", undo: Undo?): GlWindowBase
+---@overload fun(class: "Window", undo: Undo?): Window
+---@overload fun(class: "PoolWindow", undo: Undo?): PoolWindow
+---@overload fun(class: "AllExecDisplay", undo: Undo?): AllExecDisplay
+---@overload fun(class: "PoolLayoutGrid", undo: Undo?): PoolLayoutGrid
+---@overload fun(class: "UiScreen", undo: Undo?): UiScreen
+---@overload fun(class: "UIObjectFake", undo: Undo?): UIObjectFake
+---@overload fun(class: "Button", undo: Undo?): Button
+---@overload fun(class: "PropertyControl", undo: Undo?): PropertyControl
+---@overload fun(class: "IndicatorControl", undo: Undo?): IndicatorControl
+---@overload fun(class: "PropertyInput", undo: Undo?): PropertyInput
+---@overload fun(class: "AppearanceInput", undo: Undo?): AppearanceInput
+---@overload fun(class: "ScribbleInput", undo: Undo?): ScribbleInput
+---@overload fun(class: "BaseStateButton", undo: Undo?): BaseStateButton
+---@overload fun(class: "ToggleButton", undo: Undo?): ToggleButton
+---@overload fun(class: "SwipeButton", undo: Undo?): SwipeButton
+---@overload fun(class: "LogoButton", undo: Undo?): LogoButton
+---@overload fun(class: "ContextButton", undo: Undo?): ContextButton
+---@overload fun(class: "IndicatorButton", undo: Undo?): IndicatorButton
+---@overload fun(class: "TitleButton", undo: Undo?): TitleButton
+---@overload fun(class: "PlaceHolderBase", undo: Undo?): PlaceHolderBase
+---@overload fun(class: "PlaceHolder", undo: Undo?): PlaceHolder
+---@overload fun(class: "ScrollableItemList", undo: Undo?): ScrollableItemList
+---@overload fun(class: "UITab", undo: Undo?): UITab
+---@overload fun(class: nil, undo: Undo?): UIObject
+---@deprecated use "Acquire" instead
+function GenericContext:Aquire(class, undo) end
+---@generic T : SampleTableView|Toolbar|GrandMasterFader|HardwareFader|ShaperPovFader|ColorInterfaceFader|DeskLightsFader|ProgressBar|DCRemoteInfo|TimelineCell|ScrollBar|ScrollContainer|Dialog|UIGridConfigLayout|TitleAutoLayout|StepControl|ScrollContainerPageBase|FrameBufferObject|Navigator|TitleBar|DialogFrame|PropertyBox|SwipeMenuOverlay|RecurringOverlay|NotificationArea|BaseInput|MessageBox|EncoderOverlay|PatchToOverlay|GenericEditorOverlay|HelpPopup|NetworkSpeedTestOverlay|ColorMeasurementOverlay|ContentOverlay|OffMenuOverlay|MainDialog|CommandLineHistory|PoolOverlay|MeshLineEdit|ObjectProperties|VirtualKeyboard|Bar|RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|ResultPoolWindow|RunningPlaybacksWindow|CommandLineWindow|AllPoolWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow|UiMessageCenter|CustomMasterLayoutGrid|TagButtonList|PhaserUICenter|CloningDialog|DialogTrackpad|UserPoolLayoutGrid|ScribblePoolLayoutGrid|GroupPoolLayoutGrid|ConfigurationPoolLayoutGrid|FilterPoolLayoutGrid|LayoutPoolLayoutGrid|ImagePoolLayoutGrid|RenderQualityPoolLayoutGrid|SmartViewPoolLayoutGrid|WorldPoolLayoutGrid|UniversePoolLayoutGrid|DataPoolLayoutGrid|SymbolPoolLayoutGrid|EncoderBarPoolLayoutGrid|GeneratorBitmapPoolLayoutGrid|GoboPoolLayoutGrid|GelPoolLayoutGrid|CameraPoolLayoutGrid|ViewPoolLayoutGrid|TimecodeSlotLayoutGrid|RunningPlaybacksPoolLayoutGrid|PresetPoolLayoutGrid|TimecodePoolLayoutGrid|PagePoolLayoutGrid|SequencePoolLayoutGrid|PluginPoolLayoutGrid|MeshPoolLayoutGrid|ViewBar|AppearancePoolLayoutGrid|MatricksPoolLayoutGrid|TagPoolLayoutGrid|QuickeyPoolLayoutGrid|MenuPoolLayoutGrid|SoundPoolLayoutGrid|VideoPoolLayoutGrid|GeneratorRandomPoolLayoutGrid|TimePoolLayoutGrid|MaterialPoolLayoutGrid|MacroPoolLayoutGrid|ScribbleEditContent|MainDialogSubMenuContent|MainDialogFunctionButtons|AgendaMonthsGrid|GridContentFilterEditor|SpecialWindowContent|BladeView|MatricksContainer|ThemeMergeToolBar|CmdDlgFunctionButtonsBase|GenericAssignmentSelector|PlaybackControlContent|AppearanceEditContent|ShaperEditorFaderGrid|EditorPropertyButtons|TagsEditContent|ReferencesContainer|PlaybackControlModularContent|NormedGrid|CommandWingBarContainer|AtFilterDialog|UIPhaserTimeLineGrid|SpecialExecSection|AllPoolLayoutGrid|BaseClock|TouchMonitor|AgendaDaysGrid|TreeViewFrame|PhaserLayoutGrid|EncoderBarSlot|Splitter|LinearResizer|BaseItemButtons|UIGridInternals|AudioPreview|XlrModeButton|SpecialExecConfigInput|OSCActivityButton|TitlebuttonControl|ColorPropertyInput|ExecConfigInput|TCTimeButton|CalculatorChannelSetControl|EncoderControl|DialogButton|StateButton|ValueControl|ToggleButtonList|ObjectSelector|UserEncoderPageSelector|ExecConfigSwipe|EnableMasterFaderButton|EncoderLinkButton|EditTitlebarButton|ValueFadeControl|SelectionIndicatorButton|MatricksToggleButton|ExecConfigRowButton|AtFilterControl|MainDlgGridToggleButton|ExecConfigColButton|SpecialExecutorKey|MatricksIndicatorButton|UIToggleButton|RotationButton|KeyboardShortcutControl|BatteryControl|AtFilterPreview|UIGridConfigButton|ScrollBarButton|MovableButton|DeleteWindowButton|VirtualKeyboardButton|KBShortcutButton|ExpandableButton|TimerButton|MainDlgButtonBase|MainDlgLoginButton|TimecodeSlotButton|DisplayButton|MainDlgUndoButton|BlinkingFadeButton|WarningInfoButton|EjectButton|DimmerWheelButton|MouseButton|ProgressButton|TagButton|MessageCenterInfoButton|DriveStatusButton|RevertButton|EncoderOverlayPlaceholder|ModalPlaceholder|EncoderBarPlaceHolder|PopupPlaceholder|LineEdit|ColorView|SensorView|DialogContainer|PopupList|DBObjectTab|RadioButtonList|FixturetypeItemList|ResizeCorner|ScribbleEditView|PropertyLabel|BandFader|MiniEncoder|ScrollBox|StatusBar|MultiScroller|TimecodeSlotInfo|TextView|TouchConfigurator|AppearancePreview|MacrolinePreview|TrackpadMouseControl|SoundBandView|CommandLineOutput|SoundLevelView|PerformanceView|ColorTestView|InfoNotesGridScroller|TouchTarget|EditorBase|OutputTest|ColorPickBase|SignalView|ShaperTestView|Settings3dContext|SpecialWindowContext
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
+---@overload fun(index: integer, class: "UIObject", undo: Undo?, count: integer?): UIObject
+---@overload fun(index: integer, class: "UiFader", undo: Undo?, count: integer?): UiFader
+---@overload fun(index: integer, class: "UIGridCellBase", undo: Undo?, count: integer?): UIGridCellBase
+---@overload fun(index: integer, class: "UILayoutGrid", undo: Undo?, count: integer?): UILayoutGrid
+---@overload fun(index: integer, class: "AutoLayout", undo: Undo?, count: integer?): AutoLayout
+---@overload fun(index: integer, class: "SplitView", undo: Undo?, count: integer?): SplitView
+---@overload fun(index: integer, class: "Drawable", undo: Undo?, count: integer?): Drawable
+---@overload fun(index: integer, class: "Overlay", undo: Undo?, count: integer?): Overlay
+---@overload fun(index: integer, class: "ShadedOverlay", undo: Undo?, count: integer?): ShadedOverlay
+---@overload fun(index: integer, class: "TextEdit", undo: Undo?, count: integer?): TextEdit
+---@overload fun(index: integer, class: "NoteTextEdit", undo: Undo?, count: integer?): NoteTextEdit
+---@overload fun(index: integer, class: "GlWindowBase", undo: Undo?, count: integer?): GlWindowBase
+---@overload fun(index: integer, class: "Window", undo: Undo?, count: integer?): Window
+---@overload fun(index: integer, class: "PoolWindow", undo: Undo?, count: integer?): PoolWindow
+---@overload fun(index: integer, class: "AllExecDisplay", undo: Undo?, count: integer?): AllExecDisplay
+---@overload fun(index: integer, class: "PoolLayoutGrid", undo: Undo?, count: integer?): PoolLayoutGrid
+---@overload fun(index: integer, class: "UiScreen", undo: Undo?, count: integer?): UiScreen
+---@overload fun(index: integer, class: "UIObjectFake", undo: Undo?, count: integer?): UIObjectFake
+---@overload fun(index: integer, class: "Button", undo: Undo?, count: integer?): Button
+---@overload fun(index: integer, class: "PropertyControl", undo: Undo?, count: integer?): PropertyControl
+---@overload fun(index: integer, class: "IndicatorControl", undo: Undo?, count: integer?): IndicatorControl
+---@overload fun(index: integer, class: "PropertyInput", undo: Undo?, count: integer?): PropertyInput
+---@overload fun(index: integer, class: "AppearanceInput", undo: Undo?, count: integer?): AppearanceInput
+---@overload fun(index: integer, class: "ScribbleInput", undo: Undo?, count: integer?): ScribbleInput
+---@overload fun(index: integer, class: "BaseStateButton", undo: Undo?, count: integer?): BaseStateButton
+---@overload fun(index: integer, class: "ToggleButton", undo: Undo?, count: integer?): ToggleButton
+---@overload fun(index: integer, class: "SwipeButton", undo: Undo?, count: integer?): SwipeButton
+---@overload fun(index: integer, class: "LogoButton", undo: Undo?, count: integer?): LogoButton
+---@overload fun(index: integer, class: "ContextButton", undo: Undo?, count: integer?): ContextButton
+---@overload fun(index: integer, class: "IndicatorButton", undo: Undo?, count: integer?): IndicatorButton
+---@overload fun(index: integer, class: "TitleButton", undo: Undo?, count: integer?): TitleButton
+---@overload fun(index: integer, class: "PlaceHolderBase", undo: Undo?, count: integer?): PlaceHolderBase
+---@overload fun(index: integer, class: "PlaceHolder", undo: Undo?, count: integer?): PlaceHolder
+---@overload fun(index: integer, class: "ScrollableItemList", undo: Undo?, count: integer?): ScrollableItemList
+---@overload fun(index: integer, class: "UITab", undo: Undo?, count: integer?): UITab
+---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): UIObject
+function GenericContext:Insert(index, class, undo, count) end
+---@generic T : SampleTableView|Toolbar|GrandMasterFader|HardwareFader|ShaperPovFader|ColorInterfaceFader|DeskLightsFader|ProgressBar|DCRemoteInfo|TimelineCell|ScrollBar|ScrollContainer|Dialog|UIGridConfigLayout|TitleAutoLayout|StepControl|ScrollContainerPageBase|FrameBufferObject|Navigator|TitleBar|DialogFrame|PropertyBox|SwipeMenuOverlay|RecurringOverlay|NotificationArea|BaseInput|MessageBox|EncoderOverlay|PatchToOverlay|GenericEditorOverlay|HelpPopup|NetworkSpeedTestOverlay|ColorMeasurementOverlay|ContentOverlay|OffMenuOverlay|MainDialog|CommandLineHistory|PoolOverlay|MeshLineEdit|ObjectProperties|VirtualKeyboard|Bar|RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|ResultPoolWindow|RunningPlaybacksWindow|CommandLineWindow|AllPoolWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow|UiMessageCenter|CustomMasterLayoutGrid|TagButtonList|PhaserUICenter|CloningDialog|DialogTrackpad|UserPoolLayoutGrid|ScribblePoolLayoutGrid|GroupPoolLayoutGrid|ConfigurationPoolLayoutGrid|FilterPoolLayoutGrid|LayoutPoolLayoutGrid|ImagePoolLayoutGrid|RenderQualityPoolLayoutGrid|SmartViewPoolLayoutGrid|WorldPoolLayoutGrid|UniversePoolLayoutGrid|DataPoolLayoutGrid|SymbolPoolLayoutGrid|EncoderBarPoolLayoutGrid|GeneratorBitmapPoolLayoutGrid|GoboPoolLayoutGrid|GelPoolLayoutGrid|CameraPoolLayoutGrid|ViewPoolLayoutGrid|TimecodeSlotLayoutGrid|RunningPlaybacksPoolLayoutGrid|PresetPoolLayoutGrid|TimecodePoolLayoutGrid|PagePoolLayoutGrid|SequencePoolLayoutGrid|PluginPoolLayoutGrid|MeshPoolLayoutGrid|ViewBar|AppearancePoolLayoutGrid|MatricksPoolLayoutGrid|TagPoolLayoutGrid|QuickeyPoolLayoutGrid|MenuPoolLayoutGrid|SoundPoolLayoutGrid|VideoPoolLayoutGrid|GeneratorRandomPoolLayoutGrid|TimePoolLayoutGrid|MaterialPoolLayoutGrid|MacroPoolLayoutGrid|ScribbleEditContent|MainDialogSubMenuContent|MainDialogFunctionButtons|AgendaMonthsGrid|GridContentFilterEditor|SpecialWindowContent|BladeView|MatricksContainer|ThemeMergeToolBar|CmdDlgFunctionButtonsBase|GenericAssignmentSelector|PlaybackControlContent|AppearanceEditContent|ShaperEditorFaderGrid|EditorPropertyButtons|TagsEditContent|ReferencesContainer|PlaybackControlModularContent|NormedGrid|CommandWingBarContainer|AtFilterDialog|UIPhaserTimeLineGrid|SpecialExecSection|AllPoolLayoutGrid|BaseClock|TouchMonitor|AgendaDaysGrid|TreeViewFrame|PhaserLayoutGrid|EncoderBarSlot|Splitter|LinearResizer|BaseItemButtons|UIGridInternals|AudioPreview|XlrModeButton|SpecialExecConfigInput|OSCActivityButton|TitlebuttonControl|ColorPropertyInput|ExecConfigInput|TCTimeButton|CalculatorChannelSetControl|EncoderControl|DialogButton|StateButton|ValueControl|ToggleButtonList|ObjectSelector|UserEncoderPageSelector|ExecConfigSwipe|EnableMasterFaderButton|EncoderLinkButton|EditTitlebarButton|ValueFadeControl|SelectionIndicatorButton|MatricksToggleButton|ExecConfigRowButton|AtFilterControl|MainDlgGridToggleButton|ExecConfigColButton|SpecialExecutorKey|MatricksIndicatorButton|UIToggleButton|RotationButton|KeyboardShortcutControl|BatteryControl|AtFilterPreview|UIGridConfigButton|ScrollBarButton|MovableButton|DeleteWindowButton|VirtualKeyboardButton|KBShortcutButton|ExpandableButton|TimerButton|MainDlgButtonBase|MainDlgLoginButton|TimecodeSlotButton|DisplayButton|MainDlgUndoButton|BlinkingFadeButton|WarningInfoButton|EjectButton|DimmerWheelButton|MouseButton|ProgressButton|TagButton|MessageCenterInfoButton|DriveStatusButton|RevertButton|EncoderOverlayPlaceholder|ModalPlaceholder|EncoderBarPlaceHolder|PopupPlaceholder|LineEdit|ColorView|SensorView|DialogContainer|PopupList|DBObjectTab|RadioButtonList|FixturetypeItemList|ResizeCorner|ScribbleEditView|PropertyLabel|BandFader|MiniEncoder|ScrollBox|StatusBar|MultiScroller|TimecodeSlotInfo|TextView|TouchConfigurator|AppearancePreview|MacrolinePreview|TrackpadMouseControl|SoundBandView|CommandLineOutput|SoundLevelView|PerformanceView|ColorTestView|InfoNotesGridScroller|TouchTarget|EditorBase|OutputTest|ColorPickBase|SignalView|ShaperTestView|Settings3dContext|SpecialWindowContext
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: "UIObject", undo: Undo?): UIObject
+---@overload fun(class: "UiFader", undo: Undo?): UiFader
+---@overload fun(class: "UIGridCellBase", undo: Undo?): UIGridCellBase
+---@overload fun(class: "UILayoutGrid", undo: Undo?): UILayoutGrid
+---@overload fun(class: "AutoLayout", undo: Undo?): AutoLayout
+---@overload fun(class: "SplitView", undo: Undo?): SplitView
+---@overload fun(class: "Drawable", undo: Undo?): Drawable
+---@overload fun(class: "Overlay", undo: Undo?): Overlay
+---@overload fun(class: "ShadedOverlay", undo: Undo?): ShadedOverlay
+---@overload fun(class: "TextEdit", undo: Undo?): TextEdit
+---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
+---@overload fun(class: "GlWindowBase", undo: Undo?): GlWindowBase
+---@overload fun(class: "Window", undo: Undo?): Window
+---@overload fun(class: "PoolWindow", undo: Undo?): PoolWindow
+---@overload fun(class: "AllExecDisplay", undo: Undo?): AllExecDisplay
+---@overload fun(class: "PoolLayoutGrid", undo: Undo?): PoolLayoutGrid
+---@overload fun(class: "UiScreen", undo: Undo?): UiScreen
+---@overload fun(class: "UIObjectFake", undo: Undo?): UIObjectFake
+---@overload fun(class: "Button", undo: Undo?): Button
+---@overload fun(class: "PropertyControl", undo: Undo?): PropertyControl
+---@overload fun(class: "IndicatorControl", undo: Undo?): IndicatorControl
+---@overload fun(class: "PropertyInput", undo: Undo?): PropertyInput
+---@overload fun(class: "AppearanceInput", undo: Undo?): AppearanceInput
+---@overload fun(class: "ScribbleInput", undo: Undo?): ScribbleInput
+---@overload fun(class: "BaseStateButton", undo: Undo?): BaseStateButton
+---@overload fun(class: "ToggleButton", undo: Undo?): ToggleButton
+---@overload fun(class: "SwipeButton", undo: Undo?): SwipeButton
+---@overload fun(class: "LogoButton", undo: Undo?): LogoButton
+---@overload fun(class: "ContextButton", undo: Undo?): ContextButton
+---@overload fun(class: "IndicatorButton", undo: Undo?): IndicatorButton
+---@overload fun(class: "TitleButton", undo: Undo?): TitleButton
+---@overload fun(class: "PlaceHolderBase", undo: Undo?): PlaceHolderBase
+---@overload fun(class: "PlaceHolder", undo: Undo?): PlaceHolder
+---@overload fun(class: "ScrollableItemList", undo: Undo?): ScrollableItemList
+---@overload fun(class: "UITab", undo: Undo?): UITab
+---@overload fun(class: nil, undo: Undo?): UIObject
+function GenericContext:Find(class, undo) end

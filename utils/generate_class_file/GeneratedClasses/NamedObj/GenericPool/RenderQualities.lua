@@ -17,25 +17,44 @@ function RenderQualities:Children() end
 function RenderQualities:CurrentChild() end
 ---@overload fun(name: integer, role: nil): RenderQuality
 function RenderQualities:Get(name, role) end
----@overload fun(index: integer, class: "RenderQuality", undo: Undo?): RenderQuality
+---@generic T : RenderQuality
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): RenderQuality
 function RenderQualities:Create(index, class, undo) end
----@overload fun(class: "RenderQuality", undo: Undo?, count: integer?): RenderQuality
+---@generic T : RenderQuality
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): RenderQuality
 function RenderQualities:Append(class, undo, count) end
----@overload fun(class: "RenderQuality", undo: Undo?): RenderQuality
+---@generic T : RenderQuality
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): RenderQuality
 function RenderQualities:Acquire(class, undo) end
----@overload fun(class: "RenderQuality", undo: Undo?): RenderQuality
+---@generic T : RenderQuality
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): RenderQuality
 ---@deprecated use "Acquire" instead
 function RenderQualities:Aquire(class, undo) end
----@overload fun(index: integer, class: "RenderQuality", undo: Undo?, count: integer?): RenderQuality
+---@generic T : RenderQuality
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): RenderQuality
 function RenderQualities:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "RenderQuality"): RenderQuality
----@overload fun(name: string, class: nil): RenderQuality
-function RenderQualities:Find(name, class) end
----@overload fun(name: string, class: "RenderQuality"): RenderQuality
----@overload fun(name: string, class: nil): Object
-function RenderQualities:FindRecursive(name, class) end
+---@generic T : RenderQuality
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): RenderQuality
+function RenderQualities:Find(class, undo) end

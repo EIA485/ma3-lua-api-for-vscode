@@ -17,25 +17,44 @@ function IDTypes:Children() end
 function IDTypes:CurrentChild() end
 ---@overload fun(name: integer, role: nil): IDs
 function IDTypes:Get(name, role) end
----@overload fun(index: integer, class: "IDs", undo: Undo?): IDs
+---@generic T : IDs
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): IDs
 function IDTypes:Create(index, class, undo) end
----@overload fun(class: "IDs", undo: Undo?, count: integer?): IDs
+---@generic T : IDs
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): IDs
 function IDTypes:Append(class, undo, count) end
----@overload fun(class: "IDs", undo: Undo?): IDs
+---@generic T : IDs
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): IDs
 function IDTypes:Acquire(class, undo) end
----@overload fun(class: "IDs", undo: Undo?): IDs
+---@generic T : IDs
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): IDs
 ---@deprecated use "Acquire" instead
 function IDTypes:Aquire(class, undo) end
----@overload fun(index: integer, class: "IDs", undo: Undo?, count: integer?): IDs
+---@generic T : IDs
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): IDs
 function IDTypes:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "IDs"): IDs
----@overload fun(name: string, class: nil): IDs
-function IDTypes:Find(name, class) end
----@overload fun(name: string, class: "IDs"): IDs
----@overload fun(name: string, class: nil): Object
-function IDTypes:FindRecursive(name, class) end
+---@generic T : IDs
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): IDs
+function IDTypes:Find(class, undo) end

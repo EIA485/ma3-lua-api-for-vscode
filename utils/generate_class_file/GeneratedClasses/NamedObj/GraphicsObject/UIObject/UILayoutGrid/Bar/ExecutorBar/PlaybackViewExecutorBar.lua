@@ -33,9 +33,6 @@ function PlaybackViewExecutorBar:Aquire(class, undo) end
 ---@overload fun(index: integer, class: "ExecutorSection", undo: Undo?, count: integer?): ExecutorSection
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): ExecutorSection
 function PlaybackViewExecutorBar:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "ExecutorSection"): ExecutorSection
----@overload fun(name: string, class: nil): ExecutorSection
-function PlaybackViewExecutorBar:Find(name, class) end
----@overload fun(name: string, class: "ExecutorSection"): ExecutorSection
----@overload fun(name: string, class: nil): Object
-function PlaybackViewExecutorBar:FindRecursive(name, class) end
+---@overload fun(class: "ExecutorSection", undo: Undo?): ExecutorSection
+---@overload fun(class: nil, undo: Undo?): ExecutorSection
+function PlaybackViewExecutorBar:Find(class, undo) end

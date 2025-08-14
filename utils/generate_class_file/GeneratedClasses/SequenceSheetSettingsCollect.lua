@@ -15,32 +15,44 @@ function SequenceSheetSettingsCollect:Children() end
 function SequenceSheetSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): SequenceSheetSettings
 function SequenceSheetSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "SequenceSheetSettings", undo: Undo?): SequenceSheetSettings
----@overload fun(index: integer, class: "ContentSheetSettings", undo: Undo?): ContentSheetSettings
+---@generic T : SequenceSheetSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): SequenceSheetSettings
 function SequenceSheetSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "SequenceSheetSettings", undo: Undo?, count: integer?): SequenceSheetSettings
----@overload fun(class: "ContentSheetSettings", undo: Undo?, count: integer?): ContentSheetSettings
+---@generic T : SequenceSheetSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): SequenceSheetSettings
 function SequenceSheetSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "SequenceSheetSettings", undo: Undo?): SequenceSheetSettings
----@overload fun(class: "ContentSheetSettings", undo: Undo?): ContentSheetSettings
+---@generic T : SequenceSheetSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SequenceSheetSettings
 function SequenceSheetSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "SequenceSheetSettings", undo: Undo?): SequenceSheetSettings
----@overload fun(class: "ContentSheetSettings", undo: Undo?): ContentSheetSettings
+---@generic T : SequenceSheetSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): SequenceSheetSettings
 ---@deprecated use "Acquire" instead
 function SequenceSheetSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "SequenceSheetSettings", undo: Undo?, count: integer?): SequenceSheetSettings
----@overload fun(index: integer, class: "ContentSheetSettings", undo: Undo?, count: integer?): ContentSheetSettings
+---@generic T : SequenceSheetSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): SequenceSheetSettings
 function SequenceSheetSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "SequenceSheetSettings"): SequenceSheetSettings
----@overload fun(name: string, class: "ContentSheetSettings"): ContentSheetSettings
----@overload fun(name: string, class: nil): SequenceSheetSettings
-function SequenceSheetSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "SequenceSheetSettings"): SequenceSheetSettings
----@overload fun(name: string, class: "ContentSheetSettings"): ContentSheetSettings
----@overload fun(name: string, class: nil): Object
-function SequenceSheetSettingsCollect:FindRecursive(name, class) end
+---@generic T : SequenceSheetSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): SequenceSheetSettings
+function SequenceSheetSettingsCollect:Find(class, undo) end

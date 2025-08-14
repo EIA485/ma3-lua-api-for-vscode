@@ -20,37 +20,50 @@ function ReleaseFile:Ptr(index) end
 function ReleaseFile:Children() end
 ---@return MAPacket?
 function ReleaseFile:CurrentChild() end
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No", role: nil): integer
----@overload fun(name: "Name"|"Note", role: nil): string
----@overload fun(name: "UserExpanded", role: nil): integer
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Hidden", role: nil): integer
----@overload fun(name: "DependencyExport", role: nil): string
----@overload fun(name: "MemoryFootprint", role: nil): integer
----@overload fun(name: "Description"|"Version"|"Date"|"ReleaseFileVersion", role: nil): string
----@overload fun(name: "haveUpdate", role: nil): boolean
----@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Description"|"Version"|"Date"|"ReleaseFileVersion"|"haveUpdate", role: Enums.Roles): string
+---@overload fun(name: "haveUpdate"|"FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Description"|"Version"|"Date"|"ReleaseFileVersion"|"Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "Description"|"Version"|"Date"|"ReleaseFileVersion"|"haveUpdate"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): MAPacket
 function ReleaseFile:Get(name, role) end
----@overload fun(index: integer, class: "MAPacket", undo: Undo?): MAPacket
+---@generic T : MAPacket
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): MAPacket
 function ReleaseFile:Create(index, class, undo) end
----@overload fun(class: "MAPacket", undo: Undo?, count: integer?): MAPacket
+---@generic T : MAPacket
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): MAPacket
 function ReleaseFile:Append(class, undo, count) end
----@overload fun(class: "MAPacket", undo: Undo?): MAPacket
+---@generic T : MAPacket
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MAPacket
 function ReleaseFile:Acquire(class, undo) end
----@overload fun(class: "MAPacket", undo: Undo?): MAPacket
+---@generic T : MAPacket
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): MAPacket
 ---@deprecated use "Acquire" instead
 function ReleaseFile:Aquire(class, undo) end
----@overload fun(index: integer, class: "MAPacket", undo: Undo?, count: integer?): MAPacket
+---@generic T : MAPacket
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): MAPacket
 function ReleaseFile:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "MAPacket"): MAPacket
----@overload fun(name: string, class: nil): MAPacket
-function ReleaseFile:Find(name, class) end
----@overload fun(name: string, class: "MAPacket"): MAPacket
----@overload fun(name: string, class: nil): Object
-function ReleaseFile:FindRecursive(name, class) end
+---@generic T : MAPacket
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): MAPacket
+function ReleaseFile:Find(class, undo) end

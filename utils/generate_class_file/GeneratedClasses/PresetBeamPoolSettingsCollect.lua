@@ -15,25 +15,44 @@ function PresetBeamPoolSettingsCollect:Children() end
 function PresetBeamPoolSettingsCollect:CurrentChild() end
 ---@overload fun(name: integer, role: nil): PresetBeamPoolSettings
 function PresetBeamPoolSettingsCollect:Get(name, role) end
----@overload fun(index: integer, class: "PresetBeamPoolSettings", undo: Undo?): PresetBeamPoolSettings
+---@generic T : PresetBeamPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?): PresetBeamPoolSettings
 function PresetBeamPoolSettingsCollect:Create(index, class, undo) end
----@overload fun(class: "PresetBeamPoolSettings", undo: Undo?, count: integer?): PresetBeamPoolSettings
+---@generic T : PresetBeamPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(class: nil, undo: Undo?, count: integer?): PresetBeamPoolSettings
 function PresetBeamPoolSettingsCollect:Append(class, undo, count) end
----@overload fun(class: "PresetBeamPoolSettings", undo: Undo?): PresetBeamPoolSettings
+---@generic T : PresetBeamPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetBeamPoolSettings
 function PresetBeamPoolSettingsCollect:Acquire(class, undo) end
----@overload fun(class: "PresetBeamPoolSettings", undo: Undo?): PresetBeamPoolSettings
+---@generic T : PresetBeamPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetBeamPoolSettings
 ---@deprecated use "Acquire" instead
 function PresetBeamPoolSettingsCollect:Aquire(class, undo) end
----@overload fun(index: integer, class: "PresetBeamPoolSettings", undo: Undo?, count: integer?): PresetBeamPoolSettings
+---@generic T : PresetBeamPoolSettings
+---@param index integer
+---@param class `T`
+---@param undo Undo?
+---@param count integer?
+---@return T
 ---@overload fun(index: integer, class: nil, undo: Undo?, count: integer?): PresetBeamPoolSettings
 function PresetBeamPoolSettingsCollect:Insert(index, class, undo, count) end
----@overload fun(name: string, class: "PresetBeamPoolSettings"): PresetBeamPoolSettings
----@overload fun(name: string, class: nil): PresetBeamPoolSettings
-function PresetBeamPoolSettingsCollect:Find(name, class) end
----@overload fun(name: string, class: "PresetBeamPoolSettings"): PresetBeamPoolSettings
----@overload fun(name: string, class: nil): Object
-function PresetBeamPoolSettingsCollect:FindRecursive(name, class) end
+---@generic T : PresetBeamPoolSettings
+---@param class `T`
+---@param undo Undo?
+---@return T
+---@overload fun(class: nil, undo: Undo?): PresetBeamPoolSettings
+function PresetBeamPoolSettingsCollect:Find(class, undo) end
