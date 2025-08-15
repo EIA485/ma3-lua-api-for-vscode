@@ -6,6 +6,10 @@ local TimecodeWindowSharedContainer = {}
 function TimecodeWindowSharedContainer:GetClass() end
 ---@return "TimecodeWindowSharedData"
 function TimecodeWindowSharedContainer:GetChildClass() end
+---@generic T : TimecodeWindowSharedContainer
+---@param class `T`
+---@return boolean
+function TimecodeWindowSharedContainer:IsClass(class) end
 ---@return TimecodeWindowSettings
 function TimecodeWindowSharedContainer:Parent() end
 ---@param index integer
@@ -58,3 +62,10 @@ function TimecodeWindowSharedContainer:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): TimecodeWindowSharedData
 function TimecodeWindowSharedContainer:Find(class, undo) end
+---@overload fun(property_name: "SelectionTargetType", property_value: TimecodeSelectionTarget)
+---@overload fun(property_name: "Setup", property_value: YesNo|boolean)
+---@overload fun(property_name: "LastEvent", property_value: TimecodeSelectLastEventMode)
+---@overload fun(property_name: "LastEvent", property_value: TimecodeSelectLastEventMode)
+---@overload fun(property_name: "SelectionTargetType", property_value: TimecodeSelectionTarget)
+---@overload fun(property_name: "Setup", property_value: YesNo|boolean)
+function TimecodeWindowSharedContainer:LastEvent(property_name, property_value) end

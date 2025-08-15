@@ -6,6 +6,10 @@ local MessageGridSettingsCollect = {}
 function MessageGridSettingsCollect:GetClass() end
 ---@return "MessageGridSettings"
 function MessageGridSettingsCollect:GetChildClass() end
+---@generic T : MessageGridSettingsCollect
+---@param class `T`
+---@return boolean
+function MessageGridSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return MessageGridSettings
 function MessageGridSettingsCollect:Ptr(index) end
@@ -56,3 +60,8 @@ function MessageGridSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MessageGridSettings
 function MessageGridSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "Priority", property_value: MessagePriority)
+---@overload fun(property_name: "Category", property_value: MessageCategory)
+---@overload fun(property_name: "Category", property_value: MessageCategory)
+---@overload fun(property_name: "Priority", property_value: MessagePriority)
+function MessageGridSettingsCollect:Category(property_name, property_value) end

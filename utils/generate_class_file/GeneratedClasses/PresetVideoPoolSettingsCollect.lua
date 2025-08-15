@@ -6,6 +6,10 @@ local PresetVideoPoolSettingsCollect = {}
 function PresetVideoPoolSettingsCollect:GetClass() end
 ---@return "PresetVideoPoolSettings"
 function PresetVideoPoolSettingsCollect:GetChildClass() end
+---@generic T : PresetVideoPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function PresetVideoPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return PresetVideoPoolSettings
 function PresetVideoPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function PresetVideoPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetVideoPoolSettings
 function PresetVideoPoolSettingsCollect:Find(class, undo) end
+function PresetVideoPoolSettingsCollect:ActiveDisplay(property_name, property_value) end

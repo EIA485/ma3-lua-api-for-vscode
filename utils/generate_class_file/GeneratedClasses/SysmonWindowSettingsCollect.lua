@@ -6,6 +6,10 @@ local SysmonWindowSettingsCollect = {}
 function SysmonWindowSettingsCollect:GetClass() end
 ---@return "SysmonWindowSettings"
 function SysmonWindowSettingsCollect:GetChildClass() end
+---@generic T : SysmonWindowSettingsCollect
+---@param class `T`
+---@return boolean
+function SysmonWindowSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return SysmonWindowSettings
 function SysmonWindowSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function SysmonWindowSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SysmonWindowSettings
 function SysmonWindowSettingsCollect:Find(class, undo) end
+function SysmonWindowSettingsCollect:ShowCommandlineField(property_name, property_value) end

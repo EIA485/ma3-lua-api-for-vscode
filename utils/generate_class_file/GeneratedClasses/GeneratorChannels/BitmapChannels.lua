@@ -6,6 +6,10 @@ local BitmapChannels = {}
 function BitmapChannels:GetClass() end
 ---@return "BitmapChannel"
 function BitmapChannels:GetChildClass() end
+---@generic T : BitmapChannels
+---@param class `T`
+---@return boolean
+function BitmapChannels:IsClass(class) end
 ---@return Bitmap
 function BitmapChannels:Parent() end
 ---@param index integer
@@ -58,3 +62,7 @@ function BitmapChannels:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): BitmapChannel
 function BitmapChannels:Find(class, undo) end
+---@overload fun(property_name: "Source", property_value: ColorSource)
+---@overload fun(property_name: "Source", property_value: ColorSource)
+---@overload fun(property_name: "ValueHigh"|"ValueLow", property_value: integer)
+function BitmapChannels:Source(property_name, property_value) end

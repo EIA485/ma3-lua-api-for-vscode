@@ -6,6 +6,10 @@ local MacroDMX = {}
 function MacroDMX:GetClass() end
 ---@return "MacroDMXStep"
 function MacroDMX:GetChildClass() end
+---@generic T : MacroDMX
+---@param class `T`
+---@return boolean
+function MacroDMX:IsClass(class) end
 ---@return FTMacro
 function MacroDMX:Parent() end
 ---@param index integer
@@ -58,3 +62,6 @@ function MacroDMX:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MacroDMXStep
 function MacroDMX:Find(class, undo) end
+---@overload fun(property_name: "Duration", property_value: TimePropertyValue)
+---@overload fun(property_name: "Duration", property_value: TimePropertyValue)
+function MacroDMX:Duration(property_name, property_value) end

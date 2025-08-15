@@ -6,6 +6,10 @@ local RunningPlaybacksSettingsCollect = {}
 function RunningPlaybacksSettingsCollect:GetClass() end
 ---@return "RunningPlaybacksSettings"
 function RunningPlaybacksSettingsCollect:GetChildClass() end
+---@generic T : RunningPlaybacksSettingsCollect
+---@param class `T`
+---@return boolean
+function RunningPlaybacksSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return RunningPlaybacksSettings
 function RunningPlaybacksSettingsCollect:Ptr(index) end
@@ -56,3 +60,11 @@ function RunningPlaybacksSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): RunningPlaybacksSettings
 function RunningPlaybacksSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "User", property_value: User)
+---@overload fun(property_name: "PlaybacksToShow", property_value: PlaybacksToShow)
+---@overload fun(property_name: "SelectedDataPool", property_value: string)
+---@overload fun(property_name: "PlaybacksToShow", property_value: PlaybacksToShow)
+---@overload fun(property_name: "User", property_value: User)
+---@overload fun(property_name: "MyPlaybacksOnly"|"OffMode"|"SheetStyle"|"HoldList", property_value: YesNo|boolean)
+---@overload fun(property_name: "SelectedDataPool", property_value: string)
+function RunningPlaybacksSettingsCollect:SelectedDataPool(property_name, property_value) end

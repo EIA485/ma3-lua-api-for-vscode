@@ -6,6 +6,10 @@ local UiMessageCenter = {}
 function UiMessageCenter:GetClass() end
 ---@return "MessageCenterButton"
 function UiMessageCenter:GetChildClass() end
+---@generic T : UiMessageCenter
+---@param class `T`
+---@return boolean
+function UiMessageCenter:IsClass(class) end
 ---@param index integer
 ---@return MessageCenterButton
 function UiMessageCenter:Ptr(index) end
@@ -56,3 +60,4 @@ function UiMessageCenter:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MessageCenterButton
 function UiMessageCenter:Find(class, undo) end
+function UiMessageCenter:SetPrompt(property_name, property_value) end

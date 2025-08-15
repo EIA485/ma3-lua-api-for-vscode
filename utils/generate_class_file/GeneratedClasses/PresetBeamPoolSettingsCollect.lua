@@ -6,6 +6,10 @@ local PresetBeamPoolSettingsCollect = {}
 function PresetBeamPoolSettingsCollect:GetClass() end
 ---@return "PresetBeamPoolSettings"
 function PresetBeamPoolSettingsCollect:GetChildClass() end
+---@generic T : PresetBeamPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function PresetBeamPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return PresetBeamPoolSettings
 function PresetBeamPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function PresetBeamPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetBeamPoolSettings
 function PresetBeamPoolSettingsCollect:Find(class, undo) end
+function PresetBeamPoolSettingsCollect:ActiveDisplay(property_name, property_value) end

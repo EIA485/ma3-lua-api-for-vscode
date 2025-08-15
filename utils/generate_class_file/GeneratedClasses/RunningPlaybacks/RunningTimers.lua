@@ -6,6 +6,10 @@ local RunningTimers = {}
 function RunningTimers:GetClass() end
 ---@return "Timer"
 function RunningTimers:GetChildClass() end
+---@generic T : RunningTimers
+---@param class `T`
+---@return boolean
+function RunningTimers:IsClass(class) end
 ---@return RunningPlaybacksCollect
 function RunningTimers:Parent() end
 ---@param index integer
@@ -24,3 +28,6 @@ function RunningTimers:Acquire(class, undo) end
 function RunningTimers:Aquire(class, undo) end
 function RunningTimers:Insert(index, class, undo, count) end
 function RunningTimers:Find(class, undo) end
+function RunningTimers:ActiveDisplay(property_name, property_value) end
+function RunningTimers:ActiveDisplay(property_name, property_value) end
+function RunningTimers:SetChildrenRecursive(property_name, property_value) end

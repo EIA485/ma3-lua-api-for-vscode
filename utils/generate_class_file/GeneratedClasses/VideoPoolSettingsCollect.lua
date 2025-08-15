@@ -6,6 +6,10 @@ local VideoPoolSettingsCollect = {}
 function VideoPoolSettingsCollect:GetClass() end
 ---@return "VideoPoolSettings"
 function VideoPoolSettingsCollect:GetChildClass() end
+---@generic T : VideoPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function VideoPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return VideoPoolSettings
 function VideoPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,6 @@ function VideoPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): VideoPoolSettings
 function VideoPoolSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "Action", property_value: VideoPoolAction)
+---@overload fun(property_name: "Action", property_value: VideoPoolAction)
+function VideoPoolSettingsCollect:Action(property_name, property_value) end

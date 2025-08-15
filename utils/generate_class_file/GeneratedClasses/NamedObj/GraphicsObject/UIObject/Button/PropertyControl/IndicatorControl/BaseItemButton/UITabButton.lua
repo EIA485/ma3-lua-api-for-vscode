@@ -1,30 +1,247 @@
 ---@meta
 
 ---@class UITabButton: BaseItemButton
----@field AutoTexture boolean
+---@field AutoTexture YesNo|boolean
 local UITabButton = {}
 ---@return "UITabButton"
 function UITabButton:GetClass() end
 ---@return "UIObject"
 function UITabButton:GetChildClass() end
----@overload fun(name: "ValueAlignmentH"|"IconAlignmentH"|"AlignmentH"|"TextAlignmentH", role: nil): AlignmentH
----@overload fun(name: "ValueAlignmentV"|"IconAlignmentV"|"AlignmentV"|"TextAlignmentV", role: nil): AlignmentV
+---@generic T : UITabButton
+---@param class `T`
+---@return boolean
+function UITabButton:IsClass(class) end
+---@return 172
+function UITabButton:PropertyCount() end
+---@overload fun(idx: 0): "IgnoreNetwork"
+---@overload fun(idx: 1): "StructureLocked"
+---@overload fun(idx: 2): "SystemLocked"
+---@overload fun(idx: 3): "Lock"
+---@overload fun(idx: 4): "Index"
+---@overload fun(idx: 5): "Count"
+---@overload fun(idx: 6): "No"
+---@overload fun(idx: 7): "Name"
+---@overload fun(idx: 8): "Note"
+---@overload fun(idx: 9): "UserExpanded"
+---@overload fun(idx: 10): "FaderEnabled"
+---@overload fun(idx: 11): "Owned"
+---@overload fun(idx: 12): "Hidden"
+---@overload fun(idx: 13): "DependencyExport"
+---@overload fun(idx: 14): "MemoryFootprint"
+---@overload fun(idx: 15): "X"
+---@overload fun(idx: 16): "Y"
+---@overload fun(idx: 17): "W"
+---@overload fun(idx: 18): "H"
+---@overload fun(idx: 19): "AbsRect"
+---@overload fun(idx: 20): "AbsClientRect"
+---@overload fun(idx: 21): "Texture"
+---@overload fun(idx: 22): "Font"
+---@overload fun(idx: 23): "LowDpiFont"
+---@overload fun(idx: 24): "Text"
+---@overload fun(idx: 25): "ToolTip"
+---@overload fun(idx: 26): "HelpTopic"
+---@overload fun(idx: 27): "BackColor"
+---@overload fun(idx: 28): "TextColor"
+---@overload fun(idx: 29): "TextShadowColor"
+---@overload fun(idx: 30): "MixInBackColor"
+---@overload fun(idx: 31): "HighlightedColor"
+---@overload fun(idx: 32): "TextVertical"
+---@overload fun(idx: 33): "TextAutoAdjust"
+---@overload fun(idx: 34): "TextUniform"
+---@overload fun(idx: 35): "FrameWidth"
+---@overload fun(idx: 36): "Padding"
+---@overload fun(idx: 37): "Focus"
+---@overload fun(idx: 38): "UserRights"
+---@overload fun(idx: 39): "Visible"
+---@overload fun(idx: 40): "CanCoExistWithModal"
+---@overload fun(idx: 41): "UserVisible"
+---@overload fun(idx: 42): "Enabled"
+---@overload fun(idx: 43): "Interactive"
+---@overload fun(idx: 44): "Transparent"
+---@overload fun(idx: 45): "BlockClickThru"
+---@overload fun(idx: 46): "UserInteracted"
+---@overload fun(idx: 47): "HasHover"
+---@overload fun(idx: 48): "Separator"
+---@overload fun(idx: 49): "HasPressedAnimation"
+---@overload fun(idx: 50): "ContentDriven"
+---@overload fun(idx: 51): "ContentWidth"
+---@overload fun(idx: 52): "ContentHeight"
+---@overload fun(idx: 53): "ForceContentMin"
+---@overload fun(idx: 54): "WantsNumericRedirect"
+---@overload fun(idx: 55): "CloseAction"
+---@overload fun(idx: 56): "AutoCloseValue"
+---@overload fun(idx: 57): "UiGroupId"
+---@overload fun(idx: 58): "LabelLinkHandle"
+---@overload fun(idx: 59): "IgnoreBackdropPadding"
+---@overload fun(idx: 60): "MixInBackColorFromParent"
+---@overload fun(idx: 61): "FocusSearchPolicy"
+---@overload fun(idx: 62): "IgnoreRequestedSize"
+---@overload fun(idx: 63): "ForceEncoderBar"
+---@overload fun(idx: 64): "SuppressOverlayAutoClose"
+---@overload fun(idx: 65): "IsClosing"
+---@overload fun(idx: 66): "TextShadow"
+---@overload fun(idx: 67): "MinSize"
+---@overload fun(idx: 68): "MaxSize"
+---@overload fun(idx: 69): "Anchors"
+---@overload fun(idx: 70): "SignalValue"
+---@overload fun(idx: 71): "SignalValueHold"
+---@overload fun(idx: 72): "AlignmentH"
+---@overload fun(idx: 73): "AlignmentV"
+---@overload fun(idx: 74): "TextAlignmentH"
+---@overload fun(idx: 75): "TextAlignmentV"
+---@overload fun(idx: 76): "Margin"
+---@overload fun(idx: 77): "PluginComponent"
+---@overload fun(idx: 78): "HasFocus"
+---@overload fun(idx: 79): "HideFocusFrame"
+---@overload fun(idx: 80): "AppearanceSourceClassName"
+---@overload fun(idx: 81): "VisibleOnlyInAlpha"
+---@overload fun(idx: 82): "VisibleOnlyInBeta"
+---@overload fun(idx: 83): "VisibleOnlyInRelease"
+---@overload fun(idx: 84): "ClickNearest"
+---@overload fun(idx: 85): "VisibleInAlpha"
+---@overload fun(idx: 86): "VisibleInBeta"
+---@overload fun(idx: 87): "VisibleInRelease"
+---@overload fun(idx: 88): "Clicked"
+---@overload fun(idx: 89): "ClickedLeft"
+---@overload fun(idx: 90): "ClickedRight"
+---@overload fun(idx: 91): "DoubleClicked"
+---@overload fun(idx: 92): "MouseEnter"
+---@overload fun(idx: 93): "MouseLeave"
+---@overload fun(idx: 94): "MouseOverHold"
+---@overload fun(idx: 95): "MouseUp"
+---@overload fun(idx: 96): "MouseUpLeft"
+---@overload fun(idx: 97): "MouseUpRight"
+---@overload fun(idx: 98): "MouseDown"
+---@overload fun(idx: 99): "MouseDownLeft"
+---@overload fun(idx: 100): "MouseDownRight"
+---@overload fun(idx: 101): "MouseDownHold"
+---@overload fun(idx: 102): "KeyDown"
+---@overload fun(idx: 103): "KeyUp"
+---@overload fun(idx: 104): "CharInput"
+---@overload fun(idx: 105): "TouchStart"
+---@overload fun(idx: 106): "TouchUpdate"
+---@overload fun(idx: 107): "TouchEnd"
+---@overload fun(idx: 108): "OnLoad"
+---@overload fun(idx: 109): "OnVisible"
+---@overload fun(idx: 110): "DescriptionChanged"
+---@overload fun(idx: 111): "FocusGet"
+---@overload fun(idx: 112): "FocusLost"
+---@overload fun(idx: 113): "ForceIntensity"
+---@overload fun(idx: 114): "Icon"
+---@overload fun(idx: 115): "IconColor"
+---@overload fun(idx: 116): "IconHoverColor"
+---@overload fun(idx: 117): "IconScale"
+---@overload fun(idx: 118): "IconAlignmentH"
+---@overload fun(idx: 119): "IconAlignmentV"
+---@overload fun(idx: 120): "IconOffsetH"
+---@overload fun(idx: 121): "IconOffsetV"
+---@overload fun(idx: 122): "TextOffsetH"
+---@overload fun(idx: 123): "TextOffsetV"
+---@overload fun(idx: 124): "ActiveBackColor"
+---@overload fun(idx: 125): "ActiveTextColor"
+---@overload fun(idx: 126): "ActiveIconColor"
+---@overload fun(idx: 127): "HotKey"
+---@overload fun(idx: 128): "State"
+---@overload fun(idx: 129): "ContentAreaMargin"
+---@overload fun(idx: 130): "IgnoreIconForTextAlign"
+---@overload fun(idx: 131): "ReferencedTitleButton"
+---@overload fun(idx: 132): "Target"
+---@overload fun(idx: 133): "TargetList"
+---@overload fun(idx: 134): "Property"
+---@overload fun(idx: 135): "System"
+---@overload fun(idx: 136): "ShowLabel"
+---@overload fun(idx: 137): "ShowValue"
+---@overload fun(idx: 138): "DataAsIs"
+---@overload fun(idx: 139): "AutoHide"
+---@overload fun(idx: 140): "IndirectEdit"
+---@overload fun(idx: 141): "ValueAutoAdjust"
+---@overload fun(idx: 142): "DirectProperty"
+---@overload fun(idx: 143): "DefaultAction"
+---@overload fun(idx: 144): "CharAction"
+---@overload fun(idx: 145): "Undo"
+---@overload fun(idx: 146): "ValueTextShadow"
+---@overload fun(idx: 147): "IgnoreActiveForEnums"
+---@overload fun(idx: 148): "LabelAreaHeight"
+---@overload fun(idx: 149): "LabelAreaMargins"
+---@overload fun(idx: 150): "ValueAreaMargins"
+---@overload fun(idx: 151): "ValueTextColor"
+---@overload fun(idx: 152): "ValueActiveTextColor"
+---@overload fun(idx: 153): "ValueAlignmentH"
+---@overload fun(idx: 154): "ValueAlignmentV"
+---@overload fun(idx: 155): "IconActive"
+---@overload fun(idx: 156): "IconInactive"
+---@overload fun(idx: 157): "SetIconAsActiveInactive"
+---@overload fun(idx: 158): "EditNewObject"
+---@overload fun(idx: 159): "UseGridColor"
+---@overload fun(idx: 160): "ArrayIndex"
+---@overload fun(idx: 161): "ValueRole"
+---@overload fun(idx: 162): "TriggerIndirectInitLevel"
+---@overload fun(idx: 163): "OnTargetChanged"
+---@overload fun(idx: 164): "NonEmptyIndicatorColor"
+---@overload fun(idx: 165): "SelectedBackColor"
+---@overload fun(idx: 166): "SelectedTextColor"
+---@overload fun(idx: 167): "EmptyBackColor"
+---@overload fun(idx: 168): "EmptyTextColor"
+---@overload fun(idx: 169): "ItemIndex"
+---@overload fun(idx: 170): "PinnedIcon"
+---@overload fun(idx: 171): "AutoTexture"
+function UITabButton:PropertyName(idx) end
+---@overload fun(idx: 0|1|2|46|65|78): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 3|12|32|33|34|39|40|41|42|43|44|45|47|48|49|50|51|52|53|54|59|60|62|63|64|66|79|81|82|83|84|85|86|87|130|136|137|138|139|140|141|142|143|144|145|146|147|157|158|159|171): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 4|5|6|20): {ExportIgnore: True, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 7|8|13|15|16|17|18|19|21|22|23|24|25|26|27|28|29|30|31|35|36|56|57|58|67|68|69|70|71|76|80|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|120|121|122|123|124|125|126|127|128|129|131|132|134|135|148|149|150|151|152|155|156|163|164|165|166|167|168|170): {ExportIgnore: False, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 9): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 10|11): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 14|77|133): {ExportIgnore: False, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 37): {ExportIgnore: False, EnumCollection: FocusPriority, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 38): {ExportIgnore: False, EnumCollection: UserRights, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 55): {ExportIgnore: False, EnumCollection: ModalResult, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 61): {ExportIgnore: False, EnumCollection: FocusSearchPolicy, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 72|74|118|153): {ExportIgnore: False, EnumCollection: AlignmentH, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 73|75|119|154): {ExportIgnore: False, EnumCollection: AlignmentV, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 160): {ExportIgnore: False, EnumCollection: Index, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 161): {ExportIgnore: False, EnumCollection: ValueRole, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 162): {ExportIgnore: False, EnumCollection: ChangeLevel, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 169): {ExportIgnore: True, ReadOnly: True, ImportIgnore: True}
+function UITabButton:PropertyInfo(idx) end
+---@overload fun(idx: 0|1|2|3|4|5|6|9|128|169): "UInt32"
+---@overload fun(idx: 7|8|13|24|25|26|70|71|80|131|134|135): "String"
+---@overload fun(idx: 10|11|78|79|130|136|137|138|139|140|141|142|143|144|145|146|147|157|158|159|171): "Bool"
+---@overload fun(idx: 12|32|33|34|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|59|60|61|62|63|64|65|66|81|82|83|84|85|86|87): "UInt64"
+---@overload fun(idx: 14|55|56): "Int64"
+---@overload fun(idx: 15|16|17|18|120|121|122|123): "Size"
+---@overload fun(idx: 19|20|67|68|127|133): "Custom"
+---@overload fun(idx: 21|114|155|156|170): "Texture"
+---@overload fun(idx: 22|23): "Font"
+---@overload fun(idx: 27|28|29|30|31|58|77|115|116|124|125|126|132|151|152|164|165|166|167|168): "Handle"
+---@overload fun(idx: 35|148): "Int16"
+---@overload fun(idx: 36|69|76|129|149|150): "4Ints"
+---@overload fun(idx: 37|38|72|73|74|75|118|119|153|154|162): "UInt8"
+---@overload fun(idx: 57|160|161): "Int32"
+---@overload fun(idx: 88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|163): "Signal"
+---@overload fun(idx: 113): "UInt16"
+---@overload fun(idx: 117): "Float"
+function UITabButton:PropertyType(idx) end
+---@overload fun(name: "AlignmentH"|"TextAlignmentH"|"IconAlignmentH"|"ValueAlignmentH", role: nil): AlignmentH
+---@overload fun(name: "AlignmentV"|"TextAlignmentV"|"IconAlignmentV"|"ValueAlignmentV", role: nil): AlignmentV
 ---@overload fun(name: "TriggerIndirectInitLevel", role: nil): ChangeLevel
----@overload fun(name: "SelectedBackColor"|"SelectedTextColor"|"EmptyBackColor"|"EmptyTextColor"|"NonEmptyIndicatorColor"|"ValueTextColor"|"ValueActiveTextColor"|"IconColor"|"IconHoverColor"|"ActiveBackColor"|"ActiveTextColor"|"ActiveIconColor"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor", role: nil): Color
+---@overload fun(name: "BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"IconColor"|"IconHoverColor"|"ActiveBackColor"|"ActiveTextColor"|"ActiveIconColor"|"ValueTextColor"|"ValueActiveTextColor"|"NonEmptyIndicatorColor"|"SelectedBackColor"|"SelectedTextColor"|"EmptyBackColor"|"EmptyTextColor", role: nil): Color
 ---@overload fun(name: "PluginComponent", role: nil): Component
 ---@overload fun(name: "Focus", role: nil): FocusPriority
+---@overload fun(name: "FocusSearchPolicy", role: nil): FocusSearchPolicy
 ---@overload fun(name: "Font"|"LowDpiFont", role: nil): Font
----@overload fun(name: "CloseAction", role: nil): GestureResult
----@overload fun(name: "IconOffsetH"|"IconOffsetV"|"TextOffsetH"|"TextOffsetV"|"X"|"Y"|"W"|"H", role: nil): Graphics.SizeDescriptor
+---@overload fun(name: "X"|"Y"|"W"|"H"|"IconOffsetH"|"IconOffsetV"|"TextOffsetH"|"TextOffsetV", role: nil): Graphics.SizeDescriptor
 ---@overload fun(name: "MinSize"|"MaxSize", role: nil): Graphics.SizeDimension
 ---@overload fun(name: "HotKey", role: nil): HotKey
+---@overload fun(name: "ArrayIndex", role: nil): Index
+---@overload fun(name: "CloseAction", role: nil): ModalResult
 ---@overload fun(name: "Target", role: nil): Object
 ---@overload fun(name: "TargetList", role: nil): Object[]
----@overload fun(name: "PinnedIcon"|"IconActive"|"IconInactive"|"Icon"|"Texture", role: nil): Texture
+---@overload fun(name: "Texture"|"Icon"|"IconActive"|"IconInactive"|"PinnedIcon", role: nil): Texture
 ---@overload fun(name: "LabelLinkHandle", role: nil): UIObject
 ---@overload fun(name: "UserRights", role: nil): UserRights
 ---@overload fun(name: "ValueRole", role: nil): ValueRole
----@overload fun(name: "AutoTexture"|"ShowLabel"|"ShowValue"|"DataAsIs"|"AutoHide"|"IndirectEdit"|"ValueAutoAdjust"|"DirectProperty"|"DefaultAction"|"CharAction"|"Undo"|"ValueTextShadow"|"IgnoreActiveForEnums"|"SetIconAsActiveInactive"|"EditNewObject"|"UseGridColor"|"IgnoreIconForTextAlign"|"HasFocus"|"HideFocusFrame"|"FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"HasFocus"|"HideFocusFrame"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"IgnoreIconForTextAlign"|"ShowLabel"|"ShowValue"|"DataAsIs"|"AutoHide"|"IndirectEdit"|"ValueAutoAdjust"|"DirectProperty"|"DefaultAction"|"CharAction"|"Undo"|"ValueTextShadow"|"IgnoreActiveForEnums"|"SetIconAsActiveInactive"|"EditNewObject"|"UseGridColor"|"AutoTexture", role: nil): YesNo|boolean
 ---@overload fun(name: "DescriptionChanged", role: nil): fun(str: string)
 ---@overload fun(name: "Clicked"|"DoubleClicked"|"MouseUp"|"MouseDown"|"MouseDownHold", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
 ---@overload fun(name: "ClickedLeft"|"ClickedRight"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUpLeft"|"MouseUpRight"|"MouseDownLeft"|"MouseDownRight", role: nil): fun(str: string, X: integer, Y: integer)
@@ -35,11 +252,45 @@ function UITabButton:GetChildClass() end
 ---@overload fun(name: "OnLoad", role: nil): fun(str: string, obj: Object)
 ---@overload fun(name: "TouchStart"|"TouchUpdate"|"TouchEnd", role: nil): fun(str: string, pointID: integer, X: integer, Y: integer)
 ---@overload fun(name: "CharInput", role: nil): fun(str: string, utf32Char: integer)
----@overload fun(name: "ItemIndex"|"LabelAreaHeight"|"ArrayIndex"|"State"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"AutoCloseValue"|"UiGroupId"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"ForceIntensity"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Index"|"Count"|"No"|"MemoryFootprint"|"FrameWidth"|"AutoCloseValue"|"UiGroupId"|"ForceIntensity"|"State"|"LabelAreaHeight"|"ItemIndex", role: nil): integer
 ---@overload fun(name: "IconScale", role: nil): number
----@overload fun(name: "Property"|"System"|"ReferencedTitleButton"|"Text"|"ToolTip"|"HelpTopic"|"SignalValue"|"SignalValueHold"|"AppearanceSourceClassName"|"Name"|"Note"|"DependencyExport", role: nil): string
----@overload fun(name: "LabelAreaMargins"|"ValueAreaMargins"|"ContentAreaMargin"|"Padding"|"Anchors"|"Margin", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
+---@overload fun(name: "Name"|"Note"|"DependencyExport"|"Text"|"ToolTip"|"HelpTopic"|"SignalValue"|"SignalValueHold"|"AppearanceSourceClassName"|"ReferencedTitleButton"|"Property"|"System", role: nil): string
+---@overload fun(name: "Padding"|"Anchors"|"Margin"|"ContentAreaMargin"|"LabelAreaMargins"|"ValueAreaMargins", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
 ---@overload fun(name: "AbsRect"|"AbsClientRect", role: nil): {left: number, right: number, top: number, bottom: number}
----@overload fun(name: "AutoTexture"|"SelectedBackColor"|"SelectedTextColor"|"EmptyBackColor"|"EmptyTextColor"|"ItemIndex"|"PinnedIcon"|"NonEmptyIndicatorColor"|"Target"|"TargetList"|"Property"|"System"|"ShowLabel"|"ShowValue"|"DataAsIs"|"AutoHide"|"IndirectEdit"|"ValueAutoAdjust"|"DirectProperty"|"DefaultAction"|"CharAction"|"Undo"|"ValueTextShadow"|"IgnoreActiveForEnums"|"LabelAreaHeight"|"LabelAreaMargins"|"ValueAreaMargins"|"ValueTextColor"|"ValueActiveTextColor"|"ValueAlignmentH"|"ValueAlignmentV"|"IconActive"|"IconInactive"|"SetIconAsActiveInactive"|"EditNewObject"|"UseGridColor"|"ArrayIndex"|"ValueRole"|"TriggerIndirectInitLevel"|"OnTargetChanged"|"Icon"|"IconColor"|"IconHoverColor"|"IconScale"|"IconAlignmentH"|"IconAlignmentV"|"IconOffsetH"|"IconOffsetV"|"TextOffsetH"|"TextOffsetV"|"ActiveBackColor"|"ActiveTextColor"|"ActiveIconColor"|"HotKey"|"State"|"ContentAreaMargin"|"IgnoreIconForTextAlign"|"ReferencedTitleButton"|"X"|"Y"|"W"|"H"|"AbsRect"|"AbsClientRect"|"Texture"|"Font"|"LowDpiFont"|"Text"|"ToolTip"|"HelpTopic"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Padding"|"Focus"|"UserRights"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"CloseAction"|"AutoCloseValue"|"UiGroupId"|"LabelLinkHandle"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"MinSize"|"MaxSize"|"Anchors"|"SignalValue"|"SignalValueHold"|"AlignmentH"|"AlignmentV"|"TextAlignmentH"|"TextAlignmentV"|"Margin"|"PluginComponent"|"HasFocus"|"HideFocusFrame"|"AppearanceSourceClassName"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"Clicked"|"ClickedLeft"|"ClickedRight"|"DoubleClicked"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUp"|"MouseUpLeft"|"MouseUpRight"|"MouseDown"|"MouseDownLeft"|"MouseDownRight"|"MouseDownHold"|"KeyDown"|"KeyUp"|"CharInput"|"TouchStart"|"TouchUpdate"|"TouchEnd"|"OnLoad"|"OnVisible"|"DescriptionChanged"|"FocusGet"|"FocusLost"|"ForceIntensity"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"X"|"Y"|"W"|"H"|"AbsRect"|"AbsClientRect"|"Texture"|"Font"|"LowDpiFont"|"Text"|"ToolTip"|"HelpTopic"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Padding"|"Focus"|"UserRights"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"CloseAction"|"AutoCloseValue"|"UiGroupId"|"LabelLinkHandle"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"MinSize"|"MaxSize"|"Anchors"|"SignalValue"|"SignalValueHold"|"AlignmentH"|"AlignmentV"|"TextAlignmentH"|"TextAlignmentV"|"Margin"|"PluginComponent"|"HasFocus"|"HideFocusFrame"|"AppearanceSourceClassName"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"Clicked"|"ClickedLeft"|"ClickedRight"|"DoubleClicked"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUp"|"MouseUpLeft"|"MouseUpRight"|"MouseDown"|"MouseDownLeft"|"MouseDownRight"|"MouseDownHold"|"KeyDown"|"KeyUp"|"CharInput"|"TouchStart"|"TouchUpdate"|"TouchEnd"|"OnLoad"|"OnVisible"|"DescriptionChanged"|"FocusGet"|"FocusLost"|"ForceIntensity"|"Icon"|"IconColor"|"IconHoverColor"|"IconScale"|"IconAlignmentH"|"IconAlignmentV"|"IconOffsetH"|"IconOffsetV"|"TextOffsetH"|"TextOffsetV"|"ActiveBackColor"|"ActiveTextColor"|"ActiveIconColor"|"HotKey"|"State"|"ContentAreaMargin"|"IgnoreIconForTextAlign"|"ReferencedTitleButton"|"Target"|"TargetList"|"Property"|"System"|"ShowLabel"|"ShowValue"|"DataAsIs"|"AutoHide"|"IndirectEdit"|"ValueAutoAdjust"|"DirectProperty"|"DefaultAction"|"CharAction"|"Undo"|"ValueTextShadow"|"IgnoreActiveForEnums"|"LabelAreaHeight"|"LabelAreaMargins"|"ValueAreaMargins"|"ValueTextColor"|"ValueActiveTextColor"|"ValueAlignmentH"|"ValueAlignmentV"|"IconActive"|"IconInactive"|"SetIconAsActiveInactive"|"EditNewObject"|"UseGridColor"|"ArrayIndex"|"ValueRole"|"TriggerIndirectInitLevel"|"OnTargetChanged"|"NonEmptyIndicatorColor"|"SelectedBackColor"|"SelectedTextColor"|"EmptyBackColor"|"EmptyTextColor"|"ItemIndex"|"PinnedIcon"|"AutoTexture", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): UIObject
 function UITabButton:Get(name, role) end
+---@overload fun(property_name: "AlignmentH"|"TextAlignmentH"|"IconAlignmentH"|"ValueAlignmentH", property_value: AlignmentH, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "AlignmentV"|"TextAlignmentV"|"IconAlignmentV"|"ValueAlignmentV", property_value: AlignmentV, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "TriggerIndirectInitLevel", property_value: ChangeLevel, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"IconColor"|"IconHoverColor"|"ActiveBackColor"|"ActiveTextColor"|"ActiveIconColor"|"ValueTextColor"|"ValueActiveTextColor"|"NonEmptyIndicatorColor"|"SelectedBackColor"|"SelectedTextColor"|"EmptyBackColor"|"EmptyTextColor", property_value: Color, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Focus", property_value: FocusPriority, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "FocusSearchPolicy", property_value: FocusSearchPolicy, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Font"|"LowDpiFont", property_value: Font, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "X"|"Y"|"W"|"H"|"IconOffsetH"|"IconOffsetV"|"TextOffsetH"|"TextOffsetV", property_value: Graphics.SizeDescriptor, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "MinSize"|"MaxSize", property_value: Graphics.SizeDimension, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "HotKey", property_value: HotKey, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ArrayIndex", property_value: Index, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "CloseAction", property_value: ModalResult, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Target", property_value: Object, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Texture"|"Icon"|"IconActive"|"IconInactive"|"PinnedIcon", property_value: Texture, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "LabelLinkHandle", property_value: UIObject, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "UserRights", property_value: UserRights, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ValueRole", property_value: ValueRole, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Hidden"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"HasFocus"|"HideFocusFrame"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"IgnoreIconForTextAlign"|"ShowLabel"|"ShowValue"|"DataAsIs"|"AutoHide"|"IndirectEdit"|"ValueAutoAdjust"|"DirectProperty"|"DefaultAction"|"CharAction"|"Undo"|"ValueTextShadow"|"IgnoreActiveForEnums"|"SetIconAsActiveInactive"|"EditNewObject"|"UseGridColor"|"AutoTexture", property_value: YesNo|boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "DescriptionChanged", property_value: fun(str: string), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Clicked"|"DoubleClicked"|"MouseUp"|"MouseDown"|"MouseDownHold", property_value: fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ClickedLeft"|"ClickedRight"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUpLeft"|"MouseUpRight"|"MouseDownLeft"|"MouseDownRight", property_value: fun(str: string, X: integer, Y: integer), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "OnVisible", property_value: fun(str: string, bool: boolean), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "OnTargetChanged", property_value: fun(str: string, int: integer), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "KeyDown"|"KeyUp", property_value: fun(str: string, keyCode: VirtualKeyCode, bool1: boolean, bool2: boolean, bool3: boolean), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "FocusGet"|"FocusLost", property_value: fun(str: string, obj1: Object, obj2: Object), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "OnLoad", property_value: fun(str: string, obj: Object), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "TouchStart"|"TouchUpdate"|"TouchEnd", property_value: fun(str: string, pointID: integer, X: integer, Y: integer), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "CharInput", property_value: fun(str: string, utf32Char: integer), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Index"|"Count"|"No"|"FrameWidth"|"AutoCloseValue"|"UiGroupId"|"ForceIntensity"|"State"|"LabelAreaHeight", property_value: integer, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "IconScale", property_value: number, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Name"|"Note"|"DependencyExport"|"Text"|"ToolTip"|"HelpTopic"|"SignalValue"|"SignalValueHold"|"AppearanceSourceClassName"|"ReferencedTitleButton"|"Property"|"System", property_value: string, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Padding"|"Anchors"|"Margin"|"ContentAreaMargin"|"LabelAreaMargins"|"ValueAreaMargins", property_value: {left: integer, right: integer, top: integer, bottom: integer}, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "AbsRect"|"AbsClientRect", property_value: {left: number, right: number, top: number, bottom: number}, override_change_level: ChangeLevel?)
+function UITabButton:Set(property_name, property_value, override_change_level) end

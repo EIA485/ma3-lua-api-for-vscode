@@ -6,6 +6,10 @@ local HelperWindowSettingsCollect = {}
 function HelperWindowSettingsCollect:GetClass() end
 ---@return "HelpViewerWindowSettings"
 function HelperWindowSettingsCollect:GetChildClass() end
+---@generic T : HelperWindowSettingsCollect
+---@param class `T`
+---@return boolean
+function HelperWindowSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return HelpViewerWindowSettings
 function HelperWindowSettingsCollect:Ptr(index) end
@@ -56,3 +60,6 @@ function HelperWindowSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): HelpViewerWindowSettings
 function HelperWindowSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "ZoomFactor", property_value: ZoomFactor)
+---@overload fun(property_name: "ZoomFactor", property_value: ZoomFactor)
+function HelperWindowSettingsCollect:ZoomFactor(property_name, property_value) end

@@ -6,3 +6,7 @@ local MacroPoolTitleButton = {}
 function MacroPoolTitleButton:GetClass() end
 ---@return "UIObject"
 function MacroPoolTitleButton:GetChildClass() end
+---@generic T : MacroPoolTitleButton
+---@param class `T`
+---@return boolean
+function MacroPoolTitleButton:IsClass(class) end

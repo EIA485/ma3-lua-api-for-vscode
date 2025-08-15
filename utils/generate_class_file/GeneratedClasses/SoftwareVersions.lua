@@ -6,6 +6,10 @@ local SoftwareVersions = {}
 function SoftwareVersions:GetClass() end
 ---@return "SoftwareVersion"
 function SoftwareVersions:GetChildClass() end
+---@generic T : SoftwareVersions
+---@param class `T`
+---@return boolean
+function SoftwareVersions:IsClass(class) end
 ---@return DMXMode
 function SoftwareVersions:Parent() end
 ---@param index integer
@@ -58,3 +62,6 @@ function SoftwareVersions:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SoftwareVersion
 function SoftwareVersions:Find(class, undo) end
+---@overload fun(property_name: "SoftwareVersionID", property_value: integer)
+---@overload fun(property_name: "SoftwareVersionID", property_value: integer)
+function SoftwareVersions:SoftwareVersionID(property_name, property_value) end

@@ -6,6 +6,10 @@ local ColorDefCollect = {}
 function ColorDefCollect:GetClass() end
 ---@return "ColorDefGroup"
 function ColorDefCollect:GetChildClass() end
+---@generic T : ColorDefCollect
+---@param class `T`
+---@return boolean
+function ColorDefCollect:IsClass(class) end
 ---@return ColorTheme
 function ColorDefCollect:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function ColorDefCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ColorDefGroup
 function ColorDefCollect:Find(class, undo) end
+function ColorDefCollect:ActiveDisplay(property_name, property_value) end

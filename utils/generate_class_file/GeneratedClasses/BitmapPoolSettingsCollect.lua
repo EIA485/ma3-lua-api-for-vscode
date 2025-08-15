@@ -6,6 +6,10 @@ local BitmapPoolSettingsCollect = {}
 function BitmapPoolSettingsCollect:GetClass() end
 ---@return "BitmapPoolSettings"
 function BitmapPoolSettingsCollect:GetChildClass() end
+---@generic T : BitmapPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function BitmapPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return BitmapPoolSettings
 function BitmapPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function BitmapPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): BitmapPoolSettings
 function BitmapPoolSettingsCollect:Find(class, undo) end
+function BitmapPoolSettingsCollect:ActiveDisplay(property_name, property_value) end

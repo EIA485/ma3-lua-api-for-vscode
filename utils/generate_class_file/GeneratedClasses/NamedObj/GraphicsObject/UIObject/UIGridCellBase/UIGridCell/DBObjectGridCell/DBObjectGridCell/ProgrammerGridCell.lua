@@ -6,3 +6,7 @@ local ProgrammerGridCell = {}
 function ProgrammerGridCell:GetClass() end
 ---@return "UIObject"
 function ProgrammerGridCell:GetChildClass() end
+---@generic T : ProgrammerGridCell
+---@param class `T`
+---@return boolean
+function ProgrammerGridCell:IsClass(class) end

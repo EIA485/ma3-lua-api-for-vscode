@@ -6,6 +6,10 @@ local GeneratorChannels = {}
 function GeneratorChannels:GetClass() end
 ---@return "GeneratorBaseChannel"
 function GeneratorChannels:GetChildClass() end
+---@generic T : GeneratorChannels
+---@param class `T`
+---@return boolean
+function GeneratorChannels:IsClass(class) end
 ---@return GeneratorBaseObject
 function GeneratorChannels:Parent() end
 ---@param index integer
@@ -36,3 +40,8 @@ function GeneratorChannels:Insert(index, class, undo, count) end
 ---@overload fun(class: "GeneratorBaseChannel", undo: Undo?): GeneratorBaseChannel
 ---@overload fun(class: nil, undo: Undo?): GeneratorBaseChannel
 function GeneratorChannels:Find(class, undo) end
+---@overload fun(property_name: "VirtualDimmer", property_value: GenVirtualDimmer|boolean)
+---@overload fun(property_name: "Attribute", property_value: AttributeIndexPropertyValue)
+---@overload fun(property_name: "Attribute", property_value: AttributeIndexPropertyValue)
+---@overload fun(property_name: "VirtualDimmer", property_value: GenVirtualDimmer|boolean)
+function GeneratorChannels:Attribute(property_name, property_value) end

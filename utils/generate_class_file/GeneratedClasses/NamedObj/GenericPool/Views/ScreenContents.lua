@@ -6,6 +6,10 @@ local ScreenContents = {}
 function ScreenContents:GetClass() end
 ---@return "ScreenContent"
 function ScreenContents:GetChildClass() end
+---@generic T : ScreenContents
+---@param class `T`
+---@return boolean
+function ScreenContents:IsClass(class) end
 ---@return ScreenConfig
 function ScreenContents:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function ScreenContents:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ScreenContent
 function ScreenContents:Find(class, undo) end
+function ScreenContents:ScreenContentMask(property_name, property_value) end

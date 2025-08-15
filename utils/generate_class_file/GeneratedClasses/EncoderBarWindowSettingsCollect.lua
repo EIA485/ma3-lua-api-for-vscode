@@ -6,6 +6,10 @@ local EncoderBarWindowSettingsCollect = {}
 function EncoderBarWindowSettingsCollect:GetClass() end
 ---@return "EncoderBarWindowSettings"
 function EncoderBarWindowSettingsCollect:GetChildClass() end
+---@generic T : EncoderBarWindowSettingsCollect
+---@param class `T`
+---@return boolean
+function EncoderBarWindowSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return EncoderBarWindowSettings
 function EncoderBarWindowSettingsCollect:Ptr(index) end
@@ -56,3 +60,5 @@ function EncoderBarWindowSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): EncoderBarWindowSettings
 function EncoderBarWindowSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "ShowGrandMaster"|"ShowLayerToolbar"|"ShowScreenEncoder"|"FadeEncoder"|"ShowFunctionSelector"|"ShowStepButtons"|"ShowEncoderLabel"|"ShowEncoderPageSelector"|"ShowUserSettings"|"ShowTimeButtons"|"ShowToolPopups"|"ShowEncoderBank", property_value: YesNo|boolean)
+function EncoderBarWindowSettingsCollect:ActiveDisplay(property_name, property_value) end

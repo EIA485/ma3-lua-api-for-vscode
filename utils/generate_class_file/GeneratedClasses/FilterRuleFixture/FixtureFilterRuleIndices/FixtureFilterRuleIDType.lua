@@ -6,6 +6,10 @@ local FixtureFilterRuleIDType = {}
 function FixtureFilterRuleIDType:GetClass() end
 ---@return "IdType"
 function FixtureFilterRuleIDType:GetChildClass() end
+---@generic T : FixtureFilterRuleIDType
+---@param class `T`
+---@return boolean
+function FixtureFilterRuleIDType:IsClass(class) end
 ---@param index integer
 ---@return IdType
 function FixtureFilterRuleIDType:Ptr(index) end
@@ -56,3 +60,6 @@ function FixtureFilterRuleIDType:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): IdType
 function FixtureFilterRuleIDType:Find(class, undo) end
+---@overload fun(property_name: "IDType", property_value: integer)
+---@overload fun(property_name: "IDType", property_value: integer)
+function FixtureFilterRuleIDType:IDType(property_name, property_value) end

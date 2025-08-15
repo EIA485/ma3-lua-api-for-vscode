@@ -6,6 +6,10 @@ local HardwareConfigurations = {}
 function HardwareConfigurations:GetClass() end
 ---@return "HardwareConfiguration"
 function HardwareConfigurations:GetChildClass() end
+---@generic T : HardwareConfigurations
+---@param class `T`
+---@return boolean
+function HardwareConfigurations:IsClass(class) end
 ---@return Root
 function HardwareConfigurations:Parent() end
 ---@param index integer
@@ -58,3 +62,8 @@ function HardwareConfigurations:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): HardwareConfiguration
 function HardwareConfigurations:Find(class, undo) end
+---@overload fun(property_name: "IsWing", property_value: YesNo|boolean)
+---@overload fun(property_name: "ModuleVersion", property_value: string)
+---@overload fun(property_name: "IsWing", property_value: YesNo|boolean)
+---@overload fun(property_name: "ModuleVersion", property_value: string)
+function HardwareConfigurations:ModuleVersion(property_name, property_value) end

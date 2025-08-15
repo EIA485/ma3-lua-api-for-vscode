@@ -6,3 +6,7 @@ local PluginPoolTitleButton = {}
 function PluginPoolTitleButton:GetClass() end
 ---@return "UIObject"
 function PluginPoolTitleButton:GetChildClass() end
+---@generic T : PluginPoolTitleButton
+---@param class `T`
+---@return boolean
+function PluginPoolTitleButton:IsClass(class) end

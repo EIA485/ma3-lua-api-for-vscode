@@ -6,6 +6,10 @@ local RDMPorts = {}
 function RDMPorts:GetClass() end
 ---@return "RDMPort"
 function RDMPorts:GetChildClass() end
+---@generic T : RDMPorts
+---@param class `T`
+---@return boolean
+function RDMPorts:IsClass(class) end
 ---@return RDMData
 function RDMPorts:Parent() end
 ---@param index integer
@@ -58,3 +62,6 @@ function RDMPorts:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): RDMPort
 function RDMPorts:Find(class, undo) end
+---@overload fun(property_name: "UniverseIndex", property_value: integer)
+---@overload fun(property_name: "UniverseIndex", property_value: integer)
+function RDMPorts:UniverseIndex(property_name, property_value) end

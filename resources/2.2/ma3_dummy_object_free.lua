@@ -6,96 +6,73 @@
 
 ---@param fixtureTable table
 ---@return boolean? success
-function AddFixtures(fixtureTable)
-    return true
-end
+function AddFixtures(fixtureTable) end
 
 ---@param addonName string
 ---@return Variables? addonVariable
 function AddonVars(addonName) end
 
 ---@return table buildDetails
-function BuildDetails()
-    return {}
-end
+function BuildDetails() end
 
 ---@param dmxMode Object
 ---@param startAddress string
----@param count? integer? @Optional
----@param breakIndex? integer @Optional
+---@param count integer?? @Optional
+---@param breakIndex integer? @Optional
 ---@return boolean noCollisionFound
-function CheckDMXCollision(dmxMode, startAddress, count, breakIndex)
-    return true
-end
+function CheckDMXCollision(dmxMode, startAddress, count, breakIndex) end
 
 ---@param fixtureId integer
----@param count? integer @Optional
----@param type? integer @Optional
+---@param count integer? @Optional
+---@param type integer? @Optional
 ---@return boolean noCollisionFound
-function CheckFIDCollision(fixtureId, count, type)
-    return true
-end
+function CheckFIDCollision(fixtureId, count, type) end
 
 ---@param className string
 ---@return boolean result
-function ClassExists(className)
-    return true
-end
+function ClassExists(className) end
 
-function CloseAllOverlays()
-end
+function CloseAllOverlays() end
 
 ---@param undoHandle Undo
 ---@return boolean closed
-function CloseUndo(undoHandle)
-    return true
-end
+function CloseUndo(undoHandle) end
 
 ---@param command string
 ---@param undoHandle Undo? @Optional
 ---@return string result
-function Cmd(command, undoHandle)
-    return ""
-end
+function Cmd(command, undoHandle) end
 
 ---@param command string
 ---@param undoHandle Undo? @Optional
----@param handleTarget? Object @Optional
+---@param handleTarget Object? @Optional
 function CmdIndirect(command, undoHandle, handleTarget)
-    
-end
+    end
 
 ---@param command string
 ---@param undoHandle Undo? @Optional
 ---@param handleTarget Object? @Optional
 function CmdIndirectWait(command, undoHandle, handleTarget)
-    
-end
+    end
 
 ---@return Cmdline object
 function CmdObj() end
 
 ---@return table configDetails
-function ConfigTable()
-    return {}
-end
+function ConfigTable() end
 
 ---@param title string
 ---@param text string? @Optional
 ---@param screen integer? @Optional
 ---@param showCancel boolean? @Optional
 ---@return boolean result
-function Confirm(title, text, screen, showCancel)
-    return true
-end
+function Confirm(title, text, screen, showCancel) end
 
 ---@param fixtureTableHandle Fixture[]
 ---@param multiPatchAmount integer
 ---@param undoText string? @Optional
 ---@return integer? multiPatchAmountCreated
-function CreateMultiPatch(fixtureTableHandle, multiPatchAmount, undoText)
-    return 0
-end
+function CreateMultiPatch(fixtureTableHandle, multiPatchAmount, undoText) end
 
 ---@param undoText any
 ---@return Undo undoHandle
@@ -125,73 +102,54 @@ function DefaultDisplayPositions() end
 ---@param variableSetHandle Variables
 ---@param variableName string
 ---@return boolean success 
-function DelVar(variableSetHandle, variableName)
-    return true
-end
+function DelVar(variableSetHandle, variableName) end
 
 ---@return boolean deskIsLocked
-function DeskLocked()
-    return true
-end
+function DeskLocked() end
 
 ---@return DeviceConfigurations configurationHandle
 function DeviceConfiguration() end
 
 ---@param path string
----@param filter? string @Optional
+---@param filter string? @Optional
 ---@return table
-function DirList(path, filter)
-    return {}
-end
+function DirList(path, filter) end
 
 ---@param displayIndex integer
 ---@param position table
----@param duration? integer @Optional
-function DrawPointer(displayIndex, position, duration)
-end
+---@param duration integer? @Optional
+function DrawPointer(displayIndex, position, duration) end
 
-function DumpAllHooks()
-end
+function DumpAllHooks() end
 
 ---@param message string
-function Echo(message)
-end
+function Echo(message) end
 
 ---@param message string
-function ErrEcho(message)
-end
+function ErrEcho(message) end
 
 ---@param message string
 function ErrPrintf(message)
-    
-end
+    end
 
 ---@param fileName string
 ---@param exportData table
 ---@return boolean success
-function Export(fileName, exportData)
-    return true
-end
+function Export(fileName, exportData) end
 
 ---@param fileName string
 ---@param exportData table
 ---@return boolean success
-function ExportCSV(fileName, exportData)
-    return true    
-end
+function ExportCSV(fileName, exportData) end
 
 ---@param fileName string
 ---@param exportData table
 ---@return boolean success
-function ExportJson(fileName, exportData)
-    return true
-end
+function ExportJson(fileName, exportData) end
 
 ---@param fileName string
 ---@return boolean result
-function FileExists(fileName)
-    return true
-end
+function FileExists(fileName) end
 
 ---@param textureName string
 ---@return Texture? textureHandle
@@ -205,35 +163,27 @@ function FirstDmxModeFixture(fixtureDMXMode) end
 function FixtureType() end
 
 ---@param objectString string
----@param addressHandle? Object @Optional
+---@param addressHandle Object? @Optional
 ---@return Object object
 function FromAddr(objectString, addressHandle) end
 
 ---@return table apiDescriptor
-function GetApiDescriptor()
-    return {}
-end
+function GetApiDescriptor() end
 
 ---@param channelIndex integer
 ---@return Attribute attributeHandle
 function GetAttributeByUIChannel(channelIndex) end
 
 ---@return integer attributeCount
-function GetAttributeCount()
-    return 0
-end
+function GetAttributeCount() end
 
 ---@param attributeName string
 ---@return integer attributeIndex
-function GetAttributeIndex(attributeName)
-    return 0
-end
+function GetAttributeIndex(attributeName) end
 
 ---@param Ma3ModuleHandle Object
 ---@return table state
-function GetButton(Ma3ModuleHandle)
-    return {}
-end
+function GetButton(Ma3ModuleHandle) end
 
 ---@param channelIndex integer
 ---@param attributeIndex integer
@@ -243,23 +193,17 @@ function GetChannelFunction(channelIndex, attributeIndex) end
 ---@param channelIndex integer
 ---@param attributeIndex integer
 ---@return integer channelFunctionIndex
-function GetChannelFunctionIndex(channelIndex, attributeIndex)
-    return 0
-end
+function GetChannelFunctionIndex(channelIndex, attributeIndex) end
 
 ---@param className string
 ---@return integer derivationLevel
-function GetClassDerivationLevel(className)
-    return 0
-end
+function GetClassDerivationLevel(className) end
 
 ---@return Cue cueHandle
 function GetCurrentCue() end
 
 ---@return integer fps
-function GetDebugFPS()
-    return 0
-end
+function GetDebugFPS() end
 
 ---@param displayIndex integer
 ---@return Display displayHandle
@@ -269,25 +213,19 @@ function GetDisplayByIndex(displayIndex) end
 function GetDisplayCollect() end
 
 ---@param universe integer
----@param isPercent? boolean @Optional
+---@param isPercent boolean? @Optional
 ---@return table? universe
-function GetDMXUniverse(universe, isPercent)
-    return {}
-end
+function GetDMXUniverse(universe, isPercent) end
 
 ---@param address integer
----@param universe? integer @Optional
----@param returnPercent? boolean @Optional
+---@param universe integer? @Optional
+---@param returnPercent boolean? @Optional
 ---@return integer? value
-function GetDMXValue(address, universe, returnPercent)
-    return 0
-end
+function GetDMXValue(address, universe, returnPercent) end
 
 ---@param executorNumber integer
 ---@return Exec executor, Page page
-function GetExecutor(executorNumber)
-    return Object:new(), Object:new()
-end
+function GetExecutor(executorNumber) end
 
 ---@return UIObject focusHandle
 function GetFocus() end
@@ -296,55 +234,39 @@ function GetFocus() end
 function GetFocusDisplay() end
 
 ---@return table apiDescriptor
-function GetObjApiDescriptor()
-    return {}
-end
+function GetObjApiDescriptor() end
 
 ---@param folderNameOrIndex string|integer
----@param createIfNotExist? boolean? @Optional
+---@param createIfNotExist boolean?? @Optional
 ---@return string path
-function GetPath(folderNameOrIndex, createIfNotExist)
-    return ""
-end
+function GetPath(folderNameOrIndex, createIfNotExist) end
 
 ---@param folderNameOrIndex string|integer
 ---@param basePath string
----@param createIfNotExist? boolean @Optional 
+---@param createIfNotExist boolean? @Optional 
 ---@return string path
-function GetPathOverrideFor(folderNameOrIndex, basePath, createIfNotExist)
-    return ""
-end
+function GetPathOverrideFor(folderNameOrIndex, basePath, createIfNotExist) end
 
 ---@return string separator
-function GetPathSeparator()
-    return ""
-end
+function GetPathSeparator() end
 
 ---@param objectHandle Object
----@param pathContentType? integer @Optional
+---@param pathContentType integer? @Optional
 ---@return string pathType
-function GetPathType(objectHandle, pathContentType)
-    return ""
-end
+function GetPathType(objectHandle, pathContentType) end
 
 ---@param presetHandle Preset
----@param returnPhaserData? boolean? @Optional
----@param extract? boolean @Optional
+---@param returnPhaserData boolean?? @Optional
+---@param extract boolean? @Optional
 ---@return {by_fixtures: {}, count:number} presetData
-function GetPresetData(presetHandle, returnPhaserData, extract)
-    return {}
-end
+function GetPresetData(presetHandle, returnPhaserData, extract) end
 
 ---@param rtChannelIndex integer
 ---@return table reChanelDescriptor
-function GetRTChannel(rtChannelIndex)
-    return {}
-end
+function GetRTChannel(rtChannelIndex) end
 
 ---@return integer count
-function GetRTChannelCount()
-    return 0
-end
+function GetRTChannelCount() end
 
 --define fallback sig since emmylua's global overload handeling is not the best (issue#651)
 
@@ -353,15 +275,11 @@ end
 ---@return RTChannel[]|integer[]
 ---@overload fun(fixture: integer|Fixture, returnHandles: false?) : integer[]
 ---@overload fun(fixture: integer|Fixture, returnHandles: true) : RTChannel[]
-function GetRTChannels(fixture, returnHandles)
-    return {}
-end
+function GetRTChannels(fixture, returnHandles) end
 
 ---@param sampleType string
 ---@return number sample
-function GetSample(sampleType)
-    return 0.1
-end
+function GetSample(sampleType) end
 
 ---@param screenHandle Object
 ---@return ScreenContent screenContentHandle
@@ -371,30 +289,22 @@ function GetScreenContent(screenHandle) end
 function GetSelectedAttribute() end
 
 ---@return string status
-function GetShowFileStatus()
-    return ""
-end
+function GetShowFileStatus() end
 
 ---@param fixtureIndex integer
 ---@return Fixture subFixtureHandle
 function GetSubfixture(fixtureIndex) end
 
 ---@return integer count
-function GetSubfixtureCount()
-    return 0
-end
+function GetSubfixtureCount() end
 
 ---@param shortKeyword string
 ---@return string? tokenName
-function GetTokenName(shortKeyword)
-    return ""
-end
+function GetTokenName(shortKeyword) end
 
 ---@param index string
 ---@return string? tokenName
-function GetTokenNameByIndex(index)
-    return ""    
-end
+function GetTokenNameByIndex(index) end
 
 ---@return Popup? modalHandle
 function GetTopModal() end
@@ -404,22 +314,16 @@ function GetTopModal() end
 function GetTopOverlay(displayIndex) end
 
 ---@return integer count
-function GetUIChannelCount()
-    return 0
-end
+function GetUIChannelCount() end
 
 ---@param patchIndex integer
 ---@param attributeIndex integer
 ---@return integer index
-function GetUIChannelIndex(patchIndex, attributeIndex)
-    return 0
-end
+function GetUIChannelIndex(patchIndex, attributeIndex) end
 
 ---@overload fun(fixture: integer|Fixture, returnHandles: false?) : integer[]
 ---@overload fun(fixture: integer|Fixture, returnHandles: true) : UIChannel[]
-function GetUIChannels(fixtureIndexOrHandle, returnHandles)
-    return {}
-end
+function GetUIChannels(fixtureIndexOrHandle, returnHandles) end
 
 ---@param displayIndex integer
 ---@param positionTable {x:integer, y:integer}
@@ -429,59 +333,42 @@ function GetUIObjectAtPosition(displayIndex, positionTable) end
 ---@param variableHandle Variables
 ---@param varName string
 ---@return string|integer|number|Object? value
-function GetVar(variableHandle, varName)
-    return ""
-end
+function GetVar(variableHandle, varName) end
 
 ---@return Variables globalVarHandle
 function GlobalVars() end
 
 ---@param objectHandle Object
 ---@return integer handleInt
-function HandleToInt(objectHandle)
-    return 0
-end
+function HandleToInt(objectHandle) end
 
 ---@param objectHandle Object
 ---@return string handleString
-function HandleToStr(objectHandle)
-    return ""
-end
+function HandleToStr(objectHandle) end
 
----@param functionName function
+---@param callback function
 ---@param objectHandle Object
 ---@param pluginHandle ComponentLua
 ---@param passedObjectHandle Object? @Optional
 ---@return integer hookId
-function HookObjectChange(functionName, objectHandle, pluginHandle, passedObjectHandle)
-    return 0
-end
+function HookObjectChange(functionName, objectHandle, pluginHandle, passedObjectHandle) end
 
 ---@return string os
-function HostOS()
-    return ""
-end
+function HostOS() end
 
 ---@return string subType
-function HostSubType()
-    return ""
-end
+function HostSubType() end
 
 ---@return string type
-function HostType()
-    return ""
-end
+function HostType() end
 
 ---@param fileName string
 ---@return table content
-function Import(fileName)
-    return {}
-end
+function Import(fileName) end
 
 ---@param progressBarHandle Object
 ---@param value integer
-function IncProgress(progressBarHandle, value)
-end
+function IncProgress(progressBarHandle, value) end
 
 ---@param handleInteger integer
 ---@return Object Object
@@ -490,15 +377,11 @@ function IntToHandle(handleInteger) end
 ---@param derivedClassName string
 ---@param baseClassName string
 ---@return boolean result
-function IsClassDerivedFrom(derivedClassName, baseClassName)
-    return true
-end
+function IsClassDerivedFrom(derivedClassName, baseClassName) end
 
 ---@param objectHandle Object
 ---@return boolean? valid
-function IsObjectValid(objectHandle)
-    return true
-end
+function IsObjectValid(objectHandle) end
 
 ---@return Keyboard keyboardHandle
 function KeyboardObj() end
@@ -508,31 +391,24 @@ function MasterPool() end
 
 ---@param messageBoxSettings table
 ---@return table result
-function MessageBox(messageBoxSettings)
-    return {}
-end
+function MessageBox(messageBoxSettings) end
 
 ---@return Mouse mouseHandle
 function MouseObj() end
 
 ---@return boolean needShowSave
-function NeedShowSave()
-    return true
-end
+function NeedShowSave() end
 
----@param objectListCommand string
----@param optionsTable? table @Optional
----@return table objectList
-function ObjectList(objectListCommand, optionsTable)
-    return {}
-end
+---@param objectListCommand string #string to parse/resolve (e.g. 'Fixture Thru')
+---@param optionsTable table? @Optional
+---@return Object[] objectList
+function ObjectList(objectListCommand, optionsTable) end
 
 ---@return Patch patchHandle
 function Patch() end
 
 ---@param message string
-function Printf(message)
-end
+function Printf(message) end
 
 ---@return Programmer programmerHandle
 function Programmer() end
@@ -544,9 +420,7 @@ function ProgrammerPart() end
 function Pult() end
 
 ---@return string releaseType
-function ReleaseType()
-    return ""
-end
+function ReleaseType() end
 
 ---@return Root rootHandle
 function Root() end
@@ -570,58 +444,43 @@ function SelectedTimer() end
 function Selection() end
 
 ---@return integer count
-function SelectionCount()
-    return 0
-end
+function SelectionCount() end
 
 ---@return integer patchIndex, integer gridX, integer gridY, integer gridZ
-function SelectionFirst()
-    return 0, 0, 0, 0
-end
+function SelectionFirst() end
 
 ---@param fixtureIndex integer
 ---@return integer patchIndex, integer gridX, integer gridY, integer gridZ
-function SelectionNext(fixtureIndex)
-    return 0, 0, 0, 0
-end
+function SelectionNext(fixtureIndex) end
 
 ---@return string serialNumber
-function SerialNumber()
-    return ""
-end
+function SerialNumber() end
 
 ---@param block boolean
-function SetBlockInput(block)
-end
+function SetBlockInput(block) end
 
 ---@param moduleHandle Object
 ---@param ledTable table
-function SetLED(moduleHandle, ledTable)
-end
+function SetLED(moduleHandle, ledTable) end
 
 ---@param progressBarHandle Object
 ---@param progress integer
-function SetProgress(progressBarHandle, progress)
-end
+function SetProgress(progressBarHandle, progress) end
 
 ---@param progressBarHandle Object
 ---@param rangeStart integer
 ---@param rangeEnd integer
-function SetProgressRange(progressBarHandle, rangeStart, rangeEnd)
-end
+function SetProgressRange(progressBarHandle, rangeStart, rangeEnd) end
 
 ---@param progressBarHandle Object
 ---@param text string
-function SetProgressText(progressBarHandle, text)
-end
+function SetProgressText(progressBarHandle, text) end
 
 ---@param variableSetHandle Variables
 ---@param varName string
 ---@param value string|number
 ---@return boolean success
-function SetVar(variableSetHandle, varName, value)
-    return true
-end
+function SetVar(variableSetHandle, varName, value) end
 
 ---@return ShowData showDataHandle
 function ShowData() end
@@ -634,61 +493,48 @@ function ShowSettings() end
 function StartProgress(title) end
 
 ---@param progressBarHandle Object
-function StopProgress(progressBarHandle)
-end
+function StopProgress(progressBarHandle) end
 
 ---@param handleString string
 ---@return Object Object
 function StrToHandle(handleString) end
 
----@param title? string @Optional
----@param textGuide? string @Optional
----@param xPosition? string @Optional
----@param yPosition? string @Optional
+---@param title string? @Optional
+---@param textGuide string? @Optional
+---@param xPosition string? @Optional
+---@param yPosition string? @Optional
 ---@return string textInputHandle
-function TextInput(title, textGuide, xPosition, yPosition)
-    return ""
-end
+function TextInput(title, textGuide, xPosition, yPosition) end
 
 ---@return integer time
-function Time()
-    return 0
-end
+function Time() end
 
 ---@param timedFunction function
 ---@param waitSeconds integer
 ---@param iterations integer
----@param timerCleanup? function? @Optional
----@param passedObjectHandle? Object @Optional
-function Timer(timedFunction, waitSeconds, iterations, timerCleanup, passedObjectHandle)
-end
+---@param timerCleanup function? @Optional
+---@param passedObjectHandle Object? @Optional
+function Timer(timedFunction, waitSeconds, iterations, timerCleanup, passedObjectHandle) end
 
 ---@param objectHandle Object
----@param returnType? boolean @Optional
+---@param returnType boolean? @Optional
 ---@return string address
-function ToAddr(objectHandle, returnType)
-    return ""
-end
+function ToAddr(objectHandle, returnType) end
 
 ---@return Touch touchObjectHandle
 function TouchObj() end
 
 ---@param hookId integer
-function Unhook(hookId)
-end
+function Unhook(hookId) end
 
 ---@param functionName function?
 ---@param targetObjectHandle Object?
 ---@param contextObjectHandle Object?
 ---@return integer amount
-function UnhookMultiple(functionName, targetObjectHandle, contextObjectHandle)
-    return 0
-end
+function UnhookMultiple(functionName, targetObjectHandle, contextObjectHandle) end
 
 ---@return Variables userVarHandle
 function UserVars() end
 
 ---@return string textVersion, integer major, integer minor, integer streaming, integer ui
-function Version()
-    return "", 0, 0, 0, 0
-end
+function Version() end

@@ -6,6 +6,10 @@ local sACNNode = {}
 function sACNNode:GetClass() end
 ---@return "Page-Nr"
 function sACNNode:GetChildClass() end
+---@generic T : sACNNode
+---@param class `T`
+---@return boolean
+function sACNNode:IsClass(class) end
 ---@return sACNDiscoveryCollect
 function sACNNode:Parent() end
 ---@param index integer
@@ -36,3 +40,6 @@ function sACNNode:Insert(index, class, undo, count) end
 ---@overload fun(class: "Page-Nr", undo: Undo?): PageNr
 ---@overload fun(class: nil, undo: Undo?): PageNr
 function sACNNode:Find(class, undo) end
+---@overload fun(property_name: "UniverseList", property_value: string)
+---@overload fun(property_name: "UniverseList", property_value: string)
+function sACNNode:UniverseList(property_name, property_value) end

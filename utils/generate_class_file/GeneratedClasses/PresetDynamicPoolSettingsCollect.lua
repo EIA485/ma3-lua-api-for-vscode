@@ -6,6 +6,10 @@ local PresetDynamicPoolSettingsCollect = {}
 function PresetDynamicPoolSettingsCollect:GetClass() end
 ---@return "PresetDynamicPoolSettings"
 function PresetDynamicPoolSettingsCollect:GetChildClass() end
+---@generic T : PresetDynamicPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function PresetDynamicPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return PresetDynamicPoolSettings
 function PresetDynamicPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function PresetDynamicPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetDynamicPoolSettings
 function PresetDynamicPoolSettingsCollect:Find(class, undo) end
+function PresetDynamicPoolSettingsCollect:ActiveDisplay(property_name, property_value) end

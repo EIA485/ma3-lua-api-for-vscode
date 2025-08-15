@@ -6,6 +6,10 @@ local ActivationGroups = {}
 function ActivationGroups:GetClass() end
 ---@return "ActivationGroup"
 function ActivationGroups:GetChildClass() end
+---@generic T : ActivationGroups
+---@param class `T`
+---@return boolean
+function ActivationGroups:IsClass(class) end
 ---@return AttributeDefinitions
 function ActivationGroups:Parent() end
 ---@param index integer
@@ -58,3 +62,8 @@ function ActivationGroups:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ActivationGroup
 function ActivationGroups:Find(class, undo) end
+---@overload fun(property_name: "AttribCount", property_value: integer)
+---@overload fun(property_name: "DeactivationGroup", property_value: DeactivationGroup)
+---@overload fun(property_name: "DeactivationGroup", property_value: DeactivationGroup)
+---@overload fun(property_name: "AttribCount", property_value: integer)
+function ActivationGroups:DeactivationGroup(property_name, property_value) end

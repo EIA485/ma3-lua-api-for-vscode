@@ -6,6 +6,10 @@ local IllegalObject = {}
 function IllegalObject:GetClass() end
 ---@return "IllegalObject"
 function IllegalObject:GetChildClass() end
+---@generic T : IllegalObject
+---@param class `T`
+---@return boolean
+function IllegalObject:IsClass(class) end
 ---@param index integer
 ---@return IllegalObject
 function IllegalObject:Ptr(index) end
@@ -35,3 +39,6 @@ function IllegalObject:Find(class, undo) end
 ---@overload fun(class: "GeneratorChannels"): GeneratorChannels
 ---@overload fun(class: "Page-Nr"): PageNr
 function IllegalObject:FindParent(class) end
+function IllegalObject:SpecialDialogTab(property_name, property_value) end
+function IllegalObject:SpecialDialogTab(property_name, property_value) end
+function IllegalObject:SetChildrenRecursive(property_name, property_value) end

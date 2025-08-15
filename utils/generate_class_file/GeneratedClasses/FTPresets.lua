@@ -6,6 +6,10 @@ local FTPresets = {}
 function FTPresets:GetClass() end
 ---@return "FTPresetType"
 function FTPresets:GetChildClass() end
+---@generic T : FTPresets
+---@param class `T`
+---@return boolean
+function FTPresets:IsClass(class) end
 ---@return DMXMode
 function FTPresets:Parent() end
 ---@param index integer
@@ -58,3 +62,6 @@ function FTPresets:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): FTPresetType
 function FTPresets:Find(class, undo) end
+---@overload fun(property_name: "FeatureGroup", property_value: integer)
+---@overload fun(property_name: "FeatureGroup", property_value: integer)
+function FTPresets:FeatureGroup(property_name, property_value) end

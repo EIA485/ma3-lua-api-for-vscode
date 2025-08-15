@@ -4,14 +4,14 @@
 ---@field PreRoll TimePropertyValue
 ---@field AfterRoll TimePropertyValue
 ---@field GeneratorStartTime TimePropertyValue
----@field GeneratorEndTime TimePropertyValue
----@field GeneratorLooped integer
----@field GeneratorFrameUnit integer
+---@field GeneratorEndTime GeneratorLimits
+---@field GeneratorLooped Yes|true
+---@field GeneratorFrameUnit FrameFormat
 ---@field AfterRollColor UColor
 ---@field OffColor UColor
 ---@field ExternalSourceColor UColor
 ---@field GeneratorColor UColor
----@field TimeDisplayFormat integer
+---@field TimeDisplayFormat TimeDisplayFormatSelected
 ---@field UserBits integer
 ---@field SourceIP Network.IP8Full
 ---@field TimeString string
@@ -23,23 +23,137 @@ local TCSlot = {
 function TCSlot:GetClass() end
 ---@return "Object"
 function TCSlot:GetChildClass() end
+---@generic T : TCSlot
+---@param class `T`
+---@return boolean
+function TCSlot:IsClass(class) end
 ---@return TimecodeSlots
 function TCSlot:Parent() end
+---@return 56
+function TCSlot:PropertyCount() end
+---@overload fun(idx: 0): "IgnoreNetwork"
+---@overload fun(idx: 1): "StructureLocked"
+---@overload fun(idx: 2): "SystemLocked"
+---@overload fun(idx: 3): "Lock"
+---@overload fun(idx: 4): "Index"
+---@overload fun(idx: 5): "Count"
+---@overload fun(idx: 6): "No"
+---@overload fun(idx: 7): "Name"
+---@overload fun(idx: 8): "UserExpanded"
+---@overload fun(idx: 9): "FaderEnabled"
+---@overload fun(idx: 10): "Owned"
+---@overload fun(idx: 11): "Hidden"
+---@overload fun(idx: 12): "DependencyExport"
+---@overload fun(idx: 13): "MemoryFootprint"
+---@overload fun(idx: 14): "Guid"
+---@overload fun(idx: 15): "Scribble"
+---@overload fun(idx: 16): "NameAndApp"
+---@overload fun(idx: 17): "Note"
+---@overload fun(idx: 18): "Tags"
+---@overload fun(idx: 19): "Appearance"
+---@overload fun(idx: 20): "Color"
+---@overload fun(idx: 21): "Image"
+---@overload fun(idx: 22): "ImageMode"
+---@overload fun(idx: 23): "ImageR"
+---@overload fun(idx: 24): "ImageG"
+---@overload fun(idx: 25): "ImageB"
+---@overload fun(idx: 26): "ImageAlpha"
+---@overload fun(idx: 27): "ImageRGBA"
+---@overload fun(idx: 28): "BackR"
+---@overload fun(idx: 29): "BackG"
+---@overload fun(idx: 30): "BackB"
+---@overload fun(idx: 31): "BackAlpha"
+---@overload fun(idx: 32): "BackRGBA"
+---@overload fun(idx: 33): "MediaFileName"
+---@overload fun(idx: 34): "ImageRotation"
+---@overload fun(idx: 35): "ImageMirror"
+---@overload fun(idx: 36): "CreatedBy"
+---@overload fun(idx: 37): "IPX"
+---@overload fun(idx: 38): "IPY"
+---@overload fun(idx: 39): "IPW"
+---@overload fun(idx: 40): "IPH"
+---@overload fun(idx: 41): "PreRoll"
+---@overload fun(idx: 42): "AfterRoll"
+---@overload fun(idx: 43): "GeneratorStartTime"
+---@overload fun(idx: 44): "GeneratorEndTime"
+---@overload fun(idx: 45): "GeneratorLooped"
+---@overload fun(idx: 46): "GeneratorFrameUnit"
+---@overload fun(idx: 47): "AfterRollColor"
+---@overload fun(idx: 48): "OffColor"
+---@overload fun(idx: 49): "ExternalSourceColor"
+---@overload fun(idx: 50): "GeneratorColor"
+---@overload fun(idx: 51): "TimeDisplayFormat"
+---@overload fun(idx: 52): "UserBits"
+---@overload fun(idx: 53): "SourceIP"
+---@overload fun(idx: 54): "TimeString"
+---@overload fun(idx: 55): "Time"
+function TCSlot:PropertyName(idx) end
+---@overload fun(idx: 0|1|2): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 3|11): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 4|5|6|53|54|55): {ExportIgnore: True, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 7|12|14|15|17|18|20|28|29|30|31|33|37|38|39|40|41|42|43|47|48|49|50|52): {ExportIgnore: False, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 8): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 9|10): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 13|16|19|21|23|24|25|26|27|32): {ExportIgnore: False, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 22): {ExportIgnore: False, EnumCollection: ImageBackGroundMode, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 34): {ExportIgnore: False, EnumCollection: ImageRotation, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 35): {ExportIgnore: False, EnumCollection: ImageMirror, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 36): {ExportIgnore: False, EnumCollection: CreateBy, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 44): {ExportIgnore: False, EnumCollection: GeneratorLimits, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 45): {ExportIgnore: False, EnumCollection: Yes, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 46): {ExportIgnore: False, EnumCollection: FrameFormat, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 51): {ExportIgnore: False, EnumCollection: TimeDisplayFormatSelected, ReadOnly: False, ImportIgnore: False}
+function TCSlot:PropertyInfo(idx) end
+---@overload fun(idx: 0|1|2|3|4|5|6|8|52): "UInt32"
+---@overload fun(idx: 7|12|16|17|27|32|33|54): "String"
+---@overload fun(idx: 9|10): "Bool"
+---@overload fun(idx: 11): "UInt64"
+---@overload fun(idx: 13|55): "Int64"
+---@overload fun(idx: 14|18|20|53): "Custom"
+---@overload fun(idx: 15|19|21): "Handle"
+---@overload fun(idx: 22|23|24|25|26|28|29|30|31|34|35|36|45|46|51): "UInt8"
+---@overload fun(idx: 37|38|39|40): "Int16"
+---@overload fun(idx: 41|42|43|44): "Int64Time"
+---@overload fun(idx: 47|48|49|50): "RGBA8"
+function TCSlot:PropertyType(idx) end
 ---@overload fun(name: "Color", role: nil): Colors.RGB<float>
 ---@overload fun(name: "CreatedBy", role: nil): CreateBy
----@overload fun(name: "Guid", role: nil): Crypto.Guid<128>
+---@overload fun(name: "GeneratorFrameUnit", role: nil): FrameFormat
+---@overload fun(name: "GeneratorEndTime", role: nil): GeneratorLimits
 ---@overload fun(name: "Appearance"|"Image", role: nil): Image
 ---@overload fun(name: "ImageMode", role: nil): ImageBackGroundMode
 ---@overload fun(name: "ImageMirror", role: nil): ImageMirror
 ---@overload fun(name: "ImageRotation", role: nil): ImageRotation
+---@overload fun(name: "Guid", role: nil): Key128
 ---@overload fun(name: "SourceIP", role: nil): Network.IP8Full
 ---@overload fun(name: "Scribble", role: nil): Scribble
 ---@overload fun(name: "Tags", role: nil): TagMap
----@overload fun(name: "PreRoll"|"AfterRoll"|"GeneratorStartTime"|"GeneratorEndTime", role: nil): TimePropertyValue
+---@overload fun(name: "TimeDisplayFormat", role: nil): TimeDisplayFormatSelected
+---@overload fun(name: "PreRoll"|"AfterRoll"|"GeneratorStartTime", role: nil): TimePropertyValue
 ---@overload fun(name: "AfterRollColor"|"OffColor"|"ExternalSourceColor"|"GeneratorColor", role: nil): UColor
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "GeneratorLooped"|"GeneratorFrameUnit"|"TimeDisplayFormat"|"UserBits"|"Time"|"ImageR"|"ImageG"|"ImageB"|"ImageAlpha"|"BackR"|"BackG"|"BackB"|"BackAlpha"|"IPX"|"IPY"|"IPW"|"IPH"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
----@overload fun(name: "TimeString"|"ImageRGBA"|"BackRGBA"|"MediaFileName"|"NameAndApp"|"Note"|"Name"|"DependencyExport", role: nil): string
----@overload fun(name: "PreRoll"|"AfterRoll"|"GeneratorStartTime"|"GeneratorEndTime"|"GeneratorLooped"|"GeneratorFrameUnit"|"AfterRollColor"|"OffColor"|"ExternalSourceColor"|"GeneratorColor"|"TimeDisplayFormat"|"UserBits"|"SourceIP"|"TimeString"|"Time"|"Appearance"|"Color"|"Image"|"ImageMode"|"ImageR"|"ImageG"|"ImageB"|"ImageAlpha"|"ImageRGBA"|"BackR"|"BackG"|"BackB"|"BackAlpha"|"BackRGBA"|"MediaFileName"|"ImageRotation"|"ImageMirror"|"CreatedBy"|"IPX"|"IPY"|"IPW"|"IPH"|"Guid"|"Scribble"|"NameAndApp"|"Note"|"Tags"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden", role: nil): YesNo|boolean
+---@overload fun(name: "GeneratorLooped", role: nil): Yes|true
+---@overload fun(name: "Index"|"Count"|"No"|"MemoryFootprint"|"ImageR"|"ImageG"|"ImageB"|"ImageAlpha"|"BackR"|"BackG"|"BackB"|"BackAlpha"|"IPX"|"IPY"|"IPW"|"IPH"|"UserBits"|"Time", role: nil): integer
+---@overload fun(name: "Name"|"DependencyExport"|"NameAndApp"|"Note"|"ImageRGBA"|"BackRGBA"|"MediaFileName"|"TimeString", role: nil): string
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Guid"|"Scribble"|"NameAndApp"|"Note"|"Tags"|"Appearance"|"Color"|"Image"|"ImageMode"|"ImageR"|"ImageG"|"ImageB"|"ImageAlpha"|"ImageRGBA"|"BackR"|"BackG"|"BackB"|"BackAlpha"|"BackRGBA"|"MediaFileName"|"ImageRotation"|"ImageMirror"|"CreatedBy"|"IPX"|"IPY"|"IPW"|"IPH"|"PreRoll"|"AfterRoll"|"GeneratorStartTime"|"GeneratorEndTime"|"GeneratorLooped"|"GeneratorFrameUnit"|"AfterRollColor"|"OffColor"|"ExternalSourceColor"|"GeneratorColor"|"TimeDisplayFormat"|"UserBits"|"SourceIP"|"TimeString"|"Time", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): Object
 function TCSlot:Get(name, role) end
+---@overload fun(property_name: "Color", property_value: Colors.RGB<float>, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "CreatedBy", property_value: CreateBy, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "GeneratorFrameUnit", property_value: FrameFormat, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "GeneratorEndTime", property_value: GeneratorLimits, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ImageMode", property_value: ImageBackGroundMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ImageMirror", property_value: ImageMirror, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ImageRotation", property_value: ImageRotation, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Guid", property_value: Key128, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "SourceIP", property_value: Network.IP8Full, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Scribble", property_value: Scribble, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Tags", property_value: TagMap, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "TimeDisplayFormat", property_value: TimeDisplayFormatSelected, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "PreRoll"|"AfterRoll"|"GeneratorStartTime", property_value: TimePropertyValue, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "AfterRollColor"|"OffColor"|"ExternalSourceColor"|"GeneratorColor", property_value: UColor, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Hidden", property_value: YesNo|boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "GeneratorLooped", property_value: Yes|true, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Index"|"Count"|"No"|"BackR"|"BackG"|"BackB"|"BackAlpha"|"IPX"|"IPY"|"IPW"|"IPH"|"UserBits"|"Time", property_value: integer, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Name"|"DependencyExport"|"Note"|"MediaFileName"|"TimeString", property_value: string, override_change_level: ChangeLevel?)
+function TCSlot:Set(property_name, property_value, override_change_level) end

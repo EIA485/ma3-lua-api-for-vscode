@@ -6,6 +6,10 @@ local Masters = {}
 function Masters:GetClass() end
 ---@return "MasterPool"
 function Masters:GetChildClass() end
+---@generic T : Masters
+---@param class `T`
+---@return boolean
+function Masters:IsClass(class) end
 ---@return ShowData
 function Masters:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function Masters:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MasterPool
 function Masters:Find(class, undo) end
+function Masters:RenewDHCP(property_name, property_value) end

@@ -6,6 +6,10 @@ local PlaybackWindowSettingsCollect = {}
 function PlaybackWindowSettingsCollect:GetClass() end
 ---@return "PlaybackWindowSettings"
 function PlaybackWindowSettingsCollect:GetChildClass() end
+---@generic T : PlaybackWindowSettingsCollect
+---@param class `T`
+---@return boolean
+function PlaybackWindowSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return PlaybackWindowSettings
 function PlaybackWindowSettingsCollect:Ptr(index) end
@@ -56,3 +60,11 @@ function PlaybackWindowSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PlaybackWindowSettings
 function PlaybackWindowSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "#Sections", property_value: SectionCount)
+---@overload fun(property_name: "WingID", property_value: WingID)
+---@overload fun(property_name: "Page", property_value: integer)
+---@overload fun(property_name: "Executors"|"Row400"|"Row300"|"Row200"|"Row100"|"Labels", property_value: OnOff|boolean)
+---@overload fun(property_name: "#Sections", property_value: SectionCount)
+---@overload fun(property_name: "WingID", property_value: WingID)
+---@overload fun(property_name: "Page", property_value: integer)
+function PlaybackWindowSettingsCollect:Page(property_name, property_value) end

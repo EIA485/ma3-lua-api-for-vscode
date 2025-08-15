@@ -6,6 +6,10 @@ local TimerPoolSettingsCollect = {}
 function TimerPoolSettingsCollect:GetClass() end
 ---@return "TimerPoolSettings"
 function TimerPoolSettingsCollect:GetChildClass() end
+---@generic T : TimerPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function TimerPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return TimerPoolSettings
 function TimerPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,6 @@ function TimerPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): TimerPoolSettings
 function TimerPoolSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "TimerAction", property_value: TimerAction)
+---@overload fun(property_name: "TimerAction", property_value: TimerAction)
+function TimerPoolSettingsCollect:TimerAction(property_name, property_value) end

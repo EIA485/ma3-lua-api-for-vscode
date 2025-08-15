@@ -6,6 +6,10 @@ local Patterns = {}
 function Patterns:GetClass() end
 ---@return "Pattern"
 function Patterns:GetChildClass() end
+---@generic T : Patterns
+---@param class `T`
+---@return boolean
+function Patterns:IsClass(class) end
 ---@return GeneratorTypes
 function Patterns:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function Patterns:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Pattern
 function Patterns:Find(class, undo) end
+function Patterns:Code(property_name, property_value) end

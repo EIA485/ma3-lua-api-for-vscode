@@ -6,6 +6,10 @@ local Addons = {}
 function Addons:GetClass() end
 ---@return "Addon"
 function Addons:GetChildClass() end
+---@generic T : Addons
+---@param class `T`
+---@return boolean
+function Addons:IsClass(class) end
 ---@return Root
 function Addons:Parent() end
 ---@param index integer
@@ -58,3 +62,12 @@ function Addons:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Addon
 function Addons:Find(class, undo) end
+---@overload fun(property_name: "DataDouble", property_value: number[])
+---@overload fun(property_name: "DataString", property_value: string[])
+---@overload fun(property_name: "DataIP", property_value: Manet.IP4[])
+---@overload fun(property_name: "DataIP", property_value: Manet.IP4[])
+---@overload fun(property_name: "Data8"|"Data64", property_value: integer[])
+---@overload fun(property_name: "DataDouble", property_value: number[])
+---@overload fun(property_name: "Author"|"Version", property_value: string)
+---@overload fun(property_name: "DataString", property_value: string[])
+function Addons:DataIP(property_name, property_value) end

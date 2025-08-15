@@ -6,6 +6,10 @@ local LogInterface = {}
 function LogInterface:GetClass() end
 ---@return "TimeLogBuffer"
 function LogInterface:GetChildClass() end
+---@generic T : LogInterface
+---@param class `T`
+---@return boolean
+function LogInterface:IsClass(class) end
 ---@return Temp
 function LogInterface:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function LogInterface:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): TimeLogBuffer
 function LogInterface:Find(class, undo) end
+function LogInterface:ExecutorIndex(property_name, property_value) end

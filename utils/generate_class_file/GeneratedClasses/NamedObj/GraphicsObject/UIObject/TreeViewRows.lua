@@ -6,6 +6,10 @@ local TreeViewRows = {}
 function TreeViewRows:GetClass() end
 ---@return "TreeViewRow"
 function TreeViewRows:GetChildClass() end
+---@generic T : TreeViewRows
+---@param class `T`
+---@return boolean
+function TreeViewRows:IsClass(class) end
 ---@return TreeViewFrame
 function TreeViewRows:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function TreeViewRows:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): TreeViewRow
 function TreeViewRows:Find(class, undo) end
+function TreeViewRows:SetPrompt(property_name, property_value) end

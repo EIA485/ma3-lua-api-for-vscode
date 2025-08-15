@@ -6,6 +6,10 @@ local FixtureFilterRuleFixtureType = {}
 function FixtureFilterRuleFixtureType:GetClass() end
 ---@return "FixtureFilterRuleFixtureTypeItem"
 function FixtureFilterRuleFixtureType:GetChildClass() end
+---@generic T : FixtureFilterRuleFixtureType
+---@param class `T`
+---@return boolean
+function FixtureFilterRuleFixtureType:IsClass(class) end
 ---@param index integer
 ---@return FixtureFilterRuleFixtureTypeItem
 function FixtureFilterRuleFixtureType:Ptr(index) end
@@ -56,3 +60,6 @@ function FixtureFilterRuleFixtureType:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): FixtureFilterRuleFixtureTypeItem
 function FixtureFilterRuleFixtureType:Find(class, undo) end
+---@overload fun(property_name: "DMXMode", property_value: DMXMode)
+---@overload fun(property_name: "DMXMode", property_value: DMXMode)
+function FixtureFilterRuleFixtureType:DMXMode(property_name, property_value) end

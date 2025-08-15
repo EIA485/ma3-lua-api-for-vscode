@@ -6,6 +6,10 @@ local Timecodes = {}
 function Timecodes:GetClass() end
 ---@return "Timecode"
 function Timecodes:GetChildClass() end
+---@generic T : Timecodes
+---@param class `T`
+---@return boolean
+function Timecodes:IsClass(class) end
 ---@return Pool
 function Timecodes:Parent() end
 ---@param index integer
@@ -58,3 +62,22 @@ function Timecodes:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Timecode
 function Timecodes:Find(class, undo) end
+---@overload fun(property_name: "FrameReadout", property_value: FrameFormatDefault)
+---@overload fun(property_name: "LoopMode", property_value: LoopMode)
+---@overload fun(property_name: "PlaybackandRecord", property_value: EventsPlaybackRecord)
+---@overload fun(property_name: "TimeMarkers", property_value: Track)
+---@overload fun(property_name: "TimeDisplayFormat", property_value: TimeDisplayFormatSelected)
+---@overload fun(property_name: "SwitchOff", property_value: PlaybacksOff)
+---@overload fun(property_name: "Goto", property_value: RecordGo)
+---@overload fun(property_name: "PlaybackandRecord", property_value: EventsPlaybackRecord)
+---@overload fun(property_name: "FrameReadout", property_value: FrameFormatDefault)
+---@overload fun(property_name: "LoopMode", property_value: LoopMode)
+---@overload fun(property_name: "SwitchOff", property_value: PlaybacksOff)
+---@overload fun(property_name: "Goto", property_value: RecordGo)
+---@overload fun(property_name: "Duration"|"Cursor"|"OffsetTCSlot", property_value: SignedTimePropertyValue)
+---@overload fun(property_name: "TimeDisplayFormat", property_value: TimeDisplayFormatSelected)
+---@overload fun(property_name: "TimeMarkers", property_value: Track)
+---@overload fun(property_name: "AssertPrevEvents"|"AutoStart"|"RecordTimedCues"|"RecordCueCommands"|"RecordMacroEvents"|"AutoStop"|"RecordRemoteEvents", property_value: YesNo|boolean)
+---@overload fun(property_name: "UserBits"|"TCSlot"|"LoopCount", property_value: integer)
+---@overload fun(property_name: "User"|"Type", property_value: string)
+function Timecodes:Goto(property_name, property_value) end

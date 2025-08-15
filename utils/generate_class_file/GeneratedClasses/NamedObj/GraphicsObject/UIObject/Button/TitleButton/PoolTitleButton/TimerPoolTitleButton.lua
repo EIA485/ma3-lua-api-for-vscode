@@ -6,3 +6,7 @@ local TimerPoolTitleButton = {}
 function TimerPoolTitleButton:GetClass() end
 ---@return "UIObject"
 function TimerPoolTitleButton:GetChildClass() end
+---@generic T : TimerPoolTitleButton
+---@param class `T`
+---@return boolean
+function TimerPoolTitleButton:IsClass(class) end

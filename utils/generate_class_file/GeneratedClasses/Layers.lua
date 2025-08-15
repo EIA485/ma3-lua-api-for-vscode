@@ -6,6 +6,10 @@ local Layers = {}
 function Layers:GetClass() end
 ---@return "FixtureLayer"
 function Layers:GetChildClass() end
+---@generic T : Layers
+---@param class `T`
+---@return boolean
+function Layers:IsClass(class) end
 ---@return Patch
 function Layers:Parent() end
 ---@param index integer
@@ -58,3 +62,6 @@ function Layers:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): FixtureLayer
 function Layers:Find(class, undo) end
+---@overload fun(property_name: "Used", property_value: integer)
+---@overload fun(property_name: "Used", property_value: integer)
+function Layers:Used(property_name, property_value) end

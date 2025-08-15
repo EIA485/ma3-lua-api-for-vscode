@@ -6,6 +6,10 @@ local TempNetworkInterfaces = {}
 function TempNetworkInterfaces:GetClass() end
 ---@return "TempNetworkRemoteInterfaceCollect"
 function TempNetworkInterfaces:GetChildClass() end
+---@generic T : TempNetworkInterfaces
+---@param class `T`
+---@return boolean
+function TempNetworkInterfaces:IsClass(class) end
 ---@return Temp
 function TempNetworkInterfaces:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function TempNetworkInterfaces:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): TempNetworkRemoteInterfaceCollect
 function TempNetworkInterfaces:Find(class, undo) end
+function TempNetworkInterfaces:CreateNotification(property_name, property_value) end

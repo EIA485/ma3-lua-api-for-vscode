@@ -6,6 +6,10 @@ local AddonVariables = {}
 function AddonVariables:GetClass() end
 ---@return "Variables"
 function AddonVariables:GetChildClass() end
+---@generic T : AddonVariables
+---@param class `T`
+---@return boolean
+function AddonVariables:IsClass(class) end
 ---@param index integer
 ---@return Variables
 function AddonVariables:Ptr(index) end
@@ -56,3 +60,6 @@ function AddonVariables:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Variables
 function AddonVariables:Find(class, undo) end
+---@overload fun(property_name: "*", property_value: string)
+---@overload fun(property_name: "*", property_value: string)
+function AddonVariables:*(property_name, property_value) end

@@ -6,6 +6,10 @@ local Symbols = {}
 function Symbols:GetClass() end
 ---@return "SymbolImage"
 function Symbols:GetChildClass() end
+---@generic T : Symbols
+---@param class `T`
+---@return boolean
+function Symbols:IsClass(class) end
 ---@param index integer
 ---@return SymbolImage
 function Symbols:Ptr(index) end
@@ -56,3 +60,5 @@ function Symbols:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SymbolImage
 function Symbols:Find(class, undo) end
+---@overload fun(property_name: "ColorKeyLightFrom"|"ColorKeyLightTo"|"ColorKeySelectionFrom"|"ColorKeySelectionTo", property_value: UiColor)
+function Symbols:NDISource(property_name, property_value) end

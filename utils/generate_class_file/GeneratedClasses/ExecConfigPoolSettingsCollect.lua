@@ -6,6 +6,10 @@ local ExecConfigPoolSettingsCollect = {}
 function ExecConfigPoolSettingsCollect:GetClass() end
 ---@return "ExecConfigPoolSettings"
 function ExecConfigPoolSettingsCollect:GetChildClass() end
+---@generic T : ExecConfigPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function ExecConfigPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return ExecConfigPoolSettings
 function ExecConfigPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function ExecConfigPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ExecConfigPoolSettings
 function ExecConfigPoolSettingsCollect:Find(class, undo) end
+function ExecConfigPoolSettingsCollect:ShowCommandlineField(property_name, property_value) end

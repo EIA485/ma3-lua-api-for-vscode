@@ -6,6 +6,10 @@ local ViewButtonScreen = {}
 function ViewButtonScreen:GetClass() end
 ---@return "ViewButton"
 function ViewButtonScreen:GetChildClass() end
+---@generic T : ViewButtonScreen
+---@param class `T`
+---@return boolean
+function ViewButtonScreen:IsClass(class) end
 ---@return ViewButtonScreens
 function ViewButtonScreen:Parent() end
 ---@param index integer
@@ -58,3 +62,6 @@ function ViewButtonScreen:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ViewButton
 function ViewButtonScreen:Find(class, undo) end
+---@overload fun(property_name: "Object", property_value: Object)
+---@overload fun(property_name: "Object", property_value: Object)
+function ViewButtonScreen:Object(property_name, property_value) end

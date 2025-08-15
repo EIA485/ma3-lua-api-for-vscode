@@ -6,6 +6,10 @@ local FTMacros = {}
 function FTMacros:GetClass() end
 ---@return "FTMacro"
 function FTMacros:GetChildClass() end
+---@generic T : FTMacros
+---@param class `T`
+---@return boolean
+function FTMacros:IsClass(class) end
 ---@return DMXMode
 function FTMacros:Parent() end
 ---@param index integer
@@ -58,3 +62,6 @@ function FTMacros:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): FTMacro
 function FTMacros:Find(class, undo) end
+---@overload fun(property_name: "ChannelFunction", property_value: ChannelFunction)
+---@overload fun(property_name: "ChannelFunction", property_value: ChannelFunction)
+function FTMacros:ChannelFunction(property_name, property_value) end

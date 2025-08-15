@@ -6,6 +6,10 @@ local FeatureGroups = {}
 function FeatureGroups:GetClass() end
 ---@return "FeatureGroup"
 function FeatureGroups:GetChildClass() end
+---@generic T : FeatureGroups
+---@param class `T`
+---@return boolean
+function FeatureGroups:IsClass(class) end
 ---@return AttributeDefinitions
 function FeatureGroups:Parent() end
 ---@param index integer
@@ -58,3 +62,8 @@ function FeatureGroups:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): FeatureGroup
 function FeatureGroups:Find(class, undo) end
+---@overload fun(property_name: "Pretty", property_value: string)
+---@overload fun(property_name: "PresetMode", property_value: PresetMode)
+---@overload fun(property_name: "PresetMode", property_value: PresetMode)
+---@overload fun(property_name: "Pretty", property_value: string)
+function FeatureGroups:PresetMode(property_name, property_value) end

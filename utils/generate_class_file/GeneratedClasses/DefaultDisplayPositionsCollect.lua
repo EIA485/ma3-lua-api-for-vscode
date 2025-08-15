@@ -6,6 +6,10 @@ local DefaultDisplayPositionsCollect = {}
 function DefaultDisplayPositionsCollect:GetClass() end
 ---@return "DefaultDisplayPositions"
 function DefaultDisplayPositionsCollect:GetChildClass() end
+---@generic T : DefaultDisplayPositionsCollect
+---@param class `T`
+---@return boolean
+function DefaultDisplayPositionsCollect:IsClass(class) end
 ---@return StationSettings
 function DefaultDisplayPositionsCollect:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function DefaultDisplayPositionsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): DefaultDisplayPositions
 function DefaultDisplayPositionsCollect:Find(class, undo) end
+function DefaultDisplayPositionsCollect:ActiveDisplay(property_name, property_value) end

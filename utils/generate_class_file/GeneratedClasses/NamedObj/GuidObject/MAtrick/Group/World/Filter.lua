@@ -1,10 +1,10 @@
 ---@meta
 
 ---@class Filter: World
----@field Absolute integer
----@field Relative integer
----@field Timing integer
----@field Phaser integer
+---@field Absolute YesNo|boolean
+---@field Relative YesNo|boolean
+---@field Timing YesNo|boolean
+---@field Phaser YesNo|boolean
 local Filter = {
     Absolute="1",
     Relative="1",
@@ -15,21 +15,163 @@ local Filter = {
 function Filter:GetClass() end
 ---@return "Object"
 function Filter:GetChildClass() end
+---@generic T : Filter
+---@param class `T`
+---@return boolean
+function Filter:IsClass(class) end
 ---@return Filters
 function Filter:Parent() end
+---@return 70
+function Filter:PropertyCount() end
+---@overload fun(idx: 0): "IgnoreNetwork"
+---@overload fun(idx: 1): "StructureLocked"
+---@overload fun(idx: 2): "SystemLocked"
+---@overload fun(idx: 3): "Lock"
+---@overload fun(idx: 4): "Index"
+---@overload fun(idx: 5): "Count"
+---@overload fun(idx: 6): "No"
+---@overload fun(idx: 7): "Name"
+---@overload fun(idx: 8): "UserExpanded"
+---@overload fun(idx: 9): "FaderEnabled"
+---@overload fun(idx: 10): "Owned"
+---@overload fun(idx: 11): "Hidden"
+---@overload fun(idx: 12): "DependencyExport"
+---@overload fun(idx: 13): "MemoryFootprint"
+---@overload fun(idx: 14): "Guid"
+---@overload fun(idx: 15): "Scribble"
+---@overload fun(idx: 16): "Appearance"
+---@overload fun(idx: 17): "NameAndApp"
+---@overload fun(idx: 18): "Note"
+---@overload fun(idx: 19): "Tags"
+---@overload fun(idx: 20): "Active"
+---@overload fun(idx: 21): "HasAnyMatricksData"
+---@overload fun(idx: 22): "ShuffleMode"
+---@overload fun(idx: 23): "InitialName"
+---@overload fun(idx: 24): "InitialMatricks"
+---@overload fun(idx: 25): "X"
+---@overload fun(idx: 26): "Y"
+---@overload fun(idx: 27): "Z"
+---@overload fun(idx: 28): "XBlock"
+---@overload fun(idx: 29): "YBlock"
+---@overload fun(idx: 30): "ZBlock"
+---@overload fun(idx: 31): "XGroup"
+---@overload fun(idx: 32): "YGroup"
+---@overload fun(idx: 33): "ZGroup"
+---@overload fun(idx: 34): "XWings"
+---@overload fun(idx: 35): "YWings"
+---@overload fun(idx: 36): "ZWings"
+---@overload fun(idx: 37): "XWidth"
+---@overload fun(idx: 38): "YWidth"
+---@overload fun(idx: 39): "ZWidth"
+---@overload fun(idx: 40): "XShuffle"
+---@overload fun(idx: 41): "YShuffle"
+---@overload fun(idx: 42): "ZShuffle"
+---@overload fun(idx: 43): "XShift"
+---@overload fun(idx: 44): "YShift"
+---@overload fun(idx: 45): "ZShift"
+---@overload fun(idx: 46): "InvertStyle"
+---@overload fun(idx: 47): "InvertX"
+---@overload fun(idx: 48): "InvertY"
+---@overload fun(idx: 49): "InvertZ"
+---@overload fun(idx: 50): "AlignRangeX"
+---@overload fun(idx: 51): "AlignRangeY"
+---@overload fun(idx: 52): "AlignRangeZ"
+---@overload fun(idx: 53): "RelativeFade"
+---@overload fun(idx: 54): "RelativeDelay"
+---@overload fun(idx: 55): "RelativePhase"
+---@overload fun(idx: 56): "RelativeSpeed"
+---@overload fun(idx: 57): "PhaserTransform"
+---@overload fun(idx: 58): "DoShuffle"
+---@overload fun(idx: 59): "MemoryType"
+---@overload fun(idx: 60): "MoveGridCursor"
+---@overload fun(idx: 61): "PreserveGridPositions"
+---@overload fun(idx: 62): "SelectionData"
+---@overload fun(idx: 63): "Attributes"
+---@overload fun(idx: 64): "Mode"
+---@overload fun(idx: 65): "Selection"
+---@overload fun(idx: 66): "Absolute"
+---@overload fun(idx: 67): "Relative"
+---@overload fun(idx: 68): "Timing"
+---@overload fun(idx: 69): "Phaser"
+function Filter:PropertyName(idx) end
+---@overload fun(idx: 0|1|2|21): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 3|11|20|47|48|49|50|51|52|53|54|55|56|61|63|66|67|68|69): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 4|5|6|24|64): {ExportIgnore: True, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 7|12|14|15|16|18|19|23|62): {ExportIgnore: False, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 8): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 9|10): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 13|17|58): {ExportIgnore: False, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 22): {ExportIgnore: False, EnumCollection: ShuffleMode, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 25|26|27): {ExportIgnore: False, EnumCollection: MatricksIndexNone, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 28|29|30): {ExportIgnore: False, EnumCollection: MatricksBlockNone, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 31|32|33): {ExportIgnore: False, EnumCollection: MatricksGroupNone, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 34|35|36): {ExportIgnore: False, EnumCollection: MatricksWingsNone, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 37|38|39): {ExportIgnore: False, EnumCollection: MatrixWidthAuto, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 40|41|42): {ExportIgnore: False, EnumCollection: MatricksShuffleNone, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 43|44|45): {ExportIgnore: False, EnumCollection: MatricksShiftNone, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 46): {ExportIgnore: False, EnumCollection: MatricksInvertStyle, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 57): {ExportIgnore: False, EnumCollection: PhaserTransformationsShort, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 59): {ExportIgnore: True, EnumCollection: GroupMemoryType, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 60): {ExportIgnore: False, EnumCollection: GridCursorMovementGroup, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 65): {ExportIgnore: False, EnumCollection: StrictNormalMode, ReadOnly: False, ImportIgnore: False}
+function Filter:PropertyInfo(idx) end
+---@overload fun(idx: 0|1|2|3|4|5|6|8|40|41|42|47|48|49|53|54|55|56|57|61|66|67|68|69): "UInt32"
+---@overload fun(idx: 7|12|17|18|23): "String"
+---@overload fun(idx: 9|10|21): "Bool"
+---@overload fun(idx: 11): "UInt64"
+---@overload fun(idx: 13): "Int64"
+---@overload fun(idx: 14|19|62|63): "Custom"
+---@overload fun(idx: 15|16|24): "Handle"
+---@overload fun(idx: 20|22|46|50|51|52|59|60|64|65): "UInt8"
+---@overload fun(idx: 25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|43|44|45): "Int32"
+---@overload fun(idx: 58): "Method"
+function Filter:PropertyType(idx) end
 ---@overload fun(name: "Appearance", role: nil): Appearance
----@overload fun(name: "Attributes", role: nil): AttributeMode
----@overload fun(name: "Guid", role: nil): Crypto.Guid<128>
----@overload fun(name: "MoveGridCursor", role: nil): GridCursorMovement
+---@overload fun(name: "MoveGridCursor", role: nil): GridCursorMovementGroup
+---@overload fun(name: "MemoryType", role: nil): GroupMemoryType
+---@overload fun(name: "Guid", role: nil): Key128
 ---@overload fun(name: "InitialMatricks", role: nil): MAtrick
+---@overload fun(name: "XBlock"|"YBlock"|"ZBlock", role: nil): MatricksBlockNone
+---@overload fun(name: "XGroup"|"YGroup"|"ZGroup", role: nil): MatricksGroupNone
+---@overload fun(name: "X"|"Y"|"Z", role: nil): MatricksIndexNone
+---@overload fun(name: "InvertStyle", role: nil): MatricksInvertStyle
+---@overload fun(name: "XShift"|"YShift"|"ZShift", role: nil): MatricksShiftNone
+---@overload fun(name: "XShuffle"|"YShuffle"|"ZShuffle", role: nil): MatricksShuffleNone
+---@overload fun(name: "XWings"|"YWings"|"ZWings", role: nil): MatricksWingsNone
+---@overload fun(name: "XWidth"|"YWidth"|"ZWidth", role: nil): MatrixWidthAuto
+---@overload fun(name: "PhaserTransform", role: nil): PhaserTransformationsShort
 ---@overload fun(name: "Scribble", role: nil): Scribble
 ---@overload fun(name: "ShuffleMode", role: nil): ShuffleMode
+---@overload fun(name: "Selection", role: nil): StrictNormalMode
 ---@overload fun(name: "SelectionData", role: nil): SubfixtureBlock
 ---@overload fun(name: "Tags", role: nil): TagMap
----@overload fun(name: "HasAnyMatricksData"|"FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"Active"|"HasAnyMatricksData"|"InvertX"|"InvertY"|"InvertZ"|"AlignRangeX"|"AlignRangeY"|"AlignRangeZ"|"RelativeFade"|"RelativeDelay"|"RelativePhase"|"RelativeSpeed"|"PreserveGridPositions"|"Attributes"|"Absolute"|"Relative"|"Timing"|"Phaser", role: nil): YesNo|boolean
 ---@overload fun(name: "DoShuffle", role: nil): fun()
----@overload fun(name: "Absolute"|"Relative"|"Timing"|"Phaser"|"Mode"|"Selection"|"MemoryType"|"PreserveGridPositions"|"Active"|"X"|"Y"|"Z"|"XBlock"|"YBlock"|"ZBlock"|"XGroup"|"YGroup"|"ZGroup"|"XWings"|"YWings"|"ZWings"|"XWidth"|"YWidth"|"ZWidth"|"XShuffle"|"YShuffle"|"ZShuffle"|"XShift"|"YShift"|"ZShift"|"InvertStyle"|"InvertX"|"InvertY"|"InvertZ"|"AlignRangeX"|"AlignRangeY"|"AlignRangeZ"|"RelativeFade"|"RelativeDelay"|"RelativePhase"|"RelativeSpeed"|"PhaserTransform"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
----@overload fun(name: "InitialName"|"NameAndApp"|"Note"|"Name"|"DependencyExport", role: nil): string
----@overload fun(name: "Absolute"|"Relative"|"Timing"|"Phaser"|"Attributes"|"Mode"|"Selection"|"MemoryType"|"MoveGridCursor"|"PreserveGridPositions"|"SelectionData"|"Active"|"HasAnyMatricksData"|"ShuffleMode"|"InitialName"|"InitialMatricks"|"X"|"Y"|"Z"|"XBlock"|"YBlock"|"ZBlock"|"XGroup"|"YGroup"|"ZGroup"|"XWings"|"YWings"|"ZWings"|"XWidth"|"YWidth"|"ZWidth"|"XShuffle"|"YShuffle"|"ZShuffle"|"XShift"|"YShift"|"ZShift"|"InvertStyle"|"InvertX"|"InvertY"|"InvertZ"|"AlignRangeX"|"AlignRangeY"|"AlignRangeZ"|"RelativeFade"|"RelativeDelay"|"RelativePhase"|"RelativeSpeed"|"PhaserTransform"|"DoShuffle"|"Guid"|"Scribble"|"Appearance"|"NameAndApp"|"Note"|"Tags"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
+---@overload fun(name: "Index"|"Count"|"No"|"MemoryFootprint"|"Mode", role: nil): integer
+---@overload fun(name: "Name"|"DependencyExport"|"NameAndApp"|"Note"|"InitialName", role: nil): string
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Guid"|"Scribble"|"Appearance"|"NameAndApp"|"Note"|"Tags"|"Active"|"HasAnyMatricksData"|"ShuffleMode"|"InitialName"|"InitialMatricks"|"X"|"Y"|"Z"|"XBlock"|"YBlock"|"ZBlock"|"XGroup"|"YGroup"|"ZGroup"|"XWings"|"YWings"|"ZWings"|"XWidth"|"YWidth"|"ZWidth"|"XShuffle"|"YShuffle"|"ZShuffle"|"XShift"|"YShift"|"ZShift"|"InvertStyle"|"InvertX"|"InvertY"|"InvertZ"|"AlignRangeX"|"AlignRangeY"|"AlignRangeZ"|"RelativeFade"|"RelativeDelay"|"RelativePhase"|"RelativeSpeed"|"PhaserTransform"|"DoShuffle"|"MemoryType"|"MoveGridCursor"|"PreserveGridPositions"|"SelectionData"|"Attributes"|"Mode"|"Selection"|"Absolute"|"Relative"|"Timing"|"Phaser", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): Object
 function Filter:Get(name, role) end
+---@overload fun(property_name: "Appearance", property_value: Appearance, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "MoveGridCursor", property_value: GridCursorMovementGroup, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "MemoryType", property_value: GroupMemoryType, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Guid", property_value: Key128, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "InitialMatricks", property_value: MAtrick, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "XBlock"|"YBlock"|"ZBlock", property_value: MatricksBlockNone, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "XGroup"|"YGroup"|"ZGroup", property_value: MatricksGroupNone, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "X"|"Y"|"Z", property_value: MatricksIndexNone, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "InvertStyle", property_value: MatricksInvertStyle, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "XShift"|"YShift"|"ZShift", property_value: MatricksShiftNone, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "XShuffle"|"YShuffle"|"ZShuffle", property_value: MatricksShuffleNone, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "XWings"|"YWings"|"ZWings", property_value: MatricksWingsNone, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "XWidth"|"YWidth"|"ZWidth", property_value: MatrixWidthAuto, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "PhaserTransform", property_value: PhaserTransformationsShort, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Scribble", property_value: Scribble, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ShuffleMode", property_value: ShuffleMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Selection", property_value: StrictNormalMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "SelectionData", property_value: SubfixtureBlock, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Tags", property_value: TagMap, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Hidden"|"Active"|"HasAnyMatricksData"|"InvertX"|"InvertY"|"InvertZ"|"AlignRangeX"|"AlignRangeY"|"AlignRangeZ"|"RelativeFade"|"RelativeDelay"|"RelativePhase"|"RelativeSpeed"|"PreserveGridPositions"|"Attributes"|"Absolute"|"Relative"|"Timing"|"Phaser", property_value: YesNo|boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Index"|"Count"|"No"|"Mode", property_value: integer, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Name"|"DependencyExport"|"Note"|"InitialName", property_value: string, override_change_level: ChangeLevel?)
+function Filter:Set(property_name, property_value, override_change_level) end

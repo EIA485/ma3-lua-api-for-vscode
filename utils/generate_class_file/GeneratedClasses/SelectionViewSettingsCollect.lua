@@ -6,6 +6,10 @@ local SelectionViewSettingsCollect = {}
 function SelectionViewSettingsCollect:GetClass() end
 ---@return "SelectionViewSettings"
 function SelectionViewSettingsCollect:GetChildClass() end
+---@generic T : SelectionViewSettingsCollect
+---@param class `T`
+---@return boolean
+function SelectionViewSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return SelectionViewSettings
 function SelectionViewSettingsCollect:Ptr(index) end
@@ -56,3 +60,7 @@ function SelectionViewSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SelectionViewSettings
 function SelectionViewSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "FontSize", property_value: SelectionViewFontSize)
+---@overload fun(property_name: "FontSize", property_value: SelectionViewFontSize)
+---@overload fun(property_name: "CenterlineY"|"AlignBar"|"AutoScroll"|"GridLines"|"ToolBar"|"MAtricksTransformation"|"CenterlineX", property_value: YesNo|boolean)
+function SelectionViewSettingsCollect:FontSize(property_name, property_value) end

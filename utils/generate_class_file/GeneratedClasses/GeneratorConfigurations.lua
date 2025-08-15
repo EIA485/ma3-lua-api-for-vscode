@@ -6,6 +6,10 @@ local GeneratorConfigurations = {}
 function GeneratorConfigurations:GetClass() end
 ---@return "GeneratorConfiguration"
 function GeneratorConfigurations:GetChildClass() end
+---@generic T : GeneratorConfigurations
+---@param class `T`
+---@return boolean
+function GeneratorConfigurations:IsClass(class) end
 ---@return GeneratorBaseObject
 function GeneratorConfigurations:Parent() end
 ---@param index integer
@@ -36,3 +40,4 @@ function GeneratorConfigurations:Insert(index, class, undo, count) end
 ---@overload fun(class: "GeneratorConfiguration", undo: Undo?): GeneratorConfiguration
 ---@overload fun(class: nil, undo: Undo?): GeneratorConfiguration
 function GeneratorConfigurations:Find(class, undo) end
+function GeneratorConfigurations:ActiveDisplay(property_name, property_value) end

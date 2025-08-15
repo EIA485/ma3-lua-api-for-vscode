@@ -6,6 +6,10 @@ local SoundChannels = {}
 function SoundChannels:GetClass() end
 ---@return "SoundChannel"
 function SoundChannels:GetChildClass() end
+---@generic T : SoundChannels
+---@param class `T`
+---@return boolean
+function SoundChannels:IsClass(class) end
 ---@param index integer
 ---@return SoundChannel
 function SoundChannels:Ptr(index) end
@@ -56,3 +60,4 @@ function SoundChannels:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SoundChannel
 function SoundChannels:Find(class, undo) end
+function SoundChannels:ActiveDisplay(property_name, property_value) end

@@ -6,6 +6,10 @@ local PoolScreen = {}
 function PoolScreen:GetClass() end
 ---@return "PoolWindow"
 function PoolScreen:GetChildClass() end
+---@generic T : PoolScreen
+---@param class `T`
+---@return boolean
+function PoolScreen:IsClass(class) end
 ---@return PoolOverlay
 function PoolScreen:Parent() end
 ---@param index integer
@@ -64,3 +68,6 @@ function PoolScreen:Insert(index, class, undo, count) end
 ---@overload fun(class: "PoolWindow", undo: Undo?): PoolWindow
 ---@overload fun(class: nil, undo: Undo?): PoolWindow
 function PoolScreen:Find(class, undo) end
+---@overload fun(property_name: "RunningPlaybacks", property_value: integer[])
+---@overload fun(property_name: "RunningPlaybacks", property_value: integer[])
+function PoolScreen:RunningPlaybacks(property_name, property_value) end

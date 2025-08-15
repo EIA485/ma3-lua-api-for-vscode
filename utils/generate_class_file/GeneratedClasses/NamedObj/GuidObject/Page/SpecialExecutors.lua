@@ -6,6 +6,10 @@ local SpecialExecutors = {}
 function SpecialExecutors:GetClass() end
 ---@return "SpecialExecutor"
 function SpecialExecutors:GetChildClass() end
+---@generic T : SpecialExecutors
+---@param class `T`
+---@return boolean
+function SpecialExecutors:IsClass(class) end
 ---@return SpecialExecutorPages
 function SpecialExecutors:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function SpecialExecutors:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SpecialExecutor
 function SpecialExecutors:Find(class, undo) end
+function SpecialExecutors:ExecutorConfiguration(property_name, property_value) end

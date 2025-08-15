@@ -6,6 +6,10 @@ local LayoutElementDefaultsCollect = {}
 function LayoutElementDefaultsCollect:GetClass() end
 ---@return "LayoutElementDefaults"
 function LayoutElementDefaultsCollect:GetChildClass() end
+---@generic T : LayoutElementDefaultsCollect
+---@param class `T`
+---@return boolean
+function LayoutElementDefaultsCollect:IsClass(class) end
 ---@param index integer
 ---@return LayoutElementDefaults
 function LayoutElementDefaultsCollect:Ptr(index) end
@@ -56,3 +60,22 @@ function LayoutElementDefaultsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): LayoutElementDefaults
 function LayoutElementDefaultsCollect:Find(class, undo) end
+---@overload fun(property_name: "Action", property_value: AssignmentButtonFunctions)
+---@overload fun(property_name: "IndicatorBar", property_value: LayoutVisibility|boolean)
+---@overload fun(property_name: "FullResolution", property_value: YesNo|boolean)
+---@overload fun(property_name: "CustomTextAlignmentV", property_value: LayoutElementAlignmentV)
+---@overload fun(property_name: "SelectionRelevance", property_value: LayoutElementSelectionRelevance)
+---@overload fun(property_name: "CustomTextAlignmentH", property_value: AlignmentH)
+---@overload fun(property_name: "ElementType", property_value: AssignType)
+---@overload fun(property_name: "CustomTextAlignmentH", property_value: AlignmentH)
+---@overload fun(property_name: "ElementType", property_value: AssignType)
+---@overload fun(property_name: "Action", property_value: AssignmentButtonFunctions)
+---@overload fun(property_name: "ObjectTextSize"|"CustomTextSize", property_value: FontSizes)
+---@overload fun(property_name: "CustomTextAlignmentV", property_value: LayoutElementAlignmentV)
+---@overload fun(property_name: "SelectionRelevance", property_value: LayoutElementSelectionRelevance)
+---@overload fun(property_name: "IndicatorBar", property_value: LayoutVisibility|boolean)
+---@overload fun(property_name: "Border"|"Bar"|"ObjectName"|"ID"|"Value", property_value: OnOff|boolean)
+---@overload fun(property_name: "BorderColor"|"CustomTextColor", property_value: UColor)
+---@overload fun(property_name: "FullResolution", property_value: YesNo|boolean)
+---@overload fun(property_name: "Width"|"Height"|"BorderSize", property_value: integer)
+function LayoutElementDefaultsCollect:ElementType(property_name, property_value) end

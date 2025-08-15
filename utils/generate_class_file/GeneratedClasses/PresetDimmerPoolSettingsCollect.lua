@@ -6,6 +6,10 @@ local PresetDimmerPoolSettingsCollect = {}
 function PresetDimmerPoolSettingsCollect:GetClass() end
 ---@return "PresetDimmerPoolSettings"
 function PresetDimmerPoolSettingsCollect:GetChildClass() end
+---@generic T : PresetDimmerPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function PresetDimmerPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return PresetDimmerPoolSettings
 function PresetDimmerPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function PresetDimmerPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetDimmerPoolSettings
 function PresetDimmerPoolSettingsCollect:Find(class, undo) end
+function PresetDimmerPoolSettingsCollect:RedirectKeyCode(property_name, property_value) end

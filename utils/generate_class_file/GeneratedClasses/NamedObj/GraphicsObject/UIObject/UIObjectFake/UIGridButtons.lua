@@ -6,6 +6,10 @@ local UIGridButtons = {}
 function UIGridButtons:GetClass() end
 ---@return "UIGridButton"
 function UIGridButtons:GetChildClass() end
+---@generic T : UIGridButtons
+---@param class `T`
+---@return boolean
+function UIGridButtons:IsClass(class) end
 ---@return UIGridButtonsCollect
 function UIGridButtons:Parent() end
 ---@param index integer
@@ -58,3 +62,6 @@ function UIGridButtons:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): UIGridButton
 function UIGridButtons:Find(class, undo) end
+---@overload fun(property_name: "ChildFreeIconColor"|"HasChildrenIconColor"|"HasSelectedChildrenIconColor", property_value: Color)
+---@overload fun(property_name: "ExpandedIcon"|"CollapsedIcon", property_value: Texture)
+function UIGridButtons:IsPlaying(property_name, property_value) end

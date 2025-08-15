@@ -6,3 +6,7 @@ local VideoPoolTitleButton = {}
 function VideoPoolTitleButton:GetClass() end
 ---@return "UIObject"
 function VideoPoolTitleButton:GetChildClass() end
+---@generic T : VideoPoolTitleButton
+---@param class `T`
+---@return boolean
+function VideoPoolTitleButton:IsClass(class) end

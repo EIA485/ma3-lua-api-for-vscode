@@ -6,5 +6,9 @@ local ComponentMultiLanguage = {}
 function ComponentMultiLanguage:GetClass() end
 ---@return "Object"
 function ComponentMultiLanguage:GetChildClass() end
+---@generic T : ComponentMultiLanguage
+---@param class `T`
+---@return boolean
+function ComponentMultiLanguage:IsClass(class) end
 ---@return Menu
 function ComponentMultiLanguage:Parent() end

@@ -6,6 +6,10 @@ local Page = {}
 function Page:GetClass() end
 ---@return "Proxy"
 function Page:GetChildClass() end
+---@generic T : Page
+---@param class `T`
+---@return boolean
+function Page:IsClass(class) end
 ---@return Pages
 function Page:Parent() end
 ---@param index integer
@@ -42,3 +46,13 @@ function Page:Insert(index, class, undo, count) end
 ---@overload fun(class: "Exec", undo: Undo?): Exec
 ---@overload fun(class: nil, undo: Undo?): Proxy
 function Page:Find(class, undo) end
+---@overload fun(property_name: "Object", property_value: Object)
+---@overload fun(property_name: "IsXKey", property_value: YesNo|boolean)
+---@overload fun(property_name: "Exec", property_value: Exec)
+---@overload fun(property_name: "ExecutorConfiguration", property_value: Configuration)
+---@overload fun(property_name: "ExecutorConfiguration", property_value: Configuration)
+---@overload fun(property_name: "Exec", property_value: Exec)
+---@overload fun(property_name: "Object", property_value: Object)
+---@overload fun(property_name: "IsXKey", property_value: YesNo|boolean)
+---@overload fun(property_name: "TotalPrimaryAssignmentChanged"|"TotalSecondaryAssignmentChanged"|"Width"|"Height"|"PrimaryAssignmentChanged"|"SecondaryAssignmentChanged", property_value: integer)
+function Page:ExecutorConfiguration(property_name, property_value) end

@@ -6,3 +6,7 @@ local Patch3dSelection = {}
 function Patch3dSelection:GetClass() end
 ---@return "Object"
 function Patch3dSelection:GetChildClass() end
+---@generic T : Patch3dSelection
+---@param class `T`
+---@return boolean
+function Patch3dSelection:IsClass(class) end

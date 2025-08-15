@@ -6,6 +6,10 @@ local BaseItemButtons = {}
 function BaseItemButtons:GetClass() end
 ---@return "BaseItemButton"
 function BaseItemButtons:GetChildClass() end
+---@generic T : BaseItemButtons
+---@param class `T`
+---@return boolean
+function BaseItemButtons:IsClass(class) end
 ---@param index integer
 ---@return BaseItemButton
 function BaseItemButtons:Ptr(index) end
@@ -56,3 +60,8 @@ function BaseItemButtons:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): BaseItemButton
 function BaseItemButtons:Find(class, undo) end
+---@overload fun(property_name: "AutoTexture", property_value: YesNo|boolean)
+---@overload fun(property_name: "SelectedTextColor"|"ProgIndicatorBackColor"|"EmptyBackColor"|"EmptyTextColor"|"SelectedIconColor"|"SelectedBackColor", property_value: Color)
+---@overload fun(property_name: "SelectedIcon"|"DeselectedIcon"|"ProgIndicator"|"PinnedIcon", property_value: Texture)
+---@overload fun(property_name: "AutoTexture", property_value: YesNo|boolean)
+function BaseItemButtons:AutoTexture(property_name, property_value) end

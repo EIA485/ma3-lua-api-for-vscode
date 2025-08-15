@@ -6,6 +6,10 @@ local RunningSequences = {}
 function RunningSequences:GetClass() end
 ---@return "Sequence"
 function RunningSequences:GetChildClass() end
+---@generic T : RunningSequences
+---@param class `T`
+---@return boolean
+function RunningSequences:IsClass(class) end
 ---@return RunningPlaybacksCollect
 function RunningSequences:Parent() end
 ---@param index integer
@@ -24,3 +28,6 @@ function RunningSequences:Acquire(class, undo) end
 function RunningSequences:Aquire(class, undo) end
 function RunningSequences:Insert(index, class, undo, count) end
 function RunningSequences:Find(class, undo) end
+function RunningSequences:Mode(property_name, property_value) end
+function RunningSequences:Mode(property_name, property_value) end
+function RunningSequences:SetChildrenRecursive(property_name, property_value) end

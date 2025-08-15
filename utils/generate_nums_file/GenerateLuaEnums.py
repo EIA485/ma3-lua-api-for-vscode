@@ -24,7 +24,7 @@ def parse_enums(file_path):
 def generate_lua(enums, output_path):
     with open(output_path, 'w', encoding='utf-8') as file:
         for enum_name, values in enums.items():
-            file.write(f"-- @enum {enum_name}\n")
+            file.write(f"---@enum {enum_name}\n")
             file.write(f"Enums.{enum_name} = {{\n")
             
             for key, value in values.items():

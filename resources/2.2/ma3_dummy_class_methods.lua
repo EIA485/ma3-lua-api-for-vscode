@@ -1,6 +1,9 @@
 ---@meta
 
 
+---@class UIObject
+UIObject = {}
+
 ---@return Overlay
 function UIObject:GetOverlay() end
 ---@return Display
@@ -36,6 +39,9 @@ function UIObject:IsEnabled() end
 ---@param topicName string
 function UIObject:SetContextSensHelpLink(topicName) end
 
+
+---@class UIGrid
+UIGrid = {}
 
 ---@return GridBase
 function UIGrid:GridGetBase() end
@@ -97,6 +103,9 @@ function UIGrid:GridsGetRowById(rowId) end
 function UIGrid:FSExtendedModeHasDots(cell) end
 
 
+---@class UILayoutGrid
+UILayoutGrid = {}
+
 ---@param index integer
 ---@return integer
 UILayoutGrid:UILGGetColumnWidth(index) end
@@ -116,6 +125,9 @@ UILayoutGrid:UILGGetRowAbsYTop(index) end
 ---@return integer
 UILayoutGrid:UILGGetRowAbsYBottom(index)
 
+
+---@class Overlay
+Overlay = {}
 
 ---@param callbackName string
 ---@param ctx any?

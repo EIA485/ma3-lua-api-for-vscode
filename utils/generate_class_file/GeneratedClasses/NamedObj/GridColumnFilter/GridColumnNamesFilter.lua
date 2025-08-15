@@ -6,6 +6,10 @@ local GridColumnNamesFilter = {}
 function GridColumnNamesFilter:GetClass() end
 ---@return "GridColumn"
 function GridColumnNamesFilter:GetChildClass() end
+---@generic T : GridColumnNamesFilter
+---@param class `T`
+---@return boolean
+function GridColumnNamesFilter:IsClass(class) end
 ---@param index integer
 ---@return GridColumn
 function GridColumnNamesFilter:Ptr(index) end
@@ -56,3 +60,6 @@ function GridColumnNamesFilter:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): GridColumn
 function GridColumnNamesFilter:Find(class, undo) end
+---@overload fun(property_name: "Visible", property_value: YesNo|boolean)
+---@overload fun(property_name: "Visible", property_value: YesNo|boolean)
+function GridColumnNamesFilter:Visible(property_name, property_value) end

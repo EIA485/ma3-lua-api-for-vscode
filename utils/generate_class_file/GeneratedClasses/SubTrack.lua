@@ -6,6 +6,10 @@ local SubTrack = {}
 function SubTrack:GetClass() end
 ---@return "Event"
 function SubTrack:GetChildClass() end
+---@generic T : SubTrack
+---@param class `T`
+---@return boolean
+function SubTrack:IsClass(class) end
 ---@return TimeRange
 function SubTrack:Parent() end
 ---@param index integer
@@ -36,3 +40,11 @@ function SubTrack:Insert(index, class, undo, count) end
 ---@overload fun(class: "Event", undo: Undo?): Event
 ---@overload fun(class: nil, undo: Undo?): Event
 function SubTrack:Find(class, undo) end
+---@overload fun(property_name: "RealtimeCmd", property_value: RealtimeCmdType)
+---@overload fun(property_name: "Time", property_value: SignedTimePropertyValue)
+---@overload fun(property_name: "Type", property_value: ArrangementMarcType)
+---@overload fun(property_name: "Type", property_value: ArrangementMarcType)
+---@overload fun(property_name: "Track"|"TrackGroup", property_value: Object)
+---@overload fun(property_name: "RealtimeCmd", property_value: RealtimeCmdType)
+---@overload fun(property_name: "Time", property_value: SignedTimePropertyValue)
+function SubTrack:Type(property_name, property_value) end

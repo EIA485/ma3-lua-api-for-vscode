@@ -6,6 +6,10 @@ local GridPatchContentFilter = {}
 function GridPatchContentFilter:GetClass() end
 ---@return "GridPatchContentFilterItem"
 function GridPatchContentFilter:GetChildClass() end
+---@generic T : GridPatchContentFilter
+---@param class `T`
+---@return boolean
+function GridPatchContentFilter:IsClass(class) end
 ---@param index integer
 ---@return GridPatchContentFilterItem
 function GridPatchContentFilter:Ptr(index) end
@@ -56,3 +60,6 @@ function GridPatchContentFilter:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): GridPatchContentFilterItem
 function GridPatchContentFilter:Find(class, undo) end
+---@overload fun(property_name: "PopupFilter", property_value: string)
+---@overload fun(property_name: "PopupFilter", property_value: string)
+function GridPatchContentFilter:PopupFilter(property_name, property_value) end

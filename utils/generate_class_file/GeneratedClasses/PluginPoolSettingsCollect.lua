@@ -6,6 +6,10 @@ local PluginPoolSettingsCollect = {}
 function PluginPoolSettingsCollect:GetClass() end
 ---@return "PluginPoolSettings"
 function PluginPoolSettingsCollect:GetChildClass() end
+---@generic T : PluginPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function PluginPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return PluginPoolSettings
 function PluginPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,6 @@ function PluginPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PluginPoolSettings
 function PluginPoolSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "Action", property_value: PluginPoolAction)
+---@overload fun(property_name: "Action", property_value: PluginPoolAction)
+function PluginPoolSettingsCollect:Action(property_name, property_value) end

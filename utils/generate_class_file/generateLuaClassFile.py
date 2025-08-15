@@ -1,9 +1,10 @@
 from __future__ import annotations
-import sys, json, os, re, inspect, time
+import sys, json, os, re, inspect, time, builtins
 from dataclasses import dataclass, field
 from typing import Optional, List, Dict, Any, Tuple, Set, Tuple, Iterable, FrozenSet, Iterator
 from collections import defaultdict, OrderedDict
 from itertools import groupby
+from operator import attrgetter
 from functools import lru_cache
 start = time.time()
 
@@ -19,10 +20,16 @@ def loadJson(path: str):
 
 @dataclass(eq=False)
 class Prop:
-    name: Optional[str] = None
+    ReadOnly: bool
+    ImportIgnore: bool
+    ExportIgnore: bool
+    name: str
     type: Optional[str] = None
+    TypeNameStr: Optional[str] = None
+    Enum: Optional[str] = None
     default: Optional[str] = None
     description: Optional[str] = None
+
 
 @dataclass(eq=False)
 class ClassEntry:
@@ -254,7 +261,57 @@ class ClassIndex:
             return True
         return self.recursive_parents_by_filters(cid) != self.recursive_parents_by_filters(b)
 
+@lru_cache(maxsize=None)
+def _unique_props_in_class(ce: ClassEntry) -> List[Prop]:
+    """Return this class's properties, keeping only the first occurrence of each name (stable)."""
+    if not ce or not ce.properties:
+        return []
+    out: List[Prop] = []
+    seen: Set[str] = set()
+    for p in ce.properties:
+        if not p or p.name is None:
+            continue
+        if p.name in seen:
+            continue
+        seen.add(p.name)
+        out.append(p)
+    return out
 
+def get_all_child_props(index: ClassIndex, parent_id: str, WriteableOnly: bool = True) -> List[Prop]:
+    """
+    All DIRECT hierarchical children’s properties (two-way filters applied).
+    Order of children is deterministic: lexicographic by id.
+    Within each child, properties are unique-by-name in declared order.
+    """
+    if parent_id not in index.data:
+        return []
+    props: List[Prop] = []
+    for cid in sorted(index.direct_children_by_filters(parent_id)):
+        ce = index.data.get(cid)
+        if ce:
+            props.extend(_unique_props_in_class(ce))
+    if WriteableOnly:
+        props = [prop for prop in props if not prop.ReadOnly]
+    return props
+
+def get_all_props_recursive(index: ClassIndex, parent_id: str, WriteableOnly: bool = True) -> List[Prop]:
+    """
+    All RECURSIVE hierarchical children’s properties (two-way filters applied).
+    Children are ordered by the same stable DFS used elsewhere.
+    """
+    if parent_id not in index.data:
+        return []
+    subset = set([parent_id]) | set(index.recursive_children_by_filters(parent_id))
+    ordered = [x for x in _dfs_order_subset(index, subset) if x != parent_id]
+
+    props: List[Prop] = []
+    for cid in ordered:
+        ce = index.data.get(cid)
+        if ce:
+            props.extend(_unique_props_in_class(ce))
+    if WriteableOnly:
+        props = [prop for prop in props if not prop.ReadOnly]
+    return props
     
 
 
@@ -755,6 +812,37 @@ def get_parents(index: ClassIndex, cid: str) -> Dict[str, List[str]]:
 def ConcatPropNames(props: list[Prop]) -> str:
     return "|".join(f'"{prop.name}"' for prop in props if prop.name)
 
+def ConcatPropTypeStrs(props: list[str]) -> str:
+    return "|".join(prop for prop in props if prop)
+
+def SortedAtoB(A: list, B: list, Aatt: function, Batt: function=str):
+    key = lambda p:str(Aatt(p) or '')
+    step1 = [([i for i in sorted(B[p] for p in plist)], plist) for plist in
+                    [list(props) for _,props in groupby(sorted(A,key=key), key=key)]]
+    return [(map(Batt,b), a) for b, a in sorted(step1, key = lambda i: i[0][0])]
+
+def splitPropsToArgTypeGroups(props):
+    byRet: Dict[str, set[Prop]] = {sk: set(g) for sk, g in groupby(sorted(props, key=lambda p: p.type), key=lambda p: p.type)}
+    byArg: Dict[str, set[str]] = {}
+    while True:
+        singleArg = set(next(iter(grp)) for _, grp in byRet.items() if len(grp) == 1)
+        for arg in singleArg:
+            name = arg.name
+            if not name in byArg.keys():
+                byArg[name] = {arg.type}
+            else:    
+                byArg[name].add(arg.type)
+        
+        contFlag = False
+        for sk, group in byRet.items():
+            byRet[sk] = {prop for prop in group if not prop.name in singleArg}
+            if len(byRet[sk]) < len(group): contFlag = True
+
+        if not contFlag: break
+
+    byRet = {t: ps for t, ps in byRet.items() if len(ps)>0}
+    return byArg.items(), byRet
+
 
 data = loadClassJson(sys.argv[1])
 index = build_index(data)
@@ -762,36 +850,69 @@ index = build_index(data)
 @lru_cache(maxsize=None)
 def get_all_properties(index: ClassIndex, cid: str) -> List[Prop]:
     """
-    Deterministic, override-aware property collection.
-    Order:
-      1) Properties declared on `cid` (in their list order)
-      2) Then properties on its base
-      3) Then base's base, and so on
-    Duplicates (same prop name) keep the first occurrence (i.e., subclass overrides base).
-    Returns references to the original Prop objects (no copying).
+    Global order:
+      base (original order, minus later overrides)
+      → derived1 (original order, minus later overrides)
+      → derived2 (original order, minus later overrides)
+      → ...
+      → cid (original order)
 
-    Cycle-safe: stops if a loop is detected.
+    When a derived class overrides a property, it is removed from whatever was
+    accumulated so far and re-inserted at the position it naturally has inside
+    that derived class's own property list.
     """
     if cid not in index.data:
         return []
-    lineage = []
-    seen = set()
+
+    # lineage: base → ... → cid
+    lineage: List[str] = []
+    seen: Set[str] = set()
     cur = cid
     while cur and cur not in seen and cur in index.data:
         seen.add(cur)
         lineage.append(cur)
         cur = index.base_of.get(cur)
-    picked = OrderedDict()
+    lineage.reverse()
+
+    result: List[Prop] = []
+    by_name: Dict[str, int] = {}
+
     for cls_id in lineage:
         ce = index.data.get(cls_id)
         if not ce or not ce.properties:
             continue
+
+        # Keep first occurrence within this class, preserve its list order.
+        class_props: List[Prop] = []
+        seen_in_class: Set[str] = set()
         for p in ce.properties:
             if not p or p.name is None:
                 continue
-            if p.name not in picked:
-                picked[p.name] = p
-    return list(picked.values())
+            if p.name in seen_in_class:
+                continue
+            seen_in_class.add(p.name)
+            class_props.append(p)
+
+        # Remove overrides from whatever we've already accumulated
+        to_remove_positions = sorted(
+            (by_name[name] for name in seen_in_class if name in by_name),
+            reverse=True
+        )
+        if to_remove_positions:
+            for pos in to_remove_positions:
+                result.pop(pos)
+            # Rebuild index since positions shifted
+            by_name.clear()
+            for i, rp in enumerate(result):
+                if rp.name is not None:
+                    by_name[rp.name] = i
+
+        # Append this class's props in their *own* order
+        for p in class_props:
+            by_name[p.name] = len(result)
+            result.append(p)
+
+    return result
 
 def GetClassInheritanceTreeString(root: str) -> str:
     path = []
@@ -819,9 +940,6 @@ def append(str):
 def removeChars(count):
     outstr[-1] = outstr[-1][:-count]
 
-
-
-lastName = ""
 
 for k,v in orderFilter(index):
     outstr = [""]
@@ -868,8 +986,17 @@ for k,v in orderFilter(index):
     append(f"---@return \"{data[v.child].name}\"\n")
     append(f"function {v.safeName}:GetChildClass() end\n")
 
+    # improve once emmy lua issue #712 is resolved
+    append(f"---@generic T : {v.safeName}\n")
+    append("---@param class `T`\n")
+    append("---@return boolean\n")
+    append(f"function {v.safeName}:IsClass(class) end\n")
+
     if notParentSameOnBase(v):
-        append(f"---@return {data[v.parent].safeName}\n")
+        if v.name == 'Root':
+            append("---@return nil\n") # Root is the only Class that has no parent
+        else:
+            append(f"---@return {data[v.parent].safeName}\n")
         append(f"function {v.safeName}:Parent() end\n")
     
     if notChildSameOnBase(v):
@@ -882,18 +1009,37 @@ for k,v in orderFilter(index):
 
         append(f"---@return {data[v.child].safeName}?\n")
         append(f"function {v.safeName}:CurrentChild() end\n")
+        
+    if len(v.properties)>0:
+        allProps = get_all_properties(index, k)
+        append(f"---@return {len(allProps)}\n")
+        append(f"function {v.safeName}:PropertyCount() end\n")
+        
+        for idx, prop in enumerate(allProps):
+            append(f"---@overload fun(idx: {idx}): \"{prop.name}\"\n")
+        append(f"function {v.safeName}:PropertyName(idx) end\n")
+
+        propindices = {p: i for i, p in enumerate(allProps)}
+
+        for idxs, props in SortedAtoB(allProps, propindices, lambda p: (p.Enum, p.ReadOnly, p.ImportIgnore, p.ExportIgnore)):
+                append(f"---@overload fun(idx: {'|'.join(map(str, idxs))}): {{ExportIgnore: {str(props[0].ExportIgnore)}{(', EnumCollection: '+props[0].Enum)if props[0].Enum else ''}, ReadOnly: {str(props[0].ReadOnly)}, ImportIgnore: {str(props[0].ImportIgnore)}}}\n")
+        append(f"function {v.safeName}:PropertyInfo(idx) end\n")
+
+        for idxs, props in SortedAtoB(allProps, propindices, attrgetter("TypeNameStr")):
+                append(f"---@overload fun(idx: {'|'.join(idxs)}): \"{props[0].TypeNameStr}\"\n")
+        append(f"function {v.safeName}:PropertyType(idx) end\n")
     
     if len(v.properties)>0 or notChildSameOnBase(v):
         if len(v.properties)>0:
-            allProps = get_all_properties(index, k)
-            for _, props in groupby(sorted(allProps, key=lambda p: p.type or ""), key=lambda p: p.type):
+            for _, props in groupby(sorted(allProps, key=lambda p: p.type), key=lambda p: p.type):
                 props = list(props)
                 append(f"---@overload fun(name: {ConcatPropNames(props)}, role: nil): {props[0].type}\n")
             append(f"---@overload fun(name: {ConcatPropNames(allProps)}, role: Enums.Roles): string\n")
         append(f"---@overload fun(name: integer, role: nil): {data[v.child].safeName}\n")
         append(f"function {v.safeName}:Get(name, role) end\n")
 
-    if index.has_direct_children_changed_vs_base(k):
+    childChange = index.has_direct_children_changed_vs_base(k)
+    if childChange:
         childClasses = get_cover_for_children(index, k)
         anchors = '|'.join(data[id].name for id in childClasses['anchors'])
         for func in ["Create","Append","Acquire", "Aquire!", "Insert", "Find"]:
@@ -919,7 +1065,8 @@ for k,v in orderFilter(index):
                 append('---@deprecated use "Acquire" instead\n')
             append(f"function {v.safeName}:{func[:-1] if func.endswith('!') else func}({'index, ' if hasIndex else ''}class, undo{', count' if hasCount else ''}) end\n")
 
-    if index.has_recursive_children_changed_vs_base(k):  
+    recChildChange = index.has_recursive_children_changed_vs_base(k)
+    if recChildChange:  
         recChildClasses = get_cover_for_recursive_children(index, k)
         if len(recChildClasses["A_full"])>0:
             if len(recChildClasses["anchors"]) > 0:
@@ -942,7 +1089,39 @@ for k,v in orderFilter(index):
             for id in recParentClasses["explicit"]:
                 append(f"---@overload fun(class: \"{data[id].name}\"): {data[id].safeName}\n")
             append(f"function {v.safeName}:FindParent(class) end\n")
+
+    if len(v.properties)>0:
+        for _, props in groupby(sorted([prop for prop in allProps if not prop.ReadOnly], key=lambda p: p.type), key=lambda p: p.type):
+            props = list(props)
+            append(f"---@overload fun(property_name: {ConcatPropNames(props)}, property_value: {props[0].type}, override_change_level: ChangeLevel?)\n")
+        append(f"function {v.safeName}:Set(property_name, property_value, override_change_level) end\n")
+
+    propGroups: dict[str, List[Prop]] = {}
+    if childChange:
+        propGroups["SetChildren"] = get_all_child_props(index, k)
+    if recChildChange:
+        propGroups["SetChildrenRecursive"] = get_all_props_recursive(index, k)
     
+    for func, props in propGroups.items():
+        byArg, byRet = splitPropsToArgTypeGroups(props)
+
+        for name, props in byArg:
+            append(f"---@overload fun(property_name: \"{name}\", property_value: {ConcatPropTypeStrs(props)})\n")
+
+        for type,props in byRet.items():
+            append(f"---@overload fun(property_name: {ConcatPropNames(props)}, property_value: {type})\n")
+
+        append(f"function {v.safeName}:{name}(property_name, property_value) end\n")
+
+        
+    if recChildChange:
+        for _, props in groupby(sorted(get_all_props_recursive(index, k), key=lambda p: p.type or ""), key=lambda p: p.type):
+            props = list(props)
+            append(f"---@overload fun(property_name: {ConcatPropNames(props)}, property_value: {props[0].type})\n")
+        append(f"function {v.safeName}:SetChildrenRecursive(property_name, property_value) end\n")
+
+
+
 
     path = os.path.join("GeneratedClasses", GetClassInheritanceTreeString(k)) + '.lua'
     os.makedirs(os.path.dirname(path), exist_ok=True)

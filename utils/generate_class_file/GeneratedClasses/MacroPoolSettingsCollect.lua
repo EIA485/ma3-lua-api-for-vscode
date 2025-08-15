@@ -6,6 +6,10 @@ local MacroPoolSettingsCollect = {}
 function MacroPoolSettingsCollect:GetClass() end
 ---@return "MacroPoolSettings"
 function MacroPoolSettingsCollect:GetChildClass() end
+---@generic T : MacroPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function MacroPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return MacroPoolSettings
 function MacroPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,6 @@ function MacroPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MacroPoolSettings
 function MacroPoolSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "Action", property_value: MacroPoolAction)
+---@overload fun(property_name: "Action", property_value: MacroPoolAction)
+function MacroPoolSettingsCollect:Action(property_name, property_value) end

@@ -6,6 +6,10 @@ local InfoNotesGridScroller = {}
 function InfoNotesGridScroller:GetClass() end
 ---@return "InfoNotesWrapper"
 function InfoNotesGridScroller:GetChildClass() end
+---@generic T : InfoNotesGridScroller
+---@param class `T`
+---@return boolean
+function InfoNotesGridScroller:IsClass(class) end
 ---@param index integer
 ---@return InfoNotesWrapper
 function InfoNotesGridScroller:Ptr(index) end
@@ -56,3 +60,4 @@ function InfoNotesGridScroller:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): InfoNotesWrapper
 function InfoNotesGridScroller:Find(class, undo) end
+function InfoNotesGridScroller:SetPrompt(property_name, property_value) end

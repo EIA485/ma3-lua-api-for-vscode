@@ -6,6 +6,10 @@ local Timezones = {}
 function Timezones:GetClass() end
 ---@return "Timezone"
 function Timezones:GetChildClass() end
+---@generic T : Timezones
+---@param class `T`
+---@return boolean
+function Timezones:IsClass(class) end
 ---@param index integer
 ---@return Timezone
 function Timezones:Ptr(index) end
@@ -56,3 +60,4 @@ function Timezones:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Timezone
 function Timezones:Find(class, undo) end
+function Timezones:ActiveDisplay(property_name, property_value) end

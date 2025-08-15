@@ -6,6 +6,10 @@ local WindowPhaserEditorSettingsCollect = {}
 function WindowPhaserEditorSettingsCollect:GetClass() end
 ---@return "WindowPhaserEditorSettings"
 function WindowPhaserEditorSettingsCollect:GetChildClass() end
+---@generic T : WindowPhaserEditorSettingsCollect
+---@param class `T`
+---@return boolean
+function WindowPhaserEditorSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return WindowPhaserEditorSettings
 function WindowPhaserEditorSettingsCollect:Ptr(index) end
@@ -56,3 +60,27 @@ function WindowPhaserEditorSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): WindowPhaserEditorSettings
 function WindowPhaserEditorSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "LineHeight", property_value: PhaserLineHeight)
+---@overload fun(property_name: "AbsRelMode", property_value: PhaserAbsRelMode)
+---@overload fun(property_name: "ViewMode", property_value: PhaserViewMode)
+---@overload fun(property_name: "Readout", property_value: ValueReadoutModeAuto)
+---@overload fun(property_name: "Mode1D", property_value: PhaserMode1D)
+---@overload fun(property_name: "Speed", property_value: SpeedReadoutModeAuto)
+---@overload fun(property_name: "PresetReadout", property_value: PresetReadoutMode)
+---@overload fun(property_name: "EditTools", property_value: PhaserEditTool)
+---@overload fun(property_name: "Attributes", property_value: AttributeMode)
+---@overload fun(property_name: "EncoderBar", property_value: PhaserBars)
+---@overload fun(property_name: "ColorMode", property_value: ColorDisplayModeAuto)
+---@overload fun(property_name: "Attributes", property_value: AttributeMode)
+---@overload fun(property_name: "ColorMode", property_value: ColorDisplayModeAuto)
+---@overload fun(property_name: "AbsRelMode", property_value: PhaserAbsRelMode)
+---@overload fun(property_name: "EncoderBar", property_value: PhaserBars)
+---@overload fun(property_name: "EditTools", property_value: PhaserEditTool)
+---@overload fun(property_name: "LineHeight", property_value: PhaserLineHeight)
+---@overload fun(property_name: "Mode1D", property_value: PhaserMode1D)
+---@overload fun(property_name: "ViewMode", property_value: PhaserViewMode)
+---@overload fun(property_name: "PresetReadout", property_value: PresetReadoutMode)
+---@overload fun(property_name: "Speed", property_value: SpeedReadoutModeAuto)
+---@overload fun(property_name: "Readout", property_value: ValueReadoutModeAuto)
+---@overload fun(property_name: "Relative"|"Absolute"|"StepBar"|"LayerSheet"|"ShowBeams"|"AttributeSheet"|"ShowEmptyLines"|"LayerBar", property_value: YesNo|boolean)
+function WindowPhaserEditorSettingsCollect:ColorMode(property_name, property_value) end

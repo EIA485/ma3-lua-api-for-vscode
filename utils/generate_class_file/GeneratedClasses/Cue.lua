@@ -2,13 +2,13 @@
 
 ---@class Cue: Object A cue in a sequence.
 ---@field No CueNumber
----@field Release integer
----@field Assert integer
----@field AllowDuplicates integer
+---@field Release Yes|true
+---@field Assert CueAssert
+---@field AllowDuplicates Yes|true
 ---@field TrigType integer
 ---@field TrigTime TimePropertyValue
----@field TrigSound integer
----@field MIBPreference integer
+---@field TrigSound SoundValues
+---@field MIBPreference MibPreferenceLevel
 ---@field Break Object
 local Cue = {
     AllowDuplicates="0",
@@ -21,6 +21,10 @@ local Cue = {
 function Cue:GetClass() end
 ---@return "Part"
 function Cue:GetChildClass() end
+---@generic T : Cue
+---@param class `T`
+---@return boolean
+function Cue:IsClass(class) end
 ---@return Sequence
 function Cue:Parent() end
 ---@param index integer
@@ -30,13 +34,65 @@ function Cue:Ptr(index) end
 function Cue:Children() end
 ---@return Part?
 function Cue:CurrentChild() end
+---@return 23
+function Cue:PropertyCount() end
+---@overload fun(idx: 0): "IgnoreNetwork"
+---@overload fun(idx: 1): "StructureLocked"
+---@overload fun(idx: 2): "SystemLocked"
+---@overload fun(idx: 3): "Lock"
+---@overload fun(idx: 4): "Index"
+---@overload fun(idx: 5): "Count"
+---@overload fun(idx: 6): "Name"
+---@overload fun(idx: 7): "Note"
+---@overload fun(idx: 8): "UserExpanded"
+---@overload fun(idx: 9): "FaderEnabled"
+---@overload fun(idx: 10): "Owned"
+---@overload fun(idx: 11): "Hidden"
+---@overload fun(idx: 12): "DependencyExport"
+---@overload fun(idx: 13): "MemoryFootprint"
+---@overload fun(idx: 14): "No"
+---@overload fun(idx: 15): "Release"
+---@overload fun(idx: 16): "Assert"
+---@overload fun(idx: 17): "AllowDuplicates"
+---@overload fun(idx: 18): "TrigType"
+---@overload fun(idx: 19): "TrigTime"
+---@overload fun(idx: 20): "TrigSound"
+---@overload fun(idx: 21): "MIBPreference"
+---@overload fun(idx: 22): "Break"
+function Cue:PropertyName(idx) end
+---@overload fun(idx: 0|1|2): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 3|11): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 4|5): {ExportIgnore: True, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 6|7|12|14|18|19|22): {ExportIgnore: False, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 8): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 9|10): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 13): {ExportIgnore: False, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 15|17): {ExportIgnore: False, EnumCollection: Yes, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 16): {ExportIgnore: False, EnumCollection: CueAssert, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 20): {ExportIgnore: False, EnumCollection: SoundValues, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 21): {ExportIgnore: False, EnumCollection: MibPreferenceLevel, ReadOnly: False, ImportIgnore: False}
+function Cue:PropertyInfo(idx) end
+---@overload fun(idx: 0|1|2|3|4|5|8|15|16|17): "UInt32"
+---@overload fun(idx: 6|7|12): "String"
+---@overload fun(idx: 9|10): "Bool"
+---@overload fun(idx: 11): "UInt64"
+---@overload fun(idx: 13): "Int64"
+---@overload fun(idx: 14): "CueNumber"
+---@overload fun(idx: 18|20|21): "UInt8"
+---@overload fun(idx: 19): "Int64Time"
+---@overload fun(idx: 22): "Handle"
+function Cue:PropertyType(idx) end
+---@overload fun(name: "Assert", role: nil): CueAssert
 ---@overload fun(name: "No", role: nil): CueNumber
+---@overload fun(name: "MIBPreference", role: nil): MibPreferenceLevel
 ---@overload fun(name: "Break", role: nil): Object
+---@overload fun(name: "TrigSound", role: nil): SoundValues
 ---@overload fun(name: "TrigTime", role: nil): TimePropertyValue
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "Release"|"Assert"|"AllowDuplicates"|"TrigType"|"TrigSound"|"MIBPreference"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden", role: nil): YesNo|boolean
+---@overload fun(name: "Release"|"AllowDuplicates", role: nil): Yes|true
+---@overload fun(name: "Index"|"Count"|"MemoryFootprint"|"TrigType", role: nil): integer
 ---@overload fun(name: "Name"|"Note"|"DependencyExport", role: nil): string
----@overload fun(name: "No"|"Release"|"Assert"|"AllowDuplicates"|"TrigType"|"TrigTime"|"TrigSound"|"MIBPreference"|"Break"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"No"|"Release"|"Assert"|"AllowDuplicates"|"TrigType"|"TrigTime"|"TrigSound"|"MIBPreference"|"Break", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): Part
 function Cue:Get(name, role) end
 ---@generic T : Part
@@ -102,3 +158,77 @@ function Cue:FindRecursive(name, class) end
 ---@overload fun(class: "GeneratorChannels"): GeneratorChannels
 ---@overload fun(class: "Page-Nr"): PageNr
 function Cue:FindParent(class) end
+---@overload fun(property_name: "Assert", property_value: CueAssert, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "No", property_value: CueNumber, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "MIBPreference", property_value: MibPreferenceLevel, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Break", property_value: Object, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "TrigSound", property_value: SoundValues, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "TrigTime", property_value: TimePropertyValue, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Hidden", property_value: YesNo|boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Release"|"AllowDuplicates", property_value: Yes|true, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Index"|"Count"|"TrigType", property_value: integer, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
+function Cue:Set(property_name, property_value, override_change_level) end
+---@overload fun(property_name: "MIBMultiStep", property_value: MibMultiStep)
+---@overload fun(property_name: "CommandEnabled", property_value: YesNo|boolean)
+---@overload fun(property_name: "Command", property_value: string)
+---@overload fun(property_name: "MIBMode", property_value: MibMode)
+---@overload fun(property_name: "Part", property_value: integer)
+---@overload fun(property_name: "MIBMode", property_value: MibMode)
+---@overload fun(property_name: "MIBMultiStep", property_value: MibMultiStep)
+---@overload fun(property_name: "MIBDelay"|"MIBFade", property_value: MibTiming)
+---@overload fun(property_name: "MIBTarget"|"TrackingDistance", property_value: RelCueNumber)
+---@overload fun(property_name: "Duration"|"IndivFade"|"IndivDuration"|"IndivDelay", property_value: TimePropertyValue)
+---@overload fun(property_name: "CommandEnabled", property_value: YesNo|boolean)
+---@overload fun(property_name: "Sync"|"Morph", property_value: Yes|true)
+---@overload fun(property_name: "Part", property_value: integer)
+---@overload fun(property_name: "Command", property_value: string)
+function Cue:Part(property_name, property_value) end
+---@overload fun(property_name: "MIBMultiStep", property_value: MibMultiStep)
+---@overload fun(property_name: "Generator", property_value: GeneratorBaseObject)
+---@overload fun(property_name: "Values", property_value: Object)
+---@overload fun(property_name: "Command", property_value: string)
+---@overload fun(property_name: "MIBMode", property_value: MibMode)
+---@overload fun(property_name: "Selection", property_value: Group)
+---@overload fun(property_name: "FailedCookedPart", property_value: FailedCookedPart)
+---@overload fun(property_name: "SelectionMode", property_value: StrictNormalMode)
+---@overload fun(property_name: "Preset", property_value: Preset)
+---@overload fun(property_name: "Part", property_value: integer)
+---@overload fun(property_name: "MAtricks", property_value: MAtrick)
+---@overload fun(property_name: "Filter", property_value: World)
+---@overload fun(property_name: "FailedCookedPart", property_value: FailedCookedPart)
+---@overload fun(property_name: "Generator", property_value: GeneratorBaseObject)
+---@overload fun(property_name: "Selection", property_value: Group)
+---@overload fun(property_name: "MAtricks", property_value: MAtrick)
+---@overload fun(property_name: "MIBMode", property_value: MibMode)
+---@overload fun(property_name: "MIBMultiStep", property_value: MibMultiStep)
+---@overload fun(property_name: "MIBDelay"|"MIBFade", property_value: MibTiming)
+---@overload fun(property_name: "Values", property_value: Object)
+---@overload fun(property_name: "Preset", property_value: Preset)
+---@overload fun(property_name: "MIBTarget"|"TrackingDistance", property_value: RelCueNumber)
+---@overload fun(property_name: "SelectionMode", property_value: StrictNormalMode)
+---@overload fun(property_name: "Duration"|"IndivFade"|"IndivDuration"|"IndivDelay", property_value: TimePropertyValue)
+---@overload fun(property_name: "Filter", property_value: World)
+---@overload fun(property_name: "Enabled"|"CommandEnabled"|"EmptyLastCooking", property_value: YesNo|boolean)
+---@overload fun(property_name: "Sync"|"Morph", property_value: Yes|true)
+---@overload fun(property_name: "Part", property_value: integer)
+---@overload fun(property_name: "Command", property_value: string)
+function Cue:Filter(property_name, property_value) end
+---@overload fun(property_name: "FailedCookedPart", property_value: FailedCookedPart)
+---@overload fun(property_name: "Generator", property_value: GeneratorBaseObject)
+---@overload fun(property_name: "Selection", property_value: Group)
+---@overload fun(property_name: "MAtricks", property_value: MAtrick)
+---@overload fun(property_name: "MIBMode", property_value: MibMode)
+---@overload fun(property_name: "MIBMultiStep", property_value: MibMultiStep)
+---@overload fun(property_name: "MIBFade"|"MIBDelay", property_value: MibTiming)
+---@overload fun(property_name: "Values", property_value: Object)
+---@overload fun(property_name: "Preset", property_value: Preset)
+---@overload fun(property_name: "TrackingDistance"|"MIBTarget", property_value: RelCueNumber)
+---@overload fun(property_name: "SelectionMode", property_value: StrictNormalMode)
+---@overload fun(property_name: "Duration"|"IndivFade"|"IndivDelay"|"IndivDuration", property_value: TimePropertyValue)
+---@overload fun(property_name: "Filter", property_value: World)
+---@overload fun(property_name: "EmptyLastCooking"|"Enabled"|"CommandEnabled", property_value: YesNo|boolean)
+---@overload fun(property_name: "Sync"|"Morph", property_value: Yes|true)
+---@overload fun(property_name: "Part", property_value: integer)
+---@overload fun(property_name: "Command", property_value: string)
+function Cue:SetChildrenRecursive(property_name, property_value) end

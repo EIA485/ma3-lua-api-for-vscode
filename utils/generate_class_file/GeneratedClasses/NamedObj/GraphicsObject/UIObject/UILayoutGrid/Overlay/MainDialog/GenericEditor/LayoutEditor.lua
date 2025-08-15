@@ -9,45 +9,271 @@ local LayoutEditor = {}
 function LayoutEditor:GetClass() end
 ---@return "UIObject"
 function LayoutEditor:GetChildClass() end
+---@generic T : LayoutEditor
+---@param class `T`
+---@return boolean
+function LayoutEditor:IsClass(class) end
+---@return 182
+function LayoutEditor:PropertyCount() end
+---@overload fun(idx: 0): "IgnoreNetwork"
+---@overload fun(idx: 1): "StructureLocked"
+---@overload fun(idx: 2): "SystemLocked"
+---@overload fun(idx: 3): "Lock"
+---@overload fun(idx: 4): "Index"
+---@overload fun(idx: 5): "Count"
+---@overload fun(idx: 6): "No"
+---@overload fun(idx: 7): "Name"
+---@overload fun(idx: 8): "Note"
+---@overload fun(idx: 9): "UserExpanded"
+---@overload fun(idx: 10): "FaderEnabled"
+---@overload fun(idx: 11): "Owned"
+---@overload fun(idx: 12): "Hidden"
+---@overload fun(idx: 13): "DependencyExport"
+---@overload fun(idx: 14): "MemoryFootprint"
+---@overload fun(idx: 15): "X"
+---@overload fun(idx: 16): "Y"
+---@overload fun(idx: 17): "W"
+---@overload fun(idx: 18): "H"
+---@overload fun(idx: 19): "AbsRect"
+---@overload fun(idx: 20): "AbsClientRect"
+---@overload fun(idx: 21): "Texture"
+---@overload fun(idx: 22): "Font"
+---@overload fun(idx: 23): "LowDpiFont"
+---@overload fun(idx: 24): "Text"
+---@overload fun(idx: 25): "ToolTip"
+---@overload fun(idx: 26): "HelpTopic"
+---@overload fun(idx: 27): "BackColor"
+---@overload fun(idx: 28): "TextColor"
+---@overload fun(idx: 29): "TextShadowColor"
+---@overload fun(idx: 30): "MixInBackColor"
+---@overload fun(idx: 31): "HighlightedColor"
+---@overload fun(idx: 32): "TextVertical"
+---@overload fun(idx: 33): "TextAutoAdjust"
+---@overload fun(idx: 34): "TextUniform"
+---@overload fun(idx: 35): "FrameWidth"
+---@overload fun(idx: 36): "Padding"
+---@overload fun(idx: 37): "Focus"
+---@overload fun(idx: 38): "UserRights"
+---@overload fun(idx: 39): "Visible"
+---@overload fun(idx: 40): "CanCoExistWithModal"
+---@overload fun(idx: 41): "UserVisible"
+---@overload fun(idx: 42): "Enabled"
+---@overload fun(idx: 43): "Interactive"
+---@overload fun(idx: 44): "Transparent"
+---@overload fun(idx: 45): "BlockClickThru"
+---@overload fun(idx: 46): "UserInteracted"
+---@overload fun(idx: 47): "HasHover"
+---@overload fun(idx: 48): "Separator"
+---@overload fun(idx: 49): "HasPressedAnimation"
+---@overload fun(idx: 50): "ContentDriven"
+---@overload fun(idx: 51): "ContentWidth"
+---@overload fun(idx: 52): "ContentHeight"
+---@overload fun(idx: 53): "ForceContentMin"
+---@overload fun(idx: 54): "WantsNumericRedirect"
+---@overload fun(idx: 55): "CloseAction"
+---@overload fun(idx: 56): "AutoCloseValue"
+---@overload fun(idx: 57): "UiGroupId"
+---@overload fun(idx: 58): "LabelLinkHandle"
+---@overload fun(idx: 59): "IgnoreBackdropPadding"
+---@overload fun(idx: 60): "MixInBackColorFromParent"
+---@overload fun(idx: 61): "FocusSearchPolicy"
+---@overload fun(idx: 62): "IgnoreRequestedSize"
+---@overload fun(idx: 63): "ForceEncoderBar"
+---@overload fun(idx: 64): "SuppressOverlayAutoClose"
+---@overload fun(idx: 65): "IsClosing"
+---@overload fun(idx: 66): "TextShadow"
+---@overload fun(idx: 67): "MinSize"
+---@overload fun(idx: 68): "MaxSize"
+---@overload fun(idx: 69): "Anchors"
+---@overload fun(idx: 70): "SignalValue"
+---@overload fun(idx: 71): "SignalValueHold"
+---@overload fun(idx: 72): "AlignmentH"
+---@overload fun(idx: 73): "AlignmentV"
+---@overload fun(idx: 74): "TextAlignmentH"
+---@overload fun(idx: 75): "TextAlignmentV"
+---@overload fun(idx: 76): "Margin"
+---@overload fun(idx: 77): "PluginComponent"
+---@overload fun(idx: 78): "HasFocus"
+---@overload fun(idx: 79): "HideFocusFrame"
+---@overload fun(idx: 80): "AppearanceSourceClassName"
+---@overload fun(idx: 81): "VisibleOnlyInAlpha"
+---@overload fun(idx: 82): "VisibleOnlyInBeta"
+---@overload fun(idx: 83): "VisibleOnlyInRelease"
+---@overload fun(idx: 84): "ClickNearest"
+---@overload fun(idx: 85): "VisibleInAlpha"
+---@overload fun(idx: 86): "VisibleInBeta"
+---@overload fun(idx: 87): "VisibleInRelease"
+---@overload fun(idx: 88): "Clicked"
+---@overload fun(idx: 89): "ClickedLeft"
+---@overload fun(idx: 90): "ClickedRight"
+---@overload fun(idx: 91): "DoubleClicked"
+---@overload fun(idx: 92): "MouseEnter"
+---@overload fun(idx: 93): "MouseLeave"
+---@overload fun(idx: 94): "MouseOverHold"
+---@overload fun(idx: 95): "MouseUp"
+---@overload fun(idx: 96): "MouseUpLeft"
+---@overload fun(idx: 97): "MouseUpRight"
+---@overload fun(idx: 98): "MouseDown"
+---@overload fun(idx: 99): "MouseDownLeft"
+---@overload fun(idx: 100): "MouseDownRight"
+---@overload fun(idx: 101): "MouseDownHold"
+---@overload fun(idx: 102): "KeyDown"
+---@overload fun(idx: 103): "KeyUp"
+---@overload fun(idx: 104): "CharInput"
+---@overload fun(idx: 105): "TouchStart"
+---@overload fun(idx: 106): "TouchUpdate"
+---@overload fun(idx: 107): "TouchEnd"
+---@overload fun(idx: 108): "OnLoad"
+---@overload fun(idx: 109): "OnVisible"
+---@overload fun(idx: 110): "DescriptionChanged"
+---@overload fun(idx: 111): "FocusGet"
+---@overload fun(idx: 112): "FocusLost"
+---@overload fun(idx: 113): "ForceIntensity"
+---@overload fun(idx: 114): "DefaultMargin"
+---@overload fun(idx: 115): "Columns"
+---@overload fun(idx: 116): "Rows"
+---@overload fun(idx: 117): "CellWidth"
+---@overload fun(idx: 118): "CellHeight"
+---@overload fun(idx: 119): "BlockWidth"
+---@overload fun(idx: 120): "BlockHeight"
+---@overload fun(idx: 121): "ExpandContent"
+---@overload fun(idx: 122): "DefaultMarginOnBorders"
+---@overload fun(idx: 123): "MixInBackColorFromParentRecursive"
+---@overload fun(idx: 124): "EncoderUseDisplay"
+---@overload fun(idx: 125): "RowReductionPolicy"
+---@overload fun(idx: 126): "ColReductionPolicy"
+---@overload fun(idx: 127): "SetRow"
+---@overload fun(idx: 128): "Close"
+---@overload fun(idx: 129): "CloseConfirm"
+---@overload fun(idx: 130): "CloseCancel"
+---@overload fun(idx: 131): "WantsModal"
+---@overload fun(idx: 132): "AutoClose"
+---@overload fun(idx: 133): "AutoCloseOnOverlay"
+---@overload fun(idx: 134): "CloseOnEscape"
+---@overload fun(idx: 135): "Move"
+---@overload fun(idx: 136): "MoveStart"
+---@overload fun(idx: 137): "ResizeStart"
+---@overload fun(idx: 138): "Resize"
+---@overload fun(idx: 139): "ResizeEnd"
+---@overload fun(idx: 140): "EscModalResult"
+---@overload fun(idx: 141): "StayAlwaysVisible"
+---@overload fun(idx: 142): "RelativeToDisplay"
+---@overload fun(idx: 143): "EditEncoderBar"
+---@overload fun(idx: 144): "ControlEncoderBar"
+---@overload fun(idx: 145): "AdjustInitialPosition"
+---@overload fun(idx: 146): "BuddyGroupId"
+---@overload fun(idx: 147): "IsMainBuddy"
+---@overload fun(idx: 148): "MainBuddy"
+---@overload fun(idx: 149): "DependentBuddies"
+---@overload fun(idx: 150): "UseSimplifiedResize"
+---@overload fun(idx: 151): "WorkingDestination"
+---@overload fun(idx: 152): "DriveReset"
+---@overload fun(idx: 153): "OverrideKeybSC"
+---@overload fun(idx: 154): "ReactToPreview"
+---@overload fun(idx: 155): "ReactToEdit"
+---@overload fun(idx: 156): "PreviewMixInColor"
+---@overload fun(idx: 157): "EditMixInColor"
+---@overload fun(idx: 158): "EditMixInNotOwnerColor"
+---@overload fun(idx: 159): "ReturnDestination"
+---@overload fun(idx: 160): "CanBeEmbedded"
+---@overload fun(idx: 161): "CalledFromCmdline"
+---@overload fun(idx: 162): "InitialTab"
+---@overload fun(idx: 163): "InitialSubTab"
+---@overload fun(idx: 164): "SwitchMenu"
+---@overload fun(idx: 165): "SwitchMenuWithTarget"
+---@overload fun(idx: 166): "OnSetEditTarget"
+---@overload fun(idx: 167): "OnUpdateTitle"
+---@overload fun(idx: 168): "EditTarget"
+---@overload fun(idx: 169): "EditTargetList"
+---@overload fun(idx: 170): "ForcedInitialTab"
+---@overload fun(idx: 171): "ChangeDestination"
+---@overload fun(idx: 172): "UpdateSettingsVisibility"
+---@overload fun(idx: 173): "SubDestination"
+---@overload fun(idx: 174): "Context"
+---@overload fun(idx: 175): "SaveEditTarget"
+---@overload fun(idx: 176): "RevertEditTarget"
+---@overload fun(idx: 177): "InitialSaveEditTarget"
+---@overload fun(idx: 178): "EditTargetHasChanged"
+---@overload fun(idx: 179): "SelectedElements"
+---@overload fun(idx: 180): "SaveAsDefault"
+---@overload fun(idx: 181): "LoadFromDefault"
+function LayoutEditor:PropertyName(idx) end
+---@overload fun(idx: 0|1|2|46|65|78|147|161|178): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 3|12|32|33|34|39|40|41|42|43|44|45|47|48|49|50|51|52|53|54|59|60|62|63|64|66|79|81|82|83|84|85|86|87|121|122|123|124|131|132|133|134|141|142|145|150|152|153|154|155|160|172|177): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 4|5|6|20|146|148|151): {ExportIgnore: True, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 7|8|13|15|16|17|18|19|21|22|23|24|25|26|27|28|29|30|31|35|36|56|57|58|67|68|69|70|71|76|80|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|128|129|130|135|136|137|138|139|143|144|149|156|157|158|162|163|166|167|168|170|171|174|175|176|179): {ExportIgnore: False, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 9): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 10|11): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 14|77|127|159|164|165|169|180|181): {ExportIgnore: False, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 37): {ExportIgnore: False, EnumCollection: FocusPriority, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 38): {ExportIgnore: False, EnumCollection: UserRights, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 55|140): {ExportIgnore: False, EnumCollection: ModalResult, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 61): {ExportIgnore: False, EnumCollection: FocusSearchPolicy, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 72|74): {ExportIgnore: False, EnumCollection: AlignmentH, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 73|75): {ExportIgnore: False, EnumCollection: AlignmentV, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 125|126): {ExportIgnore: False, EnumCollection: ReductionPolicy, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 173): {ExportIgnore: False, EnumCollection: None, ReadOnly: False, ImportIgnore: False}
+function LayoutEditor:PropertyInfo(idx) end
+---@overload fun(idx: 0|1|2|3|4|5|6|9|119|120|173): "UInt32"
+---@overload fun(idx: 7|8|13|24|25|26|70|71|80|143|144|146|162|163|170): "String"
+---@overload fun(idx: 10|11|78|79|121|122|123|124|131|132|133|134|141|142|145|147|150|152|153|154|155|160|161|171|172|177|178): "Bool"
+---@overload fun(idx: 12|32|33|34|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|59|60|61|62|63|64|65|66|81|82|83|84|85|86|87): "UInt64"
+---@overload fun(idx: 14|55|56|140): "Int64"
+---@overload fun(idx: 15|16|17|18): "Size"
+---@overload fun(idx: 19|20|67|68|149|169|179): "Custom"
+---@overload fun(idx: 21): "Texture"
+---@overload fun(idx: 22|23): "Font"
+---@overload fun(idx: 27|28|29|30|31|58|77|148|151|156|157|158|159|168): "Handle"
+---@overload fun(idx: 35|114|115|116|117|118): "Int16"
+---@overload fun(idx: 36|69|76): "4Ints"
+---@overload fun(idx: 37|38|72|73|74|75): "UInt8"
+---@overload fun(idx: 57|125|126): "Int32"
+---@overload fun(idx: 88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|166|167): "Signal"
+---@overload fun(idx: 113): "UInt16"
+---@overload fun(idx: 127|164|165|180|181): "Method"
+---@overload fun(idx: 128|129|130|135|136|137|138|139|174|175|176): "Action"
+function LayoutEditor:PropertyType(idx) end
 ---@overload fun(name: "AlignmentH"|"TextAlignmentH", role: nil): AlignmentH
 ---@overload fun(name: "AlignmentV"|"TextAlignmentV", role: nil): AlignmentV
----@overload fun(name: "PreviewMixInColor"|"EditMixInColor"|"EditMixInNotOwnerColor"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor", role: nil): Color
+---@overload fun(name: "BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"PreviewMixInColor"|"EditMixInColor"|"EditMixInNotOwnerColor", role: nil): Color
 ---@overload fun(name: "PluginComponent", role: nil): Component
 ---@overload fun(name: "Focus", role: nil): FocusPriority
+---@overload fun(name: "FocusSearchPolicy", role: nil): FocusSearchPolicy
 ---@overload fun(name: "Font"|"LowDpiFont", role: nil): Font
----@overload fun(name: "EscModalResult"|"CloseAction", role: nil): GestureResult
 ---@overload fun(name: "X"|"Y"|"W"|"H", role: nil): Graphics.SizeDescriptor
 ---@overload fun(name: "MinSize"|"MaxSize", role: nil): Graphics.SizeDimension
----@overload fun(name: "EditTarget"|"MainBuddy"|"WorkingDestination"|"ReturnDestination", role: nil): Object
----@overload fun(name: "SelectedElements"|"EditTargetList", role: nil): Object[]
+---@overload fun(name: "CloseAction"|"EscModalResult", role: nil): ModalResult
+---@overload fun(name: "MainBuddy"|"WorkingDestination"|"ReturnDestination"|"EditTarget", role: nil): Object
+---@overload fun(name: "EditTargetList"|"SelectedElements", role: nil): Object[]
 ---@overload fun(name: "RowReductionPolicy"|"ColReductionPolicy", role: nil): ReductionPolicy
 ---@overload fun(name: "Texture", role: nil): Texture
 ---@overload fun(name: "LabelLinkHandle", role: nil): UIObject
 ---@overload fun(name: "UserRights", role: nil): UserRights
----@overload fun(name: "ChangeDestination"|"UpdateSettingsVisibility"|"InitialSaveEditTarget"|"EditTargetHasChanged"|"CanBeEmbedded"|"CalledFromCmdline"|"WantsModal"|"AutoClose"|"AutoCloseOnOverlay"|"CloseOnEscape"|"StayAlwaysVisible"|"RelativeToDisplay"|"AdjustInitialPosition"|"IsMainBuddy"|"UseSimplifiedResize"|"DriveReset"|"OverrideKeybSC"|"ReactToPreview"|"ReactToEdit"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"HasFocus"|"HideFocusFrame"|"FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"HasFocus"|"HideFocusFrame"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"WantsModal"|"AutoClose"|"AutoCloseOnOverlay"|"CloseOnEscape"|"StayAlwaysVisible"|"RelativeToDisplay"|"AdjustInitialPosition"|"IsMainBuddy"|"UseSimplifiedResize"|"DriveReset"|"OverrideKeybSC"|"ReactToPreview"|"ReactToEdit"|"CanBeEmbedded"|"CalledFromCmdline"|"UpdateSettingsVisibility"|"InitialSaveEditTarget"|"EditTargetHasChanged", role: nil): YesNo|boolean
+---@overload fun(name: "ChangeDestination", role: nil): boolean
 ---@overload fun(name: "Close"|"CloseConfirm"|"CloseCancel", role: nil): fun(dummyStr: string) : boolean
 ---@overload fun(name: "SetRow", role: nil): fun(int1: integer, layoutSizePolicy: LayoutSizePolicy, num: number, int2: integer) : boolean
 ---@overload fun(name: "SaveAsDefault"|"LoadFromDefault", role: nil): fun(obj1: Object, obj2: Object)
 ---@overload fun(name: "DescriptionChanged", role: nil): fun(str: string)
 ---@overload fun(name: "SwitchMenu", role: nil): fun(str: string) : Object
----@overload fun(name: "Context"|"SaveEditTarget"|"RevertEditTarget"|"MoveStart"|"ResizeEnd", role: nil): fun(str: string) : boolean
+---@overload fun(name: "MoveStart"|"ResizeEnd"|"Context"|"SaveEditTarget"|"RevertEditTarget", role: nil): fun(str: string) : boolean
 ---@overload fun(name: "Clicked"|"DoubleClicked"|"MouseUp"|"MouseDown"|"MouseDownHold", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
 ---@overload fun(name: "ClickedLeft"|"ClickedRight"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUpLeft"|"MouseUpRight"|"MouseDownLeft"|"MouseDownRight", role: nil): fun(str: string, X: integer, Y: integer)
 ---@overload fun(name: "OnVisible", role: nil): fun(str: string, bool: boolean)
 ---@overload fun(name: "Move"|"ResizeStart"|"Resize", role: nil): fun(str: string, int1: integer, int2: integer) : boolean
 ---@overload fun(name: "KeyDown"|"KeyUp", role: nil): fun(str: string, keyCode: VirtualKeyCode, bool1: boolean, bool2: boolean, bool3: boolean)
 ---@overload fun(name: "FocusGet"|"FocusLost", role: nil): fun(str: string, obj1: Object, obj2: Object)
----@overload fun(name: "OnSetEditTarget"|"OnLoad", role: nil): fun(str: string, obj: Object)
+---@overload fun(name: "OnLoad"|"OnSetEditTarget", role: nil): fun(str: string, obj: Object)
 ---@overload fun(name: "SwitchMenuWithTarget", role: nil): fun(str: string, obj: Object) : Object
 ---@overload fun(name: "TouchStart"|"TouchUpdate"|"TouchEnd", role: nil): fun(str: string, pointID: integer, X: integer, Y: integer)
 ---@overload fun(name: "OnUpdateTitle", role: nil): fun(str: string, str: string)
 ---@overload fun(name: "CharInput", role: nil): fun(str: string, utf32Char: integer)
----@overload fun(name: "SubDestination"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"AutoCloseValue"|"UiGroupId"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"ForceIntensity"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
----@overload fun(name: "ForcedInitialTab"|"InitialTab"|"InitialSubTab"|"EditEncoderBar"|"ControlEncoderBar"|"BuddyGroupId"|"Text"|"ToolTip"|"HelpTopic"|"SignalValue"|"SignalValueHold"|"AppearanceSourceClassName"|"Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "Index"|"Count"|"No"|"MemoryFootprint"|"FrameWidth"|"AutoCloseValue"|"UiGroupId"|"ForceIntensity"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"SubDestination", role: nil): integer
+---@overload fun(name: "Name"|"Note"|"DependencyExport"|"Text"|"ToolTip"|"HelpTopic"|"SignalValue"|"SignalValueHold"|"AppearanceSourceClassName"|"EditEncoderBar"|"ControlEncoderBar"|"BuddyGroupId"|"InitialTab"|"InitialSubTab"|"ForcedInitialTab", role: nil): string
 ---@overload fun(name: "DependentBuddies", role: nil): string[]
 ---@overload fun(name: "Padding"|"Anchors"|"Margin", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
 ---@overload fun(name: "AbsRect"|"AbsClientRect", role: nil): {left: number, right: number, top: number, bottom: number}
----@overload fun(name: "SelectedElements"|"SaveAsDefault"|"LoadFromDefault"|"OnSetEditTarget"|"OnUpdateTitle"|"EditTarget"|"EditTargetList"|"ForcedInitialTab"|"ChangeDestination"|"UpdateSettingsVisibility"|"SubDestination"|"Context"|"SaveEditTarget"|"RevertEditTarget"|"InitialSaveEditTarget"|"EditTargetHasChanged"|"CanBeEmbedded"|"CalledFromCmdline"|"InitialTab"|"InitialSubTab"|"SwitchMenu"|"SwitchMenuWithTarget"|"Close"|"CloseConfirm"|"CloseCancel"|"WantsModal"|"AutoClose"|"AutoCloseOnOverlay"|"CloseOnEscape"|"Move"|"MoveStart"|"ResizeStart"|"Resize"|"ResizeEnd"|"EscModalResult"|"StayAlwaysVisible"|"RelativeToDisplay"|"EditEncoderBar"|"ControlEncoderBar"|"AdjustInitialPosition"|"BuddyGroupId"|"IsMainBuddy"|"MainBuddy"|"DependentBuddies"|"UseSimplifiedResize"|"WorkingDestination"|"DriveReset"|"OverrideKeybSC"|"ReactToPreview"|"ReactToEdit"|"PreviewMixInColor"|"EditMixInColor"|"EditMixInNotOwnerColor"|"ReturnDestination"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"RowReductionPolicy"|"ColReductionPolicy"|"SetRow"|"X"|"Y"|"W"|"H"|"AbsRect"|"AbsClientRect"|"Texture"|"Font"|"LowDpiFont"|"Text"|"ToolTip"|"HelpTopic"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Padding"|"Focus"|"UserRights"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"CloseAction"|"AutoCloseValue"|"UiGroupId"|"LabelLinkHandle"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"MinSize"|"MaxSize"|"Anchors"|"SignalValue"|"SignalValueHold"|"AlignmentH"|"AlignmentV"|"TextAlignmentH"|"TextAlignmentV"|"Margin"|"PluginComponent"|"HasFocus"|"HideFocusFrame"|"AppearanceSourceClassName"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"Clicked"|"ClickedLeft"|"ClickedRight"|"DoubleClicked"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUp"|"MouseUpLeft"|"MouseUpRight"|"MouseDown"|"MouseDownLeft"|"MouseDownRight"|"MouseDownHold"|"KeyDown"|"KeyUp"|"CharInput"|"TouchStart"|"TouchUpdate"|"TouchEnd"|"OnLoad"|"OnVisible"|"DescriptionChanged"|"FocusGet"|"FocusLost"|"ForceIntensity"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"X"|"Y"|"W"|"H"|"AbsRect"|"AbsClientRect"|"Texture"|"Font"|"LowDpiFont"|"Text"|"ToolTip"|"HelpTopic"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Padding"|"Focus"|"UserRights"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"CloseAction"|"AutoCloseValue"|"UiGroupId"|"LabelLinkHandle"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"MinSize"|"MaxSize"|"Anchors"|"SignalValue"|"SignalValueHold"|"AlignmentH"|"AlignmentV"|"TextAlignmentH"|"TextAlignmentV"|"Margin"|"PluginComponent"|"HasFocus"|"HideFocusFrame"|"AppearanceSourceClassName"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"Clicked"|"ClickedLeft"|"ClickedRight"|"DoubleClicked"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUp"|"MouseUpLeft"|"MouseUpRight"|"MouseDown"|"MouseDownLeft"|"MouseDownRight"|"MouseDownHold"|"KeyDown"|"KeyUp"|"CharInput"|"TouchStart"|"TouchUpdate"|"TouchEnd"|"OnLoad"|"OnVisible"|"DescriptionChanged"|"FocusGet"|"FocusLost"|"ForceIntensity"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"RowReductionPolicy"|"ColReductionPolicy"|"SetRow"|"Close"|"CloseConfirm"|"CloseCancel"|"WantsModal"|"AutoClose"|"AutoCloseOnOverlay"|"CloseOnEscape"|"Move"|"MoveStart"|"ResizeStart"|"Resize"|"ResizeEnd"|"EscModalResult"|"StayAlwaysVisible"|"RelativeToDisplay"|"EditEncoderBar"|"ControlEncoderBar"|"AdjustInitialPosition"|"BuddyGroupId"|"IsMainBuddy"|"MainBuddy"|"DependentBuddies"|"UseSimplifiedResize"|"WorkingDestination"|"DriveReset"|"OverrideKeybSC"|"ReactToPreview"|"ReactToEdit"|"PreviewMixInColor"|"EditMixInColor"|"EditMixInNotOwnerColor"|"ReturnDestination"|"CanBeEmbedded"|"CalledFromCmdline"|"InitialTab"|"InitialSubTab"|"SwitchMenu"|"SwitchMenuWithTarget"|"OnSetEditTarget"|"OnUpdateTitle"|"EditTarget"|"EditTargetList"|"ForcedInitialTab"|"ChangeDestination"|"UpdateSettingsVisibility"|"SubDestination"|"Context"|"SaveEditTarget"|"RevertEditTarget"|"InitialSaveEditTarget"|"EditTargetHasChanged"|"SelectedElements"|"SaveAsDefault"|"LoadFromDefault", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): UIObject
 function LayoutEditor:Get(name, role) end
 ---@generic T : SampleTableView|Toolbar|GrandMasterFader|HardwareFader|ShaperPovFader|ColorInterfaceFader|DeskLightsFader|ProgressBar|DCRemoteInfo|TimelineCell|ScrollBar|ScrollContainer|Dialog|AutoLayout|ScrollContainerPageBase|FrameBufferObject|Navigator|TitleBar|DialogFrame|PropertyBox|SwipeMenuOverlay|RecurringOverlay|NotificationArea|ColorInput|Popup|TextInput|NumericInput|ImageInput|ViewInput|UIDMXPatch|InsertFixturesWizard|CopyStoreCueMessageBoxBase|GenericAssignmentInput|FixtureTypeImport|CloneAtFilterSelector|OSMidiSelect|DatumInput|TimezoneInput|XlrPortInput|MessageBox|EncoderOverlay|PatchToOverlay|GenericContext|GenericEditorOverlay|HelpPopup|NetworkSpeedTestOverlay|ColorMeasurementOverlay|ContentOverlay|OffMenuOverlay|MainDlgCommandControl|PSRPatchMainDialog|PositionCalibration|MainDialogDest|TimecodeEditor|MainDlgFixtureTypeEditor|MainDlgDmxModeEditor|GeneratorBitmapEditor|AllExecEditor|FixtureEditor|GenericSettingsEditor|KeyboardShortcutEditor|StageEditor|CloneOverlay|MainDlgUpdateMenu|MainDlgFixtureSetup|ThemeMergeDialog|PlaybackControls|BackupMenu|ShowCreatorMainDialogBase|MainDlgDErrorReport|CommandLineHistory|PoolOverlay|MeshLineEdit|ObjectProperties|VirtualKeyboard|Bar|RecipeWindow|ContentWindow|StatusWindow|PhaserViewWindow|WindowTrackpad|WindowAgenda|SystemMonitorWindow|PlaybackViewWindow|ClockWindow|SequenceWindow|TimecodeWindow|CommandWingBarWindow|WindowInfo|LayoutView|WindowHelpViewer|SelectionViewWindow|ResultPoolWindow|RunningPlaybacksWindow|CommandLineWindow|AllPoolWindow|WindowEncoderBar|SpecialWindow|XKeysViewWindow|UiMessageCenter|CustomMasterLayoutGrid|TagButtonList|PhaserUICenter|CloningDialog|DialogTrackpad|UserPoolLayoutGrid|ScribblePoolLayoutGrid|GroupPoolLayoutGrid|ConfigurationPoolLayoutGrid|FilterPoolLayoutGrid|LayoutPoolLayoutGrid|ImagePoolLayoutGrid|RenderQualityPoolLayoutGrid|SmartViewPoolLayoutGrid|WorldPoolLayoutGrid|UniversePoolLayoutGrid|DataPoolLayoutGrid|SymbolPoolLayoutGrid|EncoderBarPoolLayoutGrid|GeneratorBitmapPoolLayoutGrid|GoboPoolLayoutGrid|GelPoolLayoutGrid|CameraPoolLayoutGrid|ViewPoolLayoutGrid|TimecodeSlotLayoutGrid|RunningPlaybacksPoolLayoutGrid|PresetPoolLayoutGrid|TimecodePoolLayoutGrid|PagePoolLayoutGrid|SequencePoolLayoutGrid|PluginPoolLayoutGrid|MeshPoolLayoutGrid|ViewBar|AppearancePoolLayoutGrid|MatricksPoolLayoutGrid|TagPoolLayoutGrid|QuickeyPoolLayoutGrid|MenuPoolLayoutGrid|SoundPoolLayoutGrid|VideoPoolLayoutGrid|GeneratorRandomPoolLayoutGrid|TimePoolLayoutGrid|MaterialPoolLayoutGrid|MacroPoolLayoutGrid|ScribbleEditContent|MainDialogSubMenuContent|MainDialogFunctionButtons|AgendaMonthsGrid|GridContentFilterEditor|SpecialWindowContent|BladeView|MainDialogContent|MatricksContainer|ThemeMergeToolBar|CmdDlgFunctionButtonsBase|GenericAssignmentSelector|PlaybackControlContent|AppearanceEditContent|ShaperEditorFaderGrid|EditorPropertyButtons|TagsEditContent|ReferencesContainer|PlaybackControlModularContent|NormedGrid|CommandWingBarContainer|AtFilterDialog|UIPhaserTimeLineGrid|SpecialExecSection|AllPoolLayoutGrid|BaseClock|TouchMonitor|AgendaDaysGrid|TreeViewFrame|PhaserLayoutGrid|EncoderBarSlot|Splitter|LinearResizer|BaseItemButtons|UIGridInternals|AudioPreview|XlrModeButton|SpecialExecConfigInput|OSCActivityButton|TitlebuttonControl|ColorPropertyInput|ExecConfigInput|TCTimeButton|CalculatorChannelSetControl|EncoderControl|DialogButton|StateButton|ValueControl|ToggleButtonList|ObjectSelector|UserEncoderPageSelector|ExecConfigSwipe|EnableMasterFaderButton|EncoderLinkButton|EditTitlebarButton|ValueFadeControl|SelectionIndicatorButton|MatricksToggleButton|ExecConfigRowButton|AtFilterControl|MainDlgGridToggleButton|ExecConfigColButton|SpecialExecutorKey|MatricksIndicatorButton|UIToggleButton|RotationButton|KeyboardShortcutControl|BatteryControl|AtFilterPreview|UIGridConfigButton|ScrollBarButton|MovableButton|DeleteWindowButton|VirtualKeyboardButton|KBShortcutButton|ExpandableButton|TimerButton|MainDlgButtonBase|MainDlgLoginButton|TimecodeSlotButton|DisplayButton|MainDlgUndoButton|BlinkingFadeButton|WarningInfoButton|EjectButton|DimmerWheelButton|MouseButton|ProgressButton|TagButton|MessageCenterInfoButton|DriveStatusButton|RevertButton|PlaceHolderBase|LineEdit|ColorView|SensorView|DialogContainer|PopupList|DBObjectTab|RadioButtonList|FixturetypeItemList|ResizeCorner|ScribbleEditView|PropertyLabel|BandFader|MiniEncoder|ScrollBox|StatusBar|MultiScroller|TimecodeSlotInfo|TextView|TouchConfigurator|AppearancePreview|MacrolinePreview|TrackpadMouseControl|SoundBandView|MainDialogDummy|CommandLineOutput|SoundLevelView|PerformanceView|ColorTestView|InfoNotesGridScroller|TouchTarget|EditorBase|OutputTest|ColorPickBase|SignalView|ShaperTestView
@@ -307,3 +533,288 @@ function LayoutEditor:Insert(index, class, undo, count) end
 ---@overload fun(class: "UITab", undo: Undo?): UITab
 ---@overload fun(class: nil, undo: Undo?): UIObject
 function LayoutEditor:Find(class, undo) end
+---@overload fun(property_name: "AlignmentH"|"TextAlignmentH", property_value: AlignmentH, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "AlignmentV"|"TextAlignmentV", property_value: AlignmentV, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"PreviewMixInColor"|"EditMixInColor"|"EditMixInNotOwnerColor", property_value: Color, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Focus", property_value: FocusPriority, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "FocusSearchPolicy", property_value: FocusSearchPolicy, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Font"|"LowDpiFont", property_value: Font, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "X"|"Y"|"W"|"H", property_value: Graphics.SizeDescriptor, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "MinSize"|"MaxSize", property_value: Graphics.SizeDimension, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "CloseAction"|"EscModalResult", property_value: ModalResult, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "MainBuddy"|"WorkingDestination"|"EditTarget", property_value: Object, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "SelectedElements", property_value: Object[], override_change_level: ChangeLevel?)
+---@overload fun(property_name: "RowReductionPolicy"|"ColReductionPolicy", property_value: ReductionPolicy, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Texture", property_value: Texture, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "LabelLinkHandle", property_value: UIObject, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "UserRights", property_value: UserRights, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Hidden"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"HasFocus"|"HideFocusFrame"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"WantsModal"|"AutoClose"|"AutoCloseOnOverlay"|"CloseOnEscape"|"StayAlwaysVisible"|"RelativeToDisplay"|"AdjustInitialPosition"|"IsMainBuddy"|"UseSimplifiedResize"|"DriveReset"|"OverrideKeybSC"|"ReactToPreview"|"ReactToEdit"|"CanBeEmbedded"|"CalledFromCmdline"|"UpdateSettingsVisibility"|"InitialSaveEditTarget"|"EditTargetHasChanged", property_value: YesNo|boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ChangeDestination", property_value: boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Close"|"CloseConfirm"|"CloseCancel", property_value: fun(dummyStr: string) : boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "DescriptionChanged", property_value: fun(str: string), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "MoveStart"|"ResizeEnd"|"Context"|"SaveEditTarget"|"RevertEditTarget", property_value: fun(str: string) : boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Clicked"|"DoubleClicked"|"MouseUp"|"MouseDown"|"MouseDownHold", property_value: fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ClickedLeft"|"ClickedRight"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUpLeft"|"MouseUpRight"|"MouseDownLeft"|"MouseDownRight", property_value: fun(str: string, X: integer, Y: integer), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "OnVisible", property_value: fun(str: string, bool: boolean), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Move"|"ResizeStart"|"Resize", property_value: fun(str: string, int1: integer, int2: integer) : boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "KeyDown"|"KeyUp", property_value: fun(str: string, keyCode: VirtualKeyCode, bool1: boolean, bool2: boolean, bool3: boolean), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "FocusGet"|"FocusLost", property_value: fun(str: string, obj1: Object, obj2: Object), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "OnLoad"|"OnSetEditTarget", property_value: fun(str: string, obj: Object), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "TouchStart"|"TouchUpdate"|"TouchEnd", property_value: fun(str: string, pointID: integer, X: integer, Y: integer), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "OnUpdateTitle", property_value: fun(str: string, str: string), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "CharInput", property_value: fun(str: string, utf32Char: integer), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Index"|"Count"|"No"|"FrameWidth"|"AutoCloseValue"|"UiGroupId"|"ForceIntensity"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"SubDestination", property_value: integer, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Name"|"Note"|"DependencyExport"|"Text"|"ToolTip"|"HelpTopic"|"SignalValue"|"SignalValueHold"|"AppearanceSourceClassName"|"EditEncoderBar"|"ControlEncoderBar"|"BuddyGroupId"|"InitialTab"|"InitialSubTab"|"ForcedInitialTab", property_value: string, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "DependentBuddies", property_value: string[], override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Padding"|"Anchors"|"Margin", property_value: {left: integer, right: integer, top: integer, bottom: integer}, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "AbsRect"|"AbsClientRect", property_value: {left: number, right: number, top: number, bottom: number}, override_change_level: ChangeLevel?)
+function LayoutEditor:Set(property_name, property_value, override_change_level) end
+---@overload fun(property_name: "Source", property_value: TimeCodeSource)
+---@overload fun(property_name: "Mode", property_value: DatumMode|GridModeAgenda|ShowfileSelectorMode|BlinkingButtonMode|CalculatorMode)
+---@overload fun(property_name: "RunningPlaybacks", property_value: integer[])
+---@overload fun(property_name: "ExternalSettings", property_value: GridSettings)
+---@overload fun(property_name: "HotKey", property_value: HotKey)
+---@overload fun(property_name: "Context", property_value: EncoderBarContext)
+---@overload fun(property_name: "EncoderFunction", property_value: PhaserEncoderFunction|TimecodeEncoderFunction|EncoderFunction)
+---@overload fun(property_name: "ShownCue", property_value: Cue)
+---@overload fun(property_name: "Focus", property_value: FocusPriority)
+---@overload fun(property_name: "Settings", property_value: PSRPatchSheetSettings|CloningWindowSettings|ShowCreatorSettings)
+---@overload fun(property_name: "Month", property_value: Month)
+---@overload fun(property_name: "UserRights", property_value: UserRights)
+---@overload fun(property_name: "TargetSound", property_value: Sound)
+---@overload fun(property_name: "ShowCreatorType", property_value: ShowCreatorType)
+---@overload fun(property_name: "ContentFilter", property_value: GridContentFilter)
+---@overload fun(property_name: "InternalRole", property_value: Roles)
+---@overload fun(property_name: "MouseButtonType", property_value: MouseButtonTypes)
+---@overload fun(property_name: "OnFocusGet", property_value: fun(str: string, obj: Object) : boolean)
+---@overload fun(property_name: "AllTitlebuttons", property_value: table<string, TitlebuttonControl[]>)
+---@overload fun(property_name: "Appearance", property_value: Appearance)
+---@overload fun(property_name: "Direction", property_value: ToolbarScrollType|AutoLayoutScrollType)
+---@overload fun(property_name: "ImageSource", property_value: ImageSource)
+---@overload fun(property_name: "WindowAppearance", property_value: WindowAppearance)
+---@overload fun(property_name: "WindowScrollPositions", property_value: WindowScrollPositions)
+---@overload fun(property_name: "FilterRows", property_value: fun(str1: string, str2: string) : boolean)
+---@overload fun(property_name: "ChangeText", property_value: fun(newTextStr: string) : boolean)
+---@overload fun(property_name: "FixtureLayer", property_value: FixtureLayer)
+---@overload fun(property_name: "FixtureClass", property_value: Class)
+---@overload fun(property_name: "KeyCode", property_value: KeyboardCodes)
+---@overload fun(property_name: "FixtureQuantity", property_value: EmptyAsZero)
+---@overload fun(property_name: "FocusSearchPolicy", property_value: FocusSearchPolicy)
+---@overload fun(property_name: "FixtureIDType", property_value: IDs)
+---@overload fun(property_name: "EncoderType", property_value: EncoderType)
+---@overload fun(property_name: "EncoderRing", property_value: EncoderRing)
+---@overload fun(property_name: "DependentBuddies", property_value: string[])
+---@overload fun(property_name: "GestureClick", property_value: fun(str: string, int1: integer, int2: integer, int3: integer, int4: integer) : boolean)
+---@overload fun(property_name: "GroupedCellsCount", property_value: CellGrouping)
+---@overload fun(property_name: "SideSize", property_value: ALSideSizeSpecial)
+---@overload fun(property_name: "OnAssignTarget", property_value: fun(str: string, Target: Object, TargetPropertyName: string, rowId: integer) : boolean)
+---@overload fun(property_name: "ActiveController", property_value: Gma3UI.WindowFixturetypeVisualizer.ActiveController)
+---@overload fun(property_name: "GroupChangedTab", property_value: fun(str: string, int1: integer, int2: integer, bool1: boolean, bool2: boolean) : boolean)
+---@overload fun(property_name: "GroupClickedTab", property_value: fun(str: string, int1: integer, int2: integer, bool: boolean) : boolean)
+---@overload fun(property_name: "Changed", property_value: fun(str: string, value: integer))
+---@overload fun(property_name: "Set", property_value: fun(str: string, value: integer) : boolean)
+---@overload fun(property_name: "PresetPoolType", property_value: DynamicPresetPool)
+---@overload fun(property_name: "ChildrenFillPolicy", property_value: ChildrenFillPolicy)
+---@overload fun(property_name: "FixedColumns", property_value: FixedColumns)
+---@overload fun(property_name: "OnAssignTargetSelected", property_value: fun(str: string, obj: Object, str: string, int: integer))
+---@overload fun(property_name: "ChangeActive", property_value: fun(childName: string) : boolean)
+---@overload fun(property_name: "MoveValueToPart", property_value: MoveValueToPart)
+---@overload fun(property_name: "UIToControl", property_value: SplitterV_TopBottom|SplitterH_LeftRight)
+---@overload fun(property_name: "PlaybackWindowSettings", property_value: PlaybackWindowSettings)
+---@overload fun(property_name: "CueStoreOp", property_value: StoreMode)
+---@overload fun(property_name: "SelectedAddr", property_value: DMXPropertyAddress)
+---@overload fun(property_name: "CueSrc", property_value: CueCopySrc)
+---@overload fun(property_name: "CueDst", property_value: CueCopyDst)
+---@overload fun(property_name: "ColorEncoderFunction", property_value: ColorEncoderFunction)
+---@overload fun(property_name: "CueDstOp", property_value: CueCopyDstMode)
+---@overload fun(property_name: "BackOffset", property_value: ItemGroupPosition)
+---@overload fun(property_name: "Layout", property_value: Layout)
+---@overload fun(property_name: "TrackingShield", property_value: TrackingShieldPopup)
+---@overload fun(property_name: "ResizeMove", property_value: fun(str: string, AbsX: integer, AbsY: integer))
+---@overload fun(property_name: "CueOperationMode", property_value: CueOperationMode)
+---@overload fun(property_name: "CharInput", property_value: fun(str: string, utf32Char: integer))
+---@overload fun(property_name: "CueOnly", property_value: CueOnly)
+---@overload fun(property_name: "Drive", property_value: Drive)
+---@overload fun(property_name: "TabChanged", property_value: fun(str: string, int1: integer, int2: integer, bool1: boolean, bool2: boolean))
+---@overload fun(property_name: "SelectAbsoluteAddress", property_value: fun(str: string, int: AbsoluteAddress) : boolean)
+---@overload fun(property_name: "AdditionalArgs", property_value: table<string, string>)
+---@overload fun(property_name: "ValueRole", property_value: ValueRole)
+---@overload fun(property_name: "PoolType", property_value: Pooltype)
+---@overload fun(property_name: "Band", property_value: SoundValues)
+---@overload fun(property_name: "SetupType", property_value: SetupType)
+---@overload fun(property_name: "PolicyOnEnter", property_value: PolicyOnEnter)
+---@overload fun(property_name: "EditTools", property_value: DmxCurveEditTool)
+---@overload fun(property_name: "FunctionMode", property_value: FunctionMode)
+---@overload fun(property_name: "Grid", property_value: TimecodeGrid)
+---@overload fun(property_name: "Property", property_value: EncoderGroupType)
+---@overload fun(property_name: "Icons", property_value: Texture[])
+---@overload fun(property_name: "IconsGrid", property_value: Gma3UI.IconsGrid)
+---@overload fun(property_name: "IconsGridAnchors", property_value: Gma3UI.IconsGridAnchors[])
+---@overload fun(property_name: "SetType", property_value: PropertyRadioButtonListSetType)
+---@overload fun(property_name: "MeasurementStatus", property_value: MeasurementStatus)
+---@overload fun(property_name: "OnObjectSelected", property_value: fun(dummyStr: string, column: integer, row: integer, int: integer) : boolean)
+---@overload fun(property_name: "Target", property_value: Sequence)
+---@overload fun(property_name: "EnabledItems", property_value: PropertyRadioButtonListEnabledItems)
+---@overload fun(property_name: "CurrentTimeView", property_value: TimeView)
+---@overload fun(property_name: "Clear", property_value: fun(dummyString: string) : boolean)
+---@overload fun(property_name: "SetPrompt", property_value: fun(prompt: string) : boolean)
+---@overload fun(property_name: "SideSize", property_value: ALSideSizeSpecial)
+---@overload fun(property_name: "ValueAlignmentH"|"AlignmentH"|"IconAlignmentH"|"IconAlignmentH"|"TextAlignmentH"|"KeyboardIconAlignmentH"|"LogoIconAlignmentH", property_value: AlignmentH)
+---@overload fun(property_name: "ValueAlignmentV"|"AlignmentV"|"IconAlignmentV"|"IconAlignmentV"|"TextAlignmentV"|"LogoIconAlignmentV"|"KeyboardIconAlignmentV", property_value: AlignmentV)
+---@overload fun(property_name: "Appearance", property_value: Appearance)
+---@overload fun(property_name: "Direction", property_value: AutoLayoutScrollType)
+---@overload fun(property_name: "Mode", property_value: BlinkingButtonMode)
+---@overload fun(property_name: "Mode", property_value: CalculatorMode)
+---@overload fun(property_name: "GroupedCellsCount", property_value: CellGrouping)
+---@overload fun(property_name: "TriggerIndirectInitLevel"|"BlockLevel", property_value: ChangeLevel)
+---@overload fun(property_name: "ChildrenFillPolicy", property_value: ChildrenFillPolicy)
+---@overload fun(property_name: "FixtureClass", property_value: Class)
+---@overload fun(property_name: "CloneDestinationGrid"|"ScrollBuddy"|"CloneSourceGrid", property_value: CloneGrid)
+---@overload fun(property_name: "Settings", property_value: CloningWindowSettings)
+---@overload fun(property_name: "PoolColor"|"ActiveBackColor"|"ActiveTextColor"|"ActiveIconColor"|"BackColor"|"SelectedOptionTextColor"|"TextColor"|"TextShadowColor"|"SelectedOptionBackColor"|"MixInBackColor"|"HighlightedColor"|"IconColor"|"SelectionColor"|"ColorLineNumberBackground"|"ColorLineNumberNormal"|"ProgIndicatorBackColor"|"ColorLineNumberSelected"|"ColorSelectedLineRect"|"SelectedBackColor"|"OnColor"|"KnobColorFlashedUp"|"OffColor"|"AlwaysOnColor"|"DisabledColor"|"HeadlineColor"|"SelectedIconColor"|"KnobColor"|"KnobColorFlashedDown"|"SlotColor"|"UpperColor"|"PreviewMixInColor"|"LowerColor"|"OnColor"|"OffColor"|"AlwaysOnColor"|"DisabledColor"|"EditMixInColor"|"BorderColor"|"EditMixInNotOwnerColor"|"IndicatorColor"|"RotateIconColor"|"DbgValueBackColor"|"DbgValueTextColor"|"ResizeLineColor"|"PreviewMixInColor"|"BackColorFlashedDown"|"EditMixInColor"|"DelimiterColor"|"EditMixInNotOwnerColor"|"ActiveDelimiterColor"|"BackColor2"|"IndicatorBack"|"BackColorFlashedUp"|"BlockerColor"|"NonEmptyIndicatorColor"|"OnColor"|"OffColor"|"IndicatorIconBackColor"|"GridColor"|"OverridesIndicatorBackColor"|"XYZTextColor"|"ValueTextColor"|"ValueActiveTextColor"|"PoolColor"|"SelectedTextColor"|"SelectionColor"|"SelectedBackColor"|"FixedBackColor"|"ProgressColor"|"AdditionalInfoTextColor"|"DividerColor"|"BlinkBackColor"|"SelectionColor"|"LevelColor"|"MessageColor"|"PeakColor"|"ScrollCellFrameColor"|"PoolColor"|"SelectedRowBorder"|"LevelColor"|"TriggerColor"|"KnobColor"|"UpperColor"|"LowerColor"|"LassoColor"|"FaderLocked"|"GridColor"|"LowerPressedColor"|"OverridesIndicatorBackColor"|"SampleColor"|"UpperSampleColor"|"MatricksAreaActiveBackColor"|"RecipeEditColor"|"GridColor"|"IconColor"|"TimeCursorColor"|"IconHoverColor"|"SelectedIconColor"|"SensorColor"|"DeselectedIconColor"|"GridColor1"|"WarningColor"|"GridColor2"|"UpperColor"|"PeekColor"|"SignalColor"|"LowerColor", property_value: Color)
+---@overload fun(property_name: "ColorEncoderFunction", property_value: ColorEncoderFunction)
+---@overload fun(property_name: "ShownCue", property_value: Cue)
+---@overload fun(property_name: "CueDst", property_value: CueCopyDst)
+---@overload fun(property_name: "CueDstOp", property_value: CueCopyDstMode)
+---@overload fun(property_name: "CueSrc", property_value: CueCopySrc)
+---@overload fun(property_name: "CueOnly", property_value: CueOnly)
+---@overload fun(property_name: "CueOperationMode", property_value: CueOperationMode)
+---@overload fun(property_name: "DMXMode"|"DmxMode", property_value: DMXMode)
+---@overload fun(property_name: "SelectedAddr", property_value: DMXPropertyAddress)
+---@overload fun(property_name: "Mode", property_value: DatumMode)
+---@overload fun(property_name: "EditTools", property_value: DmxCurveEditTool)
+---@overload fun(property_name: "Drive", property_value: Drive)
+---@overload fun(property_name: "PresetPoolType", property_value: DynamicPresetPool)
+---@overload fun(property_name: "FixtureQuantity", property_value: EmptyAsZero)
+---@overload fun(property_name: "FixtureFID"|"FixtureCID", property_value: EmptyAsZeroFID)
+---@overload fun(property_name: "Context", property_value: EncoderBarContext)
+---@overload fun(property_name: "EncoderFunction", property_value: EncoderFunction)
+---@overload fun(property_name: "Property", property_value: EncoderGroupType)
+---@overload fun(property_name: "EncoderRing", property_value: EncoderRing)
+---@overload fun(property_name: "EncoderType", property_value: EncoderType)
+---@overload fun(property_name: "FixedColumns", property_value: FixedColumns)
+---@overload fun(property_name: "FixtureLayer", property_value: FixtureLayer)
+---@overload fun(property_name: "Focus", property_value: FocusPriority)
+---@overload fun(property_name: "FocusSearchPolicy", property_value: FocusSearchPolicy)
+---@overload fun(property_name: "LowDpiFont"|"Font"|"TcFont", property_value: Font)
+---@overload fun(property_name: "FunctionMode", property_value: FunctionMode)
+---@overload fun(property_name: "IconsGrid", property_value: Gma3UI.IconsGrid)
+---@overload fun(property_name: "IconsGridAnchors", property_value: Gma3UI.IconsGridAnchors[])
+---@overload fun(property_name: "ActiveController", property_value: Gma3UI.WindowFixturetypeVisualizer.ActiveController)
+---@overload fun(property_name: "X"|"Y"|"TextOffsetH"|"W"|"H"|"TextOffsetV"|"IconOffsetV"|"IconOffsetH"|"ScrollBarHeight", property_value: Graphics.SizeDescriptor)
+---@overload fun(property_name: "MaxSize"|"MinSize", property_value: Graphics.SizeDimension)
+---@overload fun(property_name: "FixedHeaders"|"NormalHeaders"|"FixedCells"|"NormalCells", property_value: Graphics.UIGrid.GridArea)
+---@overload fun(property_name: "ContentFilter", property_value: GridContentFilter)
+---@overload fun(property_name: "Mode", property_value: GridModeAgenda)
+---@overload fun(property_name: "ExternalSettings", property_value: GridSettings)
+---@overload fun(property_name: "HotKey", property_value: HotKey)
+---@overload fun(property_name: "FixtureIDType", property_value: IDs)
+---@overload fun(property_name: "ImageSource", property_value: ImageSource)
+---@overload fun(property_name: "ArrayIndex"|"ArrayIndex", property_value: Index)
+---@overload fun(property_name: "BackOffset", property_value: ItemGroupPosition)
+---@overload fun(property_name: "KeyCode", property_value: KeyboardCodes)
+---@overload fun(property_name: "Layout", property_value: Layout)
+---@overload fun(property_name: "MeasurementStatus", property_value: MeasurementStatus)
+---@overload fun(property_name: "Target"|"Target", property_value: Mesh)
+---@overload fun(property_name: "EscModalResult"|"CloseAction", property_value: ModalResult)
+---@overload fun(property_name: "Month", property_value: Month)
+---@overload fun(property_name: "MouseButtonType", property_value: MouseButtonTypes)
+---@overload fun(property_name: "MoveValueToPart", property_value: MoveValueToPart)
+---@overload fun(property_name: "Target"|"Target"|"TargetObject"|"Target"|"Target"|"ScrollTarget"|"Target"|"Target"|"EditTarget"|"Target"|"Target"|"ExternScrollPos"|"Target"|"Target"|"AppearanceTarget"|"Target"|"CurrentUpdateObject"|"Target"|"MainBuddy"|"ScrollTarget"|"ScribbleTarget"|"Target"|"WorkingDestination"|"EditTarget"|"Target"|"Target"|"Target"|"Target"|"Target"|"Target"|"TargetObject"|"HistoryProvider"|"TextViewProvider"|"Context"|"Target"|"Target"|"EditTarget"|"Target", property_value: Object)
+---@overload fun(property_name: "Settings", property_value: PSRPatchSheetSettings)
+---@overload fun(property_name: "EncoderFunction", property_value: PhaserEncoderFunction)
+---@overload fun(property_name: "PlaybackWindowSettings", property_value: PlaybackWindowSettings)
+---@overload fun(property_name: "PolicyOnEnter", property_value: PolicyOnEnter)
+---@overload fun(property_name: "PoolSettings"|"PoolSettings", property_value: PoolSettings)
+---@overload fun(property_name: "SizeY"|"SizeX"|"SizeX"|"SizeY", property_value: PoolSizeFactor)
+---@overload fun(property_name: "PoolType", property_value: Pooltype)
+---@overload fun(property_name: "EnabledItems", property_value: PropertyRadioButtonListEnabledItems)
+---@overload fun(property_name: "SetType", property_value: PropertyRadioButtonListSetType)
+---@overload fun(property_name: "RowReductionPolicy"|"ColReductionPolicy", property_value: ReductionPolicy)
+---@overload fun(property_name: "ViewW"|"ViewH", property_value: RequestedSize)
+---@overload fun(property_name: "InternalRole", property_value: Roles)
+---@overload fun(property_name: "ItemPlacementTypeV"|"ItemPlacementTypeH", property_value: ScrollItemPlacementType)
+---@overload fun(property_name: "ScrollEntity"|"ScrollEntity", property_value: ScrollParamEntity)
+---@overload fun(property_name: "Direction"|"Type"|"Direction"|"ScrollType"|"AutoNextCellDirection"|"Type"|"Direction"|"Type", property_value: ScrollType)
+---@overload fun(property_name: "Target", property_value: Sequence)
+---@overload fun(property_name: "SetupType", property_value: SetupType)
+---@overload fun(property_name: "Settings", property_value: ShowCreatorSettings)
+---@overload fun(property_name: "ShowCreatorType", property_value: ShowCreatorType)
+---@overload fun(property_name: "Mode", property_value: ShowfileSelectorMode)
+---@overload fun(property_name: "TargetSound", property_value: Sound)
+---@overload fun(property_name: "Band", property_value: SoundValues)
+---@overload fun(property_name: "SpecialExecIndex"|"SpecialExecIndex"|"SpecialExecIndex", property_value: SpecialExecutor)
+---@overload fun(property_name: "UIToControl", property_value: SplitterH_LeftRight)
+---@overload fun(property_name: "UIToControl", property_value: SplitterV_TopBottom)
+---@overload fun(property_name: "CueStoreOp", property_value: StoreMode)
+---@overload fun(property_name: "TextureVertical"|"CursorTexture"|"BorderTexture"|"TextureVerticalHover"|"ArrowRight"|"ArrowLeft"|"CountDownIcon"|"CollapsedIcon"|"OnOffTexture"|"SelectionFrame"|"StopwatchIcon"|"Texture"|"TextureHorizontalHover"|"HeadLineTexture"|"IndicatorIcon"|"SelectionBackgroundTexture"|"SortAsc"|"SortDesc"|"Icon"|"DeselectedIcon"|"KnobTexture"|"TriggerTexture"|"SignalTexture"|"SelectionFrame"|"Lasso"|"LockTexture"|"TitleButtonIcon"|"CursorTexture"|"GearTexture"|"SelectionBackgroundTexture"|"OverridesIndicator"|"TextureNormal"|"TextureHover"|"ProgIndicator"|"IndicatorBackTexture"|"SampleTexture"|"IndicatorTexture"|"SelectionTexture"|"ExpandedTexture"|"ContractedTexture"|"DelimiterTexture"|"Icon"|"KnobTexture"|"BrushTexture"|"SelectionTexture"|"SelectedIcon"|"SlotTexture"|"ExpandedIcon"|"DeselectedIcon"|"TextureHorizontal"|"UpperTexture"|"SensorTexture"|"SelectionFrame"|"LowerTexture"|"IconActive"|"UpperTexture"|"SelectionTexture"|"OnOffTexture"|"IconInactive"|"LowerTexture"|"LogoIcon"|"BlockerTexture"|"SelectedIcon"|"TitleButtonIcon", property_value: Texture)
+---@overload fun(property_name: "Icons", property_value: Texture[])
+---@overload fun(property_name: "Source", property_value: TimeCodeSource)
+---@overload fun(property_name: "Position"|"Duration", property_value: TimePropertyValue)
+---@overload fun(property_name: "CurrentTimeView", property_value: TimeView)
+---@overload fun(property_name: "EncoderFunction", property_value: TimecodeEncoderFunction)
+---@overload fun(property_name: "Grid", property_value: TimecodeGrid)
+---@overload fun(property_name: "Direction", property_value: ToolbarScrollType)
+---@overload fun(property_name: "TrackingShield", property_value: TrackingShieldPopup)
+---@overload fun(property_name: "Target"|"LabelLinkHandle"|"LinkedObject"|"TargetObject", property_value: UIObject)
+---@overload fun(property_name: "UserRights", property_value: UserRights)
+---@overload fun(property_name: "ValueRole", property_value: ValueRole)
+---@overload fun(property_name: "WindowAppearance", property_value: WindowAppearance)
+---@overload fun(property_name: "WindowScrollPositions", property_value: WindowScrollPositions)
+---@overload fun(property_name: "Settings"|"WindowSettings"|"SubWindowSettings"|"WindowSettings"|"WindowSettings"|"WindowSettings", property_value: WindowSettings)
+---@overload fun(property_name: "DrawContent"|"BackgroundButtonStyle"|"ShowTcSlotAndTcMode"|"ContentStyle"|"ShowFileSegmentShowData"|"ShowFileSegmentLocalSettings"|"ReadOnly"|"IgnoreIconForTextAlign"|"KeyRepeatEnabled"|"ShowFileSegmentOutputStations"|"AutoNextCell"|"TextVertical"|"DependsOnLinkedObject"|"ShowFileSegmentDmxProtocols"|"TextAutoAdjust"|"SelectionOnFocusOnly"|"TextUniform"|"TargetIsAppearance"|"Local"|"ShowNumber"|"DirectCommand"|"AvoidScroll"|"DirectQuotation"|"ShowKeyboardButton"|"Rounded"|"InteractWithCommandline"|"Secret"|"IndicatorBarEnabled"|"Visible"|"TargetIsScribble"|"SetPropertyOnlyOnTextChange"|"ShowLeftIcon"|"CanCoExistWithModal"|"CanBeEmbedded"|"ShowRightIcon"|"UserVisible"|"CalledFromCmdline"|"ShowAdditionalInfo"|"Enabled"|"EditTitlebar"|"ShowLeftScribble"|"SearchFocusTestParent"|"Interactive"|"ShowRightScribble"|"Transparent"|"AllowBlocks"|"BlockClickThru"|"SkipTextIfIconExists"|"UserInteracted"|"IsMidiOut"|"ForceSmallMode"|"ItemIndividualCorners"|"State"|"HasHover"|"ShowVisibleDay"|"Separator"|"AutoCloseOnInput"|"HasPressedAnimation"|"ContentDriven"|"WantsModal"|"ReadOnly"|"ContentWidth"|"ContentHeight"|"ShowLineNumbers"|"AutoClose"|"ForceContentMin"|"ShowWhiteSpace"|"AutoCloseOnOverlay"|"HighlightCurrentLine"|"WantsNumericRedirect"|"IndirectEdit"|"CloseOnEscape"|"NewlineWithSpaces"|"ScrollChangesSelection"|"ForceCursor"|"IncludeTarget"|"InitialSaveEditTarget"|"EditTargetHasChanged"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FilterByManufacturer"|"ReactToPreview"|"PanScrollArea"|"StayAlwaysVisible"|"VisualisableScrollV"|"FilterByName"|"ScrollCellAutomatic"|"PanScroll"|"RelativeToDisplay"|"VisualisableScrollH"|"ScrollCellAutomaticWithOffset"|"ResetChildrenSize"|"EnterToExecute"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"FilterByDescription"|"FilterByUsedOnly"|"AdjustInitialPosition"|"IsClosing"|"TextShadow"|"IsMainBuddy"|"UpdateSettingsVisibility"|"FilterByMode"|"UseSimplifiedResize"|"InitialSaveEditTarget"|"BigMode"|"DriveReset"|"EditTargetHasChanged"|"AutoCreateFromProperties"|"OverrideKeybSC"|"UseEditorTarget"|"SuppressModeSwitch"|"ReactToPreview"|"ForceHideCategories"|"ScreenEncoder"|"ReactToEdit"|"UseDynamicIndicatorColor"|"OnlyVisible"|"IsWorldCoordinateSystemActive"|"ResetIfUntargeted"|"TryFitIntoSecondary"|"HasFocus"|"IsCameraFocusOnSelectedItem"|"EditAllowedDelete"|"Inverted"|"HideFocusFrame"|"ReactToEdit"|"StealFocusAfterSelect"|"Content"|"CmdlineInteraction"|"DrawShortcutInfo"|"TryAvoidZeroes"|"TitleButtonBool"|"TargetCmdlineInteraction"|"TryFitMainIfContentDriven"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"EditAllowedAdd"|"SeparatorSupport"|"VisibleOnlyInRelease"|"ModifyTextureLayout"|"CreateAndEdit"|"ClickNearest"|"AutoClose"|"AddTargets"|"VisibleInAlpha"|"ProvideEmpty"|"Features"|"ObserveSelectionChange"|"MixPercentAndHexDecModesAllowed"|"VisibleInBeta"|"FeatureGroups"|"AllChannelSets"|"VisibleInRelease"|"FeatureGroupsOnly"|"ShowFullSettings"|"Toggle"|"ForceFocusOnChange"|"ShowLabel"|"ShowCSHelp"|"DrawInbetweenValues"|"ValueAutoAdjust"|"ShowValue"|"DataAsIs"|"AutoHide"|"WorkWithGrid"|"IndirectEdit"|"IsScribbleNew"|"DirectProperty"|"IsAppearanceNew"|"DefaultAction"|"SearchFocusTestParent"|"CharAction"|"Undo"|"ChangeDestination"|"SmallResizeArea"|"ValueTextShadow"|"HiglightActiveCue"|"WorkWithGrid"|"IgnoreActiveForEnums"|"DimmerCueOnly"|"Auto"|"ShowOldVersions"|"UseCommandlineClick"|"SetIconAsActiveInactive"|"EditNewObject"|"ExclusivePropertyChange"|"UseTabRegistry"|"NoEmptyNames"|"UseGridColor"|"PositionBeneathFinger"|"MixInBackColorFromParentRecursive"|"DefaultAction"|"TrackEdit"|"ExpandContent"|"DefaultMarginOnBorders"|"TrackWorld"|"EncoderUseDisplay"|"SmallMode"|"ShowSelectionCount"|"UseDefaultValue"|"UseComposedText"|"ShowAdditionalInfo"|"ForceFastFade"|"TextChangeOnEnter"|"AutoScrollToEnd"|"AutoEnabled"|"NoEmptyNames"|"CloseProhibited"|"AllowAddContent"|"DisplayLevel"|"AllowAddNewline"|"ReactToRecipeEdit"|"ShowUnpatchedOnly"|"ScrollOpposite"|"AllowedInvisible"|"AllowMergeChildren"|"ShowManualCueSelection"|"ForceCursor"|"AllowEdit"|"ContentChanged"|"PrintCurrentValue"|"DirectQuotation"|"ReactToRecipeEdit"|"LongPressVK"|"CanProvideUiGridSelection"|"AllowFilterContent"|"AutoCloseAllowed"|"PrintMaxValue"|"FilterBlockUIEnabled"|"GapsForExpanded"|"UseUserProfileSettings"|"CloseOnClick"|"ScrollOutEnabled"|"VScrollOnHeader"|"PrimaryHasFocus"|"ConvertCursorToTabAtBoundaries"|"IsInExport", property_value: YesNo|boolean)
+---@overload fun(property_name: "DrawGradient"|"AllIndexesCollected"|"AutoSetWindowSettings"|"IsScribbleAvailable"|"IsAppearanceAvailable"|"FadeEncoder"|"CheckForScreenEncoders"|"UseSpecialTimezone"|"IsNoteAvailable"|"Expanded"|"ChangeDestination"|"IsPlaying"|"AllowSorting"|"ScribbleIsEmpty"|"Blink"|"IsCloneDestination", property_value: boolean)
+---@overload fun(property_name: "ChangeActive", property_value: fun(childName: string) : boolean)
+---@overload fun(property_name: "Solve"|"CallP1"|"OnTitleClick"|"StoreP2"|"Close"|"CallP2"|"StoreP1"|"OnTitleClick"|"OnTitleClick"|"CloseConfirm"|"StoreP3"|"CloseCancel"|"CallP3"|"StoreP4"|"CallP4", property_value: fun(dummyStr: string) : boolean)
+---@overload fun(property_name: "OnPatchToClicked"|"OnUniverseUpClicked"|"OnUnpatchClicked"|"OnUniverseDownClicked", property_value: fun(dummyStr: string, button: MouseButtonTypes, X: integer, Y: integer) : boolean)
+---@overload fun(property_name: "OnBreakSelected"|"OnBreakPatched"|"OnDBObjectSelected"|"OnAddressSelected", property_value: fun(dummyStr: string, column: integer, row: integer) : boolean)
+---@overload fun(property_name: "OnObjectSelected", property_value: fun(dummyStr: string, column: integer, row: integer, int: integer) : boolean)
+---@overload fun(property_name: "Clear", property_value: fun(dummyString: string) : boolean)
+---@overload fun(property_name: "ShowMessage"|"HideMessage", property_value: fun(message: string) : boolean)
+---@overload fun(property_name: "ChangeText", property_value: fun(newTextStr: string) : boolean)
+---@overload fun(property_name: "SetPrompt", property_value: fun(prompt: string) : boolean)
+---@overload fun(property_name: "FilterRows", property_value: fun(str1: string, str2: string) : boolean)
+---@overload fun(property_name: "MoveStart"|"ResizeStart"|"OnListRefDone"|"ResizeEnd"|"UrlChanged"|"Scrolled"|"ProgressChanged"|"StatusChanged"|"TooltipChanged"|"OnCreateNewAppearance"|"MoveStart"|"ResizeEnd"|"ScrolledToEndV"|"PathChanged"|"OnUserProfileChanged"|"FilterChanged"|"Execute"|"ResizeStart"|"Execute"|"TextChanged"|"DescriptionChanged"|"LassoFinished"|"OnWrongChar"|"OnScreenPushed"|"ScribbleTargetChanged"|"OnCreateNewAppearance"|"OnCreateNewScribble"|"AppearanceTargetChanged", property_value: fun(str: string))
+---@overload fun(property_name: "TimecodeForward"|"OpenVK"|"TimecodeStop"|"SelectAll"|"TimecodePlay"|"TimecodePrevMarker"|"OnFunction"|"DeSelect"|"TimecodeNextMarker"|"SetCursorToEnd"|"SelectionCopy"|"SelectionCut"|"SelectionPaste"|"TimecodeAddEvent"|"OnFixtureSourceChanged"|"TimecodeAddMultiEvents"|"TimecodeAddTimeRange"|"SetUrlA"|"TimecodeAddTimeMarker"|"GoBack"|"OnCreateNewAppearance"|"GoFwd"|"CheckAutoClose"|"Reload"|"OnNavigate"|"RequestMemUsage"|"OnCheckSubPoolSelector"|"OnInput"|"ApplyScribble"|"SetDateToday"|"OnState"|"RevertScribble"|"SetTimeNow"|"OnSelectDataPool"|"OnCommand"|"OnCreateNewScribble"|"DeleteFilterItem"|"OnTitle"|"ResetMouse"|"AddFilterItem"|"OnCollectAllIndexes"|"SetToTop"|"DeleteClicked"|"ScrollPageDown"|"Play"|"OnFocusLost"|"Undo"|"AutoScroll"|"TBDeleteAll"|"ClearScribble"|"Redo"|"TBLoadDefaults"|"Pause"|"ClearSelection"|"OnApplyColorToCurves"|"SetText"|"Stop"|"InsertText"|"ClearText"|"DeleteOld"|"OnToolOperate"|"SelectAllRows"|"SaveEditTarget"|"ScrollAction"|"ClearFilter"|"OnClearCmdline"|"RevertEditTarget"|"MoveStart"|"ToggleListRef"|"ExpandAll"|"ResizeEnd"|"ScrollToEnd"|"SetCursorToEnd"|"OnSelectedTreeItem"|"SaveToDefault"|"OnScrolledTreeItem"|"LoadFromDefault"|"KeyPress"|"SelectedFixture"|"SaveEditTarget"|"ResizeStart"|"ResizeStart"|"MoveStart"|"SelectedManufacturer"|"Context"|"ResizeEnd"|"RememberSelection"|"RevertEditTarget"|"MapClicked"|"InitGrids"|"Context"|"UpdateEncoderBar"|"TabChanged"|"OnSpecialButtonClicked"|"OnExpandAll"|"EnumClicked"|"OnCollapseAll"|"OnExpandSelected"|"Search"|"OnClearSelection"|"OnStageChanged"|"SelectAll"|"SelectNothing"|"OnDataPoolChanged"|"OnSetSelectorVisibility"|"SwitchExpansion"|"OnCollapseAll"|"OnZoomToFit"|"OnSetRecalcCenterOfGravity"|"FunctionSelectorChanged"|"EncoderReadoutSelectorChanged"|"OnEditCurrentLayout"|"SetPath"|"DeleteSelectedFiles"|"SetFilter"|"GoUp"|"SelectFirstFile"|"ScrollToFirstFile"|"ProgressChanged"|"OnPatchToNextFree"|"OnSwipeMenu"|"OnMoveToUniverse"|"SGResizeStart"|"SGResizeEnd"|"OpenAtFilter"|"OnSwipeMenu"|"ToggleAtFilter"|"OnPatchToClicked"|"OnShowUnpatchedClicked"|"SGResizeStart"|"SGResizeEnd"|"SetPlus"|"MeasureColor"|"SetMinus"|"DarkCalibrate"|"FindDevice"|"ShowAnimation"|"ResetView"|"ZoomIn"|"ZoomOut"|"ChangedActiveTab"|"TimecodePause"|"TimecodeBackward"|"TimecodeRecord", property_value: fun(str: string) : boolean)
+---@overload fun(property_name: "ResizeMove", property_value: fun(str: string, AbsX: integer, AbsY: integer))
+---@overload fun(property_name: "MouseUp"|"Clicked"|"MouseDown"|"DoubleClicked"|"MouseDownHold", property_value: fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer))
+---@overload fun(property_name: "ResizeMove"|"ResizeMove"|"Move"|"Move", property_value: fun(str: string, DeltaX: integer, DeltaY: integer))
+---@overload fun(property_name: "OnAssignTarget", property_value: fun(str: string, Target: Object, TargetPropertyName: string, rowId: integer) : boolean)
+---@overload fun(property_name: "MouseOverHold"|"MouseEnter"|"MouseUpLeft"|"MouseUpRight"|"ClickedLeft"|"ClickedRight"|"MouseDownLeft"|"MouseDownRight"|"MouseLeave", property_value: fun(str: string, X: integer, Y: integer))
+---@overload fun(property_name: "MoveEnd"|"MoveEnd"|"ResizeEnd"|"OnVisible", property_value: fun(str: string, bool: boolean))
+---@overload fun(property_name: "MoveEnd"|"ResizeEnd", property_value: fun(str: string, bool: boolean) : boolean)
+---@overload fun(property_name: "ResizeStart"|"OnBeforeEdit"|"OnAfterEdit"|"OnSelectionAfterCmd"|"SelectionChanged"|"UndoRedoChanged", property_value: fun(str: string, int1: integer, int2: integer))
+---@overload fun(property_name: "ResizeStart"|"SGResizeMove"|"ResizeMove"|"Move"|"SGResizeMove"|"SelectCell"|"SelectRange"|"Resize"|"ResizeMove"|"Move", property_value: fun(str: string, int1: integer, int2: integer) : boolean)
+---@overload fun(property_name: "TabChanged", property_value: fun(str: string, int1: integer, int2: integer, bool1: boolean, bool2: boolean))
+---@overload fun(property_name: "GroupChangedTab", property_value: fun(str: string, int1: integer, int2: integer, bool1: boolean, bool2: boolean) : boolean)
+---@overload fun(property_name: "TabClickedOnCurrent"|"OnSelectedItem", property_value: fun(str: string, int1: integer, int2: integer, bool: boolean))
+---@overload fun(property_name: "GroupClickedTab", property_value: fun(str: string, int1: integer, int2: integer, bool: boolean) : boolean)
+---@overload fun(property_name: "OnClick"|"ActionSetPriority"|"HardkeyMouseUp"|"HardkeyMouseDown"|"ReloadCamera"|"OnClick"|"FactoryDefaults"|"RotateToCircleCenter"|"Rotate90ToLine"|"ResetUnusedAxis"|"OnClick"|"ReloadRenderQuality"|"ResetRotation"|"Oops"|"ReloadCamera"|"ResetPosition"|"OnShow3dSettings"|"Show3DSettings"|"ResetCamera"|"CenterPosition"|"AnalyzeMeshPool"|"ArrangePosition"|"SelectionToGrid", property_value: fun(str: string, int1: integer, int2: integer, int3: integer) : boolean)
+---@overload fun(property_name: "GestureClick"|"GestureClick", property_value: fun(str: string, int1: integer, int2: integer, int3: integer, int4: integer))
+---@overload fun(property_name: "GestureClick", property_value: fun(str: string, int1: integer, int2: integer, int3: integer, int4: integer) : boolean)
+---@overload fun(property_name: "OnCellMouseDoubleClicked"|"OnCellMouseDown"|"OnCellMouseDownHold"|"OnCellMouseUp"|"OnCellMouseClicked", property_value: fun(str: string, int1: integer, int2: integer, int3: integer, int4: integer, int5: integer))
+---@overload fun(property_name: "SelectAbsoluteAddress", property_value: fun(str: string, int: AbsoluteAddress) : boolean)
+---@overload fun(property_name: "OnSelectedColumn"|"OnSelectedRow"|"MemUsageUpdated"|"OnTargetChanged"|"OnTargetChanged"|"OnSelectedItem", property_value: fun(str: string, int: integer))
+---@overload fun(property_name: "SortByColumn"|"AddSelectedLines"|"OnChar"|"ScrollVertical"|"ScrollHorizontal"|"ReTriggerInit"|"ChangeTarget"|"SetFPSLimit"|"OnChar"|"ReTriggerInit"|"AddSelectedFixtures"|"ScrollToRow"|"ClearGrid"|"GridMoveUp"|"GridMoveDown"|"GridCut"|"ChangeTarget"|"GridCopy"|"GridPaste"|"GridAdd"|"GridDelete"|"SelectRow"|"GridFillUp"|"JumpToNextLine"|"AddRow"|"SelectionChanged"|"GridUnify"|"JumpToPreviousLine"|"AddMissingLines"|"SelectColumn", property_value: fun(str: string, int: integer) : boolean)
+---@overload fun(property_name: "KeyDown"|"KeyUp", property_value: fun(str: string, keyCode: VirtualKeyCode, bool1: boolean, bool2: boolean, bool3: boolean))
+---@overload fun(property_name: "ForceScale"|"Seek", property_value: fun(str: string, num: number) : boolean)
+---@overload fun(property_name: "FocusLost"|"FocusGet", property_value: fun(str: string, obj1: Object, obj2: Object))
+---@overload fun(property_name: "OnSetEditTarget"|"OnSetEditTarget"|"OnSetEditTarget"|"LinkedObjectChanged"|"OnLoad", property_value: fun(str: string, obj: Object))
+---@overload fun(property_name: "OnFocusGet", property_value: fun(str: string, obj: Object) : boolean)
+---@overload fun(property_name: "OnAssignTargetSelected", property_value: fun(str: string, obj: Object, str: string, int: integer))
+---@overload fun(property_name: "TouchUpdate"|"TouchStart"|"TouchEnd", property_value: fun(str: string, pointID: integer, X: integer, Y: integer))
+---@overload fun(property_name: "OnUpdateTitle"|"OnUpdateTitle", property_value: fun(str: string, str: string))
+---@overload fun(property_name: "CharInput", property_value: fun(str: string, utf32Char: integer))
+---@overload fun(property_name: "Changed", property_value: fun(str: string, value: integer))
+---@overload fun(property_name: "Set", property_value: fun(str: string, value: integer) : boolean)
+---@overload fun(property_name: "OpenSequenceFilter"|"FlipLeftRight"|"OpenGroupFilter"|"OpenPresetFilter"|"SetText"|"ObtainCurrentCue"|"DoReset"|"AddText"|"InitTargetList"|"InitFirst"|"DoClone"|"InsertText"|"OpenWorldFilter"|"SelectFirst"|"OpenLayoutFilter"|"ChangeCloningViewMode"|"AllItemsToAll"|"AllItemsToNone", property_value: fun(text: string) : boolean)
+---@overload fun(property_name: "ShowFileSegmentsMask"|"OptionHeight"|"State"|"SelectedRow"|"SelectedColumn"|"RasterHeight"|"Distance"|"RasterWidth"|"Hour"|"ItemSize"|"VisibleItemCount"|"Minute"|"AutoFitColumn"|"FrameWidth"|"Second"|"SlotIndex"|"Day"|"GridVersion"|"MaxTextLength"|"Priority"|"Direction"|"Year"|"Selector"|"AutoCloseValue"|"UiGroupId"|"UndoCount"|"RedoCount"|"PatchOffset"|"FilterMask"|"VisibleFixturesCount"|"SubDestination"|"HeadLineDimension"|"ButtonDimension"|"SlotDimension"|"ColorIndicatorHeight"|"MaxValue"|"MinValue"|"MinCellSize"|"LineHeightAdd"|"IgnoreChildren"|"BigModeColumns"|"LineSpacing"|"TitleButtonUInt64"|"MaxValue"|"BigModeRows"|"DelimiterSize"|"ActiveSource"|"TitleButtonInt64"|"TitleButtonPopup"|"GridDelta"|"LabelAreaHeight"|"ExecFrom"|"ForceIntensity"|"FixtureCount"|"ExecBarToDraw"|"FirstRow"|"DefaultMargin"|"LastRow"|"Columns"|"ExecutorIndex"|"Rows"|"BreakIdx"|"CellWidth"|"CellHeight"|"PatchOffset"|"ExecutorIndex"|"BlockWidth"|"BlockHeight"|"ExecutorIndex"|"RasterHeight"|"FrameThickness"|"RasterWidth"|"ScrollCellFrameThickness"|"SpecialExecOffset"|"LevelDistance"|"IncrementFactor"|"ColumnResizeMaxDeviation"|"Mask"|"LevelLimit"|"Mask"|"Page"|"Border", property_value: integer)
+---@overload fun(property_name: "RunningPlaybacks", property_value: integer[])
+---@overload fun(property_name: "Value"|"EncoderResolution"|"IconScale"|"CurrentFps"|"Progress"|"ItemPlacementOffsetFactorH"|"ScaleAll"|"RatioAll"|"ItemPlacementOffsetFactorV", property_value: number)
+---@overload fun(property_name: "DataType"|"SelectionType"|"CellType"|"ToolTip"|"SettingsType"|"HelpTopic"|"ReferencedTitleButton"|"ItemType"|"DirectPrefix"|"Cursor"|"TargetPath"|"InitialTab"|"System"|"InitialSubTab"|"ItemFilter"|"DefaultTitle"|"EditEncoderBar"|"Content"|"ControlEncoderBar"|"FixtureName"|"Property"|"EditEncoderBar"|"ControlEncoderBar"|"ForcedInitialTab"|"BuddyGroupId"|"Filter"|"Property"|"System"|"SignalValue"|"SignalValueHold"|"PrivacyPolicyUrl"|"Property"|"FilterComposed"|"Value"|"System"|"TrademarksUrl"|"Value"|"ReleaseNotesUrl"|"AppearanceSourceClassName"|"Destination"|"TargetPropertyName"|"TextLeftCorner"|"EmptyName"|"System"|"InsertType"|"LedToken"|"ActiveChild"|"Property"|"System"|"CurrentSelectedShowFile"|"Property"|"Property"|"FuzzyFilter"|"FuzzyFilterExcludeEnd"|"EditEncoderBar"|"BaseFilter"|"ImportOptions"|"WarningTooltip"|"Value"|"SelectedFile"|"SwipeMenu"|"StrContext"|"BarText"|"AuxProperty"|"Property"|"VKTitleHint"|"AdditionalInfo"|"Property"|"DummyComposedText"|"VKPluginName"|"SwipeMenu"|"Destination"|"Prompt"|"Filter"|"EmptyText"|"Message"|"Property"|"FixtureToMeasure"|"DirectPrefix"|"Text", property_value: string)
+---@overload fun(property_name: "DependentBuddies", property_value: string[])
+---@overload fun(property_name: "AllTitlebuttons", property_value: table<string, TitlebuttonControl[]>)
+---@overload fun(property_name: "AdditionalArgs", property_value: table<string, string>)
+---@overload fun(property_name: "OptionAreaMargin"|"Margin"|"ContentAreaMargin"|"LabelAreaMargins"|"ValueAreaMargins"|"Anchors"|"Padding", property_value: {left: integer, right: integer, top: integer, bottom: integer})
+---@overload fun(property_name: "WindowRect"|"AbsRect"|"AbsClientRect", property_value: {left: number, right: number, top: number, bottom: number})
+function LayoutEditor:SetPrompt(property_name, property_value) end

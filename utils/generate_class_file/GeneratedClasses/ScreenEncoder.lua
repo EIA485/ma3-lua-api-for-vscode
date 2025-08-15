@@ -6,6 +6,10 @@ local ScreenEncoder = {}
 function ScreenEncoder:GetClass() end
 ---@return "ScreenEncoderDirection"
 function ScreenEncoder:GetChildClass() end
+---@generic T : ScreenEncoder
+---@param class `T`
+---@return boolean
+function ScreenEncoder:IsClass(class) end
 ---@return ShowSettings
 function ScreenEncoder:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function ScreenEncoder:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ScreenEncoderDirection
 function ScreenEncoder:Find(class, undo) end
+function ScreenEncoder:*(property_name, property_value) end

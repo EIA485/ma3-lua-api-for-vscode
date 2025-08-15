@@ -6,3 +6,7 @@ local ApiDMX = {}
 function ApiDMX:GetClass() end
 ---@return "Object"
 function ApiDMX:GetChildClass() end
+---@generic T : ApiDMX
+---@param class `T`
+---@return boolean
+function ApiDMX:IsClass(class) end

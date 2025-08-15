@@ -6,6 +6,10 @@ local RdmWindowSettingsCollect = {}
 function RdmWindowSettingsCollect:GetClass() end
 ---@return "RdmWindowSettings"
 function RdmWindowSettingsCollect:GetChildClass() end
+---@generic T : RdmWindowSettingsCollect
+---@param class `T`
+---@return boolean
+function RdmWindowSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return RdmWindowSettings
 function RdmWindowSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function RdmWindowSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): RdmWindowSettings
 function RdmWindowSettingsCollect:Find(class, undo) end
+function RdmWindowSettingsCollect:ActiveDisplay(property_name, property_value) end

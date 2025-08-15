@@ -6,6 +6,10 @@ local Notifications = {}
 function Notifications:GetClass() end
 ---@return "RDMAbsentNotification"
 function Notifications:GetChildClass() end
+---@generic T : Notifications
+---@param class `T`
+---@return boolean
+function Notifications:IsClass(class) end
 ---@return RDMFixtureType
 function Notifications:Parent() end
 ---@param index integer
@@ -64,3 +68,16 @@ function Notifications:Find(class, undo) end
 ---@return T
 ---@overload fun(name: string, class: nil): Object
 function Notifications:FindRecursive(name, class) end
+---@overload fun(property_name: "PID", property_value: RDMPID)
+---@overload fun(property_name: "SensorOffset", property_value: integer)
+---@overload fun(property_name: "PID", property_value: RDMPID)
+---@overload fun(property_name: "SensorOffset", property_value: integer)
+function Notifications:SensorOffset(property_name, property_value) end
+---@overload fun(property_name: "PID", property_value: RDMPID)
+---@overload fun(property_name: "SensorOffset", property_value: integer)
+---@overload fun(property_name: "PID", property_value: RDMPID)
+---@overload fun(property_name: "SensorOffset", property_value: integer)
+function Notifications:SensorOffset(property_name, property_value) end
+---@overload fun(property_name: "PID", property_value: RDMPID)
+---@overload fun(property_name: "SensorOffset", property_value: integer)
+function Notifications:SetChildrenRecursive(property_name, property_value) end

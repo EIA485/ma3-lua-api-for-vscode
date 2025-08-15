@@ -6,6 +6,10 @@ local View3DSettingsCollect = {}
 function View3DSettingsCollect:GetClass() end
 ---@return "View3DSettings"
 function View3DSettingsCollect:GetChildClass() end
+---@generic T : View3DSettingsCollect
+---@param class `T`
+---@return boolean
+function View3DSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return View3DSettings
 function View3DSettingsCollect:Ptr(index) end
@@ -56,3 +60,24 @@ function View3DSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): View3DSettings
 function View3DSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "InputControl3d", property_value: InputControl3d)
+---@overload fun(property_name: "BloomIntensity", property_value: BloomIntensity3d|boolean)
+---@overload fun(property_name: "LabelFontSize", property_value: FontSizes)
+---@overload fun(property_name: "Camera", property_value: Camera)
+---@overload fun(property_name: "RenderQuality", property_value: RenderQuality)
+---@overload fun(property_name: "SelectionMode", property_value: SelectionMode)
+---@overload fun(property_name: "Stage", property_value: Stage)
+---@overload fun(property_name: "ArrangementMarcType", property_value: ArrangementMarcType)
+---@overload fun(property_name: "ArrangementMarcType", property_value: ArrangementMarcType)
+---@overload fun(property_name: "BloomIntensity", property_value: BloomIntensity3d|boolean)
+---@overload fun(property_name: "Camera", property_value: Camera)
+---@overload fun(property_name: "LabTextColor"|"PointLightColor"|"AmbientLightColor"|"BackgroundColor"|"LabBackgroundColor", property_value: Colors.RGB<float>)
+---@overload fun(property_name: "LabelFontSize", property_value: FontSizes)
+---@overload fun(property_name: "InputControl3d", property_value: InputControl3d)
+---@overload fun(property_name: "RenderQuality", property_value: RenderQuality)
+---@overload fun(property_name: "SelectionMode", property_value: SelectionMode)
+---@overload fun(property_name: "Stage", property_value: Stage)
+---@overload fun(property_name: "ShowLabOnEnd"|"AntiAlias"|"BeamLinesfadeout"|"LinesOverlay"|"Parallel"|"RenderGBufferTextures"|"Priority"|"DisableCalibration"|"Wireframed"|"LabOnlySelection"|"DrawRubberbandMATricks"|"Modelscandisableculling"|"LabSelectionPrio"|"Silhouettes"|"ShowSpotLabelSubFixtureId"|"PrismLines"|"CullShadows"|"ArrangementDepth"|"MarkUnpatched"|"Timing"|"PointOfOrigin"|"ShadowTransparency"|"ResourceStatistics3D"|"ShowSelection"|"ShowFPS"|"MarkFaultyMeshes"|"RenderEnvironment"|"NativeColors"|"SubFixtureSupportDuringProjectionSelection"|"DeferredDevMode"|"SelectFixtureBySpotLabel"|"LensShading"|"EnableBVHDebugging"|"Statistics"|"AxisLines"|"ShowPickPoints"|"AxisLinesKinematicChain"|"IgnoreSelectionRenderingOrder"|"BoundingBoxes"|"ShowToolBar"|"ShadowMapStatistics"|"ShowPigtails"|"UseBeamColorInformation"|"ForceIterativeRendering"|"DrawMArkerBoundaries"|"DevFlag1"|"ModelGroupStatistics"|"DevFlag2"|"DevFlag3"|"DevFlag4"|"PlanarSelectionLines"|"SelectionAllowEnvironmentObjects"|"ShowLabelBackground"|"BeamFrustumsRender"|"ShowLabel"|"Setup"|"ShowLabFixtureId"|"ShowLabPatch"|"ShowLabName"|"ShowLabCIE", property_value: YesNo|boolean)
+---@overload fun(property_name: "DesiredUiFps"|"LightBeamOverdrawLimit"|"LabMaxCount"|"DynamicGoboResolution", property_value: integer)
+---@overload fun(property_name: "TimeSlotMS"|"BeamIntensity"|"SpotIntensity"|"CameraAnimationSpeedMeterSec"|"CameraAnimationSpeedDegreeSec"|"AmbientIntensity"|"PointLightIntensity"|"LuminousIntensitySpread"|"BackgroundIntensity"|"MultiBeamBorderSmoothness"|"IgnoreNormals"|"StageBorder"|"Dev1"|"TriangleCalibrationFactor"|"Dev2"|"ProportionalGain"|"MultiBeamBlur"|"IntegrationTime"|"Dev3"|"LabelBackgroundTransparency"|"DerivativeTime"|"Dev4"|"LabelTextTransparency"|"ArrangementAlpha", property_value: number)
+function View3DSettingsCollect:ArrangementMarcType(property_name, property_value) end

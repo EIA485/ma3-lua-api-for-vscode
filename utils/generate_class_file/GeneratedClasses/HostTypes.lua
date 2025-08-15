@@ -6,6 +6,10 @@ local HostTypes = {}
 function HostTypes:GetClass() end
 ---@return "NetworkStations"
 function HostTypes:GetChildClass() end
+---@generic T : HostTypes
+---@param class `T`
+---@return boolean
+function HostTypes:IsClass(class) end
 ---@return MAnetSocket
 function HostTypes:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function HostTypes:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): NetworkStations
 function HostTypes:Find(class, undo) end
+function HostTypes:ActiveDisplay(property_name, property_value) end

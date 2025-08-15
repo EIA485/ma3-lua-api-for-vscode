@@ -6,6 +6,10 @@ local Wheels = {}
 function Wheels:GetClass() end
 ---@return "Wheel"
 function Wheels:GetChildClass() end
+---@generic T : Wheels
+---@param class `T`
+---@return boolean
+function Wheels:IsClass(class) end
 ---@return FixtureType
 function Wheels:Parent() end
 ---@param index integer
@@ -58,3 +62,6 @@ function Wheels:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Wheel
 function Wheels:Find(class, undo) end
+---@overload fun(property_name: "AllowShortcut", property_value: YesNo|boolean)
+---@overload fun(property_name: "AllowShortcut", property_value: YesNo|boolean)
+function Wheels:AllowShortcut(property_name, property_value) end

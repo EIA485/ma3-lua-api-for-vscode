@@ -1,0 +1,15 @@
+---@meta
+
+---@alias AbsoluteAddress integer
+---@alias RelCueNumber integer
+---@alias Crypto.SHA256 string accepts any string, returns "" if empty else "*****"
+---@alias Key128 string  string that 32 hex chars, returns as 16 uppercase 8 bit hex numbers with spaces in-between. will back fill 00s after if you give it less tham 32 hex chars
+---@alias Container.Mask32 string 32 comma seperated 0 or 1, if you dont supply all 32 you just set the first x your providing
+---@alias Network.MACAddress string
+---@alias HotKey string key combo string like "Alt+B" Ctrl,Alt Supported. always returns in "Ctrl+Alt+key" order. key must be uppercase for letters or non shift state for rest
+---@alias Stream.Version string string that follows "^[0-9]*(\.[0-9]*){0,3}" pattern, discards anything not matched
+---@alias Manet.IP4 string ip address string follows "[0-255]\.[0-255]\.[0-255]\.[0-255]" pseudo patern
+---@alias Network.IP8Full string ip address string with port follows "[0-255]\.[0-255]\.[0-255]\.[0-255]:[1-65535]" pseudo patern
+---@alias DMXPropertyAddress string string that follows "[1-1024].[1-512]" universe.address, will also accept an absolute dmx channel number [1-524288]
+---@alias DMXPropertyBreak string string that follows same rules as DMXPropertyAddress, followed by commas for multiple breaks. can not parse trailing commas without data. for unpatched breaks it just adds a comma
+---@alias PatchInfo {profile_index: integer, parked_value: integer, test_value: integer, flags: {patch_type: integer, last_channel_in_fixture: boolean, conflict: integer, dmx_sheet_color: boolean, first_channel_in_fixture: boolean}, channel_rt: integer}

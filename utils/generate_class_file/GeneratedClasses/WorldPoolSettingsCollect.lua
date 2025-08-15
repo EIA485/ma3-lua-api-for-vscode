@@ -6,6 +6,10 @@ local WorldPoolSettingsCollect = {}
 function WorldPoolSettingsCollect:GetClass() end
 ---@return "WorldPoolSettings"
 function WorldPoolSettingsCollect:GetChildClass() end
+---@generic T : WorldPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function WorldPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return WorldPoolSettings
 function WorldPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function WorldPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): WorldPoolSettings
 function WorldPoolSettingsCollect:Find(class, undo) end
+function WorldPoolSettingsCollect:ActiveDisplay(property_name, property_value) end

@@ -6,6 +6,10 @@ local ImagePool = {}
 function ImagePool:GetClass() end
 ---@return "Image"
 function ImagePool:GetChildClass() end
+---@generic T : ImagePool
+---@param class `T`
+---@return boolean
+function ImagePool:IsClass(class) end
 ---@param index integer
 ---@return Image
 function ImagePool:Ptr(index) end
@@ -34,3 +38,7 @@ function ImagePool:Insert(index, class, undo, count) end
 ---@overload fun(class: "Image", undo: Undo?): Image
 ---@overload fun(class: nil, undo: Undo?): Image
 function ImagePool:Find(class, undo) end
+---@overload fun(property_name: "AddAlpha", property_value: YesNo|boolean)
+---@overload fun(property_name: "AddAlpha", property_value: YesNo|boolean)
+---@overload fun(property_name: "Height"|"Width", property_value: integer)
+function ImagePool:AddAlpha(property_name, property_value) end

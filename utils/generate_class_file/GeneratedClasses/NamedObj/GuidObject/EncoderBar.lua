@@ -6,6 +6,10 @@ local EncoderBar = {}
 function EncoderBar:GetClass() end
 ---@return "EncoderBank"
 function EncoderBar:GetChildClass() end
+---@generic T : EncoderBar
+---@param class `T`
+---@return boolean
+function EncoderBar:IsClass(class) end
 ---@return EncoderBarPool
 function EncoderBar:Parent() end
 ---@param index integer
@@ -58,3 +62,8 @@ function EncoderBar:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): EncoderBank
 function EncoderBar:Find(class, undo) end
+---@overload fun(property_name: "SpecialDialogTab", property_value: SpecialWindowTab)
+---@overload fun(property_name: "Command", property_value: string)
+---@overload fun(property_name: "SpecialDialogTab", property_value: SpecialWindowTab)
+---@overload fun(property_name: "Command", property_value: string)
+function EncoderBar:Command(property_name, property_value) end

@@ -6,6 +6,10 @@ local ColorPickerSettingsCollect = {}
 function ColorPickerSettingsCollect:GetClass() end
 ---@return "ColorPickerSettings"
 function ColorPickerSettingsCollect:GetChildClass() end
+---@generic T : ColorPickerSettingsCollect
+---@param class `T`
+---@return boolean
+function ColorPickerSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return ColorPickerSettings
 function ColorPickerSettingsCollect:Ptr(index) end
@@ -56,3 +60,14 @@ function ColorPickerSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ColorPickerSettings
 function ColorPickerSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "BrightnessOverdriveMode", property_value: YesNo|boolean)
+---@overload fun(property_name: "ColorMixMode", property_value: ColorMixMode)
+---@overload fun(property_name: "Mode", property_value: ColorPickerWindowMode)
+---@overload fun(property_name: "ColorWheelMode", property_value: ColorWheelMode)
+---@overload fun(property_name: "LastColorEncoderFunction", property_value: ColorEncoderFunction)
+---@overload fun(property_name: "LastColorEncoderFunction", property_value: ColorEncoderFunction)
+---@overload fun(property_name: "ColorMixMode", property_value: ColorMixMode)
+---@overload fun(property_name: "Mode", property_value: ColorPickerWindowMode)
+---@overload fun(property_name: "ColorWheelMode", property_value: ColorWheelMode)
+---@overload fun(property_name: "BrightnessOverdriveMode", property_value: YesNo|boolean)
+function ColorPickerSettingsCollect:LastColorEncoderFunction(property_name, property_value) end

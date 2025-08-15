@@ -6,6 +6,10 @@ local Worlds = {}
 function Worlds:GetClass() end
 ---@return "World"
 function Worlds:GetChildClass() end
+---@generic T : Worlds
+---@param class `T`
+---@return boolean
+function Worlds:IsClass(class) end
 ---@return Pool
 function Worlds:Parent() end
 ---@param index integer
@@ -36,3 +40,10 @@ function Worlds:Insert(index, class, undo, count) end
 ---@overload fun(class: "World", undo: Undo?): World
 ---@overload fun(class: nil, undo: Undo?): World
 function Worlds:Find(class, undo) end
+---@overload fun(property_name: "Selection", property_value: StrictNormalMode)
+---@overload fun(property_name: "Mode", property_value: integer)
+---@overload fun(property_name: "Attributes", property_value: YesNo|boolean)
+---@overload fun(property_name: "Selection", property_value: StrictNormalMode)
+---@overload fun(property_name: "Attributes", property_value: YesNo|boolean)
+---@overload fun(property_name: "Mode", property_value: integer)
+function Worlds:Attributes(property_name, property_value) end

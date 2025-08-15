@@ -6,6 +6,10 @@ local LayoutPoolSettingsCollect = {}
 function LayoutPoolSettingsCollect:GetClass() end
 ---@return "LayoutPoolSettings"
 function LayoutPoolSettingsCollect:GetChildClass() end
+---@generic T : LayoutPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function LayoutPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return LayoutPoolSettings
 function LayoutPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function LayoutPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): LayoutPoolSettings
 function LayoutPoolSettingsCollect:Find(class, undo) end
+function LayoutPoolSettingsCollect:ActiveDisplay(property_name, property_value) end

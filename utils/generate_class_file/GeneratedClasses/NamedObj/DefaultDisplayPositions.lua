@@ -6,6 +6,10 @@ local DefaultDisplayPositions = {}
 function DefaultDisplayPositions:GetClass() end
 ---@return "DefaultDisplayPosition"
 function DefaultDisplayPositions:GetChildClass() end
+---@generic T : DefaultDisplayPositions
+---@param class `T`
+---@return boolean
+function DefaultDisplayPositions:IsClass(class) end
 ---@return DefaultDisplayPositionsCollect
 function DefaultDisplayPositions:Parent() end
 ---@param index integer
@@ -58,3 +62,6 @@ function DefaultDisplayPositions:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): DefaultDisplayPosition
 function DefaultDisplayPositions:Find(class, undo) end
+---@overload fun(property_name: "ShowCmdline"|"ShowFeedback"|"ShowMainMenu"|"TurnViewBar"|"ShowEncoderBar"|"ShowViewBar"|"ViewBarSubtraction"|"ShowCommandWingBar"|"ViewBarAddition"|"ShowScrollButton"|"ShowHeadline"|"Open"|"IsMaximized", property_value: YesNo|boolean)
+---@overload fun(property_name: "H"|"Monitor"|"Dimension"|"ScaleRatio"|"X"|"Y"|"W", property_value: integer)
+function DefaultDisplayPositions:GridAuto(property_name, property_value) end

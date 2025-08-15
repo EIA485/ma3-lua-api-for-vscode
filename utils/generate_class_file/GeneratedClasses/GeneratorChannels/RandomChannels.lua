@@ -6,6 +6,10 @@ local RandomChannels = {}
 function RandomChannels:GetClass() end
 ---@return "RandomChannel"
 function RandomChannels:GetChildClass() end
+---@generic T : RandomChannels
+---@param class `T`
+---@return boolean
+function RandomChannels:IsClass(class) end
 ---@return Random
 function RandomChannels:Parent() end
 ---@param index integer
@@ -58,3 +62,10 @@ function RandomChannels:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): RandomChannel
 function RandomChannels:Find(class, undo) end
+---@overload fun(property_name: "Speed", property_value: SpeedPropertyValue)
+---@overload fun(property_name: "SpeedMaster", property_value: SpeedMaster)
+---@overload fun(property_name: "SpeedMaster", property_value: SpeedMaster)
+---@overload fun(property_name: "Speed", property_value: SpeedPropertyValue)
+---@overload fun(property_name: "SpeedOnce"|"RandomStart"|"PhaseOnce", property_value: YesNo|boolean)
+---@overload fun(property_name: "Attack"|"PhaseVariance"|"Low"|"LowVariance"|"High"|"Phase"|"HighVariance"|"SpeedVariance"|"Decay"|"Ratio"|"RatioVariance", property_value: integer)
+function RandomChannels:SpeedMaster(property_name, property_value) end

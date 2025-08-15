@@ -6,6 +6,10 @@ local RunningTimecodes = {}
 function RunningTimecodes:GetClass() end
 ---@return "Timecode"
 function RunningTimecodes:GetChildClass() end
+---@generic T : RunningTimecodes
+---@param class `T`
+---@return boolean
+function RunningTimecodes:IsClass(class) end
 ---@return RunningPlaybacksCollect
 function RunningTimecodes:Parent() end
 ---@param index integer
@@ -24,3 +28,6 @@ function RunningTimecodes:Acquire(class, undo) end
 function RunningTimecodes:Aquire(class, undo) end
 function RunningTimecodes:Insert(index, class, undo, count) end
 function RunningTimecodes:Find(class, undo) end
+function RunningTimecodes:ActiveDisplay(property_name, property_value) end
+function RunningTimecodes:ActiveDisplay(property_name, property_value) end
+function RunningTimecodes:SetChildrenRecursive(property_name, property_value) end

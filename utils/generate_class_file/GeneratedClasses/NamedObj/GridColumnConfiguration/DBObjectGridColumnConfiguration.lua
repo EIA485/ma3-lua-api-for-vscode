@@ -6,6 +6,10 @@ local DBObjectGridColumnConfiguration = {}
 function DBObjectGridColumnConfiguration:GetClass() end
 ---@return "DBObjectGridLine"
 function DBObjectGridColumnConfiguration:GetChildClass() end
+---@generic T : DBObjectGridColumnConfiguration
+---@param class `T`
+---@return boolean
+function DBObjectGridColumnConfiguration:IsClass(class) end
 ---@param index integer
 ---@return DBObjectGridLine
 function DBObjectGridColumnConfiguration:Ptr(index) end
@@ -56,3 +60,4 @@ function DBObjectGridColumnConfiguration:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): DBObjectGridLine
 function DBObjectGridColumnConfiguration:Find(class, undo) end
+function DBObjectGridColumnConfiguration:Size(property_name, property_value) end

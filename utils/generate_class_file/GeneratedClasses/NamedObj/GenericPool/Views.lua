@@ -6,6 +6,10 @@ local Views = {}
 function Views:GetClass() end
 ---@return "View"
 function Views:GetChildClass() end
+---@generic T : Views
+---@param class `T`
+---@return boolean
+function Views:IsClass(class) end
 ---@return UserProfile
 function Views:Parent() end
 ---@param index integer
@@ -36,3 +40,7 @@ function Views:Insert(index, class, undo, count) end
 ---@overload fun(class: "View", undo: Undo?): View
 ---@overload fun(class: nil, undo: Undo?): View
 function Views:Find(class, undo) end
+---@overload fun(property_name: "ScreenContentMask", property_value: integer)
+---@overload fun(property_name: "RequestedW"|"RequestedH", property_value: RequestedSize)
+---@overload fun(property_name: "ScreenContentMask", property_value: integer)
+function Views:ScreenContentMask(property_name, property_value) end

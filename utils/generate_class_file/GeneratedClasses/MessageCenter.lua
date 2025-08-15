@@ -6,6 +6,10 @@ local MessageCenter = {}
 function MessageCenter:GetClass() end
 ---@return "MessageCategory"
 function MessageCenter:GetChildClass() end
+---@generic T : MessageCenter
+---@param class `T`
+---@return boolean
+function MessageCenter:IsClass(class) end
 ---@return Root
 function MessageCenter:Parent() end
 ---@param index integer
@@ -58,3 +62,6 @@ function MessageCenter:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MessageCategory
 function MessageCenter:Find(class, undo) end
+---@overload fun(property_name: "CreateNotification", property_value: YesNo|boolean)
+---@overload fun(property_name: "CreateNotification", property_value: YesNo|boolean)
+function MessageCenter:CreateNotification(property_name, property_value) end

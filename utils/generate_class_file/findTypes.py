@@ -1,37 +1,3 @@
-# Usage:
-#   python findTypes.py input.json output.json
-#
-# Input:
-# {
-#   "class_token_map": { "<CClassToken>": "<ReadableName>", ... },
-#   "classes": {
-#     "0xADDR": {
-#       "name": "...",
-#       "base": "...",
-#       "child": "...",
-#       "parent": "...",
-#       (optional) "description": "...",
-#       "properties": [
-#         {
-#           "CTypeName": "<demangled vtable symbol>",
-#           "name": "<prop name>",
-#           "TypeNameStr": "<UI type string>",
-#           "subtype": <int>,
-#           (optional) "default": "...",
-#           (optional) "description": "..."
-#         }, ...
-#       ]
-#     }, ...
-#   }
-# }
-#
-# Output:
-# {
-#   "0xADDR": { ...processed class... },
-#   "0xADDR2": { ... },
-#   ...
-# }
-
 from __future__ import annotations
 import json, os, re, sys, difflib
 from typing import List, Dict, Any, Optional, Tuple
@@ -108,20 +74,44 @@ def _strip_ptr_ref_qual(s: str) -> str:
 def _norm(s: str) -> str:
     return re.sub(r'[^a-z0-9]', '', s.lower())
 
+def _subseq_count_greedy(a: str, b: str) -> int:
+    j = 0
+    cnt = 0
+    for ch in b:
+        if j < len(a) and a[j] == ch:
+            j += 1
+            cnt += 1
+    return cnt
+
+def _best_subseq_fraction(a: str, b: str) -> float:
+    if not a or not b: return 0.0
+    best = 0
+    for i in range(len(a)):
+        c = _subseq_count_greedy(a[i:], b)
+        if c > best: best = c
+    return best / len(a)
+
 def _fuzzy_best_match(key: str, candidates: List[str], min_ratio: float = 0.68) -> Optional[str]:
     k = _norm(key)
     best, best_score = None, 0.0
+    best_len_delta = None
     for cand in candidates:
         c = _norm(cand)
         if not c: continue
-        base = difflib.SequenceMatcher(None, k, c).ratio()
-        bonus = 0.0
-        if k.startswith(c): bonus += 0.25
-        if c in k:          bonus += 0.15
-        gap = abs(len(k) - len(c)) / max(len(k), len(c))
-        score = base + bonus - 0.20 * gap
+        s1 = _best_subseq_fraction(k, c)
+        s2 = _best_subseq_fraction(c, k)
+        score = 0.5 * (s1 + s2)
+        if k and c and k[0] == c[0]: score += 0.05
+        if k and c and k[-1] == c[-1]: score += 0.05
+        length_gap = abs(len(k) - len(c)) / max(len(k), len(c))
+        score -= 0.10 * length_gap
         if score > best_score:
             best_score, best = score, cand
+            best_len_delta = abs(len(k) - len(c))
+        elif abs(score - best_score) <= 1e-9:
+            delta = abs(len(k) - len(c))
+            if best_len_delta is None or delta < best_len_delta:
+                best, best_len_delta = cand, delta
     return best if best and best_score >= min_ratio else None
 
 def lookup_enum_name(enum_token_last: str, enum_lines: List[str]) -> str:
@@ -197,16 +187,41 @@ def _normalize_type_inner(inner: str, class_name_ctx: Optional[str],
     if re.match(r'^DB::TCell<\s*(?:class\s+)?General::TIndex<unsigned\s+int,\s*(?:struct\s+)?DB::GridIndexTag\s*>\s*>', t_cv_nr):
         return "{r: integer, c: integer}"
     if t_cv_nr.startswith("union DB::RCUser") or t_cv_nr == "DB::RCUser":
-        return "user"
+        return "User"
 
     # Direct remaps
     if t_cv_nr == "DB::CmdInputString": return "string"
-    if t_cv_nr == "DB::RelCueNumber":   return "RelCueNumber"
     if t_cv_nr == "DB::SmartPointerBase": return "Object"
-    if t_cv_nr == "DB::Margin": return "{left: integer, right: integer, top: integer, bottom: integer}"
-    if t_cv_nr == "DB::Rect":   return "{left: number, right: number, top: number, bottom: number}"
-    if t_cv_nr == "Graphics::AnchorPoints":
-        return "{left: integer, right: integer, top: integer, bottom: integer}"
+    if t_cv_nr in ["DB::Margin", "Graphics::AnchorPoints"]: return "{left: integer, right: integer, top: integer, bottom: integer}"
+    if t_cv_nr == "DB::Rect": return "{left: number, right: number, top: number, bottom: number}"
+
+    if t_cv_nr == "DB::DMX::PatchInfo":
+        return "PatchInfo"
+    if re.fullmatch(r'Crypto::Guid<\s*128\s*>', t_cv_nr) or  "Crypto::Key128" == t_cv_nr:
+        return "Key128"
+
+    if re.fullmatch(r'(?:class\s+)?Container::SharedPtr<\s*(?:class\s+)?Manet\.HostDataExt\s*>', t.replace(' ', '')):
+        return ("{station: {speed: integer, name: string, mem_available: integer, watchdog_mask: integer, "
+                "usb_devices: integer, mac_hi: integer, mac_low: integer, flags: {enable_net: integer, "
+                "accept_3rd_party: integer, enable_remote_hid: integer, enable_remotes: integer, "
+                "enable_invite: integer, visible_in_cloud: integer, remote_active: integer, "
+                "primary_if_up: integer, ip_collision: integer}, mem_installed: integer, ip_prefix: integer, "
+                "status: integer, master_prio: integer, pu_prio: integer, slot: integer}, "
+                "session: {index: integer, branch: integer, small_version: integer, location: string, "
+                "name: string, showfile: string, big_version: integer, id: integer}}")
+
+    if t_cv_nr == "GridSelection::SimpleCell":
+        return "{column: integer, row: integer}"
+
+    if t_cv.startswith("Container::ArrayCount<"):
+        args_str = t_cv[t_cv.find("<")+1:][:-1] if t_cv.endswith(">") else ""
+        parts = split_top_level(args_str)
+        if len(parts) >= 2:
+            first = strip_cv_class_enum(parts[0])
+            second = strip_cv_class_enum(parts[1])
+            if first in {"DMXPropertyAddress", "class DMXPropertyAddress"} and re.fullmatch(r'\d+', second):
+                if int(second) == 8:
+                    return "DMXPropertyBreak"
 
     # Contextual StreamToken
     if t_cv_nr == "DB::StreamToken":
@@ -232,12 +247,54 @@ def _normalize_type_inner(inner: str, class_name_ctx: Optional[str],
             elem = _normalize_type_inner(first[0], class_name_ctx, class_token_map, enum_lines)
             return f"{elem}[]"
 
+    if t_cv.startswith("Container::Array<") or t_cv.startswith("class Container::Array<"):
+        args_str = t_cv[t_cv.find("<")+1:][:-1] if t_cv.endswith(">") else ""
+        parts = split_top_level(args_str)
+        if len(parts) >= 2:
+            raw_type = strip_cv_class_enum(parts[0])
+            firstarg = _normalize_type_inner(raw_type, class_name_ctx, class_token_map, enum_lines)
+            count_str = strip_cv_class_enum(parts[1])
+            m_count = re.fullmatch(r'\d+', count_str)
+            if m_count:
+                n = int(count_str)
+                repeated = "[" + ", ".join([firstarg] * n) + "]"
+                if len(repeated) > 10000:
+                    return f"{firstarg}[]"
+                return repeated
+
     if t_cv.startswith("LinkedList::PtrList<") or t_cv.startswith("class LinkedList::PtrList<"):
         args = t_cv[t_cv.find("<")+1:][:-1] if t_cv.endswith(">") else ""
         parts = split_top_level(args)
         if len(parts) >= 2:
             elem = _normalize_type_inner(parts[1], class_name_ctx, class_token_map, enum_lines)
             return f"{elem}[]"
+
+    if t_cv.startswith("Container::MapTpl<") or t_cv.startswith("class Container::MapTpl<"):
+        args_str = t_cv[t_cv.find("<")+1:][:-1] if t_cv.endswith(">") else ""
+        key = "DefaultMapItemDescr<"
+        idx = args_str.find(key)
+        if idx != -1:
+            lt = args_str.find("<", idx)
+            if lt != -1:
+                depth = 1
+                j = lt + 1
+                content: List[str] = []
+                while j < len(args_str):
+                    ch = args_str[j]
+                    if ch == '<': depth += 1; content.append(ch)
+                    elif ch == '>':
+                        depth -= 1
+                        if depth == 0: break
+                        content.append(ch)
+                    else:
+                        content.append(ch)
+                    j += 1
+                inner_types_str = ''.join(content).strip()
+                parts = [p for p in split_top_level(inner_types_str) if p.strip()]
+                if len(parts) >= 2:
+                    type1 = _normalize_type_inner(parts[0], class_name_ctx, class_token_map, enum_lines)
+                    type2 = _normalize_type_inner(parts[1], class_name_ctx, class_token_map, enum_lines)
+                    return f"table<{type1}, {type2}>"
 
     # Handle-like wrappers → map to class token names
     handle_prefixes = (
@@ -584,6 +641,12 @@ def parse_property_plain_property(demangled: str, class_name_ctx: Optional[str],
     inner = demangled[len("const DB::Property<"):-len(">::`vftable'")].strip()
     return _normalize_type_inner(inner, class_name_ctx, class_token_map, enum_lines)
 
+def try_get_plain_property_inner(demangled: str) -> Optional[str]:
+    if not demangled: return None
+    if demangled.startswith("const DB::Property<") and demangled.endswith(">::`vftable'"):
+        return demangled[len("const DB::Property<"):-len(">::`vftable'")].strip()
+    return None
+
 def parse_inner_of_property_to_type(demangled: str, class_name_ctx: Optional[str],
                                     class_token_map: Dict[str,str], enum_lines: List[str]) -> str:
     s = demangled.strip()
@@ -618,45 +681,124 @@ def apply_description_if_any(current_type: str, descr: Optional[str]) -> str:
             return current_type
     return current_type
 
+# ----------------  Enum field preference ----------------
+
+_HANDLE_OR_CONTAINER_PREFIXES = (
+    "DB::Handle<", "DB::RelativeHandle<", "DB::SmartPointer<",
+    "DB::PtrObjectNode<", "DB::PtrObjectNode2<", "LinkedList::PtrNode<",
+    "Container::Collect<", "Container::Array<", "LinkedList::PtrList<",
+    "Container::MapTpl<"
+)
+
+def _should_use_property_enum(enum_val: str,
+                              demangled: str,
+                              class_token_map: Dict[str, str]) -> bool:
+    """
+    Prefer Enum when:
+      - this is a *plain* DB::Property<...> (not Method/Invokable/Connectible)
+      - the inner type is NOT a class reference (per class_token_map)
+      - and the inner type does not start with our handle/container prefixes
+    """
+    if not enum_val:
+        return False
+    lv = enum_val.strip().lower()
+    if lv in {"none", "no name", "noname", "null"}:
+        return False
+
+    inner = try_get_plain_property_inner(demangled)
+    if not inner:
+        return False
+    if lookup_class_token_optional(inner, class_token_map):
+        return False
+    inner_nocv = strip_cv_class_enum(inner)
+    for pref in _HANDLE_OR_CONTAINER_PREFIXES:
+        if inner_nocv.startswith(pref) or inner_nocv.startswith("class " + pref):
+            return False
+    return True
+
+
+def _resolve_enum_type_from_field(enum_val: str, enum_lines: List[str]) -> str:
+    if enum_val.strip().lower() in ["yesno", "onoff", "truefalse", "rdmpidvalueonoff", "rdmpidvaluefactorydefaults", "matricksinvert", "layoutvisibility", "genvirtualdimmer", "cmdeventstatus", "bloomintensity3d", "ecplay", "ecrec", "fixtureinvert", "lockedyesno"]:
+        return enum_val.strip()+"|boolean"
+    if enum_val.strip() == "Yes":
+        return "Yes|true"
+    last = enum_val.split("::")[-1].strip()
+    looked = lookup_enum_name(last, enum_lines)
+    return looked
+
+# ---------------- small utils for pass-through ----------------
+
+def _shallow_copy_without(d: Dict[str, Any], keys_to_omit: set) -> Dict[str, Any]:
+    return {k: v for k, v in (d or {}).items() if k not in keys_to_omit}
+
 # ---------------- processing pipeline ----------------
 
+# Keys we intentionally omit from the final JSON
+_ROOT_OMIT = {"class_token_map"}  # keep using it internally, but don't emit
+# Note: we do not omit anything at class-level by default.
+_PROP_OMIT_EXTRA = set()  # placeholder in case you want to drop tracked property keys later
+
 def process_dump(raw: Dict[str, Any], enum_lines: List[str]) -> Dict[str, Any]:
-    out: Dict[str, Any] = {}
+    # Start by passing through everything at root, except tracked omissions
+    out: Dict[str, Any] = _shallow_copy_without(raw, _ROOT_OMIT)
 
     class_token_map: Dict[str,str] = raw.get("class_token_map", {})
     classes = raw.get("classes") or {}
 
-    for addr, cls in classes.items():
-        cls_out: Dict[str, Any] = {}
-        cls_out["name"] = cls.get("name")
-        if cls.get("base"):   cls_out["base"]   = cls["base"]
-        if cls.get("child"):  cls_out["child"]  = cls["child"]
-        if cls.get("parent"): cls_out["parent"] = cls["parent"]
-        if cls.get("description"): cls_out["description"] = cls["description"]
+    classes_out: Dict[str, Any] = {}
 
-        props_out = []
+    for addr, cls in classes.items():
+        cls_out: Dict[str, Any] = dict(cls)
+
+        if cls.get("name") is not None:      cls_out["name"] = cls.get("name")
+        if cls.get("base"):                  cls_out["base"] = cls["base"]
+        if cls.get("child"):                 cls_out["child"] = cls["child"]
+        if cls.get("parent"):                cls_out["parent"] = cls["parent"]
+        if cls.get("description"):
+            cls_out["description"] = "" if cls.get("description") == "your description here." else cls["description"]
+
+        props_out: List[Dict[str, Any]] = []
         class_name_ctx = cls_out.get("name")
         for p in cls.get("properties", []):
-            po: Dict[str, Any] = {}
+            po: Dict[str, Any] = dict(p)
+
+            if "Enum" in p:
+                po["Enum"] = p["Enum"]
+
             po["CTypeName"] = p.get("CTypeName")
             po["name"]      = p.get("name")
             if p.get("TypeNameStr"): po["TypeNameStr"] = p["TypeNameStr"]
             po["subtype"]   = p.get("subtype", 0)
-            if p.get("default"): po["default"] = p["default"]
-            if p.get("description"): po["description"] = p["description"]
+            if p.get("default") is not None: po["default"] = p.get("default")
+            if p.get("description"):
+                po["description"] = "" if p.get("description") == "your description here." else p["description"]
 
+            enum_field = po.get("Enum")
             ctn = p.get("CTypeName") or ""
             computed = parse_inner_of_property_to_type(ctn, class_name_ctx, class_token_map, enum_lines)
             computed = apply_description_if_any(computed, p.get("description"))
             computed = finalize_type_string(computed)
-            po["type"] = computed
+
+            if enum_field and _should_use_property_enum(str(enum_field), ctn, class_token_map):
+                enum_type = _resolve_enum_type_from_field(str(enum_field), enum_lines)
+                enum_type = finalize_type_string(enum_type)
+                po["type"] = enum_type
+            else:
+                po["type"] = computed
+
+            for k in list(po.keys()):
+                if k in _PROP_OMIT_EXTRA:
+                    del po[k]
 
             props_out.append(po)
 
         cls_out["properties"] = props_out
-        out[addr] = cls_out
-
+        classes_out[addr] = cls_out
+        
+    out.update(classes_out)
+    out.pop("classes", None)
     return out
+
 
 def main(argv: List[str]) -> None:
     if len(argv) < 3:

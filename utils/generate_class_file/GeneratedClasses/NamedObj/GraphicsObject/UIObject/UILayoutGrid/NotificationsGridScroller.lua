@@ -6,6 +6,10 @@ local NotificationsGridScroller = {}
 function NotificationsGridScroller:GetClass() end
 ---@return "NotificationsWrapper"
 function NotificationsGridScroller:GetChildClass() end
+---@generic T : NotificationsGridScroller
+---@param class `T`
+---@return boolean
+function NotificationsGridScroller:IsClass(class) end
 ---@return ScrollBox
 function NotificationsGridScroller:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function NotificationsGridScroller:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): NotificationsWrapper
 function NotificationsGridScroller:Find(class, undo) end
+function NotificationsGridScroller:SetPrompt(property_name, property_value) end

@@ -6,6 +6,10 @@ local Generators = {}
 function Generators:GetClass() end
 ---@return "Random"
 function Generators:GetChildClass() end
+---@generic T : Generators
+---@param class `T`
+---@return boolean
+function Generators:IsClass(class) end
 ---@return GeneratorTypes
 function Generators:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function Generators:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Random
 function Generators:Find(class, undo) end
+function Generators:Key(property_name, property_value) end

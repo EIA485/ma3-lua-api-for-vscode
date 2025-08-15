@@ -6,6 +6,10 @@ local ColorGroups = {}
 function ColorGroups:GetClass() end
 ---@return "ColorGroup"
 function ColorGroups:GetChildClass() end
+---@generic T : ColorGroups
+---@param class `T`
+---@return boolean
+function ColorGroups:IsClass(class) end
 ---@return ColorTheme
 function ColorGroups:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function ColorGroups:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ColorGroup
 function ColorGroups:Find(class, undo) end
+function ColorGroups:ActiveDisplay(property_name, property_value) end

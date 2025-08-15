@@ -6,6 +6,10 @@ local UIChannels = {}
 function UIChannels:GetClass() end
 ---@return "UIChannel"
 function UIChannels:GetChildClass() end
+---@generic T : UIChannels
+---@param class `T`
+---@return boolean
+function UIChannels:IsClass(class) end
 ---@return Patch
 function UIChannels:Parent() end
 ---@param index integer
@@ -58,3 +62,9 @@ function UIChannels:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): UIChannel
 function UIChannels:Find(class, undo) end
+---@overload fun(property_name: "Snap", property_value: Yes|true)
+---@overload fun(property_name: "Master", property_value: MasterReaction)
+---@overload fun(property_name: "Master", property_value: MasterReaction)
+---@overload fun(property_name: "Snap", property_value: Yes|true)
+---@overload fun(property_name: "Type"|"SubAttribute", property_value: string)
+function UIChannels:Master(property_name, property_value) end

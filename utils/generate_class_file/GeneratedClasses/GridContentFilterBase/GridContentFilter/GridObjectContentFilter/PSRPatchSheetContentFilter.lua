@@ -6,5 +6,9 @@ local PSRPatchSheetContentFilter = {}
 function PSRPatchSheetContentFilter:GetClass() end
 ---@return "GridObjectContentFilterItem"
 function PSRPatchSheetContentFilter:GetChildClass() end
+---@generic T : PSRPatchSheetContentFilter
+---@param class `T`
+---@return boolean
+function PSRPatchSheetContentFilter:IsClass(class) end
 ---@return PSRPatchSheetSettings
 function PSRPatchSheetContentFilter:Parent() end

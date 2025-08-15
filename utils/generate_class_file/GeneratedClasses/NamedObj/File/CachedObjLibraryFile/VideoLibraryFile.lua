@@ -6,3 +6,7 @@ local VideoLibraryFile = {}
 function VideoLibraryFile:GetClass() end
 ---@return "Object"
 function VideoLibraryFile:GetChildClass() end
+---@generic T : VideoLibraryFile
+---@param class `T`
+---@return boolean
+function VideoLibraryFile:IsClass(class) end

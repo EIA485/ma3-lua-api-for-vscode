@@ -6,6 +6,10 @@ local DmxRemotes = {}
 function DmxRemotes:GetClass() end
 ---@return "DmxRemote"
 function DmxRemotes:GetChildClass() end
+---@generic T : DmxRemotes
+---@param class `T`
+---@return boolean
+function DmxRemotes:IsClass(class) end
 ---@param index integer
 ---@return DmxRemote
 function DmxRemotes:Ptr(index) end
@@ -56,3 +60,8 @@ function DmxRemotes:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): DmxRemote
 function DmxRemotes:Find(class, undo) end
+---@overload fun(property_name: "Resolution", property_value: Resolution)
+---@overload fun(property_name: "Address", property_value: DMXPropertyAddress)
+---@overload fun(property_name: "Address", property_value: DMXPropertyAddress)
+---@overload fun(property_name: "Resolution", property_value: Resolution)
+function DmxRemotes:Address(property_name, property_value) end

@@ -6,6 +6,10 @@ local Remotes = {}
 function Remotes:GetClass() end
 ---@return "RemoteCollect"
 function Remotes:GetChildClass() end
+---@generic T : Remotes
+---@param class `T`
+---@return boolean
+function Remotes:IsClass(class) end
 ---@return ShowData
 function Remotes:Parent() end
 ---@param index integer
@@ -58,3 +62,5 @@ function Remotes:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): RemoteCollect
 function Remotes:Find(class, undo) end
+---@overload fun(property_name: "FeedbackInput"|"Enabled", property_value: YesNo|boolean)
+function Remotes:FeatureGroup(property_name, property_value) end

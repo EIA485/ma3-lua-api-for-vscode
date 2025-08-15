@@ -6,3 +6,7 @@ local TrackSheetGridData = {}
 function TrackSheetGridData:GetClass() end
 ---@return "Object"
 function TrackSheetGridData:GetChildClass() end
+---@generic T : TrackSheetGridData
+---@param class `T`
+---@return boolean
+function TrackSheetGridData:IsClass(class) end

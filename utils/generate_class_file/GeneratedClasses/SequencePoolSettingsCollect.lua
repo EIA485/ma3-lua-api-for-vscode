@@ -6,6 +6,10 @@ local SequencePoolSettingsCollect = {}
 function SequencePoolSettingsCollect:GetClass() end
 ---@return "SequencePoolSettings"
 function SequencePoolSettingsCollect:GetChildClass() end
+---@generic T : SequencePoolSettingsCollect
+---@param class `T`
+---@return boolean
+function SequencePoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return SequencePoolSettings
 function SequencePoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,6 @@ function SequencePoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SequencePoolSettings
 function SequencePoolSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "Action", property_value: SequenceAction)
+---@overload fun(property_name: "Action", property_value: SequenceAction)
+function SequencePoolSettingsCollect:Action(property_name, property_value) end

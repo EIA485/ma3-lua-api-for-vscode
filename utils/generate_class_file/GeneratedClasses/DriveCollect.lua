@@ -6,6 +6,10 @@ local DriveCollect = {}
 function DriveCollect:GetClass() end
 ---@return "Drive"
 function DriveCollect:GetChildClass() end
+---@generic T : DriveCollect
+---@param class `T`
+---@return boolean
+function DriveCollect:IsClass(class) end
 ---@param index integer
 ---@return Drive
 function DriveCollect:Ptr(index) end
@@ -56,3 +60,7 @@ function DriveCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Drive
 function DriveCollect:Find(class, undo) end
+---@overload fun(property_name: "FreeSpaceStr", property_value: string)
+---@overload fun(property_name: "FreeSpace"|"TotalSpace", property_value: integer)
+---@overload fun(property_name: "FreeSpaceStr", property_value: string)
+function DriveCollect:FreeSpaceStr(property_name, property_value) end

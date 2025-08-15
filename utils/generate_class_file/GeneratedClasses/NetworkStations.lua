@@ -6,6 +6,10 @@ local NetworkStations = {}
 function NetworkStations:GetClass() end
 ---@return "NetworkStation"
 function NetworkStations:GetChildClass() end
+---@generic T : NetworkStations
+---@param class `T`
+---@return boolean
+function NetworkStations:IsClass(class) end
 ---@return HostTypes
 function NetworkStations:Parent() end
 ---@param index integer
@@ -58,3 +62,10 @@ function NetworkStations:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): NetworkStation
 function NetworkStations:Find(class, undo) end
+---@overload fun(property_name: "HostData", property_value: Container.SharedPtr<class Manet.HostDataExt>)
+---@overload fun(property_name: "NACKCountTotal", property_value: NackStat)
+---@overload fun(property_name: "HostData", property_value: Container.SharedPtr<class Manet.HostDataExt>)
+---@overload fun(property_name: "NACKCountTotal", property_value: NackStat)
+---@overload fun(property_name: "FlowControlLevel"|"NACKCountPer1m5m10m", property_value: integer)
+---@overload fun(property_name: "Enabled"|"RemoteIP"|"Status"|"Mask"|"MasterPrio"|"MinimumVersion"|"Type"|"VersionBig"|"ShowFile"|"IP"|"VersionSmall"|"Session"|"OnlineTime"|"Location"|"SessionIndex"|"SessionSlot", property_value: string)
+function NetworkStations:NACKCountTotal(property_name, property_value) end

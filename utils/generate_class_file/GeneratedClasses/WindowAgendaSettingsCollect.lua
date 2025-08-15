@@ -6,6 +6,10 @@ local WindowAgendaSettingsCollect = {}
 function WindowAgendaSettingsCollect:GetClass() end
 ---@return "WindowAgendaSettings"
 function WindowAgendaSettingsCollect:GetChildClass() end
+---@generic T : WindowAgendaSettingsCollect
+---@param class `T`
+---@return boolean
+function WindowAgendaSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return WindowAgendaSettings
 function WindowAgendaSettingsCollect:Ptr(index) end
@@ -56,3 +60,19 @@ function WindowAgendaSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): WindowAgendaSettings
 function WindowAgendaSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "ToolAction", property_value: string)
+---@overload fun(property_name: "SelectedAgenda", property_value: Object)
+---@overload fun(property_name: "ViewMode", property_value: AgendaViewMode)
+---@overload fun(property_name: "StartOfWeek", property_value: WeekDay)
+---@overload fun(property_name: "Setup", property_value: YesNo|boolean)
+---@overload fun(property_name: "Tool", property_value: AgendaTool)
+---@overload fun(property_name: "Tool", property_value: AgendaTool)
+---@overload fun(property_name: "ViewMode", property_value: AgendaViewMode)
+---@overload fun(property_name: "SelectedDay"|"VisibleDate", property_value: DatumMode)
+---@overload fun(property_name: "SelectedAgenda", property_value: Object)
+---@overload fun(property_name: "StartOfWeek", property_value: WeekDay)
+---@overload fun(property_name: "Setup", property_value: YesNo|boolean)
+---@overload fun(property_name: "AgendaSelected"|"DaySelected", property_value: boolean)
+---@overload fun(property_name: "ResetSelectedDay"|"JumpToToday"|"JumpToPrevious"|"JumpToNext"|"ResetSelectedAgenda", property_value: fun(text: string) : boolean)
+---@overload fun(property_name: "ToolAction", property_value: string)
+function WindowAgendaSettingsCollect:Tool(property_name, property_value) end

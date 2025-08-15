@@ -6,6 +6,10 @@ local sACNDiscoveryCollect = {}
 function sACNDiscoveryCollect:GetClass() end
 ---@return "sACN-Node"
 function sACNDiscoveryCollect:GetChildClass() end
+---@generic T : sACNDiscoveryCollect
+---@param class `T`
+---@return boolean
+function sACNDiscoveryCollect:IsClass(class) end
 ---@return sACN
 function sACNDiscoveryCollect:Parent() end
 ---@param index integer
@@ -36,3 +40,4 @@ function sACNDiscoveryCollect:Insert(index, class, undo, count) end
 ---@overload fun(class: "sACN-Node", undo: Undo?): sACNNode
 ---@overload fun(class: nil, undo: Undo?): sACNNode
 function sACNDiscoveryCollect:Find(class, undo) end
+function sACNDiscoveryCollect:IsActive(property_name, property_value) end

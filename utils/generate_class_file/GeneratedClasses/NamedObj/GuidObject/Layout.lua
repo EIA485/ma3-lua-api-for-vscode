@@ -11,16 +11,16 @@
 ---@field UsedH integer
 ---@field CanvasAppearance Appearance
 ---@field Appearance Appearance
----@field ViewPosActive integer
+---@field ViewPosActive YesNo|boolean
 ---@field ViewPosScale number
----@field Markers integer
----@field ValueColors integer
----@field ActiveStyle integer
+---@field Markers YesNo|boolean
+---@field ValueColors YesNo|boolean
+---@field ActiveStyle YesNo|boolean
 ---@field AxisSystem AxisSystem
 ---@field RotationMode RotationMode
----@field LayoutType AxisSystem
+---@field LayoutType LayoutType
 ---@field AxisGroupType AxisGroupType
----@field EncoderFunction EncoderFunction
+---@field EncoderFunction EncoderFunctionLayoutView
 ---@field GridDirection GridDirection
 ---@field GridRowOrder RowOrder
 ---@field GridColumnOrder ColumnOrder
@@ -43,13 +43,17 @@
 ---@field Ratio number
 ---@field MoveX number
 ---@field MoveY number
----@field ArrangeOnChange integer
----@field SendChangesWhileEncoderEvent integer
+---@field ArrangeOnChange YesNo|boolean
+---@field SendChangesWhileEncoderEvent YesNo|boolean
 local Layout = {}
 ---@return "Layout"
 function Layout:GetClass() end
 ---@return "Element"
 function Layout:GetChildClass() end
+---@generic T : Layout
+---@param class `T`
+---@return boolean
+function Layout:IsClass(class) end
 ---@return Layouts
 function Layout:Parent() end
 ---@param index integer
@@ -59,22 +63,116 @@ function Layout:Ptr(index) end
 function Layout:Children() end
 ---@return Element?
 function Layout:CurrentChild() end
+---@return 63
+function Layout:PropertyCount() end
+---@overload fun(idx: 0): "IgnoreNetwork"
+---@overload fun(idx: 1): "StructureLocked"
+---@overload fun(idx: 2): "SystemLocked"
+---@overload fun(idx: 3): "Lock"
+---@overload fun(idx: 4): "Index"
+---@overload fun(idx: 5): "Count"
+---@overload fun(idx: 6): "No"
+---@overload fun(idx: 7): "Name"
+---@overload fun(idx: 8): "UserExpanded"
+---@overload fun(idx: 9): "FaderEnabled"
+---@overload fun(idx: 10): "Owned"
+---@overload fun(idx: 11): "Hidden"
+---@overload fun(idx: 12): "DependencyExport"
+---@overload fun(idx: 13): "MemoryFootprint"
+---@overload fun(idx: 14): "Guid"
+---@overload fun(idx: 15): "Scribble"
+---@overload fun(idx: 16): "NameAndApp"
+---@overload fun(idx: 17): "Note"
+---@overload fun(idx: 18): "Tags"
+---@overload fun(idx: 19): "PositionX"
+---@overload fun(idx: 20): "PositionY"
+---@overload fun(idx: 21): "DimensionW"
+---@overload fun(idx: 22): "DimensionH"
+---@overload fun(idx: 23): "UsedX"
+---@overload fun(idx: 24): "UsedY"
+---@overload fun(idx: 25): "UsedW"
+---@overload fun(idx: 26): "UsedH"
+---@overload fun(idx: 27): "CanvasAppearance"
+---@overload fun(idx: 28): "Appearance"
+---@overload fun(idx: 29): "ViewPosActive"
+---@overload fun(idx: 30): "ViewPosScale"
+---@overload fun(idx: 31): "Markers"
+---@overload fun(idx: 32): "ValueColors"
+---@overload fun(idx: 33): "ActiveStyle"
+---@overload fun(idx: 34): "AxisSystem"
+---@overload fun(idx: 35): "RotationMode"
+---@overload fun(idx: 36): "LayoutType"
+---@overload fun(idx: 37): "AxisGroupType"
+---@overload fun(idx: 38): "EncoderFunction"
+---@overload fun(idx: 39): "GridDirection"
+---@overload fun(idx: 40): "GridRowOrder"
+---@overload fun(idx: 41): "GridColumnOrder"
+---@overload fun(idx: 42): "Columns"
+---@overload fun(idx: 43): "Rows"
+---@overload fun(idx: 44): "ColumnsInterval"
+---@overload fun(idx: 45): "RowsInterval"
+---@overload fun(idx: 46): "StartX"
+---@overload fun(idx: 47): "LengthX"
+---@overload fun(idx: 48): "StartY"
+---@overload fun(idx: 49): "LengthY"
+---@overload fun(idx: 50): "StartZ"
+---@overload fun(idx: 51): "LengthZ"
+---@overload fun(idx: 52): "RadiusStart"
+---@overload fun(idx: 53): "RadiusDelta"
+---@overload fun(idx: 54): "AngleStart"
+---@overload fun(idx: 55): "AngleRange"
+---@overload fun(idx: 56): "CameraIndex"
+---@overload fun(idx: 57): "Scale"
+---@overload fun(idx: 58): "Ratio"
+---@overload fun(idx: 59): "MoveX"
+---@overload fun(idx: 60): "MoveY"
+---@overload fun(idx: 61): "ArrangeOnChange"
+---@overload fun(idx: 62): "SendChangesWhileEncoderEvent"
+function Layout:PropertyName(idx) end
+---@overload fun(idx: 0|1|2): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 3|11|29|31|32|33|61|62): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 4|5|6|23|24|25|26): {ExportIgnore: True, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 7|12|14|15|17|18|19|20|21|22|27|28|30|39|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60): {ExportIgnore: False, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 8): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 9|10): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 13|16): {ExportIgnore: False, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 34): {ExportIgnore: False, EnumCollection: AxisSystem, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 35): {ExportIgnore: False, EnumCollection: RotationMode, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 36): {ExportIgnore: False, EnumCollection: LayoutType, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 37): {ExportIgnore: False, EnumCollection: AxisGroupType, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 38): {ExportIgnore: False, EnumCollection: EncoderFunctionLayoutView, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 40): {ExportIgnore: False, EnumCollection: RowOrder, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 41): {ExportIgnore: False, EnumCollection: ColumnOrder, ReadOnly: False, ImportIgnore: False}
+function Layout:PropertyInfo(idx) end
+---@overload fun(idx: 0|1|2|3|4|5|6|8|29|31|32|33): "UInt32"
+---@overload fun(idx: 7|12|16|17): "String"
+---@overload fun(idx: 9|10): "Bool"
+---@overload fun(idx: 11): "UInt64"
+---@overload fun(idx: 13): "Int64"
+---@overload fun(idx: 14|18): "Custom"
+---@overload fun(idx: 15|27|28): "Handle"
+---@overload fun(idx: 19|20|21|22|23|24|25|26): "Int16"
+---@overload fun(idx: 30|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60): "Double"
+---@overload fun(idx: 34|35|36|37|38|39|40|41): "Int8"
+---@overload fun(idx: 61|62): "UInt16"
+function Layout:PropertyType(idx) end
 ---@overload fun(name: "CanvasAppearance"|"Appearance", role: nil): Appearance
 ---@overload fun(name: "AxisGroupType", role: nil): AxisGroupType
----@overload fun(name: "AxisSystem"|"LayoutType", role: nil): AxisSystem
+---@overload fun(name: "AxisSystem", role: nil): AxisSystem
 ---@overload fun(name: "GridColumnOrder", role: nil): ColumnOrder
----@overload fun(name: "Guid", role: nil): Crypto.Guid<128>
----@overload fun(name: "EncoderFunction", role: nil): EncoderFunction
+---@overload fun(name: "EncoderFunction", role: nil): EncoderFunctionLayoutView
 ---@overload fun(name: "GridDirection", role: nil): GridDirection
+---@overload fun(name: "Guid", role: nil): Key128
+---@overload fun(name: "LayoutType", role: nil): LayoutType
 ---@overload fun(name: "RotationMode", role: nil): RotationMode
 ---@overload fun(name: "GridRowOrder", role: nil): RowOrder
 ---@overload fun(name: "Scribble", role: nil): Scribble
 ---@overload fun(name: "Tags", role: nil): TagMap
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "PositionX"|"PositionY"|"DimensionW"|"DimensionH"|"UsedX"|"UsedY"|"UsedW"|"UsedH"|"ViewPosActive"|"Markers"|"ValueColors"|"ActiveStyle"|"ArrangeOnChange"|"SendChangesWhileEncoderEvent"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"ViewPosActive"|"Markers"|"ValueColors"|"ActiveStyle"|"ArrangeOnChange"|"SendChangesWhileEncoderEvent", role: nil): YesNo|boolean
+---@overload fun(name: "Index"|"Count"|"No"|"MemoryFootprint"|"PositionX"|"PositionY"|"DimensionW"|"DimensionH"|"UsedX"|"UsedY"|"UsedW"|"UsedH", role: nil): integer
 ---@overload fun(name: "ViewPosScale"|"Columns"|"Rows"|"ColumnsInterval"|"RowsInterval"|"StartX"|"LengthX"|"StartY"|"LengthY"|"StartZ"|"LengthZ"|"RadiusStart"|"RadiusDelta"|"AngleStart"|"AngleRange"|"CameraIndex"|"Scale"|"Ratio"|"MoveX"|"MoveY", role: nil): number
----@overload fun(name: "NameAndApp"|"Note"|"Name"|"DependencyExport", role: nil): string
----@overload fun(name: "PositionX"|"PositionY"|"DimensionW"|"DimensionH"|"UsedX"|"UsedY"|"UsedW"|"UsedH"|"CanvasAppearance"|"Appearance"|"ViewPosActive"|"ViewPosScale"|"Markers"|"ValueColors"|"ActiveStyle"|"AxisSystem"|"RotationMode"|"LayoutType"|"AxisGroupType"|"EncoderFunction"|"GridDirection"|"GridRowOrder"|"GridColumnOrder"|"Columns"|"Rows"|"ColumnsInterval"|"RowsInterval"|"StartX"|"LengthX"|"StartY"|"LengthY"|"StartZ"|"LengthZ"|"RadiusStart"|"RadiusDelta"|"AngleStart"|"AngleRange"|"CameraIndex"|"Scale"|"Ratio"|"MoveX"|"MoveY"|"ArrangeOnChange"|"SendChangesWhileEncoderEvent"|"Guid"|"Scribble"|"NameAndApp"|"Note"|"Tags"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
+---@overload fun(name: "Name"|"DependencyExport"|"NameAndApp"|"Note", role: nil): string
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Guid"|"Scribble"|"NameAndApp"|"Note"|"Tags"|"PositionX"|"PositionY"|"DimensionW"|"DimensionH"|"UsedX"|"UsedY"|"UsedW"|"UsedH"|"CanvasAppearance"|"Appearance"|"ViewPosActive"|"ViewPosScale"|"Markers"|"ValueColors"|"ActiveStyle"|"AxisSystem"|"RotationMode"|"LayoutType"|"AxisGroupType"|"EncoderFunction"|"GridDirection"|"GridRowOrder"|"GridColumnOrder"|"Columns"|"Rows"|"ColumnsInterval"|"RowsInterval"|"StartX"|"LengthX"|"StartY"|"LengthY"|"StartZ"|"LengthZ"|"RadiusStart"|"RadiusDelta"|"AngleStart"|"AngleRange"|"CameraIndex"|"Scale"|"Ratio"|"MoveX"|"MoveY"|"ArrangeOnChange"|"SendChangesWhileEncoderEvent", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): Element
 function Layout:Get(name, role) end
 ---@generic T : Element
@@ -118,3 +216,42 @@ function Layout:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Element
 function Layout:Find(class, undo) end
+---@overload fun(property_name: "CanvasAppearance"|"Appearance", property_value: Appearance, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "AxisGroupType", property_value: AxisGroupType, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "AxisSystem", property_value: AxisSystem, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "GridColumnOrder", property_value: ColumnOrder, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "EncoderFunction", property_value: EncoderFunctionLayoutView, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "GridDirection", property_value: GridDirection, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Guid", property_value: Key128, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "LayoutType", property_value: LayoutType, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "RotationMode", property_value: RotationMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "GridRowOrder", property_value: RowOrder, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Scribble", property_value: Scribble, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Tags", property_value: TagMap, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Hidden"|"ViewPosActive"|"Markers"|"ValueColors"|"ActiveStyle"|"ArrangeOnChange"|"SendChangesWhileEncoderEvent", property_value: YesNo|boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Index"|"Count"|"No"|"PositionX"|"PositionY"|"DimensionW"|"DimensionH"|"UsedX"|"UsedY"|"UsedW"|"UsedH", property_value: integer, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ViewPosScale"|"Columns"|"Rows"|"ColumnsInterval"|"RowsInterval"|"StartX"|"LengthX"|"StartY"|"LengthY"|"StartZ"|"LengthZ"|"RadiusStart"|"RadiusDelta"|"AngleStart"|"AngleRange"|"CameraIndex"|"Scale"|"Ratio"|"MoveX"|"MoveY", property_value: number, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Name"|"DependencyExport"|"Note", property_value: string, override_change_level: ChangeLevel?)
+function Layout:Set(property_name, property_value, override_change_level) end
+---@overload fun(property_name: "AppearanceRotation", property_value: ImageRotation)
+---@overload fun(property_name: "Mirror", property_value: ImageMirror)
+---@overload fun(property_name: "Object", property_value: Object)
+---@overload fun(property_name: "BorderColor", property_value: UColor)
+---@overload fun(property_name: "AssignType", property_value: AssignType)
+---@overload fun(property_name: "Action", property_value: AssignmentButtonFunctions)
+---@overload fun(property_name: "Scribble", property_value: Scribble)
+---@overload fun(property_name: "ObjectTextSize", property_value: FontSizes)
+---@overload fun(property_name: "Appearance", property_value: string)
+---@overload fun(property_name: "AssignType", property_value: AssignType)
+---@overload fun(property_name: "Action", property_value: AssignmentButtonFunctions)
+---@overload fun(property_name: "ObjectTextSize", property_value: FontSizes)
+---@overload fun(property_name: "Mirror", property_value: ImageMirror)
+---@overload fun(property_name: "AppearanceRotation", property_value: ImageRotation)
+---@overload fun(property_name: "VisibilityBorder"|"VisibilityElement"|"VisibilityBar"|"VisibilityObjectName"|"VisibilityID"|"VisibilityCID"|"VisibilityValue"|"VisibilityIndicatorBar", property_value: LayoutVisibility|boolean)
+---@overload fun(property_name: "Object", property_value: Object)
+---@overload fun(property_name: "Scribble", property_value: Scribble)
+---@overload fun(property_name: "BorderColor", property_value: UColor)
+---@overload fun(property_name: "VisibilitySelectionRelevance"|"FullResolution"|"IsInWorld"|"Selected"|"CustomTextVertical", property_value: YesNo|boolean)
+---@overload fun(property_name: "Height"|"PosX"|"BorderSize"|"IDType"|"FixtureID"|"ID"|"CID"|"PosY"|"Width", property_value: integer)
+---@overload fun(property_name: "Appearance", property_value: string)
+function Layout:Appearance(property_name, property_value) end

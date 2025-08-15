@@ -6,6 +6,10 @@ local DmxAddresses = {}
 function DmxAddresses:GetClass() end
 ---@return "DMXAddress"
 function DmxAddresses:GetChildClass() end
+---@generic T : DmxAddresses
+---@param class `T`
+---@return boolean
+function DmxAddresses:IsClass(class) end
 ---@return Patch
 function DmxAddresses:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function DmxAddresses:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): DMXAddress
 function DmxAddresses:Find(class, undo) end
+function DmxAddresses:ActiveDisplay(property_name, property_value) end

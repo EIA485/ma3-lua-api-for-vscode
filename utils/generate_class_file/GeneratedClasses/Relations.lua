@@ -6,6 +6,10 @@ local Relations = {}
 function Relations:GetClass() end
 ---@return "Relation"
 function Relations:GetChildClass() end
+---@generic T : Relations
+---@param class `T`
+---@return boolean
+function Relations:IsClass(class) end
 ---@return DMXMode
 function Relations:Parent() end
 ---@param index integer
@@ -58,3 +62,10 @@ function Relations:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Relation
 function Relations:Find(class, undo) end
+---@overload fun(property_name: "Follower", property_value: ChannelFunction)
+---@overload fun(property_name: "Type", property_value: RelationType)
+---@overload fun(property_name: "Master", property_value: DMXChannel)
+---@overload fun(property_name: "Follower", property_value: ChannelFunction)
+---@overload fun(property_name: "Master", property_value: DMXChannel)
+---@overload fun(property_name: "Type", property_value: RelationType)
+function Relations:Master(property_name, property_value) end

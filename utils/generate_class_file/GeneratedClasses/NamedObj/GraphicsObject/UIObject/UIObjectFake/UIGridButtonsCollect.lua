@@ -6,6 +6,10 @@ local UIGridButtonsCollect = {}
 function UIGridButtonsCollect:GetClass() end
 ---@return "UIGridButtons"
 function UIGridButtonsCollect:GetChildClass() end
+---@generic T : UIGridButtonsCollect
+---@param class `T`
+---@return boolean
+function UIGridButtonsCollect:IsClass(class) end
 ---@return UIGridInternals
 function UIGridButtonsCollect:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function UIGridButtonsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): UIGridButtons
 function UIGridButtonsCollect:Find(class, undo) end
+function UIGridButtonsCollect:IsPlaying(property_name, property_value) end

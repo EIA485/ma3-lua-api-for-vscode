@@ -6,6 +6,10 @@ local MasterPoolTiming = {}
 function MasterPoolTiming:GetClass() end
 ---@return "MasterTiming"
 function MasterPoolTiming:GetChildClass() end
+---@generic T : MasterPoolTiming
+---@param class `T`
+---@return boolean
+function MasterPoolTiming:IsClass(class) end
 ---@param index integer
 ---@return MasterTiming
 function MasterPoolTiming:Ptr(index) end
@@ -56,3 +60,4 @@ function MasterPoolTiming:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MasterTiming
 function MasterPoolTiming:Find(class, undo) end
+function MasterPoolTiming:SpeedScale(property_name, property_value) end

@@ -11,6 +11,10 @@ local ViewBar = {
 function ViewBar:GetClass() end
 ---@return "ViewBarButton"
 function ViewBar:GetChildClass() end
+---@generic T : ViewBar
+---@param class `T`
+---@return boolean
+function ViewBar:IsClass(class) end
 ---@param index integer
 ---@return ViewBarButton
 function ViewBar:Ptr(index) end
@@ -18,26 +22,208 @@ function ViewBar:Ptr(index) end
 function ViewBar:Children() end
 ---@return ViewBarButton?
 function ViewBar:CurrentChild() end
+---@return 142
+function ViewBar:PropertyCount() end
+---@overload fun(idx: 0): "IgnoreNetwork"
+---@overload fun(idx: 1): "StructureLocked"
+---@overload fun(idx: 2): "SystemLocked"
+---@overload fun(idx: 3): "Lock"
+---@overload fun(idx: 4): "Index"
+---@overload fun(idx: 5): "Count"
+---@overload fun(idx: 6): "No"
+---@overload fun(idx: 7): "Name"
+---@overload fun(idx: 8): "Note"
+---@overload fun(idx: 9): "UserExpanded"
+---@overload fun(idx: 10): "FaderEnabled"
+---@overload fun(idx: 11): "Owned"
+---@overload fun(idx: 12): "Hidden"
+---@overload fun(idx: 13): "DependencyExport"
+---@overload fun(idx: 14): "MemoryFootprint"
+---@overload fun(idx: 15): "X"
+---@overload fun(idx: 16): "Y"
+---@overload fun(idx: 17): "W"
+---@overload fun(idx: 18): "H"
+---@overload fun(idx: 19): "AbsRect"
+---@overload fun(idx: 20): "AbsClientRect"
+---@overload fun(idx: 21): "Texture"
+---@overload fun(idx: 22): "Font"
+---@overload fun(idx: 23): "LowDpiFont"
+---@overload fun(idx: 24): "Text"
+---@overload fun(idx: 25): "ToolTip"
+---@overload fun(idx: 26): "HelpTopic"
+---@overload fun(idx: 27): "BackColor"
+---@overload fun(idx: 28): "TextColor"
+---@overload fun(idx: 29): "TextShadowColor"
+---@overload fun(idx: 30): "MixInBackColor"
+---@overload fun(idx: 31): "HighlightedColor"
+---@overload fun(idx: 32): "TextVertical"
+---@overload fun(idx: 33): "TextAutoAdjust"
+---@overload fun(idx: 34): "TextUniform"
+---@overload fun(idx: 35): "FrameWidth"
+---@overload fun(idx: 36): "Padding"
+---@overload fun(idx: 37): "Focus"
+---@overload fun(idx: 38): "UserRights"
+---@overload fun(idx: 39): "Visible"
+---@overload fun(idx: 40): "CanCoExistWithModal"
+---@overload fun(idx: 41): "UserVisible"
+---@overload fun(idx: 42): "Enabled"
+---@overload fun(idx: 43): "Interactive"
+---@overload fun(idx: 44): "Transparent"
+---@overload fun(idx: 45): "BlockClickThru"
+---@overload fun(idx: 46): "UserInteracted"
+---@overload fun(idx: 47): "HasHover"
+---@overload fun(idx: 48): "Separator"
+---@overload fun(idx: 49): "HasPressedAnimation"
+---@overload fun(idx: 50): "ContentDriven"
+---@overload fun(idx: 51): "ContentWidth"
+---@overload fun(idx: 52): "ContentHeight"
+---@overload fun(idx: 53): "ForceContentMin"
+---@overload fun(idx: 54): "WantsNumericRedirect"
+---@overload fun(idx: 55): "CloseAction"
+---@overload fun(idx: 56): "AutoCloseValue"
+---@overload fun(idx: 57): "UiGroupId"
+---@overload fun(idx: 58): "LabelLinkHandle"
+---@overload fun(idx: 59): "IgnoreBackdropPadding"
+---@overload fun(idx: 60): "MixInBackColorFromParent"
+---@overload fun(idx: 61): "FocusSearchPolicy"
+---@overload fun(idx: 62): "IgnoreRequestedSize"
+---@overload fun(idx: 63): "ForceEncoderBar"
+---@overload fun(idx: 64): "SuppressOverlayAutoClose"
+---@overload fun(idx: 65): "IsClosing"
+---@overload fun(idx: 66): "TextShadow"
+---@overload fun(idx: 67): "MinSize"
+---@overload fun(idx: 68): "MaxSize"
+---@overload fun(idx: 69): "Anchors"
+---@overload fun(idx: 70): "SignalValue"
+---@overload fun(idx: 71): "SignalValueHold"
+---@overload fun(idx: 72): "AlignmentH"
+---@overload fun(idx: 73): "AlignmentV"
+---@overload fun(idx: 74): "TextAlignmentH"
+---@overload fun(idx: 75): "TextAlignmentV"
+---@overload fun(idx: 76): "Margin"
+---@overload fun(idx: 77): "PluginComponent"
+---@overload fun(idx: 78): "HasFocus"
+---@overload fun(idx: 79): "HideFocusFrame"
+---@overload fun(idx: 80): "AppearanceSourceClassName"
+---@overload fun(idx: 81): "VisibleOnlyInAlpha"
+---@overload fun(idx: 82): "VisibleOnlyInBeta"
+---@overload fun(idx: 83): "VisibleOnlyInRelease"
+---@overload fun(idx: 84): "ClickNearest"
+---@overload fun(idx: 85): "VisibleInAlpha"
+---@overload fun(idx: 86): "VisibleInBeta"
+---@overload fun(idx: 87): "VisibleInRelease"
+---@overload fun(idx: 88): "Clicked"
+---@overload fun(idx: 89): "ClickedLeft"
+---@overload fun(idx: 90): "ClickedRight"
+---@overload fun(idx: 91): "DoubleClicked"
+---@overload fun(idx: 92): "MouseEnter"
+---@overload fun(idx: 93): "MouseLeave"
+---@overload fun(idx: 94): "MouseOverHold"
+---@overload fun(idx: 95): "MouseUp"
+---@overload fun(idx: 96): "MouseUpLeft"
+---@overload fun(idx: 97): "MouseUpRight"
+---@overload fun(idx: 98): "MouseDown"
+---@overload fun(idx: 99): "MouseDownLeft"
+---@overload fun(idx: 100): "MouseDownRight"
+---@overload fun(idx: 101): "MouseDownHold"
+---@overload fun(idx: 102): "KeyDown"
+---@overload fun(idx: 103): "KeyUp"
+---@overload fun(idx: 104): "CharInput"
+---@overload fun(idx: 105): "TouchStart"
+---@overload fun(idx: 106): "TouchUpdate"
+---@overload fun(idx: 107): "TouchEnd"
+---@overload fun(idx: 108): "OnLoad"
+---@overload fun(idx: 109): "OnVisible"
+---@overload fun(idx: 110): "DescriptionChanged"
+---@overload fun(idx: 111): "FocusGet"
+---@overload fun(idx: 112): "FocusLost"
+---@overload fun(idx: 113): "ForceIntensity"
+---@overload fun(idx: 114): "DefaultMargin"
+---@overload fun(idx: 115): "Columns"
+---@overload fun(idx: 116): "Rows"
+---@overload fun(idx: 117): "CellWidth"
+---@overload fun(idx: 118): "CellHeight"
+---@overload fun(idx: 119): "BlockWidth"
+---@overload fun(idx: 120): "BlockHeight"
+---@overload fun(idx: 121): "ExpandContent"
+---@overload fun(idx: 122): "DefaultMarginOnBorders"
+---@overload fun(idx: 123): "MixInBackColorFromParentRecursive"
+---@overload fun(idx: 124): "EncoderUseDisplay"
+---@overload fun(idx: 125): "RowReductionPolicy"
+---@overload fun(idx: 126): "ColReductionPolicy"
+---@overload fun(idx: 127): "SetRow"
+---@overload fun(idx: 128): "PoolColor"
+---@overload fun(idx: 129): "SizeX"
+---@overload fun(idx: 130): "SizeY"
+---@overload fun(idx: 131): "SwipeMenu"
+---@overload fun(idx: 132): "PoolObject"
+---@overload fun(idx: 133): "NoEmptyNames"
+---@overload fun(idx: 134): "TitleButtonIcon"
+---@overload fun(idx: 135): "OnClick"
+---@overload fun(idx: 136): "OnChar"
+---@overload fun(idx: 137): "OnSwipeMenu"
+---@overload fun(idx: 138): "PoolSettings"
+---@overload fun(idx: 139): "ReactToRecipeEdit"
+---@overload fun(idx: 140): "SetToTop"
+---@overload fun(idx: 141): "ScrollPageDown"
+function ViewBar:PropertyName(idx) end
+---@overload fun(idx: 0|1|2|46|65|78): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 3|12|32|33|34|39|40|41|42|43|44|45|47|48|49|50|51|52|53|54|59|60|62|63|64|66|79|81|82|83|84|85|86|87|121|122|123|124|133|139): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 4|5|6|20): {ExportIgnore: True, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 7|8|13|15|16|17|18|19|21|22|23|24|25|26|27|28|29|30|31|35|36|56|57|58|67|68|69|70|71|76|80|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117|118|119|120|128|131|134|135|136|137|138|140|141): {ExportIgnore: False, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 9): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 10|11): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 14|77|127): {ExportIgnore: False, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 37): {ExportIgnore: False, EnumCollection: FocusPriority, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 38): {ExportIgnore: False, EnumCollection: UserRights, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 55): {ExportIgnore: False, EnumCollection: ModalResult, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 61): {ExportIgnore: False, EnumCollection: FocusSearchPolicy, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 72|74): {ExportIgnore: False, EnumCollection: AlignmentH, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 73|75): {ExportIgnore: False, EnumCollection: AlignmentV, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 125|126): {ExportIgnore: False, EnumCollection: ReductionPolicy, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 129|130): {ExportIgnore: False, EnumCollection: PoolSizeFactor, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 132): {ExportIgnore: True, ReadOnly: True, ImportIgnore: True}
+function ViewBar:PropertyInfo(idx) end
+---@overload fun(idx: 0|1|2|3|4|5|6|9|119|120): "UInt32"
+---@overload fun(idx: 7|8|13|24|25|26|70|71|80|131): "String"
+---@overload fun(idx: 10|11|78|79|121|122|123|124|133|139): "Bool"
+---@overload fun(idx: 12|32|33|34|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|59|60|61|62|63|64|65|66|81|82|83|84|85|86|87): "UInt64"
+---@overload fun(idx: 14|55|56): "Int64"
+---@overload fun(idx: 15|16|17|18): "Size"
+---@overload fun(idx: 19|20|67|68): "Custom"
+---@overload fun(idx: 21|134): "Texture"
+---@overload fun(idx: 22|23): "Font"
+---@overload fun(idx: 27|28|29|30|31|58|77|128|132|138): "Handle"
+---@overload fun(idx: 35|114|115|116|117|118): "Int16"
+---@overload fun(idx: 36|69|76): "4Ints"
+---@overload fun(idx: 37|38|72|73|74|75|129|130): "UInt8"
+---@overload fun(idx: 57|125|126): "Int32"
+---@overload fun(idx: 88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112): "Signal"
+---@overload fun(idx: 113): "UInt16"
+---@overload fun(idx: 127): "Method"
+---@overload fun(idx: 135|136|137|140|141): "Action"
+function ViewBar:PropertyType(idx) end
 ---@overload fun(name: "AlignmentH"|"TextAlignmentH", role: nil): AlignmentH
 ---@overload fun(name: "AlignmentV"|"TextAlignmentV", role: nil): AlignmentV
----@overload fun(name: "PoolColor"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor", role: nil): Color
+---@overload fun(name: "BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"PoolColor", role: nil): Color
 ---@overload fun(name: "PluginComponent", role: nil): Component
 ---@overload fun(name: "Focus", role: nil): FocusPriority
+---@overload fun(name: "FocusSearchPolicy", role: nil): FocusSearchPolicy
 ---@overload fun(name: "Font"|"LowDpiFont", role: nil): Font
----@overload fun(name: "CloseAction", role: nil): GestureResult
 ---@overload fun(name: "X"|"Y"|"W"|"H", role: nil): Graphics.SizeDescriptor
 ---@overload fun(name: "MinSize"|"MaxSize", role: nil): Graphics.SizeDimension
+---@overload fun(name: "CloseAction", role: nil): ModalResult
 ---@overload fun(name: "PoolObject", role: nil): Object
 ---@overload fun(name: "PoolSettings", role: nil): PoolSettings
 ---@overload fun(name: "SizeX"|"SizeY", role: nil): PoolSizeFactor
 ---@overload fun(name: "RowReductionPolicy"|"ColReductionPolicy", role: nil): ReductionPolicy
----@overload fun(name: "TitleButtonIcon"|"Texture", role: nil): Texture
+---@overload fun(name: "Texture"|"TitleButtonIcon", role: nil): Texture
 ---@overload fun(name: "LabelLinkHandle", role: nil): UIObject
 ---@overload fun(name: "UserRights", role: nil): UserRights
----@overload fun(name: "NoEmptyNames"|"ReactToRecipeEdit"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"HasFocus"|"HideFocusFrame"|"FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"HasFocus"|"HideFocusFrame"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"NoEmptyNames"|"ReactToRecipeEdit", role: nil): YesNo|boolean
 ---@overload fun(name: "SetRow", role: nil): fun(int1: integer, layoutSizePolicy: LayoutSizePolicy, num: number, int2: integer) : boolean
 ---@overload fun(name: "DescriptionChanged", role: nil): fun(str: string)
----@overload fun(name: "SetToTop"|"ScrollPageDown"|"OnSwipeMenu", role: nil): fun(str: string) : boolean
+---@overload fun(name: "OnSwipeMenu"|"SetToTop"|"ScrollPageDown", role: nil): fun(str: string) : boolean
 ---@overload fun(name: "Clicked"|"DoubleClicked"|"MouseUp"|"MouseDown"|"MouseDownHold", role: nil): fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer)
 ---@overload fun(name: "ClickedLeft"|"ClickedRight"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUpLeft"|"MouseUpRight"|"MouseDownLeft"|"MouseDownRight", role: nil): fun(str: string, X: integer, Y: integer)
 ---@overload fun(name: "OnVisible", role: nil): fun(str: string, bool: boolean)
@@ -48,11 +234,11 @@ function ViewBar:CurrentChild() end
 ---@overload fun(name: "OnLoad", role: nil): fun(str: string, obj: Object)
 ---@overload fun(name: "TouchStart"|"TouchUpdate"|"TouchEnd", role: nil): fun(str: string, pointID: integer, X: integer, Y: integer)
 ---@overload fun(name: "CharInput", role: nil): fun(str: string, utf32Char: integer)
----@overload fun(name: "DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"AutoCloseValue"|"UiGroupId"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"ForceIntensity"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
----@overload fun(name: "SwipeMenu"|"Text"|"ToolTip"|"HelpTopic"|"SignalValue"|"SignalValueHold"|"AppearanceSourceClassName"|"Name"|"Note"|"DependencyExport", role: nil): string
+---@overload fun(name: "Index"|"Count"|"No"|"MemoryFootprint"|"FrameWidth"|"AutoCloseValue"|"UiGroupId"|"ForceIntensity"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight", role: nil): integer
+---@overload fun(name: "Name"|"Note"|"DependencyExport"|"Text"|"ToolTip"|"HelpTopic"|"SignalValue"|"SignalValueHold"|"AppearanceSourceClassName"|"SwipeMenu", role: nil): string
 ---@overload fun(name: "Padding"|"Anchors"|"Margin", role: nil): {left: integer, right: integer, top: integer, bottom: integer}
 ---@overload fun(name: "AbsRect"|"AbsClientRect", role: nil): {left: number, right: number, top: number, bottom: number}
----@overload fun(name: "SetToTop"|"ScrollPageDown"|"PoolColor"|"SizeX"|"SizeY"|"SwipeMenu"|"PoolObject"|"NoEmptyNames"|"TitleButtonIcon"|"OnClick"|"OnChar"|"OnSwipeMenu"|"PoolSettings"|"ReactToRecipeEdit"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"RowReductionPolicy"|"ColReductionPolicy"|"SetRow"|"X"|"Y"|"W"|"H"|"AbsRect"|"AbsClientRect"|"Texture"|"Font"|"LowDpiFont"|"Text"|"ToolTip"|"HelpTopic"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Padding"|"Focus"|"UserRights"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"CloseAction"|"AutoCloseValue"|"UiGroupId"|"LabelLinkHandle"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"MinSize"|"MaxSize"|"Anchors"|"SignalValue"|"SignalValueHold"|"AlignmentH"|"AlignmentV"|"TextAlignmentH"|"TextAlignmentV"|"Margin"|"PluginComponent"|"HasFocus"|"HideFocusFrame"|"AppearanceSourceClassName"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"Clicked"|"ClickedLeft"|"ClickedRight"|"DoubleClicked"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUp"|"MouseUpLeft"|"MouseUpRight"|"MouseDown"|"MouseDownLeft"|"MouseDownRight"|"MouseDownHold"|"KeyDown"|"KeyUp"|"CharInput"|"TouchStart"|"TouchUpdate"|"TouchEnd"|"OnLoad"|"OnVisible"|"DescriptionChanged"|"FocusGet"|"FocusLost"|"ForceIntensity"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"Note"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"X"|"Y"|"W"|"H"|"AbsRect"|"AbsClientRect"|"Texture"|"Font"|"LowDpiFont"|"Text"|"ToolTip"|"HelpTopic"|"BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"FrameWidth"|"Padding"|"Focus"|"UserRights"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"CloseAction"|"AutoCloseValue"|"UiGroupId"|"LabelLinkHandle"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"FocusSearchPolicy"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"MinSize"|"MaxSize"|"Anchors"|"SignalValue"|"SignalValueHold"|"AlignmentH"|"AlignmentV"|"TextAlignmentH"|"TextAlignmentV"|"Margin"|"PluginComponent"|"HasFocus"|"HideFocusFrame"|"AppearanceSourceClassName"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"Clicked"|"ClickedLeft"|"ClickedRight"|"DoubleClicked"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUp"|"MouseUpLeft"|"MouseUpRight"|"MouseDown"|"MouseDownLeft"|"MouseDownRight"|"MouseDownHold"|"KeyDown"|"KeyUp"|"CharInput"|"TouchStart"|"TouchUpdate"|"TouchEnd"|"OnLoad"|"OnVisible"|"DescriptionChanged"|"FocusGet"|"FocusLost"|"ForceIntensity"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"RowReductionPolicy"|"ColReductionPolicy"|"SetRow"|"PoolColor"|"SizeX"|"SizeY"|"SwipeMenu"|"PoolObject"|"NoEmptyNames"|"TitleButtonIcon"|"OnClick"|"OnChar"|"OnSwipeMenu"|"PoolSettings"|"ReactToRecipeEdit"|"SetToTop"|"ScrollPageDown", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): ViewBarButton
 function ViewBar:Get(name, role) end
 ---@generic T : ViewBarButton
@@ -96,3 +282,37 @@ function ViewBar:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ViewBarButton
 function ViewBar:Find(class, undo) end
+---@overload fun(property_name: "AlignmentH"|"TextAlignmentH", property_value: AlignmentH, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "AlignmentV"|"TextAlignmentV", property_value: AlignmentV, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "BackColor"|"TextColor"|"TextShadowColor"|"MixInBackColor"|"HighlightedColor"|"PoolColor", property_value: Color, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Focus", property_value: FocusPriority, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "FocusSearchPolicy", property_value: FocusSearchPolicy, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Font"|"LowDpiFont", property_value: Font, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "X"|"Y"|"W"|"H", property_value: Graphics.SizeDescriptor, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "MinSize"|"MaxSize", property_value: Graphics.SizeDimension, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "CloseAction", property_value: ModalResult, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "PoolSettings", property_value: PoolSettings, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "SizeX"|"SizeY", property_value: PoolSizeFactor, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "RowReductionPolicy"|"ColReductionPolicy", property_value: ReductionPolicy, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Texture"|"TitleButtonIcon", property_value: Texture, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "LabelLinkHandle", property_value: UIObject, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "UserRights", property_value: UserRights, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Hidden"|"TextVertical"|"TextAutoAdjust"|"TextUniform"|"Visible"|"CanCoExistWithModal"|"UserVisible"|"Enabled"|"Interactive"|"Transparent"|"BlockClickThru"|"UserInteracted"|"HasHover"|"Separator"|"HasPressedAnimation"|"ContentDriven"|"ContentWidth"|"ContentHeight"|"ForceContentMin"|"WantsNumericRedirect"|"IgnoreBackdropPadding"|"MixInBackColorFromParent"|"IgnoreRequestedSize"|"ForceEncoderBar"|"SuppressOverlayAutoClose"|"IsClosing"|"TextShadow"|"HasFocus"|"HideFocusFrame"|"VisibleOnlyInAlpha"|"VisibleOnlyInBeta"|"VisibleOnlyInRelease"|"ClickNearest"|"VisibleInAlpha"|"VisibleInBeta"|"VisibleInRelease"|"ExpandContent"|"DefaultMarginOnBorders"|"MixInBackColorFromParentRecursive"|"EncoderUseDisplay"|"NoEmptyNames"|"ReactToRecipeEdit", property_value: YesNo|boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "DescriptionChanged", property_value: fun(str: string), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "OnSwipeMenu"|"SetToTop"|"ScrollPageDown", property_value: fun(str: string) : boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Clicked"|"DoubleClicked"|"MouseUp"|"MouseDown"|"MouseDownHold", property_value: fun(str: string, Button: MouseButtonTypes, X: integer, Y: integer), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ClickedLeft"|"ClickedRight"|"MouseEnter"|"MouseLeave"|"MouseOverHold"|"MouseUpLeft"|"MouseUpRight"|"MouseDownLeft"|"MouseDownRight", property_value: fun(str: string, X: integer, Y: integer), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "OnVisible", property_value: fun(str: string, bool: boolean), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "OnClick", property_value: fun(str: string, int1: integer, int2: integer, int3: integer) : boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "OnChar", property_value: fun(str: string, int: integer) : boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "KeyDown"|"KeyUp", property_value: fun(str: string, keyCode: VirtualKeyCode, bool1: boolean, bool2: boolean, bool3: boolean), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "FocusGet"|"FocusLost", property_value: fun(str: string, obj1: Object, obj2: Object), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "OnLoad", property_value: fun(str: string, obj: Object), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "TouchStart"|"TouchUpdate"|"TouchEnd", property_value: fun(str: string, pointID: integer, X: integer, Y: integer), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "CharInput", property_value: fun(str: string, utf32Char: integer), override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Index"|"Count"|"No"|"FrameWidth"|"AutoCloseValue"|"UiGroupId"|"ForceIntensity"|"DefaultMargin"|"Columns"|"Rows"|"CellWidth"|"CellHeight"|"BlockWidth"|"BlockHeight", property_value: integer, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Name"|"Note"|"DependencyExport"|"Text"|"ToolTip"|"HelpTopic"|"SignalValue"|"SignalValueHold"|"AppearanceSourceClassName"|"SwipeMenu", property_value: string, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Padding"|"Anchors"|"Margin", property_value: {left: integer, right: integer, top: integer, bottom: integer}, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "AbsRect"|"AbsClientRect", property_value: {left: number, right: number, top: number, bottom: number}, override_change_level: ChangeLevel?)
+function ViewBar:Set(property_name, property_value, override_change_level) end
+function ViewBar:SetPrompt(property_name, property_value) end

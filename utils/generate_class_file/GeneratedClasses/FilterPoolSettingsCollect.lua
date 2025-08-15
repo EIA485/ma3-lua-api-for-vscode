@@ -6,6 +6,10 @@ local FilterPoolSettingsCollect = {}
 function FilterPoolSettingsCollect:GetClass() end
 ---@return "FilterPoolSettings"
 function FilterPoolSettingsCollect:GetChildClass() end
+---@generic T : FilterPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function FilterPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return FilterPoolSettings
 function FilterPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,6 @@ function FilterPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): FilterPoolSettings
 function FilterPoolSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "Action", property_value: FilterAction)
+---@overload fun(property_name: "Action", property_value: FilterAction)
+function FilterPoolSettingsCollect:Action(property_name, property_value) end

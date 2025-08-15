@@ -6,6 +6,10 @@ local FTRDMPersonalityCollect = {}
 function FTRDMPersonalityCollect:GetClass() end
 ---@return "Personality"
 function FTRDMPersonalityCollect:GetChildClass() end
+---@generic T : FTRDMPersonalityCollect
+---@param class `T`
+---@return boolean
+function FTRDMPersonalityCollect:IsClass(class) end
 ---@return RDMFixtureType
 function FTRDMPersonalityCollect:Parent() end
 ---@param index integer
@@ -58,3 +62,7 @@ function FTRDMPersonalityCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Personality
 function FTRDMPersonalityCollect:Find(class, undo) end
+---@overload fun(property_name: "DMXMode", property_value: DMXMode)
+---@overload fun(property_name: "DMXMode", property_value: DMXMode)
+---@overload fun(property_name: "PersonalityId"|"DmxFootPrint", property_value: integer)
+function FTRDMPersonalityCollect:DMXMode(property_name, property_value) end

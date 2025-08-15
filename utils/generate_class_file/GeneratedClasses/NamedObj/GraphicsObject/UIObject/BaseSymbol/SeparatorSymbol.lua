@@ -6,3 +6,7 @@ local SeparatorSymbol = {}
 function SeparatorSymbol:GetClass() end
 ---@return "UIObject"
 function SeparatorSymbol:GetChildClass() end
+---@generic T : SeparatorSymbol
+---@param class `T`
+---@return boolean
+function SeparatorSymbol:IsClass(class) end

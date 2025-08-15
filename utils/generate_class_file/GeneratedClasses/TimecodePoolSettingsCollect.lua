@@ -6,6 +6,10 @@ local TimecodePoolSettingsCollect = {}
 function TimecodePoolSettingsCollect:GetClass() end
 ---@return "TimecodePoolSettings"
 function TimecodePoolSettingsCollect:GetChildClass() end
+---@generic T : TimecodePoolSettingsCollect
+---@param class `T`
+---@return boolean
+function TimecodePoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return TimecodePoolSettings
 function TimecodePoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,6 @@ function TimecodePoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): TimecodePoolSettings
 function TimecodePoolSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "Action", property_value: TimecodePoolAction)
+---@overload fun(property_name: "Action", property_value: TimecodePoolAction)
+function TimecodePoolSettingsCollect:Action(property_name, property_value) end

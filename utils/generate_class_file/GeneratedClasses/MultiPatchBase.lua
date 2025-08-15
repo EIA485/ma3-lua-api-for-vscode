@@ -6,6 +6,10 @@ local MultiPatchBase = {}
 function MultiPatchBase:GetClass() end
 ---@return "Fixture"
 function MultiPatchBase:GetChildClass() end
+---@generic T : MultiPatchBase
+---@param class `T`
+---@return boolean
+function MultiPatchBase:IsClass(class) end
 ---@return Temp
 function MultiPatchBase:Parent() end
 ---@param index integer
@@ -24,3 +28,6 @@ function MultiPatchBase:Acquire(class, undo) end
 function MultiPatchBase:Aquire(class, undo) end
 function MultiPatchBase:Insert(index, class, undo, count) end
 function MultiPatchBase:Find(class, undo) end
+function MultiPatchBase:Color(property_name, property_value) end
+function MultiPatchBase:Color(property_name, property_value) end
+function MultiPatchBase:SetChildrenRecursive(property_name, property_value) end

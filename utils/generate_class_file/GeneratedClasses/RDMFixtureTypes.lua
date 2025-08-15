@@ -6,6 +6,10 @@ local RDMFixtureTypes = {}
 function RDMFixtureTypes:GetClass() end
 ---@return "RDMFixtureType"
 function RDMFixtureTypes:GetChildClass() end
+---@generic T : RDMFixtureTypes
+---@param class `T`
+---@return boolean
+function RDMFixtureTypes:IsClass(class) end
 ---@return RDMData
 function RDMFixtureTypes:Parent() end
 ---@param index integer
@@ -58,3 +62,9 @@ function RDMFixtureTypes:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): RDMFixtureType
 function RDMFixtureTypes:Find(class, undo) end
+---@overload fun(property_name: "SoftwareID", property_value: integer)
+---@overload fun(property_name: "ProductCategory", property_value: RDMProductCategory)
+---@overload fun(property_name: "ProductCategory", property_value: RDMProductCategory)
+---@overload fun(property_name: "SoftwareID", property_value: integer)
+---@overload fun(property_name: "DeviceModelID"|"ManufacturerID"|"SoftwareVersionLabel", property_value: string)
+function RDMFixtureTypes:ProductCategory(property_name, property_value) end

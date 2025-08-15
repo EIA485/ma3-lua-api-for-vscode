@@ -6,6 +6,10 @@ local PatchFakeCollect = {}
 function PatchFakeCollect:GetClass() end
 ---@return "PatchFakeObject"
 function PatchFakeCollect:GetChildClass() end
+---@generic T : PatchFakeCollect
+---@param class `T`
+---@return boolean
+function PatchFakeCollect:IsClass(class) end
 ---@return ConvertTask
 function PatchFakeCollect:Parent() end
 ---@param index integer
@@ -58,3 +62,11 @@ function PatchFakeCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PatchFakeObject
 function PatchFakeCollect:Find(class, undo) end
+---@overload fun(property_name: "FixtureType", property_value: integer)
+---@overload fun(property_name: "Patch", property_value: DMXPropertyAddress)
+---@overload fun(property_name: "Patch", property_value: DMXPropertyAddress)
+---@overload fun(property_name: "Stage"|"IDType", property_value: Default)
+---@overload fun(property_name: "FixtureID"|"CID", property_value: NoneAndDefault)
+---@overload fun(property_name: "FixtureType", property_value: integer)
+---@overload fun(property_name: "Layer"|"Class"|"PosY"|"PosZ"|"Name"|"PosX", property_value: string)
+function PatchFakeCollect:Patch(property_name, property_value) end

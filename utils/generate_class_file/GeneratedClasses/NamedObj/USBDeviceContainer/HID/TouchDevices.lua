@@ -6,6 +6,10 @@ local TouchDevices = {}
 function TouchDevices:GetClass() end
 ---@return "USBDeviceTouch"
 function TouchDevices:GetChildClass() end
+---@generic T : TouchDevices
+---@param class `T`
+---@return boolean
+function TouchDevices:IsClass(class) end
 ---@param index integer
 ---@return USBDeviceTouch
 function TouchDevices:Ptr(index) end
@@ -56,3 +60,5 @@ function TouchDevices:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): USBDeviceTouch
 function TouchDevices:Find(class, undo) end
+---@overload fun(property_name: "MonitorId"|"UsbAddr"|"DevNode", property_value: string)
+function TouchDevices:Connected(property_name, property_value) end

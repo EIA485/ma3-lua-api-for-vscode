@@ -6,6 +6,10 @@ local PresetColorPoolSettingsCollect = {}
 function PresetColorPoolSettingsCollect:GetClass() end
 ---@return "PresetColorPoolSettings"
 function PresetColorPoolSettingsCollect:GetChildClass() end
+---@generic T : PresetColorPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function PresetColorPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return PresetColorPoolSettings
 function PresetColorPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function PresetColorPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetColorPoolSettings
 function PresetColorPoolSettingsCollect:Find(class, undo) end
+function PresetColorPoolSettingsCollect:ActiveDisplay(property_name, property_value) end

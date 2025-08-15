@@ -6,6 +6,10 @@ local PlaybackViewExecutorBar = {}
 function PlaybackViewExecutorBar:GetClass() end
 ---@return "ExecutorSection"
 function PlaybackViewExecutorBar:GetChildClass() end
+---@generic T : PlaybackViewExecutorBar
+---@param class `T`
+---@return boolean
+function PlaybackViewExecutorBar:IsClass(class) end
 ---@return UILayoutGrid
 function PlaybackViewExecutorBar:Parent() end
 ---@param index integer
@@ -36,3 +40,5 @@ function PlaybackViewExecutorBar:Insert(index, class, undo, count) end
 ---@overload fun(class: "ExecutorSection", undo: Undo?): ExecutorSection
 ---@overload fun(class: nil, undo: Undo?): ExecutorSection
 function PlaybackViewExecutorBar:Find(class, undo) end
+---@overload fun(property_name: "ExecRowCount"|"ExecColCount", property_value: integer)
+function PlaybackViewExecutorBar:PresetPoolType(property_name, property_value) end

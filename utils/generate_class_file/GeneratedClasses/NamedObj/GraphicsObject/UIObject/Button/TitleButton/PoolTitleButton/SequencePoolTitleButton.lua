@@ -6,3 +6,7 @@ local SequencePoolTitleButton = {}
 function SequencePoolTitleButton:GetClass() end
 ---@return "UIObject"
 function SequencePoolTitleButton:GetChildClass() end
+---@generic T : SequencePoolTitleButton
+---@param class `T`
+---@return boolean
+function SequencePoolTitleButton:IsClass(class) end

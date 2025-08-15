@@ -6,3 +6,7 @@ local SoundPoolTitleButton = {}
 function SoundPoolTitleButton:GetClass() end
 ---@return "UIObject"
 function SoundPoolTitleButton:GetChildClass() end
+---@generic T : SoundPoolTitleButton
+---@param class `T`
+---@return boolean
+function SoundPoolTitleButton:IsClass(class) end

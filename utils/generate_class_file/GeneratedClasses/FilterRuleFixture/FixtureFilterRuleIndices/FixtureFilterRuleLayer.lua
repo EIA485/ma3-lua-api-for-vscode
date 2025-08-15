@@ -6,6 +6,10 @@ local FixtureFilterRuleLayer = {}
 function FixtureFilterRuleLayer:GetClass() end
 ---@return "FixtureFilterRuleLayerItem"
 function FixtureFilterRuleLayer:GetChildClass() end
+---@generic T : FixtureFilterRuleLayer
+---@param class `T`
+---@return boolean
+function FixtureFilterRuleLayer:IsClass(class) end
 ---@param index integer
 ---@return FixtureFilterRuleLayerItem
 function FixtureFilterRuleLayer:Ptr(index) end
@@ -56,3 +60,6 @@ function FixtureFilterRuleLayer:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): FixtureFilterRuleLayerItem
 function FixtureFilterRuleLayer:Find(class, undo) end
+---@overload fun(property_name: "Layer", property_value: FixtureLayer)
+---@overload fun(property_name: "Layer", property_value: FixtureLayer)
+function FixtureFilterRuleLayer:Layer(property_name, property_value) end

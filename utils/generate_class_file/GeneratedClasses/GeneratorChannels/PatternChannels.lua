@@ -6,6 +6,10 @@ local PatternChannels = {}
 function PatternChannels:GetClass() end
 ---@return "PatternChannel"
 function PatternChannels:GetChildClass() end
+---@generic T : PatternChannels
+---@param class `T`
+---@return boolean
+function PatternChannels:IsClass(class) end
 ---@param index integer
 ---@return PatternChannel
 function PatternChannels:Ptr(index) end
@@ -22,3 +26,6 @@ function PatternChannels:Acquire(class, undo) end
 function PatternChannels:Aquire(class, undo) end
 function PatternChannels:Insert(index, class, undo, count) end
 function PatternChannels:Find(class, undo) end
+function PatternChannels:Source(property_name, property_value) end
+function PatternChannels:Source(property_name, property_value) end
+function PatternChannels:SetChildrenRecursive(property_name, property_value) end

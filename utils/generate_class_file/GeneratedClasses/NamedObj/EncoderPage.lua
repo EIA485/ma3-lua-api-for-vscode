@@ -6,6 +6,10 @@ local EncoderPage = {}
 function EncoderPage:GetClass() end
 ---@return "Encoder"
 function EncoderPage:GetChildClass() end
+---@generic T : EncoderPage
+---@param class `T`
+---@return boolean
+function EncoderPage:IsClass(class) end
 ---@return EncoderBank
 function EncoderPage:Parent() end
 ---@param index integer
@@ -58,3 +62,6 @@ function EncoderPage:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Encoder
 function EncoderPage:Find(class, undo) end
+---@overload fun(property_name: "InnerObject"|"OuterObject", property_value: Object)
+---@overload fun(property_name: "InnerObjectType"|"OuterObjectType", property_value: integer)
+function EncoderPage:ActiveDisplay(property_name, property_value) end

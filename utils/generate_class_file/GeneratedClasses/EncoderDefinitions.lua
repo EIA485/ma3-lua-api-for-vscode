@@ -6,6 +6,10 @@ local EncoderDefinitions = {}
 function EncoderDefinitions:GetClass() end
 ---@return "EncoderDefinition"
 function EncoderDefinitions:GetChildClass() end
+---@generic T : EncoderDefinitions
+---@param class `T`
+---@return boolean
+function EncoderDefinitions:IsClass(class) end
 ---@return HardwareConfiguration
 function EncoderDefinitions:Parent() end
 ---@param index integer
@@ -58,3 +62,11 @@ function EncoderDefinitions:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): EncoderDefinition
 function EncoderDefinitions:Find(class, undo) end
+---@overload fun(property_name: "Key", property_value: VirtualKeyCode)
+---@overload fun(property_name: "SpecialExecutor", property_value: SpecialExecutor)
+---@overload fun(property_name: "Type", property_value: EncoderType)
+---@overload fun(property_name: "Type", property_value: EncoderType)
+---@overload fun(property_name: "SpecialExecutor", property_value: SpecialExecutor)
+---@overload fun(property_name: "Key", property_value: VirtualKeyCode)
+---@overload fun(property_name: "ExecutorIndex"|"Linked"|"Resolution", property_value: integer)
+function EncoderDefinitions:Type(property_name, property_value) end

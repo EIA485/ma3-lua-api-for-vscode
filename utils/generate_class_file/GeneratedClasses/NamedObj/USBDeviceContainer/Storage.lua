@@ -6,6 +6,10 @@ local Storage = {}
 function Storage:GetClass() end
 ---@return "USBDeviceStorage"
 function Storage:GetChildClass() end
+---@generic T : Storage
+---@param class `T`
+---@return boolean
+function Storage:IsClass(class) end
 ---@param index integer
 ---@return USBDeviceStorage
 function Storage:Ptr(index) end
@@ -56,3 +60,4 @@ function Storage:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): USBDeviceStorage
 function Storage:Find(class, undo) end
+function Storage:Connected(property_name, property_value) end

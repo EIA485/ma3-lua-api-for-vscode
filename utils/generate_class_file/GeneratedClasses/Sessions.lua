@@ -6,6 +6,10 @@ local Sessions = {}
 function Sessions:GetClass() end
 ---@return "Session"
 function Sessions:GetChildClass() end
+---@generic T : Sessions
+---@param class `T`
+---@return boolean
+function Sessions:IsClass(class) end
 ---@return MAnetSocket
 function Sessions:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function Sessions:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Session
 function Sessions:Find(class, undo) end
+function Sessions:ActiveDisplay(property_name, property_value) end

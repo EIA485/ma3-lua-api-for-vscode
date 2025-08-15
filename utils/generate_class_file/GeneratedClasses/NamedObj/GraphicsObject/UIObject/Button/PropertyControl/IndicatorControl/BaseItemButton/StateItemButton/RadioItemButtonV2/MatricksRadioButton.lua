@@ -6,3 +6,7 @@ local MatricksRadioButton = {}
 function MatricksRadioButton:GetClass() end
 ---@return "UIObject"
 function MatricksRadioButton:GetChildClass() end
+---@generic T : MatricksRadioButton
+---@param class `T`
+---@return boolean
+function MatricksRadioButton:IsClass(class) end

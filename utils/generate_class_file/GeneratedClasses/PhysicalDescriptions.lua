@@ -6,6 +6,10 @@ local PhysicalDescriptions = {}
 function PhysicalDescriptions:GetClass() end
 ---@return "Emitter"
 function PhysicalDescriptions:GetChildClass() end
+---@generic T : PhysicalDescriptions
+---@param class `T`
+---@return boolean
+function PhysicalDescriptions:IsClass(class) end
 ---@return FixtureType
 function PhysicalDescriptions:Parent() end
 ---@param index integer
@@ -24,3 +28,6 @@ function PhysicalDescriptions:Acquire(class, undo) end
 function PhysicalDescriptions:Aquire(class, undo) end
 function PhysicalDescriptions:Insert(index, class, undo, count) end
 function PhysicalDescriptions:Find(class, undo) end
+function PhysicalDescriptions:Patch(property_name, property_value) end
+function PhysicalDescriptions:Patch(property_name, property_value) end
+function PhysicalDescriptions:SetChildrenRecursive(property_name, property_value) end

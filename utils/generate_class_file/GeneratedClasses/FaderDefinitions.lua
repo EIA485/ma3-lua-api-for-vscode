@@ -6,6 +6,10 @@ local FaderDefinitions = {}
 function FaderDefinitions:GetClass() end
 ---@return "FaderDefinition"
 function FaderDefinitions:GetChildClass() end
+---@generic T : FaderDefinitions
+---@param class `T`
+---@return boolean
+function FaderDefinitions:IsClass(class) end
 ---@return HardwareConfiguration
 function FaderDefinitions:Parent() end
 ---@param index integer
@@ -58,3 +62,8 @@ function FaderDefinitions:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): FaderDefinition
 function FaderDefinitions:Find(class, undo) end
+---@overload fun(property_name: "SpecialExecutor", property_value: SpecialExecutor)
+---@overload fun(property_name: "ExecutorIndex", property_value: integer)
+---@overload fun(property_name: "SpecialExecutor", property_value: SpecialExecutor)
+---@overload fun(property_name: "ExecutorIndex", property_value: integer)
+function FaderDefinitions:ExecutorIndex(property_name, property_value) end

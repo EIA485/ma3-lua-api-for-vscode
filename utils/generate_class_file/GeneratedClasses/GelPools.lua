@@ -6,6 +6,10 @@ local GelPools = {}
 function GelPools:GetClass() end
 ---@return "GelPool"
 function GelPools:GetChildClass() end
+---@generic T : GelPools
+---@param class `T`
+---@return boolean
+function GelPools:IsClass(class) end
 ---@return ShowData
 function GelPools:Parent() end
 ---@param index integer
@@ -58,3 +62,6 @@ function GelPools:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): GelPool
 function GelPools:Find(class, undo) end
+---@overload fun(property_name: "Manufacturer", property_value: string)
+---@overload fun(property_name: "Manufacturer", property_value: string)
+function GelPools:Manufacturer(property_name, property_value) end

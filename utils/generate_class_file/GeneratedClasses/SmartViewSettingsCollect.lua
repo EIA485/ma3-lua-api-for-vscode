@@ -6,6 +6,10 @@ local SmartViewSettingsCollect = {}
 function SmartViewSettingsCollect:GetClass() end
 ---@return "SmartViewSettings"
 function SmartViewSettingsCollect:GetChildClass() end
+---@generic T : SmartViewSettingsCollect
+---@param class `T`
+---@return boolean
+function SmartViewSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return SmartViewSettings
 function SmartViewSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function SmartViewSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SmartViewSettings
 function SmartViewSettingsCollect:Find(class, undo) end
+function SmartViewSettingsCollect:ActiveDisplay(property_name, property_value) end

@@ -6,6 +6,10 @@ local PultCollect = {}
 function PultCollect:GetClass() end
 ---@return "Pult"
 function PultCollect:GetChildClass() end
+---@generic T : PultCollect
+---@param class `T`
+---@return boolean
+function PultCollect:IsClass(class) end
 ---@param index integer
 ---@return Pult
 function PultCollect:Ptr(index) end
@@ -56,3 +60,12 @@ function PultCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Pult
 function PultCollect:Find(class, undo) end
+---@overload fun(property_name: "LinkMainCmdline", property_value: YesNo|boolean)
+---@overload fun(property_name: "MainLoopCount", property_value: integer)
+---@overload fun(property_name: "Cmd", property_value: Cmdline)
+---@overload fun(property_name: "RunTest", property_value: fun(str: string) : boolean)
+---@overload fun(property_name: "Cmd", property_value: Cmdline)
+---@overload fun(property_name: "LinkMainCmdline", property_value: YesNo|boolean)
+---@overload fun(property_name: "RunTest", property_value: fun(str: string) : boolean)
+---@overload fun(property_name: "MainLoopCount", property_value: integer)
+function PultCollect:RunTest(property_name, property_value) end

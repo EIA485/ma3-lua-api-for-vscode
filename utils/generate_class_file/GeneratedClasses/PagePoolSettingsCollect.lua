@@ -6,6 +6,10 @@ local PagePoolSettingsCollect = {}
 function PagePoolSettingsCollect:GetClass() end
 ---@return "PagePoolSettings"
 function PagePoolSettingsCollect:GetChildClass() end
+---@generic T : PagePoolSettingsCollect
+---@param class `T`
+---@return boolean
+function PagePoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return PagePoolSettings
 function PagePoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function PagePoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PagePoolSettings
 function PagePoolSettingsCollect:Find(class, undo) end
+function PagePoolSettingsCollect:Shortcut(property_name, property_value) end

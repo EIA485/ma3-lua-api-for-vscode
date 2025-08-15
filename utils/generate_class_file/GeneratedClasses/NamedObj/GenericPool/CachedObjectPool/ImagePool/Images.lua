@@ -6,6 +6,10 @@ local Images = {}
 function Images:GetClass() end
 ---@return "UserImage"
 function Images:GetChildClass() end
+---@generic T : Images
+---@param class `T`
+---@return boolean
+function Images:IsClass(class) end
 ---@param index integer
 ---@return UserImage
 function Images:Ptr(index) end
@@ -56,3 +60,4 @@ function Images:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): UserImage
 function Images:Find(class, undo) end
+function Images:AddAlpha(property_name, property_value) end

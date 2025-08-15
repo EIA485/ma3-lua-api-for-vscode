@@ -6,6 +6,10 @@ local MasterPoolGrand = {}
 function MasterPoolGrand:GetClass() end
 ---@return "MasterGrand"
 function MasterPoolGrand:GetChildClass() end
+---@generic T : MasterPoolGrand
+---@param class `T`
+---@return boolean
+function MasterPoolGrand:IsClass(class) end
 ---@param index integer
 ---@return MasterGrand
 function MasterPoolGrand:Ptr(index) end
@@ -56,3 +60,4 @@ function MasterPoolGrand:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MasterGrand
 function MasterPoolGrand:Find(class, undo) end
+function MasterPoolGrand:SpeedScale(property_name, property_value) end

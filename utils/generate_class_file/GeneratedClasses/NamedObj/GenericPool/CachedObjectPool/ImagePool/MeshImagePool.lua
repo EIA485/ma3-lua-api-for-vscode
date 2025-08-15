@@ -6,6 +6,10 @@ local MeshImagePool = {}
 function MeshImagePool:GetClass() end
 ---@return "MeshImage"
 function MeshImagePool:GetChildClass() end
+---@generic T : MeshImagePool
+---@param class `T`
+---@return boolean
+function MeshImagePool:IsClass(class) end
 ---@param index integer
 ---@return MeshImage
 function MeshImagePool:Ptr(index) end
@@ -56,3 +60,4 @@ function MeshImagePool:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MeshImage
 function MeshImagePool:Find(class, undo) end
+function MeshImagePool:NDISource(property_name, property_value) end

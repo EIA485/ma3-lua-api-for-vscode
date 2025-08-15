@@ -6,6 +6,10 @@ local HID = {}
 function HID:GetClass() end
 ---@return "USBDeviceHID"
 function HID:GetChildClass() end
+---@generic T : HID
+---@param class `T`
+---@return boolean
+function HID:IsClass(class) end
 ---@param index integer
 ---@return USBDeviceHID
 function HID:Ptr(index) end
@@ -34,3 +38,4 @@ function HID:Insert(index, class, undo, count) end
 ---@overload fun(class: "USBDeviceHID", undo: Undo?): USBDeviceHID
 ---@overload fun(class: nil, undo: Undo?): USBDeviceHID
 function HID:Find(class, undo) end
+function HID:Connected(property_name, property_value) end

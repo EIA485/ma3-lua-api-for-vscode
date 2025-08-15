@@ -6,3 +6,7 @@ local ReferencesGridData = {}
 function ReferencesGridData:GetClass() end
 ---@return "Object"
 function ReferencesGridData:GetChildClass() end
+---@generic T : ReferencesGridData
+---@param class `T`
+---@return boolean
+function ReferencesGridData:IsClass(class) end

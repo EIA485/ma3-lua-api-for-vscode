@@ -6,6 +6,10 @@ local VirtualKeys = {}
 function VirtualKeys:GetClass() end
 ---@return "VirtualKey"
 function VirtualKeys:GetChildClass() end
+---@generic T : VirtualKeys
+---@param class `T`
+---@return boolean
+function VirtualKeys:IsClass(class) end
 ---@return Temp
 function VirtualKeys:Parent() end
 ---@param index integer
@@ -58,3 +62,13 @@ function VirtualKeys:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): VirtualKey
 function VirtualKeys:Find(class, undo) end
+---@overload fun(property_name: "SpecialCycle", property_value: SpecialCycle)
+---@overload fun(property_name: "LedToken", property_value: PresetActionToken)
+---@overload fun(property_name: "Code", property_value: VirtualKeyCode)
+---@overload fun(property_name: "KeyCode"|"RedirectKeyCode", property_value: KeyboardCodes)
+---@overload fun(property_name: "LedToken", property_value: PresetActionToken)
+---@overload fun(property_name: "SpecialCycle", property_value: SpecialCycle)
+---@overload fun(property_name: "Code", property_value: VirtualKeyCode)
+---@overload fun(property_name: "RedirectWithCtrl"|"RedirectWithAlt"|"CanBeProcessedWhileModal"|"RedirectWithShift"|"UseKeyStatusForLED"|"Toggle"|"IsFader"|"NumericRedirect"|"AlwaysNumericRedirect", property_value: YesNo|boolean)
+---@overload fun(property_name: "HelpTopic"|"RedirectChar", property_value: string)
+function VirtualKeys:Code(property_name, property_value) end

@@ -4,88 +4,65 @@
 -- Object definition
 -- ========================================
 
----@param baseLocationHandle? Object @Optional
----@param useToAddrIndex? boolean|nil @Optional
----@param isCueObject? boolean @Optional
----@return string numericRootAddress
-function Object:Addr(baseLocationHandle, useToAddrIndex, isCueObject)
-    return ""
-end
+---@class Object
+Object = {}
 
----@param baseLocationHandle? Object @Optional
----@param returnNamesInQuotes? boolean @Optional
+
+---@param baseLocationHandle Object? @Optional
+---@param useToAddrIndex boolean? @Optional
+---@param isCueObject boolean? @Optional
 ---@return string numericRootAddress
-function Object:AddrNative(baseLocationHandle, returnNamesInQuotes)
-    return ""
-end
+function Object:Addr(baseLocationHandle, useToAddrIndex, isCueObject) end
+
+---@param baseLocationHandle Object? @Optional
+---@param returnNamesInQuotes boolean? @Optional
+---@return string numericRootAddress
+function Object:AddrNative(baseLocationHandle, returnNamesInQuotes) end
 
 
 ---@return integer count
-function Object:Count()
-    return 0
-end
+function Object:Count() end
 
-function Object:Dump()
-end
+---@return string
+function Object:Dump() end
 
 ---@param filePath string
 ---@param fileName string
 ---@return boolean success
-function Object:Export(filePath, fileName)
-    return true
-end
+function Object:Export(filePath, fileName) end
 
----@return table dependencies
-function Object:GetDependencies()
-    return {}
-end
+---@return Object[] dependencies
+function Object:GetDependencies() end
 
----@param tokenAndIndex table
----@return number value 
-function Object:GetFader(tokenAndIndex)
-    return 0
-end
+---@param tokenAndIndex {index: integer?, token: string?}
+---@return number value #0..100
+function Object:GetFader(tokenAndIndex) end
 
----@param tokenAndIndex table
----@return string text
-function Object:GetFaderText(tokenAndIndex)
-    return ""
-end
+---@param tokenAndIndex {index: integer?, token :string?}
+---@return string text #0..100
+function Object:GetFaderText(tokenAndIndex) end
 
----@return string references
-function Object:GetReferences()
-    return ""
-end
+---@return Object[] references
+function Object:GetReferences() end
 
 ---@return string uiEditorName
-function Object:GetUIEditor()
-    return ""
-end
+function Object:GetUIEditor() end
 
 ---@return string uiSettingsName
-function Object:GetUISettings()
-    return ""
-end
+function Object:GetUISettings() end
 
 ---@return boolean hasActivePlayback
-function Object:HasActivePlayback()
-    return true
-end
+function Object:HasActivePlayback() end
 
 ---@param filePath string
 ---@param fileName string
 ---@return boolean success
-function Object:Import(filePath, fileName)
-    return true
-end
+function Object:Import(filePath, fileName) end
 
----@param settingsTable table
-function Object:SetFader(settingsTable)
-end
+---@param settingsTable {value: number?, faderDisables: boolean?, token: string?} #value 0..100
+function Object:SetFader(settingsTable) end
 
 
 ---@param returnName boolean
 ---@return string address
-function Object:ToAddr(returnName)
-    return ""
-end
+function Object:ToAddr(returnName) end

@@ -6,6 +6,10 @@ local GeneratorPoolSettingsCollect = {}
 function GeneratorPoolSettingsCollect:GetClass() end
 ---@return "GeneratorPoolSettings"
 function GeneratorPoolSettingsCollect:GetChildClass() end
+---@generic T : GeneratorPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function GeneratorPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return GeneratorPoolSettings
 function GeneratorPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function GeneratorPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): GeneratorPoolSettings
 function GeneratorPoolSettingsCollect:Find(class, undo) end
+function GeneratorPoolSettingsCollect:UserID(property_name, property_value) end

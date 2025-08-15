@@ -6,6 +6,10 @@ local AudioInDescriptions = {}
 function AudioInDescriptions:GetClass() end
 ---@return "AudioInDeviceDescription"
 function AudioInDescriptions:GetChildClass() end
+---@generic T : AudioInDescriptions
+---@param class `T`
+---@return boolean
+function AudioInDescriptions:IsClass(class) end
 ---@param index integer
 ---@return AudioInDeviceDescription
 function AudioInDescriptions:Ptr(index) end
@@ -56,3 +60,4 @@ function AudioInDescriptions:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): AudioInDeviceDescription
 function AudioInDescriptions:Find(class, undo) end
+function AudioInDescriptions:SpeedMaster(property_name, property_value) end

@@ -6,6 +6,10 @@ local Classes = {}
 function Classes:GetClass() end
 ---@return "Class"
 function Classes:GetChildClass() end
+---@generic T : Classes
+---@param class `T`
+---@return boolean
+function Classes:IsClass(class) end
 ---@return Patch
 function Classes:Parent() end
 ---@param index integer
@@ -58,3 +62,6 @@ function Classes:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Class
 function Classes:Find(class, undo) end
+---@overload fun(property_name: "Used", property_value: integer)
+---@overload fun(property_name: "Used", property_value: integer)
+function Classes:Used(property_name, property_value) end

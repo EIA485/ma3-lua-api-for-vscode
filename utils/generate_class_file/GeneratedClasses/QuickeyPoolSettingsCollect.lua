@@ -6,6 +6,10 @@ local QuickeyPoolSettingsCollect = {}
 function QuickeyPoolSettingsCollect:GetClass() end
 ---@return "QuickeyPoolSettings"
 function QuickeyPoolSettingsCollect:GetChildClass() end
+---@generic T : QuickeyPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function QuickeyPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return QuickeyPoolSettings
 function QuickeyPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function QuickeyPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): QuickeyPoolSettings
 function QuickeyPoolSettingsCollect:Find(class, undo) end
+function QuickeyPoolSettingsCollect:Color(property_name, property_value) end

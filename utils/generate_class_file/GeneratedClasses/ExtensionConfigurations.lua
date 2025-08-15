@@ -6,6 +6,10 @@ local ExtensionConfigurations = {}
 function ExtensionConfigurations:GetClass() end
 ---@return "ExtensionConfig"
 function ExtensionConfigurations:GetChildClass() end
+---@generic T : ExtensionConfigurations
+---@param class `T`
+---@return boolean
+function ExtensionConfigurations:IsClass(class) end
 ---@return StationSettings
 function ExtensionConfigurations:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function ExtensionConfigurations:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ExtensionConfig
 function ExtensionConfigurations:Find(class, undo) end
+function ExtensionConfigurations:ActiveDisplay(property_name, property_value) end

@@ -6,3 +6,7 @@ local QuickeyPoolButton = {}
 function QuickeyPoolButton:GetClass() end
 ---@return "UIObject"
 function QuickeyPoolButton:GetChildClass() end
+---@generic T : QuickeyPoolButton
+---@param class `T`
+---@return boolean
+function QuickeyPoolButton:IsClass(class) end

@@ -6,6 +6,10 @@ local MasterPoolPlayback = {}
 function MasterPoolPlayback:GetClass() end
 ---@return "MasterPlayback"
 function MasterPoolPlayback:GetChildClass() end
+---@generic T : MasterPoolPlayback
+---@param class `T`
+---@return boolean
+function MasterPoolPlayback:IsClass(class) end
 ---@param index integer
 ---@return MasterPlayback
 function MasterPoolPlayback:Ptr(index) end
@@ -56,3 +60,4 @@ function MasterPoolPlayback:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MasterPlayback
 function MasterPoolPlayback:Find(class, undo) end
+function MasterPoolPlayback:SpeedScale(property_name, property_value) end

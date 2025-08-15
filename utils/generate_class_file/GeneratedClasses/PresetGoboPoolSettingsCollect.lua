@@ -6,6 +6,10 @@ local PresetGoboPoolSettingsCollect = {}
 function PresetGoboPoolSettingsCollect:GetClass() end
 ---@return "PresetGoboPoolSettings"
 function PresetGoboPoolSettingsCollect:GetChildClass() end
+---@generic T : PresetGoboPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function PresetGoboPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return PresetGoboPoolSettings
 function PresetGoboPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function PresetGoboPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetGoboPoolSettings
 function PresetGoboPoolSettingsCollect:Find(class, undo) end
+function PresetGoboPoolSettingsCollect:ActiveDisplay(property_name, property_value) end

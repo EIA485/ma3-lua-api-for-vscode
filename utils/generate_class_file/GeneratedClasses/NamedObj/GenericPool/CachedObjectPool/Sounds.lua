@@ -6,6 +6,10 @@ local Sounds = {}
 function Sounds:GetClass() end
 ---@return "Sound"
 function Sounds:GetChildClass() end
+---@generic T : Sounds
+---@param class `T`
+---@return boolean
+function Sounds:IsClass(class) end
 ---@return MediaPools
 function Sounds:Parent() end
 ---@param index integer
@@ -58,3 +62,9 @@ function Sounds:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Sound
 function Sounds:Find(class, undo) end
+---@overload fun(property_name: "dB", property_value: number)
+---@overload fun(property_name: "Duration"|"ElapsedTime", property_value: TimePropertyValue)
+---@overload fun(property_name: "AutoStart"|"AutoStop", property_value: YesNo|boolean)
+---@overload fun(property_name: "dB", property_value: number)
+---@overload fun(property_name: "User"|"Type", property_value: string)
+function Sounds:dB(property_name, property_value) end

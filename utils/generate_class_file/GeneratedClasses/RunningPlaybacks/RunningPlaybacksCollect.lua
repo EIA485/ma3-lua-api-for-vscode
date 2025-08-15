@@ -6,6 +6,10 @@ local RunningPlaybacksCollect = {}
 function RunningPlaybacksCollect:GetClass() end
 ---@return "RunningPlaybacks"
 function RunningPlaybacksCollect:GetChildClass() end
+---@generic T : RunningPlaybacksCollect
+---@param class `T`
+---@return boolean
+function RunningPlaybacksCollect:IsClass(class) end
 ---@return Temp
 function RunningPlaybacksCollect:Parent() end
 ---@param index integer
@@ -64,3 +68,4 @@ function RunningPlaybacksCollect:Insert(index, class, undo, count) end
 ---@overload fun(class: "RunningPlaybacks", undo: Undo?): RunningPlaybacks
 ---@overload fun(class: nil, undo: Undo?): RunningPlaybacks
 function RunningPlaybacksCollect:Find(class, undo) end
+function RunningPlaybacksCollect:ActiveDisplay(property_name, property_value) end

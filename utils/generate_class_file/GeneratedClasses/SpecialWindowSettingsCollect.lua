@@ -6,6 +6,10 @@ local SpecialWindowSettingsCollect = {}
 function SpecialWindowSettingsCollect:GetClass() end
 ---@return "SpecialWindowSettings"
 function SpecialWindowSettingsCollect:GetChildClass() end
+---@generic T : SpecialWindowSettingsCollect
+---@param class `T`
+---@return boolean
+function SpecialWindowSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return SpecialWindowSettings
 function SpecialWindowSettingsCollect:Ptr(index) end
@@ -56,3 +60,11 @@ function SpecialWindowSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SpecialWindowSettings
 function SpecialWindowSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "ColorPickerSettings", property_value: ColorPickerSettings)
+---@overload fun(property_name: "RememberedTab", property_value: SpecialWindowRememberedTab)
+---@overload fun(property_name: "ShaperWindowSettings", property_value: ShaperWindowSettings)
+---@overload fun(property_name: "ColorPickerSettings", property_value: ColorPickerSettings)
+---@overload fun(property_name: "ShaperWindowSettings", property_value: ShaperWindowSettings)
+---@overload fun(property_name: "RememberedTab", property_value: SpecialWindowRememberedTab)
+---@overload fun(property_name: "LinkToEncoderBank"|"ShowTabs", property_value: YesNo|boolean)
+function SpecialWindowSettingsCollect:ShaperWindowSettings(property_name, property_value) end

@@ -6,6 +6,10 @@ local DmxSheetSettingsCollect = {}
 function DmxSheetSettingsCollect:GetClass() end
 ---@return "DMXSheetSettings"
 function DmxSheetSettingsCollect:GetChildClass() end
+---@generic T : DmxSheetSettingsCollect
+---@param class `T`
+---@return boolean
+function DmxSheetSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return DMXSheetSettings
 function DmxSheetSettingsCollect:Ptr(index) end
@@ -56,3 +60,18 @@ function DmxSheetSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): DMXSheetSettings
 function DmxSheetSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "ViewMode", property_value: DmxSheetSettingsViewMode)
+---@overload fun(property_name: "Address", property_value: DMXPropertyAddress)
+---@overload fun(property_name: "AddressMode", property_value: DmxSheetSettingsAddressMode)
+---@overload fun(property_name: "Levelbar", property_value: DmxSheetSettingsLevelbar)
+---@overload fun(property_name: "Readout", property_value: DMXValueReadoutMode)
+---@overload fun(property_name: "Universe", property_value: DmxSheetSettingsSelected)
+---@overload fun(property_name: "Address", property_value: DMXPropertyAddress)
+---@overload fun(property_name: "Readout", property_value: DMXValueReadoutMode)
+---@overload fun(property_name: "AddressMode", property_value: DmxSheetSettingsAddressMode)
+---@overload fun(property_name: "Levelbar", property_value: DmxSheetSettingsLevelbar)
+---@overload fun(property_name: "Universe", property_value: DmxSheetSettingsSelected)
+---@overload fun(property_name: "ViewMode", property_value: DmxSheetSettingsViewMode)
+---@overload fun(property_name: "OnlySelection"|"TestBar"|"Attribute"|"Id"|"SkipPatched"|"Value"|"AutoColumns", property_value: YesNo|boolean)
+---@overload fun(property_name: "ColumnsCount"|"AutoColumnsWidth", property_value: integer)
+function DmxSheetSettingsCollect:Universe(property_name, property_value) end

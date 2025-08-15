@@ -6,3 +6,7 @@ local TimecodeSlotPoolTitleButton = {}
 function TimecodeSlotPoolTitleButton:GetClass() end
 ---@return "UIObject"
 function TimecodeSlotPoolTitleButton:GetChildClass() end
+---@generic T : TimecodeSlotPoolTitleButton
+---@param class `T`
+---@return boolean
+function TimecodeSlotPoolTitleButton:IsClass(class) end

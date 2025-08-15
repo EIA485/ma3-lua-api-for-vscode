@@ -6,6 +6,10 @@ local MVRFileCollect = {}
 function MVRFileCollect:GetClass() end
 ---@return "MVRFile"
 function MVRFileCollect:GetChildClass() end
+---@generic T : MVRFileCollect
+---@param class `T`
+---@return boolean
+function MVRFileCollect:IsClass(class) end
 ---@return TempMVRExchange
 function MVRFileCollect:Parent() end
 ---@param index integer
@@ -58,3 +62,9 @@ function MVRFileCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MVRFile
 function MVRFileCollect:Find(class, undo) end
+---@overload fun(property_name: "UUID", property_value: MVR.UUID)
+---@overload fun(property_name: "OnStations", property_value: string)
+---@overload fun(property_name: "UUID", property_value: MVR.UUID)
+---@overload fun(property_name: "Size"|"VersionMajor"|"VersionMinor", property_value: integer)
+---@overload fun(property_name: "OnStations", property_value: string)
+function MVRFileCollect:OnStations(property_name, property_value) end

@@ -6,6 +6,10 @@ local TimecodeSlots = {}
 function TimecodeSlots:GetClass() end
 ---@return "TCSlot"
 function TimecodeSlots:GetChildClass() end
+---@generic T : TimecodeSlots
+---@param class `T`
+---@return boolean
+function TimecodeSlots:IsClass(class) end
 ---@return Root
 function TimecodeSlots:Parent() end
 ---@param index integer
@@ -58,3 +62,19 @@ function TimecodeSlots:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): TCSlot
 function TimecodeSlots:Find(class, undo) end
+---@overload fun(property_name: "GeneratorFrameUnit", property_value: FrameFormat)
+---@overload fun(property_name: "SourceIP", property_value: Network.IP8Full)
+---@overload fun(property_name: "TimeDisplayFormat", property_value: TimeDisplayFormatSelected)
+---@overload fun(property_name: "GeneratorEndTime", property_value: GeneratorLimits)
+---@overload fun(property_name: "GeneratorLooped", property_value: Yes|true)
+---@overload fun(property_name: "TimeString", property_value: string)
+---@overload fun(property_name: "GeneratorFrameUnit", property_value: FrameFormat)
+---@overload fun(property_name: "GeneratorEndTime", property_value: GeneratorLimits)
+---@overload fun(property_name: "SourceIP", property_value: Network.IP8Full)
+---@overload fun(property_name: "TimeDisplayFormat", property_value: TimeDisplayFormatSelected)
+---@overload fun(property_name: "PreRoll"|"AfterRoll"|"GeneratorStartTime", property_value: TimePropertyValue)
+---@overload fun(property_name: "AfterRollColor"|"OffColor"|"ExternalSourceColor"|"GeneratorColor", property_value: UColor)
+---@overload fun(property_name: "GeneratorLooped", property_value: Yes|true)
+---@overload fun(property_name: "Time"|"UserBits", property_value: integer)
+---@overload fun(property_name: "TimeString", property_value: string)
+function TimecodeSlots:TimeString(property_name, property_value) end

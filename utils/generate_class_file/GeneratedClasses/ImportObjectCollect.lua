@@ -6,6 +6,10 @@ local ImportObjectCollect = {}
 function ImportObjectCollect:GetClass() end
 ---@return "ImportFakeObject"
 function ImportObjectCollect:GetChildClass() end
+---@generic T : ImportObjectCollect
+---@param class `T`
+---@return boolean
+function ImportObjectCollect:IsClass(class) end
 ---@return ConvertTask
 function ImportObjectCollect:Parent() end
 ---@param index integer
@@ -58,3 +62,8 @@ function ImportObjectCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ImportFakeObject
 function ImportObjectCollect:Find(class, undo) end
+---@overload fun(property_name: "DestinationIndex", property_value: AutoInterface)
+---@overload fun(property_name: "SourceIndex", property_value: integer)
+---@overload fun(property_name: "DestinationIndex", property_value: AutoInterface)
+---@overload fun(property_name: "SourceIndex", property_value: integer)
+function ImportObjectCollect:SourceIndex(property_name, property_value) end

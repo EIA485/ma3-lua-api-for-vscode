@@ -6,6 +6,10 @@ local ArtNetNodeCollect = {}
 function ArtNetNodeCollect:GetClass() end
 ---@return "Art-Net-Node"
 function ArtNetNodeCollect:GetChildClass() end
+---@generic T : ArtNetNodeCollect
+---@param class `T`
+---@return boolean
+function ArtNetNodeCollect:IsClass(class) end
 ---@return ArtNet
 function ArtNetNodeCollect:Parent() end
 ---@param index integer
@@ -36,3 +40,8 @@ function ArtNetNodeCollect:Insert(index, class, undo, count) end
 ---@overload fun(class: "Art-Net-Node", undo: Undo?): ArtNetNode
 ---@overload fun(class: nil, undo: Undo?): ArtNetNode
 function ArtNetNodeCollect:Find(class, undo) end
+---@overload fun(property_name: "IP", property_value: Manet.IP4)
+---@overload fun(property_name: "IsActive", property_value: boolean)
+---@overload fun(property_name: "IP", property_value: Manet.IP4)
+---@overload fun(property_name: "IsActive", property_value: boolean)
+function ArtNetNodeCollect:IsActive(property_name, property_value) end

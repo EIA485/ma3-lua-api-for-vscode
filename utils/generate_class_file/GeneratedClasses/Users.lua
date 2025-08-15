@@ -6,6 +6,10 @@ local Users = {}
 function Users:GetClass() end
 ---@return "User"
 function Users:GetChildClass() end
+---@generic T : Users
+---@param class `T`
+---@return boolean
+function Users:IsClass(class) end
 ---@return Root
 function Users:Parent() end
 ---@param index integer
@@ -58,3 +62,17 @@ function Users:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): User
 function Users:Find(class, undo) end
+---@overload fun(property_name: "Profile", property_value: UserProfile)
+---@overload fun(property_name: "ScreenConfig", property_value: ScreenConfig)
+---@overload fun(property_name: "Rights", property_value: UserRights)
+---@overload fun(property_name: "Language", property_value: string)
+---@overload fun(property_name: "Keyboard", property_value: KeyboardLayout)
+---@overload fun(property_name: "Password", property_value: Crypto.SHA256)
+---@overload fun(property_name: "Password", property_value: Crypto.SHA256)
+---@overload fun(property_name: "Keyboard", property_value: KeyboardLayout)
+---@overload fun(property_name: "ScreenConfig", property_value: ScreenConfig)
+---@overload fun(property_name: "Profile", property_value: UserProfile)
+---@overload fun(property_name: "Rights", property_value: UserRights)
+---@overload fun(property_name: "PrivacyPolicy"|"WebRemoteLogin", property_value: YesNo|boolean)
+---@overload fun(property_name: "Language", property_value: string)
+function Users:Password(property_name, property_value) end

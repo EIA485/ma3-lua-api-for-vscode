@@ -6,6 +6,10 @@ local RunningMacros = {}
 function RunningMacros:GetClass() end
 ---@return "Macro"
 function RunningMacros:GetChildClass() end
+---@generic T : RunningMacros
+---@param class `T`
+---@return boolean
+function RunningMacros:IsClass(class) end
 ---@return RunningPlaybacksCollect
 function RunningMacros:Parent() end
 ---@param index integer
@@ -24,3 +28,6 @@ function RunningMacros:Acquire(class, undo) end
 function RunningMacros:Aquire(class, undo) end
 function RunningMacros:Insert(index, class, undo, count) end
 function RunningMacros:Find(class, undo) end
+function RunningMacros:ActiveDisplay(property_name, property_value) end
+function RunningMacros:ActiveDisplay(property_name, property_value) end
+function RunningMacros:SetChildrenRecursive(property_name, property_value) end

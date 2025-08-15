@@ -6,6 +6,10 @@ local RunningSoundFiles = {}
 function RunningSoundFiles:GetClass() end
 ---@return "Sound"
 function RunningSoundFiles:GetChildClass() end
+---@generic T : RunningSoundFiles
+---@param class `T`
+---@return boolean
+function RunningSoundFiles:IsClass(class) end
 ---@return RunningPlaybacksCollect
 function RunningSoundFiles:Parent() end
 ---@param index integer
@@ -24,3 +28,6 @@ function RunningSoundFiles:Acquire(class, undo) end
 function RunningSoundFiles:Aquire(class, undo) end
 function RunningSoundFiles:Insert(index, class, undo, count) end
 function RunningSoundFiles:Find(class, undo) end
+function RunningSoundFiles:Mode(property_name, property_value) end
+function RunningSoundFiles:Mode(property_name, property_value) end
+function RunningSoundFiles:SetChildrenRecursive(property_name, property_value) end

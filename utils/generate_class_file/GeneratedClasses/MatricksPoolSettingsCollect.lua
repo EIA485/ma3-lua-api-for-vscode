@@ -6,6 +6,10 @@ local MatricksPoolSettingsCollect = {}
 function MatricksPoolSettingsCollect:GetClass() end
 ---@return "MatricksPoolSettings"
 function MatricksPoolSettingsCollect:GetChildClass() end
+---@generic T : MatricksPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function MatricksPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return MatricksPoolSettings
 function MatricksPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function MatricksPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MatricksPoolSettings
 function MatricksPoolSettingsCollect:Find(class, undo) end
+function MatricksPoolSettingsCollect:ActiveDisplay(property_name, property_value) end

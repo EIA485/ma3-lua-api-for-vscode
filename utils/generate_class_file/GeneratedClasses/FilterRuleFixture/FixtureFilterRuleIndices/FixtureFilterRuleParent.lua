@@ -6,6 +6,10 @@ local FixtureFilterRuleParent = {}
 function FixtureFilterRuleParent:GetClass() end
 ---@return "FixtureFilterRuleParentItem"
 function FixtureFilterRuleParent:GetChildClass() end
+---@generic T : FixtureFilterRuleParent
+---@param class `T`
+---@return boolean
+function FixtureFilterRuleParent:IsClass(class) end
 ---@param index integer
 ---@return FixtureFilterRuleParentItem
 function FixtureFilterRuleParent:Ptr(index) end
@@ -56,3 +60,6 @@ function FixtureFilterRuleParent:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): FixtureFilterRuleParentItem
 function FixtureFilterRuleParent:Find(class, undo) end
+---@overload fun(property_name: "ParentFilter", property_value: SubFixture)
+---@overload fun(property_name: "ParentFilter", property_value: SubFixture)
+function FixtureFilterRuleParent:ParentFilter(property_name, property_value) end

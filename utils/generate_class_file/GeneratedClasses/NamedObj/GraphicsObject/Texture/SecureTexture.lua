@@ -6,3 +6,7 @@ local SecureTexture = {}
 function SecureTexture:GetClass() end
 ---@return "GraphicsObject"
 function SecureTexture:GetChildClass() end
+---@generic T : SecureTexture
+---@param class `T`
+---@return boolean
+function SecureTexture:IsClass(class) end

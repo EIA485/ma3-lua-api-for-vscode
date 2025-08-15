@@ -6,6 +6,10 @@ local PSNProtocol = {}
 function PSNProtocol:GetClass() end
 ---@return "System"
 function PSNProtocol:GetChildClass() end
+---@generic T : PSNProtocol
+---@param class `T`
+---@return boolean
+function PSNProtocol:IsClass(class) end
 ---@param index integer
 ---@return System
 function PSNProtocol:Ptr(index) end
@@ -56,3 +60,13 @@ function PSNProtocol:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): System
 function PSNProtocol:Find(class, undo) end
+---@overload fun(property_name: "Port", property_value: integer)
+---@overload fun(property_name: "MergeMode", property_value: DMXMergeMode)
+---@overload fun(property_name: "DMXPriority", property_value: DmxPrio)
+---@overload fun(property_name: "MergeMode", property_value: DMXMergeMode)
+---@overload fun(property_name: "DMXPriority", property_value: DmxPrio)
+---@overload fun(property_name: "SenderIP"|"MulticastIP", property_value: Manet.IP4)
+---@overload fun(property_name: "MapX"|"MapY"|"MapZ", property_value: XYZMapping)
+---@overload fun(property_name: "InvX"|"Requested"|"InvY"|"InvZ", property_value: Yes|true)
+---@overload fun(property_name: "Port", property_value: integer)
+function PSNProtocol:DMXPriority(property_name, property_value) end

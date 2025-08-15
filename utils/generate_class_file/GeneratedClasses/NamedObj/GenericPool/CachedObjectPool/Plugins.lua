@@ -6,6 +6,10 @@ local Plugins = {}
 function Plugins:GetClass() end
 ---@return "UserPlugin"
 function Plugins:GetChildClass() end
+---@generic T : Plugins
+---@param class `T`
+---@return boolean
+function Plugins:IsClass(class) end
 ---@return Pool
 function Plugins:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function Plugins:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): UserPlugin
 function Plugins:Find(class, undo) end
+function Plugins:NDISource(property_name, property_value) end

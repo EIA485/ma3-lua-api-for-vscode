@@ -6,6 +6,10 @@ local KeyboardLayouts = {}
 function KeyboardLayouts:GetClass() end
 ---@return "KeyboardLayout"
 function KeyboardLayouts:GetChildClass() end
+---@generic T : KeyboardLayouts
+---@param class `T`
+---@return boolean
+function KeyboardLayouts:IsClass(class) end
 ---@param index integer
 ---@return KeyboardLayout
 function KeyboardLayouts:Ptr(index) end
@@ -56,3 +60,6 @@ function KeyboardLayouts:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): KeyboardLayout
 function KeyboardLayouts:Find(class, undo) end
+---@overload fun(property_name: "ShortName", property_value: string)
+---@overload fun(property_name: "ShortName", property_value: string)
+function KeyboardLayouts:ShortName(property_name, property_value) end

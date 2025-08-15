@@ -6,5 +6,9 @@ local PresetPoolTitleButton = {}
 function PresetPoolTitleButton:GetClass() end
 ---@return "UIObject"
 function PresetPoolTitleButton:GetChildClass() end
+---@generic T : PresetPoolTitleButton
+---@param class `T`
+---@return boolean
+function PresetPoolTitleButton:IsClass(class) end
 ---@return PresetPoolLayoutGrid
 function PresetPoolTitleButton:Parent() end

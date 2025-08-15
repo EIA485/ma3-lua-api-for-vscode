@@ -6,6 +6,10 @@ local SoundPoolSettingsCollect = {}
 function SoundPoolSettingsCollect:GetClass() end
 ---@return "SoundPoolSettings"
 function SoundPoolSettingsCollect:GetChildClass() end
+---@generic T : SoundPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function SoundPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return SoundPoolSettings
 function SoundPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,6 @@ function SoundPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SoundPoolSettings
 function SoundPoolSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "Action", property_value: SoundPoolAction)
+---@overload fun(property_name: "Action", property_value: SoundPoolAction)
+function SoundPoolSettingsCollect:Action(property_name, property_value) end

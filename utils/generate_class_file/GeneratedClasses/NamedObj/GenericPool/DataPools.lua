@@ -6,6 +6,10 @@ local DataPools = {}
 function DataPools:GetClass() end
 ---@return "Pool"
 function DataPools:GetChildClass() end
+---@generic T : DataPools
+---@param class `T`
+---@return boolean
+function DataPools:IsClass(class) end
 ---@return ShowData
 function DataPools:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function DataPools:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Pool
 function DataPools:Find(class, undo) end
+function DataPools:FailedCookedPart(property_name, property_value) end

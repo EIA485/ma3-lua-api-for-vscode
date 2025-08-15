@@ -6,6 +6,10 @@ local MVRServiceCollect = {}
 function MVRServiceCollect:GetClass() end
 ---@return "MVRService"
 function MVRServiceCollect:GetChildClass() end
+---@generic T : MVRServiceCollect
+---@param class `T`
+---@return boolean
+function MVRServiceCollect:IsClass(class) end
 ---@return TempMVRExchange
 function MVRServiceCollect:Parent() end
 ---@param index integer
@@ -58,3 +62,7 @@ function MVRServiceCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MVRService
 function MVRServiceCollect:Find(class, undo) end
+---@overload fun(property_name: "UUID", property_value: MVR.UUID)
+---@overload fun(property_name: "UUID", property_value: MVR.UUID)
+---@overload fun(property_name: "Joined"|"Left"|"IsMyself"|"IsActive", property_value: Yes|true)
+function MVRServiceCollect:UUID(property_name, property_value) end

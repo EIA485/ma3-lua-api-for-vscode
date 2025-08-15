@@ -6,6 +6,10 @@ local FixtureFilterRuleIndices = {}
 function FixtureFilterRuleIndices:GetClass() end
 ---@return "FixtureFilterRuleItemIndex"
 function FixtureFilterRuleIndices:GetChildClass() end
+---@generic T : FixtureFilterRuleIndices
+---@param class `T`
+---@return boolean
+function FixtureFilterRuleIndices:IsClass(class) end
 ---@param index integer
 ---@return FixtureFilterRuleItemIndex
 function FixtureFilterRuleIndices:Ptr(index) end
@@ -34,3 +38,4 @@ function FixtureFilterRuleIndices:Insert(index, class, undo, count) end
 ---@overload fun(class: "FixtureFilterRuleItemIndex", undo: Undo?): FixtureFilterRuleItemIndex
 ---@overload fun(class: nil, undo: Undo?): FixtureFilterRuleItemIndex
 function FixtureFilterRuleIndices:Find(class, undo) end
+function FixtureFilterRuleIndices:ActiveDisplay(property_name, property_value) end

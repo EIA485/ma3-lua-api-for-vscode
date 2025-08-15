@@ -6,3 +6,7 @@ local DBObjectGridCell = {}
 function DBObjectGridCell:GetClass() end
 ---@return "UIObject"
 function DBObjectGridCell:GetChildClass() end
+---@generic T : DBObjectGridCell
+---@param class `T`
+---@return boolean
+function DBObjectGridCell:IsClass(class) end

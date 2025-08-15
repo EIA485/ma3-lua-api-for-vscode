@@ -6,6 +6,10 @@ local UserPlugin = {}
 function UserPlugin:GetClass() end
 ---@return "ComponentLua"
 function UserPlugin:GetChildClass() end
+---@generic T : UserPlugin
+---@param class `T`
+---@return boolean
+function UserPlugin:IsClass(class) end
 ---@return Plugins
 function UserPlugin:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function UserPlugin:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ComponentLua
 function UserPlugin:Find(class, undo) end
+function UserPlugin:UserRights(property_name, property_value) end

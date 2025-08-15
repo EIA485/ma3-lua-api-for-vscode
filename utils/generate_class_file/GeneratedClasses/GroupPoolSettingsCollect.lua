@@ -6,6 +6,10 @@ local GroupPoolSettingsCollect = {}
 function GroupPoolSettingsCollect:GetClass() end
 ---@return "GroupPoolSettings"
 function GroupPoolSettingsCollect:GetChildClass() end
+---@generic T : GroupPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function GroupPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return GroupPoolSettings
 function GroupPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function GroupPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): GroupPoolSettings
 function GroupPoolSettingsCollect:Find(class, undo) end
+function GroupPoolSettingsCollect:ActiveDisplay(property_name, property_value) end

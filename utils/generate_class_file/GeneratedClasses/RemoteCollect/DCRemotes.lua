@@ -6,6 +6,10 @@ local DCRemotes = {}
 function DCRemotes:GetClass() end
 ---@return "DCRemote"
 function DCRemotes:GetChildClass() end
+---@generic T : DCRemotes
+---@param class `T`
+---@return boolean
+function DCRemotes:IsClass(class) end
 ---@param index integer
 ---@return DCRemote
 function DCRemotes:Ptr(index) end
@@ -56,3 +60,6 @@ function DCRemotes:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): DCRemote
 function DCRemotes:Find(class, undo) end
+---@overload fun(property_name: "Signal", property_value: integer)
+---@overload fun(property_name: "Signal", property_value: integer)
+function DCRemotes:Signal(property_name, property_value) end

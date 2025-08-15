@@ -6,6 +6,10 @@ local ContentSheetSettingsCollect = {}
 function ContentSheetSettingsCollect:GetClass() end
 ---@return "ContentSheetSettings"
 function ContentSheetSettingsCollect:GetChildClass() end
+---@generic T : ContentSheetSettingsCollect
+---@param class `T`
+---@return boolean
+function ContentSheetSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return ContentSheetSettings
 function ContentSheetSettingsCollect:Ptr(index) end
@@ -56,3 +60,11 @@ function ContentSheetSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ContentSheetSettings
 function ContentSheetSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "SheetMode", property_value: SheetMode)
+---@overload fun(property_name: "CuePartAppearanceContent", property_value: CuePartAppearanceContent)
+---@overload fun(property_name: "ContentSheetCueMode", property_value: ContentSheetCueMode)
+---@overload fun(property_name: "ContentSheetCueMode", property_value: ContentSheetCueMode)
+---@overload fun(property_name: "CuePartAppearanceContent", property_value: CuePartAppearanceContent)
+---@overload fun(property_name: "SheetMode", property_value: SheetMode)
+---@overload fun(property_name: "ShowNameField"|"ShowIDType"|"ShowTracked"|"FixtureSelect"|"ShowParts"|"ShowManualCueSelection", property_value: YesNo|boolean)
+function ContentSheetSettingsCollect:ContentSheetCueMode(property_name, property_value) end

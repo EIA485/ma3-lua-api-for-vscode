@@ -6,6 +6,10 @@ local DMXProtocols = {}
 function DMXProtocols:GetClass() end
 ---@return "DMXProtocol"
 function DMXProtocols:GetChildClass() end
+---@generic T : DMXProtocols
+---@param class `T`
+---@return boolean
+function DMXProtocols:IsClass(class) end
 ---@return DeviceConfigurations
 function DMXProtocols:Parent() end
 ---@param index integer
@@ -58,3 +62,15 @@ function DMXProtocols:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): DMXProtocol
 function DMXProtocols:Find(class, undo) end
+---@overload fun(property_name: "BroadcastThreshold", property_value: ArtNetBroadcastThreshold)
+---@overload fun(property_name: "ArtPollRate", property_value: TimePropertyValue)
+---@overload fun(property_name: "Interface", property_value: string)
+---@overload fun(property_name: "OutputDelay", property_value: OutputDelay)
+---@overload fun(property_name: "PreferredIP", property_value: Manet.IP4)
+---@overload fun(property_name: "BroadcastThreshold", property_value: ArtNetBroadcastThreshold)
+---@overload fun(property_name: "PreferredIP", property_value: Manet.IP4)
+---@overload fun(property_name: "OutputDelay", property_value: OutputDelay)
+---@overload fun(property_name: "ArtPollRate", property_value: TimePropertyValue)
+---@overload fun(property_name: "Out"|"In"|"SetupMode", property_value: YesNo|boolean)
+---@overload fun(property_name: "Interface", property_value: string)
+function DMXProtocols:PreferredIP(property_name, property_value) end

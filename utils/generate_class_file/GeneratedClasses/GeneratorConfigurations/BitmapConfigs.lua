@@ -6,6 +6,10 @@ local BitmapConfigs = {}
 function BitmapConfigs:GetClass() end
 ---@return "BitmapConfig"
 function BitmapConfigs:GetChildClass() end
+---@generic T : BitmapConfigs
+---@param class `T`
+---@return boolean
+function BitmapConfigs:IsClass(class) end
 ---@return Bitmap
 function BitmapConfigs:Parent() end
 ---@param index integer
@@ -58,3 +62,10 @@ function BitmapConfigs:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): BitmapConfig
 function BitmapConfigs:Find(class, undo) end
+---@overload fun(property_name: "ContentMode", property_value: ClipMode)
+---@overload fun(property_name: "Content", property_value: Image)
+---@overload fun(property_name: "ContentMode", property_value: ClipMode)
+---@overload fun(property_name: "Content", property_value: Image)
+---@overload fun(property_name: "Interpolate"|"Alpha", property_value: YesNo|boolean)
+---@overload fun(property_name: "ColorR"|"ColorG"|"ControlAspect"|"ColorB"|"Width"|"ControlX"|"ControlY"|"ControlZoom"|"Height"|"ControlRotate", property_value: integer)
+function BitmapConfigs:Content(property_name, property_value) end

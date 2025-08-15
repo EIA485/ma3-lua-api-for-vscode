@@ -6,6 +6,10 @@ local MidiInDescriptions = {}
 function MidiInDescriptions:GetClass() end
 ---@return "MIDIDeviceDescription"
 function MidiInDescriptions:GetChildClass() end
+---@generic T : MidiInDescriptions
+---@param class `T`
+---@return boolean
+function MidiInDescriptions:IsClass(class) end
 ---@param index integer
 ---@return MIDIDeviceDescription
 function MidiInDescriptions:Ptr(index) end
@@ -56,3 +60,4 @@ function MidiInDescriptions:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MIDIDeviceDescription
 function MidiInDescriptions:Find(class, undo) end
+function MidiInDescriptions:SoftwareVersionID(property_name, property_value) end

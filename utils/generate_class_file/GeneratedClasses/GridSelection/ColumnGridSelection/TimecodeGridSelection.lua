@@ -6,3 +6,7 @@ local TimecodeGridSelection = {}
 function TimecodeGridSelection:GetClass() end
 ---@return "Object"
 function TimecodeGridSelection:GetChildClass() end
+---@generic T : TimecodeGridSelection
+---@param class `T`
+---@return boolean
+function TimecodeGridSelection:IsClass(class) end

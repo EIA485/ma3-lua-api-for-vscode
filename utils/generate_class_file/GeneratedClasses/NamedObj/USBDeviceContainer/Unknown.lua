@@ -6,6 +6,10 @@ local Unknown = {}
 function Unknown:GetClass() end
 ---@return "USBDeviceUnknown"
 function Unknown:GetChildClass() end
+---@generic T : Unknown
+---@param class `T`
+---@return boolean
+function Unknown:IsClass(class) end
 ---@param index integer
 ---@return USBDeviceUnknown
 function Unknown:Ptr(index) end
@@ -56,3 +60,5 @@ function Unknown:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): USBDeviceUnknown
 function Unknown:Find(class, undo) end
+---@overload fun(property_name: "DeviceTypeID"|"DeviceKey", property_value: string)
+function Unknown:Connected(property_name, property_value) end

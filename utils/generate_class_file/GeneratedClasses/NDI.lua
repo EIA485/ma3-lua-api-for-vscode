@@ -6,6 +6,10 @@ local NDI = {}
 function NDI:GetClass() end
 ---@return "NDISource"
 function NDI:GetChildClass() end
+---@generic T : NDI
+---@param class `T`
+---@return boolean
+function NDI:IsClass(class) end
 ---@return Root
 function NDI:Parent() end
 ---@param index integer
@@ -58,3 +62,8 @@ function NDI:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): NDISource
 function NDI:Find(class, undo) end
+---@overload fun(property_name: "Bandwidth", property_value: NDIBandwidth)
+---@overload fun(property_name: "URL", property_value: string)
+---@overload fun(property_name: "Bandwidth", property_value: NDIBandwidth)
+---@overload fun(property_name: "URL", property_value: string)
+function NDI:URL(property_name, property_value) end

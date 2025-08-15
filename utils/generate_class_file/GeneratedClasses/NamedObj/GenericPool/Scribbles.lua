@@ -6,6 +6,10 @@ local Scribbles = {}
 function Scribbles:GetClass() end
 ---@return "Scribble"
 function Scribbles:GetChildClass() end
+---@generic T : Scribbles
+---@param class `T`
+---@return boolean
+function Scribbles:IsClass(class) end
 ---@param index integer
 ---@return Scribble
 function Scribbles:Ptr(index) end
@@ -56,3 +60,6 @@ function Scribbles:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Scribble
 function Scribbles:Find(class, undo) end
+---@overload fun(property_name: "Scribble", property_value: CurveSegment[])
+---@overload fun(property_name: "Scribble", property_value: CurveSegment[])
+function Scribbles:Scribble(property_name, property_value) end

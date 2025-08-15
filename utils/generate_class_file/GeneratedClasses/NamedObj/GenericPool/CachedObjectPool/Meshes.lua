@@ -6,6 +6,10 @@ local Meshes = {}
 function Meshes:GetClass() end
 ---@return "Mesh"
 function Meshes:GetChildClass() end
+---@generic T : Meshes
+---@param class `T`
+---@return boolean
+function Meshes:IsClass(class) end
 ---@return ShowData
 function Meshes:Parent() end
 ---@param index integer
@@ -58,3 +62,10 @@ function Meshes:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Mesh
 function Meshes:Find(class, undo) end
+---@overload fun(property_name: "BoundingBox", property_value: string)
+---@overload fun(property_name: "Culling", property_value: YesNo|boolean)
+---@overload fun(property_name: "Dimension"|"Ratio", property_value: Math.TVector<float>)
+---@overload fun(property_name: "Culling", property_value: YesNo|boolean)
+---@overload fun(property_name: "OrgMeshCount"|"ContentSize"|"MeshCount"|"VerticesCount"|"TriangleCount"|"OrgVerticesCount", property_value: integer)
+---@overload fun(property_name: "BoundingBox", property_value: string)
+function Meshes:Culling(property_name, property_value) end

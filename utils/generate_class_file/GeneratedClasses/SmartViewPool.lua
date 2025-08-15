@@ -6,6 +6,10 @@ local SmartViewPool = {}
 function SmartViewPool:GetClass() end
 ---@return "ChannelSet"
 function SmartViewPool:GetChildClass() end
+---@generic T : SmartViewPool
+---@param class `T`
+---@return boolean
+function SmartViewPool:IsClass(class) end
 ---@return UserProfile
 function SmartViewPool:Parent() end
 ---@param index integer
@@ -24,3 +28,6 @@ function SmartViewPool:Acquire(class, undo) end
 function SmartViewPool:Aquire(class, undo) end
 function SmartViewPool:Insert(index, class, undo, count) end
 function SmartViewPool:Find(class, undo) end
+function SmartViewPool:ActiveDisplay(property_name, property_value) end
+function SmartViewPool:ActiveDisplay(property_name, property_value) end
+function SmartViewPool:SetChildrenRecursive(property_name, property_value) end

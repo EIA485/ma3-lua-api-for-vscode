@@ -6,6 +6,10 @@ local Materials = {}
 function Materials:GetClass() end
 ---@return "MaterialContent"
 function Materials:GetChildClass() end
+---@generic T : Materials
+---@param class `T`
+---@return boolean
+function Materials:IsClass(class) end
 ---@return UserProfile
 function Materials:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function Materials:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MaterialContent
 function Materials:Find(class, undo) end
+function Materials:Mode(property_name, property_value) end

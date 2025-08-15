@@ -6,6 +6,10 @@ local Fixtures = {}
 function Fixtures:GetClass() end
 ---@return "Fixture"
 function Fixtures:GetChildClass() end
+---@generic T : Fixtures
+---@param class `T`
+---@return boolean
+function Fixtures:IsClass(class) end
 ---@return Stage
 function Fixtures:Parent() end
 ---@param index integer
@@ -24,3 +28,6 @@ function Fixtures:Acquire(class, undo) end
 function Fixtures:Aquire(class, undo) end
 function Fixtures:Insert(index, class, undo, count) end
 function Fixtures:Find(class, undo) end
+function Fixtures:Action(property_name, property_value) end
+function Fixtures:Action(property_name, property_value) end
+function Fixtures:SetChildrenRecursive(property_name, property_value) end

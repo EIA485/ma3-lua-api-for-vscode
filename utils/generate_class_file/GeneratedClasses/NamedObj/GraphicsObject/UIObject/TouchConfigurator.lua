@@ -6,6 +6,10 @@ local TouchConfigurator = {}
 function TouchConfigurator:GetClass() end
 ---@return "TouchMonitor"
 function TouchConfigurator:GetChildClass() end
+---@generic T : TouchConfigurator
+---@param class `T`
+---@return boolean
+function TouchConfigurator:IsClass(class) end
 ---@param index integer
 ---@return TouchMonitor
 function TouchConfigurator:Ptr(index) end
@@ -56,3 +60,6 @@ function TouchConfigurator:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): TouchMonitor
 function TouchConfigurator:Find(class, undo) end
+---@overload fun(property_name: "MapClicked", property_value: fun(str: string) : boolean)
+---@overload fun(property_name: "MapClicked", property_value: fun(str: string) : boolean)
+function TouchConfigurator:MapClicked(property_name, property_value) end

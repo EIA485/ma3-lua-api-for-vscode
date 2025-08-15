@@ -6,6 +6,10 @@ local Appearances = {}
 function Appearances:GetClass() end
 ---@return "Appearance"
 function Appearances:GetChildClass() end
+---@generic T : Appearances
+---@param class `T`
+---@return boolean
+function Appearances:IsClass(class) end
 ---@return ShowData
 function Appearances:Parent() end
 ---@param index integer
@@ -42,3 +46,17 @@ function Appearances:Insert(index, class, undo, count) end
 ---@overload fun(class: "GeneratorBaseObject", undo: Undo?): GeneratorBaseObject
 ---@overload fun(class: nil, undo: Undo?): Appearance
 function Appearances:Find(class, undo) end
+---@overload fun(property_name: "Color", property_value: Colors.RGB<float>)
+---@overload fun(property_name: "CreatedBy", property_value: CreateBy)
+---@overload fun(property_name: "ImageMode", property_value: ImageBackGroundMode)
+---@overload fun(property_name: "MediaFileName", property_value: string)
+---@overload fun(property_name: "ImageRotation", property_value: ImageRotation)
+---@overload fun(property_name: "ImageMirror", property_value: ImageMirror)
+---@overload fun(property_name: "Color", property_value: Colors.RGB<float>)
+---@overload fun(property_name: "CreatedBy", property_value: CreateBy)
+---@overload fun(property_name: "ImageMode", property_value: ImageBackGroundMode)
+---@overload fun(property_name: "ImageMirror", property_value: ImageMirror)
+---@overload fun(property_name: "ImageRotation", property_value: ImageRotation)
+---@overload fun(property_name: "IPX"|"BackG"|"BackB"|"IPY"|"BackAlpha"|"IPW"|"BackR"|"IPH", property_value: integer)
+---@overload fun(property_name: "MediaFileName", property_value: string)
+function Appearances:ImageMirror(property_name, property_value) end

@@ -6,6 +6,10 @@ local Hardkeys = {}
 function Hardkeys:GetClass() end
 ---@return "Hardkey"
 function Hardkeys:GetChildClass() end
+---@generic T : Hardkeys
+---@param class `T`
+---@return boolean
+function Hardkeys:IsClass(class) end
 ---@return HardwareConfiguration
 function Hardkeys:Parent() end
 ---@param index integer
@@ -58,3 +62,12 @@ function Hardkeys:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Hardkey
 function Hardkeys:Find(class, undo) end
+---@overload fun(property_name: "SpecialExecutor", property_value: SpecialExecutor)
+---@overload fun(property_name: "Code", property_value: VirtualKeyCode)
+---@overload fun(property_name: "Disable", property_value: YesNo|boolean)
+---@overload fun(property_name: "ExecutorIndex", property_value: integer)
+---@overload fun(property_name: "SpecialExecutor", property_value: SpecialExecutor)
+---@overload fun(property_name: "Code", property_value: VirtualKeyCode)
+---@overload fun(property_name: "Disable", property_value: YesNo|boolean)
+---@overload fun(property_name: "ExecutorIndex", property_value: integer)
+function Hardkeys:ExecutorIndex(property_name, property_value) end

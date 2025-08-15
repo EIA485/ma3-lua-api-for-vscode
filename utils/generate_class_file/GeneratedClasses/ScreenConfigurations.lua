@@ -6,6 +6,10 @@ local ScreenConfigurations = {}
 function ScreenConfigurations:GetClass() end
 ---@return "ScreenConfig"
 function ScreenConfigurations:GetChildClass() end
+---@generic T : ScreenConfigurations
+---@param class `T`
+---@return boolean
+function ScreenConfigurations:IsClass(class) end
 ---@return UserProfile
 function ScreenConfigurations:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function ScreenConfigurations:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ScreenConfig
 function ScreenConfigurations:Find(class, undo) end
+function ScreenConfigurations:Active(property_name, property_value) end

@@ -6,6 +6,10 @@ local GoboImages = {}
 function GoboImages:GetClass() end
 ---@return "GoboImage"
 function GoboImages:GetChildClass() end
+---@generic T : GoboImages
+---@param class `T`
+---@return boolean
+function GoboImages:IsClass(class) end
 ---@param index integer
 ---@return GoboImage
 function GoboImages:Ptr(index) end
@@ -56,3 +60,4 @@ function GoboImages:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): GoboImage
 function GoboImages:Find(class, undo) end
+function GoboImages:AddAlpha(property_name, property_value) end

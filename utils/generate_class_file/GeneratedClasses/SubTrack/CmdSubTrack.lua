@@ -6,6 +6,10 @@ local CmdSubTrack = {}
 function CmdSubTrack:GetClass() end
 ---@return "CmdEvent"
 function CmdSubTrack:GetChildClass() end
+---@generic T : CmdSubTrack
+---@param class `T`
+---@return boolean
+function CmdSubTrack:IsClass(class) end
 ---@param index integer
 ---@return CmdEvent
 function CmdSubTrack:Ptr(index) end
@@ -56,3 +60,8 @@ function CmdSubTrack:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): CmdEvent
 function CmdSubTrack:Find(class, undo) end
+---@overload fun(property_name: "ExecuteCommand", property_value: YesNo|boolean)
+---@overload fun(property_name: "CueDestination", property_value: Object)
+---@overload fun(property_name: "CueDestination", property_value: Object)
+---@overload fun(property_name: "ExecuteCommand", property_value: YesNo|boolean)
+function CmdSubTrack:CueDestination(property_name, property_value) end

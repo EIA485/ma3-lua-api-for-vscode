@@ -6,3 +6,7 @@ local AudioLibraryFile = {}
 function AudioLibraryFile:GetClass() end
 ---@return "Object"
 function AudioLibraryFile:GetChildClass() end
+---@generic T : AudioLibraryFile
+---@param class `T`
+---@return boolean
+function AudioLibraryFile:IsClass(class) end

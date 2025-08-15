@@ -6,3 +6,7 @@ local PSRTabs = {}
 function PSRTabs:GetClass() end
 ---@return "UIObject"
 function PSRTabs:GetChildClass() end
+---@generic T : PSRTabs
+---@param class `T`
+---@return boolean
+function PSRTabs:IsClass(class) end

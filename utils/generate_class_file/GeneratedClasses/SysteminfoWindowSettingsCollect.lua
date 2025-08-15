@@ -6,6 +6,10 @@ local SysteminfoWindowSettingsCollect = {}
 function SysteminfoWindowSettingsCollect:GetClass() end
 ---@return "SysteminfoWindowSettings"
 function SysteminfoWindowSettingsCollect:GetChildClass() end
+---@generic T : SysteminfoWindowSettingsCollect
+---@param class `T`
+---@return boolean
+function SysteminfoWindowSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return SysteminfoWindowSettings
 function SysteminfoWindowSettingsCollect:Ptr(index) end
@@ -56,3 +60,6 @@ function SysteminfoWindowSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SysteminfoWindowSettings
 function SysteminfoWindowSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "DispView", property_value: DispView)
+---@overload fun(property_name: "DispView", property_value: DispView)
+function SysteminfoWindowSettingsCollect:DispView(property_name, property_value) end

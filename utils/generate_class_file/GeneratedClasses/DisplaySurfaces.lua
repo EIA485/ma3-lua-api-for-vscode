@@ -6,6 +6,10 @@ local DisplaySurfaces = {}
 function DisplaySurfaces:GetClass() end
 ---@return "DisplaySurface"
 function DisplaySurfaces:GetChildClass() end
+---@generic T : DisplaySurfaces
+---@param class `T`
+---@return boolean
+function DisplaySurfaces:IsClass(class) end
 ---@return StationSettings
 function DisplaySurfaces:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function DisplaySurfaces:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): DisplaySurface
 function DisplaySurfaces:Find(class, undo) end
+function DisplaySurfaces:ActiveDisplay(property_name, property_value) end

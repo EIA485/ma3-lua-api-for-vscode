@@ -6,6 +6,10 @@ local Devices = {}
 function Devices:GetClass() end
 ---@return "Device"
 function Devices:GetChildClass() end
+---@generic T : Devices
+---@param class `T`
+---@return boolean
+function Devices:IsClass(class) end
 ---@return Pult
 function Devices:Parent() end
 ---@param index integer
@@ -64,3 +68,4 @@ function Devices:Insert(index, class, undo, count) end
 ---@overload fun(class: "Device", undo: Undo?): Device
 ---@overload fun(class: nil, undo: Undo?): Device
 function Devices:Find(class, undo) end
+function Devices:ActiveDisplay(property_name, property_value) end

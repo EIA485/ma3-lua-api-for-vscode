@@ -6,3 +6,7 @@ local TimecodeGridData = {}
 function TimecodeGridData:GetClass() end
 ---@return "Object"
 function TimecodeGridData:GetChildClass() end
+---@generic T : TimecodeGridData
+---@param class `T`
+---@return boolean
+function TimecodeGridData:IsClass(class) end

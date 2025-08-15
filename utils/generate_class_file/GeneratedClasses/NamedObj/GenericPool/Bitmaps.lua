@@ -6,6 +6,10 @@ local Bitmaps = {}
 function Bitmaps:GetClass() end
 ---@return "Bitmap"
 function Bitmaps:GetChildClass() end
+---@generic T : Bitmaps
+---@param class `T`
+---@return boolean
+function Bitmaps:IsClass(class) end
 ---@return GeneratorTypes
 function Bitmaps:Parent() end
 ---@param index integer
@@ -58,3 +62,12 @@ function Bitmaps:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Bitmap
 function Bitmaps:Find(class, undo) end
+---@overload fun(property_name: "ControlContent", property_value: integer)
+---@overload fun(property_name: "ConfigHandle", property_value: Object)
+---@overload fun(property_name: "SpeedMaster", property_value: SpeedMaster)
+---@overload fun(property_name: "ConfigHandle", property_value: Object)
+---@overload fun(property_name: "SpeedMaster", property_value: SpeedMaster)
+---@overload fun(property_name: "HasActiveBMC"|"AutoFormat", property_value: YesNo|boolean)
+---@overload fun(property_name: "LuaCommand"|"OnActivateBMC", property_value: fun(str: string) : boolean)
+---@overload fun(property_name: "ControlContent", property_value: integer)
+function Bitmaps:SpeedMaster(property_name, property_value) end

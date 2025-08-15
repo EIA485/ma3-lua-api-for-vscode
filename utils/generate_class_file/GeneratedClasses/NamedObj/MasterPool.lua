@@ -6,6 +6,10 @@ local MasterPool = {}
 function MasterPool:GetClass() end
 ---@return "Master"
 function MasterPool:GetChildClass() end
+---@generic T : MasterPool
+---@param class `T`
+---@return boolean
+function MasterPool:IsClass(class) end
 ---@return Masters
 function MasterPool:Parent() end
 ---@param index integer
@@ -58,3 +62,8 @@ function MasterPool:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Master
 function MasterPool:Find(class, undo) end
+---@overload fun(property_name: "FaderEnable", property_value: FaderEnable)
+---@overload fun(property_name: "SpeedScale", property_value: SpeedScale)
+---@overload fun(property_name: "FaderEnable", property_value: FaderEnable)
+---@overload fun(property_name: "SpeedScale", property_value: SpeedScale)
+function MasterPool:SpeedScale(property_name, property_value) end

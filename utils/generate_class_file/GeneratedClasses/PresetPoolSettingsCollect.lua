@@ -6,6 +6,10 @@ local PresetPoolSettingsCollect = {}
 function PresetPoolSettingsCollect:GetClass() end
 ---@return "PresetPoolSettings"
 function PresetPoolSettingsCollect:GetChildClass() end
+---@generic T : PresetPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function PresetPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return PresetPoolSettings
 function PresetPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,8 @@ function PresetPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetPoolSettings
 function PresetPoolSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "DisplayMode", property_value: PresetDisplayMode)
+---@overload fun(property_name: "Action", property_value: PresetAction)
+---@overload fun(property_name: "Action", property_value: PresetAction)
+---@overload fun(property_name: "DisplayMode", property_value: PresetDisplayMode)
+function PresetPoolSettingsCollect:Action(property_name, property_value) end

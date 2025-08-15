@@ -6,6 +6,10 @@ local PluginPreferencesCollect = {}
 function PluginPreferencesCollect:GetClass() end
 ---@return "PluginPreferences"
 function PluginPreferencesCollect:GetChildClass() end
+---@generic T : PluginPreferencesCollect
+---@param class `T`
+---@return boolean
+function PluginPreferencesCollect:IsClass(class) end
 ---@param index integer
 ---@return PluginPreferences
 function PluginPreferencesCollect:Ptr(index) end
@@ -56,3 +60,6 @@ function PluginPreferencesCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PluginPreferences
 function PluginPreferencesCollect:Find(class, undo) end
+---@overload fun(property_name: "DisplayIndex", property_value: DisplayIndex)
+---@overload fun(property_name: "DisplayIndex", property_value: DisplayIndex)
+function PluginPreferencesCollect:DisplayIndex(property_name, property_value) end

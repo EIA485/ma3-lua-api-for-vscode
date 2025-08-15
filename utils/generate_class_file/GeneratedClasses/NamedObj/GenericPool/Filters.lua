@@ -6,6 +6,10 @@ local Filters = {}
 function Filters:GetClass() end
 ---@return "Filter"
 function Filters:GetChildClass() end
+---@generic T : Filters
+---@param class `T`
+---@return boolean
+function Filters:IsClass(class) end
 ---@return Pool
 function Filters:Parent() end
 ---@param index integer
@@ -58,3 +62,5 @@ function Filters:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Filter
 function Filters:Find(class, undo) end
+---@overload fun(property_name: "Relative"|"Timing"|"Absolute"|"Phaser", property_value: YesNo|boolean)
+function Filters:Key(property_name, property_value) end

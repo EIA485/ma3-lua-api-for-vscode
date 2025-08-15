@@ -6,6 +6,10 @@ local Pages = {}
 function Pages:GetClass() end
 ---@return "Page"
 function Pages:GetChildClass() end
+---@generic T : Pages
+---@param class `T`
+---@return boolean
+function Pages:IsClass(class) end
 ---@return Pool
 function Pages:Parent() end
 ---@param index integer
@@ -36,3 +40,4 @@ function Pages:Insert(index, class, undo, count) end
 ---@overload fun(class: "Page", undo: Undo?): Page
 ---@overload fun(class: nil, undo: Undo?): Page
 function Pages:Find(class, undo) end
+function Pages:Pivot(property_name, property_value) end

@@ -6,6 +6,10 @@ local TempNetworkRemoteInterfaceCollect = {}
 function TempNetworkRemoteInterfaceCollect:GetClass() end
 ---@return "NetworkInterface"
 function TempNetworkRemoteInterfaceCollect:GetChildClass() end
+---@generic T : TempNetworkRemoteInterfaceCollect
+---@param class `T`
+---@return boolean
+function TempNetworkRemoteInterfaceCollect:IsClass(class) end
 ---@return TempNetworkInterfaces
 function TempNetworkRemoteInterfaceCollect:Parent() end
 ---@param index integer
@@ -58,3 +62,6 @@ function TempNetworkRemoteInterfaceCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): NetworkInterface
 function TempNetworkRemoteInterfaceCollect:Find(class, undo) end
+---@overload fun(property_name: "RenewDHCP", property_value: Yes|true)
+---@overload fun(property_name: "RenewDHCP", property_value: Yes|true)
+function TempNetworkRemoteInterfaceCollect:RenewDHCP(property_name, property_value) end

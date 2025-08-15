@@ -6,6 +6,10 @@ local DMXModes = {}
 function DMXModes:GetClass() end
 ---@return "DMXMode"
 function DMXModes:GetChildClass() end
+---@generic T : DMXModes
+---@param class `T`
+---@return boolean
+function DMXModes:IsClass(class) end
 ---@return FixtureType
 function DMXModes:Parent() end
 ---@param index integer
@@ -58,3 +62,13 @@ function DMXModes:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): DMXMode
 function DMXModes:Find(class, undo) end
+---@overload fun(property_name: "DMXFootprint", property_value: [DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak])
+---@overload fun(property_name: "TotalFootPrint", property_value: integer)
+---@overload fun(property_name: "RDMPersonalityId", property_value: string)
+---@overload fun(property_name: "Geometry", property_value: Geometry)
+---@overload fun(property_name: "Geometry", property_value: Geometry)
+---@overload fun(property_name: "XYZ"|"DiveInto"|"BladeMirror"|"BladePerPrismBeam", property_value: YesNo|boolean)
+---@overload fun(property_name: "DMXFootprint", property_value: [DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak])
+---@overload fun(property_name: "TotalFootPrint", property_value: integer)
+---@overload fun(property_name: "RDMPersonalityId", property_value: string)
+function DMXModes:Geometry(property_name, property_value) end

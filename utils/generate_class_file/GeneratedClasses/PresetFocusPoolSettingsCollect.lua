@@ -6,6 +6,10 @@ local PresetFocusPoolSettingsCollect = {}
 function PresetFocusPoolSettingsCollect:GetClass() end
 ---@return "PresetFocusPoolSettings"
 function PresetFocusPoolSettingsCollect:GetChildClass() end
+---@generic T : PresetFocusPoolSettingsCollect
+---@param class `T`
+---@return boolean
+function PresetFocusPoolSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return PresetFocusPoolSettings
 function PresetFocusPoolSettingsCollect:Ptr(index) end
@@ -56,3 +60,4 @@ function PresetFocusPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetFocusPoolSettings
 function PresetFocusPoolSettingsCollect:Find(class, undo) end
+function PresetFocusPoolSettingsCollect:ActiveDisplay(property_name, property_value) end

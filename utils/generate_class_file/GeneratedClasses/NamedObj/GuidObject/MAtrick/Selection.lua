@@ -3,7 +3,7 @@
 ---@class Selection: MAtrick Defines the current selection and world for one operator in the network.
 ---@field AxisSystem AxisSystem
 ---@field RotationMode RotationMode
----@field LayoutType AxisSystem
+---@field LayoutType LayoutType
 ---@field AxisGroupType AxisGroupType
 ---@field EncoderFunction EncoderFunction
 ---@field EncoderResolution3d EncoderResolution3d
@@ -24,13 +24,13 @@
 ---@field RadiusDelta number
 ---@field AngleStart number
 ---@field AngleRange number
----@field ArrangeOnChange integer
----@field SendChangesWhileEncoderEvent integer
+---@field ArrangeOnChange YesNo|boolean
+---@field SendChangesWhileEncoderEvent YesNo|boolean
 ---@field CountTotalSelected integer
 ---@field CountFullySelected integer
 ---@field SelectedAttributes AttributeMode
----@field SetupMode integer
----@field PreserveGridPositions integer
+---@field SetupMode YesNo|boolean
+---@field PreserveGridPositions YesNo|boolean
 local Selection = {
     SetupMode="No",
     PreserveGridPositions="No"
@@ -39,28 +39,206 @@ local Selection = {
 function Selection:GetClass() end
 ---@return "Object"
 function Selection:GetChildClass() end
+---@generic T : Selection
+---@param class `T`
+---@return boolean
+function Selection:IsClass(class) end
 ---@return UserEnvironment
 function Selection:Parent() end
+---@return 90
+function Selection:PropertyCount() end
+---@overload fun(idx: 0): "IgnoreNetwork"
+---@overload fun(idx: 1): "StructureLocked"
+---@overload fun(idx: 2): "SystemLocked"
+---@overload fun(idx: 3): "Lock"
+---@overload fun(idx: 4): "Index"
+---@overload fun(idx: 5): "Count"
+---@overload fun(idx: 6): "No"
+---@overload fun(idx: 7): "Name"
+---@overload fun(idx: 8): "UserExpanded"
+---@overload fun(idx: 9): "FaderEnabled"
+---@overload fun(idx: 10): "Owned"
+---@overload fun(idx: 11): "Hidden"
+---@overload fun(idx: 12): "DependencyExport"
+---@overload fun(idx: 13): "MemoryFootprint"
+---@overload fun(idx: 14): "Guid"
+---@overload fun(idx: 15): "Scribble"
+---@overload fun(idx: 16): "Appearance"
+---@overload fun(idx: 17): "NameAndApp"
+---@overload fun(idx: 18): "Note"
+---@overload fun(idx: 19): "Tags"
+---@overload fun(idx: 20): "Active"
+---@overload fun(idx: 21): "HasAnyMatricksData"
+---@overload fun(idx: 22): "ShuffleMode"
+---@overload fun(idx: 23): "InitialName"
+---@overload fun(idx: 24): "InitialMatricks"
+---@overload fun(idx: 25): "X"
+---@overload fun(idx: 26): "Y"
+---@overload fun(idx: 27): "Z"
+---@overload fun(idx: 28): "XBlock"
+---@overload fun(idx: 29): "YBlock"
+---@overload fun(idx: 30): "ZBlock"
+---@overload fun(idx: 31): "XGroup"
+---@overload fun(idx: 32): "YGroup"
+---@overload fun(idx: 33): "ZGroup"
+---@overload fun(idx: 34): "XWings"
+---@overload fun(idx: 35): "YWings"
+---@overload fun(idx: 36): "ZWings"
+---@overload fun(idx: 37): "XWidth"
+---@overload fun(idx: 38): "YWidth"
+---@overload fun(idx: 39): "ZWidth"
+---@overload fun(idx: 40): "XShuffle"
+---@overload fun(idx: 41): "YShuffle"
+---@overload fun(idx: 42): "ZShuffle"
+---@overload fun(idx: 43): "XShift"
+---@overload fun(idx: 44): "YShift"
+---@overload fun(idx: 45): "ZShift"
+---@overload fun(idx: 46): "InvertStyle"
+---@overload fun(idx: 47): "InvertX"
+---@overload fun(idx: 48): "InvertY"
+---@overload fun(idx: 49): "InvertZ"
+---@overload fun(idx: 50): "AlignRangeX"
+---@overload fun(idx: 51): "AlignRangeY"
+---@overload fun(idx: 52): "AlignRangeZ"
+---@overload fun(idx: 53): "RelativeFade"
+---@overload fun(idx: 54): "RelativeDelay"
+---@overload fun(idx: 55): "RelativePhase"
+---@overload fun(idx: 56): "RelativeSpeed"
+---@overload fun(idx: 57): "Relative"
+---@overload fun(idx: 58): "PhaserTransform"
+---@overload fun(idx: 59): "DoShuffle"
+---@overload fun(idx: 60): "AxisSystem"
+---@overload fun(idx: 61): "RotationMode"
+---@overload fun(idx: 62): "LayoutType"
+---@overload fun(idx: 63): "AxisGroupType"
+---@overload fun(idx: 64): "EncoderFunction"
+---@overload fun(idx: 65): "EncoderResolution3d"
+---@overload fun(idx: 66): "GridDirection"
+---@overload fun(idx: 67): "GridRowOrder"
+---@overload fun(idx: 68): "GridColumnOrder"
+---@overload fun(idx: 69): "Columns"
+---@overload fun(idx: 70): "Rows"
+---@overload fun(idx: 71): "ColumnsInterval"
+---@overload fun(idx: 72): "RowsInterval"
+---@overload fun(idx: 73): "StartX"
+---@overload fun(idx: 74): "LengthX"
+---@overload fun(idx: 75): "StartY"
+---@overload fun(idx: 76): "LengthY"
+---@overload fun(idx: 77): "StartZ"
+---@overload fun(idx: 78): "LengthZ"
+---@overload fun(idx: 79): "RadiusStart"
+---@overload fun(idx: 80): "RadiusDelta"
+---@overload fun(idx: 81): "AngleStart"
+---@overload fun(idx: 82): "AngleRange"
+---@overload fun(idx: 83): "ArrangeOnChange"
+---@overload fun(idx: 84): "SendChangesWhileEncoderEvent"
+---@overload fun(idx: 85): "CountTotalSelected"
+---@overload fun(idx: 86): "CountFullySelected"
+---@overload fun(idx: 87): "SelectedAttributes"
+---@overload fun(idx: 88): "SetupMode"
+---@overload fun(idx: 89): "PreserveGridPositions"
+function Selection:PropertyName(idx) end
+---@overload fun(idx: 0|1|2|21): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 3|11|20|47|48|49|50|51|52|53|54|55|56|57|83|84|88|89): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 4|5|6|24|85|86|87): {ExportIgnore: True, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 7|12|14|15|16|18|19|23|69|70|71|72|73|74|75|76|77|78|79|80|81|82): {ExportIgnore: False, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 8): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 9|10): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 13|17|59): {ExportIgnore: False, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 22): {ExportIgnore: False, EnumCollection: ShuffleMode, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 25|26|27): {ExportIgnore: False, EnumCollection: MatricksIndexNone, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 28|29|30): {ExportIgnore: False, EnumCollection: MatricksBlockNone, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 31|32|33): {ExportIgnore: False, EnumCollection: MatricksGroupNone, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 34|35|36): {ExportIgnore: False, EnumCollection: MatricksWingsNone, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 37|38|39): {ExportIgnore: False, EnumCollection: MatrixWidthAuto, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 40|41|42): {ExportIgnore: False, EnumCollection: MatricksShuffleNone, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 43|44|45): {ExportIgnore: False, EnumCollection: MatricksShiftNone, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 46): {ExportIgnore: False, EnumCollection: MatricksInvertStyle, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 58): {ExportIgnore: False, EnumCollection: PhaserTransformationsShort, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 60): {ExportIgnore: False, EnumCollection: AxisSystem, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 61): {ExportIgnore: False, EnumCollection: RotationMode, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 62): {ExportIgnore: False, EnumCollection: LayoutType, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 63): {ExportIgnore: False, EnumCollection: AxisGroupType, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 64): {ExportIgnore: False, EnumCollection: EncoderFunction, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 65): {ExportIgnore: False, EnumCollection: EncoderResolution3d, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 66): {ExportIgnore: False, EnumCollection: GridDirection, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 67): {ExportIgnore: False, EnumCollection: RowOrder, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 68): {ExportIgnore: False, EnumCollection: ColumnOrder, ReadOnly: False, ImportIgnore: False}
+function Selection:PropertyInfo(idx) end
+---@overload fun(idx: 0|1|2|3|4|5|6|8|40|41|42|47|48|49|53|54|55|56|58|85|86|88|89): "UInt32"
+---@overload fun(idx: 7|12|17|18|23): "String"
+---@overload fun(idx: 9|10|21|57): "Bool"
+---@overload fun(idx: 11): "UInt64"
+---@overload fun(idx: 13): "Int64"
+---@overload fun(idx: 14|19|87): "Custom"
+---@overload fun(idx: 15|16|24): "Handle"
+---@overload fun(idx: 20|22|46|50|51|52): "UInt8"
+---@overload fun(idx: 25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|43|44|45): "Int32"
+---@overload fun(idx: 59): "Method"
+---@overload fun(idx: 60|61|62|63|64|65|66|67|68): "Int8"
+---@overload fun(idx: 69|70|71|72|73|74|75|76|77|78|79|80|81|82): "Double"
+---@overload fun(idx: 83|84): "UInt16"
+function Selection:PropertyType(idx) end
 ---@overload fun(name: "Appearance", role: nil): Appearance
 ---@overload fun(name: "SelectedAttributes", role: nil): AttributeMode
 ---@overload fun(name: "AxisGroupType", role: nil): AxisGroupType
----@overload fun(name: "AxisSystem"|"LayoutType", role: nil): AxisSystem
+---@overload fun(name: "AxisSystem", role: nil): AxisSystem
 ---@overload fun(name: "GridColumnOrder", role: nil): ColumnOrder
----@overload fun(name: "Guid", role: nil): Crypto.Guid<128>
 ---@overload fun(name: "EncoderFunction", role: nil): EncoderFunction
 ---@overload fun(name: "EncoderResolution3d", role: nil): EncoderResolution3d
 ---@overload fun(name: "GridDirection", role: nil): GridDirection
+---@overload fun(name: "Guid", role: nil): Key128
+---@overload fun(name: "LayoutType", role: nil): LayoutType
 ---@overload fun(name: "InitialMatricks", role: nil): MAtrick
+---@overload fun(name: "XBlock"|"YBlock"|"ZBlock", role: nil): MatricksBlockNone
+---@overload fun(name: "XGroup"|"YGroup"|"ZGroup", role: nil): MatricksGroupNone
+---@overload fun(name: "X"|"Y"|"Z", role: nil): MatricksIndexNone
+---@overload fun(name: "InvertStyle", role: nil): MatricksInvertStyle
+---@overload fun(name: "XShift"|"YShift"|"ZShift", role: nil): MatricksShiftNone
+---@overload fun(name: "XShuffle"|"YShuffle"|"ZShuffle", role: nil): MatricksShuffleNone
+---@overload fun(name: "XWings"|"YWings"|"ZWings", role: nil): MatricksWingsNone
+---@overload fun(name: "XWidth"|"YWidth"|"ZWidth", role: nil): MatrixWidthAuto
+---@overload fun(name: "PhaserTransform", role: nil): PhaserTransformationsShort
 ---@overload fun(name: "RotationMode", role: nil): RotationMode
 ---@overload fun(name: "GridRowOrder", role: nil): RowOrder
 ---@overload fun(name: "Scribble", role: nil): Scribble
 ---@overload fun(name: "ShuffleMode", role: nil): ShuffleMode
 ---@overload fun(name: "Tags", role: nil): TagMap
----@overload fun(name: "HasAnyMatricksData"|"Relative"|"FaderEnabled"|"Owned", role: nil): boolean
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"Active"|"HasAnyMatricksData"|"InvertX"|"InvertY"|"InvertZ"|"AlignRangeX"|"AlignRangeY"|"AlignRangeZ"|"RelativeFade"|"RelativeDelay"|"RelativePhase"|"RelativeSpeed"|"Relative"|"ArrangeOnChange"|"SendChangesWhileEncoderEvent"|"SetupMode"|"PreserveGridPositions", role: nil): YesNo|boolean
 ---@overload fun(name: "DoShuffle", role: nil): fun()
----@overload fun(name: "ArrangeOnChange"|"SendChangesWhileEncoderEvent"|"CountTotalSelected"|"CountFullySelected"|"SetupMode"|"PreserveGridPositions"|"Active"|"X"|"Y"|"Z"|"XBlock"|"YBlock"|"ZBlock"|"XGroup"|"YGroup"|"ZGroup"|"XWings"|"YWings"|"ZWings"|"XWidth"|"YWidth"|"ZWidth"|"XShuffle"|"YShuffle"|"ZShuffle"|"XShift"|"YShift"|"ZShift"|"InvertStyle"|"InvertX"|"InvertY"|"InvertZ"|"AlignRangeX"|"AlignRangeY"|"AlignRangeZ"|"RelativeFade"|"RelativeDelay"|"RelativePhase"|"RelativeSpeed"|"PhaserTransform"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
+---@overload fun(name: "Index"|"Count"|"No"|"MemoryFootprint"|"CountTotalSelected"|"CountFullySelected", role: nil): integer
 ---@overload fun(name: "Columns"|"Rows"|"ColumnsInterval"|"RowsInterval"|"StartX"|"LengthX"|"StartY"|"LengthY"|"StartZ"|"LengthZ"|"RadiusStart"|"RadiusDelta"|"AngleStart"|"AngleRange", role: nil): number
----@overload fun(name: "InitialName"|"NameAndApp"|"Note"|"Name"|"DependencyExport", role: nil): string
----@overload fun(name: "AxisSystem"|"RotationMode"|"LayoutType"|"AxisGroupType"|"EncoderFunction"|"EncoderResolution3d"|"GridDirection"|"GridRowOrder"|"GridColumnOrder"|"Columns"|"Rows"|"ColumnsInterval"|"RowsInterval"|"StartX"|"LengthX"|"StartY"|"LengthY"|"StartZ"|"LengthZ"|"RadiusStart"|"RadiusDelta"|"AngleStart"|"AngleRange"|"ArrangeOnChange"|"SendChangesWhileEncoderEvent"|"CountTotalSelected"|"CountFullySelected"|"SelectedAttributes"|"SetupMode"|"PreserveGridPositions"|"Active"|"HasAnyMatricksData"|"ShuffleMode"|"InitialName"|"InitialMatricks"|"X"|"Y"|"Z"|"XBlock"|"YBlock"|"ZBlock"|"XGroup"|"YGroup"|"ZGroup"|"XWings"|"YWings"|"ZWings"|"XWidth"|"YWidth"|"ZWidth"|"XShuffle"|"YShuffle"|"ZShuffle"|"XShift"|"YShift"|"ZShift"|"InvertStyle"|"InvertX"|"InvertY"|"InvertZ"|"AlignRangeX"|"AlignRangeY"|"AlignRangeZ"|"RelativeFade"|"RelativeDelay"|"RelativePhase"|"RelativeSpeed"|"Relative"|"PhaserTransform"|"DoShuffle"|"Guid"|"Scribble"|"Appearance"|"NameAndApp"|"Note"|"Tags"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
+---@overload fun(name: "Name"|"DependencyExport"|"NameAndApp"|"Note"|"InitialName", role: nil): string
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Guid"|"Scribble"|"Appearance"|"NameAndApp"|"Note"|"Tags"|"Active"|"HasAnyMatricksData"|"ShuffleMode"|"InitialName"|"InitialMatricks"|"X"|"Y"|"Z"|"XBlock"|"YBlock"|"ZBlock"|"XGroup"|"YGroup"|"ZGroup"|"XWings"|"YWings"|"ZWings"|"XWidth"|"YWidth"|"ZWidth"|"XShuffle"|"YShuffle"|"ZShuffle"|"XShift"|"YShift"|"ZShift"|"InvertStyle"|"InvertX"|"InvertY"|"InvertZ"|"AlignRangeX"|"AlignRangeY"|"AlignRangeZ"|"RelativeFade"|"RelativeDelay"|"RelativePhase"|"RelativeSpeed"|"Relative"|"PhaserTransform"|"DoShuffle"|"AxisSystem"|"RotationMode"|"LayoutType"|"AxisGroupType"|"EncoderFunction"|"EncoderResolution3d"|"GridDirection"|"GridRowOrder"|"GridColumnOrder"|"Columns"|"Rows"|"ColumnsInterval"|"RowsInterval"|"StartX"|"LengthX"|"StartY"|"LengthY"|"StartZ"|"LengthZ"|"RadiusStart"|"RadiusDelta"|"AngleStart"|"AngleRange"|"ArrangeOnChange"|"SendChangesWhileEncoderEvent"|"CountTotalSelected"|"CountFullySelected"|"SelectedAttributes"|"SetupMode"|"PreserveGridPositions", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): Object
 function Selection:Get(name, role) end
+---@overload fun(property_name: "Appearance", property_value: Appearance, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "SelectedAttributes", property_value: AttributeMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "AxisGroupType", property_value: AxisGroupType, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "AxisSystem", property_value: AxisSystem, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "GridColumnOrder", property_value: ColumnOrder, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "EncoderFunction", property_value: EncoderFunction, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "EncoderResolution3d", property_value: EncoderResolution3d, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "GridDirection", property_value: GridDirection, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Guid", property_value: Key128, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "LayoutType", property_value: LayoutType, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "InitialMatricks", property_value: MAtrick, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "XBlock"|"YBlock"|"ZBlock", property_value: MatricksBlockNone, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "XGroup"|"YGroup"|"ZGroup", property_value: MatricksGroupNone, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "X"|"Y"|"Z", property_value: MatricksIndexNone, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "InvertStyle", property_value: MatricksInvertStyle, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "XShift"|"YShift"|"ZShift", property_value: MatricksShiftNone, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "XShuffle"|"YShuffle"|"ZShuffle", property_value: MatricksShuffleNone, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "XWings"|"YWings"|"ZWings", property_value: MatricksWingsNone, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "XWidth"|"YWidth"|"ZWidth", property_value: MatrixWidthAuto, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "PhaserTransform", property_value: PhaserTransformationsShort, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "RotationMode", property_value: RotationMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "GridRowOrder", property_value: RowOrder, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Scribble", property_value: Scribble, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ShuffleMode", property_value: ShuffleMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Tags", property_value: TagMap, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Hidden"|"Active"|"HasAnyMatricksData"|"InvertX"|"InvertY"|"InvertZ"|"AlignRangeX"|"AlignRangeY"|"AlignRangeZ"|"RelativeFade"|"RelativeDelay"|"RelativePhase"|"RelativeSpeed"|"Relative"|"ArrangeOnChange"|"SendChangesWhileEncoderEvent"|"SetupMode"|"PreserveGridPositions", property_value: YesNo|boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Index"|"Count"|"No"|"CountTotalSelected"|"CountFullySelected", property_value: integer, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Columns"|"Rows"|"ColumnsInterval"|"RowsInterval"|"StartX"|"LengthX"|"StartY"|"LengthY"|"StartZ"|"LengthZ"|"RadiusStart"|"RadiusDelta"|"AngleStart"|"AngleRange", property_value: number, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Name"|"DependencyExport"|"Note"|"InitialName", property_value: string, override_change_level: ChangeLevel?)
+function Selection:Set(property_name, property_value, override_change_level) end

@@ -6,6 +6,10 @@ local Configurations = {}
 function Configurations:GetClass() end
 ---@return "Configuration"
 function Configurations:GetChildClass() end
+---@generic T : Configurations
+---@param class `T`
+---@return boolean
+function Configurations:IsClass(class) end
 ---@return Pool
 function Configurations:Parent() end
 ---@param index integer
@@ -58,3 +62,7 @@ function Configurations:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Configuration
 function Configurations:Find(class, undo) end
+---@overload fun(property_name: "ExecConfigType", property_value: ExecConfigType)
+---@overload fun(property_name: "ExecConfigType", property_value: ExecConfigType)
+---@overload fun(property_name: "Width"|"Height", property_value: integer)
+function Configurations:ExecConfigType(property_name, property_value) end

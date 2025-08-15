@@ -7,59 +7,59 @@
 ---@field NormalValue DMXPropertyValue
 ---@field WheelResolution DimmerWheelResolution
 ---@field WheelMode WheelMode
----@field VKExpanded integer Defines if virtual keyboard is expanded
----@field SEExpanded integer Defines if scribble editor is expanded
----@field NEExpanded integer Defines if notes editor is expanded
+---@field VKExpanded YesNo|boolean Defines if virtual keyboard is expanded
+---@field SEExpanded YesNo|boolean Defines if scribble editor is expanded
+---@field NEExpanded YesNo|boolean Defines if notes editor is expanded
 ---@field TextInputAuxEditor TextInputEditor
 ---@field TextInputSmallScreenTab TextInputEditor
 ---@field ScribbleColor UColor
 ---@field ScribbleWidthScale integer
 ---@field SelectedDataPool Pool
 ---@field DefaultToken integer
----@field EncoderLinkValues EncoderLink
+---@field EncoderLinkValues EncoderLinkValues
 ---@field EncoderLinkTiming EncoderLink
----@field EncoderLinkPhaser EncoderLink
----@field KnobUIStyle integer
----@field EncoderUIStyle integer
----@field ActiveOnly integer
----@field MultiStepOnly integer
----@field PreciseEdit integer
----@field ScreenEncoder integer
----@field TimeKeyTarget integer
+---@field EncoderLinkPhaser EncoderLinkPhaser
+---@field KnobUIStyle EncoderUIStyle
+---@field EncoderUIStyle EncoderUIStyle
+---@field ActiveOnly YesNo|boolean
+---@field MultiStepOnly YesNo|boolean
+---@field PreciseEdit YesNo|boolean
+---@field ScreenEncoder YesNo|boolean
+---@field TimeKeyTarget TimeKeyTarget
 ---@field ShowUserEncoder integer
----@field TCSlot integer
+---@field TCSlot TimecodeSlotShort
 ---@field SelectedPage integer
----@field ValueReadout ValueReadoutMode
+---@field ValueReadout ValueReadoutModeNatural
 ---@field SpeedReadout SpeedReadoutMode
 ---@field PresetReadout PresetReadoutMode
 ---@field Layer ProgLayer
----@field ProgrammingLayer ProgLayer
----@field LastValueLayer ProgLayer
----@field LastPhaserLayer ProgLayer
----@field LastStepLayer ProgLayer
----@field ProgrammingLayerGroup ProgLayer
----@field HelpPopupZoomFactor integer
+---@field ProgrammingLayer ProgrammingLayer
+---@field LastValueLayer ProgrammingLayer
+---@field LastPhaserLayer ProgrammingLayer
+---@field LastStepLayer ProgrammingLayer
+---@field ProgrammingLayerGroup ProgrammingLayerGroup
+---@field HelpPopupZoomFactor ZoomFactor
 ---@field OverlayFade integer
 ---@field TimeReadout TimeDisplayFormat
----@field FrameReadout integer
+---@field FrameReadout FrameFormat
 ---@field ColorReadout ColorDisplayMode
----@field OopsViews integer
----@field OopsProgrammer integer
----@field OopsSelection integer
----@field CreateOops integer
----@field OopsConfirmation integer
----@field MirrorSpecialExecutorPages integer
----@field ShowAppearanceInCueInput integer
----@field ShowSettingsInEditors integer
+---@field OopsViews YesNo|boolean
+---@field OopsProgrammer YesNo|boolean
+---@field OopsSelection YesNo|boolean
+---@field CreateOops YesNo|boolean
+---@field OopsConfirmation OopsConfirmation
+---@field MirrorSpecialExecutorPages YesNo|boolean
+---@field ShowAppearanceInCueInput YesNo|boolean
+---@field ShowSettingsInEditors YesNo|boolean
 ---@field Users User[]
 ---@field Cmdlines Cmdline[]
 ---@field LastOpenRemotesTab integer
 ---@field LastOpenDmxProtocolsTab integer
 ---@field ProgUpdateCueFilter ProgUpdateCueMode
----@field SingleDigitInput integer
----@field ResolveExecutorAssignments integer
----@field PreviewVariables integer
----@field DefaultGroupMasterMode integer
+---@field SingleDigitInput YesNo|boolean
+---@field ResolveExecutorAssignments YesNo|boolean
+---@field PreviewVariables YesNo|boolean
+---@field DefaultGroupMasterMode GroupMasterMode
 ---@field ExecConfigSequence Configuration
 ---@field ExecConfigMacro Configuration
 ---@field ExecConfigView Configuration
@@ -74,12 +74,12 @@
 ---@field ExecConfigMaster Configuration
 ---@field ExecConfigSpeedMaster Configuration
 ---@field ExecConfigPlaybackMaster Configuration
----@field ShowConnectors integer
----@field LoadFixtureLibraryMA integer
----@field LoadFixtureLibraryUser integer
----@field LoadFixtureLibraryShare integer
----@field DmxTesterAddressMode integer
----@field DmxTesterRetainMode integer
+---@field ShowConnectors YesNo|boolean
+---@field LoadFixtureLibraryMA YesNo|boolean
+---@field LoadFixtureLibraryUser YesNo|boolean
+---@field LoadFixtureLibraryShare YesNo|boolean
+---@field DmxTesterAddressMode DmxTesterAddressMode
+---@field DmxTesterRetainMode YesNo|boolean
 ---@field DmxTesterMode DmxTesterMode
 ---@field DmxTesterTestValue integer
 ---@field MoveGridCursor GridCursorMovement
@@ -87,12 +87,12 @@
 ---@field EncoderLinkStatusTiming EncoderLink
 ---@field EncoderLinkStatusPhaser EncoderLink
 ---@field EncoderLinkStatusPhaserBar EncoderLink
----@field ScreenshotEnabled integer
----@field UpdateMenuPresetOptionsExpanded integer
----@field UpdateMenuCueOptionsExpanded integer
----@field NotificationsEnabled integer
+---@field ScreenshotEnabled YesNo|boolean
+---@field UpdateMenuPresetOptionsExpanded YesNo|boolean
+---@field UpdateMenuCueOptionsExpanded YesNo|boolean
+---@field NotificationsEnabled YesNo|boolean
 ---@field NotificationType NotificationType
----@field SystemFpsLimit integer
+---@field SystemFpsLimit YesNo|boolean
 local UserProfile = {
     DMXReadout="Dec8",
     NormalValue="000000",
@@ -172,37 +172,216 @@ local UserProfile = {
 function UserProfile:GetClass() end
 ---@return "Object"
 function UserProfile:GetChildClass() end
+---@generic T : UserProfile
+---@param class `T`
+---@return boolean
+function UserProfile:IsClass(class) end
 ---@return UserProfiles
 function UserProfile:Parent() end
+---@return 110
+function UserProfile:PropertyCount() end
+---@overload fun(idx: 0): "IgnoreNetwork"
+---@overload fun(idx: 1): "StructureLocked"
+---@overload fun(idx: 2): "SystemLocked"
+---@overload fun(idx: 3): "Lock"
+---@overload fun(idx: 4): "Index"
+---@overload fun(idx: 5): "Count"
+---@overload fun(idx: 6): "No"
+---@overload fun(idx: 7): "Name"
+---@overload fun(idx: 8): "UserExpanded"
+---@overload fun(idx: 9): "FaderEnabled"
+---@overload fun(idx: 10): "Owned"
+---@overload fun(idx: 11): "Hidden"
+---@overload fun(idx: 12): "DependencyExport"
+---@overload fun(idx: 13): "MemoryFootprint"
+---@overload fun(idx: 14): "Guid"
+---@overload fun(idx: 15): "NameAndApp"
+---@overload fun(idx: 16): "Note"
+---@overload fun(idx: 17): "Tags"
+---@overload fun(idx: 18): "Scribble"
+---@overload fun(idx: 19): "Appearance"
+---@overload fun(idx: 20): "DMXReadout"
+---@overload fun(idx: 21): "NormalValue"
+---@overload fun(idx: 22): "WheelResolution"
+---@overload fun(idx: 23): "WheelMode"
+---@overload fun(idx: 24): "VKExpanded"
+---@overload fun(idx: 25): "SEExpanded"
+---@overload fun(idx: 26): "NEExpanded"
+---@overload fun(idx: 27): "TextInputAuxEditor"
+---@overload fun(idx: 28): "TextInputSmallScreenTab"
+---@overload fun(idx: 29): "ScribbleColor"
+---@overload fun(idx: 30): "ScribbleWidthScale"
+---@overload fun(idx: 31): "SelectedDataPool"
+---@overload fun(idx: 32): "DefaultToken"
+---@overload fun(idx: 33): "EncoderLinkValues"
+---@overload fun(idx: 34): "EncoderLinkTiming"
+---@overload fun(idx: 35): "EncoderLinkPhaser"
+---@overload fun(idx: 36): "KnobUIStyle"
+---@overload fun(idx: 37): "EncoderUIStyle"
+---@overload fun(idx: 38): "ActiveOnly"
+---@overload fun(idx: 39): "MultiStepOnly"
+---@overload fun(idx: 40): "PreciseEdit"
+---@overload fun(idx: 41): "ScreenEncoder"
+---@overload fun(idx: 42): "TimeKeyTarget"
+---@overload fun(idx: 43): "ShowUserEncoder"
+---@overload fun(idx: 44): "TCSlot"
+---@overload fun(idx: 45): "SelectedPage"
+---@overload fun(idx: 46): "ValueReadout"
+---@overload fun(idx: 47): "SpeedReadout"
+---@overload fun(idx: 48): "PresetReadout"
+---@overload fun(idx: 49): "Layer"
+---@overload fun(idx: 50): "ProgrammingLayer"
+---@overload fun(idx: 51): "LastValueLayer"
+---@overload fun(idx: 52): "LastPhaserLayer"
+---@overload fun(idx: 53): "LastStepLayer"
+---@overload fun(idx: 54): "ProgrammingLayerGroup"
+---@overload fun(idx: 55): "HelpPopupZoomFactor"
+---@overload fun(idx: 56): "OverlayFade"
+---@overload fun(idx: 57): "TimeReadout"
+---@overload fun(idx: 58): "FrameReadout"
+---@overload fun(idx: 59): "ColorReadout"
+---@overload fun(idx: 60): "OopsViews"
+---@overload fun(idx: 61): "OopsProgrammer"
+---@overload fun(idx: 62): "OopsSelection"
+---@overload fun(idx: 63): "CreateOops"
+---@overload fun(idx: 64): "OopsConfirmation"
+---@overload fun(idx: 65): "MirrorSpecialExecutorPages"
+---@overload fun(idx: 66): "ShowAppearanceInCueInput"
+---@overload fun(idx: 67): "ShowSettingsInEditors"
+---@overload fun(idx: 68): "Users"
+---@overload fun(idx: 69): "Cmdlines"
+---@overload fun(idx: 70): "LastOpenRemotesTab"
+---@overload fun(idx: 71): "LastOpenDmxProtocolsTab"
+---@overload fun(idx: 72): "ProgUpdateCueFilter"
+---@overload fun(idx: 73): "SingleDigitInput"
+---@overload fun(idx: 74): "ResolveExecutorAssignments"
+---@overload fun(idx: 75): "PreviewVariables"
+---@overload fun(idx: 76): "DefaultGroupMasterMode"
+---@overload fun(idx: 77): "ExecConfigSequence"
+---@overload fun(idx: 78): "ExecConfigMacro"
+---@overload fun(idx: 79): "ExecConfigView"
+---@overload fun(idx: 80): "ExecConfigWorld"
+---@overload fun(idx: 81): "ExecConfigGroup"
+---@overload fun(idx: 82): "ExecConfigPreset"
+---@overload fun(idx: 83): "ExecConfigPlugin"
+---@overload fun(idx: 84): "ExecConfigUser"
+---@overload fun(idx: 85): "ExecConfigSound"
+---@overload fun(idx: 86): "ExecConfigScreenConfig"
+---@overload fun(idx: 87): "ExecConfigTimer"
+---@overload fun(idx: 88): "ExecConfigMaster"
+---@overload fun(idx: 89): "ExecConfigSpeedMaster"
+---@overload fun(idx: 90): "ExecConfigPlaybackMaster"
+---@overload fun(idx: 91): "ShowConnectors"
+---@overload fun(idx: 92): "LoadFixtureLibraryMA"
+---@overload fun(idx: 93): "LoadFixtureLibraryUser"
+---@overload fun(idx: 94): "LoadFixtureLibraryShare"
+---@overload fun(idx: 95): "DmxTesterAddressMode"
+---@overload fun(idx: 96): "DmxTesterRetainMode"
+---@overload fun(idx: 97): "DmxTesterMode"
+---@overload fun(idx: 98): "DmxTesterTestValue"
+---@overload fun(idx: 99): "MoveGridCursor"
+---@overload fun(idx: 100): "EncoderLinkStatusValues"
+---@overload fun(idx: 101): "EncoderLinkStatusTiming"
+---@overload fun(idx: 102): "EncoderLinkStatusPhaser"
+---@overload fun(idx: 103): "EncoderLinkStatusPhaserBar"
+---@overload fun(idx: 104): "ScreenshotEnabled"
+---@overload fun(idx: 105): "UpdateMenuPresetOptionsExpanded"
+---@overload fun(idx: 106): "UpdateMenuCueOptionsExpanded"
+---@overload fun(idx: 107): "NotificationsEnabled"
+---@overload fun(idx: 108): "NotificationType"
+---@overload fun(idx: 109): "SystemFpsLimit"
+function UserProfile:PropertyName(idx) end
+---@overload fun(idx: 0|1|2): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 3|11|24|25|26|38|39|40|41|60|61|62|63|65|66|67|73|74|75|91|92|93|94|96|104|105|106|107|109): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 4|5|6|68|69): {ExportIgnore: True, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 7|12|14|16|17|18|19|21|29|30|31|32|43|45|56|70|71|77|78|79|80|81|82|83|84|85|86|87|88|89|90|98): {ExportIgnore: False, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 8): {ExportIgnore: False, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 9|10): {ExportIgnore: True, EnumCollection: YesNo, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 13|15|100|101|102|103): {ExportIgnore: False, ReadOnly: True, ImportIgnore: True}
+---@overload fun(idx: 20): {ExportIgnore: False, EnumCollection: DMXReadoutMode, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 22): {ExportIgnore: False, EnumCollection: DimmerWheelResolution, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 23): {ExportIgnore: False, EnumCollection: WheelMode, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 27|28): {ExportIgnore: False, EnumCollection: TextInputEditor, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 33): {ExportIgnore: False, EnumCollection: EncoderLinkValues, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 34): {ExportIgnore: False, EnumCollection: EncoderLink, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 35): {ExportIgnore: False, EnumCollection: EncoderLinkPhaser, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 36|37): {ExportIgnore: False, EnumCollection: EncoderUIStyle, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 42): {ExportIgnore: False, EnumCollection: TimeKeyTarget, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 44): {ExportIgnore: False, EnumCollection: TimecodeSlotShort, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 46): {ExportIgnore: False, EnumCollection: ValueReadoutModeNatural, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 47): {ExportIgnore: False, EnumCollection: SpeedReadoutMode, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 48): {ExportIgnore: False, EnumCollection: PresetReadoutMode, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 49): {ExportIgnore: False, EnumCollection: ProgLayer, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 50): {ExportIgnore: False, EnumCollection: ProgrammingLayer, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 51|52|53): {ExportIgnore: True, EnumCollection: ProgrammingLayer, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 54): {ExportIgnore: False, EnumCollection: ProgrammingLayerGroup, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 55): {ExportIgnore: False, EnumCollection: ZoomFactor, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 57): {ExportIgnore: False, EnumCollection: TimeDisplayFormat, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 58): {ExportIgnore: False, EnumCollection: FrameFormat, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 59): {ExportIgnore: False, EnumCollection: ColorDisplayMode, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 64): {ExportIgnore: False, EnumCollection: OopsConfirmation, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 72): {ExportIgnore: False, EnumCollection: ProgUpdateCueMode, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 76): {ExportIgnore: False, EnumCollection: GroupMasterMode, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 95): {ExportIgnore: False, EnumCollection: DmxTesterAddressMode, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 97): {ExportIgnore: False, EnumCollection: DmxTesterMode, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 99): {ExportIgnore: False, EnumCollection: GridCursorMovement, ReadOnly: False, ImportIgnore: False}
+---@overload fun(idx: 108): {ExportIgnore: False, EnumCollection: NotificationType, ReadOnly: False, ImportIgnore: False}
+function UserProfile:PropertyInfo(idx) end
+---@overload fun(idx: 0|1|2|3|4|5|6|8|21|24|25|26|38|39|40|41|42|45|60|61|62|63|65|66|67|73|74|75|91|92|93|94|95|96|104|105|106|107|109): "UInt32"
+---@overload fun(idx: 7|12|15|16): "String"
+---@overload fun(idx: 9|10): "Bool"
+---@overload fun(idx: 11): "UInt64"
+---@overload fun(idx: 13): "Int64"
+---@overload fun(idx: 14|17|68|69|100|101|102|103): "Custom"
+---@overload fun(idx: 18|19|31|77|78|79|80|81|82|83|84|85|86|87|88|89|90): "Handle"
+---@overload fun(idx: 20|22|23|27|28|32|33|34|35|36|37|43|44|48|57|58|64|70|71|72|76|97|99|108): "UInt8"
+---@overload fun(idx: 29): "RGBA8"
+---@overload fun(idx: 30|55): "Int32"
+---@overload fun(idx: 46|47|49|50|51|52|53|54|59): "Int8"
+---@overload fun(idx: 56): "UInt16"
+---@overload fun(idx: 98): "Int16"
+function UserProfile:PropertyType(idx) end
 ---@overload fun(name: "Appearance", role: nil): Appearance
 ---@overload fun(name: "Cmdlines", role: nil): Cmdline[]
 ---@overload fun(name: "ColorReadout", role: nil): ColorDisplayMode
 ---@overload fun(name: "ExecConfigSequence"|"ExecConfigMacro"|"ExecConfigView"|"ExecConfigWorld"|"ExecConfigGroup"|"ExecConfigPreset"|"ExecConfigPlugin"|"ExecConfigUser"|"ExecConfigSound"|"ExecConfigScreenConfig"|"ExecConfigTimer"|"ExecConfigMaster"|"ExecConfigSpeedMaster"|"ExecConfigPlaybackMaster", role: nil): Configuration
----@overload fun(name: "Guid", role: nil): Crypto.Guid<128>
 ---@overload fun(name: "NormalValue", role: nil): DMXPropertyValue
 ---@overload fun(name: "DMXReadout", role: nil): DMXReadoutMode
 ---@overload fun(name: "WheelResolution", role: nil): DimmerWheelResolution
+---@overload fun(name: "DmxTesterAddressMode", role: nil): DmxTesterAddressMode
 ---@overload fun(name: "DmxTesterMode", role: nil): DmxTesterMode
----@overload fun(name: "EncoderLinkValues"|"EncoderLinkTiming"|"EncoderLinkPhaser"|"EncoderLinkStatusValues"|"EncoderLinkStatusTiming"|"EncoderLinkStatusPhaser"|"EncoderLinkStatusPhaserBar", role: nil): EncoderLink
+---@overload fun(name: "EncoderLinkTiming"|"EncoderLinkStatusValues"|"EncoderLinkStatusTiming"|"EncoderLinkStatusPhaser"|"EncoderLinkStatusPhaserBar", role: nil): EncoderLink
+---@overload fun(name: "EncoderLinkPhaser", role: nil): EncoderLinkPhaser
+---@overload fun(name: "EncoderLinkValues", role: nil): EncoderLinkValues
+---@overload fun(name: "KnobUIStyle"|"EncoderUIStyle", role: nil): EncoderUIStyle
+---@overload fun(name: "FrameReadout", role: nil): FrameFormat
 ---@overload fun(name: "MoveGridCursor", role: nil): GridCursorMovement
+---@overload fun(name: "DefaultGroupMasterMode", role: nil): GroupMasterMode
+---@overload fun(name: "Guid", role: nil): Key128
 ---@overload fun(name: "NotificationType", role: nil): NotificationType
+---@overload fun(name: "OopsConfirmation", role: nil): OopsConfirmation
 ---@overload fun(name: "SelectedDataPool", role: nil): Pool
 ---@overload fun(name: "PresetReadout", role: nil): PresetReadoutMode
----@overload fun(name: "Layer"|"ProgrammingLayer"|"LastValueLayer"|"LastPhaserLayer"|"LastStepLayer"|"ProgrammingLayerGroup", role: nil): ProgLayer
+---@overload fun(name: "Layer", role: nil): ProgLayer
 ---@overload fun(name: "ProgUpdateCueFilter", role: nil): ProgUpdateCueMode
+---@overload fun(name: "ProgrammingLayer"|"LastValueLayer"|"LastPhaserLayer"|"LastStepLayer", role: nil): ProgrammingLayer
+---@overload fun(name: "ProgrammingLayerGroup", role: nil): ProgrammingLayerGroup
 ---@overload fun(name: "Scribble", role: nil): Scribble
 ---@overload fun(name: "SpeedReadout", role: nil): SpeedReadoutMode
 ---@overload fun(name: "Tags", role: nil): TagMap
 ---@overload fun(name: "TextInputAuxEditor"|"TextInputSmallScreenTab", role: nil): TextInputEditor
 ---@overload fun(name: "TimeReadout", role: nil): TimeDisplayFormat
+---@overload fun(name: "TimeKeyTarget", role: nil): TimeKeyTarget
+---@overload fun(name: "TCSlot", role: nil): TimecodeSlotShort
 ---@overload fun(name: "ScribbleColor", role: nil): UColor
 ---@overload fun(name: "Users", role: nil): User[]
----@overload fun(name: "ValueReadout", role: nil): ValueReadoutMode
+---@overload fun(name: "ValueReadout", role: nil): ValueReadoutModeNatural
 ---@overload fun(name: "WheelMode", role: nil): WheelMode
----@overload fun(name: "FaderEnabled"|"Owned", role: nil): boolean
----@overload fun(name: "VKExpanded"|"SEExpanded"|"NEExpanded"|"ScribbleWidthScale"|"DefaultToken"|"KnobUIStyle"|"EncoderUIStyle"|"ActiveOnly"|"MultiStepOnly"|"PreciseEdit"|"ScreenEncoder"|"TimeKeyTarget"|"ShowUserEncoder"|"TCSlot"|"SelectedPage"|"HelpPopupZoomFactor"|"OverlayFade"|"FrameReadout"|"OopsViews"|"OopsProgrammer"|"OopsSelection"|"CreateOops"|"OopsConfirmation"|"MirrorSpecialExecutorPages"|"ShowAppearanceInCueInput"|"ShowSettingsInEditors"|"LastOpenRemotesTab"|"LastOpenDmxProtocolsTab"|"SingleDigitInput"|"ResolveExecutorAssignments"|"PreviewVariables"|"DefaultGroupMasterMode"|"ShowConnectors"|"LoadFixtureLibraryMA"|"LoadFixtureLibraryUser"|"LoadFixtureLibraryShare"|"DmxTesterAddressMode"|"DmxTesterRetainMode"|"DmxTesterTestValue"|"ScreenshotEnabled"|"UpdateMenuPresetOptionsExpanded"|"UpdateMenuCueOptionsExpanded"|"NotificationsEnabled"|"SystemFpsLimit"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"UserExpanded"|"Hidden"|"MemoryFootprint", role: nil): integer
----@overload fun(name: "NameAndApp"|"Note"|"Name"|"DependencyExport", role: nil): string
----@overload fun(name: "Scribble"|"Appearance"|"DMXReadout"|"NormalValue"|"WheelResolution"|"WheelMode"|"VKExpanded"|"SEExpanded"|"NEExpanded"|"TextInputAuxEditor"|"TextInputSmallScreenTab"|"ScribbleColor"|"ScribbleWidthScale"|"SelectedDataPool"|"DefaultToken"|"EncoderLinkValues"|"EncoderLinkTiming"|"EncoderLinkPhaser"|"KnobUIStyle"|"EncoderUIStyle"|"ActiveOnly"|"MultiStepOnly"|"PreciseEdit"|"ScreenEncoder"|"TimeKeyTarget"|"ShowUserEncoder"|"TCSlot"|"SelectedPage"|"ValueReadout"|"SpeedReadout"|"PresetReadout"|"Layer"|"ProgrammingLayer"|"LastValueLayer"|"LastPhaserLayer"|"LastStepLayer"|"ProgrammingLayerGroup"|"HelpPopupZoomFactor"|"OverlayFade"|"TimeReadout"|"FrameReadout"|"ColorReadout"|"OopsViews"|"OopsProgrammer"|"OopsSelection"|"CreateOops"|"OopsConfirmation"|"MirrorSpecialExecutorPages"|"ShowAppearanceInCueInput"|"ShowSettingsInEditors"|"Users"|"Cmdlines"|"LastOpenRemotesTab"|"LastOpenDmxProtocolsTab"|"ProgUpdateCueFilter"|"SingleDigitInput"|"ResolveExecutorAssignments"|"PreviewVariables"|"DefaultGroupMasterMode"|"ExecConfigSequence"|"ExecConfigMacro"|"ExecConfigView"|"ExecConfigWorld"|"ExecConfigGroup"|"ExecConfigPreset"|"ExecConfigPlugin"|"ExecConfigUser"|"ExecConfigSound"|"ExecConfigScreenConfig"|"ExecConfigTimer"|"ExecConfigMaster"|"ExecConfigSpeedMaster"|"ExecConfigPlaybackMaster"|"ShowConnectors"|"LoadFixtureLibraryMA"|"LoadFixtureLibraryUser"|"LoadFixtureLibraryShare"|"DmxTesterAddressMode"|"DmxTesterRetainMode"|"DmxTesterMode"|"DmxTesterTestValue"|"MoveGridCursor"|"EncoderLinkStatusValues"|"EncoderLinkStatusTiming"|"EncoderLinkStatusPhaser"|"EncoderLinkStatusPhaserBar"|"ScreenshotEnabled"|"UpdateMenuPresetOptionsExpanded"|"UpdateMenuCueOptionsExpanded"|"NotificationsEnabled"|"NotificationType"|"SystemFpsLimit"|"Guid"|"NameAndApp"|"Note"|"Tags"|"IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint", role: Enums.Roles): string
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"VKExpanded"|"SEExpanded"|"NEExpanded"|"ActiveOnly"|"MultiStepOnly"|"PreciseEdit"|"ScreenEncoder"|"OopsViews"|"OopsProgrammer"|"OopsSelection"|"CreateOops"|"MirrorSpecialExecutorPages"|"ShowAppearanceInCueInput"|"ShowSettingsInEditors"|"SingleDigitInput"|"ResolveExecutorAssignments"|"PreviewVariables"|"ShowConnectors"|"LoadFixtureLibraryMA"|"LoadFixtureLibraryUser"|"LoadFixtureLibraryShare"|"DmxTesterRetainMode"|"ScreenshotEnabled"|"UpdateMenuPresetOptionsExpanded"|"UpdateMenuCueOptionsExpanded"|"NotificationsEnabled"|"SystemFpsLimit", role: nil): YesNo|boolean
+---@overload fun(name: "HelpPopupZoomFactor", role: nil): ZoomFactor
+---@overload fun(name: "Index"|"Count"|"No"|"MemoryFootprint"|"ScribbleWidthScale"|"DefaultToken"|"ShowUserEncoder"|"SelectedPage"|"OverlayFade"|"LastOpenRemotesTab"|"LastOpenDmxProtocolsTab"|"DmxTesterTestValue", role: nil): integer
+---@overload fun(name: "Name"|"DependencyExport"|"NameAndApp"|"Note", role: nil): string
+---@overload fun(name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Index"|"Count"|"No"|"Name"|"UserExpanded"|"FaderEnabled"|"Owned"|"Hidden"|"DependencyExport"|"MemoryFootprint"|"Guid"|"NameAndApp"|"Note"|"Tags"|"Scribble"|"Appearance"|"DMXReadout"|"NormalValue"|"WheelResolution"|"WheelMode"|"VKExpanded"|"SEExpanded"|"NEExpanded"|"TextInputAuxEditor"|"TextInputSmallScreenTab"|"ScribbleColor"|"ScribbleWidthScale"|"SelectedDataPool"|"DefaultToken"|"EncoderLinkValues"|"EncoderLinkTiming"|"EncoderLinkPhaser"|"KnobUIStyle"|"EncoderUIStyle"|"ActiveOnly"|"MultiStepOnly"|"PreciseEdit"|"ScreenEncoder"|"TimeKeyTarget"|"ShowUserEncoder"|"TCSlot"|"SelectedPage"|"ValueReadout"|"SpeedReadout"|"PresetReadout"|"Layer"|"ProgrammingLayer"|"LastValueLayer"|"LastPhaserLayer"|"LastStepLayer"|"ProgrammingLayerGroup"|"HelpPopupZoomFactor"|"OverlayFade"|"TimeReadout"|"FrameReadout"|"ColorReadout"|"OopsViews"|"OopsProgrammer"|"OopsSelection"|"CreateOops"|"OopsConfirmation"|"MirrorSpecialExecutorPages"|"ShowAppearanceInCueInput"|"ShowSettingsInEditors"|"Users"|"Cmdlines"|"LastOpenRemotesTab"|"LastOpenDmxProtocolsTab"|"ProgUpdateCueFilter"|"SingleDigitInput"|"ResolveExecutorAssignments"|"PreviewVariables"|"DefaultGroupMasterMode"|"ExecConfigSequence"|"ExecConfigMacro"|"ExecConfigView"|"ExecConfigWorld"|"ExecConfigGroup"|"ExecConfigPreset"|"ExecConfigPlugin"|"ExecConfigUser"|"ExecConfigSound"|"ExecConfigScreenConfig"|"ExecConfigTimer"|"ExecConfigMaster"|"ExecConfigSpeedMaster"|"ExecConfigPlaybackMaster"|"ShowConnectors"|"LoadFixtureLibraryMA"|"LoadFixtureLibraryUser"|"LoadFixtureLibraryShare"|"DmxTesterAddressMode"|"DmxTesterRetainMode"|"DmxTesterMode"|"DmxTesterTestValue"|"MoveGridCursor"|"EncoderLinkStatusValues"|"EncoderLinkStatusTiming"|"EncoderLinkStatusPhaser"|"EncoderLinkStatusPhaserBar"|"ScreenshotEnabled"|"UpdateMenuPresetOptionsExpanded"|"UpdateMenuCueOptionsExpanded"|"NotificationsEnabled"|"NotificationType"|"SystemFpsLimit", role: Enums.Roles): string
 ---@overload fun(name: integer, role: nil): Object
 function UserProfile:Get(name, role) end
 ---@generic T : GroupPoolSettingsCollect|RdmWindowSettingsCollect|WindowPhaserEditorSettingsCollect|TimecodeWindowSettingsCollect|SpecialExecutorPages|UnassignedTagGridFilter|NetworkGridFilter|FixtureSheetRowFilter|PhaserSheetRowFilter|RunningPlaybacksGirdContentFilter|GridPatchContentFilter|RunningPlaybacksSettingsCollect|PresetShapersPoolSettingsCollect|SequenceSelection|FixtureSheetSettingsCollect|PresetGoboPoolSettingsCollect|PresetColorPoolSettingsCollect|FilterPoolSettingsCollect|MacroPoolSettingsCollect|MidiInDescriptions|TimecodePoolSettingsCollect|CommandlineWindowSettingsCollect|SysmonWindowSettingsCollect|ExecConfigPoolSettingsCollect|AttributeDefinitions|Materials|Tags|RenderQualities|Images|GoboImages|Symbols|MeshImagePool|Cameras|Scribbles|EncoderBarPool|Variables|RDMFixtureType|RenderQuality|ExecEditorSettings|CommandlineWindowSettings|WindowInfoSettings|CloningWindowSettings|ClockWindowSettings|PoolSettings|SpecialWindowSettings|ModularPlaybackWindowSettings|WindowAgendaSettings|TimecodeWindowSettings|FixtureEditorSettings|PSRPatchSheetSettings|MessageGridSettings|GelGridSettings|SequenceSheetSettings|DMXSheetSettings|FixtureSheetSettings|RdmWindowSettings|RecipeSheetSettings|RunningPlaybacksSheetSettings|ShowCreatorSheetSettings|WindowPhaserEditorSettings|AtFilterSettings|WindowSoundSettings|LayoutViewSettings|CustomMasterSectionWindowSettings|HelpViewerWindowSettings|SysmonWindowSettings|ColorPickerSettings|WindowTrackpadSettings|EncoderBarWindowSettings|ShaperWindowSettings|MatricksWindowSettings|View3DSettings|SelectionViewSettings|SysteminfoWindowSettings|XkeysWindowSettings|CommandWingBarSettings|PlaybackWindowSettings|Camera|ShowData|AudioInDeviceDescription|GridColumnConfiguration|MIDIDeviceDescription|HelperWindowSettingsCollect|WindowInfoSettingsCollect|TagFakeCollect|StorePreferencesPreset|ClockWindowSettingsCollect|IllegalObject|AddonVariables|WindowSettingsCollect|SmartViewPool|NtpMonitor|Timezones|GridColumnConfigurationCollect|Root|MatricksPoolSettingsCollect|TimerPoolSettingsCollect|WindowTypes|PresetDimmerPoolSettingsCollect|LayoutViewSettingsCollect|PoolSettingsCollect|PluginPoolSettingsCollect|PultCollect|Collection|ViewButtonScreens|MidiOutDescriptions|PresetControlPoolSettingsCollect|KeyboardLayouts|PluginPreferencesCollect|WindowAgendaSettingsCollect|DmxSheetSettingsCollect|PresetAllPoolSettingsCollect|SoundChannels|SysteminfoWindowSettingsCollect|GridBase|StorePreferences|AutoCreateSettings|LayoutElementDefaultsCollect|GridColumnFilterCollect|UserAttributePreferences|Environments|GridContentFilterSettings|DMXRoot|PlaybackWindowSettingsCollect|ShowMetaData|GelPoolSettingsCollect|PresetVideoPoolSettingsCollect|AudioInDescriptions|SequenceSheetSettingsCollect|ScreenConfigurations|TabRegistry|SelectionViewSettingsCollect|DriveCollect|ColorTheme|BitmapPoolSettingsCollect|WorldPoolSettingsCollect|EncoderBarWindowSettingsCollect|PresetFocusPoolSettingsCollect|ScribbleEdit|MessageGridSettingsCollect|GeneratorPoolSettingsCollect|PresetBeamPoolSettingsCollect|TimecodeSlotPoolSettingsCollect|ExecutorFixation|PresetPositionPoolSettingsCollect|TemporaryWindowSettings|LayoutCameraObject|VideoPoolSettingsCollect|View3DSettingsCollect|LayoutPoolSettingsCollect|PresetDynamicPoolSettingsCollect|SoundPoolSettingsCollect|MVRxchange|SequencePoolSettingsCollect|TestRGBInterface|PresetPoolSettingsCollect|QuickeyPoolSettingsCollect|ModularPlaybackWindowSettingsCollect|ProgLayers|SmartViewSettingsCollect|SpecialWindowSettingsCollect|ContentSheetSettingsCollect|ColorPickerSettingsCollect|KeyboardShortCuts|PagePoolSettingsCollect|Recipe|grandMA3Modules|ContentSheetGridScroller|MeshLineEdit|DMXSheet|MeshMaterialGrid|FixtureSheet
@@ -390,3 +569,368 @@ function UserProfile:Insert(index, class, undo, count) end
 ---@overload fun(class: "NoteTextEdit", undo: Undo?): NoteTextEdit
 ---@overload fun(class: nil, undo: Undo?): Object
 function UserProfile:Find(class, undo) end
+---@overload fun(property_name: "Appearance", property_value: Appearance, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Cmdlines", property_value: Cmdline[], override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ColorReadout", property_value: ColorDisplayMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ExecConfigSequence"|"ExecConfigMacro"|"ExecConfigView"|"ExecConfigWorld"|"ExecConfigGroup"|"ExecConfigPreset"|"ExecConfigPlugin"|"ExecConfigUser"|"ExecConfigSound"|"ExecConfigScreenConfig"|"ExecConfigTimer"|"ExecConfigMaster"|"ExecConfigSpeedMaster"|"ExecConfigPlaybackMaster", property_value: Configuration, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "NormalValue", property_value: DMXPropertyValue, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "DMXReadout", property_value: DMXReadoutMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "WheelResolution", property_value: DimmerWheelResolution, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "DmxTesterAddressMode", property_value: DmxTesterAddressMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "DmxTesterMode", property_value: DmxTesterMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "EncoderLinkTiming", property_value: EncoderLink, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "EncoderLinkPhaser", property_value: EncoderLinkPhaser, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "EncoderLinkValues", property_value: EncoderLinkValues, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "KnobUIStyle"|"EncoderUIStyle", property_value: EncoderUIStyle, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "FrameReadout", property_value: FrameFormat, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "MoveGridCursor", property_value: GridCursorMovement, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "DefaultGroupMasterMode", property_value: GroupMasterMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Guid", property_value: Key128, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "NotificationType", property_value: NotificationType, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "OopsConfirmation", property_value: OopsConfirmation, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "SelectedDataPool", property_value: Pool, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "PresetReadout", property_value: PresetReadoutMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Layer", property_value: ProgLayer, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ProgUpdateCueFilter", property_value: ProgUpdateCueMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ProgrammingLayer"|"LastValueLayer"|"LastPhaserLayer"|"LastStepLayer", property_value: ProgrammingLayer, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ProgrammingLayerGroup", property_value: ProgrammingLayerGroup, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Scribble", property_value: Scribble, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "SpeedReadout", property_value: SpeedReadoutMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Tags", property_value: TagMap, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "TextInputAuxEditor"|"TextInputSmallScreenTab", property_value: TextInputEditor, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "TimeReadout", property_value: TimeDisplayFormat, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "TimeKeyTarget", property_value: TimeKeyTarget, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "TCSlot", property_value: TimecodeSlotShort, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ScribbleColor", property_value: UColor, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Users", property_value: User[], override_change_level: ChangeLevel?)
+---@overload fun(property_name: "ValueReadout", property_value: ValueReadoutModeNatural, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "WheelMode", property_value: WheelMode, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "IgnoreNetwork"|"StructureLocked"|"SystemLocked"|"Lock"|"Hidden"|"VKExpanded"|"SEExpanded"|"NEExpanded"|"ActiveOnly"|"MultiStepOnly"|"PreciseEdit"|"ScreenEncoder"|"OopsViews"|"OopsProgrammer"|"OopsSelection"|"CreateOops"|"MirrorSpecialExecutorPages"|"ShowAppearanceInCueInput"|"ShowSettingsInEditors"|"SingleDigitInput"|"ResolveExecutorAssignments"|"PreviewVariables"|"ShowConnectors"|"LoadFixtureLibraryMA"|"LoadFixtureLibraryUser"|"LoadFixtureLibraryShare"|"DmxTesterRetainMode"|"ScreenshotEnabled"|"UpdateMenuPresetOptionsExpanded"|"UpdateMenuCueOptionsExpanded"|"NotificationsEnabled"|"SystemFpsLimit", property_value: YesNo|boolean, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "HelpPopupZoomFactor", property_value: ZoomFactor, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Index"|"Count"|"No"|"ScribbleWidthScale"|"DefaultToken"|"ShowUserEncoder"|"SelectedPage"|"OverlayFade"|"LastOpenRemotesTab"|"LastOpenDmxProtocolsTab"|"DmxTesterTestValue", property_value: integer, override_change_level: ChangeLevel?)
+---@overload fun(property_name: "Name"|"DependencyExport"|"Note", property_value: string, override_change_level: ChangeLevel?)
+function UserProfile:Set(property_name, property_value, override_change_level) end
+---@overload fun(property_name: "ClockSource", property_value: ClockSources)
+---@overload fun(property_name: "View", property_value: GelGridType)
+---@overload fun(property_name: "SortBy", property_value: GelSortType)
+---@overload fun(property_name: "TimeDisplayFormat", property_value: TimeDisplayClockFormat)
+---@overload fun(property_name: "FrameReadout", property_value: FrameFormatClockSource)
+---@overload fun(property_name: "LinkResolution", property_value: EncoderLinkResolution)
+---@overload fun(property_name: "FilterType", property_value: PSRPatchFilterType)
+---@overload fun(property_name: "LineHeight", property_value: PhaserLineHeight|LineHeights|ButtonHeight)
+---@overload fun(property_name: "ShownCue", property_value: Cue)
+---@overload fun(property_name: "SessionTimeStyle", property_value: SessionTimeStyle)
+---@overload fun(property_name: "SessionTimeStyleTZ", property_value: SessionTimeStyleTZ)
+---@overload fun(property_name: "StageFilter", property_value: None_only)
+---@overload fun(property_name: "TrackpadMode", property_value: TrackpadMode)
+---@overload fun(property_name: "Pivot", property_value: Math.TVector<float>)
+---@overload fun(property_name: "Source", property_value: CachedObjectSource)
+---@overload fun(property_name: "TrackpadPTInvertMode", property_value: TrackpadPTInvertMode)
+---@overload fun(property_name: "CameraMode", property_value: CameraMode)
+---@overload fun(property_name: "Version", property_value: Stream.Version)
+---@overload fun(property_name: "TrackpadPTMode", property_value: TrackpadPTMode)
+---@overload fun(property_name: "UserRights", property_value: UserRights)
+---@overload fun(property_name: "Camera", property_value: Camera)
+---@overload fun(property_name: "EditTools", property_value: PhaserEditTool)
+---@overload fun(property_name: "RenderQuality", property_value: RenderQuality)
+---@overload fun(property_name: "Stage", property_value: Stage)
+---@overload fun(property_name: "ArrangementMarcType", property_value: ArrangementMarcType)
+---@overload fun(property_name: "Category", property_value: MessageCategory)
+---@overload fun(property_name: "InputControl3d", property_value: InputControl3d)
+---@overload fun(property_name: "Priority", property_value: MessagePriority)
+---@overload fun(property_name: "BloomIntensity", property_value: BloomIntensity3d|boolean)
+---@overload fun(property_name: "AbsRelMode", property_value: PhaserAbsRelMode)
+---@overload fun(property_name: "DisplayMode", property_value: PresetDisplayMode)
+---@overload fun(property_name: "ActiveEnvironment", property_value: SelectedEnvironment)
+---@overload fun(property_name: "Mode1D", property_value: PhaserMode1D)
+---@overload fun(property_name: "Action", property_value: PluginPoolAction|SequenceAction|PresetActionToken|TimecodeSlotPoolAction|TimecodePoolAction|PresetAction|SoundPoolAction|FilterAction|VideoPoolAction|MacroPoolAction)
+---@overload fun(property_name: "Tool", property_value: AgendaTool|LayoutTool|TimecodeTool)
+---@overload fun(property_name: "ChannelFilter", property_value: ChannelFilterMode)
+---@overload fun(property_name: "CursorScrollMode", property_value: TimeCursorScrollMode)
+---@overload fun(property_name: "ViewMode", property_value: DmxSheetSettingsViewMode|ShaperViewMode|PhaserViewMode|AgendaViewMode|TCViewMode)
+---@overload fun(property_name: "TextMode", property_value: TCTextMode)
+---@overload fun(property_name: "StoreSource", property_value: StoreSource)
+---@overload fun(property_name: "TimerAction", property_value: TimerAction)
+---@overload fun(property_name: "Attributes", property_value: AttributeMode)
+---@overload fun(property_name: "EncoderBar", property_value: PhaserBars)
+---@overload fun(property_name: "Layer", property_value: TrackLayerAuto|ProgLayerAuto)
+---@overload fun(property_name: "RememberedTab", property_value: SpecialWindowRememberedTab|WindowInfoTab)
+---@overload fun(property_name: "GridMergeMode", property_value: GridMergeMode)
+---@overload fun(property_name: "LinkMode", property_value: InfoLinkMode|ShaperEncoderLinkMode)
+---@overload fun(property_name: "WindowMode", property_value: InfoWindowMode)
+---@overload fun(property_name: "ShowCreatorSettings", property_value: ShowCreatorSettings)
+---@overload fun(property_name: "GridType", property_value: GridType)
+---@overload fun(property_name: "AppearanceMode", property_value: InfoAppearanceMode)
+---@overload fun(property_name: "ContentSheetCueMode", property_value: ContentSheetCueMode)
+---@overload fun(property_name: "FixtureAppearance", property_value: FixtureAppearanceMode)
+---@overload fun(property_name: "Guid", property_value: Key128)
+---@overload fun(property_name: "CopyCueOnly", property_value: CopyCueOnly)
+---@overload fun(property_name: "FixtureGraphic", property_value: FixtureGraphicMode)
+---@overload fun(property_name: "Scribble", property_value: Scribble)
+---@overload fun(property_name: "FixtureGraphicSource", property_value: FixturGraphicSource)
+---@overload fun(property_name: "ObjectType", property_value: ShowCreatorObjectType)
+---@overload fun(property_name: "CopyCueSrc", property_value: CueCopySrc)
+---@overload fun(property_name: "FontSize", property_value: SelectionViewFontSize)
+---@overload fun(property_name: "CopyCueDst", property_value: CueCopyDst)
+---@overload fun(property_name: "CuePartAppearanceContent", property_value: CuePartAppearanceContent)
+---@overload fun(property_name: "CopyCueDstMode", property_value: CueCopyDstMode)
+---@overload fun(property_name: "Tags", property_value: TagMap)
+---@overload fun(property_name: "ZoomFactor", property_value: ZoomFactor)
+---@overload fun(property_name: "SortColorBySaturation", property_value: SortColorBy)
+---@overload fun(property_name: "UseChannelSet", property_value: AutoCreateSource)
+---@overload fun(property_name: "Layout", property_value: Layout)
+---@overload fun(property_name: "LastTab", property_value: ExecEditorTab)
+---@overload fun(property_name: "CanvasFitMode", property_value: LayoutStretch)
+---@overload fun(property_name: "DefaultColumns", property_value: Property<Container.HashFlatSet<GridLine, Container.MemPtrFlatHashPolicies<GridLine, 0>>>.`vftable')
+---@overload fun(property_name: "StartOfWeek", property_value: WeekDay)
+---@overload fun(property_name: "FixtureSourceType", property_value: FixtureSourceType)
+---@overload fun(property_name: "InterpolationTo", property_value: MeasurementInterpolation)
+---@overload fun(property_name: "MultiLedBeamMode", property_value: MultiLedBeamMode)
+---@overload fun(property_name: "BeamMode", property_value: BeamMode)
+---@overload fun(property_name: "GridStyle", property_value: LayoutGridStyle)
+---@overload fun(property_name: "BeamModePatch", property_value: BeamModePatch)
+---@overload fun(property_name: "LinkType", property_value: SequenceLinkType)
+---@overload fun(property_name: "ShadowMode", property_value: ShadowMode)
+---@overload fun(property_name: "GoboMode", property_value: GoboMode)
+---@overload fun(property_name: "Selection", property_value: Group)
+---@overload fun(property_name: "DilutionType", property_value: FalloffType)
+---@overload fun(property_name: "SelectionMode", property_value: StrictNormalMode|SelectionModeLayout|SelectionMode)
+---@overload fun(property_name: "Preset", property_value: Preset)
+---@overload fun(property_name: "MAtricks", property_value: MAtrick)
+---@overload fun(property_name: "FitType", property_value: LayoutFitType)
+---@overload fun(property_name: "BodyQuality3d", property_value: BodyQuality3d)
+---@overload fun(property_name: "Generator", property_value: GeneratorBaseObject)
+---@overload fun(property_name: "BodyQuality3dPatch", property_value: BodyQuality3dPatch)
+---@overload fun(property_name: "PlaybacksToShow", property_value: PlaybacksToShow)
+---@overload fun(property_name: "FailedCookedPart", property_value: FailedCookedPart)
+---@overload fun(property_name: "LayoutOutputSelection", property_value: LayoutOutputSelection)
+---@overload fun(property_name: "Filter", property_value: Filter)
+---@overload fun(property_name: "ColorPickerSettings", property_value: ColorPickerSettings)
+---@overload fun(property_name: "MergeCells", property_value: SheetSettingsMergeMode)
+---@overload fun(property_name: "User", property_value: User)
+---@overload fun(property_name: "LassoFilter", property_value: LayoutLassoSelectionFilter)
+---@overload fun(property_name: "ShaperWindowSettings", property_value: ShaperWindowSettings)
+---@overload fun(property_name: "Address", property_value: DMXPropertyAddress)
+---@overload fun(property_name: "AddressMode", property_value: DmxSheetSettingsAddressMode)
+---@overload fun(property_name: "Target", property_value: Mesh)
+---@overload fun(property_name: "Levelbar", property_value: DmxSheetSettingsLevelbar)
+---@overload fun(property_name: "Readout", property_value: DMXValueReadoutMode)
+---@overload fun(property_name: "SelectedColumnConfiguration", property_value: GridColumnConfiguration)
+---@overload fun(property_name: "DispView", property_value: DispView)
+---@overload fun(property_name: "Universe", property_value: DmxSheetSettingsSelected)
+---@overload fun(property_name: "ValuesMode", property_value: PresetValuesMode)
+---@overload fun(property_name: "ColorMixMode", property_value: ColorMixMode)
+---@overload fun(property_name: "Mode", property_value: GridContentFilterMode|ColorPickerWindowMode)
+---@overload fun(property_name: "ColorWheelMode", property_value: ColorWheelMode)
+---@overload fun(property_name: "FilterDialogPosition", property_value: ItemGroupPosition)
+---@overload fun(property_name: "LastColorEncoderFunction", property_value: ColorEncoderFunction)
+---@overload fun(property_name: "FilterDialogSize", property_value: Dimension)
+---@overload fun(property_name: "PresetData", property_value: EncoderLinkPhaser[])
+---@overload fun(property_name: "Countdown", property_value: SequenceCountdown)
+---@overload fun(property_name: "CuePartAppearance", property_value: CuePartAppearance)
+---@overload fun(property_name: "BarMode", property_value: ShaperBarMode)
+---@overload fun(property_name: "ControlMode", property_value: ShaperControlMode)
+---@overload fun(property_name: "PoolColumnsCount", property_value: DefinedPoolColumns)
+---@overload fun(property_name: "MiniFadersMode", property_value: MiniFadersMode)
+---@overload fun(property_name: "ProductCategory", property_value: RDMProductCategory)
+---@overload fun(property_name: "OnResetToDefault", property_value: fun(str: string) : boolean)
+---@overload fun(property_name: "DataPool", property_value: Pool)
+---@overload fun(property_name: "ResetBlade", property_value: fun(str: string, int: integer) : boolean)
+---@overload fun(property_name: "PoolType", property_value: Pooltype)
+---@overload fun(property_name: "ActiveDisplay", property_value: ActiveDisplay)
+---@overload fun(property_name: "ActiveDisplay", property_value: ActiveDisplay)
+---@overload fun(property_name: "Tool", property_value: AgendaTool)
+---@overload fun(property_name: "ViewMode", property_value: AgendaViewMode)
+---@overload fun(property_name: "Appearance"|"Appearance", property_value: Appearance)
+---@overload fun(property_name: "ArrangementMarcType", property_value: ArrangementMarcType)
+---@overload fun(property_name: "Attributes", property_value: AttributeMode)
+---@overload fun(property_name: "TimeLayerResolution"|"PhaserLayerResolution", property_value: AttriebuteEncoderResolutionSmall)
+---@overload fun(property_name: "UseChannelSet", property_value: AutoCreateSource)
+---@overload fun(property_name: "BeamMode", property_value: BeamMode)
+---@overload fun(property_name: "BeamModePatch", property_value: BeamModePatch)
+---@overload fun(property_name: "BloomIntensity", property_value: BloomIntensity3d|boolean)
+---@overload fun(property_name: "BodyQuality3d", property_value: BodyQuality3d)
+---@overload fun(property_name: "BodyQuality3dPatch", property_value: BodyQuality3dPatch)
+---@overload fun(property_name: "LineHeight", property_value: ButtonHeight)
+---@overload fun(property_name: "Source", property_value: CachedObjectSource)
+---@overload fun(property_name: "Camera", property_value: Camera)
+---@overload fun(property_name: "CameraMode", property_value: CameraMode)
+---@overload fun(property_name: "ChannelFilter", property_value: ChannelFilterMode)
+---@overload fun(property_name: "ChannelSetReadout"|"ChannelSetReadout", property_value: ChannelSetReadoutMode)
+---@overload fun(property_name: "ClockSource", property_value: ClockSources)
+---@overload fun(property_name: "ColorMode"|"ColorMode"|"ColorMode", property_value: ColorDisplayModeAuto)
+---@overload fun(property_name: "LastColorEncoderFunction", property_value: ColorEncoderFunction)
+---@overload fun(property_name: "ColorMixMode", property_value: ColorMixMode)
+---@overload fun(property_name: "ColorPickerSettings", property_value: ColorPickerSettings)
+---@overload fun(property_name: "Mode", property_value: ColorPickerWindowMode)
+---@overload fun(property_name: "ColorWheelMode", property_value: ColorWheelMode)
+---@overload fun(property_name: "LabTextColor"|"PointLightColor"|"AmbientLightColor"|"BackgroundColor"|"LabBackgroundColor", property_value: Colors.RGB<float>)
+---@overload fun(property_name: "DisplayModeCM"|"DisplayModeExec", property_value: CommandWingBarDisplayMode)
+---@overload fun(property_name: "ContentSheetCueMode", property_value: ContentSheetCueMode)
+---@overload fun(property_name: "CopyCueOnly", property_value: CopyCueOnly)
+---@overload fun(property_name: "ShownCue", property_value: Cue)
+---@overload fun(property_name: "CopyCueDst", property_value: CueCopyDst)
+---@overload fun(property_name: "CopyCueDstMode", property_value: CueCopyDstMode)
+---@overload fun(property_name: "CopyCueSrc", property_value: CueCopySrc)
+---@overload fun(property_name: "UpdateCueOnly"|"CueOnly", property_value: CueOnly)
+---@overload fun(property_name: "CuePartAppearance", property_value: CuePartAppearance)
+---@overload fun(property_name: "CuePartAppearanceContent", property_value: CuePartAppearanceContent)
+---@overload fun(property_name: "CuePart"|"CuePart", property_value: CuePartMode)
+---@overload fun(property_name: "Address", property_value: DMXPropertyAddress)
+---@overload fun(property_name: "Readout", property_value: DMXValueReadoutMode)
+---@overload fun(property_name: "SelectedDay"|"VisibleDate", property_value: DatumMode)
+---@overload fun(property_name: "PoolColumnsCount", property_value: DefinedPoolColumns)
+---@overload fun(property_name: "FilterDialogSize", property_value: Dimension)
+---@overload fun(property_name: "ResolutionPT"|"Resolution", property_value: DimmerWheelResolution)
+---@overload fun(property_name: "DispView", property_value: DispView)
+---@overload fun(property_name: "AddressMode", property_value: DmxSheetSettingsAddressMode)
+---@overload fun(property_name: "Levelbar", property_value: DmxSheetSettingsLevelbar)
+---@overload fun(property_name: "Universe", property_value: DmxSheetSettingsSelected)
+---@overload fun(property_name: "ViewMode", property_value: DmxSheetSettingsViewMode)
+---@overload fun(property_name: "DualEncoderFactor"|"DualEncoderPressFactor", property_value: EncoderFactor)
+---@overload fun(property_name: "PresetData", property_value: EncoderLinkPhaser[])
+---@overload fun(property_name: "LinkResolution", property_value: EncoderLinkResolution)
+---@overload fun(property_name: "LastTab", property_value: ExecEditorTab)
+---@overload fun(property_name: "FailedCookedPart", property_value: FailedCookedPart)
+---@overload fun(property_name: "DilutionType", property_value: FalloffType)
+---@overload fun(property_name: "Filter", property_value: Filter)
+---@overload fun(property_name: "Action", property_value: FilterAction)
+---@overload fun(property_name: "FixtureGraphicSource", property_value: FixturGraphicSource)
+---@overload fun(property_name: "FixtureAppearance", property_value: FixtureAppearanceMode)
+---@overload fun(property_name: "FixtureGraphic", property_value: FixtureGraphicMode)
+---@overload fun(property_name: "FixtureSourceType", property_value: FixtureSourceType)
+---@overload fun(property_name: "FontSize"|"LabelFontSize", property_value: FontSizes)
+---@overload fun(property_name: "FrameReadout", property_value: FrameFormatClockSource)
+---@overload fun(property_name: "FrameReadout"|"FrameReadout"|"FrameReadout", property_value: FrameFormatDefault)
+---@overload fun(property_name: "View", property_value: GelGridType)
+---@overload fun(property_name: "SortBy", property_value: GelSortType)
+---@overload fun(property_name: "Generator", property_value: GeneratorBaseObject)
+---@overload fun(property_name: "GoboMode", property_value: GoboMode)
+---@overload fun(property_name: "SelectedColumnConfiguration", property_value: GridColumnConfiguration)
+---@overload fun(property_name: "Mode", property_value: GridContentFilterMode)
+---@overload fun(property_name: "GridMergeMode", property_value: GridMergeMode)
+---@overload fun(property_name: "GridType", property_value: GridType)
+---@overload fun(property_name: "Selection", property_value: Group)
+---@overload fun(property_name: "AppearanceMode", property_value: InfoAppearanceMode)
+---@overload fun(property_name: "LinkMode", property_value: InfoLinkMode)
+---@overload fun(property_name: "WindowMode", property_value: InfoWindowMode)
+---@overload fun(property_name: "InputControl3d", property_value: InputControl3d)
+---@overload fun(property_name: "FilterDialogPosition", property_value: ItemGroupPosition)
+---@overload fun(property_name: "Guid", property_value: Key128)
+---@overload fun(property_name: "Layout", property_value: Layout)
+---@overload fun(property_name: "FitType", property_value: LayoutFitType)
+---@overload fun(property_name: "GridStyle", property_value: LayoutGridStyle)
+---@overload fun(property_name: "LassoFilter", property_value: LayoutLassoSelectionFilter)
+---@overload fun(property_name: "LayoutOutputSelection", property_value: LayoutOutputSelection)
+---@overload fun(property_name: "CanvasFitMode", property_value: LayoutStretch)
+---@overload fun(property_name: "Tool", property_value: LayoutTool)
+---@overload fun(property_name: "PosX"|"PosY"|"PosZ"|"PivotDistMin"|"Near"|"Far"|"PivotDistMax", property_value: LengthPropertyValue)
+---@overload fun(property_name: "LineHeight", property_value: LineHeights)
+---@overload fun(property_name: "MAtricks", property_value: MAtrick)
+---@overload fun(property_name: "Action", property_value: MacroPoolAction)
+---@overload fun(property_name: "Pivot", property_value: Math.TVector<float>)
+---@overload fun(property_name: "InterpolationTo", property_value: MeasurementInterpolation)
+---@overload fun(property_name: "Target", property_value: Mesh)
+---@overload fun(property_name: "Category", property_value: MessageCategory)
+---@overload fun(property_name: "Priority", property_value: MessagePriority)
+---@overload fun(property_name: "MiniFadersMode", property_value: MiniFadersMode)
+---@overload fun(property_name: "MultiLedBeamMode", property_value: MultiLedBeamMode)
+---@overload fun(property_name: "StageFilter", property_value: None_only)
+---@overload fun(property_name: "Filter"|"SelectedAgenda"|"FixedTarget"|"Values"|"Filter"|"Target"|"PreferenceHandle"|"DestinationObject", property_value: Object)
+---@overload fun(property_name: "DirectAction"|"Executors"|"Labels"|"Executors"|"Row400"|"Row100"|"Row300"|"Labels"|"Row400"|"Row200"|"Row300"|"Row100"|"Row200"|"Labels"|"Executors", property_value: OnOff|boolean)
+---@overload fun(property_name: "FilterType", property_value: PSRPatchFilterType)
+---@overload fun(property_name: "AbsRelMode", property_value: PhaserAbsRelMode)
+---@overload fun(property_name: "EncoderBar", property_value: PhaserBars)
+---@overload fun(property_name: "EditTools", property_value: PhaserEditTool)
+---@overload fun(property_name: "LineHeight", property_value: PhaserLineHeight)
+---@overload fun(property_name: "Mode1D", property_value: PhaserMode1D)
+---@overload fun(property_name: "ViewMode", property_value: PhaserViewMode)
+---@overload fun(property_name: "PlaybacksToShow", property_value: PlaybacksToShow)
+---@overload fun(property_name: "Action", property_value: PluginPoolAction)
+---@overload fun(property_name: "DataPool", property_value: Pool)
+---@overload fun(property_name: "PoolType", property_value: Pooltype)
+---@overload fun(property_name: "Preset", property_value: Preset)
+---@overload fun(property_name: "Action", property_value: PresetAction)
+---@overload fun(property_name: "Action", property_value: PresetActionToken)
+---@overload fun(property_name: "DisplayMode", property_value: PresetDisplayMode)
+---@overload fun(property_name: "PresetMode"|"PresetModeInternal"|"PresetMode", property_value: PresetMode)
+---@overload fun(property_name: "UpdatePresetMode"|"PresetMode", property_value: PresetModeDefault)
+---@overload fun(property_name: "PresetReadout"|"PresetReadout"|"PresetReadout", property_value: PresetReadoutMode)
+---@overload fun(property_name: "ValuesMode", property_value: PresetValuesMode)
+---@overload fun(property_name: "Layer", property_value: ProgLayerAuto)
+---@overload fun(property_name: "DefaultColumns", property_value: Property<Container.HashFlatSet<GridLine, Container.MemPtrFlatHashPolicies<GridLine, 0>>>.`vftable')
+---@overload fun(property_name: "ProductCategory", property_value: RDMProductCategory)
+---@overload fun(property_name: "RenderQuality", property_value: RenderQuality)
+---@overload fun(property_name: "Scribble", property_value: Scribble)
+---@overload fun(property_name: "ScrollH"|"ScrollV", property_value: ScrollType)
+---@overload fun(property_name: "#Sections"|"#Sections", property_value: SectionCount)
+---@overload fun(property_name: "ActiveEnvironment", property_value: SelectedEnvironment)
+---@overload fun(property_name: "SelectionMode", property_value: SelectionMode)
+---@overload fun(property_name: "SelectionMode", property_value: SelectionModeLayout)
+---@overload fun(property_name: "FontSize", property_value: SelectionViewFontSize)
+---@overload fun(property_name: "Action", property_value: SequenceAction)
+---@overload fun(property_name: "Countdown", property_value: SequenceCountdown)
+---@overload fun(property_name: "LinkType", property_value: SequenceLinkType)
+---@overload fun(property_name: "SessionTimeStyle", property_value: SessionTimeStyle)
+---@overload fun(property_name: "SessionTimeStyleTZ", property_value: SessionTimeStyleTZ)
+---@overload fun(property_name: "ShadowMode", property_value: ShadowMode)
+---@overload fun(property_name: "BarMode", property_value: ShaperBarMode)
+---@overload fun(property_name: "ControlMode", property_value: ShaperControlMode)
+---@overload fun(property_name: "LinkMode", property_value: ShaperEncoderLinkMode)
+---@overload fun(property_name: "ViewMode", property_value: ShaperViewMode)
+---@overload fun(property_name: "ShaperWindowSettings", property_value: ShaperWindowSettings)
+---@overload fun(property_name: "SheetMode"|"SheetMode", property_value: SheetMode)
+---@overload fun(property_name: "MergeCells", property_value: SheetSettingsMergeMode)
+---@overload fun(property_name: "ObjectType", property_value: ShowCreatorObjectType)
+---@overload fun(property_name: "ShowCreatorSettings", property_value: ShowCreatorSettings)
+---@overload fun(property_name: "SortColorBySaturation", property_value: SortColorBy)
+---@overload fun(property_name: "Action", property_value: SoundPoolAction)
+---@overload fun(property_name: "RememberedTab", property_value: SpecialWindowRememberedTab)
+---@overload fun(property_name: "SpeedMaster"|"SpeedMaster", property_value: SpeedMaster)
+---@overload fun(property_name: "Speed"|"Speed"|"Speed", property_value: SpeedReadoutModeAuto)
+---@overload fun(property_name: "SpeedScale"|"SpeedScale", property_value: SpeedScale)
+---@overload fun(property_name: "Stage", property_value: Stage)
+---@overload fun(property_name: "StoreSource", property_value: StoreSource)
+---@overload fun(property_name: "CopyMode"|"StoreMode", property_value: StoremodeRadio)
+---@overload fun(property_name: "Version", property_value: Stream.Version)
+---@overload fun(property_name: "SelectionMode", property_value: StrictNormalMode)
+---@overload fun(property_name: "TextMode", property_value: TCTextMode)
+---@overload fun(property_name: "ViewMode", property_value: TCViewMode)
+---@overload fun(property_name: "Tags", property_value: TagMap)
+---@overload fun(property_name: "CursorScrollMode", property_value: TimeCursorScrollMode)
+---@overload fun(property_name: "TimeDisplayFormat", property_value: TimeDisplayClockFormat)
+---@overload fun(property_name: "TimeDisplayFormat"|"TimeDisplayFormat"|"TimeDisplayFormat", property_value: TimeDisplayFormatSelected)
+---@overload fun(property_name: "OffFade"|"OffFade", property_value: TimePropertyValue)
+---@overload fun(property_name: "Timecode"|"CurrentTimecode"|"TimecodeHandle", property_value: Timecode)
+---@overload fun(property_name: "Action", property_value: TimecodePoolAction)
+---@overload fun(property_name: "Action", property_value: TimecodeSlotPoolAction)
+---@overload fun(property_name: "Tool", property_value: TimecodeTool)
+---@overload fun(property_name: "TimerAction", property_value: TimerAction)
+---@overload fun(property_name: "Layer", property_value: TrackLayerAuto)
+---@overload fun(property_name: "TrackingShield"|"CopyTrackingShield", property_value: TrackingShield)
+---@overload fun(property_name: "TrackpadMode", property_value: TrackpadMode)
+---@overload fun(property_name: "TrackpadPTInvertMode", property_value: TrackpadPTInvertMode)
+---@overload fun(property_name: "TrackpadPTMode", property_value: TrackpadPTMode)
+---@overload fun(property_name: "NoteLabelColor"|"PixelColor"|"PoolColor"|"EmptyColor"|"ForNoneColor"|"GridColor"|"ForSomeColor"|"ForAllColor", property_value: UColor)
+---@overload fun(property_name: "UpdateModePresets"|"UpdateModeCues", property_value: Update)
+---@overload fun(property_name: "User", property_value: User)
+---@overload fun(property_name: "UserRights", property_value: UserRights)
+---@overload fun(property_name: "Readout"|"Readout"|"Readout", property_value: ValueReadoutModeAuto)
+---@overload fun(property_name: "Action", property_value: VideoPoolAction)
+---@overload fun(property_name: "StartOfWeek", property_value: WeekDay)
+---@overload fun(property_name: "RememberedTab", property_value: WindowInfoTab)
+---@overload fun(property_name: "WingID"|"WingID"|"WingID", property_value: WingID)
+---@overload fun(property_name: "InputFilter"|"Filter"|"InputFilter", property_value: World)
+---@overload fun(property_name: "ShowLayerToolbar"|"ShowShowHistory"|"ShowScreenEncoder"|"AddAlpha"|"AntiAlias"|"ShowStepButtons"|"Parallel"|"Invisible"|"ShowEncoderPageSelector"|"RenderGBufferTextures"|"DisableCalibration"|"AutoGenerated"|"DrawRubberbandMATricks"|"ShowChannels"|"ShowSecondFractals"|"PrismLines"|"MarkUnpatched"|"ShowTitleBar"|"ShowCustomSection"|"PointOfOrigin"|"RequestDefaultTitlebuttons"|"ShowMasterSection"|"ShowSelection"|"ShowPageSection"|"RenderEnvironment"|"HideEnvironmental"|"ShowMasterSectionKnobs"|"SubFixtureSupportDuringProjectionSelection"|"ShowLabels"|"SelectFixtureBySpotLabel"|"AxisLines"|"ShowHardwareButtons"|"AxisLinesKinematicChain"|"ShowGrandMasterSection"|"BoundingBoxes"|"ShadowMapStatistics"|"UseBeamColorInformation"|"DrawMArkerBoundaries"|"ModelGroupStatistics"|"Installed"|"TrackpadTapForClick"|"IsResource"|"InStream"|"MAgic"|"ShowBeams"|"Absolute"|"Relative"|"BeamLinesfadeout"|"StepBar"|"FilterProgOnly"|"Priority"|"Wireframed"|"LayerSheet"|"Modelscandisableculling"|"AttributeSheet"|"Silhouettes"|"ShowEmptyLines"|"CullShadows"|"LayerBar"|"StoreLook"|"ShadowTransparency"|"ShowTime"|"ShowFPS"|"NativeColors"|"TimelineOnly"|"DeferredDevMode"|"PresetInputFilter"|"LensShading"|"ShowTimeline"|"FollowTimeCursor"|"StoreEmbedded"|"PlaybackToolbar"|"StoreMatricks"|"EventDiamond"|"StoreScreenshot"|"EventSymbol"|"UpdateInputFilter"|"EventCueNumber"|"EventCueName"|"ProgOnly"|"KeepActivation"|"ShowTabs"|"EventCmdIndicator"|"FilterSelection"|"GridLines"|"DependenciesAllowed"|"Markerintracks"|"FeatureSort"|"ToolBar"|"FixtureSort"|"MAtricksTransformation"|"ShowLayerToolbar"|"CenterlineX"|"ShowFilterToolbar"|"CenterlineY"|"UseTargetAppearance"|"HasWorldFilter"|"ShowLabelBackground"|"AlignBar"|"EditMode"|"ShowLabel"|"AutoScroll"|"ShowTracked"|"ShowEmpty"|"HasSequenceFilter"|"FeatureGraphic"|"ShowLabFixtureId"|"AutoScroll"|"HasGroupFilter"|"ShowNameField"|"ShowLabPatch"|"HasPresetFilter"|"ShowIDType"|"ShowLabName"|"ShowManualCueSelection"|"HasLayoutFilter"|"HideSubfixtures"|"ShowLabCIE"|"CreateReferenceObject"|"AllSequenceItems"|"ShowLabOnEnd"|"ShowNameField"|"SheetStyle"|"AllGroupItems"|"ShowIDType"|"FixtureGrid"|"UseColorBook"|"AllPresetItems"|"DefaultsLoaded"|"LinesOverlay"|"Advanced"|"AllWorldItems"|"ExpandAtFilter"|"AllLayoutItems"|"LabOnlySelection"|"LabSelectionPrio"|"ShowSpotLabelSubFixtureId"|"ArrangementDepth"|"ResourceStatistics3D"|"IncludeDependencies"|"MarkFaultyMeshes"|"GapsImport"|"GapsExport"|"AllowAddContent"|"Setup"|"EnableBVHDebugging"|"AllowAddNewline"|"ShowPickPoints"|"AllowMergeChildren"|"IgnoreSelectionRenderingOrder"|"UserChangedSorting"|"ShowToolBar"|"ShowPigtails"|"AllColumnsVisible"|"IgnoreNetwork"|"SnaptoGrid"|"ForceIterativeRendering"|"AllColumnsInvisible"|"StructureLocked"|"AutoFit"|"DevFlag1"|"Enabled"|"SystemLocked"|"Setup"|"ShowSteps"|"DevFlag2"|"Lock"|"RightClickToEdit"|"SequencePlaybackStatus"|"DevFlag3"|"ShowSelection"|"SequenceSettings"|"DevFlag4"|"CompressedTiming"|"CueSettings"|"CueTiming"|"Enabled"|"MyPlaybacksOnly"|"MIBSettings"|"SheetStyle"|"PresetTiming"|"OffMode"|"Transposed"|"Note"|"EmptyLastCooking"|"AdjustColumns"|"Cmd"|"HoldList"|"Hidden"|"NoFixedColumns"|"Loops"|"EnableX"|"TrackSheet"|"EnableY"|"ShowName"|"ForceExpanded"|"SelectionOnly"|"AutoColumns"|"EnableZ"|"EnableGrid"|"ShowKey"|"HazeEnabled"|"ShowTabs"|"RememberSorting"|"EnableShuffle"|"LinkToEncoderBank"|"EnableLayers"|"ShowToolPopups"|"SkipPatched"|"ShowGrandMaster"|"MAgic"|"FeatureSort"|"ShowCustomMasters"|"FixtureSort"|"OnlySelection"|"BrightnessOverdriveMode"|"ShowEncoderBank"|"ShowLayerToolbar"|"TestBar"|"ShowFilterToolbar"|"Attribute"|"ShowUserSettings"|"Id"|"ShowStepButtons"|"AutoScroll"|"Value"|"Statistics"|"ShowEncoderBank"|"OwnDataPresent"|"CueOnly"|"ShowLayerToolbar"|"OwnNonCookedDataPresent"|"FadeEncoder"|"ShowCommandlineField"|"ShowRecipes"|"ShowTimeButtons"|"ShowNotes"|"ShowEncoderPageSelector"|"ShowEmpty"|"RecipeTemplate"|"FeatureGraphic"|"ShowToolPopups"|"TestCommand"|"ShowFunctionSelector"|"ShowEncoderLabel"|"PlanarSelectionLines"|"ShowBottomMenu"|"ShowGrandMaster"|"ShowPov"|"RightClickToEdit"|"FadeEncoder"|"AutoPov"|"SelectionAllowEnvironmentObjects"|"ObjectActionEnabled"|"ShowFunctionSelector"|"ShowResetBar"|"FixtureSelect"|"ShowEncoderLabel"|"BeamFrustumsRender"|"KeyboardShortcutsActive"|"ShowUserSettings"|"Setup"|"DrawActiveMode"|"ShowTimeButtons"|"Timing"|"ShowParts", property_value: YesNo|boolean)
+---@overload fun(property_name: "ZoomFactor", property_value: ZoomFactor)
+---@overload fun(property_name: "GetEnableFillUpRight"|"GetEnableUnifyLeft"|"GetEnableUnifyRight"|"AgendaSelected"|"DisableGlobalPresetUpdate"|"GetEnableFillUpLeft"|"GetEnableClone"|"DaySelected", property_value: boolean)
+---@overload fun(property_name: "OnUniverseUpClicked"|"OnUniverseDownClicked", property_value: fun(dummyStr: string, button: MouseButtonTypes, X: integer, Y: integer) : boolean)
+---@overload fun(property_name: "OnResetToDefault", property_value: fun(str: string) : boolean)
+---@overload fun(property_name: "ResetBlade", property_value: fun(str: string, int: integer) : boolean)
+---@overload fun(property_name: "ResetSelectedDay"|"ChangeWindowMode"|"ChangeLinkMode"|"JumpToNext"|"ObtainCurrentCue"|"JumpToToday"|"ResetPov"|"JumpToPrevious"|"ResetShaper"|"ResetAllBlades"|"ResetSelectedAgenda"|"ResetRotation", property_value: fun(text: string) : boolean)
+---@overload fun(property_name: "HazeLayers"|"Height"|"Page"|"Cont.Size"|"Cont.Ref"|"TCSlot"|"ColumnsCount"|"RealtimeIteration"|"LabMaxCount"|"SplitSize"|"AutoColumnsWidth"|"Page"|"VisibleGrid"|"TimerIndex"|"SnapGrid"|"PaddingBottom"|"LastConnectionTime"|"LightBeamOverdrawLimit"|"PaddingLeft"|"DimmerIncrement"|"PaddingRight"|"AmountHue"|"PaddingTop"|"Mode"|"MemoryLimit"|"AmountSaturation"|"ParameterCount"|"InitialWhiteFilter"|"ColumnsCount"|"Page"|"FileSize"|"DesiredUiFps"|"Index"|"Page"|"Count"|"SplitSize"|"No"|"SoftwareID"|"DynamicGoboResolution"|"PoolObjectContentSizeLimitation"|"SubPoolSelectorValue"|"SubPoolSelectorIndex"|"Texture"|"Width", property_value: integer)
+---@overload fun(property_name: "Handles"|"StageFilterList", property_value: integer[])
+---@overload fun(property_name: "TimeSlotMS"|"RowHeightFactor"|"Timezone"|"BeamIntensity"|"SpotIntensity"|"Physical"|"Zoom"|"FOV"|"CameraAnimationSpeedMeterSec"|"Pan"|"CameraAnimationSpeedDegreeSec"|"Tilt"|"AmbientIntensity"|"Roll"|"PointLightIntensity"|"LuminousIntensitySpread"|"BackgroundIntensity"|"ResolutionScale3D"|"MultiBeamBorderSmoothness"|"IgnoreNormals"|"ResolutionScaleLight"|"TriangleCalibrationFactor"|"StageBorder"|"Dev1"|"DilutionScale"|"ProportionalGain"|"Dev2"|"NativeColors"|"Scale"|"MultiBeamBlur"|"IntegrationTime"|"Aspect"|"LabelBackgroundTransparency"|"DerivativeTime"|"Dev3"|"LabelTextTransparency"|"Dev4"|"HazeParticleQuality"|"ArrangementAlpha"|"HazeScale"|"HazeParticleSize"|"HazeBlend"|"HazeAnimationSpeed", property_value: number)
+---@overload fun(property_name: "GridColumnConfigurationType"|"Type"|"User"|"LastReceivedMidi"|"ChildName"|"FeatureGroup"|"ContentFilterType"|"*"|"Trigger"|"NewShowStartDescription"|"Type"|"LayerFilter"|"TimezoneStr"|"TitlePrefix"|"StoredData"|"ClassFilter"|"FileName"|"FixtureTypeFilter"|"Type"|"ToolAction"|"FileName"|"SelectedFilter"|"FilePath"|"GroupName"|"Interface"|"FileContent"|"Author"|"SelectionCount"|"DependencyExport"|"ManufacturerID"|"Path"|"DeviceModelID"|"Name"|"Note"|"SoftwareVersionLabel"|"Comment"|"Description"|"Note"|"DisplayPool"|"TargetName"|"SelectedDataPool", property_value: string)
+---@overload fun(property_name: "LayerFilterList"|"ClassFilterList"|"FixtureTypeFilterList"|"VisibleTitlebuttons", property_value: string[])
+function UserProfile:ActiveDisplay(property_name, property_value) end

@@ -6,6 +6,10 @@ local CommandlineWindowSettingsCollect = {}
 function CommandlineWindowSettingsCollect:GetClass() end
 ---@return "CommandlineWindowSettings"
 function CommandlineWindowSettingsCollect:GetChildClass() end
+---@generic T : CommandlineWindowSettingsCollect
+---@param class `T`
+---@return boolean
+function CommandlineWindowSettingsCollect:IsClass(class) end
 ---@param index integer
 ---@return CommandlineWindowSettings
 function CommandlineWindowSettingsCollect:Ptr(index) end
@@ -56,3 +60,6 @@ function CommandlineWindowSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): CommandlineWindowSettings
 function CommandlineWindowSettingsCollect:Find(class, undo) end
+---@overload fun(property_name: "ShowCommandlineField", property_value: YesNo|boolean)
+---@overload fun(property_name: "ShowCommandlineField", property_value: YesNo|boolean)
+function CommandlineWindowSettingsCollect:ShowCommandlineField(property_name, property_value) end

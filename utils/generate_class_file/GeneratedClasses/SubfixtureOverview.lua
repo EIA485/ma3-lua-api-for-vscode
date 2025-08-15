@@ -6,6 +6,10 @@ local SubfixtureOverview = {}
 function SubfixtureOverview:GetClass() end
 ---@return "FTSubfixture"
 function SubfixtureOverview:GetChildClass() end
+---@generic T : SubfixtureOverview
+---@param class `T`
+---@return boolean
+function SubfixtureOverview:IsClass(class) end
 ---@return DMXMode
 function SubfixtureOverview:Parent() end
 ---@param index integer
@@ -58,3 +62,4 @@ function SubfixtureOverview:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): FTSubfixture
 function SubfixtureOverview:Find(class, undo) end
+function SubfixtureOverview:ShowCommandlineField(property_name, property_value) end
