@@ -119,4 +119,4 @@ function grandMA3Modules:Set(property_name, property_value, override_change_leve
 ---@overload fun(property_name: "IsInWholeDevCert", property_value: boolean)
 ---@overload fun(property_name: "DeviceTime"|"OutputConfigIndex"|"DroppedPackets", property_value: integer)
 ---@overload fun(property_name: "SerialNumber"|"DeviceType", property_value: string)
-function grandMA3Modules:Extension(property_name, property_value) end
+function grandMA3Modules:SetChildren(property_name, property_value) end

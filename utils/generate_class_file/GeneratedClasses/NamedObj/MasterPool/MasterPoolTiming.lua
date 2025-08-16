@@ -60,4 +60,4 @@ function MasterPoolTiming:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MasterTiming
 function MasterPoolTiming:Find(class, undo) end
-function MasterPoolTiming:SpeedScale(property_name, property_value) end
+function MasterPoolTiming:SetChildren(property_name, property_value) end

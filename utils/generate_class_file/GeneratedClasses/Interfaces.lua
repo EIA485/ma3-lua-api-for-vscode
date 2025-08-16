@@ -89,6 +89,6 @@ function Interfaces:Find(class, undo) end
 function Interfaces:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "SpeedMbs", property_value: 100_1000)
 ---@overload fun(property_name: "SpeedMbs", property_value: 100_1000)
----@overload fun(property_name: "Link"|"DHCP", property_value: YesNo|boolean)
----@overload fun(property_name: "Gateway"|"MAC"|"DHCPTimeout"|"DNS", property_value: string)
-function Interfaces:SpeedMbs(property_name, property_value) end
+---@overload fun(property_name: "DHCP"|"Link", property_value: YesNo|boolean)
+---@overload fun(property_name: "Gateway"|"DNS"|"DHCPTimeout"|"MAC", property_value: string)
+function Interfaces:SetChildren(property_name, property_value) end

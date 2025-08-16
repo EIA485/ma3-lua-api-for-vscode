@@ -62,4 +62,4 @@ function DisplaySurfaces:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): DisplaySurface
 function DisplaySurfaces:Find(class, undo) end
-function DisplaySurfaces:ActiveDisplay(property_name, property_value) end
+function DisplaySurfaces:SetChildren(property_name, property_value) end

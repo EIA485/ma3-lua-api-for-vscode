@@ -60,4 +60,4 @@ function GeneratorPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): GeneratorPoolSettings
 function GeneratorPoolSettingsCollect:Find(class, undo) end
-function GeneratorPoolSettingsCollect:UserID(property_name, property_value) end
+function GeneratorPoolSettingsCollect:SetChildren(property_name, property_value) end

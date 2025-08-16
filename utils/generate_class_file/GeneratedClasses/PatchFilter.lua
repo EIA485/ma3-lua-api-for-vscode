@@ -129,4 +129,4 @@ function PatchFilter:Find(class, undo) end
 function PatchFilter:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Used", property_value: integer)
 ---@overload fun(property_name: "Used", property_value: integer)
-function PatchFilter:Used(property_name, property_value) end
+function PatchFilter:SetChildren(property_name, property_value) end

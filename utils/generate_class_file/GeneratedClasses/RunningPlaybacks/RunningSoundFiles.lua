@@ -28,6 +28,5 @@ function RunningSoundFiles:Acquire(class, undo) end
 function RunningSoundFiles:Aquire(class, undo) end
 function RunningSoundFiles:Insert(index, class, undo, count) end
 function RunningSoundFiles:Find(class, undo) end
-function RunningSoundFiles:Mode(property_name, property_value) end
-function RunningSoundFiles:Mode(property_name, property_value) end
+function RunningSoundFiles:SetChildren(property_name, property_value) end
 function RunningSoundFiles:SetChildrenRecursive(property_name, property_value) end

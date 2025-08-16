@@ -62,8 +62,8 @@ function FixtureSheetSettingsCollect:Insert(index, class, undo, count) end
 function FixtureSheetSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "ChannelSetReadout", property_value: ChannelSetReadoutMode)
 ---@overload fun(property_name: "Filter", property_value: Object)
----@overload fun(property_name: "ColorMode", property_value: ColorDisplayModeAuto)
 ---@overload fun(property_name: "FixtureAppearance", property_value: FixtureAppearanceMode)
+---@overload fun(property_name: "ColorMode", property_value: ColorDisplayModeAuto)
 ---@overload fun(property_name: "FixtureGraphic", property_value: FixtureGraphicMode)
 ---@overload fun(property_name: "Layer", property_value: ProgLayerAuto)
 ---@overload fun(property_name: "Readout", property_value: ValueReadoutModeAuto)
@@ -86,5 +86,5 @@ function FixtureSheetSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "Speed", property_value: SpeedReadoutModeAuto)
 ---@overload fun(property_name: "TimeDisplayFormat", property_value: TimeDisplayFormatSelected)
 ---@overload fun(property_name: "Readout", property_value: ValueReadoutModeAuto)
----@overload fun(property_name: "ShowFilterToolbar"|"ShowLayerToolbar"|"ProgOnly"|"FeatureGraphic"|"FilterSelection"|"FixtureSort"|"FeatureSort"|"ShowNameField"|"ShowIDType"|"HideSubfixtures", property_value: YesNo|boolean)
-function FixtureSheetSettingsCollect:FrameReadout(property_name, property_value) end
+---@overload fun(property_name: "ShowFilterToolbar"|"ShowLayerToolbar"|"ProgOnly"|"FilterSelection"|"FeatureGraphic"|"FixtureSort"|"FeatureSort"|"ShowNameField"|"ShowIDType"|"HideSubfixtures", property_value: YesNo|boolean)
+function FixtureSheetSettingsCollect:SetChildren(property_name, property_value) end

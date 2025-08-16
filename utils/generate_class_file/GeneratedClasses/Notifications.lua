@@ -72,12 +72,9 @@ function Notifications:FindRecursive(name, class) end
 ---@overload fun(property_name: "SensorOffset", property_value: integer)
 ---@overload fun(property_name: "PID", property_value: RDMPID)
 ---@overload fun(property_name: "SensorOffset", property_value: integer)
-function Notifications:SensorOffset(property_name, property_value) end
+function Notifications:SetChildren(property_name, property_value) end
 ---@overload fun(property_name: "PID", property_value: RDMPID)
 ---@overload fun(property_name: "SensorOffset", property_value: integer)
----@overload fun(property_name: "PID", property_value: RDMPID)
----@overload fun(property_name: "SensorOffset", property_value: integer)
-function Notifications:SensorOffset(property_name, property_value) end
 ---@overload fun(property_name: "PID", property_value: RDMPID)
 ---@overload fun(property_name: "SensorOffset", property_value: integer)
 function Notifications:SetChildrenRecursive(property_name, property_value) end

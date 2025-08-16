@@ -60,12 +60,12 @@ function PultCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Pult
 function PultCollect:Find(class, undo) end
----@overload fun(property_name: "LinkMainCmdline", property_value: YesNo|boolean)
 ---@overload fun(property_name: "MainLoopCount", property_value: integer)
+---@overload fun(property_name: "LinkMainCmdline", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Cmd", property_value: Cmdline)
 ---@overload fun(property_name: "RunTest", property_value: fun(str: string) : boolean)
 ---@overload fun(property_name: "Cmd", property_value: Cmdline)
 ---@overload fun(property_name: "LinkMainCmdline", property_value: YesNo|boolean)
 ---@overload fun(property_name: "RunTest", property_value: fun(str: string) : boolean)
 ---@overload fun(property_name: "MainLoopCount", property_value: integer)
-function PultCollect:RunTest(property_name, property_value) end
+function PultCollect:SetChildren(property_name, property_value) end

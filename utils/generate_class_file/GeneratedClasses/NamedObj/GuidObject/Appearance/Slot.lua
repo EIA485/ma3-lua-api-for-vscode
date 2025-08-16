@@ -181,4 +181,4 @@ function Slot:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Rotation", property_value: Math.TMatrix3x3<float>)
 ---@overload fun(property_name: "Color", property_value: Colors.RGB<float>)
 ---@overload fun(property_name: "Rotation", property_value: Math.TMatrix3x3<float>)
-function Slot:Rotation(property_name, property_value) end
+function Slot:SetChildren(property_name, property_value) end

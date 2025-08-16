@@ -116,4 +116,4 @@ function FixtureTypeFake:Set(property_name, property_value, override_change_leve
 ---@overload fun(property_name: "Used", property_value: integer)
 ---@overload fun(property_name: "DMRef", property_value: Object)
 ---@overload fun(property_name: "Used", property_value: integer)
-function FixtureTypeFake:Used(property_name, property_value) end
+function FixtureTypeFake:SetChildren(property_name, property_value) end

@@ -65,4 +65,4 @@ function MVRServiceCollect:Find(class, undo) end
 ---@overload fun(property_name: "UUID", property_value: MVR.UUID)
 ---@overload fun(property_name: "UUID", property_value: MVR.UUID)
 ---@overload fun(property_name: "Joined"|"Left"|"IsMyself"|"IsActive", property_value: Yes|true)
-function MVRServiceCollect:UUID(property_name, property_value) end
+function MVRServiceCollect:SetChildren(property_name, property_value) end

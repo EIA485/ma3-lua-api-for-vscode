@@ -59,7 +59,7 @@ function Object:HasActivePlayback() end
 ---@return boolean success
 function Object:Import(filePath, fileName) end
 
----@param settingsTable {value: number?, faderDisables: boolean?, token: string?} #value 0..100
+---@param settingsTable {value: number?, faderDisabled: boolean?, token: string?} #value 0..100
 function Object:SetFader(settingsTable) end
 
 

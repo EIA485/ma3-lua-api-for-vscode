@@ -28,6 +28,5 @@ function MultiPatchBase:Acquire(class, undo) end
 function MultiPatchBase:Aquire(class, undo) end
 function MultiPatchBase:Insert(index, class, undo, count) end
 function MultiPatchBase:Find(class, undo) end
-function MultiPatchBase:Color(property_name, property_value) end
-function MultiPatchBase:Color(property_name, property_value) end
+function MultiPatchBase:SetChildren(property_name, property_value) end
 function MultiPatchBase:SetChildrenRecursive(property_name, property_value) end

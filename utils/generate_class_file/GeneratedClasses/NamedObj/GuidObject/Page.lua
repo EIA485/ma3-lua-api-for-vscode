@@ -55,4 +55,4 @@ function Page:Find(class, undo) end
 ---@overload fun(property_name: "Object", property_value: Object)
 ---@overload fun(property_name: "IsXKey", property_value: YesNo|boolean)
 ---@overload fun(property_name: "TotalPrimaryAssignmentChanged"|"TotalSecondaryAssignmentChanged"|"Width"|"Height"|"PrimaryAssignmentChanged"|"SecondaryAssignmentChanged", property_value: integer)
-function Page:ExecutorConfiguration(property_name, property_value) end
+function Page:SetChildren(property_name, property_value) end

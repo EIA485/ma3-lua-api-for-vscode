@@ -173,4 +173,4 @@ function System:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "IsOnline", property_value: Yes|true)
 ---@overload fun(property_name: "TrackerID", property_value: integer)
 ---@overload fun(property_name: "PositionZ"|"RotY"|"PositionX"|"SpeedX"|"SpeedY"|"SpeedZ"|"RotX"|"RotZ"|"PositionY", property_value: number)
-function System:MArkerID(property_name, property_value) end
+function System:SetChildren(property_name, property_value) end

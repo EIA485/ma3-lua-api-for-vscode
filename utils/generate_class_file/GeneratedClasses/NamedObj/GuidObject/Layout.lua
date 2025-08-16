@@ -252,6 +252,6 @@ function Layout:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Scribble", property_value: Scribble)
 ---@overload fun(property_name: "BorderColor", property_value: UColor)
 ---@overload fun(property_name: "VisibilitySelectionRelevance"|"FullResolution"|"IsInWorld"|"Selected"|"CustomTextVertical", property_value: YesNo|boolean)
----@overload fun(property_name: "Height"|"PosX"|"BorderSize"|"IDType"|"FixtureID"|"ID"|"CID"|"PosY"|"Width", property_value: integer)
+---@overload fun(property_name: "Height"|"IDType"|"PosX"|"FixtureID"|"BorderSize"|"ID"|"CID"|"PosY"|"Width", property_value: integer)
 ---@overload fun(property_name: "Appearance", property_value: string)
-function Layout:Appearance(property_name, property_value) end
+function Layout:SetChildren(property_name, property_value) end

@@ -62,4 +62,4 @@ function FixtureFilterRuleLayer:Insert(index, class, undo, count) end
 function FixtureFilterRuleLayer:Find(class, undo) end
 ---@overload fun(property_name: "Layer", property_value: FixtureLayer)
 ---@overload fun(property_name: "Layer", property_value: FixtureLayer)
-function FixtureFilterRuleLayer:Layer(property_name, property_value) end
+function FixtureFilterRuleLayer:SetChildren(property_name, property_value) end

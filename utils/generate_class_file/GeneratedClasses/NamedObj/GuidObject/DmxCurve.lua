@@ -143,4 +143,4 @@ function DmxCurve:Find(class, undo) end
 function DmxCurve:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Out"|"In", property_value: DMXPropertyValue)
 ---@overload fun(property_name: "Decel"|"Accel", property_value: ValueTPropertyValue)
-function DmxCurve:Wait(property_name, property_value) end
+function DmxCurve:SetChildren(property_name, property_value) end

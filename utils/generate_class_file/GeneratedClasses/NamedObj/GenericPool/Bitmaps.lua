@@ -62,12 +62,12 @@ function Bitmaps:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Bitmap
 function Bitmaps:Find(class, undo) end
----@overload fun(property_name: "ControlContent", property_value: integer)
 ---@overload fun(property_name: "ConfigHandle", property_value: Object)
 ---@overload fun(property_name: "SpeedMaster", property_value: SpeedMaster)
+---@overload fun(property_name: "ControlContent", property_value: integer)
 ---@overload fun(property_name: "ConfigHandle", property_value: Object)
 ---@overload fun(property_name: "SpeedMaster", property_value: SpeedMaster)
 ---@overload fun(property_name: "HasActiveBMC"|"AutoFormat", property_value: YesNo|boolean)
 ---@overload fun(property_name: "LuaCommand"|"OnActivateBMC", property_value: fun(str: string) : boolean)
 ---@overload fun(property_name: "ControlContent", property_value: integer)
-function Bitmaps:SpeedMaster(property_name, property_value) end
+function Bitmaps:SetChildren(property_name, property_value) end

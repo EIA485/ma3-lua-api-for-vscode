@@ -70,4 +70,4 @@ function PoolScreen:Insert(index, class, undo, count) end
 function PoolScreen:Find(class, undo) end
 ---@overload fun(property_name: "RunningPlaybacks", property_value: integer[])
 ---@overload fun(property_name: "RunningPlaybacks", property_value: integer[])
-function PoolScreen:RunningPlaybacks(property_name, property_value) end
+function PoolScreen:SetChildren(property_name, property_value) end

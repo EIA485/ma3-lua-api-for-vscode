@@ -118,4 +118,4 @@ function LedDefinitions:Set(property_name, property_value, override_change_level
 ---@overload fun(property_name: "Code", property_value: VirtualKeyCode)
 ---@overload fun(property_name: "DefaultExecutor"|"Disable", property_value: YesNo|boolean)
 ---@overload fun(property_name: "R"|"G"|"B"|"ExecutorIndex"|"AnimationPos"|"IsButton", property_value: integer)
-function LedDefinitions:SpecialExecutor(property_name, property_value) end
+function LedDefinitions:SetChildren(property_name, property_value) end

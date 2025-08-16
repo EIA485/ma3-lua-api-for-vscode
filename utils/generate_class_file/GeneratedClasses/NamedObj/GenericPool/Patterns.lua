@@ -62,4 +62,4 @@ function Patterns:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Pattern
 function Patterns:Find(class, undo) end
-function Patterns:Code(property_name, property_value) end
+function Patterns:SetChildren(property_name, property_value) end

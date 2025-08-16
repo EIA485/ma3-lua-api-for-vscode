@@ -60,4 +60,4 @@ function PresetColorPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetColorPoolSettings
 function PresetColorPoolSettingsCollect:Find(class, undo) end
-function PresetColorPoolSettingsCollect:ActiveDisplay(property_name, property_value) end
+function PresetColorPoolSettingsCollect:SetChildren(property_name, property_value) end

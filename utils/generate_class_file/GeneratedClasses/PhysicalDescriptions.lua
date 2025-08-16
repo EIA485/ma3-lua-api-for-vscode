@@ -28,6 +28,5 @@ function PhysicalDescriptions:Acquire(class, undo) end
 function PhysicalDescriptions:Aquire(class, undo) end
 function PhysicalDescriptions:Insert(index, class, undo, count) end
 function PhysicalDescriptions:Find(class, undo) end
-function PhysicalDescriptions:Patch(property_name, property_value) end
-function PhysicalDescriptions:Patch(property_name, property_value) end
+function PhysicalDescriptions:SetChildren(property_name, property_value) end
 function PhysicalDescriptions:SetChildrenRecursive(property_name, property_value) end

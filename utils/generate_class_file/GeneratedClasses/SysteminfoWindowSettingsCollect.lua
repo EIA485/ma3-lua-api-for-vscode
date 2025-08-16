@@ -62,4 +62,4 @@ function SysteminfoWindowSettingsCollect:Insert(index, class, undo, count) end
 function SysteminfoWindowSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "DispView", property_value: DispView)
 ---@overload fun(property_name: "DispView", property_value: DispView)
-function SysteminfoWindowSettingsCollect:DispView(property_name, property_value) end
+function SysteminfoWindowSettingsCollect:SetChildren(property_name, property_value) end

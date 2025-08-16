@@ -128,12 +128,12 @@ function UserAttributePreferences:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function UserAttributePreferences:Set(property_name, property_value, override_change_level) end
----@overload fun(property_name: "NaturalReadout", property_value: ValueReadoutModeDefault)
----@overload fun(property_name: "EncoderPressFactor", property_value: EncoderFactor)
 ---@overload fun(property_name: "IgnoreChannelFunctions", property_value: Yes|true)
+---@overload fun(property_name: "EncoderPressFactor", property_value: EncoderFactor)
+---@overload fun(property_name: "NaturalReadout", property_value: ValueReadoutModeDefault)
 ---@overload fun(property_name: "EncoderResolution", property_value: AttriebuteEncoderResolutionDefault)
 ---@overload fun(property_name: "EncoderResolution", property_value: AttriebuteEncoderResolutionDefault)
 ---@overload fun(property_name: "EncoderPressFactor", property_value: EncoderFactor)
 ---@overload fun(property_name: "NaturalReadout", property_value: ValueReadoutModeDefault)
 ---@overload fun(property_name: "IgnoreChannelFunctions", property_value: Yes|true)
-function UserAttributePreferences:EncoderResolution(property_name, property_value) end
+function UserAttributePreferences:SetChildren(property_name, property_value) end

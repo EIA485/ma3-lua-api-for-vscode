@@ -65,7 +65,7 @@ function Cameras:Find(class, undo) end
 ---@overload fun(property_name: "CameraMode", property_value: CameraMode)
 ---@overload fun(property_name: "Pivot", property_value: Math.TVector<float>)
 ---@overload fun(property_name: "CameraMode", property_value: CameraMode)
----@overload fun(property_name: "PosX"|"PosY"|"PosZ"|"PivotDistMin"|"Near"|"Far"|"PivotDistMax", property_value: LengthPropertyValue)
+---@overload fun(property_name: "PosX"|"PosY"|"PosZ"|"Near"|"PivotDistMin"|"Far"|"PivotDistMax", property_value: LengthPropertyValue)
 ---@overload fun(property_name: "Pivot", property_value: Math.TVector<float>)
 ---@overload fun(property_name: "Pan"|"Tilt"|"Roll"|"Zoom"|"FOV", property_value: number)
-function Cameras:Pivot(property_name, property_value) end
+function Cameras:SetChildren(property_name, property_value) end

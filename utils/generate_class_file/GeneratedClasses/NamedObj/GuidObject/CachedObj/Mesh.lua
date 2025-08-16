@@ -162,4 +162,4 @@ function Mesh:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Invisible", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Invisible", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Texture"|"Cont.Size"|"Cont.Ref", property_value: integer)
-function Mesh:Invisible(property_name, property_value) end
+function Mesh:SetChildren(property_name, property_value) end

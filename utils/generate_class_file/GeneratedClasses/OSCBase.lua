@@ -124,4 +124,4 @@ function OSCBase:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Receive"|"Send"|"ReceiveCommand"|"SendCommand"|"EchoInput"|"EchoOutput", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Port"|"FaderRange", property_value: integer)
 ---@overload fun(property_name: "ExecutorKnob"|"Key"|"Prefix"|"DataPool"|"Page"|"Fader", property_value: string)
-function OSCBase:Mode(property_name, property_value) end
+function OSCBase:SetChildren(property_name, property_value) end

@@ -60,4 +60,4 @@ function MidiOutDescriptions:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MIDIDeviceDescription
 function MidiOutDescriptions:Find(class, undo) end
-function MidiOutDescriptions:ActiveDisplay(property_name, property_value) end
+function MidiOutDescriptions:SetChildren(property_name, property_value) end

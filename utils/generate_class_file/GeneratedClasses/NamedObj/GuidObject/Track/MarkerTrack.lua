@@ -60,4 +60,4 @@ function MarkerTrack:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Marker
 function MarkerTrack:Find(class, undo) end
-function MarkerTrack:Play(property_name, property_value) end
+function MarkerTrack:SetChildren(property_name, property_value) end

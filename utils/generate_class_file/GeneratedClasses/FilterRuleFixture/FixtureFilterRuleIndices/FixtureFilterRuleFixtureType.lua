@@ -62,4 +62,4 @@ function FixtureFilterRuleFixtureType:Insert(index, class, undo, count) end
 function FixtureFilterRuleFixtureType:Find(class, undo) end
 ---@overload fun(property_name: "DMXMode", property_value: DMXMode)
 ---@overload fun(property_name: "DMXMode", property_value: DMXMode)
-function FixtureFilterRuleFixtureType:DMXMode(property_name, property_value) end
+function FixtureFilterRuleFixtureType:SetChildren(property_name, property_value) end

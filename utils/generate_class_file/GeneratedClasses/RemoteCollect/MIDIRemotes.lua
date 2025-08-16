@@ -63,4 +63,4 @@ function MIDIRemotes:Find(class, undo) end
 ---@overload fun(property_name: "MIDIType", property_value: RemoteMidiType)
 ---@overload fun(property_name: "MIDIType", property_value: RemoteMidiType)
 ---@overload fun(property_name: "InTo"|"MIDIChannel"|"MIDIIndex"|"TriggerOn"|"TriggerOff"|"InFrom", property_value: integer)
-function MIDIRemotes:MIDIType(property_name, property_value) end
+function MIDIRemotes:SetChildren(property_name, property_value) end

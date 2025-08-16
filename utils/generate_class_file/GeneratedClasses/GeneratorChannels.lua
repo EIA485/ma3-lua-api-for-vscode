@@ -44,4 +44,4 @@ function GeneratorChannels:Find(class, undo) end
 ---@overload fun(property_name: "Attribute", property_value: AttributeIndexPropertyValue)
 ---@overload fun(property_name: "Attribute", property_value: AttributeIndexPropertyValue)
 ---@overload fun(property_name: "VirtualDimmer", property_value: GenVirtualDimmer|boolean)
-function GeneratorChannels:Attribute(property_name, property_value) end
+function GeneratorChannels:SetChildren(property_name, property_value) end

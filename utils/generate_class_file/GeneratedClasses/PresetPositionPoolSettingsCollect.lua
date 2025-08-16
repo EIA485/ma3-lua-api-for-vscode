@@ -60,4 +60,4 @@ function PresetPositionPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetPositionPoolSettings
 function PresetPositionPoolSettingsCollect:Find(class, undo) end
-function PresetPositionPoolSettingsCollect:ActiveDisplay(property_name, property_value) end
+function PresetPositionPoolSettingsCollect:SetChildren(property_name, property_value) end

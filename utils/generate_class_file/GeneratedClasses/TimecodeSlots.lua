@@ -73,8 +73,8 @@ function TimecodeSlots:Find(class, undo) end
 ---@overload fun(property_name: "SourceIP", property_value: Network.IP8Full)
 ---@overload fun(property_name: "TimeDisplayFormat", property_value: TimeDisplayFormatSelected)
 ---@overload fun(property_name: "PreRoll"|"AfterRoll"|"GeneratorStartTime", property_value: TimePropertyValue)
----@overload fun(property_name: "AfterRollColor"|"OffColor"|"ExternalSourceColor"|"GeneratorColor", property_value: UColor)
+---@overload fun(property_name: "OffColor"|"AfterRollColor"|"ExternalSourceColor"|"GeneratorColor", property_value: UColor)
 ---@overload fun(property_name: "GeneratorLooped", property_value: Yes|true)
 ---@overload fun(property_name: "Time"|"UserBits", property_value: integer)
 ---@overload fun(property_name: "TimeString", property_value: string)
-function TimecodeSlots:TimeString(property_name, property_value) end
+function TimecodeSlots:SetChildren(property_name, property_value) end

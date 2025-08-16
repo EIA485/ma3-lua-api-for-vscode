@@ -173,16 +173,6 @@ function Object:HasReferences() end
 ---@return integer index
 function Object:Index() end
 
----@param functionName string
----@return any result
-function Object:InputCallFunction(functionName) end
-
----@param functionName string
----@return boolean? hasFunction
-function Object:InputHasFunction(functionName) end
-
-function Object:InputRun() end
-
 ---@param parameterName string
 ---@param parameterValue string
 function Object:InputSetAdditionalParameter(parameterName, parameterValue) end
@@ -249,36 +239,6 @@ function Object:Resize(size) end
 ---@return boolean success
 function Object:Save(filePath, fileName) end
 
----@param scrollType integer
----@param scrollEntity integer
----@param valueType integer
----@param value number
----@param updateOpposite boolean
----@return boolean success
-function Object:ScrollDo(scrollType, scrollEntity, valueType, value, updateOpposite) end
-
----@param scrollType integer
----@return table? scrollInfo
-function Object:ScrollGetInfo(scrollType) end
-
----@param scrollType integer
----@param offset integer
----@return integer itemIndex
-function Object:ScrollGetItemByOffset(scrollType, offset) end
-
----@param scrollType integer
----@param itemIdx integer
----@return integer? offset
-function Object:ScrollGetItemOffset(scrollType, itemIdx) end
-
----@param scrollType integer
----@param itemIdx integer
----@return integer? size
-function Object:ScrollGetItemSize(scrollType, itemIdx) end
-
----@param scrollType integer
----@return boolean isNeeded
-function Object:ScrollIsNeeded(scrollType) end
 
 ---@param index integer
 function Object:SelectListItemByIndex(index) end
@@ -308,10 +268,3 @@ function Object:SetListItemName(index, name) end
 ---@param index integer
 ---@param value string
 function Object:SetListItemValueStr(index, value) end
-
----@param x integer
----@param y integer
-function Object:SetPositionHint(x, y) end
-
----@param callback function
-function Object:ShowModal(callback) end

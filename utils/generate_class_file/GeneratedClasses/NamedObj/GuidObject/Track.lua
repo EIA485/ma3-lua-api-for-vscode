@@ -125,4 +125,4 @@ function Track:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Duration", property_value: TCDuration)
 ---@overload fun(property_name: "SpeedFactor", property_value: integer)
 ---@overload fun(property_name: "Name", property_value: string)
-function Track:Play(property_name, property_value) end
+function Track:SetChildren(property_name, property_value) end

@@ -62,4 +62,4 @@ function TimerPoolSettingsCollect:Insert(index, class, undo, count) end
 function TimerPoolSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "TimerAction", property_value: TimerAction)
 ---@overload fun(property_name: "TimerAction", property_value: TimerAction)
-function TimerPoolSettingsCollect:TimerAction(property_name, property_value) end
+function TimerPoolSettingsCollect:SetChildren(property_name, property_value) end

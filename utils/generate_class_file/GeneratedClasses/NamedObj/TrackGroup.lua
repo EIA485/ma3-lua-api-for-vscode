@@ -115,10 +115,10 @@ function TrackGroup:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function TrackGroup:Set(property_name, property_value, override_change_level) end
----@overload fun(property_name: "Play", property_value: ECPlay|boolean)
----@overload fun(property_name: "Rec", property_value: ECRec|boolean)
 ---@overload fun(property_name: "Target", property_value: Object)
 ---@overload fun(property_name: "Play", property_value: ECPlay|boolean)
 ---@overload fun(property_name: "Rec", property_value: ECRec|boolean)
+---@overload fun(property_name: "Play", property_value: ECPlay|boolean)
+---@overload fun(property_name: "Rec", property_value: ECRec|boolean)
 ---@overload fun(property_name: "Target", property_value: Object)
-function TrackGroup:Target(property_name, property_value) end
+function TrackGroup:SetChildren(property_name, property_value) end

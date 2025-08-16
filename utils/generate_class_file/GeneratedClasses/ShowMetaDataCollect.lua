@@ -108,5 +108,5 @@ function ShowMetaDataCollect:Find(class, undo) end
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function ShowMetaDataCollect:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "FileSize"|"FileTime", property_value: integer)
----@overload fun(property_name: "Path"|"FileName"|"Description", property_value: string)
-function ShowMetaDataCollect:ActiveDisplay(property_name, property_value) end
+---@overload fun(property_name: "Path"|"Description"|"FileName", property_value: string)
+function ShowMetaDataCollect:SetChildren(property_name, property_value) end

@@ -62,4 +62,4 @@ function GridColumnNamesFilter:Insert(index, class, undo, count) end
 function GridColumnNamesFilter:Find(class, undo) end
 ---@overload fun(property_name: "Visible", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Visible", property_value: YesNo|boolean)
-function GridColumnNamesFilter:Visible(property_name, property_value) end
+function GridColumnNamesFilter:SetChildren(property_name, property_value) end

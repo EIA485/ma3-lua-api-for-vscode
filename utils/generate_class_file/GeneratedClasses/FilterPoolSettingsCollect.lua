@@ -62,4 +62,4 @@ function FilterPoolSettingsCollect:Insert(index, class, undo, count) end
 function FilterPoolSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "Action", property_value: FilterAction)
 ---@overload fun(property_name: "Action", property_value: FilterAction)
-function FilterPoolSettingsCollect:Action(property_name, property_value) end
+function FilterPoolSettingsCollect:SetChildren(property_name, property_value) end

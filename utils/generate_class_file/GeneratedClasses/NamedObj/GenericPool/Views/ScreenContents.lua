@@ -62,4 +62,4 @@ function ScreenContents:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ScreenContent
 function ScreenContents:Find(class, undo) end
-function ScreenContents:ScreenContentMask(property_name, property_value) end
+function ScreenContents:SetChildren(property_name, property_value) end

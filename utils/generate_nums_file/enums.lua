@@ -1,14 +1,23 @@
+---@meta
+
+---@class Enums
+Enums = {}
+Enums["100_1000"] = {
+  ["100"] = 1,
+  ["1000"] = 0
+}
+
 ---@enum ALSideSizeSpecial
 Enums.ALSideSizeSpecial = {
   Auto = 0,
-  Hybrid = -1,
+  Hybrid = -1
 }
 
 ---@enum ActiveDisplay
 Enums.ActiveDisplay = {
   Beat = 2,
   Sound = 1,
-  Wave = 0,
+  Wave = 0
 }
 
 ---@enum AgendaMode
@@ -17,7 +26,7 @@ Enums.AgendaMode = {
   Dawn = 1,
   Dusk = 4,
   Sunrise = 2,
-  Sunset = 3,
+  Sunset = 3
 }
 
 ---@enum AgendaTool
@@ -29,7 +38,7 @@ Enums.AgendaTool = {
   Edit = 7,
   Paste = 5,
   Select = 0,
-  Store = 1,
+  Store = 1
 }
 
 ---@enum AgendaViewMode
@@ -38,7 +47,7 @@ Enums.AgendaViewMode = {
   Month = 2,
   Sheet = 0,
   Week = 3,
-  Year = 1,
+  Year = 1
 }
 
 ---@enum AlignMode
@@ -48,32 +57,32 @@ Enums.AlignMode = {
   ["<>"] = 5,
   [">"] = 3,
   ["><"] = 4,
-  Off = 0,
+  Off = 0
 }
 
 ---@enum AlignmentH
 Enums.AlignmentH = {
   Center = 0,
   Left = 1,
-  Right = 2,
+  Right = 2
 }
 
 ---@enum AlignmentV
 Enums.AlignmentV = {
   Bottom = 2,
   Center = 0,
-  Top = 1,
+  Top = 1
 }
 
 ---@enum ArrangementMarcType
 Enums.ArrangementMarcType = {
   Dynamic = 1,
-  Small = 0,
+  Small = 0
 }
 
 ---@enum ArtNetBroadcastThreshold
 Enums.ArtNetBroadcastThreshold = {
-  ["Default(5)"] = 5,
+  ["Default(5)"] = 5
 }
 
 ---@enum ArtNetDataMode
@@ -81,7 +90,7 @@ Enums.ArtNetDataMode = {
   Auto = 2,
   Broadcast = 0,
   Input = 3,
-  Unicast = 1,
+  Unicast = 1
 }
 
 ---@enum AssignType
@@ -107,7 +116,7 @@ Enums.AssignType = {
   User = 10,
   Video = 14,
   View = 1,
-  World = 6,
+  World = 6
 }
 
 ---@enum AssignmentBlindButtonFunctions
@@ -119,7 +128,7 @@ Enums.AssignmentBlindButtonFunctions = {
   Off = 8,
   On = 7,
   Temp = 13,
-  Toggle = 14,
+  Toggle = 14
 }
 
 ---@enum AssignmentButtonFunctions
@@ -155,7 +164,7 @@ Enums.AssignmentButtonFunctions = {
   Temp = 13,
   Time = 22,
   Toggle = 14,
-  Top = 15,
+  Top = 15
 }
 
 ---@enum AssignmentButtonFunctionsGroup
@@ -164,7 +173,7 @@ Enums.AssignmentButtonFunctionsGroup = {
   Black = 2,
   Empty = 0,
   Flash = 1,
-  SelectFixtures = 123,
+  SelectFixtures = 123
 }
 
 ---@enum AssignmentButtonFunctionsMacro
@@ -177,7 +186,7 @@ Enums.AssignmentButtonFunctionsMacro = {
   ["Go+"] = 3,
   ["Go-"] = 4,
   Off = 8,
-  Pause = 18,
+  Pause = 18
 }
 
 ---@enum AssignmentButtonFunctionsPlugin
@@ -207,7 +216,7 @@ Enums.AssignmentButtonFunctionsPlugin = {
   Swap = 25,
   Temp = 13,
   Toggle = 14,
-  Top = 15,
+  Top = 15
 }
 
 ---@enum AssignmentButtonFunctionsPreset
@@ -235,21 +244,21 @@ Enums.AssignmentButtonFunctionsPreset = {
   Swap = 25,
   Temp = 13,
   Time = 22,
-  Toggle = 14,
+  Toggle = 14
 }
 
 ---@enum AssignmentButtonFunctionsQuickey
 Enums.AssignmentButtonFunctionsQuickey = {
   [""] = 0,
   Empty = 0,
-  ["Go+"] = 3,
+  ["Go+"] = 3
 }
 
 ---@enum AssignmentButtonFunctionsScreenConfig
 Enums.AssignmentButtonFunctionsScreenConfig = {
   [""] = 0,
   Call = 111,
-  Empty = 0,
+  Empty = 0
 }
 
 ---@enum AssignmentButtonFunctionsSequence
@@ -282,7 +291,7 @@ Enums.AssignmentButtonFunctionsSequence = {
   Temp = 13,
   Time = 22,
   Toggle = 14,
-  Top = 15,
+  Top = 15
 }
 
 ---@enum AssignmentButtonFunctionsSoundFile
@@ -293,7 +302,7 @@ Enums.AssignmentButtonFunctionsSoundFile = {
   Off = 8,
   On = 7,
   Pause = 18,
-  Toggle = 14,
+  Toggle = 14
 }
 
 ---@enum AssignmentButtonFunctionsTimer
@@ -307,21 +316,21 @@ Enums.AssignmentButtonFunctionsTimer = {
   Pause = 18,
   Temp = 13,
   Toggle = 14,
-  Top = 15,
+  Top = 15
 }
 
 ---@enum AssignmentButtonFunctionsUser
 Enums.AssignmentButtonFunctionsUser = {
   [""] = 0,
   Empty = 0,
-  LogIn = 74,
+  LogIn = 74
 }
 
 ---@enum AssignmentButtonFunctionsView
 Enums.AssignmentButtonFunctionsView = {
   [""] = 0,
   Call = 111,
-  Empty = 0,
+  Empty = 0
 }
 
 ---@enum AssignmentButtonFunctionsWorld
@@ -334,7 +343,7 @@ Enums.AssignmentButtonFunctionsWorld = {
   On = 7,
   SelectFixtures = 123,
   Temp = 13,
-  Toggle = 14,
+  Toggle = 14
 }
 
 ---@enum AssignmentButtonUnpressFunctions
@@ -365,7 +374,7 @@ Enums.AssignmentButtonUnpressFunctions = {
   SelectFixtures = 123,
   Speed1 = 12,
   Toggle = 14,
-  Top = 15,
+  Top = 15
 }
 
 ---@enum AssignmentFaderFunctions
@@ -379,31 +388,30 @@ Enums.AssignmentFaderFunctions = {
   Time = 45,
   X = 36,
   XA = 37,
-  XB = 38,
+  XB = 38
 }
 
 ---@enum AssignmentFaderFunctionsMasterOnly
 Enums.AssignmentFaderFunctionsMasterOnly = {
   [""] = 0,
   Empty = 0,
-  Master = 35,
+  Master = 35
 }
 
 ---@enum AssignmentFaderFunctionsNone
 Enums.AssignmentFaderFunctionsNone = {
   [""] = 0,
-  Empty = 0,
+  Empty = 0
 }
 
----@enum AssignmentFaderFunctionsPreset    
-Enums.AssignmentFaderFunctionsPreset     = {
+Enums["AssignmentFaderFunctionsPreset    "] = {
   [""] = 0,
   Empty = 0,
   Master = 35,
   Rate = 40,
   Speed = 41,
   Temp = 39,
-  Time = 45,
+  Time = 45
 }
 
 ---@enum AssignmentFaderFunctionsSubTrack
@@ -415,7 +423,7 @@ Enums.AssignmentFaderFunctionsSubTrack = {
   Time = 11,
   X = 2,
   XA = 3,
-  XB = 4,
+  XB = 4
 }
 
 ---@enum AssignmentGrandMasterButtonFunctions
@@ -427,7 +435,7 @@ Enums.AssignmentGrandMasterButtonFunctions = {
   Off = 8,
   On = 7,
   Temp = 13,
-  Toggle = 14,
+  Toggle = 14
 }
 
 ---@enum AssignmentHighlightSoloButtonFunctions
@@ -439,7 +447,7 @@ Enums.AssignmentHighlightSoloButtonFunctions = {
   Off = 8,
   On = 7,
   Temp = 13,
-  Toggle = 14,
+  Toggle = 14
 }
 
 ---@enum AssignmentPlaybackMasterButtonFunctions
@@ -447,7 +455,7 @@ Enums.AssignmentPlaybackMasterButtonFunctions = {
   [""] = 0,
   Black = 2,
   Empty = 0,
-  Flash = 1,
+  Flash = 1
 }
 
 ---@enum AssignmentProgExecButtonTimeFunctions
@@ -459,7 +467,7 @@ Enums.AssignmentProgExecButtonTimeFunctions = {
   Off = 8,
   On = 7,
   Temp = 13,
-  Toggle = 14,
+  Toggle = 14
 }
 
 ---@enum AssignmentProgExecButtonXFunctions
@@ -470,7 +478,7 @@ Enums.AssignmentProgExecButtonXFunctions = {
   Flash = 1,
   Off = 8,
   On = 7,
-  Toggle = 14,
+  Toggle = 14
 }
 
 ---@enum AssignmentRateButtonFunctions
@@ -488,7 +496,7 @@ Enums.AssignmentRateButtonFunctions = {
   Rate1 = 11,
   Solo = 21,
   Temp = 13,
-  Toggle = 14,
+  Toggle = 14
 }
 
 ---@enum AssignmentSoundMasterButtonFunctions
@@ -500,7 +508,7 @@ Enums.AssignmentSoundMasterButtonFunctions = {
   Off = 8,
   On = 7,
   Temp = 13,
-  Toggle = 14,
+  Toggle = 14
 }
 
 ---@enum AssignmentSpeedButtonFunctions
@@ -520,7 +528,7 @@ Enums.AssignmentSpeedButtonFunctions = {
   ReSync = 30,
   Speed1 = 12,
   Temp = 13,
-  Toggle = 14,
+  Toggle = 14
 }
 
 ---@enum AssignmentTimecodeFunctions
@@ -556,7 +564,7 @@ Enums.AssignmentTimecodeFunctions = {
   Temp = 13,
   Time = 22,
   Toggle = 14,
-  Top = 15,
+  Top = 15
 }
 
 ---@enum AssignmentTimingFunctions
@@ -564,7 +572,7 @@ Enums.AssignmentTimingFunctions = {
   [""] = 0,
   Black = 2,
   Empty = 0,
-  Flash = 1,
+  Flash = 1
 }
 
 ---@enum AttributeMode
@@ -572,7 +580,7 @@ Enums.AttributeMode = {
   PanTilt = 0,
   XY = 1,
   XZ = 2,
-  YZ = 3,
+  YZ = 3
 }
 
 ---@enum AttriebuteEncoderResolution
@@ -580,7 +588,7 @@ Enums.AttriebuteEncoderResolution = {
   Coarse = 16777216,
   Fine = 1677721,
   Increment = 167772,
-  Native = -16777216,
+  Native = -16777216
 }
 
 ---@enum AttriebuteEncoderResolutionDefault
@@ -589,32 +597,32 @@ Enums.AttriebuteEncoderResolutionDefault = {
   Default = 0,
   Fine = 1677721,
   Increment = 167772,
-  Native = -16777216,
+  Native = -16777216
 }
 
 ---@enum AttriebuteEncoderResolutionSmall
 Enums.AttriebuteEncoderResolutionSmall = {
   Coarse = 16777216,
   Fine = 1677721,
-  Increment = 167772,
+  Increment = 167772
 }
 
 ---@enum AutoCreateSource
 Enums.AutoCreateSource = {
   ChannelSets = 1,
-  ["FixtureType Presets"] = 0,
+  ["FixtureType Presets"] = 0
 }
 
 ---@enum AutoInterface
 Enums.AutoInterface = {
-  Auto = 0,
+  Auto = 0
 }
 
 ---@enum AutoLayoutScrollType
 Enums.AutoLayoutScrollType = {
   Auto = 2,
   Horizontal = 1,
-  Vertical = 0,
+  Vertical = 0
 }
 
 ---@enum AutoSaveMode
@@ -625,27 +633,27 @@ Enums.AutoSaveMode = {
   ["360 Minutes"] = 6,
   ["5 Minutes"] = 1,
   ["60 Minutes"] = 4,
-  Off = 0,
+  Off = 0
 }
 
 ---@enum AutoStomp
 Enums.AutoStomp = {
   Off = 0,
   On = 2,
-  Prio = 1,
+  Prio = 1
 }
 
 ---@enum AxisGroupType
 Enums.AxisGroupType = {
   XY = 0,
   XZ = 1,
-  YZ = 2,
+  YZ = 2
 }
 
 ---@enum AxisSystem
 Enums.AxisSystem = {
   Object = 1,
-  Stage = 0,
+  Stage = 0
 }
 
 ---@enum BackdropPatchType
@@ -653,7 +661,7 @@ Enums.BackdropPatchType = {
   Frame = 1,
   Nine = 0,
   ThreeHorizontal = 3,
-  ThreeVertical = 2,
+  ThreeVertical = 2
 }
 
 ---@enum BackupBrowserFilter
@@ -661,7 +669,7 @@ Enums.BackupBrowserFilter = {
   Backups = 1,
   Demoshows = 2,
   Shows = 0,
-  Templates = 3,
+  Templates = 3
 }
 
 ---@enum BeamMode
@@ -670,13 +678,13 @@ Enums.BeamMode = {
   ["High Fancy"] = 4,
   Line = 1,
   ["No Beam"] = 0,
-  Standard = 2,
+  Standard = 2
 }
 
 ---@enum BeamModePatch
 Enums.BeamModePatch = {
   Line = 1,
-  Simple = 2,
+  Simple = 2
 }
 
 ---@enum BeamType
@@ -687,19 +695,19 @@ Enums.BeamType = {
   PC = 4,
   Rectangle = 3,
   Spot = 1,
-  Wash = 0,
+  Wash = 0
 }
 
 ---@enum BlinkingButtonMode
 Enums.BlinkingButtonMode = {
   Exec = 1,
-  Prog = 0,
+  Prog = 0
 }
 
 ---@enum BloomIntensity3d
 Enums.BloomIntensity3d = {
   Off = 0,
-  On = 1,
+  On = 1
 }
 
 ---@enum BodyQuality3d
@@ -710,21 +718,21 @@ Enums.BodyQuality3d = {
   None = 0,
   Simple = 3,
   Standard = 4,
-  Ultra = 6,
+  Ultra = 6
 }
 
 ---@enum BodyQuality3dPatch
 Enums.BodyQuality3dPatch = {
   Box = 1,
   Standard = 4,
-  Ultra = 6,
+  Ultra = 6
 }
 
 ---@enum BuildType
 Enums.BuildType = {
   Asan = 2,
   Debug = 1,
-  Release = 0,
+  Release = 0
 }
 
 ---@enum ButtonHeight
@@ -738,14 +746,14 @@ Enums.ButtonHeight = {
   ["50"] = 50,
   ["55"] = 55,
   ["60"] = 60,
-  Default = 50,
+  Default = 50
 }
 
 ---@enum CachedObjectSource
 Enums.CachedObjectSource = {
   Library = 1,
   Resource = 0,
-  Showfile = 2,
+  Showfile = 2
 }
 
 ---@enum CalculatorMode
@@ -768,7 +776,7 @@ Enums.CalculatorMode = {
   fps24 = 17,
   fps25 = 18,
   fps30 = 19,
-  fps60 = 20,
+  fps60 = 20
 }
 
 ---@enum CameraMode
@@ -778,7 +786,7 @@ Enums.CameraMode = {
   ["2D_Left"] = 2,
   ["2D_Right"] = 4,
   ["2D_Top"] = 3,
-  ["3D"] = 0,
+  ["3D"] = 0
 }
 
 ---@enum CameraType
@@ -792,7 +800,7 @@ Enums.CameraType = {
   ["Front/Right"] = 8,
   Left = 3,
   Right = 7,
-  Top = 9,
+  Top = 9
 }
 
 ---@enum CategoryName
@@ -803,12 +811,12 @@ Enums.CategoryName = {
   Power = 3,
   System = 1,
   USB = 5,
-  Undefined = 0,
+  Undefined = 0
 }
 
 ---@enum CellGrouping
 Enums.CellGrouping = {
-  SizeDriven = 4294967295,
+  SizeDriven = 4294967295
 }
 
 ---@enum ChangeLevel
@@ -827,7 +835,7 @@ Enums.ChangeLevel = {
   None = 14,
   Property = 11,
   Remove = 1,
-  Structural = 10,
+  Structural = 10
 }
 
 ---@enum ChannelFilterMode
@@ -835,7 +843,7 @@ Enums.ChannelFilterMode = {
   Active = 4,
   ["Active For Selected"] = 2,
   All = 5,
-  ["All For Selected"] = 3,
+  ["All For Selected"] = 3
 }
 
 ---@enum ChannelFrequency
@@ -845,21 +853,21 @@ Enums.ChannelFrequency = {
   ["60"] = 0,
   Slow1 = 3,
   Slow2 = 4,
-  Slow3 = 5,
+  Slow3 = 5
 }
 
 ---@enum ChannelSetReadoutMode
 Enums.ChannelSetReadoutMode = {
   Name = 2,
   Value = 0,
-  ["Value+Name"] = 1,
+  ["Value+Name"] = 1
 }
 
 ---@enum ChildrenFillPolicy
 Enums.ChildrenFillPolicy = {
   ColumnFirst = 2,
   Default = 0,
-  RowFirst = 1,
+  RowFirst = 1
 }
 
 ---@enum CleanupOperation
@@ -869,14 +877,14 @@ Enums.CleanupOperation = {
   NoReference = 1,
   None = 0,
   Recipe = 4,
-  StackAll = 16,
+  StackAll = 16
 }
 
 ---@enum ClipMode
 Enums.ClipMode = {
   Clip = 1,
   None = 0,
-  Wrap = 2,
+  Wrap = 2
 }
 
 ---@enum ClockSources
@@ -884,33 +892,33 @@ Enums.ClockSources = {
   ["Session Time"] = 0,
   ["Time Zone"] = 2,
   Timecode = 1,
-  Timer = 3,
+  Timer = 3
 }
 
 ---@enum CloningWindowMode
 Enums.CloningWindowMode = {
   Grid = 1,
   Layout = 2,
-  Sheet = 0,
+  Sheet = 0
 }
 
 ---@enum CmdEventStatus
 Enums.CmdEventStatus = {
   Off = 0,
-  On = 1,
+  On = 1
 }
 
 ---@enum ColorDisplayMode
 Enums.ColorDisplayMode = {
   CMY = 2,
-  RGB = 1,
+  RGB = 1
 }
 
 ---@enum ColorDisplayModeAuto
 Enums.ColorDisplayModeAuto = {
   Auto = 0,
   CMY = 2,
-  RGB = 1,
+  RGB = 1
 }
 
 ---@enum ColorEncoderFunction
@@ -919,7 +927,7 @@ Enums.ColorEncoderFunction = {
   CIE = 4,
   CMY = 3,
   HSB = 1,
-  RGB = 2,
+  RGB = 2
 }
 
 ---@enum ColorMixMode
@@ -927,7 +935,7 @@ Enums.ColorMixMode = {
   ["Fixture Type"] = 0,
   ["Rec.2020"] = 2,
   ["Rec.709"] = 1,
-  Standard = 3,
+  Standard = 3
 }
 
 ---@enum ColorPickerWindowMode
@@ -935,7 +943,7 @@ Enums.ColorPickerWindowMode = {
   Book = 3,
   CIE = 0,
   Fader = 2,
-  HSB = 1,
+  HSB = 1
 }
 
 ---@enum ColorSample
@@ -1038,7 +1046,7 @@ Enums.ColorSample = {
   CES96 = 95,
   CES97 = 96,
   CES98 = 97,
-  CES99 = 98,
+  CES99 = 98
 }
 
 ---@enum ColorSource
@@ -1048,7 +1056,7 @@ Enums.ColorSource = {
   Const = 5,
   Green = 1,
   Intensity = 4,
-  Red = 0,
+  Red = 0
 }
 
 ---@enum ColorSpaceMode
@@ -1056,7 +1064,7 @@ Enums.ColorSpaceMode = {
   ANSI = 2,
   Custom = 3,
   ProPhoto = 1,
-  sRGB = 0,
+  sRGB = 0
 }
 
 ---@enum ColorWheelMode
@@ -1066,12 +1074,12 @@ Enums.ColorWheelMode = {
 ---@enum ColumnOrder
 Enums.ColumnOrder = {
   ["Left Right"] = 0,
-  ["Right Left"] = 1,
+  ["Right Left"] = 1
 }
 
 ---@enum CommandWingBarDisplayMode
 Enums.CommandWingBarDisplayMode = {
-  Labels = 0,
+  Labels = 0
 }
 
 ---@enum ComponentType
@@ -1084,19 +1092,19 @@ Enums.ComponentType = {
   NetworkOutput = 7,
   NetworkProvider = 5,
   Output = 1,
-  PowerSource = 2,
+  PowerSource = 2
 }
 
 ---@enum Config
 Enums.Config = {
   MaxElementsPerLayout = 16384,
-  MaxMultiPatchPerFixture = 1024,
+  MaxMultiPatchPerFixture = 1024
 }
 
 ---@enum ConnectionLimitConsole
 Enums.ConnectionLimitConsole = {
   ["1"] = 1,
-  ["2"] = 2,
+  ["2"] = 2
 }
 
 ---@enum ConnectionLimitOnPC
@@ -1105,14 +1113,14 @@ Enums.ConnectionLimitOnPC = {
   ["2"] = 2,
   ["3"] = 3,
   ["4"] = 4,
-  ["5"] = 5,
+  ["5"] = 5
 }
 
 ---@enum ConnectorGender
 Enums.ConnectorGender = {
   Female = 1,
   Male = -1,
-  Universal = 0,
+  Universal = 0
 }
 
 ---@enum ConnectorType
@@ -1198,7 +1206,7 @@ Enums.ConnectorType = {
   USB = 47,
   XLR3 = 12,
   XLR4 = 13,
-  XLR5 = 14,
+  XLR5 = 14
 }
 
 ---@enum ContentSheetCueMode
@@ -1206,7 +1214,7 @@ Enums.ContentSheetCueMode = {
   ["Current Cue"] = 0,
   Manual = 3,
   ["Next Cue"] = 2,
-  ["Previous Cue"] = 1,
+  ["Previous Cue"] = 1
 }
 
 ---@enum CookMode
@@ -1216,46 +1224,46 @@ Enums.CookMode = {
   Merge = 3,
   MergeLowPriority = 2,
   Overwrite = 1,
-  Remove = 4,
+  Remove = 4
 }
 
 ---@enum CopyCueOnly
 Enums.CopyCueOnly = {
   DimmerOnly = 3,
   Off = 0,
-  On = 1,
+  On = 1
 }
 
 ---@enum CopyCueOnlyPopup
 Enums.CopyCueOnlyPopup = {
   ["Cue Only"] = 2,
-  Tracking = 0,
+  Tracking = 0
 }
 
 ---@enum CountdownAlertRange
 Enums.CountdownAlertRange = {
   ["All Stations"] = 1,
-  Local = 0,
+  Local = 0
 }
 
 ---@enum CountdownAlertType
 Enums.CountdownAlertType = {
   Command = 2,
   None = 0,
-  ["Pop-Up"] = 1,
+  ["Pop-Up"] = 1
 }
 
 ---@enum CreateBy
 Enums.CreateBy = {
   ["System Conversion"] = 2,
   Unknown = 0,
-  ["User Conversion"] = 1,
+  ["User Conversion"] = 1
 }
 
 ---@enum CrossSectionType
 Enums.CrossSectionType = {
   TrussFramework = 0,
-  Tube = 1,
+  Tube = 1
 }
 
 ---@enum CueAssert
@@ -1263,39 +1271,39 @@ Enums.CueAssert = {
   [""] = 0,
   Assert = 1,
   None = 0,
-  ["X-Assert"] = 2,
+  ["X-Assert"] = 2
 }
 
 ---@enum CueCommandMode
 Enums.CueCommandMode = {
   Enabled = 0,
   ["Force No"] = 1,
-  ["Force Yes"] = 2,
+  ["Force Yes"] = 2
 }
 
 ---@enum CueCopyDst
 Enums.CueCopyDst = {
-  Retain = 0,
+  Retain = 0
 }
 
 ---@enum CueCopyDstCmd
 Enums.CueCopyDstCmd = {
   ForceDefault = 2,
   ForceRelease = 1,
-  Keep = 0,
+  Keep = 0
 }
 
 ---@enum CueCopyDstMode
 Enums.CueCopyDstMode = {
   Merge = 1,
-  Overwrite = 0,
+  Overwrite = 0
 }
 
 ---@enum CueCopySrc
 Enums.CueCopySrc = {
   Content = 0,
   Look = 2,
-  Status = 1,
+  Status = 1
 }
 
 ---@enum CueOnly
@@ -1304,19 +1312,19 @@ Enums.CueOnly = {
   DimmerOnlyDefaultNew = 4,
   Off = 0,
   On = 1,
-  OnDefaultNew = 2,
+  OnDefaultNew = 2
 }
 
 ---@enum CueOnlyPopup
 Enums.CueOnlyPopup = {
   ["Cue Only"] = 1,
-  Tracking = 0,
+  Tracking = 0
 }
 
 ---@enum CueOperationMode
 Enums.CueOperationMode = {
   ["Cue Only"] = 0,
-  Tracking = 1,
+  Tracking = 1
 }
 
 ---@enum CuePartAppearance
@@ -1324,29 +1332,29 @@ Enums.CuePartAppearance = {
   All = 3,
   ["Num+Name"] = 2,
   Number = 1,
-  Off = 0,
+  Off = 0
 }
 
 ---@enum CuePartAppearanceContent
 Enums.CuePartAppearanceContent = {
   ["Num+Name"] = 2,
   Number = 1,
-  Off = 0,
+  Off = 0
 }
 
 ---@enum CuePartMode
 Enums.CuePartMode = {
-  Default = 4294967295,
+  Default = 4294967295
 }
 
 ---@enum CuePartTextures
 Enums.CuePartTextures = {
-  IconCooking = 0,
+  IconCooking = 0
 }
 
 ---@enum CueTimeNone
 Enums.CueTimeNone = {
-  None = -1,
+  None = -1
 }
 
 ---@enum CueTrigger
@@ -1355,19 +1363,19 @@ Enums.CueTrigger = {
   Follow = 2,
   Go = 0,
   Sound = 3,
-  Time = 1,
+  Time = 1
 }
 
 ---@enum CueZeroMode
 Enums.CueZeroMode = {
   ["All Used Attributes"] = 1,
   Off = 0,
-  ["Only Used Dimmers"] = 2,
+  ["Only Used Dimmers"] = 2
 }
 
 ---@enum DMXBreak
 Enums.DMXBreak = {
-  Overwrite = -1,
+  Overwrite = -1
 }
 
 ---@enum DMXMergeMode
@@ -1375,7 +1383,7 @@ Enums.DMXMergeMode = {
   HTP = 2,
   LowTP = 3,
   Off = 0,
-  Prio = 1,
+  Prio = 1
 }
 
 ---@enum DMXReadoutMode
@@ -1386,21 +1394,21 @@ Enums.DMXReadoutMode = {
   Hex16 = 1,
   Hex24 = 2,
   Hex8 = 0,
-  Percent = 6,
+  Percent = 6
 }
 
 ---@enum DMXValueReadoutMode
 Enums.DMXValueReadoutMode = {
   Decimal = 1,
   Hex = 2,
-  Percent = 0,
+  Percent = 0
 }
 
 ---@enum DMXVirtualResolution
 Enums.DMXVirtualResolution = {
   ["16 bits"] = 2,
   ["24 bits"] = 3,
-  ["8 bits"] = 1,
+  ["8 bits"] = 1
 }
 
 ---@enum DSCPCodes
@@ -1426,7 +1434,7 @@ Enums.DSCPCodes = {
   CS6 = 48,
   CS7 = 56,
   EF = 46,
-  ["Voice-Admit"] = 44,
+  ["Voice-Admit"] = 44
 }
 
 ---@enum DSCPCodesDMX
@@ -1452,12 +1460,12 @@ Enums.DSCPCodesDMX = {
   CS6 = 48,
   CS7 = 56,
   EF = 46,
-  ["Voice-Admit"] = 44,
+  ["Voice-Admit"] = 44
 }
 
 ---@enum DataMergeTimeout
 Enums.DataMergeTimeout = {
-  Unlimited = 9223372036854775807,
+  Unlimited = 9223372036854775807
 }
 
 ---@enum DataNegotiationMode
@@ -1465,21 +1473,21 @@ Enums.DataNegotiationMode = {
   Cancel = 0,
   Merge = 2,
   ["Use Master"] = 1,
-  ["Use Mine"] = 3,
+  ["Use Mine"] = 3
 }
 
 ---@enum DataNegotiationModeDefault
 Enums.DataNegotiationModeDefault = {
   Cancel = 0,
   ["Keep Only Master Data"] = 1,
-  ["Merge All Data"] = 2,
+  ["Merge All Data"] = 2
 }
 
 ---@enum DatumMode
 Enums.DatumMode = {
   Date = 1,
   Full = 0,
-  Time = 2,
+  Time = 2
 }
 
 ---@enum DebugUsbDataSection
@@ -1504,18 +1512,18 @@ Enums.DebugUsbDataSection = {
   Software = 16,
   Sync = 13,
   Text = 18,
-  Ups = 6,
+  Ups = 6
 }
 
 ---@enum Default
 Enums.Default = {
-  Default = 4294967295,
+  Default = 4294967295
 }
 
 ---@enum DefinedPoolColumns
 Enums.DefinedPoolColumns = {
   ["Not Defined"] = 4294967295,
-  ["Take Current Width"] = 4294967294,
+  ["Take Current Width"] = 4294967294
 }
 
 ---@enum DeskLightChannel
@@ -1529,20 +1537,20 @@ Enums.DeskLightChannel = {
   ScreenBig = 7,
   ScreenExternal = 10,
   ScreenLetter = 8,
-  ScreenSmall = 9,
+  ScreenSmall = 9
 }
 
 ---@enum DimmerWheelResolution
 Enums.DimmerWheelResolution = {
   Coarse = 1,
   Fine = 2,
-  Normal = 0,
+  Normal = 0
 }
 
 ---@enum Disabled
 Enums.Disabled = {
   [""] = 1,
-  Disabled = 0,
+  Disabled = 0
 }
 
 ---@enum DispView
@@ -1557,17 +1565,17 @@ Enums.DispView = {
   Network = 10,
   Realtime = 0,
   ["Sys Temp"] = 6,
-  Timing = 1,
+  Timing = 1
 }
 
 ---@enum DisplayIndex
 Enums.DisplayIndex = {
-  None = 4294967295,
+  None = 4294967295
 }
 
 ---@enum DisplayNone
 Enums.DisplayNone = {
-  None = 4294967295,
+  None = 4294967295
 }
 
 ---@enum DisplayNumber
@@ -1587,7 +1595,7 @@ Enums.DisplayNumber = {
   None = 4294967295,
   Small6 = 5,
   Small7 = 6,
-  TouchMapper = 14,
+  TouchMapper = 14
 }
 
 ---@enum DisplayScales
@@ -1598,14 +1606,14 @@ Enums.DisplayScales = {
   ["1.75x"] = 29360128,
   ["1x"] = 16777216,
   ["2.5x"] = 41943040,
-  ["2x"] = 33554432,
+  ["2x"] = 33554432
 }
 
 ---@enum DisplayType
 Enums.DisplayType = {
   Big = 0,
   Long = 1,
-  Small = 2,
+  Small = 2
 }
 
 ---@enum DisplayTypePreference
@@ -1617,7 +1625,7 @@ Enums.DisplayTypePreference = {
   BigOrSmall = 5,
   Long = 2,
   LongOrSmall = 6,
-  Small = 3,
+  Small = 3
 }
 
 ---@enum DmxCurveEditTool
@@ -1627,14 +1635,14 @@ Enums.DmxCurveEditTool = {
   MoveArea = 0,
   MovePoint = 4,
   MoveSpline = 5,
-  Select = 1,
+  Select = 1
 }
 
 ---@enum DmxCurveModes
 Enums.DmxCurveModes = {
   Custom = 2,
   MinMax = 0,
-  Switch = 1,
+  Switch = 1
 }
 
 ---@enum DmxPrio
@@ -1647,7 +1655,7 @@ Enums.DmxPrio = {
   Lowest = 0,
   Prog = 112,
   Super = 128,
-  Swap = 96,
+  Swap = 96
 }
 
 ---@enum DmxSheetCellType
@@ -1660,48 +1668,48 @@ Enums.DmxSheetCellType = {
   Patched1 = 1,
   Patched2 = 2,
   Selected = 3,
-  SelectedInverted = 4,
+  SelectedInverted = 4
 }
 
 ---@enum DmxSheetFixedColumnType
 Enums.DmxSheetFixedColumnType = {
   Address = 0,
-  Address2 = 1,
+  Address2 = 1
 }
 
 ---@enum DmxSheetHeaderType
 Enums.DmxSheetHeaderType = {
-  [""] = 0,
+  [""] = 0
 }
 
 ---@enum DmxSheetSettingsAddressMode
 Enums.DmxSheetSettingsAddressMode = {
   Absolute = 1,
-  ["Univ.addr"] = 0,
+  ["Univ.addr"] = 0
 }
 
 ---@enum DmxSheetSettingsLevelbar
 Enums.DmxSheetSettingsLevelbar = {
   Background = 1,
   Bar = 2,
-  Off = 0,
+  Off = 0
 }
 
 ---@enum DmxSheetSettingsSelected
 Enums.DmxSheetSettingsSelected = {
-  Selected = 4294967295,
+  Selected = 4294967295
 }
 
 ---@enum DmxSheetSettingsShowField
 Enums.DmxSheetSettingsShowField = {
   Attribute = 0,
   Id = 1,
-  Value = 2,
+  Value = 2
 }
 
 ---@enum DmxSheetSettingsViewMode
 Enums.DmxSheetSettingsViewMode = {
-  Sheet = 0,
+  Sheet = 0
 }
 
 ---@enum DmxState
@@ -1709,20 +1717,20 @@ Enums.DmxState = {
   In = 2,
   Off = 0,
   Out = 1,
-  RDM = 5,
+  RDM = 5
 }
 
 ---@enum DmxTesterAddressMode
 Enums.DmxTesterAddressMode = {
   Abs = 1,
-  Uni = 0,
+  Uni = 0
 }
 
 ---@enum DmxTesterMode
 Enums.DmxTesterMode = {
   All = 0,
   Patched = 1,
-  Unpatched = 2,
+  Unpatched = 2
 }
 
 ---@enum DriveType
@@ -1731,12 +1739,12 @@ Enums.DriveType = {
   Invalid = 0,
   OldVersion = 3,
   RemoteDrive = 4,
-  Removeable = 2,
+  Removeable = 2
 }
 
 ---@enum DynamicPresetPool
 Enums.DynamicPresetPool = {
-  Dynamic = 4294967295,
+  Dynamic = 4294967295
 }
 
 ---@enum ECPlay
@@ -1749,7 +1757,7 @@ Enums.ECPlay = {
   ["false"] = 0,
   off = 0,
   on = 1,
-  ["true"] = 1,
+  ["true"] = 1
 }
 
 ---@enum ECRec
@@ -1762,37 +1770,37 @@ Enums.ECRec = {
   ["false"] = 0,
   off = 0,
   on = 1,
-  ["true"] = 1,
+  ["true"] = 1
 }
 
 ---@enum EC_AutoGrid
 Enums.EC_AutoGrid = {
   Auto = 1,
-  Manual = 0,
+  Manual = 0
 }
 
 ---@enum EC_NoGrid
 Enums.EC_NoGrid = {
   [""] = 2147483647,
-  None = 2147483647,
+  None = 2147483647
 }
 
 ---@enum EmptyAsZero
 Enums.EmptyAsZero = {
-  [""] = 0,
+  [""] = 0
 }
 
 ---@enum EmptyAsZeroFID
 Enums.EmptyAsZeroFID = {
   [""] = 0,
-  None = 0,
+  None = 0
 }
 
 ---@enum EncoderBarContext
 Enums.EncoderBarContext = {
   Default = 0,
   Overlay = 2,
-  Window = 1,
+  Window = 1
 }
 
 ---@enum EncoderFactor
@@ -1810,7 +1818,7 @@ Enums.EncoderFactor = {
   Mul25 = 419430400,
   Mul5 = 83886080,
   Mul50 = 838860800,
-  One = 16777216,
+  One = 16777216
 }
 
 ---@enum EncoderFunction
@@ -1822,66 +1830,66 @@ Enums.EncoderFunction = {
   MIB = 6,
   PresetTiming1 = 2,
   PresetTiming2 = 3,
-  PresetTiming3 = 4,
+  PresetTiming3 = 4
 }
 
 ---@enum EncoderFunctionLayoutView
 Enums.EncoderFunctionLayoutView = {
   Arrangement = 1,
-  Position = 0,
+  Position = 0
 }
 
 ---@enum EncoderGroupType
 Enums.EncoderGroupType = {
   Speed = 0,
   Timing = 0,
-  Value = 0,
+  Value = 0
 }
 
 ---@enum EncoderLink
 Enums.EncoderLink = {
   AtFilter = 2,
   Feature = 1,
-  Single = 0,
+  Single = 0
 }
 
 ---@enum EncoderLinkPhaser
 Enums.EncoderLinkPhaser = {
   AtFilter = 2,
   Feature = 1,
-  Single = 0,
+  Single = 0
 }
 
 ---@enum EncoderLinkResolution
 Enums.EncoderLinkResolution = {
   FeatureGroup = 1,
-  Single = 0,
+  Single = 0
 }
 
 ---@enum EncoderLinkValues
 Enums.EncoderLinkValues = {
   Feature = 1,
-  Single = 0,
+  Single = 0
 }
 
 ---@enum EncoderResolution3d
 Enums.EncoderResolution3d = {
   Coarse = 0,
   Fine = 1,
-  Increment = 2,
+  Increment = 2
 }
 
 ---@enum EncoderResolutionType
 Enums.EncoderResolutionType = {
   Fast = 1,
-  Slow = 0,
+  Slow = 0
 }
 
 ---@enum EncoderRing
 Enums.EncoderRing = {
   Both = 2,
   Inner = 0,
-  Outer = 1,
+  Outer = 1
 }
 
 ---@enum EncoderType
@@ -1901,20 +1909,20 @@ Enums.EncoderType = {
   PanTiltFollow = 2,
   PanTrackpad = 3,
   TiltTrackpad = 4,
-  WheelMaster = 0,
+  WheelMaster = 0
 }
 
 ---@enum EncoderUIStyle
 Enums.EncoderUIStyle = {
   Drag = 2,
   None = 0,
-  Rotate = 1,
+  Rotate = 1
 }
 
 ---@enum EventsPlaybackRecord
 Enums.EventsPlaybackRecord = {
   ["All Events"] = 1,
-  ["Manual Events"] = 0,
+  ["Manual Events"] = 0
 }
 
 ---@enum ExecConfigType
@@ -1932,13 +1940,13 @@ Enums.ExecConfigType = {
   Timer = 10,
   User = 7,
   View = 2,
-  World = 3,
+  World = 3
 }
 
 ---@enum ExecDisplayMode
 Enums.ExecDisplayMode = {
   Both = 2,
-  ["Data only"] = 0,
+  ["Data only"] = 0
 }
 
 ---@enum ExecEditorTab
@@ -1946,7 +1954,7 @@ Enums.ExecEditorTab = {
   Edit = 3,
   Handle = 1,
   LastTab = 4,
-  Object = 0,
+  Object = 0
 }
 
 ---@enum ExecEvent
@@ -1963,7 +1971,7 @@ Enums.ExecEvent = {
   MAFader = 6,
   MAKey = 3,
   MAKeyUnpress = 4,
-  None = 0,
+  None = 0
 }
 
 ---@enum ExitCode
@@ -1973,27 +1981,27 @@ Enums.ExitCode = {
   Normal = 0,
   PowerDown = 4,
   Reboot = 2,
-  Restart = 1,
+  Restart = 1
 }
 
 ---@enum ExternTimeSyncMode
 Enums.ExternTimeSyncMode = {
   NTP = 1,
-  None = 0,
+  None = 0
 }
 
 ---@enum ExtraStatusInfo
 Enums.ExtraStatusInfo = {
   [""] = 0,
   Create = 2,
-  Join = 1,
+  Join = 1
 }
 
 ---@enum FaderEnable
 Enums.FaderEnable = {
   AlwaysOn = 1,
   Disabled = 2,
-  Toggle = 0,
+  Toggle = 0
 }
 
 ---@enum FaderFunctions
@@ -2008,7 +2016,7 @@ Enums.FaderFunctions = {
   Time = 45,
   XFade = 36,
   XFadeA = 37,
-  XFadeB = 38,
+  XFadeB = 38
 }
 
 ---@enum FailedCookedPart
@@ -2018,7 +2026,7 @@ Enums.FailedCookedPart = {
   GroupPartlyCooked = 5,
   Matricks = 2,
   None = 0,
-  Preset = 3,
+  Preset = 3
 }
 
 ---@enum FailureMode
@@ -2030,38 +2038,38 @@ Enums.FailureMode = {
   ["Timeout 1m"] = 60,
   ["Timeout 20s"] = 20,
   ["Timeout 30m"] = 1800,
-  ["Timeout 30s"] = 30,
+  ["Timeout 30s"] = 30
 }
 
 ---@enum FalloffType
 Enums.FalloffType = {
   Correct = 2,
   Linear = 1,
-  None = 0,
+  None = 0
 }
 
 ---@enum FilterAction
 Enums.FilterAction = {
   Call = 9,
   None = 255,
-  Select = 1,
+  Select = 1
 }
 
 ---@enum FilterRuleStatic
 Enums.FilterRuleStatic = {
   No = 1,
-  Yes = 0,
+  Yes = 0
 }
 
 ---@enum FilterRuleTypes
 Enums.FilterRuleTypes = {
   Hide = 1,
-  Show = 0,
+  Show = 0
 }
 
 ---@enum FixedColumns
 Enums.FixedColumns = {
-  Auto = -1,
+  Auto = -1
 }
 
 ---@enum FixturGraphicSource
@@ -2069,14 +2077,14 @@ Enums.FixturGraphicSource = {
   Auto = 0,
   DMX = 3,
   Output = 2,
-  Value = 1,
+  Value = 1
 }
 
 ---@enum FixtureAppearanceMode
 Enums.FixtureAppearanceMode = {
   Enabled = 1,
   Graphic = 2,
-  None = 0,
+  None = 0
 }
 
 ---@enum FixtureGraphicMode
@@ -2084,12 +2092,12 @@ Enums.FixtureGraphicMode = {
   Flip = 1,
   Gobo = 3,
   None = 0,
-  Simple = 2,
+  Simple = 2
 }
 
 ---@enum FixtureIdEnum
 Enums.FixtureIdEnum = {
-  None = 0,
+  None = 0
 }
 
 ---@enum FixtureInvert
@@ -2104,13 +2112,13 @@ Enums.FixtureInvert = {
   ["false"] = 0,
   off = 0,
   on = 1,
-  ["true"] = 1,
+  ["true"] = 1
 }
 
 ---@enum FixtureMoveOperation
 Enums.FixtureMoveOperation = {
   Absolute = 1,
-  Relative = 2,
+  Relative = 2
 }
 
 ---@enum FixtureOffsets
@@ -2122,7 +2130,7 @@ Enums.FixtureOffsets = {
   ["45°"] = 45,
   ["60°"] = 60,
   ["90°"] = 90,
-  None = 0,
+  None = 0
 }
 
 ---@enum FixtureSheetFixedColumnType
@@ -2133,7 +2141,7 @@ Enums.FixtureSheetFixedColumnType = {
   PartlySelected = 3,
   Selected = 1,
   SelectedEdge = 6,
-  SelectedInverted = 2,
+  SelectedInverted = 2
 }
 
 ---@enum FixtureSheetHeaderType
@@ -2141,19 +2149,19 @@ Enums.FixtureSheetHeaderType = {
   [""] = 0,
   PartlySelected = 3,
   Selected = 1,
-  SelectedInverted = 2,
+  SelectedInverted = 2
 }
 
 ---@enum FixtureSheetSortMode
 Enums.FixtureSheetSortMode = {
   CID = 1,
-  FID = 0,
+  FID = 0
 }
 
 ---@enum FixtureSourceType
 Enums.FixtureSourceType = {
   Classes = 1,
-  Layers = 2,
+  Layers = 2
 }
 
 ---@enum FixtureTypeSource
@@ -2163,7 +2171,7 @@ Enums.FixtureTypeSource = {
   Shares = 4,
   User = 3,
   grandMA2 = 1,
-  grandMA3 = 0,
+  grandMA3 = 0
 }
 
 ---@enum FixtureTypeSourceImport
@@ -2171,20 +2179,20 @@ Enums.FixtureTypeSourceImport = {
   Shares = 4,
   User = 3,
   grandMA2 = 1,
-  grandMA3 = 0,
+  grandMA3 = 0
 }
 
 ---@enum FixtureTypeXYZStatus
 Enums.FixtureTypeXYZStatus = {
   No = 0,
   Partial = 1,
-  Yes = 2,
+  Yes = 2
 }
 
 ---@enum FlipOption
 Enums.FlipOption = {
   X = 0,
-  Y = 1,
+  Y = 1
 }
 
 ---@enum FocusPriority
@@ -2193,7 +2201,7 @@ Enums.FocusPriority = {
   InitialFocus = 4,
   Never = 0,
   TabOnly = 1,
-  WantsFocus = 3,
+  WantsFocus = 3
 }
 
 ---@enum FocusReason
@@ -2205,20 +2213,20 @@ Enums.FocusReason = {
   UserClickTitle = 4,
   UserKeyTab = 5,
   ViewChanged = 2,
-  ViewChangedLimited = 1,
+  ViewChangedLimited = 1
 }
 
 ---@enum FocusSearchPolicy
 Enums.FocusSearchPolicy = {
   Default = 0,
   Force = 1,
-  Suppress = 2,
+  Suppress = 2
 }
 
 ---@enum FontSizeType
 Enums.FontSizeType = {
   Pixel = 1,
-  Point = 0,
+  Point = 0
 }
 
 ---@enum FontSizes
@@ -2231,7 +2239,7 @@ Enums.FontSizes = {
   ["24"] = 24,
   ["28"] = 28,
   ["32"] = 32,
-  ["9"] = 9,
+  ["9"] = 9
 }
 
 ---@enum FrameFormat
@@ -2240,7 +2248,7 @@ Enums.FrameFormat = {
   ["25 fps"] = 25,
   ["30 fps"] = 30,
   ["60 fps"] = 60,
-  Seconds = 0,
+  Seconds = 0
 }
 
 ---@enum FrameFormatClockSource
@@ -2250,7 +2258,7 @@ Enums.FrameFormatClockSource = {
   ["30 fps"] = 30,
   ["60 fps"] = 60,
   ["<Clock Source>"] = 0,
-  Seconds = 100,
+  Seconds = 100
 }
 
 ---@enum FrameFormatDefault
@@ -2260,7 +2268,7 @@ Enums.FrameFormatDefault = {
   ["30 fps"] = 30,
   ["60 fps"] = 60,
   Default = 0,
-  Seconds = 100,
+  Seconds = 100
 }
 
 ---@enum FunctionMode
@@ -2269,7 +2277,7 @@ Enums.FunctionMode = {
   WM_2D = 1,
   WM_Phase = 3,
   WM_Unknown = 0,
-  WM_Width = 4,
+  WM_Width = 4
 }
 
 ---@enum FuseRating
@@ -2278,14 +2286,14 @@ Enums.FuseRating = {
   C = 1,
   D = 2,
   K = 3,
-  Z = 4,
+  Z = 4
 }
 
 ---@enum GE_MessageNotificationType
 Enums.GE_MessageNotificationType = {
   None = 0,
   Notification = 1,
-  ["Pop-up"] = 2,
+  ["Pop-up"] = 2
 }
 
 ---@enum GE_StatusCategory
@@ -2310,40 +2318,40 @@ Enums.GE_StatusCategory = {
   Tester = 5,
   TimecodeRec = 10,
   World = 9,
-  Worldserver = 11,
+  Worldserver = 11
 }
 
 ---@enum GE_StatusSource
 Enums.GE_StatusSource = {
   All = 1,
-  My = 0,
+  My = 0
 }
 
 ---@enum GE_StatusVisibility
 Enums.GE_StatusVisibility = {
   Always = 2,
   Never = 0,
-  ["On Activity"] = 1,
+  ["On Activity"] = 1
 }
 
 ---@enum GelGridType
 Enums.GelGridType = {
   ["Big Icons"] = 2,
   List = 0,
-  ["Small Icons"] = 1,
+  ["Small Icons"] = 1
 }
 
 ---@enum GelSortType
 Enums.GelSortType = {
   Key = 2,
   Name = 1,
-  None = 0,
+  None = 0
 }
 
 ---@enum GenVirtualDimmer
 Enums.GenVirtualDimmer = {
   No = 0,
-  Yes = 1,
+  Yes = 1
 }
 
 ---@enum GenerateParmeters
@@ -2352,12 +2360,12 @@ Enums.GenerateParmeters = {
   AmountSaturation = 2,
   DimmerIncrement = 0,
   GelList = 4,
-  SortColor = 3,
+  SortColor = 3
 }
 
 ---@enum GeneratorLimits
 Enums.GeneratorLimits = {
-  ["14d"] = 0,
+  ["14d"] = 0
 }
 
 ---@enum GeometryType
@@ -2378,7 +2386,7 @@ Enums.GeometryType = {
   None = 0,
   Structure = 14,
   Support = 15,
-  WiringObject = 12,
+  WiringObject = 12
 }
 
 ---@enum GestureId
@@ -2387,7 +2395,7 @@ Enums.GestureId = {
   Click = 2,
   Pan = 0,
   PanScrollArea = 3,
-  Swipe = 1,
+  Swipe = 1
 }
 
 ---@enum GestureResult
@@ -2399,7 +2407,7 @@ Enums.GestureResult = {
   Ignore = 0,
   MayBeGesture = 2,
   TriggerGesture = 3,
-  TriggerGesturePassEvent = 4,
+  TriggerGesturePassEvent = 4
 }
 
 ---@enum GestureStatus
@@ -2408,7 +2416,7 @@ Enums.GestureStatus = {
   Finished = 3,
   Finishing = 2,
   None = 0,
-  Updated = 1,
+  Updated = 1
 }
 
 ---@enum GlShaderTypes
@@ -2417,20 +2425,20 @@ Enums.GlShaderTypes = {
   Geometry = 36313,
   TessCtrl = 36488,
   TessEval = 36487,
-  Vertex = 35633,
+  Vertex = 35633
 }
 
 ---@enum GoboMode
 Enums.GoboMode = {
   Animated = 2,
   Disabled = 0,
-  Enabled = 1,
+  Enabled = 1
 }
 
 ---@enum GrandKnob
 Enums.GrandKnob = {
   GrandKnob = 100,
-  None = 4294967295,
+  None = 4294967295
 }
 
 ---@enum GridColumnFilterCollect
@@ -2441,20 +2449,20 @@ Enums.GridColumnFilterCollect = {
   SeqenceTabColumnFilter = 0,
   SoundFileTabColumnFilter = 5,
   TimecodeTabColumnFilter = 2,
-  TimerTabColumnFilter = 4,
+  TimerTabColumnFilter = 4
 }
 
 ---@enum GridContentFilterMode
 Enums.GridContentFilterMode = {
   And = 0,
-  Or = 1,
+  Or = 1
 }
 
 ---@enum GridCursorMovement
 Enums.GridCursorMovement = {
   ["Append X"] = 1,
   Newline = 2,
-  None = 0,
+  None = 0
 }
 
 ---@enum GridCursorMovementGroup
@@ -2462,7 +2470,7 @@ Enums.GridCursorMovementGroup = {
   ["<Linked>"] = 3,
   ["Append X"] = 1,
   Newline = 2,
-  None = 0,
+  None = 0
 }
 
 ---@enum GridDirection
@@ -2472,7 +2480,7 @@ Enums.GridDirection = {
   ["Y before X"] = 1,
   ["Y before Z"] = 0,
   ["Z before X"] = 1,
-  ["Z before Y"] = 1,
+  ["Z before Y"] = 1
 }
 
 ---@enum GridMatrixRotation
@@ -2480,27 +2488,27 @@ Enums.GridMatrixRotation = {
   ["0°"] = 0,
   ["180°"] = 2,
   ["270°"] = 3,
-  ["90°"] = 1,
+  ["90°"] = 1
 }
 
 ---@enum GridMergeMode
 Enums.GridMergeMode = {
   ["Append X"] = 1,
-  Off = 0,
+  Off = 0
 }
 
 ---@enum GridModeAgenda
 Enums.GridModeAgenda = {
   Day = 2,
   Month = 0,
-  Week = 1,
+  Week = 1
 }
 
 ---@enum GridSortOrder
 Enums.GridSortOrder = {
   Asc = 1,
   Desc = 2,
-  None = 0,
+  None = 0
 }
 
 ---@enum GridTool
@@ -2516,7 +2524,7 @@ Enums.GridTool = {
   RemoveOffset = 6,
   Rotate = 2,
   Transpose = 1,
-  UseMatricksPositions = 11,
+  UseMatricksPositions = 11
 }
 
 ---@enum GridType
@@ -2525,7 +2533,7 @@ Enums.GridType = {
   FTPreset = 4,
   Fixture = 0,
   FixtureSource = 2,
-  FixtureType = 1,
+  FixtureType = 1
 }
 
 ---@enum GroupMasterMode
@@ -2534,19 +2542,19 @@ Enums.GroupMasterMode = {
   Negative = 2,
   None = 0,
   Positive = 1,
-  Scaling = 3,
+  Scaling = 3
 }
 
 ---@enum GroupMemoryType
 Enums.GroupMemoryType = {
   Compressed = 0,
-  Uncompressed = 1,
+  Uncompressed = 1
 }
 
 ---@enum GroupSelectionType
 Enums.GroupSelectionType = {
   Absolute = 1,
-  Relative = 0,
+  Relative = 0
 }
 
 ---@enum HostOs
@@ -2555,14 +2563,14 @@ Enums.HostOs = {
   Mac = 3,
   Rtos = 4,
   Undefined = 0,
-  Windows = 2,
+  Windows = 2
 }
 
 ---@enum HostRevision
 Enums.HostRevision = {
   Rev1 = 0,
   Rev2 = 1,
-  Rev3 = 2,
+  Rev3 = 2
 }
 
 ---@enum HostStatus
@@ -2577,7 +2585,7 @@ Enums.HostStatus = {
   Standalone = 2,
   Startup = 1,
   Undefined = 0,
-  UpdateMode = 9,
+  UpdateMode = 9
 }
 
 ---@enum HostSubType
@@ -2622,7 +2630,7 @@ Enums.HostSubType = {
   onPC4PortDIN = 71,
   onPC8Port = 62,
   onPC8PortDIN = 72,
-  onPCRackUnit = 97,
+  onPCRackUnit = 97
 }
 
 ---@enum HostType
@@ -2637,20 +2645,20 @@ Enums.HostType = {
   Switch = 6,
   Undefined = 0,
   UpdateMode = 10,
-  onPC = 2,
+  onPC = 2
 }
 
 ---@enum Ignore
 Enums.Ignore = {
   [""] = 0,
-  Ignore = 1,
+  Ignore = 1
 }
 
 ---@enum IgnoreFT
 Enums.IgnoreFT = {
   [""] = 4294967295,
   ["Follow FT"] = 4294967295,
-  ["Ignore FT"] = 4294967294,
+  ["Ignore FT"] = 4294967294
 }
 
 ---@enum ImageBackGroundMode
@@ -2659,7 +2667,7 @@ Enums.ImageBackGroundMode = {
   Center = 4,
   Crop = 2,
   Stretch = 0,
-  Tile = 3,
+  Tile = 3
 }
 
 ---@enum ImageMirror
@@ -2667,7 +2675,7 @@ Enums.ImageMirror = {
   Both = 3,
   Horizontal = 1,
   None = 0,
-  Vertical = 2,
+  Vertical = 2
 }
 
 ---@enum ImageResolution
@@ -2676,7 +2684,7 @@ Enums.ImageResolution = {
   ["256"] = 256,
   ["512"] = 512,
   ["64"] = 64,
-  Full = 0,
+  Full = 0
 }
 
 ---@enum ImageRotation
@@ -2684,7 +2692,7 @@ Enums.ImageRotation = {
   ["180°"] = 2,
   ["270°"] = 3,
   ["90°"] = 1,
-  None = 0,
+  None = 0
 }
 
 ---@enum ImageSource
@@ -2692,31 +2700,31 @@ Enums.ImageSource = {
   Gobos = 0,
   Images = 2,
   Symbols = 1,
-  Videos = 3,
+  Videos = 3
 }
 
 ---@enum ImageStoreSource
 Enums.ImageStoreSource = {
   NDI = 1,
-  ScreenShot = 0,
+  ScreenShot = 0
 }
 
 ---@enum Index
 Enums.Index = {
-  Illegal = -1,
+  Illegal = -1
 }
 
 ---@enum IndividualTiming
 Enums.IndividualTiming = {
   Default = 0,
-  Normalized = 1,
+  Normalized = 1
 }
 
 ---@enum InfoAppearanceMode
 Enums.InfoAppearanceMode = {
   ["Label + Note"] = 2,
   Note = 1,
-  Off = 0,
+  Off = 0
 }
 
 ---@enum InfoLinkMode
@@ -2724,7 +2732,7 @@ Enums.InfoLinkMode = {
   LastSelectedObject = 3,
   None = 0,
   SelectedMacro = 2,
-  SelectedSequence = 1,
+  SelectedSequence = 1
 }
 
 ---@enum InfoWindowMode
@@ -2733,7 +2741,7 @@ Enums.InfoWindowMode = {
   CurrentChild = 1,
   NextChild = 2,
   Object = 0,
-  ObjectAndChildren = 4,
+  ObjectAndChildren = 4
 }
 
 ---@enum InputControl3d
@@ -2744,7 +2752,7 @@ Enums.InputControl3d = {
   ["Camera Set Pivot"] = 6,
   ["Camera Zoom"] = 3,
   Follow = 1,
-  Select = 0,
+  Select = 0
 }
 
 ---@enum InputType
@@ -2752,7 +2760,7 @@ Enums.InputType = {
   Keyboard = 2,
   Mouse = 0,
   Scroller = 3,
-  Touch = 1,
+  Touch = 1
 }
 
 ---@enum InternalQueues
@@ -2762,12 +2770,12 @@ Enums.InternalQueues = {
   Manet = 5,
   Pult = 3,
   RT = 4,
-  Root = 1,
+  Root = 1
 }
 
 ---@enum InvalidFootprint
 Enums.InvalidFootprint = {
-  ["?"] = -1,
+  ["?"] = -1
 }
 
 ---@enum ItemGroupPosition
@@ -2776,7 +2784,7 @@ Enums.ItemGroupPosition = {
   Center = 2,
   End = 3,
   None = 0,
-  Single = 4,
+  Single = 4
 }
 
 ---@enum KeyAction
@@ -2786,7 +2794,7 @@ Enums.KeyAction = {
   Hold = 2,
   Press = 1,
   Release = 0,
-  ReleaseAfterHold = 4,
+  ReleaseAfterHold = 4
 }
 
 ---@enum KeyFunctions
@@ -2821,7 +2829,7 @@ Enums.KeyFunctions = {
   Temp = 13,
   Time = 22,
   Toggle = 14,
-  Top = 15,
+  Top = 15
 }
 
 ---@enum KeyboardCodes
@@ -2919,7 +2927,7 @@ Enums.KeyboardCodes = {
   kpDecimal = 330,
   kpDivide = 331,
   kpMultiply = 332,
-  kpSubtract = 333,
+  kpSubtract = 333
 }
 
 ---@enum KeyboardModifier
@@ -2927,13 +2935,13 @@ Enums.KeyboardModifier = {
   Alt = 342,
   Ctrl = 341,
   None = -1,
-  Shift = 340,
+  Shift = 340
 }
 
 ---@enum KnockInMIB
 Enums.KnockInMIB = {
   Off = 0,
-  Post = 1,
+  Post = 1
 }
 
 ---@enum LampType
@@ -2941,13 +2949,13 @@ Enums.LampType = {
   Discharge = 0,
   Halogen = 2,
   LED = 3,
-  Tungsten = 1,
+  Tungsten = 1
 }
 
 ---@enum LaserColorType
 Enums.LaserColorType = {
   RGB = 0,
-  SingleWaveLength = 1,
+  SingleWaveLength = 1
 }
 
 ---@enum LastSelectedTab
@@ -2957,7 +2965,7 @@ Enums.LastSelectedTab = {
   CreateGroups = 2,
   CreatePresets = 3,
   Export = 1,
-  Import = 0,
+  Import = 0
 }
 
 ---@enum LayoutElementAlignmentH
@@ -2966,7 +2974,7 @@ Enums.LayoutElementAlignmentH = {
   Left = 1,
   OutsideLeft = 3,
   OutsideRight = 4,
-  Right = 2,
+  Right = 2
 }
 
 ---@enum LayoutElementAlignmentV
@@ -2975,55 +2983,55 @@ Enums.LayoutElementAlignmentV = {
   Below = 4,
   Bottom = 2,
   Center = 0,
-  Top = 1,
+  Top = 1
 }
 
 ---@enum LayoutElementSelectionRelevance
 Enums.LayoutElementSelectionRelevance = {
   Background = 1,
-  Off = 0,
+  Off = 0
 }
 
 ---@enum LayoutFitType
 Enums.LayoutFitType = {
   Both = 2,
   Canvas = 1,
-  Elements = 0,
+  Elements = 0
 }
 
 ---@enum LayoutGridStyle
 Enums.LayoutGridStyle = {
   Dots = 2,
   Lines = 1,
-  Off = 0,
+  Off = 0
 }
 
 ---@enum LayoutLassoSelectionFilter
 Enums.LayoutLassoSelectionFilter = {
   All = 0,
   Fixtures = 1,
-  Others = 2,
+  Others = 2
 }
 
 ---@enum LayoutOutputSelection
 Enums.LayoutOutputSelection = {
   DMX = 1,
   Output = 2,
-  Value = 0,
+  Value = 0
 }
 
 ---@enum LayoutSizePolicy
 Enums.LayoutSizePolicy = {
   Content = 2,
   Fixed = 0,
-  Stretch = 1,
+  Stretch = 1
 }
 
 ---@enum LayoutStretch
 Enums.LayoutStretch = {
   Bar = 1,
   Crop = 2,
-  Stretch = 0,
+  Stretch = 0
 }
 
 ---@enum LayoutTool
@@ -3035,27 +3043,27 @@ Enums.LayoutTool = {
   Operate = 0,
   Resize = 5,
   ResizeFixedRatio = 6,
-  Select = 1,
+  Select = 1
 }
 
 ---@enum LayoutType
 Enums.LayoutType = {
   Circle = 2,
   Grid = 1,
-  Line = 0,
+  Line = 0
 }
 
 ---@enum LayoutVisibility
 Enums.LayoutVisibility = {
   Hidden = 0,
-  Visible = 1,
+  Visible = 1
 }
 
 ---@enum LicenseRequest
 Enums.LicenseRequest = {
   Auto = 0,
   Off = 2,
-  On = 1,
+  On = 1
 }
 
 ---@enum LineHeights
@@ -3068,7 +3076,7 @@ Enums.LineHeights = {
   ["4"] = 4,
   ["6"] = 6,
   ["8"] = 8,
-  Auto = 0,
+  Auto = 0
 }
 
 ---@enum LinearizeOption
@@ -3076,7 +3084,7 @@ Enums.LinearizeOption = {
   LeftToRight = 2,
   Numerical = 1,
   SelectionOrder = 0,
-  TopToBottom = 3,
+  TopToBottom = 3
 }
 
 ---@enum LinesOverlayType
@@ -3085,7 +3093,7 @@ Enums.LinesOverlayType = {
   ["All Dimmer 0"] = 2,
   None = 0,
   Selected = 3,
-  ["Selected Dimmer 0"] = 4,
+  ["Selected Dimmer 0"] = 4
 }
 
 ---@enum LockTypes
@@ -3093,7 +3101,7 @@ Enums.LockTypes = {
   [""] = 0,
   PL = 2,
   SL = 3,
-  UL = 1,
+  UL = 1
 }
 
 ---@enum LockedYesNo
@@ -3106,14 +3114,14 @@ Enums.LockedYesNo = {
   ["false"] = 0,
   off = 0,
   on = 1,
-  ["true"] = 1,
+  ["true"] = 1
 }
 
 ---@enum LoopMode
 Enums.LoopMode = {
   Loop = 0,
   Off = 2,
-  Pause = 1,
+  Pause = 1
 }
 
 ---@enum MIDIMode
@@ -3121,27 +3129,27 @@ Enums.MIDIMode = {
   In = 0,
   ["In & Out"] = 3,
   ["In & Out & Thru"] = 2,
-  Out = 1,
+  Out = 1
 }
 
 ---@enum MIDITCMode
 Enums.MIDITCMode = {
   In = 0,
   ["In & Out & Thru"] = 2,
-  Out = 1,
+  Out = 1
 }
 
 ---@enum MacroLineWait
 Enums.MacroLineWait = {
   Follow = 0,
-  Go = -1,
+  Go = -1
 }
 
 ---@enum MacroPoolAction
 Enums.MacroPoolAction = {
   Call = 9,
   None = 255,
-  Toggle = 2,
+  Toggle = 2
 }
 
 ---@enum Master
@@ -3287,7 +3295,7 @@ Enums.Master = {
   Timing6 = 98,
   Timing7 = 99,
   Timing8 = 100,
-  Timing9 = 101,
+  Timing9 = 101
 }
 
 ---@enum MasterPriority
@@ -3296,38 +3304,38 @@ Enums.MasterPriority = {
   Low = 2,
   Never = 0,
   Normal = 3,
-  VeryLow = 1,
+  VeryLow = 1
 }
 
 ---@enum MasterReaction
 Enums.MasterReaction = {
   Grand = 2,
   Group = 1,
-  None = 0,
+  None = 0
 }
 
 ---@enum MatricksBlockNone
 Enums.MatricksBlockNone = {
   ["No Block"] = -1,
-  None = 0,
+  None = 0
 }
 
 ---@enum MatricksGroupNone
 Enums.MatricksGroupNone = {
   ["No Group"] = -1,
-  None = 0,
+  None = 0
 }
 
 ---@enum MatricksIndexNone
 Enums.MatricksIndexNone = {
   ["No XYZ"] = -2,
-  None = -1,
+  None = -1
 }
 
 ---@enum MatricksInvert
 Enums.MatricksInvert = {
   [""] = 0,
-  On = 1,
+  On = 1
 }
 
 ---@enum MatricksInvertStyle
@@ -3335,19 +3343,19 @@ Enums.MatricksInvertStyle = {
   All = 3,
   ["P+T"] = 2,
   Pan = 0,
-  Tilt = 1,
+  Tilt = 1
 }
 
 ---@enum MatricksShiftNone
 Enums.MatricksShiftNone = {
   ["No Shift"] = 32768,
-  None = 0,
+  None = 0
 }
 
 ---@enum MatricksShuffleNone
 Enums.MatricksShuffleNone = {
   ["No Shuffle"] = 32768,
-  None = 0,
+  None = 0
 }
 
 ---@enum MatricksTabs
@@ -3355,26 +3363,26 @@ Enums.MatricksTabs = {
   Shuffle = 3,
   X = 0,
   Y = 1,
-  Z = 2,
+  Z = 2
 }
 
 ---@enum MatricksWingsNone
 Enums.MatricksWingsNone = {
   ["No Wings"] = -1,
-  None = 0,
+  None = 0
 }
 
 ---@enum MatrixWidthAuto
 Enums.MatrixWidthAuto = {
   ["No Width"] = -1,
-  None = 0,
+  None = 0
 }
 
 ---@enum MeasurementInterpolation
 Enums.MeasurementInterpolation = {
   Linear = 0,
   Log = 2,
-  Step = 1,
+  Step = 1
 }
 
 ---@enum MeasurementStatus
@@ -3384,7 +3392,7 @@ Enums.MeasurementStatus = {
   ["Device Found"] = 2,
   Idle = 5,
   ["Measuring Fixture"] = 0,
-  ["No Device Found"] = 1,
+  ["No Device Found"] = 1
 }
 
 ---@enum MessageCategory
@@ -3395,7 +3403,7 @@ Enums.MessageCategory = {
   Power = 3,
   System = 1,
   USB = 5,
-  Undefined = 0,
+  Undefined = 0
 }
 
 ---@enum MessageCategoryName
@@ -3406,7 +3414,7 @@ Enums.MessageCategoryName = {
   Power = 3,
   System = 1,
   USB = 5,
-  Undefined = 0,
+  Undefined = 0
 }
 
 ---@enum MessagePriority
@@ -3415,7 +3423,7 @@ Enums.MessagePriority = {
   Errors = 3,
   Spam = 1,
   Undefined = 0,
-  Warnings = 2,
+  Warnings = 2
 }
 
 ---@enum MibEnableMode
@@ -3424,7 +3432,7 @@ Enums.MibEnableMode = {
   ["Force Early"] = 2,
   ["Force Late"] = 4,
   ["Force UponGo"] = 3,
-  Never = 1,
+  Never = 1
 }
 
 ---@enum MibMode
@@ -3434,7 +3442,7 @@ Enums.MibMode = {
   Early = 3,
   Late = 5,
   None = 1,
-  UponGo = 4,
+  UponGo = 4
 }
 
 ---@enum MibModeSequence
@@ -3442,13 +3450,13 @@ Enums.MibModeSequence = {
   Early = 3,
   Late = 5,
   None = 1,
-  UponGo = 4,
+  UponGo = 4
 }
 
 ---@enum MibMultiStep
 Enums.MibMultiStep = {
   Paused = 1,
-  Running = 0,
+  Running = 0
 }
 
 ---@enum MibPreferenceLevel
@@ -3464,12 +3472,12 @@ Enums.MibPreferenceLevel = {
   Normal = 50,
   ["Normal(50)"] = 50,
   Worst = 1,
-  ["Worst(1)"] = 1,
+  ["Worst(1)"] = 1
 }
 
 ---@enum MibTiming
 Enums.MibTiming = {
-  Default = 9223372036854775807,
+  Default = 9223372036854775807
 }
 
 ---@enum MiniFadersMode
@@ -3477,7 +3485,7 @@ Enums.MiniFadersMode = {
   Blades = 2,
   Full = 1,
   None = 0,
-  Rotation = 3,
+  Rotation = 3
 }
 
 ---@enum ModalResult
@@ -3485,7 +3493,7 @@ Enums.ModalResult = {
   Cancel = 2,
   Confirm = 3,
   None = 0,
-  Ok = 1,
+  Ok = 1
 }
 
 ---@enum Month
@@ -3501,7 +3509,7 @@ Enums.Month = {
   May = 4,
   November = 10,
   October = 9,
-  September = 8,
+  September = 8
 }
 
 ---@enum MonthShort
@@ -3517,57 +3525,57 @@ Enums.MonthShort = {
   May = 4,
   Nov = 10,
   Oct = 9,
-  Sep = 8,
+  Sep = 8
 }
 
 ---@enum MouseButtonTypes
 Enums.MouseButtonTypes = {
   Left = 0,
   Middle = 2,
-  Right = 1,
+  Right = 1
 }
 
 ---@enum MouseCursorSize
 Enums.MouseCursorSize = {
   Large = 2,
   Medium = 1,
-  Small = 0,
+  Small = 0
 }
 
 ---@enum MouseSpeed
 Enums.MouseSpeed = {
   Fast = 3,
   Normal = 2,
-  Slow = 1,
+  Slow = 1
 }
 
 ---@enum MoveValueToPart
 Enums.MoveValueToPart = {
-  Default = 4294967295,
+  Default = 4294967295
 }
 
 ---@enum MultiCastBase
 Enums.MultiCastBase = {
   Alternative = 66799,
-  Default = 66796,
+  Default = 66796
 }
 
 ---@enum MultiLedBeamMode
 Enums.MultiLedBeamMode = {
   ["Separated Beams"] = 0,
   ["Single Beam Dynamic Gobo"] = 2,
-  ["Single Beam Mean Color"] = 1,
+  ["Single Beam Mean Color"] = 1
 }
 
 ---@enum NDIBandwidth
 Enums.NDIBandwidth = {
   Highest = 100,
-  Lowest = 0,
+  Lowest = 0
 }
 
 ---@enum NackStat
 Enums.NackStat = {
-  Reset = 0,
+  Reset = 0
 }
 
 ---@enum NetworkFilter
@@ -3576,7 +3584,7 @@ Enums.NetworkFilter = {
   ["My Location"] = 4,
   ["My Session"] = 1,
   ["Not My Session"] = 2,
-  ["Wrong Version"] = 3,
+  ["Wrong Version"] = 3
 }
 
 ---@enum NoName
@@ -3586,30 +3594,30 @@ Enums.NoName = {
 ---@enum None
 Enums.None = {
   [""] = 4294967295,
-  None = 4294967295,
+  None = 4294967295
 }
 
 ---@enum NoneAndDefault
 Enums.NoneAndDefault = {
   Default = 1000001,
-  None = 0,
+  None = 0
 }
 
 ---@enum None_only
 Enums.None_only = {
-  None = 4294967295,
+  None = 4294967295
 }
 
 ---@enum NotificationType
 Enums.NotificationType = {
   Permanent = 1,
-  Timed = 0,
+  Timed = 0
 }
 
 ---@enum OSCMode
 Enums.OSCMode = {
   TCP = 1,
-  UDP = 0,
+  UDP = 0
 }
 
 ---@enum OffCueTrigger
@@ -3620,13 +3628,13 @@ Enums.OffCueTrigger = {
   Go = 0,
   ["No Trigger"] = 5,
   Sound = 3,
-  Time = 1,
+  Time = 1
 }
 
 ---@enum OnOff
 Enums.OnOff = {
   Off = 0,
-  On = 1,
+  On = 1
 }
 
 ---@enum OnOffStatus
@@ -3634,26 +3642,26 @@ Enums.OnOffStatus = {
   Off = 0,
   On = 1,
   Toggle = 2,
-  Undefined = 3,
+  Undefined = 3
 }
 
 ---@enum OopsConfirmation
 Enums.OopsConfirmation = {
   Always = 2,
   Main = 1,
-  Never = 0,
+  Never = 0
 }
 
 ---@enum Orientation
 Enums.Orientation = {
   Horizontal = 1,
-  Vertical = 0,
+  Vertical = 0
 }
 
 ---@enum OutputDelay
 Enums.OutputDelay = {
   Max = 30,
-  None = 0,
+  None = 0
 }
 
 ---@enum PSRPatchFilterType
@@ -3661,7 +3669,7 @@ Enums.PSRPatchFilterType = {
   Conflicted = 3,
   Matched = 1,
   None = 0,
-  Unmatched = 2,
+  Unmatched = 2
 }
 
 ---@enum PUPriority
@@ -3670,12 +3678,12 @@ Enums.PUPriority = {
   Low = 2,
   Never = 0,
   Normal = 3,
-  VeryLow = 1,
+  VeryLow = 1
 }
 
 ---@enum PatchOffset
 Enums.PatchOffset = {
-  None = -1,
+  None = -1
 }
 
 ---@enum PatchType
@@ -3683,19 +3691,19 @@ Enums.PatchType = {
   [""] = 0,
   Coarse = 1,
   Fine = 2,
-  Ultra = 3,
+  Ultra = 3
 }
 
 ---@enum Patched
 Enums.Patched = {
-  [""] = -1,
+  [""] = -1
 }
 
 ---@enum PathContentType
 Enums.PathContentType = {
   Mixed = 2,
   System = 0,
-  User = 1,
+  User = 1
 }
 
 ---@enum PathType
@@ -3817,7 +3825,7 @@ Enums.PathType = {
   ViewButtonLibrary = 88,
   VizLibrary = 56,
   WebDaemon = 7,
-  WebResource = 22,
+  WebResource = 22
 }
 
 ---@enum PhaseValueNone
@@ -3827,21 +3835,21 @@ Enums.PhaseValueNone = {
   ["360°"] = 16777216,
   ["90°"] = 4194304,
   None = 2147483647,
-  ["Swap Phase"] = 2147483646,
+  ["Swap Phase"] = 2147483646
 }
 
 ---@enum PhaserAbsRelMode
 Enums.PhaserAbsRelMode = {
   ["Abs+Rel"] = 3,
   Absolute = 1,
-  Relative = 2,
+  Relative = 2
 }
 
 ---@enum PhaserBars
 Enums.PhaserBars = {
   ["2DBar"] = 0,
   PhaserBar = 1,
-  PresetBar = 2,
+  PresetBar = 2
 }
 
 ---@enum PhaserEditTool
@@ -3857,12 +3865,12 @@ Enums.PhaserEditTool = {
   MovePoint = 4,
   MoveSpline = 5,
   Select = 1,
-  SelectForm = 10,
+  SelectForm = 10
 }
 
 ---@enum PhaserEncoderFunction
 Enums.PhaserEncoderFunction = {
-  ["Move & Size"] = 0,
+  ["Move & Size"] = 0
 }
 
 ---@enum PhaserFields
@@ -3874,25 +3882,25 @@ Enums.PhaserFields = {
   Measure = 7,
   Phase = 5,
   RelPreset = 1,
-  Speed = 4,
+  Speed = 4
 }
 
 ---@enum PhaserLineHeight
 Enums.PhaserLineHeight = {
-  Auto = 50,
+  Auto = 50
 }
 
 ---@enum PhaserMode1D
 Enums.PhaserMode1D = {
   Transition = 1,
-  Value = 0,
+  Value = 0
 }
 
 ---@enum PhaserSheetMode
 Enums.PhaserSheetMode = {
   ["Layer Condensed"] = 1,
   ["Layer Expanded"] = 2,
-  Step = 0,
+  Step = 0
 }
 
 ---@enum PhaserTransformations
@@ -3901,13 +3909,13 @@ Enums.PhaserTransformations = {
   MirrorTimeStart = 3,
   MirrorValues = 1,
   None = 0,
-  SquashToOne = 4,
+  SquashToOne = 4
 }
 
 ---@enum PhaserTransformationsShort
 Enums.PhaserTransformationsShort = {
   Mirror = 1,
-  None = 0,
+  None = 0
 }
 
 ---@enum PhaserValueFields
@@ -3918,7 +3926,7 @@ Enums.PhaserValueFields = {
   Integrated = 0,
   Relative = 2,
   Trans = 5,
-  Width = 6,
+  Width = 6
 }
 
 ---@enum PhaserViewMode
@@ -3926,7 +3934,7 @@ Enums.PhaserViewMode = {
   ["1D"] = 2,
   ["2D"] = 1,
   Auto = 0,
-  Sheet = 3,
+  Sheet = 3
 }
 
 ---@enum PhysicalUnit
@@ -3952,7 +3960,7 @@ Enums.PhysicalUnit = {
   Time = 4,
   Voltage = 11,
   Volume = 15,
-  WaveLength = 20,
+  WaveLength = 20
 }
 
 ---@enum PlaybackMaster
@@ -4007,7 +4015,7 @@ Enums.PlaybackMaster = {
   Playback6 = 5,
   Playback7 = 6,
   Playback8 = 7,
-  Playback9 = 8,
+  Playback9 = 8
 }
 
 ---@enum PlaybackPriority
@@ -4019,7 +4027,7 @@ Enums.PlaybackPriority = {
   Low = 7,
   Lowest = 8,
   Super = 0,
-  Swap = 2,
+  Swap = 2
 }
 
 ---@enum PlaybackSourceSubTypes
@@ -4030,7 +4038,7 @@ Enums.PlaybackSourceSubTypes = {
   MIB = 5,
   MIBFade = 6,
   Tracked = 1,
-  UpGoing = 3,
+  UpGoing = 3
 }
 
 ---@enum PlaybackWindowExecFrom
@@ -4053,13 +4061,13 @@ Enums.PlaybackWindowExecFrom = {
   ["76-80"] = 16,
   ["81-85"] = 15,
   ["86-90"] = 16,
-  None = 0,
+  None = 0
 }
 
 ---@enum PlaybacksOff
 Enums.PlaybacksOff = {
   ["Keep Playbacks"] = 0,
-  ["Playbacks Off"] = 1,
+  ["Playbacks Off"] = 1
 }
 
 ---@enum PlaybacksToShow
@@ -4070,35 +4078,35 @@ Enums.PlaybacksToShow = {
   Sequences = 0,
   SoundFiles = 5,
   Timecodes = 2,
-  Timers = 4,
+  Timers = 4
 }
 
 ---@enum PluginPlacement
 Enums.PluginPlacement = {
   ForceMulti = 2,
   Multi = 1,
-  Single = 0,
+  Single = 0
 }
 
 ---@enum PluginPoolAction
 Enums.PluginPoolAction = {
   Call = 9,
   None = 255,
-  Toggle = 2,
+  Toggle = 2
 }
 
 ---@enum PolicyOnEnter
 Enums.PolicyOnEnter = {
   Clear = 1,
   Nothing = 0,
-  SelectAll = 2,
+  SelectAll = 2
 }
 
 ---@enum PoolSizeFactor
 Enums.PoolSizeFactor = {
   Double = 2,
   Half = 0,
-  Normal = 1,
+  Normal = 1
 }
 
 ---@enum Pooltype
@@ -4135,7 +4143,7 @@ Enums.Pooltype = {
   UserImage = 5,
   VideoFile = 6,
   View = 31,
-  World = 32,
+  World = 32
 }
 
 ---@enum PresetAction
@@ -4147,7 +4155,7 @@ Enums.PresetAction = {
   ["SelFix/At"] = 7,
   ["SelFix/Extract"] = 8,
   Temp = 5,
-  Toggle = 2,
+  Toggle = 2
 }
 
 ---@enum PresetActionToken
@@ -4160,14 +4168,14 @@ Enums.PresetActionToken = {
   ["SelFix/At"] = 123,
   ["SelFix/Extract"] = 55,
   Temp = 13,
-  Toggle = 14,
+  Toggle = 14
 }
 
 ---@enum PresetDisplayMode
 Enums.PresetDisplayMode = {
   Auto = 3,
   Symbol = 2,
-  Text = 1,
+  Text = 1
 }
 
 ---@enum PresetFilterMode
@@ -4175,13 +4183,13 @@ Enums.PresetFilterMode = {
   Both = 2,
   Input = 0,
   None = -1,
-  Output = 1,
+  Output = 1
 }
 
 ---@enum PresetIsPlayback
 Enums.PresetIsPlayback = {
   Auto = 0,
-  On = 1,
+  On = 1
 }
 
 ---@enum PresetLinkMode
@@ -4189,14 +4197,14 @@ Enums.PresetLinkMode = {
   Both = 2,
   Integrated = 1,
   None = -1,
-  Referenced = 0,
+  Referenced = 0
 }
 
 ---@enum PresetMode
 Enums.PresetMode = {
   Global = 2,
   Selective = 1,
-  Universal = 3,
+  Universal = 3
 }
 
 ---@enum PresetModeDefault
@@ -4205,7 +4213,7 @@ Enums.PresetModeDefault = {
   ForceGlobal = 5,
   Global = 2,
   Selective = 1,
-  Universal = 3,
+  Universal = 3
 }
 
 ---@enum PresetReadoutMode
@@ -4215,7 +4223,7 @@ Enums.PresetReadoutMode = {
   ["ID+Name+Value"] = 5,
   Name = 0,
   ["Name+Value"] = 2,
-  Value = 1,
+  Value = 1
 }
 
 ---@enum PresetValuesMode
@@ -4223,11 +4231,10 @@ Enums.PresetValuesMode = {
   Default = 1,
   Highlight = 2,
   Lowlight = 3,
-  Normal = 0,
+  Normal = 0
 }
 
----@enum Pretty RDMSensorUnit
-Enums.PrettyRDMSensorUnit = {
+Enums["Pretty RDMSensorUnit"] = {
   [""] = 0,
   ["A (AC P-P)"] = 6,
   ["A (AC RMS)"] = 7,
@@ -4257,7 +4264,7 @@ Enums.PrettyRDMSensorUnit = {
   sr = 23,
   ["°"] = 22,
   ["°C"] = 1,
-  ["Ω"] = 9,
+  ["Ω"] = 9
 }
 
 ---@enum PrettyRDMSensorUnitPrefix
@@ -4282,7 +4289,7 @@ Enums.PrettyRDMSensorUnitPrefix = {
   n = 5,
   p = 6,
   y = 10,
-  z = 9,
+  z = 9
 }
 
 ---@enum PriorityName
@@ -4291,7 +4298,7 @@ Enums.PriorityName = {
   Errors = 3,
   Spam = 1,
   Undefined = 0,
-  Warnings = 2,
+  Warnings = 2
 }
 
 ---@enum ProgLayer
@@ -4312,7 +4319,7 @@ Enums.ProgLayer = {
   Speed = 4,
   SpeedMaster = 5,
   Transition = 14,
-  Width = 15,
+  Width = 15
 }
 
 ---@enum ProgLayerAuto
@@ -4334,14 +4341,14 @@ Enums.ProgLayerAuto = {
   Speed = 4,
   SpeedMaster = 5,
   Transition = 14,
-  Width = 15,
+  Width = 15
 }
 
 ---@enum ProgUpdateCueMode
 Enums.ProgUpdateCueMode = {
   All = 0,
   LastGo = 2,
-  Selected = 1,
+  Selected = 1
 }
 
 ---@enum ProgValueSource
@@ -4374,7 +4381,7 @@ Enums.ProgValueSource = {
   SelectedPlaybackMIB = 27,
   SelectedPlaybackMIBFade = 28,
   SelectedPlaybackTracked = 23,
-  SelectedPlaybackUpGoing = 25,
+  SelectedPlaybackUpGoing = 25
 }
 
 ---@enum ProgrammingLayer
@@ -4391,31 +4398,31 @@ Enums.ProgrammingLayer = {
   Speed = 4,
   SpeedMaster = 5,
   Transition = 14,
-  Width = 15,
+  Width = 15
 }
 
 ---@enum ProgrammingLayerGroup
 Enums.ProgrammingLayerGroup = {
   Phaser = 1,
   Steps = 2,
-  Values = 0,
+  Values = 0
 }
 
 ---@enum PropertyRadioButtonListEnabledItems
 Enums.PropertyRadioButtonListEnabledItems = {
-  AllEnabled = 4294967295,
+  AllEnabled = 4294967295
 }
 
 ---@enum PropertyRadioButtonListSetType
 Enums.PropertyRadioButtonListSetType = {
   Direct = 1,
   Property = 2,
-  Set = 0,
+  Set = 0
 }
 
 ---@enum PsrDataPool
 Enums.PsrDataPool = {
-  Original = 4294967295,
+  Original = 4294967295
 }
 
 ---@enum PsrOperation
@@ -4427,21 +4434,21 @@ Enums.PsrOperation = {
   Importing = 5,
   OpenImport = 4,
   OpenPatch = 2,
-  Preparation = 1,
+  Preparation = 1
 }
 
 ---@enum PsrTab
 Enums.PsrTab = {
   Import = 2,
   Patch = 1,
-  Show = 0,
+  Show = 0
 }
 
 ---@enum PultType
 Enums.PultType = {
   Any = 0,
   Conventional = 1,
-  Web = 2,
+  Web = 2
 }
 
 ---@enum RDMCommandClass
@@ -4451,7 +4458,7 @@ Enums.RDMCommandClass = {
   GET = 32,
   GET_RESP = 33,
   SET = 48,
-  SET_RESP = 49,
+  SET_RESP = 49
 }
 
 ---@enum RDMDataType
@@ -4465,7 +4472,7 @@ Enums.RDMDataType = {
   DS_SIGNED_WORD = 6,
   DS_UNSIGNED_BYTE = 3,
   DS_UNSIGNED_DWORD = 7,
-  DS_UNSIGNED_WORD = 5,
+  DS_UNSIGNED_WORD = 5
 }
 
 ---@enum RDMLampOnMode
@@ -4474,7 +4481,7 @@ Enums.RDMLampOnMode = {
   LAMP_ON_MODE_DMX = 1,
   LAMP_ON_MODE_OFF = 0,
   LAMP_ON_MODE_ON = 2,
-  ["Manufacturer-Specific Modes"] = 128,
+  ["Manufacturer-Specific Modes"] = 128
 }
 
 ---@enum RDMLampState
@@ -4485,7 +4492,7 @@ Enums.RDMLampState = {
   LAMP_ON = 1,
   LAMP_STANDBY = 3,
   LAMP_STRIKE = 2,
-  ["Manufacturer-Specific States"] = 128,
+  ["Manufacturer-Specific States"] = 128
 }
 
 ---@enum RDMManufacturerId
@@ -4507,7 +4514,7 @@ Enums.RDMManufacturerId = {
   ["ALS Stanislaw Binkiewicz"] = 7104,
   ["ARC Solid-State Lighting Corp."] = 2165,
   ["ARNOLD LICHTTECHNIK"] = 16754,
-  ["ARRI ---Arnold & Richter Cine Technik GmbH & Co. Betriebs KG"] = 8377,
+  ["ARRI -- Arnold & Richter Cine Technik GmbH & Co. Betriebs KG"] = 8377,
   ["AUTOLUX Handels- und ProduktionsgmbH"] = 21553,
   ["AVAB America, Inc."] = 16705,
   AYRTON = 16761,
@@ -5084,7 +5091,7 @@ Enums.RDMManufacturerId = {
   ["techKnow Design Ltd."] = 5658,
   ["v2 Lighting Group, Inc."] = 5382,
   ["www.doityourselfchristmas.com hobbyists"] = 22637,
-  ["zactrack Lighting Technologies Gmbh"] = 15664,
+  ["zactrack Lighting Technologies Gmbh"] = 15664
 }
 
 ---@enum RDMNotificationThresholdOperator
@@ -5093,7 +5100,7 @@ Enums.RDMNotificationThresholdOperator = {
   Greate = 3,
   Is = 1,
   IsNot = 2,
-  Less = 4,
+  Less = 4
 }
 
 ---@enum RDMPID
@@ -5150,7 +5157,7 @@ Enums.RDMPID = {
   STATUS_MESSAGES = 48,
   SUB_DEVICE_STATUS_REPORT_THRESHOLD = 51,
   SUPPORTED_PARAMETERS = 80,
-  TILT_INVERT = 1537,
+  TILT_INVERT = 1537
 }
 
 ---@enum RDMParameterCommand
@@ -5158,40 +5165,40 @@ Enums.RDMParameterCommand = {
   CC_GET = 1,
   CC_GET_SET = 3,
   CC_SET = 2,
-  None = 0,
+  None = 0
 }
 
 ---@enum RDMParameterType
 Enums.RDMParameterType = {
   Fixture = 2,
   FixtureType = 1,
-  Rdm = 0,
+  Rdm = 0
 }
 
 ---@enum RDMPidValueDisplayInvert
 Enums.RDMPidValueDisplayInvert = {
   Auto = 2,
   Off = 0,
-  On = 1,
+  On = 1
 }
 
 ---@enum RDMPidValueFactoryDefaults
 Enums.RDMPidValueFactoryDefaults = {
   False = 0,
-  True = 1,
+  True = 1
 }
 
 ---@enum RDMPidValueOnOff
 Enums.RDMPidValueOnOff = {
   Off = 0,
-  On = 1,
+  On = 1
 }
 
 ---@enum RDMPidValueResetDevice
 Enums.RDMPidValueResetDevice = {
   [""] = 0,
   Cold = 255,
-  Warm = 1,
+  Warm = 1
 }
 
 ---@enum RDMPowerStateDefines
@@ -5199,7 +5206,7 @@ Enums.RDMPowerStateDefines = {
   POWER_STATE_FULL_OFF = 0,
   POWER_STATE_NORMAL = 255,
   POWER_STATE_SHUTDOWN = 1,
-  POWER_STATE_STANDBY = 2,
+  POWER_STATE_STANDBY = 2
 }
 
 ---@enum RDMProductCategory
@@ -5265,7 +5272,7 @@ Enums.RDMProductCategory = {
   PRODUCT_CATEGORY_TEST = 28928,
   PRODUCT_CATEGORY_TEST_EQUIPMENT = 28929,
   PRODUCT_CATEGORY_TEST_EQUIPMENT_OTHER = 29183,
-  PRODUCT_CATEGORY__MANUFACTORER_SPECIFIC = 32768,
+  PRODUCT_CATEGORY__MANUFACTORER_SPECIFIC = 32768
 }
 
 ---@enum RDMProductDetail
@@ -5350,7 +5357,7 @@ Enums.RDMProductDetail = {
   PRODUCT_DETAIL_VIDEO = 512,
   PRODUCT_DETAIL_WATER_JET = 778,
   PRODUCT_DETAIL_WIND = 779,
-  PRODUCT_DETAIL_WIRELESS_LINK = 1540,
+  PRODUCT_DETAIL_WIRELESS_LINK = 1540
 }
 
 ---@enum RDMResponseNackReason
@@ -5365,7 +5372,7 @@ Enums.RDMResponseNackReason = {
   ["The responder cannot comply due to an internal hardware fault."] = 2,
   ["The responder cannot comply with request because the message is not implemented in responder."] = 0,
   ["The responder cannot interpret request as controller data was not formatted correctly."] = 1,
-  ["Value for given Parameter out of allowable range or not supported."] = 6,
+  ["Value for given Parameter out of allowable range or not supported."] = 6
 }
 
 ---@enum RDMSensorType
@@ -5404,7 +5411,7 @@ Enums.RDMSensorType = {
   SENS_TIME = 16,
   SENS_VELOCITY = 11,
   SENS_VOLTAGE = 1,
-  SENS_VOLUME = 9,
+  SENS_VOLUME = 9
 }
 
 ---@enum RDMSensorUnit
@@ -5438,7 +5445,7 @@ Enums.RDMSensorUnit = {
   UNITS_VOLTS_AC_PEAK = 3,
   UNITS_VOLTS_AC_RMS = 4,
   UNITS_VOLTS_DC = 2,
-  UNITS_WATT = 10,
+  UNITS_WATT = 10
 }
 
 ---@enum RDMSensorUnitPrefix
@@ -5463,7 +5470,7 @@ Enums.RDMSensorUnitPrefix = {
   PREFIX_YOCTO = 10,
   PREFIX_YOTTA = 26,
   PREFIX_ZEPTO = 9,
-  PREFIX_ZETTA = 25,
+  PREFIX_ZETTA = 25
 }
 
 ---@enum RDMSlotId
@@ -5510,7 +5517,7 @@ Enums.RDMSlotId = {
   SD_STROBE = 1028,
   SD_TILT = 258,
   SD_UNDEFINED = 65535,
-  SD_ZOOM = 1029,
+  SD_ZOOM = 1029
 }
 
 ---@enum RDMSlotType
@@ -5523,7 +5530,7 @@ Enums.RDMSlotType = {
   ST_SEC_ROTATION = 6,
   ST_SEC_SPEED = 3,
   ST_SEC_TIMING = 2,
-  ST_SEC_UNDEFINED = 255,
+  ST_SEC_UNDEFINED = 255
 }
 
 ---@enum RDMStatusMessageType
@@ -5535,14 +5542,14 @@ Enums.RDMStatusMessageType = {
   STATUS_GET_LAST_MESSAGE = 1,
   STATUS_NONE = 0,
   STATUS_WARNING = 3,
-  STATUS_WARNING_CLEARED = 19,
+  STATUS_WARNING_CLEARED = 19
 }
 
 ---@enum RealtimeCmdSource
 Enums.RealtimeCmdSource = {
   Local = 1,
   Network = 2,
-  Original = 0,
+  Original = 0
 }
 
 ---@enum RealtimeCmdType
@@ -5556,7 +5563,7 @@ Enums.RealtimeCmdType = {
   OwO = 3,
   PSN = 9,
   SoundToLight = 5,
-  TimeCode = 4,
+  TimeCode = 4
 }
 
 ---@enum RealtimeSection
@@ -5578,20 +5585,20 @@ Enums.RealtimeSection = {
   Start = 0,
   Timecode = 7,
   Wait1 = 11,
-  Wait2 = 15,
+  Wait2 = 15
 }
 
 ---@enum RecipeCleanupOperation
 Enums.RecipeCleanupOperation = {
   CookedButOverwritten = 2,
   NoOutput = 0,
-  NotCooked = 1,
+  NotCooked = 1
 }
 
 ---@enum RecordGo
 Enums.RecordGo = {
   ["as Go"] = 0,
-  ["as Goto (Status)"] = 1,
+  ["as Goto (Status)"] = 1
 }
 
 ---@enum ReductionPolicy
@@ -5601,20 +5608,20 @@ Enums.ReductionPolicy = {
   EqualLast = 5,
   None = 0,
   PreferFirst = 1,
-  PreferLast = 2,
+  PreferLast = 2
 }
 
 ---@enum RelationType
 Enums.RelationType = {
   Multiply = 0,
-  Override = 1,
+  Override = 1
 }
 
 ---@enum ReleaseType
 Enums.ReleaseType = {
   Alpha = 0,
   Beta = 1,
-  Release = 2,
+  Release = 2
 }
 
 ---@enum RemoteMidiType
@@ -5622,19 +5629,19 @@ Enums.RemoteMidiType = {
   Control = 3,
   Note = 0,
   NoteAttack = 1,
-  NoteAttackDecay = 2,
+  NoteAttackDecay = 2
 }
 
 ---@enum RemoteResolution
 Enums.RemoteResolution = {
   ["16bit"] = 2,
   ["24bit"] = 3,
-  ["8bit"] = 1,
+  ["8bit"] = 1
 }
 
 ---@enum RequestedSize
 Enums.RequestedSize = {
-  Default = 0,
+  Default = 0
 }
 
 ---@enum ResolutionLimit
@@ -5642,13 +5649,13 @@ Enums.ResolutionLimit = {
   ["1080p"] = 3,
   ["480p"] = 1,
   ["720p"] = 2,
-  Unlimited = 0,
+  Unlimited = 0
 }
 
 ---@enum RestartOption
 Enums.RestartOption = {
   Continue = 0,
-  Reset = 1,
+  Reset = 1
 }
 
 ---@enum Roles
@@ -5657,19 +5664,19 @@ Enums.Roles = {
   Display = 1,
   DisplayShort = 2,
   Edit = 4,
-  ObjectNoOnly = 8,
+  ObjectNoOnly = 8
 }
 
 ---@enum RotateOption
 Enums.RotateOption = {
   Left = 0,
-  Right = 1,
+  Right = 1
 }
 
 ---@enum RotationMode
 Enums.RotationMode = {
   Group = 1,
-  Single = 0,
+  Single = 0
 }
 
 ---@enum RowFilter
@@ -5677,13 +5684,13 @@ Enums.RowFilter = {
   All = 0,
   Selection = 3,
   Unused = 2,
-  Used = 1,
+  Used = 1
 }
 
 ---@enum RowOrder
 Enums.RowOrder = {
   ["Down Up"] = 1,
-  ["Up Down"] = 0,
+  ["Up Down"] = 0
 }
 
 ---@enum SCVirtualKeyCode
@@ -5835,13 +5842,13 @@ Enums.SCVirtualKeyCode = {
   X7 = 25,
   X8 = 26,
   X9 = 27,
-  XKEYS = 15,
+  XKEYS = 15
 }
 
 ---@enum SMPTEMode
 Enums.SMPTEMode = {
   In = 0,
-  Out = 1,
+  Out = 1
 }
 
 ---@enum SacnDataMode
@@ -5849,38 +5856,38 @@ Enums.SacnDataMode = {
   ["Input Multicast"] = 2,
   ["Input Unicast"] = 3,
   ["Output Multicast"] = 0,
-  ["Output Unicast"] = 1,
+  ["Output Unicast"] = 1
 }
 
 ---@enum ScrollItemPlacementType
 Enums.ScrollItemPlacementType = {
   Auto = 0,
   Begin = 1,
-  End = 2,
+  End = 2
 }
 
 ---@enum ScrollParamEntity
 Enums.ScrollParamEntity = {
   Area = 1,
-  Item = 0,
+  Item = 0
 }
 
 ---@enum ScrollParamValueType
 Enums.ScrollParamValueType = {
   Absolute = 1,
-  Relative = 0,
+  Relative = 0
 }
 
 ---@enum ScrollReason
 Enums.ScrollReason = {
   Automatic = 0,
-  User = 1,
+  User = 1
 }
 
 ---@enum ScrollType
 Enums.ScrollType = {
   Horizontal = 1,
-  Vertical = 0,
+  Vertical = 0
 }
 
 ---@enum SectionCount
@@ -5888,25 +5895,25 @@ Enums.SectionCount = {
   ["1"] = 1,
   ["2"] = 2,
   ["3"] = 3,
-  Auto = 0,
+  Auto = 0
 }
 
 ---@enum SelectedEnvironment
 Enums.SelectedEnvironment = {
   Normal = 0,
-  Preview = 1,
+  Preview = 1
 }
 
 ---@enum SelectedFeatureMode
 Enums.SelectedFeatureMode = {
   Feature = 0,
-  FeatureGroup = 1,
+  FeatureGroup = 1
 }
 
 ---@enum SelectedSelection
 Enums.SelectedSelection = {
   ["1"] = 0,
-  ["2"] = 1,
+  ["2"] = 1
 }
 
 ---@enum SelectionAlignment
@@ -5914,19 +5921,19 @@ Enums.SelectionAlignment = {
   Center = 2,
   Left = 1,
   None = 0,
-  Right = 3,
+  Right = 3
 }
 
 ---@enum SelectionMode
 Enums.SelectionMode = {
   ["2D Grid"] = 0,
-  Linearize = 1,
+  Linearize = 1
 }
 
 ---@enum SelectionModeLayout
 Enums.SelectionModeLayout = {
   ["2D Grid"] = 0,
-  Linearize = 1,
+  Linearize = 1
 }
 
 ---@enum SelectionViewFontSize
@@ -5940,7 +5947,7 @@ Enums.SelectionViewFontSize = {
   ["28"] = 8,
   ["32"] = 9,
   Automatic = 0,
-  Default = 1,
+  Default = 1
 }
 
 ---@enum SeqMasterGoMode
@@ -5948,14 +5955,14 @@ Enums.SeqMasterGoMode = {
   Go = 1,
   None = 0,
   On = 2,
-  Top = 3,
+  Top = 3
 }
 
 ---@enum SeqRestartMode
 Enums.SeqRestartMode = {
   ["Current Cue"] = 1,
   ["First Cue"] = 0,
-  ["Next Cue"] = 2,
+  ["Next Cue"] = 2
 }
 
 ---@enum SequenceAction
@@ -5968,7 +5975,7 @@ Enums.SequenceAction = {
   Select = 1,
   Temp = 5,
   Toggle = 2,
-  Top = 12,
+  Top = 12
 }
 
 ---@enum SequenceActionToken
@@ -5982,21 +5989,21 @@ Enums.SequenceActionToken = {
   Select = 24,
   Temp = 13,
   Toggle = 14,
-  Top = 15,
+  Top = 15
 }
 
 ---@enum SequenceCountdown
 Enums.SequenceCountdown = {
   All = 2,
   Duration = 1,
-  Off = 0,
+  Off = 0
 }
 
 ---@enum SequenceLinkType
 Enums.SequenceLinkType = {
   Fixed = 0,
   LastGo = 2,
-  Selected = 1,
+  Selected = 1
 }
 
 ---@enum SessionTimeStyle
@@ -6008,20 +6015,20 @@ Enums.SessionTimeStyle = {
   ["Digital AM/PM"] = 3,
   Dusk = 7,
   Sunrise = 5,
-  Sunset = 6,
+  Sunset = 6
 }
 
 ---@enum SessionTimeStyleTZ
 Enums.SessionTimeStyleTZ = {
   Digital = 0,
-  ["Digital AM/PM"] = 3,
+  ["Digital AM/PM"] = 3
 }
 
 ---@enum SetupType
 Enums.SetupType = {
   Edit = 2,
   Live = 1,
-  Undefined = 0,
+  Undefined = 0
 }
 
 ---@enum ShadowMapQuality
@@ -6030,25 +6037,25 @@ Enums.ShadowMapQuality = {
   Low = 1,
   Medium = 2,
   None = 0,
-  ["Very High"] = 4,
+  ["Very High"] = 4
 }
 
 ---@enum ShadowMode
 Enums.ShadowMode = {
   Disabled = 0,
-  Enabled = 1,
+  Enabled = 1
 }
 
 ---@enum ShaperBarMode
 Enums.ShaperBarMode = {
   Blades = 0,
-  Frame = 1,
+  Frame = 1
 }
 
 ---@enum ShaperControlMode
 Enums.ShaperControlMode = {
   ["A+B"] = 1,
-  ["Ins+Rot"] = 0,
+  ["Ins+Rot"] = 0
 }
 
 ---@enum ShaperEncoderLinkMode
@@ -6056,13 +6063,13 @@ Enums.ShaperEncoderLinkMode = {
   All = 1,
   Mirrored = 3,
   None = 0,
-  Parallel = 2,
+  Parallel = 2
 }
 
 ---@enum ShaperViewMode
 Enums.ShaperViewMode = {
   Faders = 1,
-  Graphical = 0,
+  Graphical = 0
 }
 
 ---@enum SheetMode
@@ -6070,13 +6077,13 @@ Enums.SheetMode = {
   Channel = 1,
   ["Dimmer+"] = 2,
   Fixture = 0,
-  ["Sheet/Filter"] = 3,
+  ["Sheet/Filter"] = 3
 }
 
 ---@enum SheetSettingsMergeMode
 Enums.SheetSettingsMergeMode = {
   Feature = 1,
-  None = 0,
+  None = 0
 }
 
 ---@enum ShowCreatorObjectType
@@ -6112,7 +6119,7 @@ Enums.ShowCreatorObjectType = {
   Users = 6,
   Videos = 14,
   Views = 8,
-  Worlds = 31,
+  Worlds = 31
 }
 
 ---@enum ShowCreatorType
@@ -6122,7 +6129,7 @@ Enums.ShowCreatorType = {
   Export = 5,
   Generate = 3,
   Groups = 2,
-  Import = 4,
+  Import = 4
 }
 
 ---@enum ShowFileSegmentsMask
@@ -6132,7 +6139,7 @@ Enums.ShowFileSegmentsMask = {
   LocalSettings = 2,
   NoShowData = 1,
   Nothing = 0,
-  OutputStations = 4,
+  OutputStations = 4
 }
 
 ---@enum ShowFileStatus
@@ -6151,7 +6158,7 @@ Enums.ShowFileStatus = {
   ShowPSRConversion = 14,
   ShowSaving = 5,
   ShowUploading = 9,
-  Undefined = 0,
+  Undefined = 0
 }
 
 ---@enum ShowPathType
@@ -6159,14 +6166,14 @@ Enums.ShowPathType = {
   Backup = 18,
   Demo = 19,
   Show = 17,
-  Template = 60,
+  Template = 60
 }
 
 ---@enum ShowUserEncoder
 Enums.ShowUserEncoder = {
   Default = 0,
   Exec = 1,
-  Xkeys = 2,
+  Xkeys = 2
 }
 
 ---@enum ShowfileSelectorMode
@@ -6177,19 +6184,19 @@ Enums.ShowfileSelectorMode = {
   Premenu = 0,
   Psr = 6,
   Saveas = 2,
-  Startupshow = 5,
+  Startupshow = 5
 }
 
 ---@enum ShuffleMode
 Enums.ShuffleMode = {
   Auto = 0,
   Linked = 1,
-  Unlinked = 2,
+  Unlinked = 2
 }
 
 ---@enum SignalOff
 Enums.SignalOff = {
-  Off = 4294967295,
+  Off = 4294967295
 }
 
 ---@enum SignalSlot
@@ -6202,13 +6209,13 @@ Enums.SignalSlot = {
   ["Slot 5"] = 4,
   ["Slot 6"] = 5,
   ["Slot 7"] = 6,
-  ["Slot 8"] = 7,
+  ["Slot 8"] = 7
 }
 
 ---@enum SortColorBy
 Enums.SortColorBy = {
   Hue = 0,
-  Saturation = 1,
+  Saturation = 1
 }
 
 ---@enum SoundPoolAction
@@ -6217,7 +6224,7 @@ Enums.SoundPoolAction = {
   None = 255,
   Off = 11,
   Pause = 10,
-  Toggle = 2,
+  Toggle = 2
 }
 
 ---@enum SoundValues
@@ -6243,7 +6250,7 @@ Enums.SoundValues = {
   InvBass = 12,
   InvHigh = 14,
   InvMid = 13,
-  Mid = 2,
+  Mid = 2
 }
 
 ---@enum SpecialAttribute
@@ -6279,7 +6286,7 @@ Enums.SpecialAttribute = {
   XYZ_Pos = 5,
   XYZ_Rot = 6,
   XYZ_Scale = 7,
-  Zoom = 23,
+  Zoom = 23
 }
 
 ---@enum SpecialCycle
@@ -6287,7 +6294,7 @@ Enums.SpecialCycle = {
   Channel = 2,
   If = 3,
   None = 0,
-  Time = 1,
+  Time = 1
 }
 
 ---@enum SpecialExecutor
@@ -6309,7 +6316,7 @@ Enums.SpecialExecutor = {
   XFade1 = 0,
   XFade1Btn = 2,
   XFade2 = 1,
-  XFade2Btn = 3,
+  XFade2Btn = 3
 }
 
 ---@enum SpecialIndexBlade
@@ -6326,7 +6333,7 @@ Enums.SpecialIndexBlade = {
   Blade4A = 9,
   Blade4B = 10,
   Blade4Rot = 11,
-  ShaperRot = 12,
+  ShaperRot = 12
 }
 
 ---@enum SpecialIndexIris
@@ -6337,7 +6344,7 @@ Enums.SpecialIndexIris = {
   IrisRandomPulseClose = 6,
   IrisRandomPulseOpen = 5,
   IrisStrobe = 1,
-  IrisStrobeRandom = 4,
+  IrisStrobeRandom = 4
 }
 
 ---@enum SpecialIndexShutter
@@ -6351,14 +6358,14 @@ Enums.SpecialIndexShutter = {
   ShutterStrobeRandom = 5,
   ShutterStrobeRandomPulse = 6,
   ShutterStrobeRandomPulseClose = 7,
-  ShutterStrobeRandomPulseOpen = 8,
+  ShutterStrobeRandomPulseOpen = 8
 }
 
 ---@enum SpecialPurposeFT
 Enums.SpecialPurposeFT = {
   BitmapController = 2,
   MArker = 1,
-  None = 0,
+  None = 0
 }
 
 ---@enum SpecialValueTypes
@@ -6366,26 +6373,26 @@ Enums.SpecialValueTypes = {
   Generators = 1,
   None = 255,
   Sound = 0,
-  Specials = 2,
+  Specials = 2
 }
 
 ---@enum SpecialValues
 Enums.SpecialValues = {
   Hold = 1,
-  Release = 0,
+  Release = 0
 }
 
 ---@enum SpecialWindowRememberedTab
 Enums.SpecialWindowRememberedTab = {
   Color = 0,
-  Shapers = 1,
+  Shapers = 1
 }
 
 ---@enum SpecialWindowTab
 Enums.SpecialWindowTab = {
   Color = 0,
   None = 2,
-  Shapers = 1,
+  Shapers = 1
 }
 
 ---@enum SpeedMaster
@@ -6407,14 +6414,14 @@ Enums.SpeedMaster = {
   Speed6 = 5,
   Speed7 = 6,
   Speed8 = 7,
-  Speed9 = 8,
+  Speed9 = 8
 }
 
 ---@enum SpeedReadoutMode
 Enums.SpeedReadoutMode = {
   BPM = 1,
   Hertz = 0,
-  Seconds = 2,
+  Seconds = 2
 }
 
 ---@enum SpeedReadoutModeAuto
@@ -6422,7 +6429,7 @@ Enums.SpeedReadoutModeAuto = {
   Auto = -1,
   BPM = 1,
   Hertz = 0,
-  Seconds = 2,
+  Seconds = 2
 }
 
 ---@enum SpeedScale
@@ -6443,7 +6450,7 @@ Enums.SpeedScale = {
   Mul4 = 2,
   Mul64 = 6,
   Mul8 = 3,
-  One = 0,
+  One = 0
 }
 
 ---@enum SplineType
@@ -6452,26 +6459,26 @@ Enums.SplineType = {
   Free = 1,
   None = 0,
   Proportional = 2,
-  Undefined = 3,
+  Undefined = 3
 }
 
 ---@enum SplitterH_LeftRight
 Enums.SplitterH_LeftRight = {
   Left = 1,
-  Right = 0,
+  Right = 0
 }
 
 ---@enum SplitterV_TopBottom
 Enums.SplitterV_TopBottom = {
   Bottom = 0,
-  Top = 1,
+  Top = 1
 }
 
 ---@enum StartupBrowserFilter
 Enums.StartupBrowserFilter = {
   ["Demo Shows"] = 1,
   Shows = 0,
-  ["Template Shows"] = 2,
+  ["Template Shows"] = 2
 }
 
 ---@enum StoreDisplayNumber
@@ -6482,7 +6489,7 @@ Enums.StoreDisplayNumber = {
   ["4"] = 3,
   ["5"] = 4,
   ["6"] = 5,
-  ["7"] = 6,
+  ["7"] = 6
 }
 
 ---@enum StoreMode
@@ -6493,14 +6500,14 @@ Enums.StoreMode = {
   Merge = 2,
   Overwrite = 1,
   Release = 4,
-  Remove = 3,
+  Remove = 3
 }
 
 ---@enum StoreSource
 Enums.StoreSource = {
   DMX = 2,
   Output = 1,
-  Programmer = 0,
+  Programmer = 0
 }
 
 ---@enum StoremodeRadio
@@ -6509,25 +6516,25 @@ Enums.StoremodeRadio = {
   Merge = 2,
   Overwrite = 1,
   Release = 4,
-  Remove = 3,
+  Remove = 3
 }
 
 ---@enum StrictNormalMode
 Enums.StrictNormalMode = {
   Normal = 0,
-  Strict = 1,
+  Strict = 1
 }
 
 ---@enum StructureType
 Enums.StructureType = {
   CenterLineBased = 0,
-  Detail = 1,
+  Detail = 1
 }
 
 ---@enum SupportType
 Enums.SupportType = {
   GroundSupport = 1,
-  Rope = 0,
+  Rope = 0
 }
 
 ---@enum SyntaxResult
@@ -6539,7 +6546,7 @@ Enums.SyntaxResult = {
   ExecuteBefore = 1,
   Ignore = 5,
   SyntaxError = -1,
-  SyntaxOk = 0,
+  SyntaxOk = 0
 }
 
 ---@enum SyntaxState
@@ -6589,12 +6596,12 @@ Enums.SyntaxState = {
   DoUpdate = 14,
   DoValueReadout = 32,
   None = 0,
-  SyntaxError = -1,
+  SyntaxError = -1
 }
 
 ---@enum TCDuration
 Enums.TCDuration = {
-  ["To End"] = 0,
+  ["To End"] = 0
 }
 
 ---@enum TCTextMode
@@ -6602,26 +6609,26 @@ Enums.TCTextMode = {
   All = 0,
   Markers = 3,
   Selected = 2,
-  Tracks = 1,
+  Tracks = 1
 }
 
 ---@enum TCViewMode
 Enums.TCViewMode = {
   Both = 2,
   Text = 0,
-  Timeline = 1,
+  Timeline = 1
 }
 
 ---@enum TTL
 Enums.TTL = {
-  ["Default(8)"] = 8,
+  ["Default(8)"] = 8
 }
 
 ---@enum TagType
 Enums.TagType = {
   ["Kill Delayed"] = 5,
   ["Kill Instant"] = 4,
-  None = 0,
+  None = 0
 }
 
 ---@enum TestBlockType
@@ -6629,7 +6636,7 @@ Enums.TestBlockType = {
   lua = 3,
   root = 1,
   rt = 2,
-  ui = 0,
+  ui = 0
 }
 
 ---@enum TextInputEditor
@@ -6638,31 +6645,31 @@ Enums.TextInputEditor = {
   NameNote = 3,
   None = 4,
   Scribble = 0,
-  Tags = 2,
+  Tags = 2
 }
 
 ---@enum TimeCodeSource
 Enums.TimeCodeSource = {
   Midi = 0,
-  Smpte = 1,
+  Smpte = 1
 }
 
 ---@enum TimeCursorScrollMode
 Enums.TimeCursorScrollMode = {
   Center = 1,
-  Page = 0,
+  Page = 0
 }
 
 ---@enum TimeDefault
 Enums.TimeDefault = {
-  Default = 9223372036854775807,
+  Default = 9223372036854775807
 }
 
 ---@enum TimeDisplayClockFormat
 Enums.TimeDisplayClockFormat = {
   ["10.11:23:45"] = 3,
   ["251:23:45"] = 4,
-  ["<Default>"] = 0,
+  ["<Default>"] = 0
 }
 
 ---@enum TimeDisplayFormat
@@ -6670,7 +6677,7 @@ Enums.TimeDisplayFormat = {
   ["10.11:23:45"] = 2,
   ["10d11h23m45"] = 0,
   ["251:23:45"] = 3,
-  ["251h23m45"] = 1,
+  ["251h23m45"] = 1
 }
 
 ---@enum TimeDisplayFormatSelected
@@ -6679,53 +6686,53 @@ Enums.TimeDisplayFormatSelected = {
   ["10d11h23m45"] = 1,
   ["251:23:45"] = 4,
   ["251h23m45"] = 2,
-  Default = 0,
+  Default = 0
 }
 
 ---@enum TimeKeyTarget
 Enums.TimeKeyTarget = {
   Cue = 0,
-  Fixture = 1,
+  Fixture = 1
 }
 
 ---@enum TimeNone
 Enums.TimeNone = {
-  None = 9223372036854775807,
+  None = 9223372036854775807
 }
 
 ---@enum TimeNoneEmpty
 Enums.TimeNoneEmpty = {
   [""] = 9223372036854775807,
-  None = 9223372036854775807,
+  None = 9223372036854775807
 }
 
 ---@enum TimeNoneSwap
 Enums.TimeNoneSwap = {
   Invert = 9223372036854775806,
-  None = 9223372036854775807,
+  None = 9223372036854775807
 }
 
 ---@enum TimeNoneSwapDelay
 Enums.TimeNoneSwapDelay = {
   None = 9223372036854775807,
-  ["Swap Delay"] = 9223372036854775806,
+  ["Swap Delay"] = 9223372036854775806
 }
 
 ---@enum TimeNoneSwapFade
 Enums.TimeNoneSwapFade = {
   None = 9223372036854775807,
-  ["Swap Fade"] = 9223372036854775806,
+  ["Swap Fade"] = 9223372036854775806
 }
 
 ---@enum TimeNoneSwapSpeed
 Enums.TimeNoneSwapSpeed = {
   None = 9223372036854775807,
-  ["Swap Speed"] = 9223372036854775806,
+  ["Swap Speed"] = 9223372036854775806
 }
 
 ---@enum TimecodeEncoderFunction
 Enums.TimecodeEncoderFunction = {
-  Edit = 0,
+  Edit = 0
 }
 
 ---@enum TimecodePoolAction
@@ -6736,26 +6743,26 @@ Enums.TimecodePoolAction = {
   Pause = 10,
   Select = 1,
   Toggle = 2,
-  Top = 12,
+  Top = 12
 }
 
 ---@enum TimecodeSelectLastEventMode
 Enums.TimecodeSelectLastEventMode = {
   All = 2,
   Off = 0,
-  Track = 1,
+  Track = 1
 }
 
 ---@enum TimecodeSelectionTarget
 Enums.TimecodeSelectionTarget = {
   Events = 0,
-  TimeRanges = 1,
+  TimeRanges = 1
 }
 
 ---@enum TimecodeSingleUserRecord
 Enums.TimecodeSingleUserRecord = {
   ["All Users"] = 0,
-  ["Single User"] = 1,
+  ["Single User"] = 1
 }
 
 ---@enum TimecodeSlot
@@ -6768,12 +6775,12 @@ Enums.TimecodeSlot = {
   ["TCSlot 5"] = 4,
   ["TCSlot 6"] = 5,
   ["TCSlot 7"] = 6,
-  ["TCSlot 8"] = 7,
+  ["TCSlot 8"] = 7
 }
 
 ---@enum TimecodeSlotOff
 Enums.TimecodeSlotOff = {
-  Off = 255,
+  Off = 255
 }
 
 ---@enum TimecodeSlotPoolAction
@@ -6784,7 +6791,7 @@ Enums.TimecodeSlotPoolAction = {
   Pause = 10,
   Select = 1,
   ["Toggle Off"] = 13,
-  ["Toggle Pause"] = 2,
+  ["Toggle Pause"] = 2
 }
 
 ---@enum TimecodeSlotShort
@@ -6796,7 +6803,7 @@ Enums.TimecodeSlotShort = {
   ["TCSlot 5"] = 4,
   ["TCSlot 6"] = 5,
   ["TCSlot 7"] = 6,
-  ["TCSlot 8"] = 7,
+  ["TCSlot 8"] = 7
 }
 
 ---@enum TimecodeTool
@@ -6806,20 +6813,20 @@ Enums.TimecodeTool = {
   Move = 4,
   Operate = 0,
   Resize = 5,
-  Select = 1,
+  Select = 1
 }
 
 ---@enum TimerAction
 Enums.TimerAction = {
   None = 255,
   Select = 1,
-  Toggle = 2,
+  Toggle = 2
 }
 
 ---@enum TimerMode
 Enums.TimerMode = {
   Countdown = 0,
-  Stopwatch = 1,
+  Stopwatch = 1
 }
 
 ---@enum TimerTriggerToken
@@ -6827,7 +6834,7 @@ Enums.TimerTriggerToken = {
   Flash = 2,
   ["Go+"] = 0,
   Temp = 3,
-  Toggle = 1,
+  Toggle = 1
 }
 
 ---@enum TimingMaster
@@ -6881,7 +6888,7 @@ Enums.TimingMaster = {
   Timing6 = -7,
   Timing7 = -8,
   Timing8 = -9,
-  Timing9 = -10,
+  Timing9 = -10
 }
 
 ---@enum TimingMasterWithDefault
@@ -6936,7 +6943,7 @@ Enums.TimingMasterWithDefault = {
   Timing6 = -7,
   Timing7 = -8,
   Timing8 = -9,
-  Timing9 = -10,
+  Timing9 = -10
 }
 
 ---@enum TimingMasterWithXAssert
@@ -6991,13 +6998,13 @@ Enums.TimingMasterWithXAssert = {
   Timing6 = -7,
   Timing7 = -8,
   Timing8 = -9,
-  Timing9 = -10,
+  Timing9 = -10
 }
 
 ---@enum ToolbarScrollType
 Enums.ToolbarScrollType = {
   Horizontal = 1,
-  Vertical = 0,
+  Vertical = 0
 }
 
 ---@enum TotalReferenceUpdateStatus
@@ -7013,7 +7020,7 @@ Enums.TotalReferenceUpdateStatus = {
   UpdatePresets = 4,
   UpdateProgrammer = 7,
   UserCleanup = 10,
-  UserConversion = 11,
+  UserConversion = 11
 }
 
 ---@enum TotalUpdateType
@@ -7023,14 +7030,14 @@ Enums.TotalUpdateType = {
   OnlyNames = 3,
   References = 4,
   TagCleanup = 2,
-  UserCleanup = 1,
+  UserCleanup = 1
 }
 
 ---@enum TrackEditApplyFor
 Enums.TrackEditApplyFor = {
   ["All Cues/Parts"] = 2,
   ["All Parts in sel. Cue(s)"] = 1,
-  ["Selected Part(s)"] = 0,
+  ["Selected Part(s)"] = 0
 }
 
 ---@enum TrackEditGrouping
@@ -7038,7 +7045,7 @@ Enums.TrackEditGrouping = {
   ["Activation Group"] = 2,
   ["All Fixtures"] = 3,
   Feature = 1,
-  Selection = 0,
+  Selection = 0
 }
 
 ---@enum TrackLayerAuto
@@ -7056,7 +7063,7 @@ Enums.TrackLayerAuto = {
   Speed = 4,
   SpeedMaster = 5,
   Transition = 14,
-  Width = 15,
+  Width = 15
 }
 
 ---@enum TrackingShield
@@ -7067,20 +7074,20 @@ Enums.TrackingShield = {
   DimmerAboveZero = 2,
   DimmerRisingFromZero = 1,
   Off = 0,
-  ["^0"] = 1,
+  ["^0"] = 1
 }
 
 ---@enum TrackingShieldPopup
 Enums.TrackingShieldPopup = {
   [">0"] = 2,
   Off = 0,
-  ["^0"] = 1,
+  ["^0"] = 1
 }
 
 ---@enum TrackpadMode
 Enums.TrackpadMode = {
   Mouse = 0,
-  ["Pan/Tilt"] = 1,
+  ["Pan/Tilt"] = 1
 }
 
 ---@enum TrackpadPTInvertMode
@@ -7088,14 +7095,14 @@ Enums.TrackpadPTInvertMode = {
   Both = 3,
   Off = 0,
   ["Pan Invert"] = 1,
-  ["Tilt Invert"] = 2,
+  ["Tilt Invert"] = 2
 }
 
 ---@enum TrackpadPTMode
 Enums.TrackpadPTMode = {
   Both = 2,
   ["Pan Only"] = 0,
-  ["Tilt Only"] = 1,
+  ["Tilt Only"] = 1
 }
 
 ---@enum TransitionMode
@@ -7103,7 +7110,7 @@ Enums.TransitionMode = {
   Fast = 3,
   Linear = 0,
   Sinus = 1,
-  Slow = 2,
+  Slow = 2
 }
 
 ---@enum TransitionType
@@ -7116,34 +7123,34 @@ Enums.TransitionType = {
   ["Slow+"] = 2,
   Swing = 7,
   ["Swing+"] = 8,
-  ["Swing-"] = 6,
+  ["Swing-"] = 6
 }
 
 ---@enum TrueFalse
 Enums.TrueFalse = {
   False = 0,
-  True = 1,
+  True = 1
 }
 
 ---@enum UndefinedAnchors
 Enums.UndefinedAnchors = {
-  Undefined = -1,
+  Undefined = -1
 }
 
 ---@enum UndefinedMax
 Enums.UndefinedMax = {
-  ["-"] = 32767,
+  ["-"] = 32767
 }
 
 ---@enum UndefinedMin
 Enums.UndefinedMin = {
-  ["-"] = -32768,
+  ["-"] = -32768
 }
 
 ---@enum Update
 Enums.Update = {
   ["Add New Content"] = 1,
-  ["Original Content Only"] = 0,
+  ["Original Content Only"] = 0
 }
 
 ---@enum UsbProductID
@@ -7164,13 +7171,13 @@ Enums.UsbProductID = {
   ["grandMA3 MA-Key (Viz-Key)"] = 46353,
   ["grandMA3 Master Module (MM)"] = 46531,
   ["grandMA3 VR wing"] = 46543,
-  ["grandMA3 xPort node"] = 46537,
+  ["grandMA3 xPort node"] = 46537
 }
 
 ---@enum UseLeftOrRight
 Enums.UseLeftOrRight = {
   ["Use My"] = 0,
-  ["Use Other"] = 1,
+  ["Use Other"] = 1
 }
 
 ---@enum UserRights
@@ -7181,7 +7188,7 @@ Enums.UserRights = {
   Presets = 3,
   Program = 2,
   Setup = 1,
-  View = 5,
+  View = 5
 }
 
 ---@enum ValueLayer
@@ -7189,12 +7196,12 @@ Enums.ValueLayer = {
   Absolute = 10,
   Delay = 3,
   Fade = 2,
-  Relative = 11,
+  Relative = 11
 }
 
 ---@enum ValueNone
 Enums.ValueNone = {
-  None = 2147483647,
+  None = 2147483647
 }
 
 ---@enum ValueNoneEmpty
@@ -7202,7 +7209,7 @@ Enums.ValueNoneEmpty = {
   [""] = 2147483647,
   Hold = 1107296257,
   None = 2147483647,
-  Release = 1107296256,
+  Release = 1107296256
 }
 
 ---@enum ValueReadoutMode
@@ -7215,7 +7222,7 @@ Enums.ValueReadoutMode = {
   Hex8 = 6,
   Percent = 0,
   PercentFine = 1,
-  Physical = 2,
+  Physical = 2
 }
 
 ---@enum ValueReadoutModeAuto
@@ -7230,7 +7237,7 @@ Enums.ValueReadoutModeAuto = {
   Natural = 9,
   Percent = 0,
   PercentFine = 1,
-  Physical = 2,
+  Physical = 2
 }
 
 ---@enum ValueReadoutModeDefault
@@ -7244,7 +7251,7 @@ Enums.ValueReadoutModeDefault = {
   Hex8 = 6,
   Percent = 0,
   PercentFine = 1,
-  Physical = 2,
+  Physical = 2
 }
 
 ---@enum ValueReadoutModeNatural
@@ -7258,27 +7265,27 @@ Enums.ValueReadoutModeNatural = {
   Natural = 9,
   Percent = 0,
   PercentFine = 1,
-  Physical = 2,
+  Physical = 2
 }
 
 ---@enum ValueRole
 Enums.ValueRole = {
   Default = 0,
   Display = 1,
-  DisplayShort = 2,
+  DisplayShort = 2
 }
 
 ---@enum VerifyResult
 Enums.VerifyResult = {
   Expired = 2,
   NotVerified = 0,
-  Valid = 1,
+  Valid = 1
 }
 
 ---@enum VideoFileSource
 Enums.VideoFileSource = {
   File = 0,
-  NDI = 1,
+  NDI = 1
 }
 
 ---@enum VideoPoolAction
@@ -7287,7 +7294,7 @@ Enums.VideoPoolAction = {
   None = 255,
   Off = 11,
   Pause = 10,
-  Toggle = 2,
+  Toggle = 2
 }
 
 ---@enum VirtualKeyCode
@@ -7439,7 +7446,7 @@ Enums.VirtualKeyCode = {
   X7 = 25,
   X8 = 26,
   X9 = 27,
-  XKEYS = 15,
+  XKEYS = 15
 }
 
 ---@enum VirtualKeyExecutionType
@@ -7448,7 +7455,7 @@ Enums.VirtualKeyExecutionType = {
   ClearImmediate = 2,
   Immediate = 1,
   Normal = 0,
-  Release = 4,
+  Release = 4
 }
 
 ---@enum WeekDay
@@ -7459,7 +7466,7 @@ Enums.WeekDay = {
   Sunday = 6,
   Thursday = 3,
   Tuesday = 1,
-  Wednesday = 2,
+  Wednesday = 2
 }
 
 ---@enum WeekDayShort
@@ -7470,7 +7477,7 @@ Enums.WeekDayShort = {
   Sun = 6,
   Thu = 3,
   Tue = 1,
-  Wed = 2,
+  Wed = 2
 }
 
 ---@enum WeekOfMonth
@@ -7480,7 +7487,7 @@ Enums.WeekOfMonth = {
   ["Fourth Week"] = 3,
   ["Second Week"] = 1,
   ["Sixth Week"] = 5,
-  ["Third Week"] = 2,
+  ["Third Week"] = 2
 }
 
 ---@enum WheelMode
@@ -7488,7 +7495,7 @@ Enums.WheelMode = {
   Additive = 0,
   Incremental = 1,
   ["Prop.+"] = 2,
-  ["Prop.-"] = 3,
+  ["Prop.-"] = 3
 }
 
 ---@enum WhiteListPacketIDs
@@ -7533,7 +7540,7 @@ Enums.WhiteListPacketIDs = {
   updater_x64 = 1166,
   utils = 1166,
   web_daemon = 1158,
-  worldserver = 1158,
+  worldserver = 1158
 }
 
 ---@enum WhiteListPacketNames
@@ -7571,7 +7578,7 @@ Enums.WhiteListPacketNames = {
   wing = 1974,
   worldserver = 1158,
   xport = 1974,
-  xport_compat = 1974,
+  xport_compat = 1974
 }
 
 ---@enum WhiteListPacketNamesBefore_1_7
@@ -7606,7 +7613,7 @@ Enums.WhiteListPacketNamesBefore_1_7 = {
   wing = 1982,
   worldserver = 1166,
   xport = 1982,
-  xport_compat = 1982,
+  xport_compat = 1982
 }
 
 ---@enum WindowCategories
@@ -7623,14 +7630,14 @@ Enums.WindowCategories = {
   Sheets = 7,
   ["Show Data"] = 0,
   ["User Profile"] = 2,
-  ["Viewers and Editors"] = 9,
+  ["Viewers and Editors"] = 9
 }
 
 ---@enum WindowInfoTab
 Enums.WindowInfoTab = {
   ["Depends on"] = 1,
   Note = 2,
-  ["Referenced by"] = 0,
+  ["Referenced by"] = 0
 }
 
 ---@enum WindowTypes
@@ -7638,7 +7645,7 @@ Enums.WindowTypes = {
   Others = 3,
   Pools = 1,
   Presets = 2,
-  Sheets = 0,
+  Sheets = 0
 }
 
 ---@enum WingID
@@ -7648,7 +7655,7 @@ Enums.WingID = {
   Wing3 = 3,
   Wing4 = 4,
   Wing5 = 5,
-  Wing6 = 6,
+  Wing6 = 6
 }
 
 ---@enum WingType
@@ -7657,40 +7664,40 @@ Enums.WingType = {
   ["grandMA3 Fader Module Crossfader (MFX)"] = 1,
   ["grandMA3 Fader Module Encoder (MFE)"] = 2,
   ["grandMA3 Master Module (MM)"] = 0,
-  ["grandMA3 TEST"] = 3,
+  ["grandMA3 TEST"] = 3
 }
 
 ---@enum WorldAction
 Enums.WorldAction = {
   None = 255,
   SelFix = 16,
-  Select = 1,
+  Select = 1
 }
 
 ---@enum XFadeMode
 Enums.XFadeMode = {
   AB = 0,
-  Split = 1,
+  Split = 1
 }
 
 ---@enum XYZMapping
 Enums.XYZMapping = {
   X = 0,
   Y = 1,
-  Z = 2,
+  Z = 2
 }
 
 ---@enum Yes
 Enums.Yes = {
   [""] = 0,
   ["<Blank>"] = 0,
-  Yes = 1,
+  Yes = 1
 }
 
 ---@enum YesNo
 Enums.YesNo = {
   No = 0,
-  Yes = 1,
+  Yes = 1
 }
 
 ---@enum ZoomFactor
@@ -7724,6 +7731,6 @@ Enums.ZoomFactor = {
   ["60%"] = 0,
   ["70%"] = 1,
   ["80%"] = 2,
-  ["90%"] = 3,
+  ["90%"] = 3
 }
 

@@ -75,4 +75,4 @@ function Users:Find(class, undo) end
 ---@overload fun(property_name: "Rights", property_value: UserRights)
 ---@overload fun(property_name: "PrivacyPolicy"|"WebRemoteLogin", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Language", property_value: string)
-function Users:Password(property_name, property_value) end
+function Users:SetChildren(property_name, property_value) end

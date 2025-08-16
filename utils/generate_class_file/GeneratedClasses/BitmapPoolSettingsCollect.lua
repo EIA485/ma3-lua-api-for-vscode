@@ -60,4 +60,4 @@ function BitmapPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): BitmapPoolSettings
 function BitmapPoolSettingsCollect:Find(class, undo) end
-function BitmapPoolSettingsCollect:ActiveDisplay(property_name, property_value) end
+function BitmapPoolSettingsCollect:SetChildren(property_name, property_value) end

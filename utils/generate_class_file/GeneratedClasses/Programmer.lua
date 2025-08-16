@@ -70,7 +70,7 @@ function Programmer:Find(class, undo) end
 function Programmer:FindRecursive(name, class) end
 ---@overload fun(property_name: "Part", property_value: integer)
 ---@overload fun(property_name: "Part", property_value: integer)
-function Programmer:Part(property_name, property_value) end
+function Programmer:SetChildren(property_name, property_value) end
 ---@overload fun(property_name: "Generator", property_value: GeneratorBaseObject)
 ---@overload fun(property_name: "Values", property_value: Object)
 ---@overload fun(property_name: "Selection", property_value: Group)
@@ -89,16 +89,5 @@ function Programmer:Part(property_name, property_value) end
 ---@overload fun(property_name: "SelectionMode", property_value: StrictNormalMode)
 ---@overload fun(property_name: "Filter", property_value: World)
 ---@overload fun(property_name: "Enabled"|"EmptyLastCooking", property_value: YesNo|boolean)
----@overload fun(property_name: "Part", property_value: integer)
-function Programmer:Filter(property_name, property_value) end
----@overload fun(property_name: "FailedCookedPart", property_value: FailedCookedPart)
----@overload fun(property_name: "Generator", property_value: GeneratorBaseObject)
----@overload fun(property_name: "Selection", property_value: Group)
----@overload fun(property_name: "MAtricks", property_value: MAtrick)
----@overload fun(property_name: "Values", property_value: Object)
----@overload fun(property_name: "Preset", property_value: Preset)
----@overload fun(property_name: "SelectionMode", property_value: StrictNormalMode)
----@overload fun(property_name: "Filter", property_value: World)
----@overload fun(property_name: "EmptyLastCooking"|"Enabled", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Part", property_value: integer)
 function Programmer:SetChildrenRecursive(property_name, property_value) end

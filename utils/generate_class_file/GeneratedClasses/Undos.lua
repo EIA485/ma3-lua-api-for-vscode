@@ -104,10 +104,10 @@ function Undos:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No"|"UndoIndex", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function Undos:Set(property_name, property_value, override_change_level) end
----@overload fun(property_name: "SessionTime", property_value: DatumMode)
 ---@overload fun(property_name: "UIndex", property_value: integer)
----@overload fun(property_name: "ElapsedTime", property_value: TimePropertyValue)
 ---@overload fun(property_name: "SessionTime", property_value: DatumMode)
 ---@overload fun(property_name: "ElapsedTime", property_value: TimePropertyValue)
+---@overload fun(property_name: "SessionTime", property_value: DatumMode)
+---@overload fun(property_name: "ElapsedTime", property_value: TimePropertyValue)
 ---@overload fun(property_name: "UIndex", property_value: integer)
-function Undos:ElapsedTime(property_name, property_value) end
+function Undos:SetChildren(property_name, property_value) end

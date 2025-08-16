@@ -62,4 +62,4 @@ function ColorGroups:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ColorGroup
 function ColorGroups:Find(class, undo) end
-function ColorGroups:ActiveDisplay(property_name, property_value) end
+function ColorGroups:SetChildren(property_name, property_value) end

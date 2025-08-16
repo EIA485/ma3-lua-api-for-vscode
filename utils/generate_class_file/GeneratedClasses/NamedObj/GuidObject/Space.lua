@@ -162,12 +162,9 @@ function Space:FindParent(class) end
 function Space:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "FollowStageDimensions", property_value: YesNo|boolean)
 ---@overload fun(property_name: "FollowStageDimensions", property_value: YesNo|boolean)
----@overload fun(property_name: "P1Y"|"P4X"|"P1X"|"P1Z"|"P4Y"|"P2X"|"P4Z"|"P3Z"|"P2Y"|"P2Z"|"P3X"|"P3Y", property_value: number)
-function Space:FollowStageDimensions(property_name, property_value) end
+---@overload fun(property_name: "P1X"|"P1Y"|"P4X"|"P4Y"|"P1Z"|"P2X"|"P4Z"|"P3Z"|"P2Y"|"P2Z"|"P3X"|"P3Y", property_value: number)
+function Space:SetChildren(property_name, property_value) end
 ---@overload fun(property_name: "FollowStageDimensions", property_value: YesNo|boolean)
 ---@overload fun(property_name: "FollowStageDimensions", property_value: YesNo|boolean)
----@overload fun(property_name: "P1Y"|"P4X"|"P1X"|"P1Z"|"P4Y"|"P2X"|"P4Z"|"P3Z"|"P2Y"|"P2Z"|"P3X"|"P3Y", property_value: number)
-function Space:FollowStageDimensions(property_name, property_value) end
----@overload fun(property_name: "FollowStageDimensions", property_value: YesNo|boolean)
----@overload fun(property_name: "P1X"|"P1Y"|"P1Z"|"P2X"|"P2Y"|"P2Z"|"P3X"|"P3Y"|"P3Z"|"P4X"|"P4Y"|"P4Z", property_value: number)
+---@overload fun(property_name: "P1X"|"P1Y"|"P4X"|"P4Y"|"P1Z"|"P2X"|"P4Z"|"P3Z"|"P2Y"|"P2Z"|"P3X"|"P3Y", property_value: number)
 function Space:SetChildrenRecursive(property_name, property_value) end

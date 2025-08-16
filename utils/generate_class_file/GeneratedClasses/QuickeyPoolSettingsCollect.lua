@@ -60,4 +60,4 @@ function QuickeyPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): QuickeyPoolSettings
 function QuickeyPoolSettingsCollect:Find(class, undo) end
-function QuickeyPoolSettingsCollect:Color(property_name, property_value) end
+function QuickeyPoolSettingsCollect:SetChildren(property_name, property_value) end

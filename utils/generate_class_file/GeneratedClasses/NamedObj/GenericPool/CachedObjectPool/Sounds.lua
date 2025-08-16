@@ -67,4 +67,4 @@ function Sounds:Find(class, undo) end
 ---@overload fun(property_name: "AutoStart"|"AutoStop", property_value: YesNo|boolean)
 ---@overload fun(property_name: "dB", property_value: number)
 ---@overload fun(property_name: "User"|"Type", property_value: string)
-function Sounds:dB(property_name, property_value) end
+function Sounds:SetChildren(property_name, property_value) end

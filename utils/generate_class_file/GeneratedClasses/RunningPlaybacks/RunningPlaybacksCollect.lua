@@ -68,4 +68,4 @@ function RunningPlaybacksCollect:Insert(index, class, undo, count) end
 ---@overload fun(class: "RunningPlaybacks", undo: Undo?): RunningPlaybacks
 ---@overload fun(class: nil, undo: Undo?): RunningPlaybacks
 function RunningPlaybacksCollect:Find(class, undo) end
-function RunningPlaybacksCollect:ActiveDisplay(property_name, property_value) end
+function RunningPlaybacksCollect:SetChildren(property_name, property_value) end

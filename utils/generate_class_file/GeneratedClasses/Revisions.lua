@@ -67,4 +67,4 @@ function Revisions:Find(class, undo) end
 ---@overload fun(property_name: "Date", property_value: DatumMode)
 ---@overload fun(property_name: "UserID", property_value: integer)
 ---@overload fun(property_name: "ModifiedBy"|"Text", property_value: string)
-function Revisions:UserID(property_name, property_value) end
+function Revisions:SetChildren(property_name, property_value) end

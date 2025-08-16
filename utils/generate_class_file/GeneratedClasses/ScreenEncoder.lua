@@ -62,4 +62,4 @@ function ScreenEncoder:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ScreenEncoderDirection
 function ScreenEncoder:Find(class, undo) end
-function ScreenEncoder:*(property_name, property_value) end
+function ScreenEncoder:SetChildren(property_name, property_value) end

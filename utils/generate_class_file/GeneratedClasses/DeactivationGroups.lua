@@ -64,4 +64,4 @@ function DeactivationGroups:Insert(index, class, undo, count) end
 function DeactivationGroups:Find(class, undo) end
 ---@overload fun(property_name: "ActGroupsCount", property_value: integer)
 ---@overload fun(property_name: "ActGroupsCount", property_value: integer)
-function DeactivationGroups:ActGroupsCount(property_name, property_value) end
+function DeactivationGroups:SetChildren(property_name, property_value) end

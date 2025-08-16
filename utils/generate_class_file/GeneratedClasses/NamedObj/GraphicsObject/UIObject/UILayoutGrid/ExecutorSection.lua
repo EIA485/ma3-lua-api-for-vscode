@@ -293,4 +293,4 @@ function ExecutorSection:Find(class, undo) end
 function ExecutorSection:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "ExecProxy", property_value: Proxy)
 ---@overload fun(property_name: "ExecProxy", property_value: Proxy)
-function ExecutorSection:ExecProxy(property_name, property_value) end
+function ExecutorSection:SetChildren(property_name, property_value) end

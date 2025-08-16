@@ -38,6 +38,32 @@ function UIObject:IsVisible() end
 function UIObject:IsEnabled() end
 ---@param topicName string
 function UIObject:SetContextSensHelpLink(topicName) end
+function UIObject:InputRun() end
+---@param scrollType ScrollType
+---@param offset integer
+---@return integer itemIndex
+function UIObject:ScrollGetItemByOffset(scrollType, offset) end
+---@param scrollType ScrollType
+---@param itemIdx integer
+---@return integer? offset
+function UIObject:ScrollGetItemOffset(scrollType, itemIdx) end
+---@param scrollType ScrollType
+---@param itemIdx integer
+---@return integer? size
+function UIObject:ScrollGetItemSize(scrollType, itemIdx) end
+---@param scrollType ScrollType
+---@param scrollEntity ScrollParamEntity
+---@param valueType ScrollParamValueType
+---@param value number
+---@param updateOpposite boolean
+---@return boolean success
+function UIObject:ScrollDo(scrollType, scrollEntity, valueType, value, updateOpposite) end
+---@param scrollType ScrollType
+---@return table? scrollInfo
+function UIObject:ScrollGetInfo(scrollType) end
+---@param scrollType ScrollType
+---@return boolean isNeeded
+function UIObject:ScrollIsNeeded(scrollType) end
 
 
 ---@class UIGrid
@@ -132,3 +158,21 @@ Overlay = {}
 ---@param callbackName string
 ---@param ctx any?
 function Overlay:OverlaySetCloseCallback(callbackName, ctx) end
+
+---@param callback function
+function Overlay:ShowModal(callback) end
+
+---@param x integer
+---@param y integer
+function Overlay:SetPositionHint(x, y) end
+
+
+---@class Overlay
+BaseInput = {}
+
+---@param func string
+---@return any result
+function BaseInput:InputCallFunction(func) end
+---@param functionName string
+---@return boolean? hasFunction
+function BaseInput:InputHasFunction(functionName) end

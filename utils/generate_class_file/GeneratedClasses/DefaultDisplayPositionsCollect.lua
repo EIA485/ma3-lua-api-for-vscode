@@ -62,4 +62,4 @@ function DefaultDisplayPositionsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): DefaultDisplayPositions
 function DefaultDisplayPositionsCollect:Find(class, undo) end
-function DefaultDisplayPositionsCollect:ActiveDisplay(property_name, property_value) end
+function DefaultDisplayPositionsCollect:SetChildren(property_name, property_value) end

@@ -60,4 +60,4 @@ function PresetVideoPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetVideoPoolSettings
 function PresetVideoPoolSettingsCollect:Find(class, undo) end
-function PresetVideoPoolSettingsCollect:ActiveDisplay(property_name, property_value) end
+function PresetVideoPoolSettingsCollect:SetChildren(property_name, property_value) end

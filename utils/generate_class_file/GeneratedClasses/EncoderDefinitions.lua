@@ -69,4 +69,4 @@ function EncoderDefinitions:Find(class, undo) end
 ---@overload fun(property_name: "SpecialExecutor", property_value: SpecialExecutor)
 ---@overload fun(property_name: "Key", property_value: VirtualKeyCode)
 ---@overload fun(property_name: "ExecutorIndex"|"Linked"|"Resolution", property_value: integer)
-function EncoderDefinitions:Type(property_name, property_value) end
+function EncoderDefinitions:SetChildren(property_name, property_value) end

@@ -63,9 +63,9 @@ function FixtureTypesOverview:Insert(index, class, undo, count) end
 ---@overload fun(class: nil, undo: Undo?): FixtureTypeFake
 function FixtureTypesOverview:Find(class, undo) end
 ---@overload fun(property_name: "Used", property_value: integer)
----@overload fun(property_name: "FTRef", property_value: Object)
 ---@overload fun(property_name: "Name", property_value: string)
+---@overload fun(property_name: "FTRef", property_value: Object)
 ---@overload fun(property_name: "FTRef", property_value: Object)
 ---@overload fun(property_name: "Used", property_value: integer)
 ---@overload fun(property_name: "Name", property_value: string)
-function FixtureTypesOverview:Name(property_name, property_value) end
+function FixtureTypesOverview:SetChildren(property_name, property_value) end

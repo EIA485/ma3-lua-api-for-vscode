@@ -41,9 +41,9 @@ function Worlds:Insert(index, class, undo, count) end
 ---@overload fun(class: nil, undo: Undo?): World
 function Worlds:Find(class, undo) end
 ---@overload fun(property_name: "Selection", property_value: StrictNormalMode)
----@overload fun(property_name: "Mode", property_value: integer)
 ---@overload fun(property_name: "Attributes", property_value: YesNo|boolean)
+---@overload fun(property_name: "Mode", property_value: integer)
 ---@overload fun(property_name: "Selection", property_value: StrictNormalMode)
 ---@overload fun(property_name: "Attributes", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Mode", property_value: integer)
-function Worlds:Attributes(property_name, property_value) end
+function Worlds:SetChildren(property_name, property_value) end

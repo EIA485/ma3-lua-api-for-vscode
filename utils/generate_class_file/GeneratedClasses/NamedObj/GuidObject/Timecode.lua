@@ -228,4 +228,4 @@ function Timecode:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Rec", property_value: ECRec|boolean)
 ---@overload fun(property_name: "Play", property_value: ECPlay|boolean)
 ---@overload fun(property_name: "Rec", property_value: ECRec|boolean)
-function Timecode:Rec(property_name, property_value) end
+function Timecode:SetChildren(property_name, property_value) end

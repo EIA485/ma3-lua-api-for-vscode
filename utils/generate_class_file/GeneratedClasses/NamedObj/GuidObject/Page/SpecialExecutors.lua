@@ -62,4 +62,4 @@ function SpecialExecutors:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SpecialExecutor
 function SpecialExecutors:Find(class, undo) end
-function SpecialExecutors:ExecutorConfiguration(property_name, property_value) end
+function SpecialExecutors:SetChildren(property_name, property_value) end

@@ -60,4 +60,4 @@ function MidiInDescriptions:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MIDIDeviceDescription
 function MidiInDescriptions:Find(class, undo) end
-function MidiInDescriptions:SoftwareVersionID(property_name, property_value) end
+function MidiInDescriptions:SetChildren(property_name, property_value) end

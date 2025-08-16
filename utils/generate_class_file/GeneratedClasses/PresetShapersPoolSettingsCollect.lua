@@ -60,4 +60,4 @@ function PresetShapersPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetShapersPoolSettings
 function PresetShapersPoolSettingsCollect:Find(class, undo) end
-function PresetShapersPoolSettingsCollect:ActiveDisplay(property_name, property_value) end
+function PresetShapersPoolSettingsCollect:SetChildren(property_name, property_value) end

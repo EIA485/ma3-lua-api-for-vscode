@@ -64,4 +64,4 @@ function RDMPorts:Insert(index, class, undo, count) end
 function RDMPorts:Find(class, undo) end
 ---@overload fun(property_name: "UniverseIndex", property_value: integer)
 ---@overload fun(property_name: "UniverseIndex", property_value: integer)
-function RDMPorts:UniverseIndex(property_name, property_value) end
+function RDMPorts:SetChildren(property_name, property_value) end

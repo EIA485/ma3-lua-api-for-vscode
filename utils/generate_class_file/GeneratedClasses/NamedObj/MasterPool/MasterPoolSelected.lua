@@ -60,4 +60,4 @@ function MasterPoolSelected:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MasterSelected
 function MasterPoolSelected:Find(class, undo) end
-function MasterPoolSelected:SpeedScale(property_name, property_value) end
+function MasterPoolSelected:SetChildren(property_name, property_value) end

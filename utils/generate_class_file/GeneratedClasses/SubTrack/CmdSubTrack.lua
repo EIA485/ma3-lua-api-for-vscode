@@ -60,8 +60,8 @@ function CmdSubTrack:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): CmdEvent
 function CmdSubTrack:Find(class, undo) end
----@overload fun(property_name: "ExecuteCommand", property_value: YesNo|boolean)
----@overload fun(property_name: "CueDestination", property_value: Object)
 ---@overload fun(property_name: "CueDestination", property_value: Object)
 ---@overload fun(property_name: "ExecuteCommand", property_value: YesNo|boolean)
-function CmdSubTrack:CueDestination(property_name, property_value) end
+---@overload fun(property_name: "CueDestination", property_value: Object)
+---@overload fun(property_name: "ExecuteCommand", property_value: YesNo|boolean)
+function CmdSubTrack:SetChildren(property_name, property_value) end

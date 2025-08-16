@@ -62,4 +62,4 @@ function TimecodeSlotPoolSettingsCollect:Insert(index, class, undo, count) end
 function TimecodeSlotPoolSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "Action", property_value: TimecodeSlotPoolAction)
 ---@overload fun(property_name: "Action", property_value: TimecodeSlotPoolAction)
-function TimecodeSlotPoolSettingsCollect:Action(property_name, property_value) end
+function TimecodeSlotPoolSettingsCollect:SetChildren(property_name, property_value) end

@@ -114,12 +114,12 @@ function Agendas:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Action", property_value: AssignmentButtonFunctions)
 ---@overload fun(property_name: "Mode", property_value: AgendaMode)
 ---@overload fun(property_name: "Action", property_value: AssignmentButtonFunctions)
----@overload fun(property_name: "PlannedDate"|"EndTime"|"PlannedTime"|"StartDate"|"StartTime"|"EndDate", property_value: DatumMode)
+---@overload fun(property_name: "EndTime"|"PlannedDate"|"PlannedTime"|"StartDate"|"StartTime"|"EndDate", property_value: DatumMode)
 ---@overload fun(property_name: "Object", property_value: Object)
 ---@overload fun(property_name: "Scribble", property_value: Scribble)
 ---@overload fun(property_name: "DaylightOffset", property_value: SignedTimePropertyValue)
 ---@overload fun(property_name: "ValidDuration", property_value: TimePropertyValue)
----@overload fun(property_name: "RepeatOnWednesday"|"RepeatOnThursday"|"RepeatOnFifthWeek"|"RepeatOnSixthWeek"|"RepeatOnFriday"|"RepeatOnSaturday"|"RepeatOnTuesday"|"RepeatOnSunday"|"Enabled"|"RepeatOnFirstWeek"|"RepeatOnMonday"|"RepeatOnSecondWeek"|"RepeatEveryYear"|"RepeatOnThirdWeek"|"RepeatOnFourthWeek", property_value: YesNo|boolean)
----@overload fun(property_name: "DayRepeat"|"RepeatCountDays"|"WeekRepeat"|"RepeatCountTotal"|"MonthRepeat"|"MinuteInterval", property_value: integer)
+---@overload fun(property_name: "RepeatOnThursday"|"RepeatOnFifthWeek"|"RepeatOnFriday"|"RepeatOnSixthWeek"|"RepeatOnSaturday"|"RepeatOnTuesday"|"RepeatOnSunday"|"Enabled"|"RepeatOnFirstWeek"|"RepeatOnMonday"|"RepeatOnSecondWeek"|"RepeatEveryYear"|"RepeatOnThirdWeek"|"RepeatOnFourthWeek"|"RepeatOnWednesday", property_value: YesNo|boolean)
+---@overload fun(property_name: "DayRepeat"|"RepeatCountDays"|"WeekRepeat"|"MonthRepeat"|"RepeatCountTotal"|"MinuteInterval", property_value: integer)
 ---@overload fun(property_name: "Command"|"Countdown"|"Repeat", property_value: string)
-function Agendas:Action(property_name, property_value) end
+function Agendas:SetChildren(property_name, property_value) end

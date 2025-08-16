@@ -160,4 +160,4 @@ function TimeRange:Find(class, undo) end
 function TimeRange:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "FaderToken", property_value: AssignmentFaderFunctionsSubTrack)
 ---@overload fun(property_name: "FaderToken", property_value: AssignmentFaderFunctionsSubTrack)
-function TimeRange:FaderToken(property_name, property_value) end
+function TimeRange:SetChildren(property_name, property_value) end

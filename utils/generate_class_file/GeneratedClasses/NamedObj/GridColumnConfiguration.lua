@@ -110,4 +110,4 @@ function GridColumnConfiguration:Set(property_name, property_value, override_cha
 ---@overload fun(property_name: "Size", property_value: integer)
 ---@overload fun(property_name: "Visible", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Size", property_value: integer)
-function GridColumnConfiguration:Size(property_name, property_value) end
+function GridColumnConfiguration:SetChildren(property_name, property_value) end

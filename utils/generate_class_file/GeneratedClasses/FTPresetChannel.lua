@@ -94,6 +94,5 @@ function FTPresetChannel:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No"|"Attribute", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function FTPresetChannel:Set(property_name, property_value, override_change_level) end
-function FTPresetChannel:SpeedMaster(property_name, property_value) end
-function FTPresetChannel:SpeedMaster(property_name, property_value) end
+function FTPresetChannel:SetChildren(property_name, property_value) end
 function FTPresetChannel:SetChildrenRecursive(property_name, property_value) end

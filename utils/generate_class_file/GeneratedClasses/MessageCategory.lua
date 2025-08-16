@@ -110,4 +110,4 @@ function MessageCategory:Set(property_name, property_value, override_change_leve
 ---@overload fun(property_name: "Count", property_value: integer)
 ---@overload fun(property_name: "CreateNotification", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Count", property_value: integer)
-function MessageCategory:Count(property_name, property_value) end
+function MessageCategory:SetChildren(property_name, property_value) end

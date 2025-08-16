@@ -62,4 +62,4 @@ function TreeViewRows:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): TreeViewRow
 function TreeViewRows:Find(class, undo) end
-function TreeViewRows:SetPrompt(property_name, property_value) end
+function TreeViewRows:SetChildren(property_name, property_value) end

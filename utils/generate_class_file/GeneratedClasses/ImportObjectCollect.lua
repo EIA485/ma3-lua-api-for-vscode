@@ -62,8 +62,8 @@ function ImportObjectCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ImportFakeObject
 function ImportObjectCollect:Find(class, undo) end
----@overload fun(property_name: "DestinationIndex", property_value: AutoInterface)
 ---@overload fun(property_name: "SourceIndex", property_value: integer)
 ---@overload fun(property_name: "DestinationIndex", property_value: AutoInterface)
+---@overload fun(property_name: "DestinationIndex", property_value: AutoInterface)
 ---@overload fun(property_name: "SourceIndex", property_value: integer)
-function ImportObjectCollect:SourceIndex(property_name, property_value) end
+function ImportObjectCollect:SetChildren(property_name, property_value) end

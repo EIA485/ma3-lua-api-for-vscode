@@ -69,4 +69,4 @@ function PatchFakeCollect:Find(class, undo) end
 ---@overload fun(property_name: "FixtureID"|"CID", property_value: NoneAndDefault)
 ---@overload fun(property_name: "FixtureType", property_value: integer)
 ---@overload fun(property_name: "Layer"|"Class"|"PosY"|"PosZ"|"Name"|"PosX", property_value: string)
-function PatchFakeCollect:Patch(property_name, property_value) end
+function PatchFakeCollect:SetChildren(property_name, property_value) end

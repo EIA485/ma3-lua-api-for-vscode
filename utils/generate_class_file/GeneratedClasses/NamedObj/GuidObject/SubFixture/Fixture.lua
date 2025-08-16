@@ -266,4 +266,4 @@ function Fixture:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "OffsetPan"|"OffsetTilt", property_value: ValueTPropertyValue)
 ---@overload fun(property_name: "ParameterCountViolation"|"SubfxitureCountViolation"|"ConflitedPatch", property_value: YesNo|boolean)
 ---@overload fun(property_name: "OldSubfixtureIndex"|"SubfixtureIndex", property_value: integer)
-function Fixture:Fixture(property_name, property_value) end
+function Fixture:SetChildren(property_name, property_value) end

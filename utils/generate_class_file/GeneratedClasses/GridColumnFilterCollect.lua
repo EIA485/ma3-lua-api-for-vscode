@@ -107,4 +107,4 @@ function GridColumnFilterCollect:Set(property_name, property_value, override_cha
 ---@overload fun(property_name: "Bits", property_value: Container.Mask32)
 ---@overload fun(property_name: "Preset", property_value: Preset)
 ---@overload fun(property_name: "Inclusive"|"FilterProgOnly", property_value: YesNo|boolean)
-function GridColumnFilterCollect:Bits(property_name, property_value) end
+function GridColumnFilterCollect:SetChildren(property_name, property_value) end

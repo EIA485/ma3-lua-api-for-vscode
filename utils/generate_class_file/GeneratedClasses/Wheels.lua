@@ -64,4 +64,4 @@ function Wheels:Insert(index, class, undo, count) end
 function Wheels:Find(class, undo) end
 ---@overload fun(property_name: "AllowShortcut", property_value: YesNo|boolean)
 ---@overload fun(property_name: "AllowShortcut", property_value: YesNo|boolean)
-function Wheels:AllowShortcut(property_name, property_value) end
+function Wheels:SetChildren(property_name, property_value) end

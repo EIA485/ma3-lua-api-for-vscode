@@ -64,4 +64,4 @@ function FTMacros:Insert(index, class, undo, count) end
 function FTMacros:Find(class, undo) end
 ---@overload fun(property_name: "ChannelFunction", property_value: ChannelFunction)
 ---@overload fun(property_name: "ChannelFunction", property_value: ChannelFunction)
-function FTMacros:ChannelFunction(property_name, property_value) end
+function FTMacros:SetChildren(property_name, property_value) end

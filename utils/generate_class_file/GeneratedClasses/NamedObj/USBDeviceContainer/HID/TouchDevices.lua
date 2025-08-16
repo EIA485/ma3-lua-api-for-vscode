@@ -60,5 +60,5 @@ function TouchDevices:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): USBDeviceTouch
 function TouchDevices:Find(class, undo) end
----@overload fun(property_name: "MonitorId"|"UsbAddr"|"DevNode", property_value: string)
-function TouchDevices:Connected(property_name, property_value) end
+---@overload fun(property_name: "UsbAddr"|"MonitorId"|"DevNode", property_value: string)
+function TouchDevices:SetChildren(property_name, property_value) end

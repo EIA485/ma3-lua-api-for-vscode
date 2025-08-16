@@ -82,5 +82,5 @@ function WindowPhaserEditorSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "PresetReadout", property_value: PresetReadoutMode)
 ---@overload fun(property_name: "Speed", property_value: SpeedReadoutModeAuto)
 ---@overload fun(property_name: "Readout", property_value: ValueReadoutModeAuto)
----@overload fun(property_name: "Relative"|"Absolute"|"StepBar"|"LayerSheet"|"ShowBeams"|"AttributeSheet"|"ShowEmptyLines"|"LayerBar", property_value: YesNo|boolean)
-function WindowPhaserEditorSettingsCollect:ColorMode(property_name, property_value) end
+---@overload fun(property_name: "Relative"|"Absolute"|"StepBar"|"ShowBeams"|"LayerSheet"|"AttributeSheet"|"ShowEmptyLines"|"LayerBar", property_value: YesNo|boolean)
+function WindowPhaserEditorSettingsCollect:SetChildren(property_name, property_value) end

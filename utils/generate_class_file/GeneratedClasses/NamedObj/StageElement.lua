@@ -167,6 +167,5 @@ function StageElement:FindParent(class) end
 ---@overload fun(property_name: "P1X"|"P1Y"|"P1Z"|"P2X"|"P2Y"|"P2Z"|"P3X"|"P3Y"|"P3Z"|"P4X"|"P4Y"|"P4Z", property_value: number, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function StageElement:Set(property_name, property_value, override_change_level) end
-function StageElement:GridAuto(property_name, property_value) end
-function StageElement:GridAuto(property_name, property_value) end
+function StageElement:SetChildren(property_name, property_value) end
 function StageElement:SetChildrenRecursive(property_name, property_value) end

@@ -66,4 +66,4 @@ function HardwareConfigurations:Find(class, undo) end
 ---@overload fun(property_name: "ModuleVersion", property_value: string)
 ---@overload fun(property_name: "IsWing", property_value: YesNo|boolean)
 ---@overload fun(property_name: "ModuleVersion", property_value: string)
-function HardwareConfigurations:ModuleVersion(property_name, property_value) end
+function HardwareConfigurations:SetChildren(property_name, property_value) end

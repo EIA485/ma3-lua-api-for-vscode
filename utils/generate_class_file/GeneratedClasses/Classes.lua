@@ -64,4 +64,4 @@ function Classes:Insert(index, class, undo, count) end
 function Classes:Find(class, undo) end
 ---@overload fun(property_name: "Used", property_value: integer)
 ---@overload fun(property_name: "Used", property_value: integer)
-function Classes:Used(property_name, property_value) end
+function Classes:SetChildren(property_name, property_value) end

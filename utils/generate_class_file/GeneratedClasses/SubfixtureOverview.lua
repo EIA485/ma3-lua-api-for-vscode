@@ -62,4 +62,4 @@ function SubfixtureOverview:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): FTSubfixture
 function SubfixtureOverview:Find(class, undo) end
-function SubfixtureOverview:ShowCommandlineField(property_name, property_value) end
+function SubfixtureOverview:SetChildren(property_name, property_value) end

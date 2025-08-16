@@ -62,4 +62,4 @@ function Materials:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MaterialContent
 function Materials:Find(class, undo) end
-function Materials:Mode(property_name, property_value) end
+function Materials:SetChildren(property_name, property_value) end

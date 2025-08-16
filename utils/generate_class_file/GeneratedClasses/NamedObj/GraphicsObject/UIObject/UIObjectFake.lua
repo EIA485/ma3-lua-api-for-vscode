@@ -54,9 +54,9 @@ function UIObjectFake:Insert(index, class, undo, count) end
 ---@param undo Undo?
 ---@return T
 function UIObjectFake:Find(class, undo) end
+---@overload fun(property_name: "Seek", property_value: fun(str: string, num: number) : boolean)
 ---@overload fun(property_name: "TargetSound", property_value: Sound)
 ---@overload fun(property_name: "TargetPath", property_value: string)
----@overload fun(property_name: "Seek", property_value: fun(str: string, num: number) : boolean)
 ---@overload fun(property_name: "IsPlaying", property_value: boolean)
 ---@overload fun(property_name: "TargetSound", property_value: Sound)
 ---@overload fun(property_name: "Position"|"Duration", property_value: TimePropertyValue)
@@ -64,4 +64,4 @@ function UIObjectFake:Find(class, undo) end
 ---@overload fun(property_name: "Pause"|"Play"|"Stop", property_value: fun(str: string) : boolean)
 ---@overload fun(property_name: "Seek", property_value: fun(str: string, num: number) : boolean)
 ---@overload fun(property_name: "TargetPath", property_value: string)
-function UIObjectFake:IsPlaying(property_name, property_value) end
+function UIObjectFake:SetChildren(property_name, property_value) end

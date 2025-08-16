@@ -288,4 +288,4 @@ function TagButtonList:Find(class, undo) end
 function TagButtonList:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Target", property_value: Object)
 ---@overload fun(property_name: "Target", property_value: Object)
-function TagButtonList:Target(property_name, property_value) end
+function TagButtonList:SetChildren(property_name, property_value) end

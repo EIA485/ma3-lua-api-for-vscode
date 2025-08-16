@@ -105,14 +105,14 @@ function OutputStationCollect:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No"|"DevicesinSession", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function OutputStationCollect:Set(property_name, property_value, override_change_level) end
----@overload fun(property_name: "MAC", property_value: Network.MACAddress)
----@overload fun(property_name: "IP", property_value: Network.IP8Full)
----@overload fun(property_name: "HostData", property_value: Container.SharedPtr<class Manet.HostDataExt>)
----@overload fun(property_name: "Type", property_value: HostSubType)
----@overload fun(property_name: "HostData", property_value: Container.SharedPtr<class Manet.HostDataExt>)
----@overload fun(property_name: "Type", property_value: HostSubType)
 ---@overload fun(property_name: "IP", property_value: Network.IP8Full)
 ---@overload fun(property_name: "MAC", property_value: Network.MACAddress)
----@overload fun(property_name: "SendsACNIfIdleMaster"|"InMySession"|"SendArt-NetIfIdleMaster", property_value: YesNo|boolean)
+---@overload fun(property_name: "Type", property_value: HostSubType)
+---@overload fun(property_name: "HostData", property_value: Container.SharedPtr<class Manet.HostDataExt>)
+---@overload fun(property_name: "HostData", property_value: Container.SharedPtr<class Manet.HostDataExt>)
+---@overload fun(property_name: "Type", property_value: HostSubType)
+---@overload fun(property_name: "IP", property_value: Network.IP8Full)
+---@overload fun(property_name: "MAC", property_value: Network.MACAddress)
+---@overload fun(property_name: "SendsACNIfIdleMaster"|"SendArt-NetIfIdleMaster"|"InMySession", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Art-NetInterface"|"PSNInterface"|"sACNInterface"|"OSCInterface", property_value: string)
-function OutputStationCollect:Type(property_name, property_value) end
+function OutputStationCollect:SetChildren(property_name, property_value) end

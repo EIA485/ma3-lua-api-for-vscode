@@ -38,4 +38,4 @@ function GridObjectContentFilter:Insert(index, class, undo, count) end
 ---@overload fun(class: "GridObjectContentFilterItem", undo: Undo?): GridObjectContentFilterItem
 ---@overload fun(class: nil, undo: Undo?): GridObjectContentFilterItem
 function GridObjectContentFilter:Find(class, undo) end
-function GridObjectContentFilter:Columns(property_name, property_value) end
+function GridObjectContentFilter:SetChildren(property_name, property_value) end

@@ -60,5 +60,5 @@ function Unknown:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): USBDeviceUnknown
 function Unknown:Find(class, undo) end
----@overload fun(property_name: "DeviceTypeID"|"DeviceKey", property_value: string)
-function Unknown:Connected(property_name, property_value) end
+---@overload fun(property_name: "DeviceKey"|"DeviceTypeID", property_value: string)
+function Unknown:SetChildren(property_name, property_value) end

@@ -28,6 +28,5 @@ function Fixtures:Acquire(class, undo) end
 function Fixtures:Aquire(class, undo) end
 function Fixtures:Insert(index, class, undo, count) end
 function Fixtures:Find(class, undo) end
-function Fixtures:Action(property_name, property_value) end
-function Fixtures:Action(property_name, property_value) end
+function Fixtures:SetChildren(property_name, property_value) end
 function Fixtures:SetChildrenRecursive(property_name, property_value) end

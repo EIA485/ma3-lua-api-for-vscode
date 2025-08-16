@@ -41,4 +41,4 @@ function PlaybackViewExecutorBar:Insert(index, class, undo, count) end
 ---@overload fun(class: nil, undo: Undo?): ExecutorSection
 function PlaybackViewExecutorBar:Find(class, undo) end
 ---@overload fun(property_name: "ExecRowCount"|"ExecColCount", property_value: integer)
-function PlaybackViewExecutorBar:PresetPoolType(property_name, property_value) end
+function PlaybackViewExecutorBar:SetChildren(property_name, property_value) end

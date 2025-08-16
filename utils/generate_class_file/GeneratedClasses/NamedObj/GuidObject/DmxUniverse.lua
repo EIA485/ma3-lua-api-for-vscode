@@ -161,4 +161,4 @@ function DmxUniverse:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No"|"CoarseParams"|"Used"|"ParkedCount"|"TesterCount", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "DependencyExport"|"Note"|"Name", property_value: string, override_change_level: ChangeLevel?)
 function DmxUniverse:Set(property_name, property_value, override_change_level) end
-function DmxUniverse:ActiveDisplay(property_name, property_value) end
+function DmxUniverse:SetChildren(property_name, property_value) end

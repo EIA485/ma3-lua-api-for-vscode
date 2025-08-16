@@ -64,5 +64,5 @@ function FTRDMPersonalityCollect:Insert(index, class, undo, count) end
 function FTRDMPersonalityCollect:Find(class, undo) end
 ---@overload fun(property_name: "DMXMode", property_value: DMXMode)
 ---@overload fun(property_name: "DMXMode", property_value: DMXMode)
----@overload fun(property_name: "PersonalityId"|"DmxFootPrint", property_value: integer)
-function FTRDMPersonalityCollect:DMXMode(property_name, property_value) end
+---@overload fun(property_name: "DmxFootPrint"|"PersonalityId", property_value: integer)
+function FTRDMPersonalityCollect:SetChildren(property_name, property_value) end

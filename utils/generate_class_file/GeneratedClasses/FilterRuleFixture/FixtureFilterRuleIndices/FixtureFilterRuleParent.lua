@@ -62,4 +62,4 @@ function FixtureFilterRuleParent:Insert(index, class, undo, count) end
 function FixtureFilterRuleParent:Find(class, undo) end
 ---@overload fun(property_name: "ParentFilter", property_value: SubFixture)
 ---@overload fun(property_name: "ParentFilter", property_value: SubFixture)
-function FixtureFilterRuleParent:ParentFilter(property_name, property_value) end
+function FixtureFilterRuleParent:SetChildren(property_name, property_value) end

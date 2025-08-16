@@ -62,12 +62,12 @@ function ColorGroup:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Color
 function ColorGroup:Find(class, undo) end
----@overload fun(property_name: "Name", property_value: string)
 ---@overload fun(property_name: "ColorDefRef", property_value: ColorDef)
 ---@overload fun(property_name: "Val32", property_value: integer)
 ---@overload fun(property_name: "RGBA", property_value: UColor)
+---@overload fun(property_name: "Name", property_value: string)
 ---@overload fun(property_name: "ColorDefRef", property_value: ColorDef)
 ---@overload fun(property_name: "RGBA", property_value: UColor)
 ---@overload fun(property_name: "Val32", property_value: integer)
 ---@overload fun(property_name: "Name", property_value: string)
-function ColorGroup:RGBA(property_name, property_value) end
+function ColorGroup:SetChildren(property_name, property_value) end

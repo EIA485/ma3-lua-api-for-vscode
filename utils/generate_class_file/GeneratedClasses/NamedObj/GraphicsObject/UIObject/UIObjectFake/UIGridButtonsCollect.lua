@@ -62,4 +62,4 @@ function UIGridButtonsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): UIGridButtons
 function UIGridButtonsCollect:Find(class, undo) end
-function UIGridButtonsCollect:IsPlaying(property_name, property_value) end
+function UIGridButtonsCollect:SetChildren(property_name, property_value) end

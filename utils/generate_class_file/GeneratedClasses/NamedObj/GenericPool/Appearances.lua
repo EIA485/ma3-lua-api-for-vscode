@@ -57,6 +57,6 @@ function Appearances:Find(class, undo) end
 ---@overload fun(property_name: "ImageMode", property_value: ImageBackGroundMode)
 ---@overload fun(property_name: "ImageMirror", property_value: ImageMirror)
 ---@overload fun(property_name: "ImageRotation", property_value: ImageRotation)
----@overload fun(property_name: "IPX"|"BackG"|"BackB"|"IPY"|"BackAlpha"|"IPW"|"BackR"|"IPH", property_value: integer)
+---@overload fun(property_name: "BackG"|"IPX"|"BackB"|"IPY"|"BackAlpha"|"IPW"|"BackR"|"IPH", property_value: integer)
 ---@overload fun(property_name: "MediaFileName", property_value: string)
-function Appearances:ImageMirror(property_name, property_value) end
+function Appearances:SetChildren(property_name, property_value) end

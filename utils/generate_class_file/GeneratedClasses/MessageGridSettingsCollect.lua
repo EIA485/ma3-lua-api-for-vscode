@@ -64,4 +64,4 @@ function MessageGridSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "Category", property_value: MessageCategory)
 ---@overload fun(property_name: "Category", property_value: MessageCategory)
 ---@overload fun(property_name: "Priority", property_value: MessagePriority)
-function MessageGridSettingsCollect:Category(property_name, property_value) end
+function MessageGridSettingsCollect:SetChildren(property_name, property_value) end

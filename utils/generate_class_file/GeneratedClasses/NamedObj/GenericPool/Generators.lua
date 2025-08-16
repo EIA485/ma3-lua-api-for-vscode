@@ -62,4 +62,4 @@ function Generators:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Random
 function Generators:Find(class, undo) end
-function Generators:Key(property_name, property_value) end
+function Generators:SetChildren(property_name, property_value) end

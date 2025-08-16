@@ -62,4 +62,4 @@ function DataPools:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Pool
 function DataPools:Find(class, undo) end
-function DataPools:FailedCookedPart(property_name, property_value) end
+function DataPools:SetChildren(property_name, property_value) end

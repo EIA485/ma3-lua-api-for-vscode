@@ -40,4 +40,4 @@ function Pages:Insert(index, class, undo, count) end
 ---@overload fun(class: "Page", undo: Undo?): Page
 ---@overload fun(class: nil, undo: Undo?): Page
 function Pages:Find(class, undo) end
-function Pages:Pivot(property_name, property_value) end
+function Pages:SetChildren(property_name, property_value) end

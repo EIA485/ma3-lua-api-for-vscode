@@ -62,4 +62,4 @@ function UserPlugin:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ComponentLua
 function UserPlugin:Find(class, undo) end
-function UserPlugin:UserRights(property_name, property_value) end
+function UserPlugin:SetChildren(property_name, property_value) end

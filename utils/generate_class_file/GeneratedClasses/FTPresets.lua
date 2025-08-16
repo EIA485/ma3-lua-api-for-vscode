@@ -64,4 +64,4 @@ function FTPresets:Insert(index, class, undo, count) end
 function FTPresets:Find(class, undo) end
 ---@overload fun(property_name: "FeatureGroup", property_value: integer)
 ---@overload fun(property_name: "FeatureGroup", property_value: integer)
-function FTPresets:FeatureGroup(property_name, property_value) end
+function FTPresets:SetChildren(property_name, property_value) end

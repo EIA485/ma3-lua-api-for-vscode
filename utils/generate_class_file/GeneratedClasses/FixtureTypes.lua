@@ -113,4 +113,4 @@ function FixtureTypes:Set(property_name, property_value, override_change_level) 
 ---@overload fun(property_name: "Universal"|"CanHaveChildren"|"NotUniqueAttributes"|"ShareGlobal"|"CircleInGeometries", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Used"|"RealUsed", property_value: integer)
 ---@overload fun(property_name: "LongName"|"ShortName"|"Description"|"Manufacturer", property_value: string)
-function FixtureTypes:SpecialPurpose(property_name, property_value) end
+function FixtureTypes:SetChildren(property_name, property_value) end

@@ -64,4 +64,4 @@ function SoftwareVersions:Insert(index, class, undo, count) end
 function SoftwareVersions:Find(class, undo) end
 ---@overload fun(property_name: "SoftwareVersionID", property_value: integer)
 ---@overload fun(property_name: "SoftwareVersionID", property_value: integer)
-function SoftwareVersions:SoftwareVersionID(property_name, property_value) end
+function SoftwareVersions:SetChildren(property_name, property_value) end

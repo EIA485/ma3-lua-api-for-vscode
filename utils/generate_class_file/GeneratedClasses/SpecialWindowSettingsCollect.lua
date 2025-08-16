@@ -67,4 +67,4 @@ function SpecialWindowSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "ShaperWindowSettings", property_value: ShaperWindowSettings)
 ---@overload fun(property_name: "RememberedTab", property_value: SpecialWindowRememberedTab)
 ---@overload fun(property_name: "LinkToEncoderBank"|"ShowTabs", property_value: YesNo|boolean)
-function SpecialWindowSettingsCollect:ShaperWindowSettings(property_name, property_value) end
+function SpecialWindowSettingsCollect:SetChildren(property_name, property_value) end

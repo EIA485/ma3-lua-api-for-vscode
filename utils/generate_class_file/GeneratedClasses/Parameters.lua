@@ -77,6 +77,6 @@ function Parameters:Find(class, undo) end
 ---@overload fun(property_name: "SensorUnit", property_value: RDMSensorUnit)
 ---@overload fun(property_name: "SensorUnitPrefix", property_value: RDMSensorUnitPrefix)
 ---@overload fun(property_name: "DescriptionRecieved", property_value: YesNo|boolean)
----@overload fun(property_name: "MinValue"|"MaxValue"|"PDLSize", property_value: integer)
+---@overload fun(property_name: "MinValue"|"PDLSize"|"MaxValue", property_value: integer)
 ---@overload fun(property_name: "Description", property_value: string)
-function Parameters:SensorUnit(property_name, property_value) end
+function Parameters:SetChildren(property_name, property_value) end

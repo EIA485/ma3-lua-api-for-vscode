@@ -66,4 +66,4 @@ function MasterPool:Find(class, undo) end
 ---@overload fun(property_name: "SpeedScale", property_value: SpeedScale)
 ---@overload fun(property_name: "FaderEnable", property_value: FaderEnable)
 ---@overload fun(property_name: "SpeedScale", property_value: SpeedScale)
-function MasterPool:SpeedScale(property_name, property_value) end
+function MasterPool:SetChildren(property_name, property_value) end

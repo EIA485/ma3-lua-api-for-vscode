@@ -62,4 +62,4 @@ function MacroPoolSettingsCollect:Insert(index, class, undo, count) end
 function MacroPoolSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "Action", property_value: MacroPoolAction)
 ---@overload fun(property_name: "Action", property_value: MacroPoolAction)
-function MacroPoolSettingsCollect:Action(property_name, property_value) end
+function MacroPoolSettingsCollect:SetChildren(property_name, property_value) end

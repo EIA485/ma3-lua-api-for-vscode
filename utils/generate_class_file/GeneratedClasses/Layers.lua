@@ -64,4 +64,4 @@ function Layers:Insert(index, class, undo, count) end
 function Layers:Find(class, undo) end
 ---@overload fun(property_name: "Used", property_value: integer)
 ---@overload fun(property_name: "Used", property_value: integer)
-function Layers:Used(property_name, property_value) end
+function Layers:SetChildren(property_name, property_value) end

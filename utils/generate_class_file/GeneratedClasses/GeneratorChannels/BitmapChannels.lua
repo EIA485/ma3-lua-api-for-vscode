@@ -65,4 +65,4 @@ function BitmapChannels:Find(class, undo) end
 ---@overload fun(property_name: "Source", property_value: ColorSource)
 ---@overload fun(property_name: "Source", property_value: ColorSource)
 ---@overload fun(property_name: "ValueHigh"|"ValueLow", property_value: integer)
-function BitmapChannels:Source(property_name, property_value) end
+function BitmapChannels:SetChildren(property_name, property_value) end

@@ -62,4 +62,4 @@ function SoundPoolSettingsCollect:Insert(index, class, undo, count) end
 function SoundPoolSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "Action", property_value: SoundPoolAction)
 ---@overload fun(property_name: "Action", property_value: SoundPoolAction)
-function SoundPoolSettingsCollect:Action(property_name, property_value) end
+function SoundPoolSettingsCollect:SetChildren(property_name, property_value) end

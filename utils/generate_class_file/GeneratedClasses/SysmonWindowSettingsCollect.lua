@@ -60,4 +60,4 @@ function SysmonWindowSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SysmonWindowSettings
 function SysmonWindowSettingsCollect:Find(class, undo) end
-function SysmonWindowSettingsCollect:ShowCommandlineField(property_name, property_value) end
+function SysmonWindowSettingsCollect:SetChildren(property_name, property_value) end

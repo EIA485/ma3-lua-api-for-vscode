@@ -178,4 +178,4 @@ function Menu:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "UserRights", property_value: UserRights)
 ---@overload fun(property_name: "Toggle"|"CanProvideUiGridSelection"|"SearchFocusAllowed"|"BuddyGroupIdUnique", property_value: YesNo|boolean)
 ---@overload fun(property_name: "PlaceHolder"|"BuddyGroupId"|"WindowSettings"|"SingletonDialogGroup"|"WindowContext", property_value: string)
-function Menu:UserRights(property_name, property_value) end
+function Menu:SetChildren(property_name, property_value) end

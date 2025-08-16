@@ -66,4 +66,4 @@ function FeatureGroups:Find(class, undo) end
 ---@overload fun(property_name: "PresetMode", property_value: PresetMode)
 ---@overload fun(property_name: "PresetMode", property_value: PresetMode)
 ---@overload fun(property_name: "Pretty", property_value: string)
-function FeatureGroups:PresetMode(property_name, property_value) end
+function FeatureGroups:SetChildren(property_name, property_value) end

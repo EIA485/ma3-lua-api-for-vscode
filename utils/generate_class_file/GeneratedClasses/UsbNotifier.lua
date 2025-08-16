@@ -120,4 +120,4 @@ function UsbNotifier:Set(property_name, property_value, override_change_level) e
 ---@overload fun(property_name: "FilterRules", property_value: Hardware.UsbDeviceFilterRule[])
 ---@overload fun(property_name: "SaveDevices"|"NotifyRemote"|"NotifyDevices", property_value: YesNo|boolean)
 ---@overload fun(property_name: "LastConnectionTime", property_value: integer)
-function UsbNotifier:LastConnectionTime(property_name, property_value) end
+function UsbNotifier:SetChildren(property_name, property_value) end

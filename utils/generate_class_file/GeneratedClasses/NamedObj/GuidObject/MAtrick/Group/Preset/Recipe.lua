@@ -307,6 +307,5 @@ function Recipe:FindParent(class) end
 ---@overload fun(property_name: "Index"|"Count"|"No"|"Mode", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"DependencyExport"|"Note"|"InitialName"|"Type"|"User"|"FeatureGroup"|"Trigger"|"StoredData", property_value: string, override_change_level: ChangeLevel?)
 function Recipe:Set(property_name, property_value, override_change_level) end
-function Recipe:Filter(property_name, property_value) end
-function Recipe:Filter(property_name, property_value) end
+function Recipe:SetChildren(property_name, property_value) end
 function Recipe:SetChildrenRecursive(property_name, property_value) end

@@ -66,4 +66,4 @@ function EncoderBar:Find(class, undo) end
 ---@overload fun(property_name: "Command", property_value: string)
 ---@overload fun(property_name: "SpecialDialogTab", property_value: SpecialWindowTab)
 ---@overload fun(property_name: "Command", property_value: string)
-function EncoderBar:Command(property_name, property_value) end
+function EncoderBar:SetChildren(property_name, property_value) end

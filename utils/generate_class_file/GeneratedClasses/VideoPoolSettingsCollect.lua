@@ -62,4 +62,4 @@ function VideoPoolSettingsCollect:Insert(index, class, undo, count) end
 function VideoPoolSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "Action", property_value: VideoPoolAction)
 ---@overload fun(property_name: "Action", property_value: VideoPoolAction)
-function VideoPoolSettingsCollect:Action(property_name, property_value) end
+function VideoPoolSettingsCollect:SetChildren(property_name, property_value) end

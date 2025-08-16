@@ -44,4 +44,4 @@ function ArtNetNodeCollect:Find(class, undo) end
 ---@overload fun(property_name: "IsActive", property_value: boolean)
 ---@overload fun(property_name: "IP", property_value: Manet.IP4)
 ---@overload fun(property_name: "IsActive", property_value: boolean)
-function ArtNetNodeCollect:IsActive(property_name, property_value) end
+function ArtNetNodeCollect:SetChildren(property_name, property_value) end

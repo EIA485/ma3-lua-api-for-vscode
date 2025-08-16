@@ -67,5 +67,5 @@ function NetworkStations:Find(class, undo) end
 ---@overload fun(property_name: "HostData", property_value: Container.SharedPtr<class Manet.HostDataExt>)
 ---@overload fun(property_name: "NACKCountTotal", property_value: NackStat)
 ---@overload fun(property_name: "FlowControlLevel"|"NACKCountPer1m5m10m", property_value: integer)
----@overload fun(property_name: "Enabled"|"RemoteIP"|"Status"|"Mask"|"MasterPrio"|"MinimumVersion"|"Type"|"VersionBig"|"ShowFile"|"IP"|"VersionSmall"|"Session"|"OnlineTime"|"Location"|"SessionIndex"|"SessionSlot", property_value: string)
-function NetworkStations:NACKCountTotal(property_name, property_value) end
+---@overload fun(property_name: "Enabled"|"RemoteIP"|"Status"|"Mask"|"MasterPrio"|"MinimumVersion"|"ShowFile"|"Type"|"VersionBig"|"IP"|"VersionSmall"|"Session"|"OnlineTime"|"Location"|"SessionIndex"|"SessionSlot", property_value: string)
+function NetworkStations:SetChildren(property_name, property_value) end

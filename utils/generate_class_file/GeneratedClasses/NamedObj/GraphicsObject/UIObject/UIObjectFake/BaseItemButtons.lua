@@ -64,4 +64,4 @@ function BaseItemButtons:Find(class, undo) end
 ---@overload fun(property_name: "SelectedTextColor"|"ProgIndicatorBackColor"|"EmptyBackColor"|"EmptyTextColor"|"SelectedIconColor"|"SelectedBackColor", property_value: Color)
 ---@overload fun(property_name: "SelectedIcon"|"DeselectedIcon"|"ProgIndicator"|"PinnedIcon", property_value: Texture)
 ---@overload fun(property_name: "AutoTexture", property_value: YesNo|boolean)
-function BaseItemButtons:AutoTexture(property_name, property_value) end
+function BaseItemButtons:SetChildren(property_name, property_value) end

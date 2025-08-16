@@ -73,4 +73,4 @@ function DMXProtocols:Find(class, undo) end
 ---@overload fun(property_name: "ArtPollRate", property_value: TimePropertyValue)
 ---@overload fun(property_name: "Out"|"In"|"SetupMode", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Interface", property_value: string)
-function DMXProtocols:PreferredIP(property_name, property_value) end
+function DMXProtocols:SetChildren(property_name, property_value) end

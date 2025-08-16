@@ -15,7 +15,7 @@ def parse_enums(file_path):
             elif key_value_match and current_enum:
                 key, value = key_value_match.groups()
                 value = int(value) if value.isdigit() or value.lstrip('-').isdigit() else value
-                if not key or re.search(r'[^a-zA-Z0-9_]', key) or key[0].isdigit() or key in ['true', 'false']:
+                if not key or not re.search(r'^[a-zA-Z_][a-zA-Z0-9_]*$', key) or key[0].isdigit() or key in ['true', 'false']:
                     key = f'["{key}"]'
                 enums[current_enum][key] = value
     
@@ -23,12 +23,16 @@ def parse_enums(file_path):
 
 def generate_lua(enums, output_path):
     with open(output_path, 'w', encoding='utf-8') as file:
+        file.write("---@meta\n\n---@class Enums\nEnums = {}\n")
         for enum_name, values in enums.items():
-            file.write(f"---@enum {enum_name}\n")
-            file.write(f"Enums.{enum_name} = {{\n")
+            if not re.search(r'^[a-zA-Z_][a-zA-Z0-9_]*$', enum_name):
+                file.write(f"Enums[\"{enum_name}\"] = {{\n")
+            else:
+                file.write(f"---@enum {enum_name}\n")
+                file.write(f"Enums.{enum_name} = {{\n")
             
-            for key, value in values.items():
-                file.write(f"  {key} = {value},\n")
+            for i, (key, value) in enumerate(values.items()):
+                file.write(f"  {key} = {value}{',' if i != len(values)-1 else ''}\n")
             
             file.write("}\n\n")
 

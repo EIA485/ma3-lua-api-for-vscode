@@ -62,4 +62,4 @@ function PresetUpdates:Insert(index, class, undo, count) end
 function PresetUpdates:Find(class, undo) end
 ---@overload fun(property_name: "PresetPoolNo"|"PresetNo", property_value: integer)
 ---@overload fun(property_name: "PresetPoolName"|"PresetName", property_value: string)
-function PresetUpdates:DataPoolNo(property_name, property_value) end
+function PresetUpdates:SetChildren(property_name, property_value) end

@@ -131,11 +131,11 @@ function Tag:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"DependencyExport"|"Note", property_value: string, override_change_level: ChangeLevel?)
 function Tag:Set(property_name, property_value, override_change_level) end
----@overload fun(property_name: "Protect", property_value: YesNo|boolean)
 ---@overload fun(property_name: "No", property_value: integer)
+---@overload fun(property_name: "Protect", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Class", property_value: string)
 ---@overload fun(property_name: "DataPool"|"ObjectHandle", property_value: Object)
 ---@overload fun(property_name: "Protect", property_value: YesNo|boolean)
 ---@overload fun(property_name: "No", property_value: integer)
 ---@overload fun(property_name: "Class", property_value: string)
-function Tag:Class(property_name, property_value) end
+function Tag:SetChildren(property_name, property_value) end

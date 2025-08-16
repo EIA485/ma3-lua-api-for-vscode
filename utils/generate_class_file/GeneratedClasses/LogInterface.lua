@@ -62,4 +62,4 @@ function LogInterface:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): TimeLogBuffer
 function LogInterface:Find(class, undo) end
-function LogInterface:ExecutorIndex(property_name, property_value) end
+function LogInterface:SetChildren(property_name, property_value) end

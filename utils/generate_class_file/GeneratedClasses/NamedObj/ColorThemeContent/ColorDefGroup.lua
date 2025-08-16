@@ -68,4 +68,4 @@ function ColorDefGroup:Find(class, undo) end
 ---@overload fun(property_name: "RGBA", property_value: UColor)
 ---@overload fun(property_name: "Used", property_value: integer)
 ---@overload fun(property_name: "Name", property_value: string)
-function ColorDefGroup:Used(property_name, property_value) end
+function ColorDefGroup:SetChildren(property_name, property_value) end

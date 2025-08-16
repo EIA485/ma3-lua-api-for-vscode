@@ -28,6 +28,5 @@ function RunningTimers:Acquire(class, undo) end
 function RunningTimers:Aquire(class, undo) end
 function RunningTimers:Insert(index, class, undo, count) end
 function RunningTimers:Find(class, undo) end
-function RunningTimers:ActiveDisplay(property_name, property_value) end
-function RunningTimers:ActiveDisplay(property_name, property_value) end
+function RunningTimers:SetChildren(property_name, property_value) end
 function RunningTimers:SetChildrenRecursive(property_name, property_value) end

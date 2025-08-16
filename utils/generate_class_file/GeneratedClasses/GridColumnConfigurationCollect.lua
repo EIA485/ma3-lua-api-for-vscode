@@ -60,9 +60,9 @@ function GridColumnConfigurationCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): GridColumnConfiguration
 function GridColumnConfigurationCollect:Find(class, undo) end
----@overload fun(property_name: "InitialWhiteFilter", property_value: integer)
 ---@overload fun(property_name: "DefaultColumns", property_value: Property<Container.HashFlatSet<GridLine, Container.MemPtrFlatHashPolicies<GridLine, 0>>>.`vftable')
+---@overload fun(property_name: "InitialWhiteFilter", property_value: integer)
 ---@overload fun(property_name: "DefaultColumns", property_value: Property<Container.HashFlatSet<GridLine, Container.MemPtrFlatHashPolicies<GridLine, 0>>>.`vftable')
 ---@overload fun(property_name: "AllColumnsVisible"|"AllColumnsInvisible"|"AllowAddContent"|"AllowAddNewline"|"AllowMergeChildren"|"UserChangedSorting", property_value: YesNo|boolean)
 ---@overload fun(property_name: "InitialWhiteFilter", property_value: integer)
-function GridColumnConfigurationCollect:DefaultColumns(property_name, property_value) end
+function GridColumnConfigurationCollect:SetChildren(property_name, property_value) end

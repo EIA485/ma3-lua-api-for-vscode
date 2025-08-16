@@ -60,4 +60,4 @@ function UiMessageCenter:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MessageCenterButton
 function UiMessageCenter:Find(class, undo) end
-function UiMessageCenter:SetPrompt(property_name, property_value) end
+function UiMessageCenter:SetChildren(property_name, property_value) end

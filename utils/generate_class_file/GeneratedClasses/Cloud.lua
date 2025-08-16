@@ -114,4 +114,4 @@ function Cloud:Find(class, undo) end
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport"|"WorldServer", property_value: string, override_change_level: ChangeLevel?)
 function Cloud:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Session"|"Location"|"Type"|"Version"|"SubType"|"GlobalIP"|"LocalIP"|"Station", property_value: string)
-function Cloud:ActiveDisplay(property_name, property_value) end
+function Cloud:SetChildren(property_name, property_value) end

@@ -64,4 +64,4 @@ function TempNetworkRemoteInterfaceCollect:Insert(index, class, undo, count) end
 function TempNetworkRemoteInterfaceCollect:Find(class, undo) end
 ---@overload fun(property_name: "RenewDHCP", property_value: Yes|true)
 ---@overload fun(property_name: "RenewDHCP", property_value: Yes|true)
-function TempNetworkRemoteInterfaceCollect:RenewDHCP(property_name, property_value) end
+function TempNetworkRemoteInterfaceCollect:SetChildren(property_name, property_value) end

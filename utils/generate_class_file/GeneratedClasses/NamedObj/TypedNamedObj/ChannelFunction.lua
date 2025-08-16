@@ -191,4 +191,4 @@ function ChannelFunction:Set(property_name, property_value, override_change_leve
 ---@overload fun(property_name: "HasPhysical", property_value: Yes|true)
 ---@overload fun(property_name: "WheelSlotIndex", property_value: integer)
 ---@overload fun(property_name: "PhysicalTo"|"PhysicalFrom", property_value: number)
-function ChannelFunction:WheelSlotIndex(property_name, property_value) end
+function ChannelFunction:SetChildren(property_name, property_value) end

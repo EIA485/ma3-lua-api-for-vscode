@@ -136,4 +136,4 @@ function Macro:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Wait", property_value: MacroLineWait)
 ---@overload fun(property_name: "Enabled"|"Execute"|"AddToCmdline", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Command", property_value: string)
-function Macro:Wait(property_name, property_value) end
+function Macro:SetChildren(property_name, property_value) end

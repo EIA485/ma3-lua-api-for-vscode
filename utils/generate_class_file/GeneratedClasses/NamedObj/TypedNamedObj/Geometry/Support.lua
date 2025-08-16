@@ -190,12 +190,12 @@ function Support:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Geometry"|"LinkedGeometry", property_value: Geometry)
 ---@overload fun(property_name: "LampType", property_value: LampType)
 ---@overload fun(property_name: "ColorType", property_value: LaserColorType)
----@overload fun(property_name: "PosX"|"PosZ"|"PosY", property_value: LengthPropertyValue)
+---@overload fun(property_name: "PosZ"|"PosY"|"PosX", property_value: LengthPropertyValue)
 ---@overload fun(property_name: "Model"|"Model", property_value: Model)
 ---@overload fun(property_name: "Orientation", property_value: Orientation)
 ---@overload fun(property_name: "StructureType", property_value: StructureType)
 ---@overload fun(property_name: "GridInvY"|"GridInvZ"|"GridSwapXY"|"MergeGeometries"|"GridInvX"|"IsMainBeam", property_value: YesNo|boolean)
----@overload fun(property_name: "Count"|"SignalLayer"|"ColorRenderingIndex"|"PinCount", property_value: integer)
----@overload fun(property_name: "CosPhi"|"FuseCurrent"|"PowerConsumption"|"LuminousIntensity"|"ColorTemperature"|"BeamAngle"|"Color"|"BeamRadius"|"ThrowRatio"|"OutputStrength"|"FieldAngle"|"BeamDiameter"|"BeamDivergenceMin"|"RectangleRatio"|"BeamDivergenceMax"|"MultiBeamBlur"|"ScanAnglePan"|"ScanAngleTilt"|"ScanSpeed"|"RotX"|"ElectricalPayLoad"|"MaxPayLoad"|"RotY"|"VoltageRangeMax"|"RotZ"|"CrossSectionHeight"|"VoltageRangeMin"|"CrossSectionWallThickness"|"FrequencyRangeMax"|"FrequencyRangeMin"|"Voltage", property_value: number)
+---@overload fun(property_name: "PinCount"|"ColorRenderingIndex"|"SignalLayer"|"Count", property_value: integer)
+---@overload fun(property_name: "ThrowRatio"|"OutputStrength"|"BeamDiameter"|"FieldAngle"|"BeamDivergenceMin"|"RectangleRatio"|"BeamDivergenceMax"|"MultiBeamBlur"|"ScanAnglePan"|"ScanAngleTilt"|"Color"|"ScanSpeed"|"RotX"|"ElectricalPayLoad"|"MaxPayLoad"|"RotY"|"VoltageRangeMax"|"RotZ"|"CrossSectionHeight"|"VoltageRangeMin"|"CrossSectionWallThickness"|"FrequencyRangeMax"|"FrequencyRangeMin"|"Voltage"|"CosPhi"|"FuseCurrent"|"PowerConsumption"|"LuminousIntensity"|"ColorTemperature"|"BeamAngle"|"BeamRadius", property_value: number)
 ---@overload fun(property_name: "SignalType"|"Texture"|"ConnectorType"|"WireGroup"|"TrussCrossSection", property_value: string)
-function Support:ComponentType(property_name, property_value) end
+function Support:SetChildren(property_name, property_value) end

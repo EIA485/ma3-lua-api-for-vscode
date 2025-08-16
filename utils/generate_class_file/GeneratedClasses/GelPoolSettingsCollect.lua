@@ -63,4 +63,4 @@ function GelPoolSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "DisplayPool", property_value: string)
 ---@overload fun(property_name: "ShowName"|"ShowKey", property_value: YesNo|boolean)
 ---@overload fun(property_name: "DisplayPool", property_value: string)
-function GelPoolSettingsCollect:DisplayPool(property_name, property_value) end
+function GelPoolSettingsCollect:SetChildren(property_name, property_value) end

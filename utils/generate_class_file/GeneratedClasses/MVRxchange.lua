@@ -89,4 +89,4 @@ function MVRxchange:Find(class, undo) end
 function MVRxchange:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Comment", property_value: string)
 ---@overload fun(property_name: "Comment", property_value: string)
-function MVRxchange:Comment(property_name, property_value) end
+function MVRxchange:SetChildren(property_name, property_value) end

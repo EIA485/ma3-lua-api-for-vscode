@@ -60,4 +60,4 @@ function DBObjectGridColumnConfiguration:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): DBObjectGridLine
 function DBObjectGridColumnConfiguration:Find(class, undo) end
-function DBObjectGridColumnConfiguration:Size(property_name, property_value) end
+function DBObjectGridColumnConfiguration:SetChildren(property_name, property_value) end

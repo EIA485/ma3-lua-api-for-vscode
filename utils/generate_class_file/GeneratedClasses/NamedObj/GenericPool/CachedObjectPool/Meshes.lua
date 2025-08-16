@@ -62,10 +62,10 @@ function Meshes:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Mesh
 function Meshes:Find(class, undo) end
----@overload fun(property_name: "BoundingBox", property_value: string)
 ---@overload fun(property_name: "Culling", property_value: YesNo|boolean)
+---@overload fun(property_name: "BoundingBox", property_value: string)
 ---@overload fun(property_name: "Dimension"|"Ratio", property_value: Math.TVector<float>)
 ---@overload fun(property_name: "Culling", property_value: YesNo|boolean)
----@overload fun(property_name: "OrgMeshCount"|"ContentSize"|"MeshCount"|"VerticesCount"|"TriangleCount"|"OrgVerticesCount", property_value: integer)
+---@overload fun(property_name: "OrgMeshCount"|"ContentSize"|"VerticesCount"|"MeshCount"|"TriangleCount"|"OrgVerticesCount", property_value: integer)
 ---@overload fun(property_name: "BoundingBox", property_value: string)
-function Meshes:Culling(property_name, property_value) end
+function Meshes:SetChildren(property_name, property_value) end

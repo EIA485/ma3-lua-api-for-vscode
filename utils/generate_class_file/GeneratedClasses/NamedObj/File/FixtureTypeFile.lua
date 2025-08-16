@@ -99,10 +99,10 @@ function FixtureTypeFile:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No"|"FileSize"|"Lock", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport"|"Objectname"|"FileName"|"DateModified"|"Path"|"Manufacturer"|"RDMManufacturer"|"RdmDeviceModel"|"ActualSource"|"Source", property_value: string, override_change_level: ChangeLevel?)
 function FixtureTypeFile:Set(property_name, property_value, override_change_level) end
----@overload fun(property_name: "Lock", property_value: integer)
 ---@overload fun(property_name: "DMXFootprint", property_value: [DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak])
+---@overload fun(property_name: "Lock", property_value: integer)
 ---@overload fun(property_name: "VirtualChannels"|"NonVirtualChannels", property_value: DeskLightChannel[])
 ---@overload fun(property_name: "DMXFootprint", property_value: [DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak, DMXBreak])
 ---@overload fun(property_name: "Lock", property_value: integer)
 ---@overload fun(property_name: "Mode"|"Description", property_value: string)
-function FixtureTypeFile:DMXFootprint(property_name, property_value) end
+function FixtureTypeFile:SetChildren(property_name, property_value) end

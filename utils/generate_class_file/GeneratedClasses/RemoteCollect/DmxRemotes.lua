@@ -64,4 +64,4 @@ function DmxRemotes:Find(class, undo) end
 ---@overload fun(property_name: "Address", property_value: DMXPropertyAddress)
 ---@overload fun(property_name: "Address", property_value: DMXPropertyAddress)
 ---@overload fun(property_name: "Resolution", property_value: Resolution)
-function DmxRemotes:Address(property_name, property_value) end
+function DmxRemotes:SetChildren(property_name, property_value) end

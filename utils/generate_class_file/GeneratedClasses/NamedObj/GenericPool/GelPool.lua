@@ -109,4 +109,4 @@ function GelPool:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Key", property_value: string)
 ---@overload fun(property_name: "R"|"B"|"G", property_value: number)
 ---@overload fun(property_name: "Key", property_value: string)
-function GelPool:Key(property_name, property_value) end
+function GelPool:SetChildren(property_name, property_value) end

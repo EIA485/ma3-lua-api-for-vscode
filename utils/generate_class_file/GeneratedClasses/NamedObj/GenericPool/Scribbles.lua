@@ -62,4 +62,4 @@ function Scribbles:Insert(index, class, undo, count) end
 function Scribbles:Find(class, undo) end
 ---@overload fun(property_name: "Scribble", property_value: CurveSegment[])
 ---@overload fun(property_name: "Scribble", property_value: CurveSegment[])
-function Scribbles:Scribble(property_name, property_value) end
+function Scribbles:SetChildren(property_name, property_value) end

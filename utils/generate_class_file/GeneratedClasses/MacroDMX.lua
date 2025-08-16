@@ -64,4 +64,4 @@ function MacroDMX:Insert(index, class, undo, count) end
 function MacroDMX:Find(class, undo) end
 ---@overload fun(property_name: "Duration", property_value: TimePropertyValue)
 ---@overload fun(property_name: "Duration", property_value: TimePropertyValue)
-function MacroDMX:Duration(property_name, property_value) end
+function MacroDMX:SetChildren(property_name, property_value) end

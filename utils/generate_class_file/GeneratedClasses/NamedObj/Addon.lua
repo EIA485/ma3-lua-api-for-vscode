@@ -125,4 +125,4 @@ function Addon:Find(class, undo) end
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport"|"Author"|"Version", property_value: string, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "DataString", property_value: string[], override_change_level: ChangeLevel?)
 function Addon:Set(property_name, property_value, override_change_level) end
-function Addon:Size(property_name, property_value) end
+function Addon:SetChildren(property_name, property_value) end

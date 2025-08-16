@@ -40,4 +40,4 @@ function sACNDiscoveryCollect:Insert(index, class, undo, count) end
 ---@overload fun(class: "sACN-Node", undo: Undo?): sACNNode
 ---@overload fun(class: nil, undo: Undo?): sACNNode
 function sACNDiscoveryCollect:Find(class, undo) end
-function sACNDiscoveryCollect:IsActive(property_name, property_value) end
+function sACNDiscoveryCollect:SetChildren(property_name, property_value) end

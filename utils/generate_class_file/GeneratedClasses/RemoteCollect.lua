@@ -88,14 +88,14 @@ function RemoteCollect:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function RemoteCollect:Set(property_name, property_value, override_change_level) end
----@overload fun(property_name: "Enabled", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Fader", property_value: AssignmentFaderFunctions)
 ---@overload fun(property_name: "Target", property_value: Object)
 ---@overload fun(property_name: "Key", property_value: AssignmentButtonFunctions)
+---@overload fun(property_name: "Enabled", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Key", property_value: AssignmentButtonFunctions)
 ---@overload fun(property_name: "Fader", property_value: AssignmentFaderFunctions)
----@overload fun(property_name: "In"|"TriggerOn"|"Out"|"TriggerOff"|"InFrom"|"InTo", property_value: DMXPropertyValue)
+---@overload fun(property_name: "In"|"Out"|"TriggerOn"|"TriggerOff"|"InFrom"|"InTo", property_value: DMXPropertyValue)
 ---@overload fun(property_name: "Target", property_value: Object)
 ---@overload fun(property_name: "Enabled", property_value: YesNo|boolean)
 ---@overload fun(property_name: "OutTo"|"OutFrom", property_value: integer)
-function RemoteCollect:Key(property_name, property_value) end
+function RemoteCollect:SetChildren(property_name, property_value) end

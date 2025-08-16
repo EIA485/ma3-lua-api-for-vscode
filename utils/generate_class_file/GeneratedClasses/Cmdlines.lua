@@ -43,4 +43,4 @@ function Cmdlines:Find(class, undo) end
 ---@overload fun(property_name: "ClearCmd"|"RefreshMetaData", property_value: fun(str: string) : boolean)
 ---@overload fun(property_name: "MaxStep", property_value: integer)
 ---@overload fun(property_name: "CmdText"|"LastCommand", property_value: string)
-function Cmdlines:User(property_name, property_value) end
+function Cmdlines:SetChildren(property_name, property_value) end

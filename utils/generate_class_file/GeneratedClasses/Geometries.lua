@@ -71,6 +71,5 @@ function Geometries:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function Geometries:Set(property_name, property_value, override_change_level) end
-function Geometries:ExecutorIndex(property_name, property_value) end
-function Geometries:ExecutorIndex(property_name, property_value) end
+function Geometries:SetChildren(property_name, property_value) end
 function Geometries:SetChildrenRecursive(property_name, property_value) end

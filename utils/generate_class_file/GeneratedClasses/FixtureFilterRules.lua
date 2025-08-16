@@ -109,4 +109,4 @@ function FixtureFilterRules:Set(property_name, property_value, override_change_l
 ---@overload fun(property_name: "Invert", property_value: Yes|true)
 ---@overload fun(property_name: "Invert", property_value: Yes|true)
 ---@overload fun(property_name: "FilterValue"|"FilterValue", property_value: string)
-function FixtureFilterRules:Invert(property_name, property_value) end
+function FixtureFilterRules:SetChildren(property_name, property_value) end

@@ -4,6 +4,11 @@
 ---@class Enums
 Enums = {}
 
+Enums["000_0000"] = {
+  ["100"]=100,
+  ["1000"]=1000,
+}
+
 ---@enum ALSideSizeSpecial
 Enums.ALSideSizeSpecial = {
   Auto = 0,

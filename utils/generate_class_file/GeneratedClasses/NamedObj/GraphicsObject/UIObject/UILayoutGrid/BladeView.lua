@@ -60,4 +60,4 @@ function BladeView:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): BladeViewButton
 function BladeView:Find(class, undo) end
-function BladeView:RunningPlaybacks(property_name, property_value) end
+function BladeView:SetChildren(property_name, property_value) end

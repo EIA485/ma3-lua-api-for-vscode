@@ -108,4 +108,4 @@ function FaderSubTrack:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function FaderSubTrack:Set(property_name, property_value, override_change_level) end
-function FaderSubTrack:CueDestination(property_name, property_value) end
+function FaderSubTrack:SetChildren(property_name, property_value) end

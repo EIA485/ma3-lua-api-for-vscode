@@ -60,4 +60,4 @@ function PagePoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PagePoolSettings
 function PagePoolSettingsCollect:Find(class, undo) end
-function PagePoolSettingsCollect:Shortcut(property_name, property_value) end
+function PagePoolSettingsCollect:SetChildren(property_name, property_value) end

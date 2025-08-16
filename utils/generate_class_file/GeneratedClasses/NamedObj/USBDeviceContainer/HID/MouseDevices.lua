@@ -61,4 +61,4 @@ function MouseDevices:Insert(index, class, undo, count) end
 ---@overload fun(class: nil, undo: Undo?): UsbDeviceMouse
 function MouseDevices:Find(class, undo) end
 ---@overload fun(property_name: "DevNode"|"UsbAddr", property_value: string)
-function MouseDevices:Connected(property_name, property_value) end
+function MouseDevices:SetChildren(property_name, property_value) end

@@ -62,4 +62,4 @@ function PluginPoolSettingsCollect:Insert(index, class, undo, count) end
 function PluginPoolSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "Action", property_value: PluginPoolAction)
 ---@overload fun(property_name: "Action", property_value: PluginPoolAction)
-function PluginPoolSettingsCollect:Action(property_name, property_value) end
+function PluginPoolSettingsCollect:SetChildren(property_name, property_value) end

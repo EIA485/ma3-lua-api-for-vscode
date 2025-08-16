@@ -78,7 +78,7 @@ function Timers:Find(class, undo) end
 ---@overload fun(property_name: "ElapsedTime"|"RemainingTime"|"AlertDuration"|"CountdownDuration", property_value: TimePropertyValue)
 ---@overload fun(property_name: "TimerMode", property_value: TimerMode)
 ---@overload fun(property_name: "TimerTriggerToken", property_value: TimerTriggerToken)
----@overload fun(property_name: "CountdownColor"|"StopwatchColor"|"ConfirmedColor", property_value: UColor)
+---@overload fun(property_name: "StopwatchColor"|"CountdownColor"|"ConfirmedColor", property_value: UColor)
 ---@overload fun(property_name: "TimerLinkType", property_value: integer)
----@overload fun(property_name: "AlertCommand"|"AlertText"|"User"|"Type", property_value: string)
-function Timers:CountdownAlertType(property_name, property_value) end
+---@overload fun(property_name: "AlertText"|"Type"|"User"|"AlertCommand", property_value: string)
+function Timers:SetChildren(property_name, property_value) end

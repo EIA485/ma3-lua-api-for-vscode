@@ -38,4 +38,4 @@ function FixtureFilterRuleIndices:Insert(index, class, undo, count) end
 ---@overload fun(class: "FixtureFilterRuleItemIndex", undo: Undo?): FixtureFilterRuleItemIndex
 ---@overload fun(class: nil, undo: Undo?): FixtureFilterRuleItemIndex
 function FixtureFilterRuleIndices:Find(class, undo) end
-function FixtureFilterRuleIndices:ActiveDisplay(property_name, property_value) end
+function FixtureFilterRuleIndices:SetChildren(property_name, property_value) end

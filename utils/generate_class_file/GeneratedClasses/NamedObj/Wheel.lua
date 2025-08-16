@@ -111,4 +111,4 @@ function Wheel:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Filter", property_value: FTFilter)
 ---@overload fun(property_name: "AnimationSystemP1"|"AnimationSystemP3"|"AnimationSystemP2", property_value: Math.Vector2<float>)
 ---@overload fun(property_name: "AnimationSystemRadius", property_value: number)
-function Wheel:AnimationSystemRadius(property_name, property_value) end
+function Wheel:SetChildren(property_name, property_value) end

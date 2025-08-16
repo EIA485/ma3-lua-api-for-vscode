@@ -41,4 +41,4 @@ function ImagePool:Find(class, undo) end
 ---@overload fun(property_name: "AddAlpha", property_value: YesNo|boolean)
 ---@overload fun(property_name: "AddAlpha", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Height"|"Width", property_value: integer)
-function ImagePool:AddAlpha(property_name, property_value) end
+function ImagePool:SetChildren(property_name, property_value) end

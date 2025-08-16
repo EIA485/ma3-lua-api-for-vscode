@@ -60,4 +60,4 @@ function InfoNotesGridScroller:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): InfoNotesWrapper
 function InfoNotesGridScroller:Find(class, undo) end
-function InfoNotesGridScroller:SetPrompt(property_name, property_value) end
+function InfoNotesGridScroller:SetChildren(property_name, property_value) end

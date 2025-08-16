@@ -70,4 +70,4 @@ function ColorPickerSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "Mode", property_value: ColorPickerWindowMode)
 ---@overload fun(property_name: "ColorWheelMode", property_value: ColorWheelMode)
 ---@overload fun(property_name: "BrightnessOverdriveMode", property_value: YesNo|boolean)
-function ColorPickerSettingsCollect:LastColorEncoderFunction(property_name, property_value) end
+function ColorPickerSettingsCollect:SetChildren(property_name, property_value) end

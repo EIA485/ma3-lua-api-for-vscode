@@ -40,4 +40,4 @@ function GeneratorConfigurations:Insert(index, class, undo, count) end
 ---@overload fun(class: "GeneratorConfiguration", undo: Undo?): GeneratorConfiguration
 ---@overload fun(class: nil, undo: Undo?): GeneratorConfiguration
 function GeneratorConfigurations:Find(class, undo) end
-function GeneratorConfigurations:ActiveDisplay(property_name, property_value) end
+function GeneratorConfigurations:SetChildren(property_name, property_value) end

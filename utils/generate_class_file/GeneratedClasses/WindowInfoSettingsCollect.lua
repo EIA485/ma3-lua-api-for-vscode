@@ -70,7 +70,7 @@ function WindowInfoSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "WindowMode", property_value: InfoWindowMode)
 ---@overload fun(property_name: "NoteLabelColor", property_value: UColor)
 ---@overload fun(property_name: "RememberedTab", property_value: WindowInfoTab)
----@overload fun(property_name: "UseTargetAppearance"|"EditMode"|"ShowEmpty"|"ShowTabs"|"AutoScroll", property_value: YesNo|boolean)
+---@overload fun(property_name: "UseTargetAppearance"|"EditMode"|"ShowTabs"|"ShowEmpty"|"AutoScroll", property_value: YesNo|boolean)
 ---@overload fun(property_name: "ChangeWindowMode"|"ChangeLinkMode", property_value: fun(text: string) : boolean)
 ---@overload fun(property_name: "TargetName"|"ChildName", property_value: string)
-function WindowInfoSettingsCollect:WindowMode(property_name, property_value) end
+function WindowInfoSettingsCollect:SetChildren(property_name, property_value) end

@@ -101,5 +101,5 @@ function Interface:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport"|"Gateway"|"MAC"|"DHCPTimeout"|"DNS", property_value: string, override_change_level: ChangeLevel?)
 function Interface:Set(property_name, property_value, override_change_level) end
----@overload fun(property_name: "Mask"|"IP", property_value: string)
-function Interface:ActiveDisplay(property_name, property_value) end
+---@overload fun(property_name: "IP"|"Mask", property_value: string)
+function Interface:SetChildren(property_name, property_value) end

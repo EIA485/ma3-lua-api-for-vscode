@@ -116,6 +116,6 @@ function PsrFixtures:Set(property_name, property_value, override_change_level) e
 ---@overload fun(property_name: "Primary", property_value: UseLeftOrRight)
 ---@overload fun(property_name: "MyPatch"|"OtherPatch", property_value: DMXPropertyAddress)
 ---@overload fun(property_name: "Primary", property_value: UseLeftOrRight)
----@overload fun(property_name: "RightSubfixtureIndex"|"OtherStage"|"RightTopLevelIndex"|"MyIDType"|"MyCID"|"OtherFixtureType"|"OtherCID"|"FixtureID"|"OtherIDType"|"LeftSubfixtureIndex", property_value: integer)
+---@overload fun(property_name: "RightSubfixtureIndex"|"RightTopLevelIndex"|"OtherStage"|"MyIDType"|"OtherCID"|"MyCID"|"OtherFixtureType"|"FixtureID"|"OtherIDType"|"LeftSubfixtureIndex", property_value: integer)
 ---@overload fun(property_name: "MyFixtureType"|"MyPosY"|"OtherName"|"MyRotX"|"MyPosX"|"MyRotY"|"MyClass"|"MyRotZ"|"OtherClass"|"MyPosZ"|"OtherLayer"|"MyLayer"|"OtherPosX"|"MyStage", property_value: string)
-function PsrFixtures:Primary(property_name, property_value) end
+function PsrFixtures:SetChildren(property_name, property_value) end

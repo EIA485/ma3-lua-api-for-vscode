@@ -62,4 +62,4 @@ function PluginPreferencesCollect:Insert(index, class, undo, count) end
 function PluginPreferencesCollect:Find(class, undo) end
 ---@overload fun(property_name: "DisplayIndex", property_value: DisplayIndex)
 ---@overload fun(property_name: "DisplayIndex", property_value: DisplayIndex)
-function PluginPreferencesCollect:DisplayIndex(property_name, property_value) end
+function PluginPreferencesCollect:SetChildren(property_name, property_value) end

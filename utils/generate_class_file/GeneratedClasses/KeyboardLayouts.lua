@@ -62,4 +62,4 @@ function KeyboardLayouts:Insert(index, class, undo, count) end
 function KeyboardLayouts:Find(class, undo) end
 ---@overload fun(property_name: "ShortName", property_value: string)
 ---@overload fun(property_name: "ShortName", property_value: string)
-function KeyboardLayouts:ShortName(property_name, property_value) end
+function KeyboardLayouts:SetChildren(property_name, property_value) end

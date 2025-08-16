@@ -67,4 +67,4 @@ function ContentSheetSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "CuePartAppearanceContent", property_value: CuePartAppearanceContent)
 ---@overload fun(property_name: "SheetMode", property_value: SheetMode)
 ---@overload fun(property_name: "ShowNameField"|"ShowIDType"|"ShowTracked"|"FixtureSelect"|"ShowParts"|"ShowManualCueSelection", property_value: YesNo|boolean)
-function ContentSheetSettingsCollect:ContentSheetCueMode(property_name, property_value) end
+function ContentSheetSettingsCollect:SetChildren(property_name, property_value) end

@@ -60,4 +60,4 @@ function RdmWindowSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): RdmWindowSettings
 function RdmWindowSettingsCollect:Find(class, undo) end
-function RdmWindowSettingsCollect:ActiveDisplay(property_name, property_value) end
+function RdmWindowSettingsCollect:SetChildren(property_name, property_value) end

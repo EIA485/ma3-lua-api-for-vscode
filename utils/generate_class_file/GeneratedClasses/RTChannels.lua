@@ -63,13 +63,13 @@ function RTChannels:Insert(index, class, undo, count) end
 ---@overload fun(class: nil, undo: Undo?): RTChannel
 function RTChannels:Find(class, undo) end
 ---@overload fun(property_name: "Frequency", property_value: ChannelFrequency)
----@overload fun(property_name: "DmxCurve", property_value: IgnoreFT)
 ---@overload fun(property_name: "ChannelName", property_value: string)
+---@overload fun(property_name: "DmxCurve", property_value: IgnoreFT)
 ---@overload fun(property_name: "Frequency", property_value: ChannelFrequency)
----@overload fun(property_name: "Default"|"Lowlight"|"Highlight", property_value: DMXPropertyValue)
+---@overload fun(property_name: "Default"|"Highlight"|"Lowlight", property_value: DMXPropertyValue)
 ---@overload fun(property_name: "DmxCurve", property_value: IgnoreFT)
 ---@overload fun(property_name: "LowlightPreset"|"DefaultPreset"|"HighlightPreset", property_value: Object)
 ---@overload fun(property_name: "Fine"|"Coarse"|"Ultra", property_value: Patched)
----@overload fun(property_name: "FID"|"IDType"|"CID", property_value: integer)
+---@overload fun(property_name: "CID"|"IDType"|"FID", property_value: integer)
 ---@overload fun(property_name: "ChannelName", property_value: string)
-function RTChannels:ChannelName(property_name, property_value) end
+function RTChannels:SetChildren(property_name, property_value) end

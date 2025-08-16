@@ -60,4 +60,4 @@ function AudioInDescriptions:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): AudioInDeviceDescription
 function AudioInDescriptions:Find(class, undo) end
-function AudioInDescriptions:SpeedMaster(property_name, property_value) end
+function AudioInDescriptions:SetChildren(property_name, property_value) end

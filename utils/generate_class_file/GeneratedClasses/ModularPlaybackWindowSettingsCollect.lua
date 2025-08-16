@@ -67,4 +67,4 @@ function ModularPlaybackWindowSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "#Sections", property_value: SectionCount)
 ---@overload fun(property_name: "WingID", property_value: WingID)
 ---@overload fun(property_name: "Page", property_value: integer)
-function ModularPlaybackWindowSettingsCollect:WingID(property_name, property_value) end
+function ModularPlaybackWindowSettingsCollect:SetChildren(property_name, property_value) end

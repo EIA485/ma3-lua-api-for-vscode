@@ -107,4 +107,4 @@ function TagFakeCollect:Find(class, undo) end
 function TagFakeCollect:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Protect", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Protect", property_value: YesNo|boolean)
-function TagFakeCollect:Protect(property_name, property_value) end
+function TagFakeCollect:SetChildren(property_name, property_value) end

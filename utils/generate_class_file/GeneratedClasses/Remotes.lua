@@ -63,4 +63,4 @@ function Remotes:Insert(index, class, undo, count) end
 ---@overload fun(class: nil, undo: Undo?): RemoteCollect
 function Remotes:Find(class, undo) end
 ---@overload fun(property_name: "FeedbackInput"|"Enabled", property_value: YesNo|boolean)
-function Remotes:FeatureGroup(property_name, property_value) end
+function Remotes:SetChildren(property_name, property_value) end

@@ -62,5 +62,5 @@ function Filters:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Filter
 function Filters:Find(class, undo) end
----@overload fun(property_name: "Relative"|"Timing"|"Absolute"|"Phaser", property_value: YesNo|boolean)
-function Filters:Key(property_name, property_value) end
+---@overload fun(property_name: "Absolute"|"Timing"|"Phaser"|"Relative", property_value: YesNo|boolean)
+function Filters:SetChildren(property_name, property_value) end

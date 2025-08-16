@@ -66,4 +66,4 @@ function ActivationGroups:Find(class, undo) end
 ---@overload fun(property_name: "DeactivationGroup", property_value: DeactivationGroup)
 ---@overload fun(property_name: "DeactivationGroup", property_value: DeactivationGroup)
 ---@overload fun(property_name: "AttribCount", property_value: integer)
-function ActivationGroups:DeactivationGroup(property_name, property_value) end
+function ActivationGroups:SetChildren(property_name, property_value) end

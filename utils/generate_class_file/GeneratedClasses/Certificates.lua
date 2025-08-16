@@ -121,4 +121,4 @@ function Certificates:Set(property_name, property_value, override_change_level) 
 ---@overload fun(property_name: "CertificateFullyReceived"|"CertificateIsDuplicate"|"IsOverallDeviceCertificate"|"DeviceIsConnected"|"PartOfOverallDevCert", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Size", property_value: integer)
 ---@overload fun(property_name: "Data"|"Date", property_value: string)
-function Certificates:CertificateIsVerified(property_name, property_value) end
+function Certificates:SetChildren(property_name, property_value) end

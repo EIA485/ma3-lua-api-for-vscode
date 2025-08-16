@@ -109,4 +109,4 @@ function KeyboardLayout:Set(property_name, property_value, override_change_level
 ---@overload fun(property_name: "KeyCode", property_value: KeyboardCodes)
 ---@overload fun(property_name: "KeyIsModifier", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Value"|"ValueRightAlted"|"ValueShifted", property_value: string)
-function KeyboardLayout:KeyIsModifier(property_name, property_value) end
+function KeyboardLayout:SetChildren(property_name, property_value) end

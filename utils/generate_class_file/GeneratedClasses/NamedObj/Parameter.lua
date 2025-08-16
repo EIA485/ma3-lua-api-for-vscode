@@ -151,9 +151,9 @@ function Parameter:Find(class, undo) end
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport"|"Description", property_value: string, override_change_level: ChangeLevel?)
 function Parameter:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Prefix", property_value: RDMSensorUnitPrefix)
----@overload fun(property_name: "Type", property_value: RDMSensorType|RDMSlotType)
----@overload fun(property_name: "ThresholdOperator", property_value: RDMNotificationThresholdOperator)
+---@overload fun(property_name: "Type", property_value: RDMSlotType|RDMSensorType)
 ---@overload fun(property_name: "SlotLabelID", property_value: RDMSlotId)
+---@overload fun(property_name: "ThresholdOperator", property_value: RDMNotificationThresholdOperator)
 ---@overload fun(property_name: "Unit", property_value: RDMSensorUnit)
 ---@overload fun(property_name: "ThresholdOperator", property_value: RDMNotificationThresholdOperator)
 ---@overload fun(property_name: "Type", property_value: RDMSensorType)
@@ -161,9 +161,9 @@ function Parameter:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Prefix", property_value: RDMSensorUnitPrefix)
 ---@overload fun(property_name: "SlotLabelID", property_value: RDMSlotId)
 ---@overload fun(property_name: "Type", property_value: RDMSlotType)
----@overload fun(property_name: "LowestHighestDetectionSupported"|"Value"|"RecordValueSupported", property_value: TrueFalse|boolean)
+---@overload fun(property_name: "LowestHighestDetectionSupported"|"RecordValueSupported"|"Value", property_value: TrueFalse|boolean)
 ---@overload fun(property_name: "RangeMaxValue"|"NormalMaxValue", property_value: UndefinedMax)
 ---@overload fun(property_name: "NormalMinValue"|"RangeMinValue", property_value: UndefinedMin)
----@overload fun(property_name: "Highest"|"Recorded"|"FootPrint"|"Year"|"Month"|"Day"|"Hours"|"Minute"|"Value"|"Second"|"Value"|"Offset"|"DefaultSlotValue"|"Value"|"Offset"|"Value"|"Value"|"Value"|"Value"|"Lowest", property_value: integer)
+---@overload fun(property_name: "Minute"|"Value"|"Second"|"Value"|"Offset"|"DefaultSlotValue"|"Value"|"Offset"|"Value"|"Value"|"Value"|"Value"|"Lowest"|"Highest"|"Recorded"|"FootPrint"|"Year"|"Month"|"Day"|"Hours", property_value: integer)
 ---@overload fun(property_name: "Value"|"Description"|"Description", property_value: string)
-function Parameter:Unit(property_name, property_value) end
+function Parameter:SetChildren(property_name, property_value) end

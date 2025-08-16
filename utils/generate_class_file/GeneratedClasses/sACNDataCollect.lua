@@ -74,4 +74,4 @@ function sACNDataCollect:Find(class, undo) end
 ---@overload fun(property_name: "PreviewOnly"|"Enabled", property_value: YesNo|boolean)
 ---@overload fun(property_name: "LocalUniverse"|"Amount"|"sACNUniverse"|"Priority"|"TTL", property_value: integer)
 ---@overload fun(property_name: "Delay", property_value: number)
-function sACNDataCollect:Mode(property_name, property_value) end
+function sACNDataCollect:SetChildren(property_name, property_value) end

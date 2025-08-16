@@ -115,4 +115,4 @@ function Measurement:Find(class, undo) end
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function Measurement:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "WaveLength"|"Energy", property_value: number)
-function Measurement:DataIP(property_name, property_value) end
+function Measurement:SetChildren(property_name, property_value) end

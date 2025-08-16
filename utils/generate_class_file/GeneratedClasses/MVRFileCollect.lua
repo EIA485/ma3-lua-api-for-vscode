@@ -65,6 +65,6 @@ function MVRFileCollect:Find(class, undo) end
 ---@overload fun(property_name: "UUID", property_value: MVR.UUID)
 ---@overload fun(property_name: "OnStations", property_value: string)
 ---@overload fun(property_name: "UUID", property_value: MVR.UUID)
----@overload fun(property_name: "Size"|"VersionMajor"|"VersionMinor", property_value: integer)
+---@overload fun(property_name: "VersionMajor"|"Size"|"VersionMinor", property_value: integer)
 ---@overload fun(property_name: "OnStations", property_value: string)
-function MVRFileCollect:OnStations(property_name, property_value) end
+function MVRFileCollect:SetChildren(property_name, property_value) end

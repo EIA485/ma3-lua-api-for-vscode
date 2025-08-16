@@ -390,7 +390,7 @@ def _parse_fun_sig(sig: str) -> Tuple[Optional[List[str]], Optional[str]]:
 
 def _build_fun_sig(names: List[str], types: List[str], ret: Optional[str]) -> str:
     pairs = [f"{n}: {t}" for n, t in zip(names, types)]
-    return f"fun({', '.join(pairs)})" if not ret or ret == "void" else f"fun({', '.join(pairs)}) : {ret}"
+    return f"fun({', '.join(pairs)})" if not ret or ret == "void" else f"fun({', '.join(pairs)}): {ret}"
 
 def _to_camel(name: str) -> str:
     cleaned = re.sub(r'[^A-Za-z0-9]+', ' ', name).strip()

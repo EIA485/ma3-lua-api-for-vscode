@@ -60,4 +60,4 @@ function MatricksPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MatricksPoolSettings
 function MatricksPoolSettingsCollect:Find(class, undo) end
-function MatricksPoolSettingsCollect:ActiveDisplay(property_name, property_value) end
+function MatricksPoolSettingsCollect:SetChildren(property_name, property_value) end

@@ -124,5 +124,5 @@ function Library:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "TooBig", property_value: YesNo|boolean)
 ---@overload fun(property_name: "TooBig", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Lock"|"FileSize"|"FileSize"|"FileTime"|"FileSize", property_value: integer)
----@overload fun(property_name: "Uploader"|"Creator"|"Rating"|"ActualSource"|"Source"|"Source"|"Version"|"FileSizeString"|"FileTimeString"|"FileSize"|"FileTime"|"FileName"|"Path"|"Objectname"|"FileName"|"DateModified"|"Path"|"CachedObjFileName"|"Manufacturer"|"RDMManufacturer"|"RdmDeviceModel", property_value: string)
-function Library:TooBig(property_name, property_value) end
+---@overload fun(property_name: "FileSize"|"FileTime"|"FileName"|"Objectname"|"Path"|"FileName"|"DateModified"|"Path"|"CachedObjFileName"|"Manufacturer"|"RDMManufacturer"|"RdmDeviceModel"|"Uploader"|"Creator"|"ActualSource"|"Rating"|"Source"|"Source"|"Version"|"FileSizeString"|"FileTimeString", property_value: string)
+function Library:SetChildren(property_name, property_value) end

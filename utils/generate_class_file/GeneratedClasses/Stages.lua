@@ -66,4 +66,4 @@ function Stages:Find(class, undo) end
 ---@overload fun(property_name: "AppearanceBack"|"AppearanceTop"|"AppearanceBottom"|"AppearanceRight"|"AppearanceLeft"|"AppearanceFront", property_value: Appearance)
 ---@overload fun(property_name: "MinX"|"MaxX"|"MinY"|"MinZ"|"MaxZ"|"MaxY", property_value: LengthPropertyValue)
 ---@overload fun(property_name: "PosY"|"PosX"|"PosZ", property_value: LengthPropertyValueD)
-function Stages:SpecialDialogTab(property_name, property_value) end
+function Stages:SetChildren(property_name, property_value) end

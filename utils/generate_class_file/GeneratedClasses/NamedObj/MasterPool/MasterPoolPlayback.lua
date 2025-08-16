@@ -60,4 +60,4 @@ function MasterPoolPlayback:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MasterPlayback
 function MasterPoolPlayback:Find(class, undo) end
-function MasterPoolPlayback:SpeedScale(property_name, property_value) end
+function MasterPoolPlayback:SetChildren(property_name, property_value) end

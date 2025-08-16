@@ -28,6 +28,5 @@ function RunningSequences:Acquire(class, undo) end
 function RunningSequences:Aquire(class, undo) end
 function RunningSequences:Insert(index, class, undo, count) end
 function RunningSequences:Find(class, undo) end
-function RunningSequences:Mode(property_name, property_value) end
-function RunningSequences:Mode(property_name, property_value) end
+function RunningSequences:SetChildren(property_name, property_value) end
 function RunningSequences:SetChildrenRecursive(property_name, property_value) end

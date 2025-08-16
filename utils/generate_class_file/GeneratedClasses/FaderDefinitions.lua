@@ -66,4 +66,4 @@ function FaderDefinitions:Find(class, undo) end
 ---@overload fun(property_name: "ExecutorIndex", property_value: integer)
 ---@overload fun(property_name: "SpecialExecutor", property_value: SpecialExecutor)
 ---@overload fun(property_name: "ExecutorIndex", property_value: integer)
-function FaderDefinitions:ExecutorIndex(property_name, property_value) end
+function FaderDefinitions:SetChildren(property_name, property_value) end

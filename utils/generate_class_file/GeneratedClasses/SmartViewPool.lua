@@ -28,6 +28,5 @@ function SmartViewPool:Acquire(class, undo) end
 function SmartViewPool:Aquire(class, undo) end
 function SmartViewPool:Insert(index, class, undo, count) end
 function SmartViewPool:Find(class, undo) end
-function SmartViewPool:ActiveDisplay(property_name, property_value) end
-function SmartViewPool:ActiveDisplay(property_name, property_value) end
+function SmartViewPool:SetChildren(property_name, property_value) end
 function SmartViewPool:SetChildrenRecursive(property_name, property_value) end

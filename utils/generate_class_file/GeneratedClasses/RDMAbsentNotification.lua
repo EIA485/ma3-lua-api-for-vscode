@@ -44,6 +44,5 @@ function RDMAbsentNotification:Find(class, undo) end
 ---@overload fun(class: "GeneratorChannels"): GeneratorChannels
 ---@overload fun(class: "Page-Nr"): PageNr
 function RDMAbsentNotification:FindParent(class) end
-function RDMAbsentNotification:Content(property_name, property_value) end
-function RDMAbsentNotification:Content(property_name, property_value) end
+function RDMAbsentNotification:SetChildren(property_name, property_value) end
 function RDMAbsentNotification:SetChildrenRecursive(property_name, property_value) end

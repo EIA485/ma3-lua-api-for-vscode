@@ -60,4 +60,4 @@ function MeshImagePool:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MeshImage
 function MeshImagePool:Find(class, undo) end
-function MeshImagePool:NDISource(property_name, property_value) end
+function MeshImagePool:SetChildren(property_name, property_value) end

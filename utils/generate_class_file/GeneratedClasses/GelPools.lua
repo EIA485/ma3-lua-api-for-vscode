@@ -64,4 +64,4 @@ function GelPools:Insert(index, class, undo, count) end
 function GelPools:Find(class, undo) end
 ---@overload fun(property_name: "Manufacturer", property_value: string)
 ---@overload fun(property_name: "Manufacturer", property_value: string)
-function GelPools:Manufacturer(property_name, property_value) end
+function GelPools:SetChildren(property_name, property_value) end

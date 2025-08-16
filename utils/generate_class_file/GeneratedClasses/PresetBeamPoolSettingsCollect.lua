@@ -60,4 +60,4 @@ function PresetBeamPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetBeamPoolSettings
 function PresetBeamPoolSettingsCollect:Find(class, undo) end
-function PresetBeamPoolSettingsCollect:ActiveDisplay(property_name, property_value) end
+function PresetBeamPoolSettingsCollect:SetChildren(property_name, property_value) end

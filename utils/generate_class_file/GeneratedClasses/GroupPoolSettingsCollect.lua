@@ -60,4 +60,4 @@ function GroupPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): GroupPoolSettings
 function GroupPoolSettingsCollect:Find(class, undo) end
-function GroupPoolSettingsCollect:ActiveDisplay(property_name, property_value) end
+function GroupPoolSettingsCollect:SetChildren(property_name, property_value) end

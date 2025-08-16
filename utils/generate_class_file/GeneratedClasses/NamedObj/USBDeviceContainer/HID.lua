@@ -38,4 +38,4 @@ function HID:Insert(index, class, undo, count) end
 ---@overload fun(class: "USBDeviceHID", undo: Undo?): USBDeviceHID
 ---@overload fun(class: nil, undo: Undo?): USBDeviceHID
 function HID:Find(class, undo) end
-function HID:Connected(property_name, property_value) end
+function HID:SetChildren(property_name, property_value) end

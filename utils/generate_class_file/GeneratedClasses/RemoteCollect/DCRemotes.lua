@@ -62,4 +62,4 @@ function DCRemotes:Insert(index, class, undo, count) end
 function DCRemotes:Find(class, undo) end
 ---@overload fun(property_name: "Signal", property_value: integer)
 ---@overload fun(property_name: "Signal", property_value: integer)
-function DCRemotes:Signal(property_name, property_value) end
+function DCRemotes:SetChildren(property_name, property_value) end

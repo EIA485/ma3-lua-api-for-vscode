@@ -62,4 +62,4 @@ function FixtureFilterRuleIDType:Insert(index, class, undo, count) end
 function FixtureFilterRuleIDType:Find(class, undo) end
 ---@overload fun(property_name: "IDType", property_value: integer)
 ---@overload fun(property_name: "IDType", property_value: integer)
-function FixtureFilterRuleIDType:IDType(property_name, property_value) end
+function FixtureFilterRuleIDType:SetChildren(property_name, property_value) end

@@ -60,5 +60,5 @@ function Symbols:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SymbolImage
 function Symbols:Find(class, undo) end
----@overload fun(property_name: "ColorKeyLightFrom"|"ColorKeyLightTo"|"ColorKeySelectionFrom"|"ColorKeySelectionTo", property_value: UiColor)
-function Symbols:NDISource(property_name, property_value) end
+---@overload fun(property_name: "ColorKeyLightTo"|"ColorKeySelectionTo"|"ColorKeySelectionFrom"|"ColorKeyLightFrom", property_value: UiColor)
+function Symbols:SetChildren(property_name, property_value) end

@@ -74,4 +74,4 @@ function DmxSheetSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "ViewMode", property_value: DmxSheetSettingsViewMode)
 ---@overload fun(property_name: "OnlySelection"|"TestBar"|"Attribute"|"Id"|"SkipPatched"|"Value"|"AutoColumns", property_value: YesNo|boolean)
 ---@overload fun(property_name: "ColumnsCount"|"AutoColumnsWidth", property_value: integer)
-function DmxSheetSettingsCollect:Universe(property_name, property_value) end
+function DmxSheetSettingsCollect:SetChildren(property_name, property_value) end

@@ -60,4 +60,4 @@ function LayoutPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): LayoutPoolSettings
 function LayoutPoolSettingsCollect:Find(class, undo) end
-function LayoutPoolSettingsCollect:ActiveDisplay(property_name, property_value) end
+function LayoutPoolSettingsCollect:SetChildren(property_name, property_value) end

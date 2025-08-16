@@ -121,4 +121,4 @@ function MVRService:Set(property_name, property_value, override_change_level) en
 ---@overload fun(property_name: "IP", property_value: Manet.IP4)
 ---@overload fun(property_name: "IP", property_value: Manet.IP4)
 ---@overload fun(property_name: "Port"|"Priority"|"Weight", property_value: integer)
-function MVRService:IP(property_name, property_value) end
+function MVRService:SetChildren(property_name, property_value) end

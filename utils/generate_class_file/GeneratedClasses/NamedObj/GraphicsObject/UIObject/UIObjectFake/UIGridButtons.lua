@@ -62,6 +62,6 @@ function UIGridButtons:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): UIGridButton
 function UIGridButtons:Find(class, undo) end
----@overload fun(property_name: "ChildFreeIconColor"|"HasChildrenIconColor"|"HasSelectedChildrenIconColor", property_value: Color)
+---@overload fun(property_name: "ChildFreeIconColor"|"HasSelectedChildrenIconColor"|"HasChildrenIconColor", property_value: Color)
 ---@overload fun(property_name: "ExpandedIcon"|"CollapsedIcon", property_value: Texture)
-function UIGridButtons:IsPlaying(property_name, property_value) end
+function UIGridButtons:SetChildren(property_name, property_value) end

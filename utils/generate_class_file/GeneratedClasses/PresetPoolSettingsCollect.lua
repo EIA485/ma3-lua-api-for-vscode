@@ -64,4 +64,4 @@ function PresetPoolSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "Action", property_value: PresetAction)
 ---@overload fun(property_name: "Action", property_value: PresetAction)
 ---@overload fun(property_name: "DisplayMode", property_value: PresetDisplayMode)
-function PresetPoolSettingsCollect:Action(property_name, property_value) end
+function PresetPoolSettingsCollect:SetChildren(property_name, property_value) end

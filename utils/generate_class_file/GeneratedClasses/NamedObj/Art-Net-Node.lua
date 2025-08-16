@@ -113,5 +113,5 @@ function ArtNetNode:Find(class, undo) end
 function ArtNetNode:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "IsActive", property_value: boolean)
 ---@overload fun(property_name: "IsActive", property_value: boolean)
----@overload fun(property_name: "InputPort4"|"InputPort2"|"Net"|"OutputPort3"|"Sub-Net"|"OutputPort1"|"InputPort3"|"OutputPort4"|"InputPort1"|"OutputPort2", property_value: integer)
-function ArtNetNode:IsActive(property_name, property_value) end
+---@overload fun(property_name: "InputPort4"|"InputPort2"|"Net"|"Sub-Net"|"OutputPort3"|"OutputPort1"|"InputPort3"|"OutputPort4"|"InputPort1"|"OutputPort2", property_value: integer)
+function ArtNetNode:SetChildren(property_name, property_value) end

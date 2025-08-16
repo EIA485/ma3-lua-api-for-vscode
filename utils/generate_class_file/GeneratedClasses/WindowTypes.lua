@@ -106,11 +106,11 @@ function WindowTypes:Find(class, undo) end
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function WindowTypes:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Type", property_value: WindowTypes)
----@overload fun(property_name: "Category", property_value: WindowCategories)
 ---@overload fun(property_name: "SnapToBlockSize", property_value: YesNo|boolean)
+---@overload fun(property_name: "Category", property_value: WindowCategories)
 ---@overload fun(property_name: "Category", property_value: WindowCategories)
 ---@overload fun(property_name: "Type", property_value: WindowTypes)
 ---@overload fun(property_name: "SnapToBlockSize", property_value: YesNo|boolean)
 ---@overload fun(property_name: "MinW"|"MinH"|"MaxW"|"MaxH"|"PresetPoolType", property_value: integer)
 ---@overload fun(property_name: "IndexKeywords"|"WindowName", property_value: string)
-function WindowTypes:SnapToBlockSize(property_name, property_value) end
+function WindowTypes:SetChildren(property_name, property_value) end

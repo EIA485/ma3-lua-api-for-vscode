@@ -127,4 +127,4 @@ function FixtureTypeLocalLibraryFile:Set(property_name, property_value, override
 ---@overload fun(property_name: "Source", property_value: FixtureTypeSource)
 ---@overload fun(property_name: "Source", property_value: FixtureTypeSource)
 ---@overload fun(property_name: "Used", property_value: integer)
-function FixtureTypeLocalLibraryFile:Source(property_name, property_value) end
+function FixtureTypeLocalLibraryFile:SetChildren(property_name, property_value) end

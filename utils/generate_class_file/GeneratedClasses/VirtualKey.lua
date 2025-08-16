@@ -162,14 +162,14 @@ function VirtualKey:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport"|"RedirectChar"|"HelpTopic", property_value: string, override_change_level: ChangeLevel?)
 function VirtualKey:Set(property_name, property_value, override_change_level) end
----@overload fun(property_name: "Modifier", property_value: VirtualKeyCode)
 ---@overload fun(property_name: "Execution", property_value: VirtualKeyExecutionType)
+---@overload fun(property_name: "Modifier", property_value: VirtualKeyCode)
 ---@overload fun(property_name: "RedirectKeyCode", property_value: KeyboardCodes)
 ---@overload fun(property_name: "RedirectKeyCode", property_value: KeyboardCodes)
----@overload fun(property_name: "FirstToken"|"LastObjectToken"|"LastCommandToken", property_value: PresetActionToken)
----@overload fun(property_name: "PressSyntaxState"|"ReleaseSyntaxState", property_value: SyntaxState)
+---@overload fun(property_name: "FirstToken"|"LastCommandToken"|"LastObjectToken", property_value: PresetActionToken)
+---@overload fun(property_name: "ReleaseSyntaxState"|"PressSyntaxState", property_value: SyntaxState)
 ---@overload fun(property_name: "Modifier", property_value: VirtualKeyCode)
 ---@overload fun(property_name: "Execution", property_value: VirtualKeyExecutionType)
 ---@overload fun(property_name: "Remember"|"RedirectWithShift"|"RedirectWithCtrl"|"RedirectWithAlt"|"AlwaysNumericRedirect", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Release"|"Press"|"DoublePress"|"RedirectChar"|"Hold"|"DisplayText", property_value: string)
-function VirtualKey:RedirectKeyCode(property_name, property_value) end
+function VirtualKey:SetChildren(property_name, property_value) end

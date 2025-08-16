@@ -64,4 +64,4 @@ function ViewButtonScreen:Insert(index, class, undo, count) end
 function ViewButtonScreen:Find(class, undo) end
 ---@overload fun(property_name: "Object", property_value: Object)
 ---@overload fun(property_name: "Object", property_value: Object)
-function ViewButtonScreen:Object(property_name, property_value) end
+function ViewButtonScreen:SetChildren(property_name, property_value) end

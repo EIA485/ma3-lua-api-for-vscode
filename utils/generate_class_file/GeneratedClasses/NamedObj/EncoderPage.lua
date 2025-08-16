@@ -64,4 +64,4 @@ function EncoderPage:Insert(index, class, undo, count) end
 function EncoderPage:Find(class, undo) end
 ---@overload fun(property_name: "InnerObject"|"OuterObject", property_value: Object)
 ---@overload fun(property_name: "InnerObjectType"|"OuterObjectType", property_value: integer)
-function EncoderPage:ActiveDisplay(property_name, property_value) end
+function EncoderPage:SetChildren(property_name, property_value) end

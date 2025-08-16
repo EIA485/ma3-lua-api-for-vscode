@@ -62,4 +62,4 @@ function ViewButtonScreens:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ViewButtonScreen
 function ViewButtonScreens:Find(class, undo) end
-function ViewButtonScreens:ActiveDisplay(property_name, property_value) end
+function ViewButtonScreens:SetChildren(property_name, property_value) end

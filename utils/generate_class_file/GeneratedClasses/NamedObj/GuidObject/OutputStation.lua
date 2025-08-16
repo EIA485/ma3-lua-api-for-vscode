@@ -152,8 +152,8 @@ function OutputStation:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"DependencyExport"|"Note"|"Art-NetInterface"|"sACNInterface"|"OSCInterface"|"PSNInterface", property_value: string, override_change_level: ChangeLevel?)
 function OutputStation:Set(property_name, property_value, override_change_level) end
----@overload fun(property_name: "Type", property_value: UsbProductID)
 ---@overload fun(property_name: "DCStart", property_value: SignalOff)
+---@overload fun(property_name: "Type", property_value: UsbProductID)
 ---@overload fun(property_name: "SMPTEMode", property_value: SMPTEMode)
 ---@overload fun(property_name: "MIDITCMode", property_value: MIDITCMode)
 ---@overload fun(property_name: "MIDIDataMode", property_value: MIDIMode)
@@ -164,4 +164,4 @@ function OutputStation:Set(property_name, property_value, override_change_level)
 ---@overload fun(property_name: "SMPTETC"|"MIDITC", property_value: SignalSlot)
 ---@overload fun(property_name: "Type", property_value: UsbProductID)
 ---@overload fun(property_name: "MIDIOffset"|"UsbDeviceIndex"|"DmxPortDefaultDirection"|"UsbDeviceType"|"XLRPortCount"|"TimecodePortsIn"|"TimecodePortsOut"|"DCIoPorts"|"DigitalIoPorts"|"MidiCount", property_value: integer)
-function OutputStation:MIDIDataMode(property_name, property_value) end
+function OutputStation:SetChildren(property_name, property_value) end

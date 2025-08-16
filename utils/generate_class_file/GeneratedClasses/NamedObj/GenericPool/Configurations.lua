@@ -65,4 +65,4 @@ function Configurations:Find(class, undo) end
 ---@overload fun(property_name: "ExecConfigType", property_value: ExecConfigType)
 ---@overload fun(property_name: "ExecConfigType", property_value: ExecConfigType)
 ---@overload fun(property_name: "Width"|"Height", property_value: integer)
-function Configurations:ExecConfigType(property_name, property_value) end
+function Configurations:SetChildren(property_name, property_value) end

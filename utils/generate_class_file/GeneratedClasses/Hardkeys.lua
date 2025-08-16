@@ -70,4 +70,4 @@ function Hardkeys:Find(class, undo) end
 ---@overload fun(property_name: "Code", property_value: VirtualKeyCode)
 ---@overload fun(property_name: "Disable", property_value: YesNo|boolean)
 ---@overload fun(property_name: "ExecutorIndex", property_value: integer)
-function Hardkeys:ExecutorIndex(property_name, property_value) end
+function Hardkeys:SetChildren(property_name, property_value) end

@@ -28,6 +28,5 @@ function RunningTimecodes:Acquire(class, undo) end
 function RunningTimecodes:Aquire(class, undo) end
 function RunningTimecodes:Insert(index, class, undo, count) end
 function RunningTimecodes:Find(class, undo) end
-function RunningTimecodes:ActiveDisplay(property_name, property_value) end
-function RunningTimecodes:ActiveDisplay(property_name, property_value) end
+function RunningTimecodes:SetChildren(property_name, property_value) end
 function RunningTimecodes:SetChildrenRecursive(property_name, property_value) end

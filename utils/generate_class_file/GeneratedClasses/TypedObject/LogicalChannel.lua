@@ -150,7 +150,7 @@ function LogicalChannel:Set(property_name, property_value, override_change_level
 ---@overload fun(property_name: "Filter", property_value: FTFilter)
 ---@overload fun(property_name: "Gamut", property_value: Gamut)
 ---@overload fun(property_name: "Wheel", property_value: Wheel)
----@overload fun(property_name: "EncoderInvert"|"DMXInvert"|"IgnoreFollow"|"EncoderLoop", property_value: Yes|true)
----@overload fun(property_name: "RealAcceleration"|"PhysicalFrom"|"RealFade"|"PhysicalTo", property_value: number)
+---@overload fun(property_name: "DMXInvert"|"EncoderInvert"|"IgnoreFollow"|"EncoderLoop", property_value: Yes|true)
+---@overload fun(property_name: "PhysicalFrom"|"PhysicalTo"|"RealAcceleration"|"RealFade", property_value: number)
 ---@overload fun(property_name: "OriginalAttribute"|"CustomName", property_value: string)
-function LogicalChannel:Emitter(property_name, property_value) end
+function LogicalChannel:SetChildren(property_name, property_value) end

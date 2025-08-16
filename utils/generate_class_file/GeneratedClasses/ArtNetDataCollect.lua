@@ -54,4 +54,4 @@ function ArtNetDataCollect:Find(class, undo) end
 ---@overload fun(property_name: "Enabled"|"EnableRdm", property_value: YesNo|boolean)
 ---@overload fun(property_name: "LocalUniverse"|"Art-NetAbsolute"|"Amount"|"Net"|"Art-NetSub-Net"|"Universe"|"SubscribedNodes", property_value: integer)
 ---@overload fun(property_name: "PacketDelay", property_value: number)
-function ArtNetDataCollect:MergeMode(property_name, property_value) end
+function ArtNetDataCollect:SetChildren(property_name, property_value) end

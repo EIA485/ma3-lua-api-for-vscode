@@ -88,4 +88,4 @@ function ProgUpdateCollect:Set(property_name, property_value, override_change_le
 ---@overload fun(property_name: "DataPoolNo", property_value: integer)
 ---@overload fun(property_name: "DataPoolNo", property_value: integer)
 ---@overload fun(property_name: "DataPoolName"|"Name"|"Parent"|"Number", property_value: string)
-function ProgUpdateCollect:DataPoolNo(property_name, property_value) end
+function ProgUpdateCollect:SetChildren(property_name, property_value) end

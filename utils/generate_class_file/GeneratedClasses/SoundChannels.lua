@@ -60,4 +60,4 @@ function SoundChannels:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SoundChannel
 function SoundChannels:Find(class, undo) end
-function SoundChannels:ActiveDisplay(property_name, property_value) end
+function SoundChannels:SetChildren(property_name, property_value) end

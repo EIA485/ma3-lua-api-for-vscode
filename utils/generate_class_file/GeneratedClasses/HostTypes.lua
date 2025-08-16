@@ -62,4 +62,4 @@ function HostTypes:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): NetworkStations
 function HostTypes:Find(class, undo) end
-function HostTypes:ActiveDisplay(property_name, property_value) end
+function HostTypes:SetChildren(property_name, property_value) end

@@ -155,5 +155,5 @@ function View:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "PresetPoolType", property_value: DynamicPresetPool)
 ---@overload fun(property_name: "PresetPoolType", property_value: DynamicPresetPool)
 ---@overload fun(property_name: "SnapToBlockSize"|"MinSizeTranspose", property_value: YesNo|boolean)
----@overload fun(property_name: "MinW"|"MinH"|"Display"|"MaxW"|"X"|"MaxH"|"Y"|"W"|"H", property_value: integer)
-function View:PresetPoolType(property_name, property_value) end
+---@overload fun(property_name: "MinW"|"MinH"|"MaxW"|"Display"|"X"|"MaxH"|"Y"|"W"|"H", property_value: integer)
+function View:SetChildren(property_name, property_value) end

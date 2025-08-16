@@ -119,5 +119,5 @@ function KeyboardKey:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport"|"Value"|"ValueShifted"|"ValueRightAlted", property_value: string, override_change_level: ChangeLevel?)
 function KeyboardKey:Set(property_name, property_value, override_change_level) end
----@overload fun(property_name: "Modifier"|"ValueShifted"|"Value", property_value: string)
-function KeyboardKey:ActiveDisplay(property_name, property_value) end
+---@overload fun(property_name: "Modifier"|"Value"|"ValueShifted", property_value: string)
+function KeyboardKey:SetChildren(property_name, property_value) end

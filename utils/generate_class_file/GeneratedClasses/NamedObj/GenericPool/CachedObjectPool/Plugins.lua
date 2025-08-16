@@ -62,4 +62,4 @@ function Plugins:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): UserPlugin
 function Plugins:Find(class, undo) end
-function Plugins:NDISource(property_name, property_value) end
+function Plugins:SetChildren(property_name, property_value) end

@@ -60,4 +60,4 @@ function PresetDynamicPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetDynamicPoolSettings
 function PresetDynamicPoolSettingsCollect:Find(class, undo) end
-function PresetDynamicPoolSettingsCollect:ActiveDisplay(property_name, property_value) end
+function PresetDynamicPoolSettingsCollect:SetChildren(property_name, property_value) end

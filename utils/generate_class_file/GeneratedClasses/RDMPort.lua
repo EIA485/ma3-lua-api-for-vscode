@@ -121,5 +121,5 @@ function RDMPort:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Fixture", property_value: SubFixture)
 ---@overload fun(property_name: "Active", property_value: YesNo|boolean)
 ---@overload fun(property_name: "FactoryDefaults"|"Identify"|"PanTiltSwap"|"PanInvert"|"TiltInvert", property_value: Yes|true)
----@overload fun(property_name: "DeviceHours"|"ProxiedDevices"|"DisplayLevel"|"DMXPersonality"|"DMXStart"|"LampHours"|"LampStrikes"|"DevicePowerCycles"|"UID", property_value: integer)
-function RDMPort:Active(property_name, property_value) end
+---@overload fun(property_name: "DeviceHours"|"DisplayLevel"|"ProxiedDevices"|"DMXPersonality"|"DMXStart"|"LampHours"|"LampStrikes"|"DevicePowerCycles"|"UID", property_value: integer)
+function RDMPort:SetChildren(property_name, property_value) end

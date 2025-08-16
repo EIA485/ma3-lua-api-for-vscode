@@ -60,4 +60,4 @@ function WorldPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): WorldPoolSettings
 function WorldPoolSettingsCollect:Find(class, undo) end
-function WorldPoolSettingsCollect:ActiveDisplay(property_name, property_value) end
+function WorldPoolSettingsCollect:SetChildren(property_name, property_value) end

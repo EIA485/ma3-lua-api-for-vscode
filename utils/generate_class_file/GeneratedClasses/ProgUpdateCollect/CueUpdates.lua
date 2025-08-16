@@ -113,6 +113,6 @@ function CueUpdates:Find(class, undo) end
 ---@overload fun(property_name: "ObjectList", property_value: integer[], override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function CueUpdates:Set(property_name, property_value, override_change_level) end
----@overload fun(property_name: "SequenceNo"|"TargetCue"|"TargetPart", property_value: integer)
+---@overload fun(property_name: "SequenceNo"|"TargetPart"|"TargetCue", property_value: integer)
 ---@overload fun(property_name: "TargetName"|"SequenceName", property_value: string)
-function CueUpdates:DataPoolNo(property_name, property_value) end
+function CueUpdates:SetChildren(property_name, property_value) end

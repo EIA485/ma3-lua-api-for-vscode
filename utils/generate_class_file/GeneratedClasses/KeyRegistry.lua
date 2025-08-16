@@ -109,4 +109,4 @@ function KeyRegistry:Find(class, undo) end
 function KeyRegistry:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "BSKey"|"BSLock", property_value: Key128)
 ---@overload fun(property_name: "RemoteCall"|"Terminal"|"MAnet", property_value: YesNo|boolean)
-function KeyRegistry:SpecialDialogTab(property_name, property_value) end
+function KeyRegistry:SetChildren(property_name, property_value) end

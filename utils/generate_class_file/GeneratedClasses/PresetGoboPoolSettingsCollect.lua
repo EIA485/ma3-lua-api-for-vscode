@@ -60,4 +60,4 @@ function PresetGoboPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetGoboPoolSettings
 function PresetGoboPoolSettingsCollect:Find(class, undo) end
-function PresetGoboPoolSettingsCollect:ActiveDisplay(property_name, property_value) end
+function PresetGoboPoolSettingsCollect:SetChildren(property_name, property_value) end

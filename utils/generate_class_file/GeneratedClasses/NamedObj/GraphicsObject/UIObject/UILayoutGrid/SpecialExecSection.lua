@@ -295,4 +295,4 @@ function SpecialExecSection:Find(class, undo) end
 ---@overload fun(property_name: "Padding"|"Anchors"|"Margin", property_value: {left: integer, right: integer, top: integer, bottom: integer}, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "AbsRect"|"AbsClientRect", property_value: {left: number, right: number, top: number, bottom: number}, override_change_level: ChangeLevel?)
 function SpecialExecSection:Set(property_name, property_value, override_change_level) end
-function SpecialExecSection:SetPrompt(property_name, property_value) end
+function SpecialExecSection:SetChildren(property_name, property_value) end

@@ -67,4 +67,4 @@ function PlaybackWindowSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "#Sections", property_value: SectionCount)
 ---@overload fun(property_name: "WingID", property_value: WingID)
 ---@overload fun(property_name: "Page", property_value: integer)
-function PlaybackWindowSettingsCollect:Page(property_name, property_value) end
+function PlaybackWindowSettingsCollect:SetChildren(property_name, property_value) end

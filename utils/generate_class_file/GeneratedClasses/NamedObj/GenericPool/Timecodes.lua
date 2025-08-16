@@ -74,10 +74,10 @@ function Timecodes:Find(class, undo) end
 ---@overload fun(property_name: "LoopMode", property_value: LoopMode)
 ---@overload fun(property_name: "SwitchOff", property_value: PlaybacksOff)
 ---@overload fun(property_name: "Goto", property_value: RecordGo)
----@overload fun(property_name: "Duration"|"Cursor"|"OffsetTCSlot", property_value: SignedTimePropertyValue)
+---@overload fun(property_name: "Cursor"|"OffsetTCSlot"|"Duration", property_value: SignedTimePropertyValue)
 ---@overload fun(property_name: "TimeDisplayFormat", property_value: TimeDisplayFormatSelected)
 ---@overload fun(property_name: "TimeMarkers", property_value: Track)
----@overload fun(property_name: "AssertPrevEvents"|"AutoStart"|"RecordTimedCues"|"RecordCueCommands"|"RecordMacroEvents"|"AutoStop"|"RecordRemoteEvents", property_value: YesNo|boolean)
----@overload fun(property_name: "UserBits"|"TCSlot"|"LoopCount", property_value: integer)
+---@overload fun(property_name: "AssertPrevEvents"|"RecordTimedCues"|"RecordCueCommands"|"RecordMacroEvents"|"AutoStop"|"RecordRemoteEvents"|"AutoStart", property_value: YesNo|boolean)
+---@overload fun(property_name: "LoopCount"|"TCSlot"|"UserBits", property_value: integer)
 ---@overload fun(property_name: "User"|"Type", property_value: string)
-function Timecodes:Goto(property_name, property_value) end
+function Timecodes:SetChildren(property_name, property_value) end

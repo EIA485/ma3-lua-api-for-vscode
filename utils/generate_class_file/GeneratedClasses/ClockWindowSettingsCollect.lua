@@ -78,4 +78,4 @@ function ClockWindowSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "TimerIndex"|"TCSlot", property_value: integer)
 ---@overload fun(property_name: "Timezone", property_value: number)
 ---@overload fun(property_name: "TimezoneStr"|"TitlePrefix", property_value: string)
-function ClockWindowSettingsCollect:Timezone(property_name, property_value) end
+function ClockWindowSettingsCollect:SetChildren(property_name, property_value) end

@@ -62,4 +62,4 @@ function CommandlineWindowSettingsCollect:Insert(index, class, undo, count) end
 function CommandlineWindowSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "ShowCommandlineField", property_value: YesNo|boolean)
 ---@overload fun(property_name: "ShowCommandlineField", property_value: YesNo|boolean)
-function CommandlineWindowSettingsCollect:ShowCommandlineField(property_name, property_value) end
+function CommandlineWindowSettingsCollect:SetChildren(property_name, property_value) end

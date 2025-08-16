@@ -122,4 +122,4 @@ function KeyboardShortCuts:Set(property_name, property_value, override_change_le
 ---@overload fun(property_name: "KeyCode", property_value: SCVirtualKeyCode)
 ---@overload fun(property_name: "SpecialExec", property_value: SpecialExecutor)
 ---@overload fun(property_name: "Name", property_value: string)
-function KeyboardShortCuts:Shortcut(property_name, property_value) end
+function KeyboardShortCuts:SetChildren(property_name, property_value) end

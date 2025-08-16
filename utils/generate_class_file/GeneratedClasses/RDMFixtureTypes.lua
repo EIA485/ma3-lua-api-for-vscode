@@ -66,5 +66,5 @@ function RDMFixtureTypes:Find(class, undo) end
 ---@overload fun(property_name: "ProductCategory", property_value: RDMProductCategory)
 ---@overload fun(property_name: "ProductCategory", property_value: RDMProductCategory)
 ---@overload fun(property_name: "SoftwareID", property_value: integer)
----@overload fun(property_name: "DeviceModelID"|"ManufacturerID"|"SoftwareVersionLabel", property_value: string)
-function RDMFixtureTypes:ProductCategory(property_name, property_value) end
+---@overload fun(property_name: "DeviceModelID"|"SoftwareVersionLabel"|"ManufacturerID", property_value: string)
+function RDMFixtureTypes:SetChildren(property_name, property_value) end

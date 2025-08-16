@@ -342,10 +342,10 @@ function UiScreen:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "WindowScrollPositions", property_value: WindowScrollPositions)
 ---@overload fun(property_name: "WindowSettings", property_value: WindowSettings)
 ---@overload fun(property_name: "SmallResizeArea"|"ShowManualCueSelection"|"ContentChanged"|"ReactToPreview"|"ReactToEdit", property_value: YesNo|boolean)
----@overload fun(property_name: "Context"|"SGResizeStart"|"ResizeStart"|"OnEditCurrentLayout"|"SGResizeEnd"|"UpdateEncoderBar"|"DeleteOld"|"OnToolOperate"|"MoveStart", property_value: fun(str: string) : boolean)
+---@overload fun(property_name: "SGResizeStart"|"Context"|"SGResizeEnd"|"OnEditCurrentLayout"|"ResizeStart"|"UpdateEncoderBar"|"DeleteOld"|"OnToolOperate"|"MoveStart", property_value: fun(str: string) : boolean)
 ---@overload fun(property_name: "MoveEnd"|"ResizeEnd", property_value: fun(str: string, bool: boolean) : boolean)
 ---@overload fun(property_name: "SGResizeMove"|"ResizeMove"|"Move", property_value: fun(str: string, int1: integer, int2: integer) : boolean)
 ---@overload fun(property_name: "GestureClick", property_value: fun(str: string, int1: integer, int2: integer, int3: integer, int4: integer) : boolean)
 ---@overload fun(property_name: "RunningPlaybacks", property_value: integer[])
 ---@overload fun(property_name: "EditEncoderBar"|"ControlEncoderBar", property_value: string)
-function UiScreen:WindowSettings(property_name, property_value) end
+function UiScreen:SetChildren(property_name, property_value) end

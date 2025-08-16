@@ -68,4 +68,4 @@ function Devices:Insert(index, class, undo, count) end
 ---@overload fun(class: "Device", undo: Undo?): Device
 ---@overload fun(class: nil, undo: Undo?): Device
 function Devices:Find(class, undo) end
-function Devices:ActiveDisplay(property_name, property_value) end
+function Devices:SetChildren(property_name, property_value) end

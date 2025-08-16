@@ -62,4 +62,4 @@ function SequencePoolSettingsCollect:Insert(index, class, undo, count) end
 function SequencePoolSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "Action", property_value: SequenceAction)
 ---@overload fun(property_name: "Action", property_value: SequenceAction)
-function SequencePoolSettingsCollect:Action(property_name, property_value) end
+function SequencePoolSettingsCollect:SetChildren(property_name, property_value) end

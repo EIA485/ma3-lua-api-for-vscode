@@ -60,4 +60,4 @@ function MasterPoolGrand:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MasterGrand
 function MasterPoolGrand:Find(class, undo) end
-function MasterPoolGrand:SpeedScale(property_name, property_value) end
+function MasterPoolGrand:SetChildren(property_name, property_value) end

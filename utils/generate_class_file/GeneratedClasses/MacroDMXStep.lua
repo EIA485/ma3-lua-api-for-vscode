@@ -113,4 +113,4 @@ function MacroDMXStep:Set(property_name, property_value, override_change_level) 
 ---@overload fun(property_name: "DMXChannel", property_value: DMXChannel)
 ---@overload fun(property_name: "DMXChannel", property_value: DMXChannel)
 ---@overload fun(property_name: "Value", property_value: DMXPropertyValue)
-function MacroDMXStep:DMXChannel(property_name, property_value) end
+function MacroDMXStep:SetChildren(property_name, property_value) end

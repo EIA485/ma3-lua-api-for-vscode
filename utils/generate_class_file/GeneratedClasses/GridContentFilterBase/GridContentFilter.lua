@@ -121,4 +121,4 @@ function GridContentFilter:Set(property_name, property_value, override_change_le
 ---@overload fun(property_name: "Equal"|"Enabled", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Filter", property_value: string)
 ---@overload fun(property_name: "Columns", property_value: string[])
-function GridContentFilter:Columns(property_name, property_value) end
+function GridContentFilter:SetChildren(property_name, property_value) end

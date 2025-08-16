@@ -39,6 +39,5 @@ function IllegalObject:Find(class, undo) end
 ---@overload fun(class: "GeneratorChannels"): GeneratorChannels
 ---@overload fun(class: "Page-Nr"): PageNr
 function IllegalObject:FindParent(class) end
-function IllegalObject:SpecialDialogTab(property_name, property_value) end
-function IllegalObject:SpecialDialogTab(property_name, property_value) end
+function IllegalObject:SetChildren(property_name, property_value) end
 function IllegalObject:SetChildrenRecursive(property_name, property_value) end

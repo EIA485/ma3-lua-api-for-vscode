@@ -60,4 +60,4 @@ function SmartViewSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): SmartViewSettings
 function SmartViewSettingsCollect:Find(class, undo) end
-function SmartViewSettingsCollect:ActiveDisplay(property_name, property_value) end
+function SmartViewSettingsCollect:SetChildren(property_name, property_value) end

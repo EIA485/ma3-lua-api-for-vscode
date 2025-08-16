@@ -112,5 +112,5 @@ function ReleaseFile:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport"|"Description"|"Version"|"Date"|"ReleaseFileVersion", property_value: string, override_change_level: ChangeLevel?)
 function ReleaseFile:Set(property_name, property_value, override_change_level) end
----@overload fun(property_name: "Description"|"Sha256sum"|"HostTypes"|"Signature"|"Version"|"Name"|"Date"|"Signature2"|"ID"|"Destination"|"ReleaseFileVersion"|"Tag"|"DestinationMac"|"Type"|"Execute"|"DestinationWin"|"Size"|"ZipSize", property_value: string)
-function ReleaseFile:ActiveDisplay(property_name, property_value) end
+---@overload fun(property_name: "Description"|"Sha256sum"|"HostTypes"|"Version"|"Signature"|"Name"|"Date"|"Signature2"|"ID"|"Destination"|"ReleaseFileVersion"|"Tag"|"DestinationMac"|"Type"|"Execute"|"DestinationWin"|"Size"|"ZipSize", property_value: string)
+function ReleaseFile:SetChildren(property_name, property_value) end

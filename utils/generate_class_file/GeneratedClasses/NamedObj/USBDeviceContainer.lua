@@ -95,10 +95,10 @@ function USBDeviceContainer:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function USBDeviceContainer:Set(property_name, property_value, override_change_level) end
----@overload fun(property_name: "IP", property_value: Network.IP8)
----@overload fun(property_name: "ConnectedCount", property_value: integer)
 ---@overload fun(property_name: "Connected", property_value: YesNo|boolean)
 ---@overload fun(property_name: "IP", property_value: Network.IP8)
+---@overload fun(property_name: "ConnectedCount", property_value: integer)
+---@overload fun(property_name: "IP", property_value: Network.IP8)
 ---@overload fun(property_name: "Connected", property_value: YesNo|boolean)
 ---@overload fun(property_name: "ConnectedCount", property_value: integer)
-function USBDeviceContainer:Connected(property_name, property_value) end
+function USBDeviceContainer:SetChildren(property_name, property_value) end

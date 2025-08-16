@@ -71,16 +71,11 @@ function Spaces:FindRecursive(name, class) end
 ---@overload fun(property_name: "Color", property_value: Colors.RGB<float>)
 ---@overload fun(property_name: "Color", property_value: Colors.RGB<float>)
 ---@overload fun(property_name: "MinY"|"MaxY"|"MinZ"|"MaxZ"|"MinX"|"MaxX", property_value: LengthPropertyValue)
-function Spaces:Color(property_name, property_value) end
+function Spaces:SetChildren(property_name, property_value) end
 ---@overload fun(property_name: "FollowStageDimensions", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Color", property_value: Colors.RGB<float>)
 ---@overload fun(property_name: "Color", property_value: Colors.RGB<float>)
 ---@overload fun(property_name: "MinY"|"MaxY"|"MinZ"|"MaxZ"|"MinX"|"MaxX", property_value: LengthPropertyValue)
 ---@overload fun(property_name: "FollowStageDimensions", property_value: YesNo|boolean)
----@overload fun(property_name: "P1Y"|"P4X"|"P1X"|"P1Z"|"P4Y"|"P2X"|"P4Z"|"P3Z"|"P2Y"|"P2Z"|"P3X"|"P3Y", property_value: number)
-function Spaces:Color(property_name, property_value) end
----@overload fun(property_name: "Color", property_value: Colors.RGB<float>)
----@overload fun(property_name: "MinX"|"MaxX"|"MinY"|"MaxY"|"MinZ"|"MaxZ", property_value: LengthPropertyValue)
----@overload fun(property_name: "FollowStageDimensions", property_value: YesNo|boolean)
----@overload fun(property_name: "P1X"|"P1Y"|"P1Z"|"P2X"|"P2Y"|"P2Z"|"P3X"|"P3Y"|"P3Z"|"P4X"|"P4Y"|"P4Z", property_value: number)
+---@overload fun(property_name: "P1X"|"P1Y"|"P4X"|"P4Y"|"P1Z"|"P2X"|"P4Z"|"P3Z"|"P2Y"|"P2Z"|"P3X"|"P3Y", property_value: number)
 function Spaces:SetChildrenRecursive(property_name, property_value) end

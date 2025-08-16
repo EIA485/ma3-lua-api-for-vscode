@@ -65,4 +65,4 @@ function IDTypes:Find(class, undo) end
 ---@overload fun(property_name: "Name", property_value: string)
 ---@overload fun(property_name: "MaxID"|"Used", property_value: integer)
 ---@overload fun(property_name: "Name", property_value: string)
-function IDTypes:Name(property_name, property_value) end
+function IDTypes:SetChildren(property_name, property_value) end

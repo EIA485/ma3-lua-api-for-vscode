@@ -116,4 +116,4 @@ function FeatureGroup:Set(property_name, property_value, override_change_level) 
 ---@overload fun(property_name: "LogChannels", property_value: string)
 ---@overload fun(property_name: "AttribCount", property_value: integer)
 ---@overload fun(property_name: "LogChannels", property_value: string)
-function FeatureGroup:LogChannels(property_name, property_value) end
+function FeatureGroup:SetChildren(property_name, property_value) end

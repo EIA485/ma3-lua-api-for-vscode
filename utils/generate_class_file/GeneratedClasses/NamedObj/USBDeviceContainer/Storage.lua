@@ -60,4 +60,4 @@ function Storage:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): USBDeviceStorage
 function Storage:Find(class, undo) end
-function Storage:Connected(property_name, property_value) end
+function Storage:SetChildren(property_name, property_value) end

@@ -111,8 +111,8 @@ function DmxCurves:Find(class, undo) end
 function DmxCurves:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "UseForVisualization", property_value: YesNo|boolean)
 ---@overload fun(property_name: "CurveMode", property_value: DmxCurveModes)
----@overload fun(property_name: "MaxY"|"MinX"|"MaxX"|"MinY", property_value: DMXPropertyValue)
+---@overload fun(property_name: "MinY"|"MinX"|"MaxX"|"MaxY", property_value: DMXPropertyValue)
 ---@overload fun(property_name: "CurveMode", property_value: DmxCurveModes)
 ---@overload fun(property_name: "UseForVisualization", property_value: YesNo|boolean)
 ---@overload fun(property_name: "CurveIndexOld"|"CurveIndex", property_value: integer)
-function DmxCurves:CurveMode(property_name, property_value) end
+function DmxCurves:SetChildren(property_name, property_value) end

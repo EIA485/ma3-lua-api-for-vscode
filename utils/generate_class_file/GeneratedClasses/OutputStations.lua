@@ -116,4 +116,4 @@ function OutputStations:Find(class, undo) end
 function OutputStations:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "DevicesinSession", property_value: integer)
 ---@overload fun(property_name: "DevicesinSession", property_value: integer)
-function OutputStations:DevicesinSession(property_name, property_value) end
+function OutputStations:SetChildren(property_name, property_value) end

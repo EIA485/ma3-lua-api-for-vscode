@@ -66,4 +66,4 @@ function NDI:Find(class, undo) end
 ---@overload fun(property_name: "URL", property_value: string)
 ---@overload fun(property_name: "Bandwidth", property_value: NDIBandwidth)
 ---@overload fun(property_name: "URL", property_value: string)
-function NDI:URL(property_name, property_value) end
+function NDI:SetChildren(property_name, property_value) end

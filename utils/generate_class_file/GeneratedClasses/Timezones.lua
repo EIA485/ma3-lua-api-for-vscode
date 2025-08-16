@@ -60,4 +60,4 @@ function Timezones:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Timezone
 function Timezones:Find(class, undo) end
-function Timezones:ActiveDisplay(property_name, property_value) end
+function Timezones:SetChildren(property_name, property_value) end

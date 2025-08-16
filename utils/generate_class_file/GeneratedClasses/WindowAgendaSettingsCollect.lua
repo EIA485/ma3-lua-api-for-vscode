@@ -68,11 +68,11 @@ function WindowAgendaSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "Tool", property_value: AgendaTool)
 ---@overload fun(property_name: "Tool", property_value: AgendaTool)
 ---@overload fun(property_name: "ViewMode", property_value: AgendaViewMode)
----@overload fun(property_name: "SelectedDay"|"VisibleDate", property_value: DatumMode)
+---@overload fun(property_name: "VisibleDate"|"SelectedDay", property_value: DatumMode)
 ---@overload fun(property_name: "SelectedAgenda", property_value: Object)
 ---@overload fun(property_name: "StartOfWeek", property_value: WeekDay)
 ---@overload fun(property_name: "Setup", property_value: YesNo|boolean)
 ---@overload fun(property_name: "AgendaSelected"|"DaySelected", property_value: boolean)
 ---@overload fun(property_name: "ResetSelectedDay"|"JumpToToday"|"JumpToPrevious"|"JumpToNext"|"ResetSelectedAgenda", property_value: fun(text: string) : boolean)
 ---@overload fun(property_name: "ToolAction", property_value: string)
-function WindowAgendaSettingsCollect:Tool(property_name, property_value) end
+function WindowAgendaSettingsCollect:SetChildren(property_name, property_value) end

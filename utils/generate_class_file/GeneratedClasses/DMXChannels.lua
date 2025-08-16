@@ -78,4 +78,4 @@ function DMXChannels:Find(class, undo) end
 ---@overload fun(property_name: "Highlight"|"Lowlight", property_value: ValueNone)
 ---@overload fun(property_name: "CalcAlways", property_value: YesNo|boolean)
 ---@overload fun(property_name: "Name", property_value: string)
-function DMXChannels:DefaultChannelFunction(property_name, property_value) end
+function DMXChannels:SetChildren(property_name, property_value) end

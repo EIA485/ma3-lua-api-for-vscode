@@ -61,10 +61,10 @@ function RunningPlaybacksSettingsCollect:Insert(index, class, undo, count) end
 ---@overload fun(class: nil, undo: Undo?): RunningPlaybacksSettings
 function RunningPlaybacksSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "User", property_value: User)
----@overload fun(property_name: "PlaybacksToShow", property_value: PlaybacksToShow)
 ---@overload fun(property_name: "SelectedDataPool", property_value: string)
+---@overload fun(property_name: "PlaybacksToShow", property_value: PlaybacksToShow)
 ---@overload fun(property_name: "PlaybacksToShow", property_value: PlaybacksToShow)
 ---@overload fun(property_name: "User", property_value: User)
 ---@overload fun(property_name: "MyPlaybacksOnly"|"OffMode"|"SheetStyle"|"HoldList", property_value: YesNo|boolean)
 ---@overload fun(property_name: "SelectedDataPool", property_value: string)
-function RunningPlaybacksSettingsCollect:SelectedDataPool(property_name, property_value) end
+function RunningPlaybacksSettingsCollect:SetChildren(property_name, property_value) end

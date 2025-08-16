@@ -83,4 +83,4 @@ function RenderQualities:Find(class, undo) end
 ---@overload fun(property_name: "HazeEnabled", property_value: YesNo|boolean)
 ---@overload fun(property_name: "HazeLayers", property_value: integer)
 ---@overload fun(property_name: "NativeColors"|"ResolutionScaleLight"|"HazeParticleQuality"|"HazeScale"|"ResolutionScale3D"|"HazeParticleSize"|"HazeBlend"|"DilutionScale"|"HazeAnimationSpeed", property_value: number)
-function RenderQualities:MultiLedBeamMode(property_name, property_value) end
+function RenderQualities:SetChildren(property_name, property_value) end

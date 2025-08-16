@@ -60,4 +60,4 @@ function PresetDimmerPoolSettingsCollect:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): PresetDimmerPoolSettings
 function PresetDimmerPoolSettingsCollect:Find(class, undo) end
-function PresetDimmerPoolSettingsCollect:RedirectKeyCode(property_name, property_value) end
+function PresetDimmerPoolSettingsCollect:SetChildren(property_name, property_value) end

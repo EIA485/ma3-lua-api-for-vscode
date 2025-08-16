@@ -62,9 +62,9 @@ function WebServer:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): WebSocketsConnection
 function WebServer:Find(class, undo) end
----@overload fun(property_name: "DisplayIndex", property_value: integer)
----@overload fun(property_name: "Whitelisted", property_value: boolean)
 ---@overload fun(property_name: "Whitelisted", property_value: boolean)
 ---@overload fun(property_name: "DisplayIndex", property_value: integer)
----@overload fun(property_name: "clientMAC"|"IP"|"UserAgent"|"Resolution", property_value: string)
-function WebServer:Whitelisted(property_name, property_value) end
+---@overload fun(property_name: "Whitelisted", property_value: boolean)
+---@overload fun(property_name: "DisplayIndex", property_value: integer)
+---@overload fun(property_name: "Resolution"|"IP"|"UserAgent"|"clientMAC", property_value: string)
+function WebServer:SetChildren(property_name, property_value) end

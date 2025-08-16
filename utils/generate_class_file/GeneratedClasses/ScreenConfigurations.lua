@@ -62,4 +62,4 @@ function ScreenConfigurations:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ScreenConfig
 function ScreenConfigurations:Find(class, undo) end
-function ScreenConfigurations:Active(property_name, property_value) end
+function ScreenConfigurations:SetChildren(property_name, property_value) end

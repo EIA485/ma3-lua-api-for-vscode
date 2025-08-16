@@ -110,8 +110,8 @@ function Environments:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function Environments:Set(property_name, property_value, override_change_level) end
----@overload fun(property_name: "CurrentSelectionRef", property_value: Selection)
 ---@overload fun(property_name: "ActiveSel", property_value: SelectedSelection)
+---@overload fun(property_name: "CurrentSelectionRef", property_value: Selection)
 ---@overload fun(property_name: "ProgPart", property_value: ProgPart)
 ---@overload fun(property_name: "AlignTransition", property_value: TransitionMode)
 ---@overload fun(property_name: "AlignMode"|"AlignCombined", property_value: AlignMode)
@@ -119,6 +119,6 @@ function Environments:Set(property_name, property_value, override_change_level) 
 ---@overload fun(property_name: "ActiveSel", property_value: SelectedSelection)
 ---@overload fun(property_name: "CurrentSelectionRef", property_value: Selection)
 ---@overload fun(property_name: "AlignTransition", property_value: TransitionMode)
----@overload fun(property_name: "MultiStepSelected"|"StepMask"|"AllStepSelected"|"Sync"|"SingleStep"|"Freeze", property_value: YesNo|boolean)
+---@overload fun(property_name: "StepMask"|"MultiStepSelected"|"AllStepSelected"|"Sync"|"SingleStep"|"Freeze", property_value: YesNo|boolean)
 ---@overload fun(property_name: "StepMaskFirst"|"AlignRotXZ"|"StepMaskLast"|"FirstStep"|"AlignRotYZ"|"ActiveSelIndex"|"AlignRotXY"|"LastStep", property_value: integer)
-function Environments:AlignTransition(property_name, property_value) end
+function Environments:SetChildren(property_name, property_value) end

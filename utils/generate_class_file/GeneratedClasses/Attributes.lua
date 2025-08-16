@@ -64,15 +64,15 @@ function Attributes:Insert(index, class, undo, count) end
 function Attributes:Find(class, undo) end
 ---@overload fun(property_name: "Intensity", property_value: number)
 ---@overload fun(property_name: "Hide", property_value: Yes|true)
----@overload fun(property_name: "Feature", property_value: Feature)
+---@overload fun(property_name: "EncoderResolution", property_value: AttriebuteEncoderResolution)
 ---@overload fun(property_name: "PhysicalUnit", property_value: PhysicalUnit)
 ---@overload fun(property_name: "GeometryType", property_value: GeometryType)
 ---@overload fun(property_name: "Pretty", property_value: string)
----@overload fun(property_name: "MainAttribute", property_value: Attribute)
 ---@overload fun(property_name: "Color", property_value: Colors.RGB<float>)
+---@overload fun(property_name: "MainAttribute", property_value: Attribute)
 ---@overload fun(property_name: "ActivationGroup", property_value: ActivationGroup)
 ---@overload fun(property_name: "NaturalReadout", property_value: ValueReadoutMode)
----@overload fun(property_name: "EncoderResolution", property_value: AttriebuteEncoderResolution)
+---@overload fun(property_name: "Feature", property_value: Feature)
 ---@overload fun(property_name: "Special", property_value: SpecialAttribute)
 ---@overload fun(property_name: "ActivationGroup", property_value: ActivationGroup)
 ---@overload fun(property_name: "MainAttribute", property_value: Attribute)
@@ -87,4 +87,4 @@ function Attributes:Find(class, undo) end
 ---@overload fun(property_name: "ChannelFunctions"|"SpecialIndex"|"AttributeIndex"|"AttributeIndexOld"|"LogChannels", property_value: integer)
 ---@overload fun(property_name: "Intensity", property_value: number)
 ---@overload fun(property_name: "Pretty", property_value: string)
-function Attributes:Special(property_name, property_value) end
+function Attributes:SetChildren(property_name, property_value) end

@@ -47,4 +47,4 @@ function SubTrack:Find(class, undo) end
 ---@overload fun(property_name: "Track"|"TrackGroup", property_value: Object)
 ---@overload fun(property_name: "RealtimeCmd", property_value: RealtimeCmdType)
 ---@overload fun(property_name: "Time", property_value: SignedTimePropertyValue)
-function SubTrack:Type(property_name, property_value) end
+function SubTrack:SetChildren(property_name, property_value) end

@@ -62,4 +62,4 @@ function AddonVariables:Insert(index, class, undo, count) end
 function AddonVariables:Find(class, undo) end
 ---@overload fun(property_name: "*", property_value: string)
 ---@overload fun(property_name: "*", property_value: string)
-function AddonVariables:*(property_name, property_value) end
+function AddonVariables:SetChildren(property_name, property_value) end

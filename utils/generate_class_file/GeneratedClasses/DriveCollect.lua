@@ -63,4 +63,4 @@ function DriveCollect:Find(class, undo) end
 ---@overload fun(property_name: "FreeSpaceStr", property_value: string)
 ---@overload fun(property_name: "FreeSpace"|"TotalSpace", property_value: integer)
 ---@overload fun(property_name: "FreeSpaceStr", property_value: string)
-function DriveCollect:FreeSpaceStr(property_name, property_value) end
+function DriveCollect:SetChildren(property_name, property_value) end

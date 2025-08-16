@@ -43,4 +43,4 @@ function Views:Find(class, undo) end
 ---@overload fun(property_name: "ScreenContentMask", property_value: integer)
 ---@overload fun(property_name: "RequestedW"|"RequestedH", property_value: RequestedSize)
 ---@overload fun(property_name: "ScreenContentMask", property_value: integer)
-function Views:ScreenContentMask(property_name, property_value) end
+function Views:SetChildren(property_name, property_value) end

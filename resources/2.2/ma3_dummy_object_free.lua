@@ -15,7 +15,7 @@ function AddonVars(addonName) end
 ---@return table buildDetails
 function BuildDetails() end
 
----@param dmxMode Object
+---@param dmxMode DMXMode
 ---@param startAddress string
 ---@param count integer?? @Optional
 ---@param breakIndex integer? @Optional
@@ -181,7 +181,7 @@ function GetAttributeCount() end
 ---@return integer attributeIndex
 function GetAttributeIndex(attributeName) end
 
----@param Ma3ModuleHandle Object
+---@param Ma3ModuleHandle UsbDeviceMA3
 ---@return table state
 function GetButton(Ma3ModuleHandle) end
 
@@ -348,7 +348,7 @@ function HandleToStr(objectHandle) end
 
 ---@param callback function
 ---@param objectHandle Object
----@param pluginHandle ComponentLua
+---@param pluginHandle Plugin
 ---@param passedObjectHandle Object? @Optional
 ---@return integer hookId
 function HookObjectChange(functionName, objectHandle, pluginHandle, passedObjectHandle) end

@@ -110,4 +110,4 @@ function Quickeys:Find(class, undo) end
 function Quickeys:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Code", property_value: VirtualKeyCode)
 ---@overload fun(property_name: "Code", property_value: VirtualKeyCode)
-function Quickeys:Code(property_name, property_value) end
+function Quickeys:SetChildren(property_name, property_value) end

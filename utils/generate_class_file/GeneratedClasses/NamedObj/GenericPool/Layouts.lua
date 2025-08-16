@@ -80,6 +80,6 @@ function Layouts:Find(class, undo) end
 ---@overload fun(property_name: "RotationMode", property_value: RotationMode)
 ---@overload fun(property_name: "GridRowOrder", property_value: RowOrder)
 ---@overload fun(property_name: "ViewPosActive"|"ArrangeOnChange"|"SendChangesWhileEncoderEvent"|"Markers"|"ValueColors"|"ActiveStyle", property_value: YesNo|boolean)
----@overload fun(property_name: "DimensionW"|"DimensionH"|"UsedX"|"UsedY"|"UsedW"|"PositionX"|"PositionY"|"UsedH", property_value: integer)
----@overload fun(property_name: "RowsInterval"|"StartX"|"LengthX"|"StartY"|"LengthY"|"StartZ"|"LengthZ"|"RadiusStart"|"RadiusDelta"|"AngleStart"|"AngleRange"|"CameraIndex"|"Scale"|"Ratio"|"MoveX"|"MoveY"|"ViewPosScale"|"Columns"|"Rows"|"ColumnsInterval", property_value: number)
-function Layouts:LayoutType(property_name, property_value) end
+---@overload fun(property_name: "DimensionH"|"UsedX"|"UsedY"|"UsedW"|"PositionX"|"PositionY"|"DimensionW"|"UsedH", property_value: integer)
+---@overload fun(property_name: "RadiusDelta"|"AngleStart"|"AngleRange"|"CameraIndex"|"Scale"|"Ratio"|"MoveX"|"MoveY"|"ViewPosScale"|"Columns"|"Rows"|"ColumnsInterval"|"RowsInterval"|"StartX"|"LengthX"|"StartY"|"LengthY"|"StartZ"|"LengthZ"|"RadiusStart", property_value: number)
+function Layouts:SetChildren(property_name, property_value) end

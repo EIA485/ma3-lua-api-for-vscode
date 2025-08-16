@@ -67,4 +67,4 @@ function UIChannels:Find(class, undo) end
 ---@overload fun(property_name: "Master", property_value: MasterReaction)
 ---@overload fun(property_name: "Snap", property_value: Yes|true)
 ---@overload fun(property_name: "Type"|"SubAttribute", property_value: string)
-function UIChannels:Master(property_name, property_value) end
+function UIChannels:SetChildren(property_name, property_value) end

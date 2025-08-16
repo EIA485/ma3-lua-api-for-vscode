@@ -68,4 +68,4 @@ function TimecodeWindowSharedContainer:Find(class, undo) end
 ---@overload fun(property_name: "LastEvent", property_value: TimecodeSelectLastEventMode)
 ---@overload fun(property_name: "SelectionTargetType", property_value: TimecodeSelectionTarget)
 ---@overload fun(property_name: "Setup", property_value: YesNo|boolean)
-function TimecodeWindowSharedContainer:LastEvent(property_name, property_value) end
+function TimecodeWindowSharedContainer:SetChildren(property_name, property_value) end

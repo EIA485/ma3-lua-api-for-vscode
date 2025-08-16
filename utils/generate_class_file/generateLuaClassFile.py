@@ -958,6 +958,7 @@ for k,v in orderFilter(index):
     append('\n')
     
     for p in v.properties:
+        #if p.ReadOnly: append("---@readonly\n")
         append(f"---@field {str(p.name)} {p.type}")
         if p.description: append(f" {p.description}")
         append('\n')
@@ -1111,15 +1112,8 @@ for k,v in orderFilter(index):
         for type,props in byRet.items():
             append(f"---@overload fun(property_name: {ConcatPropNames(props)}, property_value: {type})\n")
 
-        append(f"function {v.safeName}:{name}(property_name, property_value) end\n")
-
-        
-    if recChildChange:
-        for _, props in groupby(sorted(get_all_props_recursive(index, k), key=lambda p: p.type or ""), key=lambda p: p.type):
-            props = list(props)
-            append(f"---@overload fun(property_name: {ConcatPropNames(props)}, property_value: {props[0].type})\n")
-        append(f"function {v.safeName}:SetChildrenRecursive(property_name, property_value) end\n")
-
+        append(f"function {v.safeName}:{func}(property_name, property_value) end\n")
+    
 
 
 

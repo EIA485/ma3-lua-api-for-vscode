@@ -111,4 +111,4 @@ function Models:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "Mesh", property_value: Mesh)
 ---@overload fun(property_name: "CastShadow"|"DimensionsfollowRatio", property_value: YesNo|boolean)
 ---@overload fun(property_name: "File", property_value: string)
-function Models:File(property_name, property_value) end
+function Models:SetChildren(property_name, property_value) end

@@ -80,8 +80,8 @@ function GeneratorTypes:Insert(index, class, undo, count) end
 ---@overload fun(class: "ImagePool", undo: Undo?): ImagePool
 ---@overload fun(class: nil, undo: Undo?): GenericPool
 function GeneratorTypes:Find(class, undo) end
----@overload fun(property_name: "DefaultsLoaded", property_value: YesNo|boolean)
 ---@overload fun(property_name: "PoolObjectContentSizeLimitation", property_value: integer)
 ---@overload fun(property_name: "DefaultsLoaded", property_value: YesNo|boolean)
+---@overload fun(property_name: "DefaultsLoaded", property_value: YesNo|boolean)
 ---@overload fun(property_name: "PoolObjectContentSizeLimitation", property_value: integer)
-function GeneratorTypes:PoolObjectContentSizeLimitation(property_name, property_value) end
+function GeneratorTypes:SetChildren(property_name, property_value) end

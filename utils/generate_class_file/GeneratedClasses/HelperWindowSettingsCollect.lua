@@ -62,4 +62,4 @@ function HelperWindowSettingsCollect:Insert(index, class, undo, count) end
 function HelperWindowSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "ZoomFactor", property_value: ZoomFactor)
 ---@overload fun(property_name: "ZoomFactor", property_value: ZoomFactor)
-function HelperWindowSettingsCollect:ZoomFactor(property_name, property_value) end
+function HelperWindowSettingsCollect:SetChildren(property_name, property_value) end

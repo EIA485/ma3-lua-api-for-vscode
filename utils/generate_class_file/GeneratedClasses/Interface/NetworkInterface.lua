@@ -117,4 +117,4 @@ function NetworkInterface:Find(class, undo) end
 ---@overload fun(property_name: "Index"|"Count"|"No", property_value: integer, override_change_level: ChangeLevel?)
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport"|"Gateway"|"MAC"|"DHCPTimeout"|"DNS", property_value: string, override_change_level: ChangeLevel?)
 function NetworkInterface:Set(property_name, property_value, override_change_level) end
-function NetworkInterface:ActiveDisplay(property_name, property_value) end
+function NetworkInterface:SetChildren(property_name, property_value) end

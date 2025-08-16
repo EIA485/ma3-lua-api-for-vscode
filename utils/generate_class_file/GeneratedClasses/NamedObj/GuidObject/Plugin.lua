@@ -139,4 +139,4 @@ function Plugin:Find(class, undo) end
 function Plugin:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "UserRights", property_value: UserRights)
 ---@overload fun(property_name: "UserRights", property_value: UserRights)
-function Plugin:UserRights(property_name, property_value) end
+function Plugin:SetChildren(property_name, property_value) end

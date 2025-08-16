@@ -64,4 +64,4 @@ function MessageCenter:Insert(index, class, undo, count) end
 function MessageCenter:Find(class, undo) end
 ---@overload fun(property_name: "CreateNotification", property_value: YesNo|boolean)
 ---@overload fun(property_name: "CreateNotification", property_value: YesNo|boolean)
-function MessageCenter:CreateNotification(property_name, property_value) end
+function MessageCenter:SetChildren(property_name, property_value) end

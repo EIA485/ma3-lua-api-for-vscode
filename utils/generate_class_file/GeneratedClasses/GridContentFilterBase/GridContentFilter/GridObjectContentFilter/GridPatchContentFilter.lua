@@ -62,4 +62,4 @@ function GridPatchContentFilter:Insert(index, class, undo, count) end
 function GridPatchContentFilter:Find(class, undo) end
 ---@overload fun(property_name: "PopupFilter", property_value: string)
 ---@overload fun(property_name: "PopupFilter", property_value: string)
-function GridPatchContentFilter:PopupFilter(property_name, property_value) end
+function GridPatchContentFilter:SetChildren(property_name, property_value) end

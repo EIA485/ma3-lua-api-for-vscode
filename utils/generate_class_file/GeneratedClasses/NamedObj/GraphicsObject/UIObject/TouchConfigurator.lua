@@ -62,4 +62,4 @@ function TouchConfigurator:Insert(index, class, undo, count) end
 function TouchConfigurator:Find(class, undo) end
 ---@overload fun(property_name: "MapClicked", property_value: fun(str: string) : boolean)
 ---@overload fun(property_name: "MapClicked", property_value: fun(str: string) : boolean)
-function TouchConfigurator:MapClicked(property_name, property_value) end
+function TouchConfigurator:SetChildren(property_name, property_value) end

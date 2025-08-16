@@ -62,4 +62,4 @@ function NotificationsGridScroller:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): NotificationsWrapper
 function NotificationsGridScroller:Find(class, undo) end
-function NotificationsGridScroller:SetPrompt(property_name, property_value) end
+function NotificationsGridScroller:SetChildren(property_name, property_value) end

@@ -62,12 +62,12 @@ function Videos:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): Video
 function Videos:Find(class, undo) end
----@overload fun(property_name: "Source", property_value: VideoFileSource)
 ---@overload fun(property_name: "NDIBandwidth", property_value: NDIBandwidth)
 ---@overload fun(property_name: "Duration", property_value: TimePropertyValue)
 ---@overload fun(property_name: "NDISource", property_value: NDISource)
+---@overload fun(property_name: "Source", property_value: VideoFileSource)
 ---@overload fun(property_name: "NDIBandwidth", property_value: NDIBandwidth)
 ---@overload fun(property_name: "NDISource", property_value: NDISource)
 ---@overload fun(property_name: "Duration", property_value: TimePropertyValue)
 ---@overload fun(property_name: "Source", property_value: VideoFileSource)
-function Videos:NDISource(property_name, property_value) end
+function Videos:SetChildren(property_name, property_value) end

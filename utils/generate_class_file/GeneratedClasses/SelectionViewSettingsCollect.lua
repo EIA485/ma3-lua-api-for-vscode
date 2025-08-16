@@ -63,4 +63,4 @@ function SelectionViewSettingsCollect:Find(class, undo) end
 ---@overload fun(property_name: "FontSize", property_value: SelectionViewFontSize)
 ---@overload fun(property_name: "FontSize", property_value: SelectionViewFontSize)
 ---@overload fun(property_name: "CenterlineY"|"AlignBar"|"AutoScroll"|"GridLines"|"ToolBar"|"MAtricksTransformation"|"CenterlineX", property_value: YesNo|boolean)
-function SelectionViewSettingsCollect:FontSize(property_name, property_value) end
+function SelectionViewSettingsCollect:SetChildren(property_name, property_value) end

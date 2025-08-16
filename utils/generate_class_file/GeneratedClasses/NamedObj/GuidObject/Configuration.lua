@@ -134,4 +134,4 @@ function Configuration:Set(property_name, property_value, override_change_level)
 ---@overload fun(property_name: "Fader", property_value: AssignmentFaderFunctions)
 ---@overload fun(property_name: "Fader", property_value: AssignmentFaderFunctions)
 ---@overload fun(property_name: "Fallback"|"Column"|"Row"|"Key"|"Width"|"EncoderClick"|"Height"|"EncoderRight"|"EncoderLeft", property_value: string)
-function Configuration:Fader(property_name, property_value) end
+function Configuration:SetChildren(property_name, property_value) end

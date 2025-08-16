@@ -64,4 +64,4 @@ function Tags:Find(class, undo) end
 ---@overload fun(property_name: "ForwardCommands", property_value: YesNo|boolean)
 ---@overload fun(property_name: "TagType", property_value: TagType)
 ---@overload fun(property_name: "ForwardCommands", property_value: YesNo|boolean)
-function Tags:ForwardCommands(property_name, property_value) end
+function Tags:SetChildren(property_name, property_value) end

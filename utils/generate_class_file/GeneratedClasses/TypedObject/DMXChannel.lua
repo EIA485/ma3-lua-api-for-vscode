@@ -174,4 +174,4 @@ function DMXChannel:Set(property_name, property_value, override_change_level) en
 ---@overload fun(property_name: "MibFade"|"DMXChangeTimeLimit", property_value: TimeDefault)
 ---@overload fun(property_name: "Snap", property_value: Yes|true)
 ---@overload fun(property_name: "Name", property_value: string)
-function DMXChannel:DmxCurve(property_name, property_value) end
+function DMXChannel:SetChildren(property_name, property_value) end

@@ -312,4 +312,4 @@ function RunningPlaybacksPoolLayoutGrid:Find(class, undo) end
 ---@overload fun(property_name: "AbsRect"|"AbsClientRect", property_value: {left: number, right: number, top: number, bottom: number}, override_change_level: ChangeLevel?)
 function RunningPlaybacksPoolLayoutGrid:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "EditMixInBackColor"|"EditMixInNotOwnerBackColor", property_value: Color)
-function RunningPlaybacksPoolLayoutGrid:SetPrompt(property_name, property_value) end
+function RunningPlaybacksPoolLayoutGrid:SetChildren(property_name, property_value) end

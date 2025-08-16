@@ -42,4 +42,4 @@ function sACNNode:Insert(index, class, undo, count) end
 function sACNNode:Find(class, undo) end
 ---@overload fun(property_name: "UniverseList", property_value: string)
 ---@overload fun(property_name: "UniverseList", property_value: string)
-function sACNNode:UniverseList(property_name, property_value) end
+function sACNNode:SetChildren(property_name, property_value) end

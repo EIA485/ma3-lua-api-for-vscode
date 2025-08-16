@@ -62,4 +62,4 @@ function Masters:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): MasterPool
 function Masters:Find(class, undo) end
-function Masters:RenewDHCP(property_name, property_value) end
+function Masters:SetChildren(property_name, property_value) end

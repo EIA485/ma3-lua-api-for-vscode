@@ -107,7 +107,7 @@ function DeskLightsCollect:Find(class, undo) end
 ---@overload fun(property_name: "Name"|"Note"|"DependencyExport", property_value: string, override_change_level: ChangeLevel?)
 function DeskLightsCollect:Set(property_name, property_value, override_change_level) end
 ---@overload fun(property_name: "DarkMode", property_value: YesNo|boolean)
----@overload fun(property_name: "ScreenExternalAddress"|"LedEncoderAddress"|"LedFaderAddress"|"LedExecAddress"|"LedKeyboardAddress"|"LedOtherAddress"|"ScreenBigAddress"|"ScreenLetterAddress"|"MasterAddress"|"ScreenSmallAddress", property_value: DMXPropertyAddress)
+---@overload fun(property_name: "MasterAddress"|"LedEncoderAddress"|"ScreenExternalAddress"|"LedFaderAddress"|"LedExecAddress"|"LedKeyboardAddress"|"LedOtherAddress"|"ScreenBigAddress"|"ScreenLetterAddress"|"ScreenSmallAddress", property_value: DMXPropertyAddress)
 ---@overload fun(property_name: "DarkMode", property_value: YesNo|boolean)
----@overload fun(property_name: "LedExec"|"LedKeyboard"|"LedEncoder"|"ScreenExternal"|"LedOther"|"ScreenBig"|"Master"|"ScreenLetter"|"ScreenSmall"|"LedFader", property_value: integer)
-function DeskLightsCollect:DarkMode(property_name, property_value) end
+---@overload fun(property_name: "LedExec"|"LedEncoder"|"LedKeyboard"|"ScreenExternal"|"LedOther"|"ScreenBig"|"Master"|"ScreenLetter"|"ScreenSmall"|"LedFader", property_value: integer)
+function DeskLightsCollect:SetChildren(property_name, property_value) end

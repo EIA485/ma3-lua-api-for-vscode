@@ -62,4 +62,4 @@ function ExtensionConfigurations:Insert(index, class, undo, count) end
 ---@return T
 ---@overload fun(class: nil, undo: Undo?): ExtensionConfig
 function ExtensionConfigurations:Find(class, undo) end
-function ExtensionConfigurations:ActiveDisplay(property_name, property_value) end
+function ExtensionConfigurations:SetChildren(property_name, property_value) end
